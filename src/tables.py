@@ -759,6 +759,13 @@ def build_macros() -> Macros:
 def main() -> None:
     config.TABLES.mkdir(parents=True, exist_ok=True)
 
+    # The palette validation record is provenance for a design decision the paper cites,
+    # so it is written here rather than by a figure module: `make clean` removes it, and
+    # nothing in the figure path was regenerating it.
+    from src import plotting
+
+    plotting.write_palette_provenance()
+
     table_data_availability(load("keeper_data_availability"))
     table_feature_dictionary()
     table_umap_grid(load("umap_grid"))

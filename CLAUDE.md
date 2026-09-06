@@ -151,7 +151,15 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
 - [x] Phase 10: novel analyses
 - [x] Phase 11: figures and tables
 - [x] Phase 13: paper
-- [ ] Phase 14: verification and handoff (in progress)
+- [x] Phase 14: verification and handoff
+
+## Verification record
+
+`make clean && make all` completes from a clean tree against the committed scrape cache.
+All 36 figure PNGs are byte-identical to the previous run and all 27 metrics JSON files
+are unchanged, so the pipeline is deterministic. The PDF differs only in its embedded
+creation date. The paper compiles with zero undefined references and zero overfull boxes.
+48 tests pass and ruff reports no findings.
 
 ## Analyses deliberately skipped or forced out by the data
 
