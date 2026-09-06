@@ -153,6 +153,80 @@ should be read.
   \label{fig:embeddings}
 \end{figure}
 
+\subsection{The third dimension}
+\label{sec:results:threed}
+
+Two components are a convenient way to draw the space and a poor way to describe it. The
+first two carry shooting volume and wide creation and together account for
+\ThreeDVarTwo{} of the variance. The third carries duels and discipline, loading on fouls
+committed, cards and tackles won, and it is orthogonal to both of the others, so a planar
+projection does not compress it, it deletes it. Retaining it raises captured variance to
+\ThreeDVarThree{}. Figure~\ref{fig:threedpositions} shows the outfield space in all three,
+drawn from two viewpoints so that structure can be told apart from the accident of a single
+projection.
+
+Adding the dimension does not change the headline geometry. The defender to forward gradient
+remains continuous rather than resolving into islands, which is the same conclusion the
+planar embeddings reached and is now established against a projection that had the
+opportunity to falsify it. Figure~\ref{fig:threedclusters} places the selected partition in
+the same space: the boundary cuts across the shooting axis and is close to indifferent to
+duels and discipline, which is consistent with a split that is substantially about whether a
+player shoots.
+
+The third dimension does change the club picture, and this is the one place where it
+produces a finding the planar analysis could not. Club centroids correlate with final
+league position at \ThreeDTeamPCOne{} on the first component and \ThreeDTeamPCTwo{} on the
+second, but only \ThreeDTeamPCThree{} on the third. Shooting volume and wide creation both
+track league position; the physical dimension of duels, fouls and cards essentially does
+not. A club does not finish higher by fouling more or less, which is unsurprising stated
+plainly and is worth stating because the duelling axis is a full component of player
+variation that carries almost no information about team success.
+Figure~\ref{fig:threedteams} shows the clubs, labelled at the extremes of the table.
+
+Finally, the three-dimensional view settles a structural question raised in
+Section~\ref{sec:results:archetypes} by measurement rather than assertion. Drawing each
+archetype centroid as a direction from the origin, the two centroids within a position
+group have a cosine of \CosineDF{} for defenders, \CosineMF{} for midfielders and
+\CosineFW{} for forwards. They are exactly anti-parallel, which is forced by standardising
+within group before a two-way split. Figure~\ref{fig:threedaxes} shows the consequence: six
+archetypes occupy three lines through the origin, not six independent directions.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{pca3d_positions.pdf}
+  \caption{Outfield players in the first three principal components, from two viewpoints.
+  Grey points on the floor are the vertical projection of each player, supplying a depth
+  cue that a static rendering otherwise lacks.}
+  \label{fig:threedpositions}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{pca3d_clusters.pdf}
+  \caption{The selected global partition in three components, with cluster centroids marked
+  by crosses. The split runs along the shooting axis and is close to indifferent to the
+  third component.}
+  \label{fig:threedclusters}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{pca3d_teams.pdf}
+  \caption{Clubs as minutes-weighted centroids in three components, shaded by final league
+  position with darker shading for a higher finish. Vertical lines to the floor give the
+  depth cue, and only the top and bottom of the table are labelled.}
+  \label{fig:threedteams}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{pca3d_archetype_axes.pdf}
+  \caption{Archetype centroid directions, drawn as unit vectors so the figure shows
+  orientation rather than magnitude. Each position group forms a single line through the
+  origin, so the six archetypes describe three axes.}
+  \label{fig:threedaxes}
+\end{figure}
+
 \subsection{How many roles the data supports}
 \label{sec:results:clustering}
 

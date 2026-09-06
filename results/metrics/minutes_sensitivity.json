@@ -1,0 +1,60 @@
+{
+  "season": "2024-25",
+  "baseline_threshold": 450,
+  "note": "Each threshold is analysed as an independent pool: imputation and standardisation are recomputed inside it, and the declared selection rule is reapplied from scratch. Agreement is the adjusted Rand index against the baseline partition on the players common to both pools.",
+  "agreement_with_baseline": {
+    "270": {
+      "n_common_players": 366,
+      "adjusted_rand_index_vs_baseline": 0.967
+    },
+    "900": {
+      "n_common_players": 296,
+      "adjusted_rand_index_vs_baseline": 0.9863
+    }
+  },
+  "270": {
+    "minutes_threshold": 270,
+    "n_eligible": 403,
+    "n_features": 18,
+    "chosen_k": 2,
+    "rule_branch": "primary",
+    "silhouette": 0.2865,
+    "bootstrap_ari_mean": 0.9305,
+    "bootstrap_ari_sd": 0.0686,
+    "position_group_counts": {
+      "MF": 193,
+      "DF": 153,
+      "FW": 57
+    }
+  },
+  "450": {
+    "minutes_threshold": 450,
+    "n_eligible": 366,
+    "n_features": 18,
+    "chosen_k": 2,
+    "rule_branch": "primary",
+    "silhouette": 0.2861,
+    "bootstrap_ari_mean": 0.9236,
+    "bootstrap_ari_sd": 0.0657,
+    "position_group_counts": {
+      "MF": 181,
+      "DF": 136,
+      "FW": 49
+    }
+  },
+  "900": {
+    "minutes_threshold": 900,
+    "n_eligible": 296,
+    "n_features": 18,
+    "chosen_k": 2,
+    "rule_branch": "primary",
+    "silhouette": 0.3016,
+    "bootstrap_ari_mean": 0.9474,
+    "bootstrap_ari_sd": 0.0638,
+    "position_group_counts": {
+      "MF": 143,
+      "DF": 115,
+      "FW": 38
+    }
+  }
+}

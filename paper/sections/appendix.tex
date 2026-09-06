@@ -15,11 +15,28 @@ check that distinguishes a live column from one whose values were withdrawn.
 The main analysis excludes outfield players below \MinMinutes{} minutes. That threshold
 balances two errors: a low threshold admits players whose per-90 rates are dominated by
 sampling noise, while a high threshold discards genuine squad roles such as the impact
-substitute. Table~\ref{tab:sensitivity} repeats the clustering at 270, \MinMinutes{} and
-900 minutes and reports the eligible sample, the selected number of clusters, the
-silhouette coefficient and the mean bootstrap adjusted Rand index at each.
+substitute. Table~\ref{tab:sensitivity} repeats the entire selection and stability procedure at 270,
+\MinMinutes{} and 900 minutes, treating each threshold as an independent pool in which
+imputation and standardisation are recomputed and the declared selection rule is reapplied
+from scratch. Figure~\ref{fig:sensitivity} plots the same quantities.
+
+The threshold turns out to matter very little. The rule selects two clusters at every
+threshold, the silhouette moves only from \SensSilhouetteLow{} to
+\SensSilhouetteHigh{}, and bootstrap stability is between \SensARILow{} and
+\SensARIHigh{} throughout. More directly, the partition itself barely moves: measured on
+the players common to both pools, the adjusted Rand index against the partition at the
+threshold actually used is \SensAgreeLow{} at 270 minutes and \SensAgreeHigh{} at 900. A
+reader who preferred a different threshold would reach the same conclusions.
 
 \input{../results/tables/minutes_sensitivity.tex}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{minutes_sensitivity.pdf}
+  \caption{Eligible sample, silhouette and bootstrap stability across the candidate
+  minutes thresholds. The dashed line marks the threshold used in the main analysis.}
+  \label{fig:sensitivity}
+\end{figure}
 
 \section{UMAP hyperparameter grid}
 \label{sec:appendix:umap}

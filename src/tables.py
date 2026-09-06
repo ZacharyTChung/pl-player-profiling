@@ -524,19 +524,24 @@ def table_minutes_sensitivity(pre: dict | None, sens: dict | None) -> None:
         r"\centering",
         r"\small",
         r"\caption{Sensitivity of the analysis to the minutes threshold in the primary "
-        r"season.}",
+        r"season. Agreement is the adjusted Rand index against the partition at the "
+        r"threshold actually used, computed on the players common to both pools.}",
         r"\label{tab:sensitivity}",
-        r"\begin{tabular}{rrrrr}",
+        r"\begin{tabular}{rrrrrr}",
         r"\toprule",
-        r"Minutes & Eligible & $k$ & Silhouette & Bootstrap ARI \\",
+        r"Minutes & Eligible & $k$ & Silhouette & Bootstrap ARI & Agreement \\",
         r"\midrule",
     ]
     for threshold in config.MIN_MINUTES_SENSITIVITY:
         row = dig(sens, str(threshold)) or {}
+        agree = dig(
+            sens, "agreement_with_baseline", str(threshold), "adjusted_rand_index_vs_baseline"
+        )
+        agree_cell = "baseline" if threshold == config.MIN_MINUTES else num(agree, 3)
         lines.append(
-            f"{threshold} & {counts.get(str(threshold), 'n/a')} & "
-            f"{row.get('k', 'n/a')} & {num(row.get('silhouette'), 3)} & "
-            f"{num(row.get('bootstrap_ari'), 3)} \\\\"
+            f"{threshold} & {row.get('n_eligible', counts.get(str(threshold), 'n/a'))} & "
+            f"{row.get('chosen_k', 'n/a')} & {num(row.get('silhouette'), 3)} & "
+            f"{num(row.get('bootstrap_ari_mean'), 3)} & {agree_cell} \\\\"
         )
     lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
     _write_table("minutes_sensitivity", "\n".join(lines))
@@ -813,6 +818,42 @@ def build_macros() -> Macros:
         m.add(f"PadjCorrRaw{suffix}", block.get("corr_raw_with_possession"), places=3)
         m.add(f"PadjCorrAdj{suffix}", block.get("corr_adjusted_with_possession"), places=3)
         m.add(f"PadjCorrUnit{suffix}", block.get("corr_unit_elasticity_with_possession"), places=3)
+
+    # Minutes threshold sensitivity
+    sens = load("minutes_sensitivity")
+    if sens:
+        sils = [dig(sens, str(t), "silhouette") for t in config.MIN_MINUTES_SENSITIVITY]
+        aris = [dig(sens, str(t), "bootstrap_ari_mean") for t in config.MIN_MINUTES_SENSITIVITY]
+        sils = [v for v in sils if v is not None]
+        aris = [v for v in aris if v is not None]
+        if sils:
+            m.add("SensSilhouetteLow", min(sils), places=3)
+            m.add("SensSilhouetteHigh", max(sils), places=3)
+        if aris:
+            m.add("SensARILow", min(aris), places=3)
+            m.add("SensARIHigh", max(aris), places=3)
+        agree = dig(sens, "agreement_with_baseline") or {}
+        vals = {k: v.get("adjusted_rand_index_vs_baseline") for k, v in agree.items()}
+        if vals:
+            lo_key = min(vals, key=lambda k: int(k))
+            hi_key = max(vals, key=lambda k: int(k))
+            m.add("SensAgreeLow", vals[lo_key], places=3)
+            m.add("SensAgreeHigh", vals[hi_key], places=3)
+
+    # Three dimensional structure
+    td = load("threed")
+    m.add("ThreeDVarTwo", dig(td, "positions", "cumulative_two_components"), places=3)
+    m.add("ThreeDVarThree", dig(td, "positions", "cumulative_three_components"), places=3)
+    for i, name in enumerate(("One", "Two", "Three"), start=1):
+        m.add(
+            f"ThreeDTeamPC{name}",
+            dig(td, "teams", "corr_with_league_position", f"pc{i}"),
+            places=3,
+        )
+    for grp in ("DF", "MF", "FW"):
+        m.add(
+            f"Cosine{grp}", dig(td, "archetype_axes", "within_group_centroid_cosine", grp), places=2
+        )
 
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))

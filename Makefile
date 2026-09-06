@@ -27,7 +27,7 @@ RAW_MANIFESTS  := $(wildcard data/raw/*/manifest.json)
 PROCESSED      := $(wildcard data/processed/*.parquet)
 
 .PHONY: all data preprocess descriptive reduce cluster profiles supervised keepers \
-        teams novel tables paper test lint format clean distclean help
+        teams novel sensitivity threed tables paper test lint format clean distclean help
 
 all: paper
 
@@ -43,6 +43,8 @@ help:
 	@echo "  keepers     goalkeeper pipeline"
 	@echo "  teams       team stylistic signatures and the 20 panel figure"
 	@echo "  novel       similarity search, replication, empirical Bayes shrinkage"
+	@echo "  sensitivity minutes threshold sensitivity"
+	@echo "  threed      three dimensional views of the player and club spaces"
 	@echo "  tables      LaTeX tables and results/macros.tex"
 	@echo "  paper       compile paper/main.pdf"
 	@echo "  test        pytest"
@@ -102,6 +104,16 @@ $(STAMPS)/teams: src/teams.py $(CONFIG) $(PLOTTING) $(STAMPS)/profiles $(STAMPS)
 	@touch $@
 teams: $(STAMPS)/teams
 
+$(STAMPS)/threed: src/threed.py $(CONFIG) $(PLOTTING) $(STAMPS)/profiles $(STAMPS)/teams
+	$(PY) -m src.threed
+	@touch $@
+threed: $(STAMPS)/threed
+
+$(STAMPS)/sensitivity: src/sensitivity.py $(CONFIG) $(PLOTTING) $(STAMPS)/preprocess src/cluster.py
+	$(PY) -m src.sensitivity
+	@touch $@
+sensitivity: $(STAMPS)/sensitivity
+
 $(STAMPS)/novel: src/novel.py $(CONFIG) $(PLOTTING) $(STAMPS)/cluster $(STAMPS)/profiles
 	$(PY) -m src.novel
 	@touch $@
@@ -110,7 +122,8 @@ novel: $(STAMPS)/novel
 # --- Stage 4: tables and macros ---------------------------------------------------
 ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/profiles $(STAMPS)/supervised $(STAMPS)/keepers \
-                   $(STAMPS)/teams $(STAMPS)/novel
+                   $(STAMPS)/teams $(STAMPS)/novel $(STAMPS)/sensitivity \
+                   $(STAMPS)/threed
 
 results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables

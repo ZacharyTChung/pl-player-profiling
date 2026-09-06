@@ -1,15 +1,15 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Sensitivity of the analysis to the minutes threshold in the primary season.}
+\caption{Sensitivity of the analysis to the minutes threshold in the primary season. Agreement is the adjusted Rand index against the partition at the threshold actually used, computed on the players common to both pools.}
 \label{tab:sensitivity}
-\begin{tabular}{rrrrr}
+\begin{tabular}{rrrrrr}
 \toprule
-Minutes & Eligible & $k$ & Silhouette & Bootstrap ARI \\
+Minutes & Eligible & $k$ & Silhouette & Bootstrap ARI & Agreement \\
 \midrule
-270 & 403 & n/a & n/a & n/a \\
-450 & 366 & n/a & n/a & n/a \\
-900 & 296 & n/a & n/a & n/a \\
+270 & 403 & 2 & 0.286 & 0.930 & 0.967 \\
+450 & 366 & 2 & 0.286 & 0.924 & baseline \\
+900 & 296 & 2 & 0.302 & 0.947 & 0.986 \\
 \bottomrule
 \end{tabular}
 \end{table}
