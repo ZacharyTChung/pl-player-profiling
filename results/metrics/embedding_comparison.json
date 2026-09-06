@@ -1,0 +1,70 @@
+{
+  "2024-25": {
+    "season": "2024-25",
+    "n_players": 366,
+    "k": 10,
+    "purity_baseline_random": 0.4005643644181672,
+    "purity_note": "Position purity is the share of a player's k nearest embedding neighbours sharing his listed position group. The baseline is what a random embedding reaches given the group sizes.",
+    "embeddings": {
+      "pca": {
+        "trustworthiness": 0.8546869031750115,
+        "continuity": 0.9337948130305652,
+        "knn_position_purity": 0.635792349726776,
+        "k": 10,
+        "used_for_clustering": true
+      },
+      "umap": {
+        "trustworthiness": 0.9336825612123196,
+        "continuity": 0.9287847961148399,
+        "knn_position_purity": 0.7087431693989071,
+        "k": 10,
+        "n_neighbors": 10,
+        "min_dist": 0.0,
+        "used_for_clustering": true
+      },
+      "tsne": {
+        "trustworthiness": 0.9458517496472643,
+        "continuity": 0.9296500705471497,
+        "knn_position_purity": 0.6937158469945355,
+        "k": 10,
+        "perplexity": 30,
+        "used_for_clustering": false,
+        "role": "visual contrast only, not used for clustering, k selection or archetype assignment"
+      }
+    }
+  },
+  "2025-26": {
+    "season": "2025-26",
+    "n_players": 372,
+    "k": 10,
+    "purity_baseline_random": 0.3910134119551394,
+    "umap_params_source": "selected on the primary season, not re-tuned here",
+    "embeddings": {
+      "pca": {
+        "trustworthiness": 0.8482400579106908,
+        "continuity": 0.9330354853790587,
+        "knn_position_purity": 0.6567204301075269,
+        "k": 10,
+        "used_for_clustering": true
+      },
+      "umap": {
+        "trustworthiness": 0.9301716207452986,
+        "continuity": 0.926706781884812,
+        "knn_position_purity": 0.6854838709677419,
+        "k": 10,
+        "n_neighbors": 10,
+        "min_dist": 0.0,
+        "used_for_clustering": true
+      },
+      "tsne": {
+        "trustworthiness": 0.9386893181921007,
+        "continuity": 0.9322037732434512,
+        "knn_position_purity": 0.6889784946236559,
+        "k": 10,
+        "perplexity": 30,
+        "used_for_clustering": false,
+        "role": "visual contrast only, not used for clustering, k selection or archetype assignment"
+      }
+    }
+  }
+}

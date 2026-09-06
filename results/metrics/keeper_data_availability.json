@@ -1,0 +1,302 @@
+{
+  "purpose": "Direct count of populated cells in the FBref goalkeeper tables as pulled by this project. FBref still serves the full keeper_adv header after the January 2026 removal of Opta-derived statistics, so a column list alone does not reveal that the table is empty.",
+  "id_columns_excluded_from_stat_counts": [
+    "league",
+    "season",
+    "team",
+    "player",
+    "nation",
+    "pos",
+    "age",
+    "born"
+  ],
+  "seasons": {
+    "2024-25": {
+      "keeper": {
+        "path": "data/raw/2024-25/players_keeper.parquet",
+        "rows": 44,
+        "total_columns": 27,
+        "stat_columns": 19,
+        "all_null_stat_columns": 0,
+        "usable_stat_columns": 19,
+        "fully_populated_stat_columns": 16,
+        "partially_populated_stat_columns": [
+          "Penalty Kicks__Save%",
+          "Performance__CS%",
+          "Performance__Save%"
+        ],
+        "non_null_counts": {
+          "Playing Time__MP": 44,
+          "Playing Time__Starts": 44,
+          "Playing Time__Min": 44,
+          "Playing Time__90s": 44,
+          "Performance__GA": 44,
+          "Performance__GA90": 44,
+          "Performance__SoTA": 44,
+          "Performance__Saves": 44,
+          "Performance__Save%": 43,
+          "Performance__W": 44,
+          "Performance__D": 44,
+          "Performance__L": 44,
+          "Performance__CS": 44,
+          "Performance__CS%": 42,
+          "Penalty Kicks__PKatt": 44,
+          "Penalty Kicks__PKA": 44,
+          "Penalty Kicks__PKsv": 44,
+          "Penalty Kicks__PKm": 44,
+          "Penalty Kicks__Save%": 29
+        },
+        "all_null_column_names": []
+      },
+      "keeper_adv": {
+        "path": "data/raw/2024-25/players_keeper_adv.parquet",
+        "rows": 44,
+        "total_columns": 34,
+        "stat_columns": 26,
+        "all_null_stat_columns": 23,
+        "usable_stat_columns": 3,
+        "fully_populated_stat_columns": 3,
+        "partially_populated_stat_columns": [],
+        "non_null_counts": {
+          "90s": 44,
+          "Goals__GA": 44,
+          "Goals__PKA": 44,
+          "Goals__FK": 0,
+          "Goals__CK": 0,
+          "Goals__OG": 0,
+          "Expected__PSxG": 0,
+          "Expected__PSxG/SoT": 0,
+          "Expected__PSxG+/-": 0,
+          "Expected__/90": 0,
+          "Launched__Cmp": 0,
+          "Launched__Att": 0,
+          "Launched__Cmp%": 0,
+          "Passes__Att (GK)": 0,
+          "Passes__Thr": 0,
+          "Passes__Launch%": 0,
+          "Passes__AvgLen": 0,
+          "Goal Kicks__Att": 0,
+          "Goal Kicks__Launch%": 0,
+          "Goal Kicks__AvgLen": 0,
+          "Crosses__Opp": 0,
+          "Crosses__Stp": 0,
+          "Crosses__Stp%": 0,
+          "Sweeper__#OPA": 0,
+          "Sweeper__#OPA/90": 0,
+          "Sweeper__AvgDist": 0
+        },
+        "all_null_column_names": [
+          "Crosses__Opp",
+          "Crosses__Stp",
+          "Crosses__Stp%",
+          "Expected__/90",
+          "Expected__PSxG",
+          "Expected__PSxG+/-",
+          "Expected__PSxG/SoT",
+          "Goal Kicks__Att",
+          "Goal Kicks__AvgLen",
+          "Goal Kicks__Launch%",
+          "Goals__CK",
+          "Goals__FK",
+          "Goals__OG",
+          "Launched__Att",
+          "Launched__Cmp",
+          "Launched__Cmp%",
+          "Passes__Att (GK)",
+          "Passes__AvgLen",
+          "Passes__Launch%",
+          "Passes__Thr",
+          "Sweeper__#OPA",
+          "Sweeper__#OPA/90",
+          "Sweeper__AvgDist"
+        ]
+      },
+      "keeper_adv_empty_fraction": 0.8846
+    },
+    "2025-26": {
+      "keeper": {
+        "path": "data/raw/2025-26/players_keeper.parquet",
+        "rows": 40,
+        "total_columns": 27,
+        "stat_columns": 19,
+        "all_null_stat_columns": 0,
+        "usable_stat_columns": 19,
+        "fully_populated_stat_columns": 16,
+        "partially_populated_stat_columns": [
+          "Penalty Kicks__Save%",
+          "Performance__CS%",
+          "Performance__Save%"
+        ],
+        "non_null_counts": {
+          "Playing Time__MP": 40,
+          "Playing Time__Starts": 40,
+          "Playing Time__Min": 40,
+          "Playing Time__90s": 40,
+          "Performance__GA": 40,
+          "Performance__GA90": 40,
+          "Performance__SoTA": 40,
+          "Performance__Saves": 40,
+          "Performance__Save%": 39,
+          "Performance__W": 40,
+          "Performance__D": 40,
+          "Performance__L": 40,
+          "Performance__CS": 40,
+          "Performance__CS%": 39,
+          "Penalty Kicks__PKatt": 40,
+          "Penalty Kicks__PKA": 40,
+          "Penalty Kicks__PKsv": 40,
+          "Penalty Kicks__PKm": 40,
+          "Penalty Kicks__Save%": 30
+        },
+        "all_null_column_names": []
+      },
+      "keeper_adv": {
+        "path": "data/raw/2025-26/players_keeper_adv.parquet",
+        "rows": 40,
+        "total_columns": 34,
+        "stat_columns": 26,
+        "all_null_stat_columns": 23,
+        "usable_stat_columns": 3,
+        "fully_populated_stat_columns": 3,
+        "partially_populated_stat_columns": [],
+        "non_null_counts": {
+          "90s": 40,
+          "Goals__GA": 40,
+          "Goals__PKA": 40,
+          "Goals__FK": 0,
+          "Goals__CK": 0,
+          "Goals__OG": 0,
+          "Expected__PSxG": 0,
+          "Expected__PSxG/SoT": 0,
+          "Expected__PSxG+/-": 0,
+          "Expected__/90": 0,
+          "Launched__Cmp": 0,
+          "Launched__Att": 0,
+          "Launched__Cmp%": 0,
+          "Passes__Att (GK)": 0,
+          "Passes__Thr": 0,
+          "Passes__Launch%": 0,
+          "Passes__AvgLen": 0,
+          "Goal Kicks__Att": 0,
+          "Goal Kicks__Launch%": 0,
+          "Goal Kicks__AvgLen": 0,
+          "Crosses__Opp": 0,
+          "Crosses__Stp": 0,
+          "Crosses__Stp%": 0,
+          "Sweeper__#OPA": 0,
+          "Sweeper__#OPA/90": 0,
+          "Sweeper__AvgDist": 0
+        },
+        "all_null_column_names": [
+          "Crosses__Opp",
+          "Crosses__Stp",
+          "Crosses__Stp%",
+          "Expected__/90",
+          "Expected__PSxG",
+          "Expected__PSxG+/-",
+          "Expected__PSxG/SoT",
+          "Goal Kicks__Att",
+          "Goal Kicks__AvgLen",
+          "Goal Kicks__Launch%",
+          "Goals__CK",
+          "Goals__FK",
+          "Goals__OG",
+          "Launched__Att",
+          "Launched__Cmp",
+          "Launched__Cmp%",
+          "Passes__Att (GK)",
+          "Passes__AvgLen",
+          "Passes__Launch%",
+          "Passes__Thr",
+          "Sweeper__#OPA",
+          "Sweeper__#OPA/90",
+          "Sweeper__AvgDist"
+        ]
+      },
+      "keeper_adv_empty_fraction": 0.8846
+    }
+  },
+  "summary": {
+    "keeper_adv_stat_columns": {
+      "2024-25": 26,
+      "2025-26": 26
+    },
+    "keeper_adv_all_null": {
+      "2024-25": 23,
+      "2025-26": 23
+    },
+    "keeper_adv_usable": {
+      "2024-25": 3,
+      "2025-26": 3
+    },
+    "keeper_adv_empty_in_both_seasons": [
+      "Crosses__Opp",
+      "Crosses__Stp",
+      "Crosses__Stp%",
+      "Expected__/90",
+      "Expected__PSxG",
+      "Expected__PSxG+/-",
+      "Expected__PSxG/SoT",
+      "Goal Kicks__Att",
+      "Goal Kicks__AvgLen",
+      "Goal Kicks__Launch%",
+      "Goals__CK",
+      "Goals__FK",
+      "Goals__OG",
+      "Launched__Att",
+      "Launched__Cmp",
+      "Launched__Cmp%",
+      "Passes__Att (GK)",
+      "Passes__AvgLen",
+      "Passes__Launch%",
+      "Passes__Thr",
+      "Sweeper__#OPA",
+      "Sweeper__#OPA/90",
+      "Sweeper__AvgDist"
+    ],
+    "keeper_adv_survivors": [
+      "90s",
+      "Goals__GA",
+      "Goals__PKA"
+    ],
+    "keeper_table_all_null": {
+      "2024-25": 0,
+      "2025-26": 0
+    }
+  },
+  "analyses_made_impossible": {
+    "shot_stopping_vs_shot_quality": [
+      "Expected__PSxG",
+      "Expected__PSxG/SoT",
+      "Expected__PSxG+/-",
+      "Expected__/90"
+    ],
+    "sweeping": [
+      "Sweeper__#OPA",
+      "Sweeper__#OPA/90",
+      "Sweeper__AvgDist"
+    ],
+    "distribution": [
+      "Passes__Att (GK)",
+      "Passes__Thr",
+      "Passes__Launch%",
+      "Passes__AvgLen",
+      "Launched__Cmp",
+      "Launched__Att",
+      "Launched__Cmp%",
+      "Goal Kicks__Att",
+      "Goal Kicks__Launch%",
+      "Goal Kicks__AvgLen"
+    ],
+    "cross_handling_and_aerial_claims": [
+      "Crosses__Opp",
+      "Crosses__Stp",
+      "Crosses__Stp%"
+    ],
+    "conceding_by_situation": [
+      "Goals__FK",
+      "Goals__CK",
+      "Goals__OG"
+    ]
+  }
+}

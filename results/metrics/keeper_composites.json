@@ -1,0 +1,1111 @@
+{
+  "2024-25": {
+    "axes_built": [
+      "gk_shot_stopping",
+      "gk_workload"
+    ],
+    "axes_not_buildable": [
+      "sweeping",
+      "distribution",
+      "cross_handling",
+      "aerial_claims"
+    ],
+    "why_not_buildable": "Every input column for those four axes is all-null in keeper_adv in both seasons. No proxy is substituted, because no surviving column measures anything a keeper does with the ball at his feet or outside his six yard box.",
+    "gk_shot_stopping": {
+      "definition": "mean of within-season z-scores of gk_save_pct, gk_clean_sheet_pct, gk_saves_above_volume",
+      "components": [
+        "gk_save_pct",
+        "gk_clean_sheet_pct",
+        "gk_saves_above_volume"
+      ],
+      "caveat": "Clean sheet percentage is a team outcome as much as a goalkeeping one, and the saves-above-volume residual is unadjusted for shot quality. The axis therefore measures shot stopping only as well as those two allow."
+    },
+    "gk_workload": {
+      "definition": "mean of within-season z-scores of gk_shots_on_target_against_p90, gk_goals_against_p90",
+      "components": [
+        "gk_shots_on_target_against_p90",
+        "gk_goals_against_p90"
+      ],
+      "caveat": "Goals against per 90 is mostly a property of the defence in front of the keeper, so this axis describes the team situation rather than the player."
+    },
+    "correlation_between_axes": -0.679092,
+    "component_correlations": {
+      "gk_save_pct": {
+        "gk_save_pct": 1.0,
+        "gk_clean_sheet_pct": 0.464543,
+        "gk_saves_above_volume": 0.783232,
+        "gk_shots_on_target_against_p90": -0.246734,
+        "gk_goals_against_p90": -0.732908
+      },
+      "gk_clean_sheet_pct": {
+        "gk_save_pct": 0.464543,
+        "gk_clean_sheet_pct": 1.0,
+        "gk_saves_above_volume": 0.460585,
+        "gk_shots_on_target_against_p90": -0.783996,
+        "gk_goals_against_p90": -0.818048
+      },
+      "gk_saves_above_volume": {
+        "gk_save_pct": 0.783232,
+        "gk_clean_sheet_pct": 0.460585,
+        "gk_saves_above_volume": 1.0,
+        "gk_shots_on_target_against_p90": -0.16004,
+        "gk_goals_against_p90": -0.54819
+      },
+      "gk_shots_on_target_against_p90": {
+        "gk_save_pct": -0.246734,
+        "gk_clean_sheet_pct": -0.783996,
+        "gk_saves_above_volume": -0.16004,
+        "gk_shots_on_target_against_p90": 1.0,
+        "gk_goals_against_p90": 0.828815
+      },
+      "gk_goals_against_p90": {
+        "gk_save_pct": -0.732908,
+        "gk_clean_sheet_pct": -0.818048,
+        "gk_saves_above_volume": -0.54819,
+        "gk_shots_on_target_against_p90": 0.828815,
+        "gk_goals_against_p90": 1.0
+      }
+    },
+    "shot_stopping_index_ranking": [
+      {
+        "rank": 1,
+        "player": "Mark Flekken",
+        "team": "Brentford",
+        "gk_minutes": 3275,
+        "gk_saves_above_volume": 8.892701,
+        "gk_saves_above_volume_p90": 0.24438,
+        "gk_save_pct": 73.429952,
+        "gk_shot_stopping": 1.047236
+      },
+      {
+        "rank": 2,
+        "player": "Matz Sels",
+        "team": "Nottingham",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": 6.836962,
+        "gk_saves_above_volume_p90": 0.17992,
+        "gk_save_pct": 73.006135,
+        "gk_shot_stopping": 1.222853
+      },
+      {
+        "rank": 3,
+        "player": "Jordan Pickford",
+        "team": "Everton",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": 6.836962,
+        "gk_saves_above_volume_p90": 0.17992,
+        "gk_save_pct": 73.006135,
+        "gk_shot_stopping": 1.149111
+      },
+      {
+        "rank": 4,
+        "player": "Robert S\u00e1nchez",
+        "team": "Chelsea",
+        "gk_minutes": 2880,
+        "gk_saves_above_volume": 6.451715,
+        "gk_saves_above_volume_p90": 0.201616,
+        "gk_save_pct": 73.4375,
+        "gk_shot_stopping": 1.138706
+      },
+      {
+        "rank": 5,
+        "player": "Mark Travers",
+        "team": "Bournemouth",
+        "gk_minutes": 450,
+        "gk_saves_above_volume": 4.889416,
+        "gk_saves_above_volume_p90": 0.977883,
+        "gk_save_pct": 80.0,
+        "gk_shot_stopping": 1.120275
+      },
+      {
+        "rank": 6,
+        "player": "David Raya",
+        "team": "Arsenal",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": 4.077944,
+        "gk_saves_above_volume_p90": 0.107314,
+        "gk_save_pct": 71.666667,
+        "gk_shot_stopping": 0.936805
+      },
+      {
+        "rank": 7,
+        "player": "Kepa Arrizabalaga",
+        "team": "Bournemouth",
+        "gk_minutes": 2790,
+        "gk_saves_above_volume": 3.825486,
+        "gk_saves_above_volume_p90": 0.123403,
+        "gk_save_pct": 71.323529,
+        "gk_shot_stopping": 0.661309
+      },
+      {
+        "rank": 8,
+        "player": "Nick Pope",
+        "team": "Newcastle",
+        "gk_minutes": 2520,
+        "gk_saves_above_volume": 3.671387,
+        "gk_saves_above_volume_p90": 0.131121,
+        "gk_save_pct": 71.311475,
+        "gk_shot_stopping": 0.726746
+      },
+      {
+        "rank": 9,
+        "player": "Martin D\u00fabravka",
+        "team": "Newcastle",
+        "gk_minutes": 900,
+        "gk_saves_above_volume": 2.636958,
+        "gk_saves_above_volume_p90": 0.263696,
+        "gk_save_pct": 70.731707,
+        "gk_shot_stopping": 1.215108
+      },
+      {
+        "rank": 10,
+        "player": "\u0141ukasz Fabia\u0144ski",
+        "team": "West Ham",
+        "gk_minutes": 1160,
+        "gk_saves_above_volume": 2.538598,
+        "gk_saves_above_volume_p90": 0.19696,
+        "gk_save_pct": 70.422535,
+        "gk_shot_stopping": 0.387901
+      },
+      {
+        "rank": 11,
+        "player": "Filip J\u00f8rgensen",
+        "team": "Chelsea",
+        "gk_minutes": 540,
+        "gk_saves_above_volume": 2.076301,
+        "gk_saves_above_volume_p90": 0.34605,
+        "gk_save_pct": 68.965517,
+        "gk_shot_stopping": 0.12929
+      },
+      {
+        "rank": 12,
+        "player": "Alisson",
+        "team": "Liverpool",
+        "gk_minutes": 2508,
+        "gk_saves_above_volume": 1.923845,
+        "gk_saves_above_volume_p90": 0.069038,
+        "gk_save_pct": 69.811321,
+        "gk_shot_stopping": 0.704878
+      },
+      {
+        "rank": 13,
+        "player": "Anton\u00edn Kinsk\u00fd",
+        "team": "Tottenham",
+        "gk_minutes": 540,
+        "gk_saves_above_volume": 1.85663,
+        "gk_saves_above_volume_p90": 0.309438,
+        "gk_save_pct": 68.571429,
+        "gk_shot_stopping": 0.088501
+      },
+      {
+        "rank": 14,
+        "player": "Fraser Forster",
+        "team": "Tottenham",
+        "gk_minutes": 630,
+        "gk_saves_above_volume": 0.933679,
+        "gk_saves_above_volume_p90": 0.133383,
+        "gk_save_pct": 66.666667,
+        "gk_shot_stopping": -0.165194
+      },
+      {
+        "rank": 15,
+        "player": "Alex McCarthy",
+        "team": "Southampton",
+        "gk_minutes": 450,
+        "gk_saves_above_volume": 0.450072,
+        "gk_saves_above_volume_p90": 0.090014,
+        "gk_save_pct": 64.864865,
+        "gk_shot_stopping": -0.713849
+      },
+      {
+        "rank": 16,
+        "player": "Caoimh\u00edn Kelleher",
+        "team": "Liverpool",
+        "gk_minutes": 900,
+        "gk_saves_above_volume": 0.450072,
+        "gk_saves_above_volume_p90": 0.045007,
+        "gk_save_pct": 64.864865,
+        "gk_shot_stopping": 0.407029
+      },
+      {
+        "rank": 17,
+        "player": "Ederson Moraes",
+        "team": "Manchester City",
+        "gk_minutes": 2320,
+        "gk_saves_above_volume": 0.20909,
+        "gk_saves_above_volume_p90": 0.008111,
+        "gk_save_pct": 67.5,
+        "gk_shot_stopping": 0.511404
+      },
+      {
+        "rank": 18,
+        "player": "Arijanet Muric",
+        "team": "Ipswich Town",
+        "gk_minutes": 1620,
+        "gk_saves_above_volume": 0.033681,
+        "gk_saves_above_volume_p90": 0.001871,
+        "gk_save_pct": 67.961165,
+        "gk_shot_stopping": -0.394634
+      },
+      {
+        "rank": 19,
+        "player": "Andr\u00e9 Onana",
+        "team": "Manchester Utd",
+        "gk_minutes": 3060,
+        "gk_saves_above_volume": -0.251564,
+        "gk_saves_above_volume_p90": -0.007399,
+        "gk_save_pct": 68.217054,
+        "gk_shot_stopping": 0.186587
+      },
+      {
+        "rank": 20,
+        "player": "Stefan Ortega",
+        "team": "Manchester City",
+        "gk_minutes": 1100,
+        "gk_saves_above_volume": -0.395829,
+        "gk_saves_above_volume_p90": -0.032386,
+        "gk_save_pct": 64.705882,
+        "gk_shot_stopping": -0.139116
+      },
+      {
+        "rank": 21,
+        "player": "Jakub Stolarczyk",
+        "team": "Leicester City",
+        "gk_minutes": 900,
+        "gk_saves_above_volume": -0.472878,
+        "gk_saves_above_volume_p90": -0.047288,
+        "gk_save_pct": 63.636364,
+        "gk_shot_stopping": -0.298007
+      },
+      {
+        "rank": 22,
+        "player": "Emiliano Mart\u00ednez",
+        "team": "Aston Villa",
+        "gk_minutes": 3194,
+        "gk_saves_above_volume": -1.207301,
+        "gk_saves_above_volume_p90": -0.034019,
+        "gk_save_pct": 67.808219,
+        "gk_shot_stopping": -0.044922
+      },
+      {
+        "rank": 23,
+        "player": "Bernd Leno",
+        "team": "Fulham",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": -1.646645,
+        "gk_saves_above_volume_p90": -0.043333,
+        "gk_save_pct": 67.721519,
+        "gk_shot_stopping": -0.319708
+      },
+      {
+        "rank": 24,
+        "player": "Dean Henderson",
+        "team": "Crystal Palace",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": -2.426973,
+        "gk_saves_above_volume_p90": -0.063868,
+        "gk_save_pct": 67.105263,
+        "gk_shot_stopping": 0.026962
+      },
+      {
+        "rank": 25,
+        "player": "Alphonse Areola",
+        "team": "West Ham",
+        "gk_minutes": 2260,
+        "gk_saves_above_volume": -2.625335,
+        "gk_saves_above_volume_p90": -0.104549,
+        "gk_save_pct": 66.115702,
+        "gk_shot_stopping": -0.32186
+      },
+      {
+        "rank": 26,
+        "player": "Sam Johnstone",
+        "team": "Wolves",
+        "gk_minutes": 630,
+        "gk_saves_above_volume": -2.659764,
+        "gk_saves_above_volume_p90": -0.379966,
+        "gk_save_pct": 57.5,
+        "gk_shot_stopping": -1.403195
+      },
+      {
+        "rank": 27,
+        "player": "Guglielmo Vicario",
+        "team": "Tottenham",
+        "gk_minutes": 2160,
+        "gk_saves_above_volume": -3.372876,
+        "gk_saves_above_volume_p90": -0.140537,
+        "gk_save_pct": 64.761905,
+        "gk_shot_stopping": -0.533311
+      },
+      {
+        "rank": 28,
+        "player": "Christian Walton",
+        "team": "Ipswich Town",
+        "gk_minutes": 630,
+        "gk_saves_above_volume": -4.956485,
+        "gk_saves_above_volume_p90": -0.708069,
+        "gk_save_pct": 51.282051,
+        "gk_shot_stopping": -1.560791
+      },
+      {
+        "rank": 29,
+        "player": "Alex Palmer",
+        "team": "Ipswich Town",
+        "gk_minutes": 1170,
+        "gk_saves_above_volume": -5.274517,
+        "gk_saves_above_volume_p90": -0.405732,
+        "gk_save_pct": 60.0,
+        "gk_shot_stopping": -1.438063
+      },
+      {
+        "rank": 30,
+        "player": "Bart Verbruggen",
+        "team": "Brighton",
+        "gk_minutes": 3240,
+        "gk_saves_above_volume": -6.987629,
+        "gk_saves_above_volume_p90": -0.194101,
+        "gk_save_pct": 63.571429,
+        "gk_shot_stopping": -0.794868
+      },
+      {
+        "rank": 31,
+        "player": "Aaron Ramsdale",
+        "team": "Southampton",
+        "gk_minutes": 2700,
+        "gk_saves_above_volume": -7.448283,
+        "gk_saves_above_volume_p90": -0.248276,
+        "gk_save_pct": 65.079365,
+        "gk_shot_stopping": -0.998764
+      },
+      {
+        "rank": 32,
+        "player": "Mads Hermansen",
+        "team": "Leicester City",
+        "gk_minutes": 2385,
+        "gk_saves_above_volume": -8.053202,
+        "gk_saves_above_volume_p90": -0.303894,
+        "gk_save_pct": 63.75,
+        "gk_shot_stopping": -1.30282
+      },
+      {
+        "rank": 33,
+        "player": "Jos\u00e9 S\u00e1",
+        "team": "Wolves",
+        "gk_minutes": 2609,
+        "gk_saves_above_volume": -10.81222,
+        "gk_saves_above_volume_p90": -0.372978,
+        "gk_save_pct": 58.974359,
+        "gk_shot_stopping": -1.231599
+      }
+    ],
+    "shot_stopping_composite_ranking": [
+      {
+        "rank": 1,
+        "player": "Matz Sels",
+        "gk_shot_stopping": 1.222853
+      },
+      {
+        "rank": 2,
+        "player": "Martin D\u00fabravka",
+        "gk_shot_stopping": 1.215108
+      },
+      {
+        "rank": 3,
+        "player": "Jordan Pickford",
+        "gk_shot_stopping": 1.149111
+      },
+      {
+        "rank": 4,
+        "player": "Robert S\u00e1nchez",
+        "gk_shot_stopping": 1.138706
+      },
+      {
+        "rank": 5,
+        "player": "Mark Travers",
+        "gk_shot_stopping": 1.120275
+      },
+      {
+        "rank": 6,
+        "player": "Mark Flekken",
+        "gk_shot_stopping": 1.047236
+      },
+      {
+        "rank": 7,
+        "player": "David Raya",
+        "gk_shot_stopping": 0.936805
+      },
+      {
+        "rank": 8,
+        "player": "Nick Pope",
+        "gk_shot_stopping": 0.726746
+      },
+      {
+        "rank": 9,
+        "player": "Alisson",
+        "gk_shot_stopping": 0.704878
+      },
+      {
+        "rank": 10,
+        "player": "Kepa Arrizabalaga",
+        "gk_shot_stopping": 0.661309
+      },
+      {
+        "rank": 11,
+        "player": "Ederson Moraes",
+        "gk_shot_stopping": 0.511404
+      },
+      {
+        "rank": 12,
+        "player": "Caoimh\u00edn Kelleher",
+        "gk_shot_stopping": 0.407029
+      },
+      {
+        "rank": 13,
+        "player": "\u0141ukasz Fabia\u0144ski",
+        "gk_shot_stopping": 0.387901
+      },
+      {
+        "rank": 14,
+        "player": "Andr\u00e9 Onana",
+        "gk_shot_stopping": 0.186587
+      },
+      {
+        "rank": 15,
+        "player": "Filip J\u00f8rgensen",
+        "gk_shot_stopping": 0.12929
+      },
+      {
+        "rank": 16,
+        "player": "Anton\u00edn Kinsk\u00fd",
+        "gk_shot_stopping": 0.088501
+      },
+      {
+        "rank": 17,
+        "player": "Dean Henderson",
+        "gk_shot_stopping": 0.026962
+      },
+      {
+        "rank": 18,
+        "player": "Emiliano Mart\u00ednez",
+        "gk_shot_stopping": -0.044922
+      },
+      {
+        "rank": 19,
+        "player": "Stefan Ortega",
+        "gk_shot_stopping": -0.139116
+      },
+      {
+        "rank": 20,
+        "player": "Fraser Forster",
+        "gk_shot_stopping": -0.165194
+      },
+      {
+        "rank": 21,
+        "player": "Jakub Stolarczyk",
+        "gk_shot_stopping": -0.298007
+      },
+      {
+        "rank": 22,
+        "player": "Bernd Leno",
+        "gk_shot_stopping": -0.319708
+      },
+      {
+        "rank": 23,
+        "player": "Alphonse Areola",
+        "gk_shot_stopping": -0.32186
+      },
+      {
+        "rank": 24,
+        "player": "Arijanet Muric",
+        "gk_shot_stopping": -0.394634
+      },
+      {
+        "rank": 25,
+        "player": "Guglielmo Vicario",
+        "gk_shot_stopping": -0.533311
+      },
+      {
+        "rank": 26,
+        "player": "Alex McCarthy",
+        "gk_shot_stopping": -0.713849
+      },
+      {
+        "rank": 27,
+        "player": "Bart Verbruggen",
+        "gk_shot_stopping": -0.794868
+      },
+      {
+        "rank": 28,
+        "player": "Aaron Ramsdale",
+        "gk_shot_stopping": -0.998764
+      },
+      {
+        "rank": 29,
+        "player": "Jos\u00e9 S\u00e1",
+        "gk_shot_stopping": -1.231599
+      },
+      {
+        "rank": 30,
+        "player": "Mads Hermansen",
+        "gk_shot_stopping": -1.30282
+      },
+      {
+        "rank": 31,
+        "player": "Sam Johnstone",
+        "gk_shot_stopping": -1.403195
+      },
+      {
+        "rank": 32,
+        "player": "Alex Palmer",
+        "gk_shot_stopping": -1.438063
+      },
+      {
+        "rank": 33,
+        "player": "Christian Walton",
+        "gk_shot_stopping": -1.560791
+      }
+    ],
+    "saves_on_sota_regression": {
+      "model": "OLS, total saves ~ total shots on target against",
+      "n": 33,
+      "slope": 0.703279,
+      "slope_std_error": 0.015677,
+      "intercept": -2.471382,
+      "r_squared": 0.98483,
+      "residual_std_error": 4.694941,
+      "residual_min": -10.81222,
+      "residual_max": 8.892701,
+      "residual_corr_with_minutes": 0.065481,
+      "interpretation": "The slope is the league-average save rate. The residual is saves above the number a keeper facing that many shots on target would be expected to make.",
+      "r_squared_note": "The R squared is very high because saves and shots on target against are close to an accounting identity: every shot on target is either saved or conceded. The fit quality is therefore not evidence that the model is good. The informative quantity is the residual spread, which is the residual standard error reported above, roughly 6.7 percent of a keeper's mean save total across the eligible pool.",
+      "caveat": "This is a much weaker instrument than PSxG plus/minus. It adjusts for shot volume only, never for shot quality, so a keeper whose opponents shoot from poor positions scores well without saving anything difficult. PSxG, PSxG/SoT and PSxG+/- are all empty in keeper_adv for both seasons, which is why the substitution is necessary."
+    },
+    "min_minutes": 450,
+    "n_eligible": 33,
+    "n_all_keepers": 44
+  },
+  "2025-26": {
+    "axes_built": [
+      "gk_shot_stopping",
+      "gk_workload"
+    ],
+    "axes_not_buildable": [
+      "sweeping",
+      "distribution",
+      "cross_handling",
+      "aerial_claims"
+    ],
+    "why_not_buildable": "Every input column for those four axes is all-null in keeper_adv in both seasons. No proxy is substituted, because no surviving column measures anything a keeper does with the ball at his feet or outside his six yard box.",
+    "gk_shot_stopping": {
+      "definition": "mean of within-season z-scores of gk_save_pct, gk_clean_sheet_pct, gk_saves_above_volume",
+      "components": [
+        "gk_save_pct",
+        "gk_clean_sheet_pct",
+        "gk_saves_above_volume"
+      ],
+      "caveat": "Clean sheet percentage is a team outcome as much as a goalkeeping one, and the saves-above-volume residual is unadjusted for shot quality. The axis therefore measures shot stopping only as well as those two allow."
+    },
+    "gk_workload": {
+      "definition": "mean of within-season z-scores of gk_shots_on_target_against_p90, gk_goals_against_p90",
+      "components": [
+        "gk_shots_on_target_against_p90",
+        "gk_goals_against_p90"
+      ],
+      "caveat": "Goals against per 90 is mostly a property of the defence in front of the keeper, so this axis describes the team situation rather than the player."
+    },
+    "correlation_between_axes": -0.557677,
+    "component_correlations": {
+      "gk_save_pct": {
+        "gk_save_pct": 1.0,
+        "gk_clean_sheet_pct": 0.509602,
+        "gk_saves_above_volume": 0.694869,
+        "gk_shots_on_target_against_p90": 0.055981,
+        "gk_goals_against_p90": -0.495415
+      },
+      "gk_clean_sheet_pct": {
+        "gk_save_pct": 0.509602,
+        "gk_clean_sheet_pct": 1.0,
+        "gk_saves_above_volume": 0.374614,
+        "gk_shots_on_target_against_p90": -0.604769,
+        "gk_goals_against_p90": -0.799372
+      },
+      "gk_saves_above_volume": {
+        "gk_save_pct": 0.694869,
+        "gk_clean_sheet_pct": 0.374614,
+        "gk_saves_above_volume": 1.0,
+        "gk_shots_on_target_against_p90": -0.221,
+        "gk_goals_against_p90": -0.586912
+      },
+      "gk_shots_on_target_against_p90": {
+        "gk_save_pct": 0.055981,
+        "gk_clean_sheet_pct": -0.604769,
+        "gk_saves_above_volume": -0.221,
+        "gk_shots_on_target_against_p90": 1.0,
+        "gk_goals_against_p90": 0.835406
+      },
+      "gk_goals_against_p90": {
+        "gk_save_pct": -0.495415,
+        "gk_clean_sheet_pct": -0.799372,
+        "gk_saves_above_volume": -0.586912,
+        "gk_shots_on_target_against_p90": 0.835406,
+        "gk_goals_against_p90": 1.0
+      }
+    },
+    "shot_stopping_index_ranking": [
+      {
+        "rank": 1,
+        "player": "Emiliano Mart\u00ednez",
+        "team": "Aston Villa",
+        "gk_minutes": 2835,
+        "gk_saves_above_volume": 5.302884,
+        "gk_saves_above_volume_p90": 0.168346,
+        "gk_save_pct": 70.895522,
+        "gk_shot_stopping": 1.033423
+      },
+      {
+        "rank": 2,
+        "player": "Matz Sels",
+        "team": "Nottingham",
+        "gk_minutes": 2668,
+        "gk_saves_above_volume": 4.67519,
+        "gk_saves_above_volume_p90": 0.157709,
+        "gk_save_pct": 70.454545,
+        "gk_shot_stopping": 0.862711
+      },
+      {
+        "rank": 3,
+        "player": "Robin Roefs",
+        "team": "Sunderland",
+        "gk_minutes": 3150,
+        "gk_saves_above_volume": 4.579828,
+        "gk_saves_above_volume_p90": 0.130852,
+        "gk_save_pct": 70.12987,
+        "gk_shot_stopping": 0.998269
+      },
+      {
+        "rank": 4,
+        "player": "Gianluigi Donnarumma",
+        "team": "Manchester City",
+        "gk_minutes": 3060,
+        "gk_saves_above_volume": 4.515163,
+        "gk_saves_above_volume_p90": 0.132799,
+        "gk_save_pct": 70.754717,
+        "gk_shot_stopping": 1.484826
+      },
+      {
+        "rank": 5,
+        "player": "Nick Pope",
+        "team": "Newcastle",
+        "gk_minutes": 2416,
+        "gk_saves_above_volume": 4.105954,
+        "gk_saves_above_volume_p90": 0.152954,
+        "gk_save_pct": 70.07874,
+        "gk_shot_stopping": 0.868121
+      },
+      {
+        "rank": 6,
+        "player": "Karl Darlow",
+        "team": "Leeds United",
+        "gk_minutes": 1980,
+        "gk_saves_above_volume": 3.493608,
+        "gk_saves_above_volume_p90": 0.1588,
+        "gk_save_pct": 70.0,
+        "gk_shot_stopping": 0.705231
+      },
+      {
+        "rank": 7,
+        "player": "David Raya",
+        "team": "Arsenal",
+        "gk_minutes": 3330,
+        "gk_saves_above_volume": 2.238219,
+        "gk_saves_above_volume_p90": 0.060492,
+        "gk_save_pct": 68.604651,
+        "gk_shot_stopping": 1.279933
+      },
+      {
+        "rank": 8,
+        "player": "Bart Verbruggen",
+        "team": "Brighton",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": 1.638287,
+        "gk_saves_above_volume_p90": 0.043113,
+        "gk_save_pct": 68.211921,
+        "gk_shot_stopping": 0.469535
+      },
+      {
+        "rank": 9,
+        "player": "Caoimh\u00edn Kelleher",
+        "team": "Brentford",
+        "gk_minutes": 3330,
+        "gk_saves_above_volume": 1.579828,
+        "gk_saves_above_volume_p90": 0.042698,
+        "gk_save_pct": 68.181818,
+        "gk_shot_stopping": 0.481267
+      },
+      {
+        "rank": 10,
+        "player": "Marco Bizot",
+        "team": "Aston Villa",
+        "gk_minutes": 585,
+        "gk_saves_above_volume": 1.348928,
+        "gk_saves_above_volume_p90": 0.207527,
+        "gk_save_pct": 65.517241,
+        "gk_shot_stopping": 0.291443
+      },
+      {
+        "rank": 11,
+        "player": "Alphonse Areola",
+        "team": "West Ham",
+        "gk_minutes": 1800,
+        "gk_saves_above_volume": 0.712093,
+        "gk_saves_above_volume_p90": 0.035605,
+        "gk_save_pct": 67.256637,
+        "gk_shot_stopping": -0.456435
+      },
+      {
+        "rank": 12,
+        "player": "Anton\u00edn Kinsk\u00fd",
+        "team": "Tottenham",
+        "gk_minutes": 630,
+        "gk_saves_above_volume": 0.582762,
+        "gk_saves_above_volume_p90": 0.083252,
+        "gk_save_pct": 58.823529,
+        "gk_shot_stopping": -0.316152
+      },
+      {
+        "rank": 13,
+        "player": "Giorgi Mamardashvili",
+        "team": "Liverpool",
+        "gk_minutes": 867,
+        "gk_saves_above_volume": 0.253567,
+        "gk_saves_above_volume_p90": 0.026322,
+        "gk_save_pct": 64.705882,
+        "gk_shot_stopping": -0.134068
+      },
+      {
+        "rank": 14,
+        "player": "\u0110or\u0111e Petrovi\u0107",
+        "team": "Bournemouth",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": -0.595547,
+        "gk_saves_above_volume_p90": -0.015672,
+        "gk_save_pct": 66.871166,
+        "gk_shot_stopping": 0.201283
+      },
+      {
+        "rank": 15,
+        "player": "Senne Lammens",
+        "team": "Manchester Utd",
+        "gk_minutes": 2880,
+        "gk_saves_above_volume": -0.718671,
+        "gk_saves_above_volume_p90": -0.022458,
+        "gk_save_pct": 66.101695,
+        "gk_shot_stopping": 0.014874
+      },
+      {
+        "rank": 16,
+        "player": "Dean Henderson",
+        "team": "Crystal Palace",
+        "gk_minutes": 3330,
+        "gk_saves_above_volume": -0.792477,
+        "gk_saves_above_volume_p90": -0.021418,
+        "gk_save_pct": 66.666667,
+        "gk_shot_stopping": 0.186585
+      },
+      {
+        "rank": 17,
+        "player": "Jordan Pickford",
+        "team": "Everton",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": -0.989408,
+        "gk_saves_above_volume_p90": -0.026037,
+        "gk_save_pct": 66.442953,
+        "gk_shot_stopping": 0.125653
+      },
+      {
+        "rank": 18,
+        "player": "Mads Hermansen",
+        "team": "West Ham",
+        "gk_minutes": 1620,
+        "gk_saves_above_volume": -1.01717,
+        "gk_saves_above_volume_p90": -0.056509,
+        "gk_save_pct": 64.634146,
+        "gk_shot_stopping": 0.264734
+      },
+      {
+        "rank": 19,
+        "player": "Alisson",
+        "team": "Liverpool",
+        "gk_minutes": 2340,
+        "gk_saves_above_volume": -1.134087,
+        "gk_saves_above_volume_p90": -0.043619,
+        "gk_save_pct": 64.772727,
+        "gk_shot_stopping": 0.031076
+      },
+      {
+        "rank": 20,
+        "player": "Altay Bay\u0131nd\u0131r",
+        "team": "Manchester Utd",
+        "gk_minutes": 540,
+        "gk_saves_above_volume": -1.220308,
+        "gk_saves_above_volume_p90": -0.203385,
+        "gk_save_pct": 54.166667,
+        "gk_shot_stopping": -1.690901
+      },
+      {
+        "rank": 21,
+        "player": "Robert S\u00e1nchez",
+        "team": "Chelsea",
+        "gk_minutes": 3039,
+        "gk_saves_above_volume": -1.617102,
+        "gk_saves_above_volume_p90": -0.04789,
+        "gk_save_pct": 65.986395,
+        "gk_shot_stopping": -0.069542
+      },
+      {
+        "rank": 22,
+        "player": "Aaron Ramsdale",
+        "team": "Newcastle",
+        "gk_minutes": 1004,
+        "gk_saves_above_volume": -1.884905,
+        "gk_saves_above_volume_p90": -0.168966,
+        "gk_save_pct": 58.536585,
+        "gk_shot_stopping": -1.180215
+      },
+      {
+        "rank": 23,
+        "player": "Sam Johnstone",
+        "team": "Wolves",
+        "gk_minutes": 1080,
+        "gk_saves_above_volume": -1.980267,
+        "gk_saves_above_volume_p90": -0.165022,
+        "gk_save_pct": 61.904762,
+        "gk_shot_stopping": -1.163935
+      },
+      {
+        "rank": 24,
+        "player": "Bernd Leno",
+        "team": "Fulham",
+        "gk_minutes": 3420,
+        "gk_saves_above_volume": -1.989408,
+        "gk_saves_above_volume_p90": -0.052353,
+        "gk_save_pct": 65.771812,
+        "gk_shot_stopping": -0.184115
+      },
+      {
+        "rank": 25,
+        "player": "Jos\u00e9 S\u00e1",
+        "team": "Wolves",
+        "gk_minutes": 2070,
+        "gk_saves_above_volume": -2.740226,
+        "gk_saves_above_volume_p90": -0.11914,
+        "gk_save_pct": 63.72549,
+        "gk_shot_stopping": -0.6048
+      },
+      {
+        "rank": 26,
+        "player": "Lucas Perri",
+        "team": "Leeds United",
+        "gk_minutes": 1440,
+        "gk_saves_above_volume": -5.724878,
+        "gk_saves_above_volume_p90": -0.357805,
+        "gk_save_pct": 56.716418,
+        "gk_shot_stopping": -1.434829
+      },
+      {
+        "rank": 27,
+        "player": "Guglielmo Vicario",
+        "team": "Tottenham",
+        "gk_minutes": 2790,
+        "gk_saves_above_volume": -6.010963,
+        "gk_saves_above_volume_p90": -0.193902,
+        "gk_save_pct": 62.406015,
+        "gk_shot_stopping": -0.908806
+      },
+      {
+        "rank": 28,
+        "player": "Martin D\u00fabravka",
+        "team": "Burnley",
+        "gk_minutes": 3150,
+        "gk_saves_above_volume": -6.610895,
+        "gk_saves_above_volume_p90": -0.188883,
+        "gk_save_pct": 64.141414,
+        "gk_shot_stopping": -1.155168
+      }
+    ],
+    "shot_stopping_composite_ranking": [
+      {
+        "rank": 1,
+        "player": "Gianluigi Donnarumma",
+        "gk_shot_stopping": 1.484826
+      },
+      {
+        "rank": 2,
+        "player": "David Raya",
+        "gk_shot_stopping": 1.279933
+      },
+      {
+        "rank": 3,
+        "player": "Emiliano Mart\u00ednez",
+        "gk_shot_stopping": 1.033423
+      },
+      {
+        "rank": 4,
+        "player": "Robin Roefs",
+        "gk_shot_stopping": 0.998269
+      },
+      {
+        "rank": 5,
+        "player": "Nick Pope",
+        "gk_shot_stopping": 0.868121
+      },
+      {
+        "rank": 6,
+        "player": "Matz Sels",
+        "gk_shot_stopping": 0.862711
+      },
+      {
+        "rank": 7,
+        "player": "Karl Darlow",
+        "gk_shot_stopping": 0.705231
+      },
+      {
+        "rank": 8,
+        "player": "Caoimh\u00edn Kelleher",
+        "gk_shot_stopping": 0.481267
+      },
+      {
+        "rank": 9,
+        "player": "Bart Verbruggen",
+        "gk_shot_stopping": 0.469535
+      },
+      {
+        "rank": 10,
+        "player": "Marco Bizot",
+        "gk_shot_stopping": 0.291443
+      },
+      {
+        "rank": 11,
+        "player": "Mads Hermansen",
+        "gk_shot_stopping": 0.264734
+      },
+      {
+        "rank": 12,
+        "player": "\u0110or\u0111e Petrovi\u0107",
+        "gk_shot_stopping": 0.201283
+      },
+      {
+        "rank": 13,
+        "player": "Dean Henderson",
+        "gk_shot_stopping": 0.186585
+      },
+      {
+        "rank": 14,
+        "player": "Jordan Pickford",
+        "gk_shot_stopping": 0.125653
+      },
+      {
+        "rank": 15,
+        "player": "Alisson",
+        "gk_shot_stopping": 0.031076
+      },
+      {
+        "rank": 16,
+        "player": "Senne Lammens",
+        "gk_shot_stopping": 0.014874
+      },
+      {
+        "rank": 17,
+        "player": "Robert S\u00e1nchez",
+        "gk_shot_stopping": -0.069542
+      },
+      {
+        "rank": 18,
+        "player": "Giorgi Mamardashvili",
+        "gk_shot_stopping": -0.134068
+      },
+      {
+        "rank": 19,
+        "player": "Bernd Leno",
+        "gk_shot_stopping": -0.184115
+      },
+      {
+        "rank": 20,
+        "player": "Anton\u00edn Kinsk\u00fd",
+        "gk_shot_stopping": -0.316152
+      },
+      {
+        "rank": 21,
+        "player": "Alphonse Areola",
+        "gk_shot_stopping": -0.456435
+      },
+      {
+        "rank": 22,
+        "player": "Jos\u00e9 S\u00e1",
+        "gk_shot_stopping": -0.6048
+      },
+      {
+        "rank": 23,
+        "player": "Guglielmo Vicario",
+        "gk_shot_stopping": -0.908806
+      },
+      {
+        "rank": 24,
+        "player": "Martin D\u00fabravka",
+        "gk_shot_stopping": -1.155168
+      },
+      {
+        "rank": 25,
+        "player": "Sam Johnstone",
+        "gk_shot_stopping": -1.163935
+      },
+      {
+        "rank": 26,
+        "player": "Aaron Ramsdale",
+        "gk_shot_stopping": -1.180215
+      },
+      {
+        "rank": 27,
+        "player": "Lucas Perri",
+        "gk_shot_stopping": -1.434829
+      },
+      {
+        "rank": 28,
+        "player": "Altay Bay\u0131nd\u0131r",
+        "gk_shot_stopping": -1.690901
+      }
+    ],
+    "saves_on_sota_regression": {
+      "model": "OLS, total saves ~ total shots on target against",
+      "n": 28,
+      "slope": 0.686153,
+      "slope_std_error": 0.013064,
+      "intercept": -2.247359,
+      "r_squared": 0.990664,
+      "residual_std_error": 3.244981,
+      "residual_min": -6.610895,
+      "residual_max": 5.302884,
+      "residual_corr_with_minutes": 0.129486,
+      "interpretation": "The slope is the league-average save rate. The residual is saves above the number a keeper facing that many shots on target would be expected to make.",
+      "r_squared_note": "The R squared is very high because saves and shots on target against are close to an accounting identity: every shot on target is either saved or conceded. The fit quality is therefore not evidence that the model is good. The informative quantity is the residual spread, which is the residual standard error reported above, roughly 4.4 percent of a keeper's mean save total across the eligible pool.",
+      "caveat": "This is a much weaker instrument than PSxG plus/minus. It adjusts for shot volume only, never for shot quality, so a keeper whose opponents shoot from poor positions scores well without saving anything difficult. PSxG, PSxG/SoT and PSxG+/- are all empty in keeper_adv for both seasons, which is why the substitution is necessary."
+    },
+    "min_minutes": 450,
+    "n_eligible": 28,
+    "n_all_keepers": 40
+  },
+  "_shared": {
+    "axes_planned": [
+      "shot_stopping",
+      "sweeping",
+      "distribution",
+      "cross_handling",
+      "aerial_claims"
+    ],
+    "axes_delivered": [
+      "shot_stopping",
+      "workload"
+    ],
+    "reason": "Three of the five planned axes and the shot-quality half of the fourth depend entirely on keeper_adv columns that FBref emptied in January 2026. Workload replaces none of them: it is a description of the situation a keeper works in, reported because it is the second thing the surviving columns measure, not as a substitute for what was lost."
+  }
+}

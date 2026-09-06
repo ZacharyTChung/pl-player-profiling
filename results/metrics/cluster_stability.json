@@ -1,0 +1,172 @@
+{
+  "n_bootstrap_requested": 200,
+  "space": "standardised",
+  "low_stability_threshold": 0.6,
+  "note": "ARI is computed against the reference clustering on the players drawn into each resample. Co-assignment is the fraction of resamples containing both players in which they share a cluster.",
+  "seasons": {
+    "2024-25": {
+      "global": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.9079,
+        "ari_sd": 0.0732,
+        "ari_min": 0.7085,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 243,
+            "mean_coassignment": 0.9419,
+            "low_stability": false
+          },
+          "1": {
+            "n": 123,
+            "mean_coassignment": 0.983,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "DF": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.5821,
+        "ari_sd": 0.2214,
+        "ari_min": 0.0182,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 98,
+            "mean_coassignment": 0.8735,
+            "low_stability": false
+          },
+          "1": {
+            "n": 38,
+            "mean_coassignment": 0.6991,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "MF": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.8367,
+        "ari_sd": 0.1132,
+        "ari_min": 0.5286,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 94,
+            "mean_coassignment": 0.9649,
+            "low_stability": false
+          },
+          "1": {
+            "n": 87,
+            "mean_coassignment": 0.8772,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "FW": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.6009,
+        "ari_sd": 0.2862,
+        "ari_min": -0.0691,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 30,
+            "mean_coassignment": 0.8532,
+            "low_stability": false
+          },
+          "1": {
+            "n": 19,
+            "mean_coassignment": 0.8229,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      }
+    },
+    "2025-26": {
+      "global": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.9128,
+        "ari_sd": 0.0699,
+        "ari_min": 0.6935,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 247,
+            "mean_coassignment": 0.9476,
+            "low_stability": false
+          },
+          "1": {
+            "n": 125,
+            "mean_coassignment": 0.9783,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "DF": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.6573,
+        "ari_sd": 0.259,
+        "ari_min": -0.0058,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 83,
+            "mean_coassignment": 0.9255,
+            "low_stability": false
+          },
+          "1": {
+            "n": 55,
+            "mean_coassignment": 0.732,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "MF": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.9048,
+        "ari_sd": 0.0848,
+        "ari_min": 0.4982,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 105,
+            "mean_coassignment": 0.9401,
+            "low_stability": false
+          },
+          "1": {
+            "n": 74,
+            "mean_coassignment": 0.9705,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "FW": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.4599,
+        "ari_sd": 0.3352,
+        "ari_min": -0.0363,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 39,
+            "mean_coassignment": 0.7888,
+            "low_stability": false
+          },
+          "1": {
+            "n": 16,
+            "mean_coassignment": 0.6577,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      }
+    }
+  }
+}

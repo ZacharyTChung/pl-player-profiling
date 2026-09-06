@@ -1,0 +1,117 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{What survived the withdrawal}
+\label{sec:results:availability}
+
+The audit reported in Table~\ref{tab:availability} establishes the scale of the loss. In
+the goalkeeping detail table, \NKeeperAdvEmpty{} of \NKeeperAdvStatCols{} statistical
+columns are entirely empty in both seasons, leaving three: nineties played, goals
+conceded and penalties conceded. Neither of the two surviving substantive columns
+supports any of the analyses that table exists to enable. The pattern is the same across
+the outfield tables, where passing, possession, and goal and shot creation retain their
+headers and lose their contents.
+
+This is the first result of the paper, and it is a methodological one. A study that
+selected its features from the published schema of this source would produce an empty
+feature matrix while every column name resolved correctly, and the failure would surface
+only as unexplained missingness far downstream. Feature selection against observed values
+rather than published schemas is now a necessary step when working with public football
+data.
+
+\subsection{Descriptive structure}
+\label{sec:results:descriptive}
+
+After filtering, \NEligiblePrimary{} outfield players are eligible in the primary season,
+comprising \NDFPrimary{} defenders, \NMFPrimary{} midfielders and \NFWPrimary{} forwards.
+Summary statistics by position group appear in Table~\ref{tab:summary}, and the
+distributions of four representative statistics are shown in
+Figure~\ref{fig:distributions}.
+
+The feature set is strongly non-normal. All \NFeaturesRejectNormal{} of the
+\NFeatures{} features reject the Shapiro-Wilk null at the five percent level, mean
+absolute skewness is \SkewMeanAbs{}, and the most skewed feature is goals per shot at
+\SkewMax{}. Mardia's test rejects multivariate normality decisively on both the skewness
+and kurtosis components. Principal component analysis requires no distributional
+assumption to be computed, so this does not invalidate the decomposition, but it does
+mean the components should be read as directions of variance rather than as latent
+factors with any distributional interpretation, and it justifies the use of Spearman
+rather than Pearson correlation throughout.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{distributions_by_position.pdf}
+  \caption{Distributions of four representative per-90 statistics across position groups
+  in the primary season. The separation between groups is clear for shot volume and for
+  defensive actions, and much weaker for creation.}
+  \label{fig:distributions}
+\end{figure}
+
+\subsection{Statistics that change meaning by position}
+\label{sec:results:divergence}
+
+The correlation analysis produced the clearest substantive finding available from the
+reduced feature set. Correlations were computed within each position group and compared
+across groups, and the ten pairs whose correlation varies most between groups are
+reported in Table~\ref{tab:divergence} and shown in Figure~\ref{fig:divergence}. The
+largest spread between position groups reaches \CorrSpreadMax{}, against a median spread
+across all pairs of \CorrSpreadMedian{}.
+
+Every one of the ten most divergent pairs changes sign between position groups. The
+relationship between shots on target and crosses is positive for midfielders and negative
+for forwards, which is to say that a midfielder who crosses often is generally a more
+active attacker while a forward who crosses often is generally not the player getting on
+the end of chances. The relationship between key passes and tackles won is positive for
+defenders and negative for midfielders, distinguishing the full back whose defensive work
+and creative output rise together from the midfield division of labour between a
+destroyer and a creator.
+
+The practical implication is that a single pooled correlation matrix, of the kind that
+appears routinely in public football analysis, averages over these sign reversals and
+reports a number that describes no actual population of players. It also supplies the
+central justification for the position stratified analysis that follows, since a global
+embedding fitted across all outfield players is fitted across relationships that point in
+opposite directions.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{corr_divergence_top10.pdf}
+  \caption{The ten feature pairs whose within-group correlation differs most across
+  position groups in the primary season. Every pair changes sign between at least two
+  groups.}
+  \label{fig:divergence}
+\end{figure}
+
+\subsection{Comparing embeddings}
+\label{sec:results:embeddings}
+
+Principal component analysis, UMAP and t-SNE were fitted to the same standardised
+features and compared in Figure~\ref{fig:embeddings}. The selected UMAP configuration
+used \UMAPBestNeighbors{} neighbours at a minimum distance of \UMAPBestMinDist{}, chosen
+by trustworthiness over the twelve configuration grid reported in
+Appendix~\ref{sec:appendix:umap}.
+
+The three methods agree on the dominant structure and differ in how they present it.
+Trustworthiness is \TrustPCA{} for the linear projection, \TrustUMAP{} for UMAP and
+\TrustTSNE{} for t-SNE, while continuity is close to identical across the three. Nearest
+neighbour position purity at ten neighbours is \PurityPCA{} for the linear projection and
+\PurityUMAP{} for UMAP, so roughly two thirds to three quarters of a player's closest
+statistical neighbours share his listed position group. That figure is informative in
+both directions: it confirms that the surviving features carry real positional signal,
+and it establishes that a substantial minority of every player's nearest neighbours are
+listed at a different position, which is the space in which data-driven roles can differ
+from listed ones.
+
+All three embeddings display a continuous gradient from defenders through midfielders to
+forwards rather than separated groups. That gradient, and not a set of islands, is the
+honest description of the geometry, and it conditions how the clustering that follows
+should be read.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{embedding_comparison.pdf}
+  \caption{Two-dimensional embeddings of the same feature set, coloured by listed position
+  group. The defender to forward gradient is continuous in all three, and t-SNE is shown
+  for visual contrast only and is not used for clustering.}
+  \label{fig:embeddings}
+\end{figure}

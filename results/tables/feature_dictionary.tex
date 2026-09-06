@@ -1,0 +1,30 @@
+\begin{table}[t]
+\centering
+\small
+\caption{The outfield feature set. Counting statistics are per ninety minutes. The two rate features are used as published.}
+\label{tab:features}
+\begin{tabular}{llp{7.2cm}}
+\toprule
+Feature & Source & Definition \\
+\midrule
+np\_xg\_p90 & Understat & Non-penalty expected goals \\
+xa\_p90 & Understat & Expected assists \\
+key\_passes\_p90 & Understat & Passes leading directly to a shot \\
+xg\_chain\_p90 & Understat & Expected goals of possessions the player was involved in \\
+xg\_buildup\_p90 & Understat & As xGChain, excluding shots and key passes \\
+shots\_p90 & FBref & Shots taken, excluding penalties \\
+shots\_on\_target\_p90 & FBref & Shots on target \\
+goals\_non\_penalty\_p90 & FBref & Goals excluding penalties \\
+assists\_p90 & FBref & Assists \\
+crosses\_p90 & FBref & Crosses attempted \\
+interceptions\_p90 & FBref & Interceptions \\
+tackles\_won\_p90 & FBref & Tackles won \\
+fouls\_committed\_p90 & FBref & Fouls committed \\
+fouls\_drawn\_p90 & FBref & Fouls drawn \\
+offsides\_p90 & FBref & Times caught offside \\
+cards\_yellow\_p90 & FBref & Yellow cards \\
+shot\_accuracy\_pct & FBref & Shots on target as a share of shots, a rate \\
+goals\_per\_shot & FBref & Goals per shot, a rate \\
+\bottomrule
+\end{tabular}
+\end{table}

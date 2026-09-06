@@ -1,0 +1,152 @@
+\section{Methods}
+\label{sec:methods}
+
+Every procedure below is seeded from a single constant, and every hyperparameter is
+declared in one configuration file that the analysis code reads. Nothing is tuned after
+seeing a result. All computation uses scikit-learn \citep{pedregosa2011scikit} unless
+stated otherwise.
+
+\subsection{Dimensionality reduction}
+
+Principal component analysis is fitted to the standardised feature set, both globally and
+separately within each position group. The global embedding is dominated by the axis that
+separates defenders from forwards, which is the least interesting distinction available
+because it is already recorded in the listed position, so the role profiling that follows
+uses the position stratified fits.
+
+Uniform manifold approximation and projection \citep{mcinnes2018umap} is fitted over a
+grid of twelve configurations, with the number of neighbours in
+\{10, 15, 30, 50\} crossed with a minimum distance in \{0.0, 0.1, 0.5\}. Configurations
+are ranked by trustworthiness, which measures the degree to which points that are close
+in the embedding were also close in the original space, and the full grid is reported in
+Appendix~\ref{sec:appendix:umap}. Selection by an explicit criterion matters here because
+a manifold method will produce a visually appealing picture at almost any setting.
+
+t-distributed stochastic neighbour embedding \citep{vandermaaten2008visualizing} is
+computed at a perplexity of 30 for visual contrast only. It is never used as an input to
+clustering, because its objective preserves local neighbourhoods at the expense of the
+global geometry that a distance based clustering algorithm depends upon.
+
+The three embeddings are compared on trustworthiness, on continuity, which is
+trustworthiness computed with the roles of the two spaces exchanged, and on a nearest
+neighbour position purity score at $k=10$ that reports the share of a player's ten
+nearest neighbours that share his listed position group.
+
+\subsection{Clustering}
+
+Clusters are estimated with $k$-means as the primary method, with a Gaussian mixture
+model whose Bayesian information criterion is reported across the same range of
+component counts, and with HDBSCAN \citep{campello2013density}, for which we report the
+fraction of players assigned to noise. Each is fitted both to the standardised features
+and to the principal component space retaining ninety percent of variance, and each
+reported result states which space produced it. Clustering is performed globally and
+within each of the three outfield position groups.
+
+The number of clusters is selected by a rule fixed in advance of any fitting, which
+matters because four criteria applied after the fact can be made to justify almost any
+choice. Over $k$ from 2 to 12 we compute the silhouette coefficient
+\citep{rousseeuw1987silhouettes}, the Davies-Bouldin index, the Calinski-Harabasz index,
+and the gap statistic \citep{tibshirani2001estimating}. The gap statistic has no
+implementation in the library we use, so it is implemented here against the original
+description, comparing the within-cluster dispersion to its expectation under fifty
+reference datasets drawn uniformly over the bounding box of the data in the fitted space.
+The rule selects the smallest $k$ whose silhouette lies within 0.02 of the best silhouette
+observed and which ranks in the top three on at least two of the silhouette,
+Calinski-Harabasz and gap criteria, with Davies-Bouldin breaking ties. Which criteria
+agreed, and which did not, is reported alongside the choice.
+
+\subsection{Stability and validation against listed positions}
+
+A partition can be produced from any dataset, so the question that matters is whether it
+survives resampling. We draw two hundred bootstrap resamples, refit the clustering on
+each, and compute the adjusted Rand index \citep{hubert1985comparing} between each
+bootstrap partition and the reference partition on the players common to both. We also
+accumulate a consensus matrix recording, for every pair of players, the fraction of
+resamples in which the two were assigned together. Clusters whose members co-assign below
+0.6 on average are reported as unstable, and they are described as such in the results
+rather than being renamed or merged to make the account tidier.
+
+The relationship between the discovered clusters and the listed positions is quantified
+by normalised mutual information and by the adjusted Rand index, computed against both
+the four-way position group and the full position string. Players whose cluster
+assignment disagrees with their listed group, and players whose Gaussian mixture
+posterior is split across components, are extracted as candidate hybrids.
+
+\subsection{Archetype profiling}
+
+For every retained cluster we compute the centroid profile as a standardised deviation
+from the mean of its position group, take the eight features with the largest absolute
+deviation as the distinguishing features, and list the ten players closest to the
+centroid and three players near the boundary. Archetype names are assigned only after
+inspecting these profiles and the players they contain, and each name is accompanied by a
+justification that cites the distinguishing features and the example players. The names
+are hypotheses about what the statistical profile represents, not observations, and they
+carry no authority beyond the profile that produced them.
+
+Outliers are identified within position group with an isolation forest
+\citep{liu2008isolation}, reported alongside a Mahalanobis distance so that a
+distance-based and a partition-based notion of unusualness can be compared.
+
+\subsection{Supervised validation}
+
+Unsupervised structure is easy to over-interpret, so we ask a supervised model what
+separates the listed positions. Logistic regression and gradient boosting are trained to
+predict the position group from the feature set under five-fold stratified cross
+validation, and we report accuracy, macro F1 and the confusion matrix. The purpose is
+interpretability rather than accuracy: SHAP values \citep{lundberg2017unified} on the
+boosted model identify which statistics actually distinguish each position in this
+feature set. Players the classifier places in the wrong group are cross referenced
+against the candidate hybrids from the clustering, since agreement between two methods
+that fail in the same place is more informative than either alone.
+
+A secondary ridge regression predicts non-penalty expected goals per ninety from the
+non-shooting features only, so that the fitted value represents the shot volume a
+player's role would ordinarily generate and the residual represents the part not
+explained by role. We report the cross validated coefficient of determination and treat
+the residual ranking with heavy caution, because a residual from a model with modest
+explanatory power is mostly noise.
+
+\subsection{Goalkeepers}
+
+The goalkeeper analysis is severely constrained by the withdrawal described in
+Section~\ref{sec:data:withdrawal}, which removed post-shot expected goals, sweeper
+actions, distribution and cross handling. Only shot stopping and workload survive, so we
+build two composites rather than the five that the surviving column headers appear to
+promise. In place of post-shot expected goals we regress saves on shots on target faced
+and use the residual as a shot stopping index. That index adjusts for the volume of work
+a goalkeeper receives but not for its difficulty, which makes it a substantially weaker
+instrument, and it is reported as such.
+
+\subsection{Team signatures}
+
+Each club is summarised in two ways: as a minutes-weighted centroid of its outfield
+players in the shared principal component space, and as the share of its outfield minutes
+played by each archetype. Clubs are then clustered hierarchically on archetype
+composition and compared against final league position.
+
+\subsection{Additional analyses}
+
+Three further analyses address specific threats to the interpretation.
+
+Player similarity is computed as cosine similarity within position group, and the nearest
+neighbours of a set of well known players are reported so that a reader with football
+knowledge can judge whether the geometry corresponds to anything real.
+
+Cross-season replication refits the entire pipeline on the replication season and
+computes the adjusted Rand index between the two seasons for players present in both,
+which distinguishes archetypes that describe stable playing roles from artefacts of a
+single season.
+
+Per-90 rates computed over partial seasons are noisy, and that noise is largest exactly
+where the minutes are fewest. We therefore apply empirical Bayes shrinkage toward the
+position group mean, with the degree of shrinkage determined by minutes played
+\citep{efron1977steins}, refit the clustering on the shrunken features, and report how
+many assignments change. A partition that dissolves under shrinkage was substantially a
+description of sampling noise.
+
+\subsection{Reproducibility}
+
+The analysis runs from a single command against pinned dependencies and a fixed seed.
+Every figure and every number in this paper is generated by code in the accompanying
+repository and read into the document from generated definitions at build time, so no
+value in the text was transcribed by hand.

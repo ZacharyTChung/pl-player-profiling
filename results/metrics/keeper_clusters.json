@@ -1,0 +1,573 @@
+{
+  "2024-25": {
+    "n_keepers": 33,
+    "features": [
+      "gk_goals_against_p90",
+      "gk_shots_on_target_against_p90",
+      "gk_saves_p90",
+      "gk_clean_sheets_p90",
+      "gk_save_pct",
+      "gk_clean_sheet_pct"
+    ],
+    "n_features": 6,
+    "k_range_searched": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "k_cap": 6,
+    "k_cap_justification": "config.K_MAX is 12, which is set for the outfield pool of several hundred players. With at most 33 eligible goalkeepers and a feature set that spans roughly two effective dimensions, k above 6 gives clusters averaging fewer than six members, too few for an interpretable centroid profile or a stable silhouette, so k is capped at 6 here.",
+    "pca_n_components": 2,
+    "pca_variance_target": 0.9,
+    "pca_explained_variance_ratio": [
+      0.71557,
+      0.221024
+    ],
+    "pca_cumulative_variance": [
+      0.71557,
+      0.936594
+    ],
+    "pca_loadings_pc1": {
+      "gk_goals_against_p90": -0.450186,
+      "gk_shots_on_target_against_p90": -0.445927,
+      "gk_saves_p90": -0.352054,
+      "gk_clean_sheets_p90": 0.455241,
+      "gk_save_pct": 0.244693,
+      "gk_clean_sheet_pct": 0.455434
+    },
+    "pca_loadings_pc2": {
+      "gk_goals_against_p90": -0.232344,
+      "gk_shots_on_target_against_p90": 0.268182,
+      "gk_saves_p90": 0.577973,
+      "gk_clean_sheets_p90": 0.044149,
+      "gk_save_pct": 0.732339,
+      "gk_clean_sheet_pct": 0.042098
+    },
+    "candidates": [
+      {
+        "k": 2,
+        "silhouette": 0.495464,
+        "calinski_harabasz": 37.671599,
+        "davies_bouldin": 0.720804,
+        "gap": 0.374974,
+        "inertia": 83.714542,
+        "cluster_sizes": [
+          9,
+          24
+        ],
+        "rank_silhouette": 1,
+        "rank_calinski_harabasz": 3,
+        "rank_gap": 1,
+        "criteria_in_top_n": 3,
+        "within_silhouette_tolerance": true,
+        "passes_rule": true
+      },
+      {
+        "k": 3,
+        "silhouette": 0.359032,
+        "calinski_harabasz": 31.261551,
+        "davies_bouldin": 0.987815,
+        "gap": 0.226219,
+        "inertia": 60.12948,
+        "cluster_sizes": [
+          9,
+          11,
+          13
+        ],
+        "rank_silhouette": 5,
+        "rank_calinski_harabasz": 5,
+        "rank_gap": 4,
+        "criteria_in_top_n": 0,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      },
+      {
+        "k": 4,
+        "silhouette": 0.396942,
+        "calinski_harabasz": 34.703602,
+        "davies_bouldin": 0.746789,
+        "gap": 0.27359,
+        "inertia": 40.401832,
+        "cluster_sizes": [
+          4,
+          8,
+          9,
+          12
+        ],
+        "rank_silhouette": 4,
+        "rank_calinski_harabasz": 4,
+        "rank_gap": 2,
+        "criteria_in_top_n": 1,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      },
+      {
+        "k": 5,
+        "silhouette": 0.411373,
+        "calinski_harabasz": 37.759095,
+        "davies_bouldin": 0.721239,
+        "gap": 0.204698,
+        "inertia": 29.002345,
+        "cluster_sizes": [
+          3,
+          5,
+          5,
+          8,
+          12
+        ],
+        "rank_silhouette": 3,
+        "rank_calinski_harabasz": 2,
+        "rank_gap": 5,
+        "criteria_in_top_n": 2,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      },
+      {
+        "k": 6,
+        "silhouette": 0.412742,
+        "calinski_harabasz": 40.244378,
+        "davies_bouldin": 0.723393,
+        "gap": 0.235818,
+        "inertia": 21.939303,
+        "cluster_sizes": [
+          3,
+          5,
+          5,
+          5,
+          7,
+          8
+        ],
+        "rank_silhouette": 2,
+        "rank_calinski_harabasz": 1,
+        "rank_gap": 3,
+        "criteria_in_top_n": 3,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      }
+    ],
+    "k_selection": {
+      "rule": {
+        "silhouette_tolerance": 0.02,
+        "top_n_rank": 3,
+        "min_criteria": 2,
+        "tiebreak": "davies_bouldin"
+      },
+      "best_silhouette_observed": 0.495464,
+      "fallback_used": false,
+      "fallback_note": null
+    },
+    "chosen_k": 2,
+    "silhouette": 0.495464,
+    "calinski_harabasz": 37.671599,
+    "davies_bouldin": 0.720804,
+    "gap": 0.374974,
+    "silhouette_band": "weak structure, could be artificial",
+    "cluster_sizes": {
+      "0": 24,
+      "1": 9
+    },
+    "cluster_label_ordering": "clusters are renumbered by ascending mean shots on target against per 90",
+    "min_cluster_size": 9,
+    "min_cluster_size_floor": 5,
+    "has_undersized_cluster": false,
+    "variance_explained_by_cluster": {
+      "gk_save_pct": 0.251079,
+      "gk_saves_above_volume": 0.141064,
+      "gk_clean_sheet_pct": 0.538218,
+      "gk_shots_on_target_against_p90": 0.656164,
+      "gk_goals_against_p90": 0.740356,
+      "gk_minutes": 0.212128,
+      "team_points_per_match": 0.718886
+    },
+    "partition_tracks_situation_not_technique": true,
+    "structure_is_meaningful": false,
+    "verdict": "Negative result. KMeans at k = 2 returns a partition, but it is not evidence for goalkeeper types, because the average silhouette width is 0.495, in the band 'weak structure, could be artificial' on the Kaufman and Rousseeuw scale declared in advance; and cluster membership explains more of the variance in minutes played and team points per match (eta squared up to 0.72) than in save percentage (0.25), so the partition separates keepers by the situation they work in rather than by how they keep goal. With shot stopping and workload the only surviving information, the eligible keepers should be read as a continuum cut arbitrarily, not as archetypes.",
+    "centroids": {
+      "0": {
+        "n": 24,
+        "members": [
+          "Alisson",
+          "Alphonse Areola",
+          "Andr\u00e9 Onana",
+          "Bart Verbruggen",
+          "Bernd Leno",
+          "Caoimh\u00edn Kelleher",
+          "David Raya",
+          "Dean Henderson",
+          "Ederson Moraes",
+          "Emiliano Mart\u00ednez",
+          "Filip J\u00f8rgensen",
+          "Guglielmo Vicario",
+          "Jakub Stolarczyk",
+          "Jordan Pickford",
+          "Jos\u00e9 S\u00e1",
+          "Kepa Arrizabalaga",
+          "Mark Flekken",
+          "Mark Travers",
+          "Martin D\u00fabravka",
+          "Matz Sels",
+          "Nick Pope",
+          "Robert S\u00e1nchez",
+          "Stefan Ortega",
+          "\u0141ukasz Fabia\u0144ski"
+        ],
+        "means": {
+          "gk_goals_against_p90": 1.325811,
+          "gk_shots_on_target_against_p90": 4.249003,
+          "gk_saves_p90": 2.932897,
+          "gk_clean_sheets_p90": 0.270028,
+          "gk_save_pct": 68.837293,
+          "gk_clean_sheet_pct": 26.761449,
+          "gk_saves_above_volume": 1.046591,
+          "gk_shot_stopping": 0.3287,
+          "gk_workload": -0.511478,
+          "gk_minutes": 2327.75,
+          "team_points_per_match": 1.5825
+        }
+      },
+      "1": {
+        "n": 9,
+        "members": [
+          "Aaron Ramsdale",
+          "Alex McCarthy",
+          "Alex Palmer",
+          "Anton\u00edn Kinsk\u00fd",
+          "Arijanet Muric",
+          "Christian Walton",
+          "Fraser Forster",
+          "Mads Hermansen",
+          "Sam Johnstone"
+        ],
+        "means": {
+          "gk_goals_against_p90": 2.249861,
+          "gk_shots_on_target_against_p90": 6.038693,
+          "gk_saves_p90": 3.804705,
+          "gk_clean_sheets_p90": 0.071741,
+          "gk_save_pct": 62.852838,
+          "gk_clean_sheet_pct": 7.166373,
+          "gk_saves_above_volume": -2.79091,
+          "gk_shot_stopping": -0.876534,
+          "gk_workload": 1.36394,
+          "gk_minutes": 1195.0,
+          "team_points_per_match": 0.442222
+        }
+      }
+    }
+  },
+  "2025-26": {
+    "n_keepers": 28,
+    "features": [
+      "gk_goals_against_p90",
+      "gk_shots_on_target_against_p90",
+      "gk_saves_p90",
+      "gk_clean_sheets_p90",
+      "gk_save_pct",
+      "gk_clean_sheet_pct"
+    ],
+    "n_features": 6,
+    "k_range_searched": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "k_cap": 6,
+    "k_cap_justification": "config.K_MAX is 12, which is set for the outfield pool of several hundred players. With at most 33 eligible goalkeepers and a feature set that spans roughly two effective dimensions, k above 6 gives clusters averaging fewer than six members, too few for an interpretable centroid profile or a stable silhouette, so k is capped at 6 here.",
+    "pca_n_components": 2,
+    "pca_variance_target": 0.9,
+    "pca_explained_variance_ratio": [
+      0.654118,
+      0.282994
+    ],
+    "pca_cumulative_variance": [
+      0.654118,
+      0.937112
+    ],
+    "pca_loadings_pc1": {
+      "gk_goals_against_p90": 0.480745,
+      "gk_shots_on_target_against_p90": 0.435439,
+      "gk_saves_p90": 0.348105,
+      "gk_clean_sheets_p90": -0.458303,
+      "gk_save_pct": -0.19024,
+      "gk_clean_sheet_pct": -0.46029
+    },
+    "pca_loadings_pc2": {
+      "gk_goals_against_p90": -0.047596,
+      "gk_shots_on_target_against_p90": 0.370352,
+      "gk_saves_p90": 0.554156,
+      "gk_clean_sheets_p90": 0.223239,
+      "gk_save_pct": 0.675247,
+      "gk_clean_sheet_pct": 0.218382
+    },
+    "candidates": [
+      {
+        "k": 2,
+        "silhouette": 0.440193,
+        "calinski_harabasz": 19.589579,
+        "davies_bouldin": 0.969475,
+        "gap": 0.102965,
+        "inertia": 89.785942,
+        "cluster_sizes": [
+          9,
+          19
+        ],
+        "rank_silhouette": 4,
+        "rank_calinski_harabasz": 5,
+        "rank_gap": 5,
+        "criteria_in_top_n": 0,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      },
+      {
+        "k": 3,
+        "silhouette": 0.48584,
+        "calinski_harabasz": 23.362351,
+        "davies_bouldin": 0.80945,
+        "gap": 0.145488,
+        "inertia": 54.874659,
+        "cluster_sizes": [
+          3,
+          8,
+          17
+        ],
+        "rank_silhouette": 3,
+        "rank_calinski_harabasz": 4,
+        "rank_gap": 4,
+        "criteria_in_top_n": 1,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      },
+      {
+        "k": 4,
+        "silhouette": 0.576303,
+        "calinski_harabasz": 31.559684,
+        "davies_bouldin": 0.583516,
+        "gap": 0.327092,
+        "inertia": 31.837411,
+        "cluster_sizes": [
+          3,
+          3,
+          4,
+          18
+        ],
+        "rank_silhouette": 1,
+        "rank_calinski_harabasz": 3,
+        "rank_gap": 2,
+        "criteria_in_top_n": 3,
+        "within_silhouette_tolerance": true,
+        "passes_rule": true
+      },
+      {
+        "k": 5,
+        "silhouette": 0.555419,
+        "calinski_harabasz": 34.549589,
+        "davies_bouldin": 0.612774,
+        "gap": 0.329224,
+        "inertia": 22.463002,
+        "cluster_sizes": [
+          2,
+          2,
+          3,
+          4,
+          17
+        ],
+        "rank_silhouette": 2,
+        "rank_calinski_harabasz": 2,
+        "rank_gap": 1,
+        "criteria_in_top_n": 3,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      },
+      {
+        "k": 6,
+        "silhouette": 0.42622,
+        "calinski_harabasz": 36.419975,
+        "davies_bouldin": 0.645288,
+        "gap": 0.260699,
+        "inertia": 16.969948,
+        "cluster_sizes": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          12
+        ],
+        "rank_silhouette": 5,
+        "rank_calinski_harabasz": 1,
+        "rank_gap": 3,
+        "criteria_in_top_n": 2,
+        "within_silhouette_tolerance": false,
+        "passes_rule": false
+      }
+    ],
+    "k_selection": {
+      "rule": {
+        "silhouette_tolerance": 0.02,
+        "top_n_rank": 3,
+        "min_criteria": 2,
+        "tiebreak": "davies_bouldin"
+      },
+      "best_silhouette_observed": 0.576303,
+      "fallback_used": false,
+      "fallback_note": null
+    },
+    "chosen_k": 4,
+    "silhouette": 0.576303,
+    "calinski_harabasz": 31.559684,
+    "davies_bouldin": 0.583516,
+    "gap": 0.327092,
+    "silhouette_band": "reasonable structure",
+    "cluster_sizes": {
+      "0": 3,
+      "1": 3,
+      "2": 18,
+      "3": 4
+    },
+    "cluster_label_ordering": "clusters are renumbered by ascending mean shots on target against per 90",
+    "min_cluster_size": 3,
+    "min_cluster_size_floor": 5,
+    "has_undersized_cluster": true,
+    "variance_explained_by_cluster": {
+      "gk_save_pct": 0.580141,
+      "gk_saves_above_volume": 0.230432,
+      "gk_clean_sheet_pct": 0.717608,
+      "gk_shots_on_target_against_p90": 0.849658,
+      "gk_goals_against_p90": 0.839798,
+      "gk_minutes": 0.341812,
+      "team_points_per_match": 0.610219
+    },
+    "partition_tracks_situation_not_technique": true,
+    "structure_is_meaningful": false,
+    "verdict": "Negative result. KMeans at k = 4 returns a partition, but it is not evidence for goalkeeper types, because the smallest cluster holds 3 keepers, below the floor of 5 declared before fitting, so at least one centroid is an average of a handful of players; and cluster membership explains more of the variance in minutes played and team points per match (eta squared up to 0.61) than in save percentage (0.58), so the partition separates keepers by the situation they work in rather than by how they keep goal. With shot stopping and workload the only surviving information, the eligible keepers should be read as a continuum cut arbitrarily, not as archetypes.",
+    "centroids": {
+      "0": {
+        "n": 3,
+        "members": [
+          "Anton\u00edn Kinsk\u00fd",
+          "David Raya",
+          "Gianluigi Donnarumma"
+        ],
+        "means": {
+          "gk_goals_against_p90": 0.851881,
+          "gk_shots_on_target_against_p90": 2.623514,
+          "gk_saves_p90": 1.743016,
+          "gk_clean_sheets_p90": 0.413468,
+          "gk_save_pct": 66.060966,
+          "gk_clean_sheet_pct": 41.346809,
+          "gk_saves_above_volume": 2.445381,
+          "gk_shot_stopping": 0.816202,
+          "gk_workload": -1.937874,
+          "gk_minutes": 2340.0,
+          "team_points_per_match": 2.0
+        }
+      },
+      "1": {
+        "n": 3,
+        "members": [
+          "Aaron Ramsdale",
+          "Altay Bay\u0131nd\u0131r",
+          "Lucas Perri"
+        ],
+        "means": {
+          "gk_goals_against_p90": 1.723246,
+          "gk_shots_on_target_against_p90": 3.954266,
+          "gk_saves_p90": 2.23102,
+          "gk_clean_sheets_p90": 0.09238,
+          "gk_save_pct": 56.473223,
+          "gk_clean_sheet_pct": 9.027778,
+          "gk_saves_above_volume": -2.943364,
+          "gk_shot_stopping": -1.435315,
+          "gk_workload": 0.307446,
+          "gk_minutes": 994.666667,
+          "team_points_per_match": 1.156667
+        }
+      },
+      "2": {
+        "n": 18,
+        "members": [
+          "Alisson",
+          "Bart Verbruggen",
+          "Bernd Leno",
+          "Caoimh\u00edn Kelleher",
+          "Dean Henderson",
+          "Emiliano Mart\u00ednez",
+          "Guglielmo Vicario",
+          "Jordan Pickford",
+          "Jos\u00e9 S\u00e1",
+          "Karl Darlow",
+          "Mads Hermansen",
+          "Marco Bizot",
+          "Matz Sels",
+          "Nick Pope",
+          "Robert S\u00e1nchez",
+          "Robin Roefs",
+          "Senne Lammens",
+          "\u0110or\u0111e Petrovi\u0107"
+        ],
+        "means": {
+          "gk_goals_against_p90": 1.371155,
+          "gk_shots_on_target_against_p90": 4.198887,
+          "gk_saves_p90": 2.816839,
+          "gk_clean_sheets_p90": 0.268383,
+          "gk_save_pct": 67.047151,
+          "gk_clean_sheet_pct": 26.576253,
+          "gk_saves_above_volume": 0.506636,
+          "gk_shot_stopping": 0.26483,
+          "gk_workload": -0.090065,
+          "gk_minutes": 2706.277778,
+          "team_points_per_match": 1.380556
+        }
+      },
+      "3": {
+        "n": 4,
+        "members": [
+          "Alphonse Areola",
+          "Giorgi Mamardashvili",
+          "Martin D\u00fabravka",
+          "Sam Johnstone"
+        ],
+        "means": {
+          "gk_goals_against_p90": 1.936771,
+          "gk_shots_on_target_against_p90": 5.462815,
+          "gk_saves_p90": 3.526044,
+          "gk_clean_sheets_p90": 0.080475,
+          "gk_save_pct": 64.502174,
+          "gk_clean_sheet_pct": 7.857143,
+          "gk_saves_above_volume": -1.906375,
+          "gk_shot_stopping": -0.727401,
+          "gk_workload": 1.628112,
+          "gk_minutes": 1724.25,
+          "team_points_per_match": 0.6475
+        }
+      }
+    }
+  },
+  "_shared": {
+    "seasons_compared": [
+      "2024-25",
+      "2025-26"
+    ],
+    "chosen_k_by_season": {
+      "2024-25": 2,
+      "2025-26": 4
+    },
+    "k_replicates_across_seasons": false,
+    "silhouette_by_season": {
+      "2024-25": 0.495464,
+      "2025-26": 0.576303
+    },
+    "min_cluster_size_by_season": {
+      "2024-25": 9,
+      "2025-26": 3
+    },
+    "structure_meaningful_by_season": {
+      "2024-25": false,
+      "2025-26": false
+    },
+    "overall_verdict": "Goalkeeper clustering is a negative result in this study. The consensus k rule selects a different k in each season (2024-25: k = 2, 2025-26: k = 4), so the partition does not replicate. The surviving keeper columns carry shot stopping and workload and nothing else, and neither season yields groups that are simultaneously well separated, large enough to profile and separated on goalkeeping rather than on minutes played and team strength. The clusters are reported for completeness and are not given archetype names."
+  }
+}

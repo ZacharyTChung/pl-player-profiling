@@ -1,0 +1,50 @@
+\section{Feature dictionary}
+\label{sec:appendix:features}
+
+Table~\ref{tab:features} lists every feature in the outfield set, its source, and its
+definition. Counting statistics are expressed per ninety minutes played. The two rate
+features are used as published rather than divided a second time. Each feature was
+confirmed to hold non-null values in both seasons before being admitted, which is the
+check that distinguishes a live column from one whose values were withdrawn.
+
+\input{../results/tables/feature_dictionary.tex}
+
+\section{Minutes threshold sensitivity}
+\label{sec:appendix:sensitivity}
+
+The main analysis excludes outfield players below \MinMinutes{} minutes. That threshold
+balances two errors: a low threshold admits players whose per-90 rates are dominated by
+sampling noise, while a high threshold discards genuine squad roles such as the impact
+substitute. Table~\ref{tab:sensitivity} repeats the clustering at 270, \MinMinutes{} and
+900 minutes and reports the eligible sample, the selected number of clusters, the
+silhouette coefficient and the mean bootstrap adjusted Rand index at each.
+
+\input{../results/tables/minutes_sensitivity.tex}
+
+\section{UMAP hyperparameter grid}
+\label{sec:appendix:umap}
+
+Table~\ref{tab:umapgrid} reports trustworthiness for all twelve configurations of the
+neighbour count and minimum distance. Selection was by trustworthiness alone, decided
+before any embedding was inspected visually.
+
+\input{../results/tables/umap_grid.tex}
+
+\section{Cluster selection criteria in full}
+\label{sec:appendix:kselection}
+
+Table~\ref{tab:kselection} gives the silhouette coefficient, Davies-Bouldin index,
+Calinski-Harabasz index and gap statistic for every candidate number of clusters, for the
+global analysis and within each position group. The consensus rule described in
+Section~\ref{sec:methods} is applied to these values.
+
+\input{../results/tables/k_selection.tex}
+
+\section{Cluster membership}
+\label{sec:appendix:membership}
+
+Table~\ref{tab:membership} lists every eligible outfield player in the primary season
+with his club, listed position, assigned archetype and distance from his cluster
+centroid.
+
+\input{../results/tables/cluster_membership.tex}

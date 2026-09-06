@@ -1,0 +1,481 @@
+{
+  "question": "Do data-driven clusters recover listed positions, and where do they disagree?",
+  "space": "standardised",
+  "seasons": {
+    "2024-25": {
+      "global": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "DF": 136,
+              "FW": 2,
+              "MF": 105
+            },
+            "1": {
+              "DF": 0,
+              "FW": 47,
+              "MF": 76
+            }
+          },
+          "adjusted_rand_index": 0.2257,
+          "normalized_mutual_info": 0.3438,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.5597,
+              "n": 243
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.6179,
+              "n": 123
+            }
+          },
+          "cluster_purity": 0.5792
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "DF": 112,
+              "DF,MF": 24,
+              "FW": 0,
+              "FW,MF": 2,
+              "MF": 79,
+              "MF,DF": 17,
+              "MF,FW": 9
+            },
+            "1": {
+              "DF": 0,
+              "DF,MF": 0,
+              "FW": 31,
+              "FW,MF": 16,
+              "MF": 48,
+              "MF,DF": 2,
+              "MF,FW": 26
+            }
+          },
+          "adjusted_rand_index": 0.171,
+          "normalized_mutual_info": 0.2797,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.4609,
+              "n": 243
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.3902,
+              "n": 123
+            }
+          },
+          "cluster_purity": 0.4372
+        }
+      },
+      "DF": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "DF": 98
+            },
+            "1": {
+              "DF": 38
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 1.0,
+              "n": 98
+            },
+            "1": {
+              "label": "DF",
+              "share": 1.0,
+              "n": 38
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "DF": 84,
+              "DF,MF": 14
+            },
+            "1": {
+              "DF": 28,
+              "DF,MF": 10
+            }
+          },
+          "adjusted_rand_index": 0.0669,
+          "normalized_mutual_info": 0.0178,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.8571,
+              "n": 98
+            },
+            "1": {
+              "label": "DF",
+              "share": 0.7368,
+              "n": 38
+            }
+          },
+          "cluster_purity": 0.8235
+        }
+      },
+      "MF": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "MF": 94
+            },
+            "1": {
+              "MF": 87
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "MF",
+              "share": 1.0,
+              "n": 94
+            },
+            "1": {
+              "label": "MF",
+              "share": 1.0,
+              "n": 87
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "MF": 72,
+              "MF,DF": 16,
+              "MF,FW": 6
+            },
+            "1": {
+              "MF": 55,
+              "MF,DF": 3,
+              "MF,FW": 29
+            }
+          },
+          "adjusted_rand_index": 0.0538,
+          "normalized_mutual_info": 0.1043,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "MF",
+              "share": 0.766,
+              "n": 94
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.6322,
+              "n": 87
+            }
+          },
+          "cluster_purity": 0.7017
+        }
+      },
+      "FW": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "FW": 30
+            },
+            "1": {
+              "FW": 19
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "FW",
+              "share": 1.0,
+              "n": 30
+            },
+            "1": {
+              "label": "FW",
+              "share": 1.0,
+              "n": 19
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "FW": 28,
+              "FW,MF": 2
+            },
+            "1": {
+              "FW": 3,
+              "FW,MF": 16
+            }
+          },
+          "adjusted_rand_index": 0.6253,
+          "normalized_mutual_info": 0.5108,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "FW",
+              "share": 0.9333,
+              "n": 30
+            },
+            "1": {
+              "label": "FW,MF",
+              "share": 0.8421,
+              "n": 19
+            }
+          },
+          "cluster_purity": 0.898
+        }
+      }
+    },
+    "2025-26": {
+      "global": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "DF": 136,
+              "FW": 7,
+              "MF": 104
+            },
+            "1": {
+              "DF": 2,
+              "FW": 48,
+              "MF": 75
+            }
+          },
+          "adjusted_rand_index": 0.2047,
+          "normalized_mutual_info": 0.2763,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.5506,
+              "n": 247
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.6,
+              "n": 125
+            }
+          },
+          "cluster_purity": 0.5672
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "DF": 109,
+              "DF,MF": 27,
+              "FW": 1,
+              "FW,MF": 6,
+              "MF": 77,
+              "MF,DF": 14,
+              "MF,FW": 13
+            },
+            "1": {
+              "DF": 0,
+              "DF,MF": 2,
+              "FW": 32,
+              "FW,MF": 16,
+              "MF": 52,
+              "MF,DF": 1,
+              "MF,FW": 22
+            }
+          },
+          "adjusted_rand_index": 0.1468,
+          "normalized_mutual_info": 0.2318,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.4413,
+              "n": 247
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.416,
+              "n": 125
+            }
+          },
+          "cluster_purity": 0.4328
+        }
+      },
+      "DF": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "DF": 83
+            },
+            "1": {
+              "DF": 55
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 1.0,
+              "n": 83
+            },
+            "1": {
+              "label": "DF",
+              "share": 1.0,
+              "n": 55
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "DF": 72,
+              "DF,MF": 11
+            },
+            "1": {
+              "DF": 37,
+              "DF,MF": 18
+            }
+          },
+          "adjusted_rand_index": 0.0755,
+          "normalized_mutual_info": 0.0453,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.8675,
+              "n": 83
+            },
+            "1": {
+              "label": "DF",
+              "share": 0.6727,
+              "n": 55
+            }
+          },
+          "cluster_purity": 0.7899
+        }
+      },
+      "MF": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "MF": 105
+            },
+            "1": {
+              "MF": 74
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "MF",
+              "share": 1.0,
+              "n": 105
+            },
+            "1": {
+              "label": "MF",
+              "share": 1.0,
+              "n": 74
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "MF": 78,
+              "MF,DF": 14,
+              "MF,FW": 13
+            },
+            "1": {
+              "MF": 51,
+              "MF,DF": 1,
+              "MF,FW": 22
+            }
+          },
+          "adjusted_rand_index": 0.0227,
+          "normalized_mutual_info": 0.0624,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "MF",
+              "share": 0.7429,
+              "n": 105
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.6892,
+              "n": 74
+            }
+          },
+          "cluster_purity": 0.7207
+        }
+      },
+      "FW": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "FW": 39
+            },
+            "1": {
+              "FW": 16
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "FW",
+              "share": 1.0,
+              "n": 39
+            },
+            "1": {
+              "label": "FW",
+              "share": 1.0,
+              "n": 16
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "FW": 31,
+              "FW,MF": 8
+            },
+            "1": {
+              "FW": 2,
+              "FW,MF": 14
+            }
+          },
+          "adjusted_rand_index": 0.3918,
+          "normalized_mutual_info": 0.3191,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "FW",
+              "share": 0.7949,
+              "n": 39
+            },
+            "1": {
+              "label": "FW,MF",
+              "share": 0.875,
+              "n": 16
+            }
+          },
+          "cluster_purity": 0.8182
+        }
+      }
+    }
+  },
+  "answer": {
+    "global_k": 2,
+    "adjusted_rand_index_vs_position_group": 0.2257,
+    "cluster_purity_vs_position_group": 0.5792,
+    "clusters_recover_listed_positions": false,
+    "statement": "At k=2 the global clustering scores an adjusted Rand index of 0.226 against the listed position group, with a cluster purity of 0.579. That is weak agreement: the partition the data supports is not the listed position partition, it is a coarser attacking against defending split that cuts across the midfield."
+  }
+}

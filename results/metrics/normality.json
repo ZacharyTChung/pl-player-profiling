@@ -1,0 +1,412 @@
+{
+  "2024-25": {
+    "n_features": 18,
+    "per_feature": {
+      "np_xg_p90": {
+        "n": 366,
+        "skew": 1.4996448595575191,
+        "excess_kurtosis": 1.8769261506233441,
+        "shapiro_w": 0.8249516315951105,
+        "shapiro_p": 1.1869691844259206e-19,
+        "dagostino_k2": 98.94728202049494,
+        "dagostino_p": 3.2649062073433146e-22,
+        "normal_at_005": false
+      },
+      "xa_p90": {
+        "n": 366,
+        "skew": 1.2418363155928884,
+        "excess_kurtosis": 2.0974234664565135,
+        "shapiro_w": 0.8981131699955706,
+        "shapiro_p": 6.1919742287196736e-15,
+        "dagostino_k2": 83.29388979449023,
+        "dagostino_p": 8.183925043025289e-19,
+        "normal_at_005": false
+      },
+      "key_passes_p90": {
+        "n": 366,
+        "skew": 0.7889458190451075,
+        "excess_kurtosis": 0.12037975938375922,
+        "shapiro_w": 0.9427890487870345,
+        "shapiro_p": 1.1159477189332419e-10,
+        "dagostino_k2": 31.539085705086034,
+        "dagostino_p": 1.4170153571136944e-07,
+        "normal_at_005": false
+      },
+      "xg_chain_p90": {
+        "n": 366,
+        "skew": 0.5804259932553164,
+        "excess_kurtosis": 0.3213920467091813,
+        "shapiro_w": 0.9759272935633961,
+        "shapiro_p": 8.807048373424079e-06,
+        "dagostino_k2": 20.04405236773197,
+        "dagostino_p": 4.441087509853564e-05,
+        "normal_at_005": false
+      },
+      "xg_buildup_p90": {
+        "n": 366,
+        "skew": 0.8948468514047123,
+        "excess_kurtosis": 1.1098174554534932,
+        "shapiro_w": 0.9528457385639902,
+        "shapiro_p": 1.973798172847174e-09,
+        "dagostino_k2": 47.90464649727139,
+        "dagostino_p": 3.9594802802759774e-11,
+        "normal_at_005": false
+      },
+      "shots_p90": {
+        "n": 366,
+        "skew": 0.8554711777251948,
+        "excess_kurtosis": -0.06006583678526933,
+        "shapiro_w": 0.9158101076247612,
+        "shapiro_p": 1.9364936686767042e-13,
+        "dagostino_k2": 35.59320586520152,
+        "dagostino_p": 1.8665238763817124e-08,
+        "normal_at_005": false
+      },
+      "shots_on_target_p90": {
+        "n": 366,
+        "skew": 1.1072826373070956,
+        "excess_kurtosis": 0.6213850843711706,
+        "shapiro_w": 0.8786985615977483,
+        "shapiro_p": 2.2308751393365756e-16,
+        "dagostino_k2": 57.10953414568346,
+        "dagostino_p": 3.9702899848759234e-13,
+        "normal_at_005": false
+      },
+      "goals_non_penalty_p90": {
+        "n": 366,
+        "skew": 1.6018027260982848,
+        "excess_kurtosis": 3.0130645377584724,
+        "shapiro_w": 0.8108641101245544,
+        "shapiro_p": 2.1983476570788848e-20,
+        "dagostino_k2": 118.0010274036082,
+        "dagostino_p": 2.3790439755559428e-26,
+        "normal_at_005": false
+      },
+      "assists_p90": {
+        "n": 366,
+        "skew": 1.2775719060729138,
+        "excess_kurtosis": 1.6844124412896013,
+        "shapiro_w": 0.8576792395861224,
+        "shapiro_p": 9.15844012472075e-18,
+        "dagostino_k2": 81.16736440312603,
+        "dagostino_p": 2.3699040576651848e-18,
+        "normal_at_005": false
+      },
+      "crosses_p90": {
+        "n": 366,
+        "skew": 1.0577309777033754,
+        "excess_kurtosis": 0.40303759023019126,
+        "shapiro_w": 0.86900837981455,
+        "shapiro_p": 4.889484028629934e-17,
+        "dagostino_k2": 51.58374687725098,
+        "dagostino_p": 6.291173864977628e-12,
+        "normal_at_005": false
+      },
+      "interceptions_p90": {
+        "n": 366,
+        "skew": 0.5756624236804843,
+        "excess_kurtosis": -0.013593365026165483,
+        "shapiro_w": 0.9696872606300637,
+        "shapiro_p": 6.513496779549605e-07,
+        "dagostino_k2": 18.238321587828374,
+        "dagostino_p": 0.00010954657092051216,
+        "normal_at_005": false
+      },
+      "tackles_won_p90": {
+        "n": 366,
+        "skew": 0.7362377059522136,
+        "excess_kurtosis": 0.4602257370079874,
+        "shapiro_w": 0.9634419888429615,
+        "shapiro_p": 6.34565456570626e-08,
+        "dagostino_k2": 30.545422503283945,
+        "dagostino_p": 2.328872859666968e-07,
+        "normal_at_005": false
+      },
+      "fouls_committed_p90": {
+        "n": 366,
+        "skew": 0.6421428514797103,
+        "excess_kurtosis": 0.03250865576860207,
+        "shapiro_w": 0.9653662517933358,
+        "shapiro_p": 1.2673509690646206e-07,
+        "dagostino_k2": 22.130630587982804,
+        "dagostino_p": 1.564568662486676e-05,
+        "normal_at_005": false
+      },
+      "fouls_drawn_p90": {
+        "n": 366,
+        "skew": 0.9474049478688028,
+        "excess_kurtosis": 0.779385794227268,
+        "shapiro_w": 0.9382140955807149,
+        "shapiro_p": 3.3602257174419384e-11,
+        "dagostino_k2": 47.72228849536622,
+        "dagostino_p": 4.337472370119379e-11,
+        "normal_at_005": false
+      },
+      "offsides_p90": {
+        "n": 366,
+        "skew": 2.2896507427574324,
+        "excess_kurtosis": 6.6337669160565405,
+        "shapiro_w": 0.7389231274355955,
+        "shapiro_p": 1.370215494057162e-23,
+        "dagostino_k2": 191.5528614226337,
+        "dagostino_p": 2.5399469485966908e-42,
+        "normal_at_005": false
+      },
+      "cards_yellow_p90": {
+        "n": 366,
+        "skew": 0.6842836326277733,
+        "excess_kurtosis": 0.25090894224864124,
+        "shapiro_w": 0.9625141839221996,
+        "shapiro_p": 4.580215035220185e-08,
+        "dagostino_k2": 25.650193313979756,
+        "dagostino_p": 2.6923486074745996e-06,
+        "normal_at_005": false
+      },
+      "shot_accuracy_pct": {
+        "n": 366,
+        "skew": 0.5712380225865608,
+        "excess_kurtosis": 2.696941499925189,
+        "shapiro_w": 0.9411505820975835,
+        "shapiro_p": 7.210311924052324e-11,
+        "dagostino_k2": 45.342925348199884,
+        "dagostino_p": 1.425308463401889e-10,
+        "normal_at_005": false
+      },
+      "goals_per_shot": {
+        "n": 366,
+        "skew": 2.8927762287436765,
+        "excess_kurtosis": 20.34154869714525,
+        "shapiro_w": 0.7837222500363336,
+        "shapiro_p": 1.094324228995837e-21,
+        "dagostino_k2": 276.87647685263914,
+        "dagostino_p": 7.534196919088306e-61,
+        "normal_at_005": false
+      }
+    },
+    "n_features_rejecting_normality_shapiro_005": 18,
+    "skew_mean_abs": 1.1247197677477256,
+    "skew_max_feature": "goals_per_shot",
+    "skew_max": 2.8927762287436765,
+    "n_features_skew_gt_1": 8,
+    "mardia": {
+      "n": 366,
+      "p": 18,
+      "correlation_condition_number": 313.8529815376895,
+      "skewness_b1p": 150.2884931230834,
+      "skewness_stat": 9167.598080508089,
+      "skewness_df": 1140.0,
+      "skewness_p": 0.0,
+      "kurtosis_b2p": 586.0429629709193,
+      "kurtosis_expected": 360.0,
+      "kurtosis_z": 80.5814893915498,
+      "kurtosis_p": 0.0,
+      "multivariate_normal_rejected": true
+    },
+    "interpretation": "PCA does not require normality, but every principal axis is a variance-weighted combination, so features with heavy right skew let a handful of extreme players pull an axis toward themselves. The numbers here quantify how much of that risk the surviving feature set carries."
+  },
+  "2025-26": {
+    "n_features": 18,
+    "per_feature": {
+      "np_xg_p90": {
+        "n": 372,
+        "skew": 1.752938921281274,
+        "excess_kurtosis": 3.0449261021188754,
+        "shapiro_w": 0.8044942460187421,
+        "shapiro_p": 7.165066565753745e-21,
+        "dagostino_k2": 130.64007334713486,
+        "dagostino_p": 4.284187946091736e-29,
+        "normal_at_005": false
+      },
+      "xa_p90": {
+        "n": 372,
+        "skew": 1.0932690434156487,
+        "excess_kurtosis": 1.5274779131930156,
+        "shapiro_w": 0.9183050671966172,
+        "shapiro_p": 2.440780222266587e-13,
+        "dagostino_k2": 67.42628350668839,
+        "dagostino_p": 2.28332940134645e-15,
+        "normal_at_005": false
+      },
+      "key_passes_p90": {
+        "n": 372,
+        "skew": 0.9904444178498099,
+        "excess_kurtosis": 1.6069232110770653,
+        "shapiro_w": 0.9404460960423503,
+        "shapiro_p": 4.61896466592038e-11,
+        "dagostino_k2": 61.112131545392145,
+        "dagostino_p": 5.366229547456804e-14,
+        "normal_at_005": false
+      },
+      "xg_chain_p90": {
+        "n": 372,
+        "skew": 0.6430122383648358,
+        "excess_kurtosis": 0.3455588024821412,
+        "shapiro_w": 0.9702627498452571,
+        "shapiro_p": 6.758054085265118e-07,
+        "dagostino_k2": 24.22254424589726,
+        "dagostino_p": 5.497197599467199e-06,
+        "normal_at_005": false
+      },
+      "xg_buildup_p90": {
+        "n": 372,
+        "skew": 0.8718977723001882,
+        "excess_kurtosis": 1.358492752623686,
+        "shapiro_w": 0.959624565792436,
+        "shapiro_p": 1.3703425362825286e-08,
+        "dagostino_k2": 50.011886442112655,
+        "dagostino_p": 1.3805649533490872e-11,
+        "normal_at_005": false
+      },
+      "shots_p90": {
+        "n": 372,
+        "skew": 0.7525179059563804,
+        "excess_kurtosis": -0.16427642976661438,
+        "shapiro_w": 0.9388414394882042,
+        "shapiro_p": 3.0355811603130134e-11,
+        "dagostino_k2": 29.68908873658842,
+        "dagostino_p": 3.5735206369728194e-07,
+        "normal_at_005": false
+      },
+      "shots_on_target_p90": {
+        "n": 372,
+        "skew": 1.1028042509501845,
+        "excess_kurtosis": 0.9587347993985844,
+        "shapiro_w": 0.9037250415082481,
+        "shapiro_p": 1.2883481844487074e-14,
+        "dagostino_k2": 61.411910657874216,
+        "dagostino_p": 4.619266715832204e-14,
+        "normal_at_005": false
+      },
+      "goals_non_penalty_p90": {
+        "n": 372,
+        "skew": 1.7436289544426116,
+        "excess_kurtosis": 3.4111442335847366,
+        "shapiro_w": 0.8030788292015363,
+        "shapiro_p": 6.0995615955325116e-21,
+        "dagostino_k2": 133.50274024287953,
+        "dagostino_p": 1.0238782011849372e-29,
+        "normal_at_005": false
+      },
+      "assists_p90": {
+        "n": 372,
+        "skew": 1.6428804927020868,
+        "excess_kurtosis": 4.585199614776568,
+        "shapiro_w": 0.8481580497150468,
+        "shapiro_p": 1.681767595167197e-18,
+        "dagostino_k2": 136.59019576264637,
+        "dagostino_p": 2.186834159087573e-30,
+        "normal_at_005": false
+      },
+      "crosses_p90": {
+        "n": 372,
+        "skew": 1.129110354587321,
+        "excess_kurtosis": 0.6366461981577154,
+        "shapiro_w": 0.8679834918230744,
+        "shapiro_p": 2.963024203593596e-17,
+        "dagostino_k2": 59.70401426737413,
+        "dagostino_p": 1.0850207109414374e-13,
+        "normal_at_005": false
+      },
+      "interceptions_p90": {
+        "n": 372,
+        "skew": 0.5809077522022044,
+        "excess_kurtosis": 0.31835454670231833,
+        "shapiro_w": 0.9711047072006948,
+        "shapiro_p": 9.494381915073625e-07,
+        "dagostino_k2": 20.359944580863647,
+        "dagostino_p": 3.792225972565026e-05,
+        "normal_at_005": false
+      },
+      "tackles_won_p90": {
+        "n": 372,
+        "skew": 0.7146255471526994,
+        "excess_kurtosis": 0.8539332143577019,
+        "shapiro_w": 0.9696990042519386,
+        "shapiro_p": 5.397969720727616e-07,
+        "dagostino_k2": 33.76633632638477,
+        "dagostino_p": 4.653001897947315e-08,
+        "normal_at_005": false
+      },
+      "fouls_committed_p90": {
+        "n": 372,
+        "skew": 0.7016005357606492,
+        "excess_kurtosis": 0.591282378822263,
+        "shapiro_w": 0.9705108583148427,
+        "shapiro_p": 7.466063856616023e-07,
+        "dagostino_k2": 30.09853419245772,
+        "dagostino_p": 2.9119662920333927e-07,
+        "normal_at_005": false
+      },
+      "fouls_drawn_p90": {
+        "n": 372,
+        "skew": 0.766220748695403,
+        "excess_kurtosis": 0.8669747672719179,
+        "shapiro_w": 0.9623339020381201,
+        "shapiro_p": 3.473792626542651e-08,
+        "dagostino_k2": 37.227046437829316,
+        "dagostino_p": 8.246118609231155e-09,
+        "normal_at_005": false
+      },
+      "offsides_p90": {
+        "n": 372,
+        "skew": 1.827320720499731,
+        "excess_kurtosis": 3.3600456908220284,
+        "shapiro_w": 0.7732533281354582,
+        "shapiro_p": 2.4719991047846314e-22,
+        "dagostino_k2": 138.79120241155675,
+        "dagostino_p": 7.2756756168204675e-31,
+        "normal_at_005": false
+      },
+      "cards_yellow_p90": {
+        "n": 372,
+        "skew": 0.8657956621206157,
+        "excess_kurtosis": 0.7174851661583967,
+        "shapiro_w": 0.9419351097308404,
+        "shapiro_p": 6.864145813415309e-11,
+        "dagostino_k2": 42.18433676691312,
+        "dagostino_p": 6.914927955529328e-10,
+        "normal_at_005": false
+      },
+      "shot_accuracy_pct": {
+        "n": 372,
+        "skew": -0.2613412967203038,
+        "excess_kurtosis": 0.16377903522641413,
+        "shapiro_w": 0.975834874415997,
+        "shapiro_p": 7.125338196696062e-06,
+        "dagostino_k2": 4.767418727845653,
+        "dagostino_p": 0.09220790966986017,
+        "normal_at_005": false
+      },
+      "goals_per_shot": {
+        "n": 372,
+        "skew": 1.2788302970023022,
+        "excess_kurtosis": 3.349510477613827,
+        "shapiro_w": 0.8841625455223284,
+        "shapiro_p": 3.920705326367245e-16,
+        "dagostino_k2": 100.07711474842087,
+        "dagostino_p": 1.8557977762363302e-22,
+        "normal_at_005": false
+      }
+    },
+    "n_features_rejecting_normality_shapiro_005": 18,
+    "skew_mean_abs": 1.0399526062224582,
+    "skew_max_feature": "offsides_p90",
+    "skew_max": 1.827320720499731,
+    "n_features_skew_gt_1": 8,
+    "mardia": {
+      "n": 372,
+      "p": 18,
+      "correlation_condition_number": 287.46686508128136,
+      "skewness_b1p": 85.2405567942259,
+      "skewness_stat": 5284.914521242005,
+      "skewness_df": 1140.0,
+      "skewness_p": 0.0,
+      "kurtosis_b2p": 469.84444952448763,
+      "kurtosis_expected": 360.0,
+      "kurtosis_z": 39.47783638909881,
+      "kurtosis_p": 0.0,
+      "multivariate_normal_rejected": true
+    },
+    "interpretation": "PCA does not require normality, but every principal axis is a variance-weighted combination, so features with heavy right skew let a handful of extreme players pull an axis toward themselves. The numbers here quantify how much of that risk the surviving feature set carries."
+  }
+}

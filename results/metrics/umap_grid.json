@@ -1,0 +1,129 @@
+{
+  "2024-25": {
+    "grid": {
+      "n_neighbors": [
+        10,
+        15,
+        30,
+        50
+      ],
+      "min_dist": [
+        0.0,
+        0.1,
+        0.5
+      ]
+    },
+    "n_combinations": 12,
+    "selection_criterion": "highest trustworthiness at k=10 against the standardised 18-feature space",
+    "random_state": 42,
+    "results": [
+      {
+        "n_neighbors": 10,
+        "min_dist": 0.0,
+        "trustworthiness": 0.9336825612123196,
+        "continuity": 0.9287847961148399,
+        "knn_position_purity": 0.7087431693989071,
+        "k": 10
+      },
+      {
+        "n_neighbors": 10,
+        "min_dist": 0.1,
+        "trustworthiness": 0.9309261554531777,
+        "continuity": 0.9316932095445226,
+        "knn_position_purity": 0.7128415300546448,
+        "k": 10
+      },
+      {
+        "n_neighbors": 10,
+        "min_dist": 0.5,
+        "trustworthiness": 0.9218298605427063,
+        "continuity": 0.9440323347598668,
+        "knn_position_purity": 0.7169398907103826,
+        "k": 10
+      },
+      {
+        "n_neighbors": 15,
+        "min_dist": 0.0,
+        "trustworthiness": 0.932207697044815,
+        "continuity": 0.9302362744868766,
+        "knn_position_purity": 0.7021857923497268,
+        "k": 10
+      },
+      {
+        "n_neighbors": 15,
+        "min_dist": 0.1,
+        "trustworthiness": 0.9318218314195957,
+        "continuity": 0.9348074179743224,
+        "knn_position_purity": 0.7038251366120218,
+        "k": 10
+      },
+      {
+        "n_neighbors": 15,
+        "min_dist": 0.5,
+        "trustworthiness": 0.9134421552349103,
+        "continuity": 0.9452133174309925,
+        "knn_position_purity": 0.7073770491803278,
+        "k": 10
+      },
+      {
+        "n_neighbors": 30,
+        "min_dist": 0.0,
+        "trustworthiness": 0.9312200369495568,
+        "continuity": 0.9350958427850924,
+        "knn_position_purity": 0.7021857923497268,
+        "k": 10
+      },
+      {
+        "n_neighbors": 30,
+        "min_dist": 0.1,
+        "trustworthiness": 0.9241512905061465,
+        "continuity": 0.939988151196963,
+        "knn_position_purity": 0.6978142076502732,
+        "k": 10
+      },
+      {
+        "n_neighbors": 30,
+        "min_dist": 0.5,
+        "trustworthiness": 0.9083931619934051,
+        "continuity": 0.9461097729239261,
+        "knn_position_purity": 0.701912568306011,
+        "k": 10
+      },
+      {
+        "n_neighbors": 50,
+        "min_dist": 0.0,
+        "trustworthiness": 0.9272709556215555,
+        "continuity": 0.9362058885432988,
+        "knn_position_purity": 0.6997267759562842,
+        "k": 10
+      },
+      {
+        "n_neighbors": 50,
+        "min_dist": 0.1,
+        "trustworthiness": 0.917938464176859,
+        "continuity": 0.9407746934511978,
+        "knn_position_purity": 0.7051912568306011,
+        "k": 10
+      },
+      {
+        "n_neighbors": 50,
+        "min_dist": 0.5,
+        "trustworthiness": 0.9090542004786293,
+        "continuity": 0.9460388360110069,
+        "knn_position_purity": 0.692896174863388,
+        "k": 10
+      }
+    ],
+    "best": {
+      "n_neighbors": 10,
+      "min_dist": 0.0
+    },
+    "best_trustworthiness": 0.9336825612123196,
+    "trustworthiness_range": [
+      0.9083931619934051,
+      0.9336825612123196
+    ],
+    "trustworthiness_spread": 0.025289399218914488,
+    "season": "2024-25"
+  }
+}
