@@ -1,0 +1,31 @@
+group,stat,flat
+league,,league
+season,,season
+team,,team
+players_used,,players_used
+90s,,90s
+Goals,GA,Goals__GA
+Goals,PKA,Goals__PKA
+Goals,FK,Goals__FK
+Goals,CK,Goals__CK
+Goals,OG,Goals__OG
+Expected,PSxG,Expected__PSxG
+Expected,PSxG/SoT,Expected__PSxG/SoT
+Expected,PSxG+/-,Expected__PSxG+/-
+Expected,/90,Expected__/90
+Launched,Cmp,Launched__Cmp
+Launched,Att,Launched__Att
+Launched,Cmp%,Launched__Cmp%
+Passes,Att (GK),Passes__Att (GK)
+Passes,Thr,Passes__Thr
+Passes,Launch%,Passes__Launch%
+Passes,AvgLen,Passes__AvgLen
+Goal Kicks,Att,Goal Kicks__Att
+Goal Kicks,Launch%,Goal Kicks__Launch%
+Goal Kicks,AvgLen,Goal Kicks__AvgLen
+Crosses,Opp,Crosses__Opp
+Crosses,Stp,Crosses__Stp
+Crosses,Stp%,Crosses__Stp%
+Sweeper,#OPA,Sweeper__#OPA
+Sweeper,#OPA/90,Sweeper__#OPA/90
+Sweeper,AvgDist,Sweeper__AvgDist

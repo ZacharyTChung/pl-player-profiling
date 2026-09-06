@@ -1,0 +1,22 @@
+group,stat,flat
+league,,league
+season,,season
+team,,team
+players_used,,players_used
+Age,,Age
+Playing Time,MP,Playing Time__MP
+Playing Time,Min,Playing Time__Min
+Playing Time,Mn/MP,Playing Time__Mn/MP
+Playing Time,Min%,Playing Time__Min%
+Playing Time,90s,Playing Time__90s
+Starts,Starts,Starts__Starts
+Starts,Mn/Start,Starts__Mn/Start
+Starts,Compl,Starts__Compl
+Subs,Subs,Subs__Subs
+Subs,Mn/Sub,Subs__Mn/Sub
+Subs,unSub,Subs__unSub
+Team Success,PPM,Team Success__PPM
+Team Success,onG,Team Success__onG
+Team Success,onGA,Team Success__onGA
+Team Success,+/-,Team Success__+/-
+Team Success,+/-90,Team Success__+/-90

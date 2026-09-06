@@ -1,0 +1,24 @@
+group,stat,flat
+league,,league
+season,,season
+team,,team
+players_used,,players_used
+Age,,Age
+Poss,,Poss
+Playing Time,MP,Playing Time__MP
+Playing Time,Starts,Playing Time__Starts
+Playing Time,Min,Playing Time__Min
+Playing Time,90s,Playing Time__90s
+Performance,Gls,Performance__Gls
+Performance,Ast,Performance__Ast
+Performance,G+A,Performance__G+A
+Performance,G-PK,Performance__G-PK
+Performance,PK,Performance__PK
+Performance,PKatt,Performance__PKatt
+Performance,CrdY,Performance__CrdY
+Performance,CrdR,Performance__CrdR
+Per 90 Minutes,Gls,Per 90 Minutes__Gls
+Per 90 Minutes,Ast,Per 90 Minutes__Ast
+Per 90 Minutes,G+A,Per 90 Minutes__G+A
+Per 90 Minutes,G-PK,Per 90 Minutes__G-PK
+Per 90 Minutes,G+A-PK,Per 90 Minutes__G+A-PK

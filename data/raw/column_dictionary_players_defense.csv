@@ -1,0 +1,26 @@
+group,stat,flat
+league,,league
+season,,season
+team,,team
+player,,player
+nation,,nation
+pos,,pos
+age,,age
+born,,born
+90s,,90s
+Tackles,Tkl,Tackles__Tkl
+Tackles,TklW,Tackles__TklW
+Tackles,Def 3rd,Tackles__Def 3rd
+Tackles,Mid 3rd,Tackles__Mid 3rd
+Tackles,Att 3rd,Tackles__Att 3rd
+Challenges,Tkl,Challenges__Tkl
+Challenges,Att,Challenges__Att
+Challenges,Tkl%,Challenges__Tkl%
+Challenges,Lost,Challenges__Lost
+Blocks,Blocks,Blocks__Blocks
+Blocks,Sh,Blocks__Sh
+Blocks,Pass,Blocks__Pass
+Int,,Int
+Tkl+Int,,Tkl+Int
+Clr,,Clr
+Err,,Err

@@ -1,0 +1,148 @@
+{
+  "season": "2024-25",
+  "league": "ENG-Premier League",
+  "soccerdata_version": "1.9.1",
+  "retrieved_utc": "2026-09-06T22:10:29.484093+00:00",
+  "tables": {
+    "players_standard": {
+      "rows": 574,
+      "cols": 25,
+      "cached": true
+    },
+    "players_shooting": {
+      "rows": 574,
+      "cols": 19,
+      "cached": true
+    },
+    "players_passing": {
+      "rows": 574,
+      "cols": 29,
+      "cached": true
+    },
+    "players_passing_types": {
+      "rows": 574,
+      "cols": 24,
+      "cached": true
+    },
+    "players_goal_shot_creation": {
+      "rows": 574,
+      "cols": 25,
+      "cached": true
+    },
+    "players_defense": {
+      "rows": 574,
+      "cols": 25,
+      "cached": true
+    },
+    "players_possession": {
+      "rows": 574,
+      "cols": 29,
+      "cached": true
+    },
+    "players_playing_time": {
+      "rows": 702,
+      "cols": 25,
+      "cached": true
+    },
+    "players_misc": {
+      "rows": 574,
+      "cols": 21,
+      "cached": true
+    },
+    "players_keeper": {
+      "rows": 44,
+      "cols": 27,
+      "cached": true
+    },
+    "players_keeper_adv": {
+      "rows": 44,
+      "cols": 34,
+      "cached": true
+    },
+    "teams_standard": {
+      "rows": 20,
+      "cols": 23,
+      "cached": true
+    },
+    "teams_shooting": {
+      "rows": 20,
+      "cols": 15,
+      "cached": true
+    },
+    "teams_passing": {
+      "rows": 20,
+      "cols": 25,
+      "cached": true
+    },
+    "teams_passing_types": {
+      "rows": 20,
+      "cols": 20,
+      "cached": true
+    },
+    "teams_goal_shot_creation": {
+      "rows": 20,
+      "cols": 21,
+      "cached": true
+    },
+    "teams_defense": {
+      "rows": 20,
+      "cols": 21,
+      "cached": true
+    },
+    "teams_possession": {
+      "rows": 20,
+      "cols": 26,
+      "cached": true
+    },
+    "teams_playing_time": {
+      "rows": 20,
+      "cols": 21,
+      "cached": true
+    },
+    "teams_misc": {
+      "rows": 20,
+      "cols": 17,
+      "cached": true
+    },
+    "teams_keeper": {
+      "rows": 20,
+      "cols": 23,
+      "cached": true
+    },
+    "teams_keeper_adv": {
+      "rows": 20,
+      "cols": 30,
+      "cached": true
+    }
+  },
+  "understat": {
+    "rows": 562,
+    "cols": 23,
+    "columns": [
+      "league",
+      "season",
+      "team",
+      "player",
+      "league_id",
+      "season_id",
+      "team_id",
+      "player_id",
+      "position",
+      "matches",
+      "minutes",
+      "goals",
+      "xg",
+      "np_goals",
+      "np_xg",
+      "assists",
+      "xa",
+      "shots",
+      "key_passes",
+      "yellow_cards",
+      "red_cards",
+      "xg_chain",
+      "xg_buildup"
+    ],
+    "cached": false
+  }
+}

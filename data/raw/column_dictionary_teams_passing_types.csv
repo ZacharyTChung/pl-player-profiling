@@ -1,0 +1,21 @@
+group,stat,flat
+league,,league
+season,,season
+team,,team
+players_used,,players_used
+90s,,90s
+Att,,Att
+Pass Types,Live,Pass Types__Live
+Pass Types,Dead,Pass Types__Dead
+Pass Types,FK,Pass Types__FK
+Pass Types,TB,Pass Types__TB
+Pass Types,Sw,Pass Types__Sw
+Pass Types,Crs,Pass Types__Crs
+Pass Types,TI,Pass Types__TI
+Pass Types,CK,Pass Types__CK
+Corner Kicks,In,Corner Kicks__In
+Corner Kicks,Out,Corner Kicks__Out
+Corner Kicks,Str,Corner Kicks__Str
+Outcomes,Cmp,Outcomes__Cmp
+Outcomes,Off,Outcomes__Off
+Outcomes,Blocks,Outcomes__Blocks

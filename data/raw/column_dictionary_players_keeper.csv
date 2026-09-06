@@ -1,0 +1,28 @@
+group,stat,flat
+league,,league
+season,,season
+team,,team
+player,,player
+nation,,nation
+pos,,pos
+age,,age
+born,,born
+Playing Time,MP,Playing Time__MP
+Playing Time,Starts,Playing Time__Starts
+Playing Time,Min,Playing Time__Min
+Playing Time,90s,Playing Time__90s
+Performance,GA,Performance__GA
+Performance,GA90,Performance__GA90
+Performance,SoTA,Performance__SoTA
+Performance,Saves,Performance__Saves
+Performance,Save%,Performance__Save%
+Performance,W,Performance__W
+Performance,D,Performance__D
+Performance,L,Performance__L
+Performance,CS,Performance__CS
+Performance,CS%,Performance__CS%
+Penalty Kicks,PKatt,Penalty Kicks__PKatt
+Penalty Kicks,PKA,Penalty Kicks__PKA
+Penalty Kicks,PKsv,Penalty Kicks__PKsv
+Penalty Kicks,PKm,Penalty Kicks__PKm
+Penalty Kicks,Save%,Penalty Kicks__Save%

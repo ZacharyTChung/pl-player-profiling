@@ -1,0 +1,291 @@
+% references.bib
+% Bibliography for "Unsupervised Learning and Statistical Analysis of Premier
+% League Player Statistics: Data-Driven Role Discovery from the 2024-25 Season"
+%
+% Every entry below was verified this session via WebFetch (a fetched page
+% showing title/authors/venue/year, or a resolved DOI) or WebSearch results
+% that explicitly displayed title, authors, venue, and year. No entry was
+% invented. See the "% verified:" comment above each entry for the exact
+% source checked.
+
+%%% ---------------------------------------------------------------------
+%%% 1. Expected goals (xG): origins, validation, and provider methodology
+%%% ---------------------------------------------------------------------
+
+% verified: WebSearch result text explicitly gave title/author/journal/volume
+% and DOI (https://doi.org/10.14198/jhse.2017.12.proc2.05); DOI resolution
+% via WebFetch confirmed it is a live record (redirects to
+% https://rua.ua.es/handle/10045/68771, the University of Alicante
+% repository that hosts Journal of Human Sport and Exercise).
+@article{rathke2017examination,
+  author  = {Rathke, Alex},
+  title   = {An examination of expected goals and shot efficiency in soccer},
+  journal = {Journal of Human Sport and Exercise},
+  year    = {2017},
+  volume  = {12},
+  number  = {Proc2},
+  doi     = {10.14198/jhse.2017.12.proc2.05},
+  url     = {https://doi.org/10.14198/jhse.2017.12.proc2.05}
+}
+
+% verified: WebFetch of https://ceur-ws.org/Vol-1842/ (the CEUR Workshop
+% Proceedings index page) showing this exact title, the three authors, and
+% the workshop (MLSA 2016, co-located with ECML/PKDD 2016); paper PDF at
+% https://ceur-ws.org/Vol-1842/paper_07.pdf.
+@inproceedings{eggels2016explaining,
+  author    = {Eggels, Harm and van Elk, Ruud and Pechenizkiy, Mykola},
+  title     = {Explaining Soccer Match Outcomes with Goal Scoring Opportunities Predictive Analytics},
+  booktitle = {Proceedings of the 3rd Workshop on Machine Learning and Data Mining for Sports Analytics ({MLSA} 2016), co-located with {ECML/PKDD} 2016},
+  series    = {{CEUR} Workshop Proceedings},
+  volume    = {1842},
+  year      = {2016},
+  url       = {https://ceur-ws.org/Vol-1842/paper_07.pdf}
+}
+
+% verified: WebFetch of https://blogarchive.statsbomb.com/articles/soccer/upgrading-expected-goals/
+% showing exact title "Upgrading Expected Goals", author Dinesh Vatvani,
+% publisher Hudl StatsBomb, and publication date (15 May 2022). Used as the
+% citable data-provider methodological description of an xG model.
+@misc{vatvani2022upgrading,
+  author = {Vatvani, Dinesh},
+  title  = {Upgrading {Expected Goals}},
+  year   = {2022},
+  howpublished = {{StatsBomb} Blog},
+  url    = {https://blogarchive.statsbomb.com/articles/soccer/upgrading-expected-goals/}
+}
+
+%%% ---------------------------------------------------------------------
+%%% 2. Player role / playing-style clustering in football
+%%% ---------------------------------------------------------------------
+
+% verified: WebFetch of https://eprints.qut.edu.au/78124/ showing exact
+% title, full six-author list, venue (IEEE ICDM), year 2014, and DOI
+% 10.1109/ICDM.2014.133.
+@inproceedings{bialkowski2014large,
+  author    = {Bialkowski, Alina and Lucey, Patrick and Carr, Peter and Yue, Yisong and Sridharan, Sridha and Matthews, Iain},
+  title     = {Large-Scale Analysis of Soccer Matches Using Spatiotemporal Tracking Data},
+  booktitle = {Proceedings of the 2014 {IEEE} International Conference on Data Mining ({ICDM})},
+  pages     = {725--730},
+  year      = {2014},
+  doi       = {10.1109/ICDM.2014.133},
+  url       = {https://doi.org/10.1109/ICDM.2014.133}
+}
+
+% verified: WebFetch of dblp record (dblp.org/rec/conf/pkdd/DecroosD19.html)
+% showing exact title, two authors, proceedings (ECML/PKDD 2019, part 3),
+% pages 569-584, and DOI 10.1007/978-3-030-46133-1_34.
+@inproceedings{decroos2019player,
+  author    = {Decroos, Tom and Davis, Jesse},
+  title     = {Player Vectors: Characterizing Soccer Players' Playing Style from Match Event Streams},
+  booktitle = {Machine Learning and Knowledge Discovery in Databases ({ECML PKDD} 2019)},
+  pages     = {569--584},
+  year      = {2019},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-030-46133-1_34},
+  url       = {https://doi.org/10.1007/978-3-030-46133-1_34}
+}
+
+% verified: WebFetch of arXiv:1802.04987 abstract page showing exact title,
+% full six-author list, arXiv id, submission year 2018, and the published
+% journal DOI 10.1145/3343172 (ACM Transactions on Intelligent Systems and
+% Technology, Sept. 2019).
+@article{pappalardo2019playerank,
+  author  = {Pappalardo, Luca and Cintia, Paolo and Ferragina, Paolo and Massucco, Emanuele and Pedreschi, Dino and Giannotti, Fosca},
+  title   = {{PlayeRank}: Data-driven Performance Evaluation and Player Ranking in Soccer via a Machine Learning Approach},
+  journal = {ACM Transactions on Intelligent Systems and Technology},
+  volume  = {10},
+  number  = {5},
+  year    = {2019},
+  doi     = {10.1145/3343172},
+  url     = {https://doi.org/10.1145/3343172},
+  note    = {arXiv:1802.04987}
+}
+
+% verified: WebFetch of arXiv:1809.05173 abstract page showing exact title,
+% two authors (Bart Aalbers, Jan Van Haaren), arXiv id, and submission year
+% 2018.
+@misc{aalbers2019distinguishing,
+  author = {Aalbers, Bart and Van Haaren, Jan},
+  title  = {Distinguishing Between Roles of Football Players in Play-by-play Match Event Data},
+  year   = {2018},
+  eprint = {1809.05173},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url    = {https://arxiv.org/abs/1809.05173}
+}
+
+%%% ---------------------------------------------------------------------
+%%% 3. Methods
+%%% ---------------------------------------------------------------------
+
+% verified: WebFetch of arXiv:1802.03426 abstract page showing exact title,
+% three authors, arXiv id, and submission year 2018.
+@misc{mcinnes2018umap,
+  author = {McInnes, Leland and Healy, John and Melville, James},
+  title  = {{UMAP}: Uniform Manifold Approximation and Projection for Dimension Reduction},
+  year   = {2018},
+  eprint = {1802.03426},
+  archivePrefix = {arXiv},
+  primaryClass  = {stat.ML},
+  url    = {https://arxiv.org/abs/1802.03426}
+}
+
+% verified: WebFetch of https://jmlr.org/papers/v9/vandermaaten08a.html
+% showing exact title, two authors, journal (JMLR), volume 9, pages
+% 2579-2605, year 2008.
+@article{vandermaaten2008visualizing,
+  author  = {van der Maaten, Laurens and Hinton, Geoffrey},
+  title   = {Visualizing Data using t-{SNE}},
+  journal = {Journal of Machine Learning Research},
+  volume  = {9},
+  pages   = {2579--2605},
+  year    = {2008},
+  url     = {https://jmlr.org/papers/v9/vandermaaten08a.html}
+}
+
+% verified: WebSearch results showing exact title, three authors (Campello,
+% Moulavi, Sander), venue (PAKDD 2013, LNCS vol. 7819), pages 160-172, and
+% DOI 10.1007/978-3-642-37456-2_14 (Springer chapter page confirmed the same
+% DOI in the search snippet).
+@inproceedings{campello2013density,
+  author    = {Campello, Ricardo J. G. B. and Moulavi, Davoud and Sander, J{\"o}rg},
+  title     = {Density-Based Clustering Based on Hierarchical Density Estimates},
+  booktitle = {Advances in Knowledge Discovery and Data Mining ({PAKDD} 2013)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {7819},
+  pages     = {160--172},
+  year      = {2013},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-642-37456-2_14},
+  url       = {https://doi.org/10.1007/978-3-642-37456-2_14}
+}
+
+% verified: WebSearch result (Wiley Online Library abstract page) showing
+% exact title, three authors, journal ({JRSS-B}), volume 63, issue 2, pages
+% 411-423, year 2001, and DOI 10.1111/1467-9868.00293.
+@article{tibshirani2001estimating,
+  author  = {Tibshirani, Robert and Walther, Guenther and Hastie, Trevor},
+  title   = {Estimating the Number of Clusters in a Data Set via the Gap Statistic},
+  journal = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  volume  = {63},
+  number  = {2},
+  pages   = {411--423},
+  year    = {2001},
+  doi     = {10.1111/1467-9868.00293},
+  url     = {https://doi.org/10.1111/1467-9868.00293}
+}
+
+% verified: WebSearch results (ACM DL and ResearchGate listings) showing
+% exact title, author (Rousseeuw), journal (Journal of Computational and
+% Applied Mathematics), volume 20, pages 53-65, year 1987, and DOI
+% 10.1016/0377-0427(87)90125-7.
+@article{rousseeuw1987silhouettes,
+  author  = {Rousseeuw, Peter J.},
+  title   = {Silhouettes: A Graphical Aid to the Interpretation and Validation of Cluster Analysis},
+  journal = {Journal of Computational and Applied Mathematics},
+  volume  = {20},
+  pages   = {53--65},
+  year    = {1987},
+  doi     = {10.1016/0377-0427(87)90125-7},
+  url     = {https://doi.org/10.1016/0377-0427(87)90125-7}
+}
+
+% verified: WebFetch of the NeurIPS proceedings abstract page
+% (proceedings.neurips.cc/paper_files/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html)
+% showing exact title, two authors, and venue/year (NIPS 2017).
+@inproceedings{lundberg2017unified,
+  author    = {Lundberg, Scott M. and Lee, Su-In},
+  title     = {A Unified Approach to Interpreting Model Predictions},
+  booktitle = {Advances in Neural Information Processing Systems 30 (NeurIPS 2017)},
+  year      = {2017},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html},
+  note      = {arXiv:1705.07874}
+}
+
+% verified: WebSearch result showing exact title, full author list, journal
+% (JMLR), volume 12, pages 2825-2830, year 2011; JMLR PDF url confirmed
+% (jmlr.org/papers/volume12/pedregosa11a/pedregosa11a.pdf).
+@article{pedregosa2011scikit,
+  author  = {Pedregosa, Fabian and Varoquaux, Ga{\"e}l and Gramfort, Alexandre and Michel, Vincent and Thirion, Bertrand and Grisel, Olivier and Blondel, Mathieu and Prettenhofer, Peter and Weiss, Ron and Dubourg, Vincent and Vanderplas, Jake and Passos, Alexandre and Cournapeau, David and Brucher, Matthieu and Perrot, Matthieu and Duchesnay, {\'E}douard},
+  title   = {Scikit-learn: Machine Learning in {P}ython},
+  journal = {Journal of Machine Learning Research},
+  volume  = {12},
+  pages   = {2825--2830},
+  year    = {2011},
+  url     = {https://jmlr.org/papers/volume12/pedregosa11a/pedregosa11a.pdf}
+}
+
+% verified: WebSearch result showing exact title, two authors (Hubert,
+% Arabie), journal (Journal of Classification), volume 2, pages 193-218,
+% year 1985, and DOI 10.1007/BF01908075.
+@article{hubert1985comparing,
+  author  = {Hubert, Lawrence and Arabie, Phipps},
+  title   = {Comparing Partitions},
+  journal = {Journal of Classification},
+  volume  = {2},
+  pages   = {193--218},
+  year    = {1985},
+  doi     = {10.1007/BF01908075},
+  url     = {https://doi.org/10.1007/BF01908075}
+}
+
+% verified: WebSearch result (ACM DL listing) showing exact title, three
+% authors (Liu, Ting, Zhou), venue (2008 IEEE ICDM), pages 413-422, year
+% 2008, and DOI 10.1109/ICDM.2008.17.
+@inproceedings{liu2008isolation,
+  author    = {Liu, Fei Tony and Ting, Kai Ming and Zhou, Zhi-Hua},
+  title     = {Isolation Forest},
+  booktitle = {Proceedings of the 2008 Eighth {IEEE} International Conference on Data Mining ({ICDM})},
+  pages     = {413--422},
+  year      = {2008},
+  publisher = {IEEE},
+  doi       = {10.1109/ICDM.2008.17},
+  url       = {https://doi.org/10.1109/ICDM.2008.17}
+}
+
+% verified: WebFetch of the PDF at
+% https://efron.ckirby.su.domains/other/Article1977.pdf (read directly as an
+% image), which visually confirmed the exact title "Stein's Paradox in
+% Statistics", authors Bradley Efron and Carl Morris, and starting page 119;
+% venue/volume/issue (Scientific American 236(5)) corroborated by WebSearch
+% snippet. Used as the citable source for empirical Bayes / James-Stein
+% shrinkage.
+@article{efron1977steins,
+  author  = {Efron, Bradley and Morris, Carl},
+  title   = {Stein's Paradox in Statistics},
+  journal = {Scientific American},
+  volume  = {236},
+  number  = {5},
+  pages   = {119--127},
+  year    = {1977}
+}
+
+%%% ---------------------------------------------------------------------
+%%% 4. Data provenance
+%%% ---------------------------------------------------------------------
+
+% verified: WebSearch results for fbref.com / sports-reference.com showing
+% the exact page title "Football Statistics and History | FBref.com", the
+% publisher (the Sports-Reference.com / Stathead crew), and repeated
+% confirmation that FBref's advanced statistics are sourced from StatsBomb
+% (e.g. "FBref carries a wide array of advanced stats powered by Statsbomb").
+@misc{fbref2026,
+  author       = {{Sports Reference LLC}},
+  title        = {{FBref.com}: Football Statistics and History},
+  year         = {2026},
+  howpublished = {\url{https://fbref.com/en/}},
+  note         = {Advanced statistics on {FBref} (passing, shot-creation, possession, etc.) are sourced from {StatsBomb}}
+}
+
+% verified: WebFetch of https://github.com/probberechts/soccerdata (README:
+% exact repository owner/name, description, license) and WebFetch of
+% https://pypi.org/project/soccerdata/ and its release-history page
+% confirming author Pieter Robberechts, current version 1.9.1, and its
+% release date (24 Jul 2026).
+@software{robberechts2026soccerdata,
+  author  = {Robberechts, Pieter},
+  title   = {soccerdata: A Collection of Scrapers for Gathering Soccer Data},
+  year    = {2026},
+  version = {1.9.1},
+  url     = {https://github.com/probberechts/soccerdata}
+}

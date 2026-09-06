@@ -1,0 +1,48 @@
+[project]
+name = "pl-player-profiling"
+version = "0.1.0"
+description = "Unsupervised role discovery from Premier League player statistics (FBref)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+authors = [
+    { name = "Zachary Chung" },
+    { name = "Christian Chung" },
+]
+dependencies = [
+    # Pinned to 1.9.1: it is the only line that clears Cloudflare (seleniumbase driver).
+    # 1.9.x dropped 6 season stat tables (passing, passing_types, goal_shot_creation,
+    # defense, possession, keeper_adv); src/ingest.py restores them via subclass.
+    "soccerdata==1.9.1",
+    "pandas>=2.2,<3.0",
+    "numpy>=1.26",
+    "numba>=0.60",
+    "scipy>=1.13",
+    "scikit-learn>=1.5",
+    "umap-learn>=0.5.6",
+    "lightgbm>=4.5",
+    "shap>=0.46",
+    "matplotlib>=3.9",
+    "statsmodels>=0.14",
+    "pyarrow>=17.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.uv]
+package = false

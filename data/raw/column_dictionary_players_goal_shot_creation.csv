@@ -1,0 +1,26 @@
+group,stat,flat
+league,,league
+season,,season
+team,,team
+player,,player
+nation,,nation
+pos,,pos
+age,,age
+born,,born
+90s,,90s
+SCA,SCA,SCA__SCA
+SCA,SCA90,SCA__SCA90
+SCA Types,PassLive,SCA Types__PassLive
+SCA Types,PassDead,SCA Types__PassDead
+SCA Types,TO,SCA Types__TO
+SCA Types,Sh,SCA Types__Sh
+SCA Types,Fld,SCA Types__Fld
+SCA Types,Def,SCA Types__Def
+GCA,GCA,GCA__GCA
+GCA,GCA90,GCA__GCA90
+GCA Types,PassLive,GCA Types__PassLive
+GCA Types,PassDead,GCA Types__PassDead
+GCA Types,TO,GCA Types__TO
+GCA Types,Sh,GCA Types__Sh
+GCA Types,Fld,GCA Types__Fld
+GCA Types,Def,GCA Types__Def
