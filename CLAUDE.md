@@ -96,7 +96,12 @@ tests/               preprocess, features, and figure/macro existence checks
 
 - Python **3.12.14**, managed by `uv`. The system Python (3.14) cannot run this project.
 - `brew install libomp` is required for LightGBM on Apple Silicon.
-- MacTeX (`brew install --cask mactex-no-gui`) is required for the paper build.
+- A TeX distribution is required for the paper build. This repository was built against
+  **TinyTeX**, installed per user with no administrator rights:
+  `curl -sL https://yihui.org/tinytex/install-bin-unix.sh | sh`, followed by
+  `tlmgr install booktabs siunitx natbib caption subcaption hyperref geometry cm-super multirow`.
+  The Makefile adds `~/Library/TinyTeX/bin/universal-darwin` to PATH automatically. A
+  system wide MacTeX install works equally well and takes precedence when present.
 
 ## Critical decision: the soccerdata version problem
 
@@ -135,19 +140,18 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
 - [x] Phase 0: scaffolding, uv env, feasibility gate passed, soccerdata problem resolved
 - [x] Phase 1: ingestion complete (44 FBref parquet tables + 2 Understat tables, both seasons)
 - [x] Phase 12: literature, 19 verified references (ran early, in parallel)
-- [ ] Phase 2: preprocessing
-- [ ] Phase 3: descriptives
-- [ ] Phase 4: dimensionality reduction
-- [ ] Phase 5: clustering and validation
-- [ ] Phase 6: archetypes
-- [ ] Phase 7: supervised validation
-- [ ] Phase 8: goalkeepers
-- [ ] Phase 9: team signatures
-- [ ] Phase 10: novel analyses
-- [ ] Phase 11: figures and tables
-- [ ] Phase 12: literature
-- [ ] Phase 13: paper
-- [ ] Phase 14: verification and handoff
+- [x] Phase 2: preprocessing
+- [x] Phase 3: descriptives
+- [x] Phase 4: dimensionality reduction
+- [x] Phase 5: clustering and validation
+- [x] Phase 6: archetypes
+- [x] Phase 7: supervised validation
+- [x] Phase 8: goalkeepers
+- [x] Phase 9: team signatures
+- [x] Phase 10: novel analyses
+- [x] Phase 11: figures and tables
+- [x] Phase 13: paper
+- [ ] Phase 14: verification and handoff (in progress)
 
 ## Analyses deliberately skipped or forced out by the data
 

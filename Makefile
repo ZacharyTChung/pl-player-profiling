@@ -11,6 +11,12 @@ SHELL     := /bin/bash
 PY        := uv run python
 STAMPS    := .stamps
 
+# TinyTeX installs per user with no administrator rights. If it is present, put it on
+# PATH so the paper builds without the caller having to arrange that. A system TeX such
+# as MacTeX still takes precedence when one is already on PATH.
+TINYTEX   := $(HOME)/Library/TinyTeX/bin/universal-darwin
+export PATH := $(PATH):$(TINYTEX)
+
 # Pin the timestamp LaTeX embeds so repeated builds differ only where content differs.
 export SOURCE_DATE_EPOCH := 1735689600
 
@@ -115,7 +121,10 @@ TEX_SOURCES := paper/main.tex $(wildcard paper/sections/*.tex) paper/references.
 
 paper/main.pdf: $(TEX_SOURCES) results/macros.tex
 	@command -v latexmk >/dev/null 2>&1 || { \
-	  echo "latexmk not found. Install MacTeX:  brew install --cask mactex-no-gui"; exit 1; }
+	  echo "latexmk not found. Install a TeX distribution, either"; \
+	  echo "  brew install --cask mactex-no-gui     (system wide, needs sudo)"; \
+	  echo "  curl -sL https://yihui.org/tinytex/install-bin-unix.sh | sh   (per user)"; \
+	  exit 1; }
 	@.claude/hooks/check_prose.sh
 	$(PY) -m pytest tests/test_results_exist.py -q
 	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex

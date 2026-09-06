@@ -282,16 +282,19 @@ def table_feature_dictionary() -> None:
 def table_umap_grid(grid: dict | None) -> None:
     if not grid:
         return
-    season = dig(grid, config.SEASON_PRIMARY) or grid
+    season = season_block(grid, config.SEASON_PRIMARY) or grid
     entries = None
-    for key in ("grid", "results", "configurations"):
-        if isinstance(season, dict) and key in season:
-            entries = season[key]
+    # "grid" holds the swept parameter values, not the outcomes, so it must not be
+    # mistaken for the results list.
+    for key in ("results", "configurations", "runs"):
+        candidate = dig(season, key)
+        if isinstance(candidate, list) and candidate and isinstance(candidate[0], dict):
+            entries = candidate
             break
     if entries is None and isinstance(season, list):
         entries = season
     if not entries:
-        return
+        raise ValueError("umap_grid.json contains no per-configuration results list")
 
     rows = []
     for e in entries:
@@ -442,7 +445,10 @@ def table_cluster_membership() -> None:
         return
     df = pd.read_parquet(path).sort_values(["position_group", "archetype_name", "player"])
     lines = [
-        r"\begin{longtable}{llllr}",
+        r"\small",
+        # Fixed-width wrapping columns: archetype names run to several words and would
+        # otherwise push the table well past the text block.
+        r"\begin{longtable}{p{3.4cm}p{2.5cm}p{1.0cm}p{5.0cm}r}",
         r"\caption{Cluster membership for every eligible outfield player in the primary "
         r"season.}\\",
         r"\label{tab:membership}\\",

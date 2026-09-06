@@ -133,3 +133,27 @@ def test_all_generated_figures_are_referenced() -> None:
     generated = {p.stem for p in config.FIGURES.glob("*.pdf")}
     orphans = sorted(generated - refs)
     assert not orphans, f"figures generated but never referenced by the paper: {orphans}"
+
+
+def test_every_input_fragment_exists() -> None:
+    """Every table fragment the paper inputs must have been generated.
+
+    A missing fragment otherwise surfaces as an emergency stop deep inside the LaTeX
+    run, which is a much worse way to find out than a failing test.
+    """
+    body = _strip_comments(_tex_bodies())
+    inputs = re.findall(r"\\input\{([^}]+)\}", body)
+    missing = []
+    for ref in inputs:
+        name = ref.strip()
+        if not name.endswith(".tex"):
+            name += ".tex"
+        candidates = [
+            config.PAPER / name,
+            (config.PAPER / name).resolve(),
+            config.RESULTS / name.split("/")[-1],
+            config.TABLES / name.split("/")[-1],
+        ]
+        if not any(c.exists() for c in candidates):
+            missing.append(ref)
+    assert not missing, f"table fragments the paper inputs but which were not generated: {missing}"
