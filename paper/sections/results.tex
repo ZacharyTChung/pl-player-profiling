@@ -267,3 +267,292 @@ finding, for the reasons given above.
   \caption{Goalkeeper composites and the partition that the validation checks reject.}
   \label{fig:keeperpanel}
 \end{figure}
+
+\subsection{Archetypes}
+\label{sec:results:archetypes}
+
+Because the selection rule returned two clusters in each position group, the study
+describes six outfield archetypes rather than the richer taxonomy the design anticipated.
+Their centroid profiles are shown in Figure~\ref{fig:archetypeprofiles} and their radar
+comparisons in Figure~\ref{fig:radarpanels}. Names were assigned only after inspecting the
+distinguishing features and the member players, and the justification for each is
+reproduced from the generated record rather than composed for the paper.
+
+Among defenders the split separates \NDFZero{} players with no positive attacking
+signature at all from \NDFOne{} whose key passes, assists, expected assists and crosses
+all sit around one standard deviation above the defensive mean. The first group is named
+for what it does not do, because every one of its eight distinguishing features is
+negative and its largest positive deviation is negligible. The second corresponds closely
+to full backs and wing backs. Among midfielders the division is the cleanest in the study,
+separating \NMFZero{} players whose only positive deviations are defensive or disciplinary
+from \NMFOne{} whose shooting and creation measures are all elevated. Among forwards the
+split distinguishes \NFWZero{} central players who shoot from \NFWOne{} wide players who
+cross and create.
+
+One structural property must be stated because it limits how much the six profiles can be
+read as independent. Features are standardised within position group before clustering, so
+with two clusters the two centroids in each group are necessarily anti-parallel: their
+size-weighted sum is zero. Each position group therefore yields two ends of a single axis
+rather than two independently shaped profiles, which is why the two members of each pair
+mirror one another so exactly. The axis is real and the ordering along it is informative,
+but the six archetypes represent three axes, not six independent types.
+
+Outlier analysis is reported in Figure~\ref{fig:outliers}. The isolation forest and the
+Mahalanobis distance agree closely, which is reassuring given that one is a partition
+method and the other a distance method.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{archetype_profiles.pdf}
+  \caption{Centroid deviation of each archetype from its position group mean, across the
+  full feature set. Within each position group the two profiles are necessarily mirror
+  images, since the features are standardised within group before clustering.}
+  \label{fig:archetypeprofiles}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{radar_panel_DF.pdf}
+    \caption{Defenders.}
+    \label{fig:radardf}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{radar_panel_MF.pdf}
+    \caption{Midfielders.}
+    \label{fig:radarmf}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{radar_panel_FW.pdf}
+    \caption{Forwards.}
+    \label{fig:radarfw}
+  \end{subfigure}
+  \caption{Archetype radars on fixed axes within each position group.}
+  \label{fig:radarpanels}
+\end{figure}
+
+\subsection{What a supervised model sees}
+\label{sec:results:supervised}
+
+The clustering results leave one question open: are the surviving features too weak to
+carry positional information at all, or do they carry it while the clustering chooses to
+partition along a different axis? A supervised model settles it. Predicting the listed
+position group from the same \NFeatures{} features, gradient boosting reaches an accuracy
+of \LGBMAccuracy{} and a macro F1 of \LGBMMacroF{}, and logistic regression reaches
+\LogitAccuracy{} and \LogitMacroF{}, against a majority class baseline of
+\BaselineAccuracy{} and \BaselineMacroF{}. The features clearly do carry position, so the
+weak agreement between clusters and positions reflects the clustering finding a different
+and equally real axis, not an empty feature set. The confusion is almost entirely between
+adjacent groups, as Figure~\ref{fig:confusion} shows, and forwards are the weakest class.
+
+The SHAP decomposition in Figures~\ref{fig:shapbeeswarm} and \ref{fig:shapbyclass} carries
+a finding that follows directly from the withdrawal. With possession and passing volume
+gone, positions are identified largely by absence. Defenders are recognised by low
+shooting and low key passes, forwards by low interceptions, and midfielders by an
+intermediate profile on both. A classifier of this kind, trained before January 2026,
+would have identified a defender by what he did with the ball. It now identifies him by
+what he does not do.
+
+Players the classifier places in the wrong group overlap significantly with the players
+the clustering flagged as hybrids. The overlap rate is \OverlapLogit{} for logistic
+regression at an enrichment of \EnrichmentLogit{} over independence, and
+\OverlapLGBM{} at an enrichment of \EnrichmentLGBM{} for gradient boosting. The
+enrichment is modest because the hybrid flag is itself broad, covering \NHybridPlayers{}
+of \NEligiblePrimary{} players, so this is corroboration rather than a strong result.
+
+The finishing above role regression illustrates a hazard worth recording. Predicting
+non-penalty expected goals per ninety from non-shooting behaviour returns a cross
+validated coefficient of determination of \FinishingRSq{}. An earlier specification that
+also included xGChain returned \FinishingRSqLeaky{}, which looks far better and is in fact
+circular: Understat credits xGChain for possessions the player finished himself, so the
+difference between xGChain and xGBuildup contains the target and correlates with it at
+\FinishingLeakCorr{}. The apparently strong model was reconstructing the outcome rather
+than predicting it. Even at the honest value, roughly half the variance is unexplained, so
+the residual leaderboard in Figure~\ref{fig:finishing} is presented as an illustration and
+not as a measurement of finishing ability.
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{confusion_matrix.pdf}
+    \caption{Confusion between listed positions.}
+    \label{fig:confusion}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{shap_by_class.pdf}
+    \caption{Feature importance per position.}
+    \label{fig:shapbyclass}
+  \end{subfigure}
+  \caption{Supervised validation of the surviving feature set.}
+  \label{fig:supervised}
+\end{figure}
+
+\subsection{Team signatures}
+\label{sec:results:teams}
+
+Aggregating players into clubs produces the one result in this study that is both strong
+and stable. The minutes-weighted position of a club's outfield players on the first
+principal component correlates with final league position at a Spearman coefficient of
+\TeamPCOneRho{} in the primary season and \TeamPCOneRhoRepl{} in the replication season,
+which is close to an exact reproduction. Since the first component is essentially
+attacking involvement, this says that clubs whose players collectively shoot and create
+more finish higher, which is unsurprising in itself, but the near identical coefficient
+across two independent seasons shows the team level summary is measuring something stable
+even where the player level partitions are not.
+
+Hierarchical clustering on archetype composition groups the \NTeams{} clubs into
+\NStyleGroups{} style families, shown in Figure~\ref{fig:dendrogram}, with composition by
+club in Figure~\ref{fig:composition}. Figure~\ref{fig:teampanels} places each club's
+players in the shared embedding against the rest of the league, which makes squad shape
+legible in a way that a composition bar cannot: clubs differ visibly in how far their
+defenders sit toward the midfield region.
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{team_dendrogram.pdf}
+    \caption{Style families.}
+    \label{fig:dendrogram}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{team_composition.pdf}
+    \caption{Archetype composition by club.}
+    \label{fig:composition}
+  \end{subfigure}
+  \caption{Club stylistic signatures, ordered by final league position.}
+  \label{fig:teamsignatures}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth]{team_panels.pdf}
+  \caption{Each club's outfield players highlighted in the shared embedding, with the rest
+  of the league in grey. Axes are shared across all twenty panels.}
+  \label{fig:teampanels}
+\end{figure}
+
+\subsection{Similarity, replication and noise}
+\label{sec:results:novel}
+
+\subsubsection{Player similarity}
+Nearest neighbour search within position group recovers football sense for players whose
+roles are defined by the surviving statistics, and fails informatively for players whose
+roles are not. Full backs return full backs, penalty box forwards return penalty box
+forwards, and centre backs return centre backs. The instructive failures are the
+midfielders. A holding midfielder's nearest neighbours are creative attacking midfielders,
+because with no tackles by pitch third, no blocks, no clearances, no pressures and no
+passing volume, the only things left that distinguish him are his set piece deliveries and
+key passes. The metric finds the players who share that signature and misses the entire
+defensive half of his job. An inverted full back returns three centre backs for the same
+reason, since the role is defined by possession behaviour that no longer exists in the
+data. Similarity scores among centre backs are systematically the lowest in the table,
+which is the same feature poverty appearing as an inability to tell defenders apart at
+all. Figure~\ref{fig:similarity} shows the structure.
+
+\subsubsection{Cross-season replication}
+\NCommonPlayers{} players are eligible in both seasons. The declared rule independently
+selects the same number of clusters in every scope in both seasons, so the structure
+replicates. Membership replicates only partly. The adjusted Rand index between seasons is
+\CrossSeasonARIGlobal{} globally, with \CrossSeasonChangedGlobal{} players changing
+cluster, and within position group it falls to \CrossSeasonARIDF{} for defenders,
+\CrossSeasonARIMF{} for midfielders and \CrossSeasonARIFW{} for forwards. The within group
+figures are worse than the bootstrap stability of Section~\ref{sec:results:clustering},
+which is what would be expected if the within group splits are finer than the data can
+reliably support. Figure~\ref{fig:crossseason} shows the transitions.
+
+\subsubsection{Sensitivity to sampling noise}
+\label{sec:results:shrinkage}
+Empirical Bayes shrinkage toward the position group mean, with the degree of shrinkage set
+by minutes played, provides the sharpest test of whether the partitions describe playing
+roles or sampling noise. Shrinkage is substantial rather than cosmetic, and the results
+divide cleanly.
+
+The global partition survives. Only \ShrinkChangedGlobal{} of \NEligiblePrimary{} players
+change cluster, the adjusted Rand index between the original and shrunken partitions is
+\ShrinkARIGlobal{}, the selected number of clusters is unchanged, and the rate at which
+players move falls monotonically with minutes played, exactly as the noise account
+predicts.
+
+The within group partitions do not survive. The adjusted Rand index falls to
+\ShrinkARIDF{} for defenders, with \ShrinkChangedDF{} of \NDFPrimary{} moving, and to
+\ShrinkARIFW{} for forwards, while midfielders retain \ShrinkARIMF{}. The mechanism is
+visible in the estimated variance components: several features are assigned an estimated
+between-player variance of zero within a position group, meaning the model attributes
+their entire observed spread to sampling noise and collapses them to the group mean,
+removing them from the clustering altogether. Shot accuracy retains very little
+reliability, because its true spread between players is small relative to the noise in
+estimating it from a season of shots.
+
+This matters because the scopes that dissolve under shrinkage are the same ones that had
+weak bootstrap stability and weak cross-season replication. Three independent lines of
+evidence point to the same conclusion, which is stated plainly here: the global division
+between attacking and defensive involvement is a real property of players, while the finer
+divisions within the defender and forward groups are substantially a description of
+sampling noise and should not be used to characterise individual players.
+Figures~\ref{fig:shrinkage} and \ref{fig:shrinkageminutes} show the effect.
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{similarity_heatmap.pdf}
+    \caption{Nearest neighbour similarity.}
+    \label{fig:similarity}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{cross_season_transitions.pdf}
+    \caption{Between-season transitions.}
+    \label{fig:crossseason}
+  \end{subfigure}
+  \caption{Similarity structure and cross-season replication.}
+  \label{fig:novelpanel}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{shrinkage_effect.pdf}
+    \caption{Effect of shrinkage on assignments.}
+    \label{fig:shrinkage}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{shrinkage_by_minutes.pdf}
+    \caption{Assignment changes by minutes played.}
+    \label{fig:shrinkageminutes}
+  \end{subfigure}
+  \caption{Empirical Bayes shrinkage as a test of whether the partitions describe roles or
+  noise.}
+  \label{fig:shrinkagepanel}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{outliers_scatter.pdf}
+    \caption{Outliers within position group.}
+    \label{fig:outliers}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{finishing_above_role.pdf}
+    \caption{Residuals from the role model.}
+    \label{fig:finishing}
+  \end{subfigure}
+  \caption{Unusual players, and the residual leaderboard that should not be read as a
+  measurement of finishing ability.}
+  \label{fig:outlierspanel}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.85\textwidth]{shap_beeswarm.pdf}
+  \caption{Global SHAP values for the gradient boosted position classifier. Shooting
+  volume and interceptions carry most of the signal, so a player's position is now
+  identified largely by the actions he does not perform.}
+  \label{fig:shapbeeswarm}
+\end{figure}

@@ -33,6 +33,30 @@
           },
           "rationale": "The unfiltered pool keeps the low-minute players that config.MIN_MINUTES excludes. They carry little weight on the prior mean but they are the observations that identify the sampling variance slope."
         },
+        "degenerate_features": {
+          "DF": {
+            "features_with_zero_between_player_variance": [
+              "assists_p90",
+              "cards_yellow_p90",
+              "goals_per_shot"
+            ],
+            "meaning": "The moment regression attributes all observed spread in this feature to sampling noise, so every player in the group receives the group mean and the feature becomes constant within the group. It then carries no within-group information at all after re-standardisation."
+          },
+          "MF": {
+            "features_with_zero_between_player_variance": [
+              "cards_yellow_p90",
+              "goals_per_shot"
+            ],
+            "meaning": "The moment regression attributes all observed spread in this feature to sampling noise, so every player in the group receives the group mean and the feature becomes constant within the group. It then carries no within-group information at all after re-standardisation."
+          },
+          "FW": {
+            "features_with_zero_between_player_variance": [
+              "interceptions_p90",
+              "cards_yellow_p90"
+            ],
+            "meaning": "The moment regression attributes all observed spread in this feature to sampling noise, so every player in the group receives the group mean and the feature becomes constant within the group. It then carries no within-group information at all after re-standardisation."
+          }
+        },
         "by_group": {
           "DF": {
             "np_xg_p90": {
@@ -1033,6 +1057,7 @@
             "adjusted_rand_index": 0.9453,
             "n_changed": 5,
             "pct_changed": 1.37,
+            "verdict": "survives",
             "cluster_sizes_original": {
               "0": 243,
               "1": 123
@@ -1051,6 +1076,7 @@
             "adjusted_rand_index": 0.453,
             "n_changed": 21,
             "pct_changed": 15.44,
+            "verdict": "dissolves",
             "cluster_sizes_original": {
               "0": 98,
               "1": 38
@@ -1069,6 +1095,7 @@
             "adjusted_rand_index": 0.713,
             "n_changed": 14,
             "pct_changed": 7.73,
+            "verdict": "partly_survives",
             "cluster_sizes_original": {
               "0": 94,
               "1": 87
@@ -1087,6 +1114,7 @@
             "adjusted_rand_index": 0.4424,
             "n_changed": 8,
             "pct_changed": 16.33,
+            "verdict": "dissolves",
             "cluster_sizes_original": {
               "0": 30,
               "1": 19
@@ -1100,29 +1128,37 @@
         "by_minutes_bin": {
           "450-900": {
             "n": 70,
-            "n_changed": 2,
-            "pct_changed": 2.86,
+            "n_changed_global": 2,
+            "pct_changed_global": 2.86,
+            "n_changed_within_group": 10,
+            "pct_changed_within_group": 14.29,
             "mean_shrinkage_weight": 0.4148,
             "median_minutes": 696.0
           },
           "900-1500": {
             "n": 76,
-            "n_changed": 2,
-            "pct_changed": 2.63,
+            "n_changed_global": 2,
+            "pct_changed_global": 2.63,
+            "n_changed_within_group": 9,
+            "pct_changed_within_group": 11.84,
             "mean_shrinkage_weight": 0.5067,
             "median_minutes": 1162.5
           },
           "1500-2200": {
             "n": 93,
-            "n_changed": 1,
-            "pct_changed": 1.08,
+            "n_changed_global": 1,
+            "pct_changed_global": 1.08,
+            "n_changed_within_group": 10,
+            "pct_changed_within_group": 10.75,
             "mean_shrinkage_weight": 0.591,
             "median_minutes": 1842.0
           },
           "2200+": {
             "n": 127,
-            "n_changed": 0,
-            "pct_changed": 0.0,
+            "n_changed_global": 0,
+            "pct_changed_global": 0.0,
+            "n_changed_within_group": 14,
+            "pct_changed_within_group": 11.02,
             "mean_shrinkage_weight": 0.6429,
             "median_minutes": 2743.0
           }
@@ -1136,39 +1172,135 @@
         ],
         "lowest_minute_movers": [
           {
+            "player": "Diego G\u00f3mez",
+            "position_group": "MF",
+            "minutes": 516,
+            "mean_shrinkage_weight": 0.3898,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Oleksandr Zinchenko",
+            "position_group": "DF",
+            "minutes": 527,
+            "mean_shrinkage_weight": 0.356,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Nico O'Reilly",
+            "position_group": "DF",
+            "minutes": 528,
+            "mean_shrinkage_weight": 0.3551,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Abdul Fatawu Issahaku",
+            "position_group": "MF",
+            "minutes": 579,
+            "mean_shrinkage_weight": 0.413,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Hwang Hee-chan",
+            "position_group": "MF",
+            "minutes": 661,
+            "mean_shrinkage_weight": 0.4349,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Bobby De Cordova-Reid",
+            "position_group": "MF",
+            "minutes": 744,
+            "mean_shrinkage_weight": 0.458,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Niclas F\u00fcllkrug",
+            "position_group": "FW",
+            "minutes": 790,
+            "mean_shrinkage_weight": 0.4035,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Aaron Cresswell",
+            "position_group": "DF",
+            "minutes": 824,
+            "mean_shrinkage_weight": 0.4243,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Kostas Tsimikas",
+            "position_group": "DF",
+            "minutes": 837,
+            "mean_shrinkage_weight": 0.4262,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
             "player": "Wilson Odobert",
             "position_group": "FW",
             "minutes": 850,
-            "mean_shrinkage_weight": 0.4113
+            "mean_shrinkage_weight": 0.4113,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
           },
           {
             "player": "Kasey McAteer",
             "position_group": "MF",
             "minutes": 852,
-            "mean_shrinkage_weight": 0.4856
+            "mean_shrinkage_weight": 0.4856,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
           },
           {
-            "player": "Marshall Munetsi",
-            "position_group": "MF",
-            "minutes": 1078,
-            "mean_shrinkage_weight": 0.5316
+            "player": "Tariq Lamptey",
+            "position_group": "DF",
+            "minutes": 860,
+            "mean_shrinkage_weight": 0.4318,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
           },
           {
-            "player": "Kamaldeen Sulemana",
-            "position_group": "FW",
-            "minutes": 1402,
-            "mean_shrinkage_weight": 0.5001
+            "player": "\u00c1lex Moreno",
+            "position_group": "DF",
+            "minutes": 955,
+            "mean_shrinkage_weight": 0.4486,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
           },
           {
-            "player": "Emile Smith Rowe",
-            "position_group": "MF",
-            "minutes": 2043,
-            "mean_shrinkage_weight": 0.6402
+            "player": "Riccardo Calafiori",
+            "position_group": "DF",
+            "minutes": 983,
+            "mean_shrinkage_weight": 0.4556,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Vladim\u00edr Coufal",
+            "position_group": "DF",
+            "minutes": 1067,
+            "mean_shrinkage_weight": 0.4668,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
           }
         ],
         "verdict_bands": {
           "survives": 0.8,
           "partly_survives": 0.5
+        },
+        "verdict_global": "survives",
+        "verdict_within_group": {
+          "DF": "dissolves",
+          "MF": "partly_survives",
+          "FW": "dissolves"
         },
         "verdict": "survives"
       }
@@ -1185,6 +1317,24 @@
             "FW": 69
           },
           "rationale": "The unfiltered pool keeps the low-minute players that config.MIN_MINUTES excludes. They carry little weight on the prior mean but they are the observations that identify the sampling variance slope."
+        },
+        "degenerate_features": {
+          "DF": {
+            "features_with_zero_between_player_variance": [
+              "cards_yellow_p90"
+            ],
+            "meaning": "The moment regression attributes all observed spread in this feature to sampling noise, so every player in the group receives the group mean and the feature becomes constant within the group. It then carries no within-group information at all after re-standardisation."
+          },
+          "MF": {
+            "features_with_zero_between_player_variance": [],
+            "meaning": "The moment regression attributes all observed spread in this feature to sampling noise, so every player in the group receives the group mean and the feature becomes constant within the group. It then carries no within-group information at all after re-standardisation."
+          },
+          "FW": {
+            "features_with_zero_between_player_variance": [
+              "xg_buildup_p90"
+            ],
+            "meaning": "The moment regression attributes all observed spread in this feature to sampling noise, so every player in the group receives the group mean and the feature becomes constant within the group. It then carries no within-group information at all after re-standardisation."
+          }
         },
         "by_group": {
           "DF": {
@@ -2186,6 +2336,7 @@
             "adjusted_rand_index": 0.8434,
             "n_changed": 15,
             "pct_changed": 4.03,
+            "verdict": "survives",
             "cluster_sizes_original": {
               "0": 247,
               "1": 125
@@ -2204,6 +2355,7 @@
             "adjusted_rand_index": 0.8054,
             "n_changed": 7,
             "pct_changed": 5.07,
+            "verdict": "survives",
             "cluster_sizes_original": {
               "0": 83,
               "1": 55
@@ -2222,6 +2374,7 @@
             "adjusted_rand_index": 0.9776,
             "n_changed": 1,
             "pct_changed": 0.56,
+            "verdict": "survives",
             "cluster_sizes_original": {
               "0": 105,
               "1": 74
@@ -2240,6 +2393,7 @@
             "adjusted_rand_index": 0.1943,
             "n_changed": 15,
             "pct_changed": 27.27,
+            "verdict": "dissolves",
             "cluster_sizes_original": {
               "0": 39,
               "1": 16
@@ -2253,29 +2407,37 @@
         "by_minutes_bin": {
           "450-900": {
             "n": 56,
-            "n_changed": 2,
-            "pct_changed": 3.57,
+            "n_changed_global": 2,
+            "pct_changed_global": 3.57,
+            "n_changed_within_group": 4,
+            "pct_changed_within_group": 7.14,
             "mean_shrinkage_weight": 0.4762,
             "median_minutes": 681.0
           },
           "900-1500": {
             "n": 97,
-            "n_changed": 9,
-            "pct_changed": 9.28,
+            "n_changed_global": 9,
+            "pct_changed_global": 9.28,
+            "n_changed_within_group": 9,
+            "pct_changed_within_group": 9.28,
             "mean_shrinkage_weight": 0.5818,
             "median_minutes": 1173.0
           },
           "1500-2200": {
             "n": 103,
-            "n_changed": 3,
-            "pct_changed": 2.91,
+            "n_changed_global": 3,
+            "pct_changed_global": 2.91,
+            "n_changed_within_group": 4,
+            "pct_changed_within_group": 3.88,
             "mean_shrinkage_weight": 0.6582,
             "median_minutes": 1814.0
           },
           "2200+": {
             "n": 116,
-            "n_changed": 1,
-            "pct_changed": 0.86,
+            "n_changed_global": 1,
+            "pct_changed_global": 0.86,
+            "n_changed_within_group": 6,
+            "pct_changed_within_group": 5.17,
             "mean_shrinkage_weight": 0.7204,
             "median_minutes": 2788.5
           }
@@ -2292,96 +2454,132 @@
             "player": "Wilfried Gnonto",
             "position_group": "FW",
             "minutes": 537,
-            "mean_shrinkage_weight": 0.3117
+            "mean_shrinkage_weight": 0.3117,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
           },
           {
             "player": "Daniel James",
             "position_group": "FW",
             "minutes": 559,
-            "mean_shrinkage_weight": 0.3235
+            "mean_shrinkage_weight": 0.3235,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
+          },
+          {
+            "player": "Joshua Zirkzee",
+            "position_group": "FW",
+            "minutes": 626,
+            "mean_shrinkage_weight": 0.3527,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Joshua Acheampong",
+            "position_group": "DF",
+            "minutes": 666,
+            "mean_shrinkage_weight": 0.4591,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Eliezer Mayenda",
+            "position_group": "FW",
+            "minutes": 759,
+            "mean_shrinkage_weight": 0.3648,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Armando Broja",
+            "position_group": "FW",
+            "minutes": 860,
+            "mean_shrinkage_weight": 0.3874,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
           },
           {
             "player": "Ryan Christie",
             "position_group": "MF",
             "minutes": 994,
-            "mean_shrinkage_weight": 0.6328
+            "mean_shrinkage_weight": 0.6328,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Rodrigo Muniz",
+            "position_group": "FW",
+            "minutes": 1000,
+            "mean_shrinkage_weight": 0.4272,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Nicol\u00f2 Savona",
+            "position_group": "DF",
+            "minutes": 1028,
+            "mean_shrinkage_weight": 0.5257,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Jo\u00ebl Veltman",
+            "position_group": "DF",
+            "minutes": 1058,
+            "mean_shrinkage_weight": 0.5277,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Liam Delap",
+            "position_group": "FW",
+            "minutes": 1107,
+            "mean_shrinkage_weight": 0.4458,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
           },
           {
             "player": "Jhon Arias",
             "position_group": "FW",
             "minutes": 1124,
-            "mean_shrinkage_weight": 0.4275
+            "mean_shrinkage_weight": 0.4275,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
           },
           {
             "player": "Adam Armstrong",
             "position_group": "FW",
             "minutes": 1140,
-            "mean_shrinkage_weight": 0.4323
+            "mean_shrinkage_weight": 0.4323,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": true
           },
           {
             "player": "Dan Ndoye",
             "position_group": "MF",
             "minutes": 1173,
-            "mean_shrinkage_weight": 0.6494
+            "mean_shrinkage_weight": 0.6494,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
           },
           {
             "player": "Hannibal Mejbri",
             "position_group": "MF",
             "minutes": 1229,
-            "mean_shrinkage_weight": 0.662
-          },
-          {
-            "player": "Loum Tchaouna",
-            "position_group": "MF",
-            "minutes": 1272,
-            "mean_shrinkage_weight": 0.6718
-          },
-          {
-            "player": "Anthony Elanga",
-            "position_group": "FW",
-            "minutes": 1319,
-            "mean_shrinkage_weight": 0.4533
-          },
-          {
-            "player": "Maxim De Cuyper",
-            "position_group": "DF",
-            "minutes": 1414,
-            "mean_shrinkage_weight": 0.5837
-          },
-          {
-            "player": "Hwang Hee-chan",
-            "position_group": "FW",
-            "minutes": 1446,
-            "mean_shrinkage_weight": 0.47
-          },
-          {
-            "player": "Chemsdine Talbi",
-            "position_group": "MF",
-            "minutes": 1561,
-            "mean_shrinkage_weight": 0.7052
-          },
-          {
-            "player": "Randal Kolo Muani",
-            "position_group": "FW",
-            "minutes": 1664,
-            "mean_shrinkage_weight": 0.4928
-          },
-          {
-            "player": "Keane Lewis-Potter",
-            "position_group": "DF",
-            "minutes": 1972,
-            "mean_shrinkage_weight": 0.6463
-          },
-          {
-            "player": "Tom\u00e1\u0161 Sou\u010dek",
-            "position_group": "MF",
-            "minutes": 2200,
-            "mean_shrinkage_weight": 0.7534
+            "mean_shrinkage_weight": 0.662,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
           }
         ],
         "verdict_bands": {
           "survives": 0.8,
           "partly_survives": 0.5
+        },
+        "verdict_global": "survives",
+        "verdict_within_group": {
+          "DF": "survives",
+          "MF": "survives",
+          "FW": "dissolves"
         },
         "verdict": "survives"
       }
@@ -2393,6 +2591,22 @@
     "n_changed_global": 5,
     "n_global": 366,
     "k_changed_anywhere": false,
-    "verdict": "survives"
+    "adjusted_rand_index_within_group": {
+      "DF": 0.453,
+      "MF": 0.713,
+      "FW": 0.4424
+    },
+    "n_changed_within_group": {
+      "DF": 21,
+      "MF": 14,
+      "FW": 8
+    },
+    "verdict": "survives",
+    "verdict_within_group": {
+      "DF": "dissolves",
+      "MF": "partly_survives",
+      "FW": "dissolves"
+    },
+    "reading": "The global partition and the within-group partitions behave differently under the same shrinkage, so they must be reported separately. The global split rests on the large between-role differences that shrinkage leaves intact. The within-group splits rest on finer distinctions, several of which the estimator attributes to sampling noise, and they move correspondingly more."
   }
 }

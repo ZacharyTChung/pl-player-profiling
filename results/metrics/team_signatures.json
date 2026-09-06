@@ -1,0 +1,1010 @@
+{
+  "2024-25": {
+    "season": "2024-25",
+    "n_teams": 20,
+    "archetypes": [
+      "Ball winning, low attacking involvement midfielders",
+      "Crossing and chance creating defenders",
+      "Crossing and creating wide forwards",
+      "High attacking involvement midfielders",
+      "Low attacking involvement defenders",
+      "Shot taking central forwards"
+    ],
+    "unmatched_teams": [],
+    "style_groups": {
+      "Arsenal": 2,
+      "Aston Villa": 3,
+      "Bournemouth": 3,
+      "Brentford": 3,
+      "Brighton": 3,
+      "Chelsea": 3,
+      "Crystal Palace": 1,
+      "Everton": 1,
+      "Fulham": 3,
+      "Ipswich Town": 1,
+      "Leicester City": 1,
+      "Liverpool": 3,
+      "Manchester City": 3,
+      "Manchester Utd": 3,
+      "Newcastle": 1,
+      "Nottingham": 3,
+      "Southampton": 1,
+      "Tottenham": 2,
+      "West Ham": 1,
+      "Wolves": 1
+    },
+    "n_style_groups": 3,
+    "archetype_share_vs_league_position": {
+      "Ball winning, low attacking involvement midfielders": {
+        "spearman_rho": 0.7564,
+        "p_value": 0.0001
+      },
+      "Crossing and chance creating defenders": {
+        "spearman_rho": -0.6047,
+        "p_value": 0.0047
+      },
+      "Crossing and creating wide forwards": {
+        "spearman_rho": -0.1119,
+        "p_value": 0.6385
+      },
+      "High attacking involvement midfielders": {
+        "spearman_rho": -0.5889,
+        "p_value": 0.0063
+      },
+      "Low attacking involvement defenders": {
+        "spearman_rho": 0.3023,
+        "p_value": 0.1952
+      },
+      "Shot taking central forwards": {
+        "spearman_rho": 0.212,
+        "p_value": 0.3695
+      }
+    },
+    "pca1_centroid_vs_league_position": {
+      "spearman_rho": -0.7789,
+      "p_value": 0.0001
+    },
+    "most_distinctive_teams": {
+      "Southampton": 0.6038,
+      "Tottenham": 0.5406,
+      "Chelsea": 0.5349,
+      "Arsenal": 0.4711,
+      "Newcastle": 0.47
+    },
+    "least_distinctive_teams": {
+      "Ipswich Town": 0.2809,
+      "Nottingham": 0.214,
+      "Manchester Utd": 0.1747,
+      "Aston Villa": 0.1662,
+      "Brentford": 0.1296
+    },
+    "composition": {
+      "Arsenal": {
+        "Ball winning, low attacking involvement midfielders": 0.1039,
+        "Crossing and chance creating defenders": 0.1521,
+        "Crossing and creating wide forwards": 0.2362,
+        "High attacking involvement midfielders": 0.1999,
+        "Low attacking involvement defenders": 0.2342,
+        "Shot taking central forwards": 0.0737
+      },
+      "Aston Villa": {
+        "Ball winning, low attacking involvement midfielders": 0.219,
+        "Crossing and chance creating defenders": 0.1063,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2621,
+        "Low attacking involvement defenders": 0.314,
+        "Shot taking central forwards": 0.0986
+      },
+      "Bournemouth": {
+        "Ball winning, low attacking involvement midfielders": 0.2394,
+        "Crossing and chance creating defenders": 0.1765,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.32,
+        "Low attacking involvement defenders": 0.193,
+        "Shot taking central forwards": 0.071
+      },
+      "Brentford": {
+        "Ball winning, low attacking involvement midfielders": 0.2207,
+        "Crossing and chance creating defenders": 0.1411,
+        "Crossing and creating wide forwards": 0.0136,
+        "High attacking involvement midfielders": 0.2576,
+        "Low attacking involvement defenders": 0.2797,
+        "Shot taking central forwards": 0.0872
+      },
+      "Brighton": {
+        "Ball winning, low attacking involvement midfielders": 0.1413,
+        "Crossing and chance creating defenders": 0.1307,
+        "Crossing and creating wide forwards": 0.0595,
+        "High attacking involvement midfielders": 0.3415,
+        "Low attacking involvement defenders": 0.2623,
+        "Shot taking central forwards": 0.0646
+      },
+      "Chelsea": {
+        "Ball winning, low attacking involvement midfielders": 0.1332,
+        "Crossing and chance creating defenders": 0.1899,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.4215,
+        "Low attacking involvement defenders": 0.184,
+        "Shot taking central forwards": 0.0713
+      },
+      "Crystal Palace": {
+        "Ball winning, low attacking involvement midfielders": 0.4119,
+        "Crossing and chance creating defenders": 0.0578,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.1704,
+        "Low attacking involvement defenders": 0.2518,
+        "Shot taking central forwards": 0.1081
+      },
+      "Everton": {
+        "Ball winning, low attacking involvement midfielders": 0.3738,
+        "Crossing and chance creating defenders": 0.0566,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.1382,
+        "Low attacking involvement defenders": 0.3364,
+        "Shot taking central forwards": 0.095
+      },
+      "Fulham": {
+        "Ball winning, low attacking involvement midfielders": 0.1369,
+        "Crossing and chance creating defenders": 0.1481,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.3497,
+        "Low attacking involvement defenders": 0.2618,
+        "Shot taking central forwards": 0.1036
+      },
+      "Ipswich Town": {
+        "Ball winning, low attacking involvement midfielders": 0.3601,
+        "Crossing and chance creating defenders": 0.0828,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.1642,
+        "Low attacking involvement defenders": 0.2947,
+        "Shot taking central forwards": 0.0982
+      },
+      "Leicester City": {
+        "Ball winning, low attacking involvement midfielders": 0.3271,
+        "Crossing and chance creating defenders": 0.0,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.1831,
+        "Low attacking involvement defenders": 0.4054,
+        "Shot taking central forwards": 0.0845
+      },
+      "Liverpool": {
+        "Ball winning, low attacking involvement midfielders": 0.0948,
+        "Crossing and chance creating defenders": 0.168,
+        "Crossing and creating wide forwards": 0.072,
+        "High attacking involvement midfielders": 0.3632,
+        "Low attacking involvement defenders": 0.2322,
+        "Shot taking central forwards": 0.0699
+      },
+      "Manchester City": {
+        "Ball winning, low attacking involvement midfielders": 0.088,
+        "Crossing and chance creating defenders": 0.1631,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.4033,
+        "Low attacking involvement defenders": 0.2642,
+        "Shot taking central forwards": 0.0814
+      },
+      "Manchester Utd": {
+        "Ball winning, low attacking involvement midfielders": 0.2637,
+        "Crossing and chance creating defenders": 0.0538,
+        "Crossing and creating wide forwards": 0.0431,
+        "High attacking involvement midfielders": 0.314,
+        "Low attacking involvement defenders": 0.2638,
+        "Shot taking central forwards": 0.0616
+      },
+      "Newcastle": {
+        "Ball winning, low attacking involvement midfielders": 0.3172,
+        "Crossing and chance creating defenders": 0.109,
+        "Crossing and creating wide forwards": 0.2041,
+        "High attacking involvement midfielders": 0.0,
+        "Low attacking involvement defenders": 0.2837,
+        "Shot taking central forwards": 0.0859
+      },
+      "Nottingham": {
+        "Ball winning, low attacking involvement midfielders": 0.2216,
+        "Crossing and chance creating defenders": 0.0799,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2572,
+        "Low attacking involvement defenders": 0.3503,
+        "Shot taking central forwards": 0.0911
+      },
+      "Southampton": {
+        "Ball winning, low attacking involvement midfielders": 0.5167,
+        "Crossing and chance creating defenders": 0.0465,
+        "Crossing and creating wide forwards": 0.0843,
+        "High attacking involvement midfielders": 0.0,
+        "Low attacking involvement defenders": 0.2733,
+        "Shot taking central forwards": 0.0792
+      },
+      "Tottenham": {
+        "Ball winning, low attacking involvement midfielders": 0.184,
+        "Crossing and chance creating defenders": 0.2306,
+        "Crossing and creating wide forwards": 0.1307,
+        "High attacking involvement midfielders": 0.125,
+        "Low attacking involvement defenders": 0.1844,
+        "Shot taking central forwards": 0.1454
+      },
+      "West Ham": {
+        "Ball winning, low attacking involvement midfielders": 0.3374,
+        "Crossing and chance creating defenders": 0.0935,
+        "Crossing and creating wide forwards": 0.0248,
+        "High attacking involvement midfielders": 0.1882,
+        "Low attacking involvement defenders": 0.3327,
+        "Shot taking central forwards": 0.0234
+      },
+      "Wolves": {
+        "Ball winning, low attacking involvement midfielders": 0.4235,
+        "Crossing and chance creating defenders": 0.0,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2349,
+        "Low attacking involvement defenders": 0.264,
+        "Shot taking central forwards": 0.0777
+      }
+    },
+    "league_table": [
+      {
+        "team": "Liverpool",
+        "played": 38,
+        "won": 25,
+        "drawn": 9,
+        "lost": 4,
+        "gf": 86,
+        "ga": 41,
+        "points": 84,
+        "goal_difference": 45,
+        "league_position": 1,
+        "season": "2024-25"
+      },
+      {
+        "team": "Arsenal",
+        "played": 38,
+        "won": 20,
+        "drawn": 14,
+        "lost": 4,
+        "gf": 69,
+        "ga": 34,
+        "points": 74,
+        "goal_difference": 35,
+        "league_position": 2,
+        "season": "2024-25"
+      },
+      {
+        "team": "Manchester City",
+        "played": 38,
+        "won": 21,
+        "drawn": 8,
+        "lost": 9,
+        "gf": 72,
+        "ga": 44,
+        "points": 71,
+        "goal_difference": 28,
+        "league_position": 3,
+        "season": "2024-25"
+      },
+      {
+        "team": "Chelsea",
+        "played": 38,
+        "won": 20,
+        "drawn": 9,
+        "lost": 9,
+        "gf": 64,
+        "ga": 43,
+        "points": 69,
+        "goal_difference": 21,
+        "league_position": 4,
+        "season": "2024-25"
+      },
+      {
+        "team": "Newcastle",
+        "played": 38,
+        "won": 20,
+        "drawn": 6,
+        "lost": 12,
+        "gf": 68,
+        "ga": 47,
+        "points": 66,
+        "goal_difference": 21,
+        "league_position": 5,
+        "season": "2024-25"
+      },
+      {
+        "team": "Aston Villa",
+        "played": 38,
+        "won": 19,
+        "drawn": 9,
+        "lost": 10,
+        "gf": 58,
+        "ga": 51,
+        "points": 66,
+        "goal_difference": 7,
+        "league_position": 6,
+        "season": "2024-25"
+      },
+      {
+        "team": "Nottingham",
+        "played": 38,
+        "won": 19,
+        "drawn": 8,
+        "lost": 11,
+        "gf": 58,
+        "ga": 46,
+        "points": 65,
+        "goal_difference": 12,
+        "league_position": 7,
+        "season": "2024-25"
+      },
+      {
+        "team": "Brighton",
+        "played": 38,
+        "won": 16,
+        "drawn": 13,
+        "lost": 9,
+        "gf": 66,
+        "ga": 59,
+        "points": 61,
+        "goal_difference": 7,
+        "league_position": 8,
+        "season": "2024-25"
+      },
+      {
+        "team": "Bournemouth",
+        "played": 38,
+        "won": 15,
+        "drawn": 11,
+        "lost": 12,
+        "gf": 58,
+        "ga": 46,
+        "points": 56,
+        "goal_difference": 12,
+        "league_position": 9,
+        "season": "2024-25"
+      },
+      {
+        "team": "Brentford",
+        "played": 38,
+        "won": 16,
+        "drawn": 8,
+        "lost": 14,
+        "gf": 66,
+        "ga": 57,
+        "points": 56,
+        "goal_difference": 9,
+        "league_position": 10,
+        "season": "2024-25"
+      },
+      {
+        "team": "Fulham",
+        "played": 38,
+        "won": 15,
+        "drawn": 9,
+        "lost": 14,
+        "gf": 54,
+        "ga": 54,
+        "points": 54,
+        "goal_difference": 0,
+        "league_position": 11,
+        "season": "2024-25"
+      },
+      {
+        "team": "Crystal Palace",
+        "played": 38,
+        "won": 13,
+        "drawn": 14,
+        "lost": 11,
+        "gf": 51,
+        "ga": 51,
+        "points": 53,
+        "goal_difference": 0,
+        "league_position": 12,
+        "season": "2024-25"
+      },
+      {
+        "team": "Everton",
+        "played": 38,
+        "won": 11,
+        "drawn": 15,
+        "lost": 12,
+        "gf": 42,
+        "ga": 44,
+        "points": 48,
+        "goal_difference": -2,
+        "league_position": 13,
+        "season": "2024-25"
+      },
+      {
+        "team": "West Ham",
+        "played": 38,
+        "won": 11,
+        "drawn": 10,
+        "lost": 17,
+        "gf": 46,
+        "ga": 62,
+        "points": 43,
+        "goal_difference": -16,
+        "league_position": 14,
+        "season": "2024-25"
+      },
+      {
+        "team": "Manchester Utd",
+        "played": 38,
+        "won": 11,
+        "drawn": 9,
+        "lost": 18,
+        "gf": 44,
+        "ga": 54,
+        "points": 42,
+        "goal_difference": -10,
+        "league_position": 15,
+        "season": "2024-25"
+      },
+      {
+        "team": "Wolves",
+        "played": 38,
+        "won": 12,
+        "drawn": 6,
+        "lost": 20,
+        "gf": 54,
+        "ga": 69,
+        "points": 42,
+        "goal_difference": -15,
+        "league_position": 16,
+        "season": "2024-25"
+      },
+      {
+        "team": "Tottenham",
+        "played": 38,
+        "won": 11,
+        "drawn": 5,
+        "lost": 22,
+        "gf": 64,
+        "ga": 65,
+        "points": 38,
+        "goal_difference": -1,
+        "league_position": 17,
+        "season": "2024-25"
+      },
+      {
+        "team": "Leicester City",
+        "played": 38,
+        "won": 6,
+        "drawn": 7,
+        "lost": 25,
+        "gf": 33,
+        "ga": 80,
+        "points": 25,
+        "goal_difference": -47,
+        "league_position": 18,
+        "season": "2024-25"
+      },
+      {
+        "team": "Ipswich Town",
+        "played": 38,
+        "won": 4,
+        "drawn": 10,
+        "lost": 24,
+        "gf": 36,
+        "ga": 82,
+        "points": 22,
+        "goal_difference": -46,
+        "league_position": 19,
+        "season": "2024-25"
+      },
+      {
+        "team": "Southampton",
+        "played": 38,
+        "won": 2,
+        "drawn": 6,
+        "lost": 30,
+        "gf": 26,
+        "ga": 86,
+        "points": 12,
+        "goal_difference": -60,
+        "league_position": 20,
+        "season": "2024-25"
+      }
+    ]
+  },
+  "2025-26": {
+    "season": "2025-26",
+    "n_teams": 20,
+    "archetypes": [
+      "Ball winning, low attacking involvement midfielders",
+      "Crossing and chance creating defenders",
+      "Crossing and creating wide forwards",
+      "High attacking involvement midfielders",
+      "Low attacking involvement defenders",
+      "Shot taking central forwards"
+    ],
+    "unmatched_teams": [],
+    "style_groups": {
+      "Arsenal": 3,
+      "Aston Villa": 1,
+      "Bournemouth": 2,
+      "Brentford": 1,
+      "Brighton": 3,
+      "Burnley": 1,
+      "Chelsea": 2,
+      "Crystal Palace": 1,
+      "Everton": 1,
+      "Fulham": 3,
+      "Leeds United": 1,
+      "Liverpool": 2,
+      "Manchester City": 3,
+      "Manchester Utd": 2,
+      "Newcastle": 1,
+      "Nottingham": 1,
+      "Sunderland": 1,
+      "Tottenham": 3,
+      "West Ham": 1,
+      "Wolves": 1
+    },
+    "n_style_groups": 3,
+    "archetype_share_vs_league_position": {
+      "Ball winning, low attacking involvement midfielders": {
+        "spearman_rho": 0.6241,
+        "p_value": 0.0033
+      },
+      "Crossing and chance creating defenders": {
+        "spearman_rho": -0.4707,
+        "p_value": 0.0362
+      },
+      "Crossing and creating wide forwards": {
+        "spearman_rho": -0.06,
+        "p_value": 0.8016
+      },
+      "High attacking involvement midfielders": {
+        "spearman_rho": -0.5774,
+        "p_value": 0.0077
+      },
+      "Low attacking involvement defenders": {
+        "spearman_rho": 0.3744,
+        "p_value": 0.1038
+      },
+      "Shot taking central forwards": {
+        "spearman_rho": 0.4165,
+        "p_value": 0.0677
+      }
+    },
+    "pca1_centroid_vs_league_position": {
+      "spearman_rho": -0.7805,
+      "p_value": 0.0
+    },
+    "most_distinctive_teams": {
+      "Manchester Utd": 0.6178,
+      "Arsenal": 0.6142,
+      "Wolves": 0.524,
+      "Brighton": 0.4963,
+      "Burnley": 0.4872
+    },
+    "least_distinctive_teams": {
+      "Leeds United": 0.1912,
+      "West Ham": 0.1866,
+      "Fulham": 0.1494,
+      "Nottingham": 0.1444,
+      "Brentford": 0.1139
+    },
+    "composition": {
+      "Arsenal": {
+        "Ball winning, low attacking involvement midfielders": 0.1107,
+        "Crossing and chance creating defenders": 0.2812,
+        "Crossing and creating wide forwards": 0.2123,
+        "High attacking involvement midfielders": 0.2212,
+        "Low attacking involvement defenders": 0.108,
+        "Shot taking central forwards": 0.0665
+      },
+      "Aston Villa": {
+        "Ball winning, low attacking involvement midfielders": 0.2961,
+        "Crossing and chance creating defenders": 0.101,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2089,
+        "Low attacking involvement defenders": 0.292,
+        "Shot taking central forwards": 0.1021
+      },
+      "Bournemouth": {
+        "Ball winning, low attacking involvement midfielders": 0.1587,
+        "Crossing and chance creating defenders": 0.1925,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.374,
+        "Low attacking involvement defenders": 0.1957,
+        "Shot taking central forwards": 0.0792
+      },
+      "Brentford": {
+        "Ball winning, low attacking involvement midfielders": 0.2474,
+        "Crossing and chance creating defenders": 0.1565,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2117,
+        "Low attacking involvement defenders": 0.2862,
+        "Shot taking central forwards": 0.0982
+      },
+      "Brighton": {
+        "Ball winning, low attacking involvement midfielders": 0.196,
+        "Crossing and chance creating defenders": 0.3239,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.302,
+        "Low attacking involvement defenders": 0.11,
+        "Shot taking central forwards": 0.0682
+      },
+      "Burnley": {
+        "Ball winning, low attacking involvement midfielders": 0.3505,
+        "Crossing and chance creating defenders": 0.0533,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.1107,
+        "Low attacking involvement defenders": 0.3685,
+        "Shot taking central forwards": 0.1169
+      },
+      "Chelsea": {
+        "Ball winning, low attacking involvement midfielders": 0.1242,
+        "Crossing and chance creating defenders": 0.2327,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.3158,
+        "Low attacking involvement defenders": 0.2119,
+        "Shot taking central forwards": 0.1154
+      },
+      "Crystal Palace": {
+        "Ball winning, low attacking involvement midfielders": 0.4867,
+        "Crossing and chance creating defenders": 0.0928,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.1253,
+        "Low attacking involvement defenders": 0.2298,
+        "Shot taking central forwards": 0.0653
+      },
+      "Everton": {
+        "Ball winning, low attacking involvement midfielders": 0.3026,
+        "Crossing and chance creating defenders": 0.0,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2114,
+        "Low attacking involvement defenders": 0.3813,
+        "Shot taking central forwards": 0.1047
+      },
+      "Fulham": {
+        "Ball winning, low attacking involvement midfielders": 0.2449,
+        "Crossing and chance creating defenders": 0.2033,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2491,
+        "Low attacking involvement defenders": 0.2095,
+        "Shot taking central forwards": 0.0932
+      },
+      "Leeds United": {
+        "Ball winning, low attacking involvement midfielders": 0.2884,
+        "Crossing and chance creating defenders": 0.1367,
+        "Crossing and creating wide forwards": 0.0802,
+        "High attacking involvement midfielders": 0.1454,
+        "Low attacking involvement defenders": 0.2346,
+        "Shot taking central forwards": 0.1148
+      },
+      "Liverpool": {
+        "Ball winning, low attacking involvement midfielders": 0.2254,
+        "Crossing and chance creating defenders": 0.1785,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.3283,
+        "Low attacking involvement defenders": 0.1934,
+        "Shot taking central forwards": 0.0743
+      },
+      "Manchester City": {
+        "Ball winning, low attacking involvement midfielders": 0.2593,
+        "Crossing and chance creating defenders": 0.2864,
+        "Crossing and creating wide forwards": 0.0235,
+        "High attacking involvement midfielders": 0.2122,
+        "Low attacking involvement defenders": 0.1197,
+        "Shot taking central forwards": 0.0989
+      },
+      "Manchester Utd": {
+        "Ball winning, low attacking involvement midfielders": 0.1052,
+        "Crossing and chance creating defenders": 0.0771,
+        "Crossing and creating wide forwards": 0.0185,
+        "High attacking involvement midfielders": 0.4285,
+        "Low attacking involvement defenders": 0.3222,
+        "Shot taking central forwards": 0.0485
+      },
+      "Newcastle": {
+        "Ball winning, low attacking involvement midfielders": 0.2475,
+        "Crossing and chance creating defenders": 0.198,
+        "Crossing and creating wide forwards": 0.1391,
+        "High attacking involvement midfielders": 0.0721,
+        "Low attacking involvement defenders": 0.1898,
+        "Shot taking central forwards": 0.1535
+      },
+      "Nottingham": {
+        "Ball winning, low attacking involvement midfielders": 0.2581,
+        "Crossing and chance creating defenders": 0.1305,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.2214,
+        "Low attacking involvement defenders": 0.2761,
+        "Shot taking central forwards": 0.1139
+      },
+      "Sunderland": {
+        "Ball winning, low attacking involvement midfielders": 0.3543,
+        "Crossing and chance creating defenders": 0.2446,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.0673,
+        "Low attacking involvement defenders": 0.2156,
+        "Shot taking central forwards": 0.1182
+      },
+      "Tottenham": {
+        "Ball winning, low attacking involvement midfielders": 0.2936,
+        "Crossing and chance creating defenders": 0.2437,
+        "Crossing and creating wide forwards": 0.0503,
+        "High attacking involvement midfielders": 0.1701,
+        "Low attacking involvement defenders": 0.1528,
+        "Shot taking central forwards": 0.0897
+      },
+      "West Ham": {
+        "Ball winning, low attacking involvement midfielders": 0.3013,
+        "Crossing and chance creating defenders": 0.1475,
+        "Crossing and creating wide forwards": 0.0,
+        "High attacking involvement midfielders": 0.1824,
+        "Low attacking involvement defenders": 0.2871,
+        "Shot taking central forwards": 0.0818
+      },
+      "Wolves": {
+        "Ball winning, low attacking involvement midfielders": 0.4236,
+        "Crossing and chance creating defenders": 0.0629,
+        "Crossing and creating wide forwards": 0.0756,
+        "High attacking involvement midfielders": 0.0528,
+        "Low attacking involvement defenders": 0.2419,
+        "Shot taking central forwards": 0.1432
+      }
+    },
+    "league_table": [
+      {
+        "team": "Arsenal",
+        "played": 38,
+        "won": 26,
+        "drawn": 7,
+        "lost": 5,
+        "gf": 71,
+        "ga": 27,
+        "points": 85,
+        "goal_difference": 44,
+        "league_position": 1,
+        "season": "2025-26"
+      },
+      {
+        "team": "Manchester City",
+        "played": 38,
+        "won": 23,
+        "drawn": 9,
+        "lost": 6,
+        "gf": 77,
+        "ga": 35,
+        "points": 78,
+        "goal_difference": 42,
+        "league_position": 2,
+        "season": "2025-26"
+      },
+      {
+        "team": "Manchester Utd",
+        "played": 38,
+        "won": 20,
+        "drawn": 11,
+        "lost": 7,
+        "gf": 69,
+        "ga": 50,
+        "points": 71,
+        "goal_difference": 19,
+        "league_position": 3,
+        "season": "2025-26"
+      },
+      {
+        "team": "Aston Villa",
+        "played": 38,
+        "won": 19,
+        "drawn": 8,
+        "lost": 11,
+        "gf": 56,
+        "ga": 49,
+        "points": 65,
+        "goal_difference": 7,
+        "league_position": 4,
+        "season": "2025-26"
+      },
+      {
+        "team": "Liverpool",
+        "played": 38,
+        "won": 17,
+        "drawn": 9,
+        "lost": 12,
+        "gf": 63,
+        "ga": 53,
+        "points": 60,
+        "goal_difference": 10,
+        "league_position": 5,
+        "season": "2025-26"
+      },
+      {
+        "team": "Bournemouth",
+        "played": 38,
+        "won": 13,
+        "drawn": 18,
+        "lost": 7,
+        "gf": 58,
+        "ga": 54,
+        "points": 57,
+        "goal_difference": 4,
+        "league_position": 6,
+        "season": "2025-26"
+      },
+      {
+        "team": "Sunderland",
+        "played": 38,
+        "won": 14,
+        "drawn": 12,
+        "lost": 12,
+        "gf": 42,
+        "ga": 48,
+        "points": 54,
+        "goal_difference": -6,
+        "league_position": 7,
+        "season": "2025-26"
+      },
+      {
+        "team": "Brighton",
+        "played": 38,
+        "won": 14,
+        "drawn": 11,
+        "lost": 13,
+        "gf": 52,
+        "ga": 46,
+        "points": 53,
+        "goal_difference": 6,
+        "league_position": 8,
+        "season": "2025-26"
+      },
+      {
+        "team": "Brentford",
+        "played": 38,
+        "won": 14,
+        "drawn": 11,
+        "lost": 13,
+        "gf": 55,
+        "ga": 52,
+        "points": 53,
+        "goal_difference": 3,
+        "league_position": 9,
+        "season": "2025-26"
+      },
+      {
+        "team": "Chelsea",
+        "played": 38,
+        "won": 14,
+        "drawn": 10,
+        "lost": 14,
+        "gf": 58,
+        "ga": 52,
+        "points": 52,
+        "goal_difference": 6,
+        "league_position": 10,
+        "season": "2025-26"
+      },
+      {
+        "team": "Fulham",
+        "played": 38,
+        "won": 15,
+        "drawn": 7,
+        "lost": 16,
+        "gf": 47,
+        "ga": 51,
+        "points": 52,
+        "goal_difference": -4,
+        "league_position": 11,
+        "season": "2025-26"
+      },
+      {
+        "team": "Newcastle",
+        "played": 38,
+        "won": 14,
+        "drawn": 7,
+        "lost": 17,
+        "gf": 53,
+        "ga": 55,
+        "points": 49,
+        "goal_difference": -2,
+        "league_position": 12,
+        "season": "2025-26"
+      },
+      {
+        "team": "Everton",
+        "played": 38,
+        "won": 13,
+        "drawn": 10,
+        "lost": 15,
+        "gf": 47,
+        "ga": 50,
+        "points": 49,
+        "goal_difference": -3,
+        "league_position": 13,
+        "season": "2025-26"
+      },
+      {
+        "team": "Leeds United",
+        "played": 38,
+        "won": 11,
+        "drawn": 14,
+        "lost": 13,
+        "gf": 49,
+        "ga": 56,
+        "points": 47,
+        "goal_difference": -7,
+        "league_position": 14,
+        "season": "2025-26"
+      },
+      {
+        "team": "Crystal Palace",
+        "played": 38,
+        "won": 11,
+        "drawn": 12,
+        "lost": 15,
+        "gf": 41,
+        "ga": 51,
+        "points": 45,
+        "goal_difference": -10,
+        "league_position": 15,
+        "season": "2025-26"
+      },
+      {
+        "team": "Nottingham",
+        "played": 38,
+        "won": 11,
+        "drawn": 11,
+        "lost": 16,
+        "gf": 48,
+        "ga": 51,
+        "points": 44,
+        "goal_difference": -3,
+        "league_position": 16,
+        "season": "2025-26"
+      },
+      {
+        "team": "Tottenham",
+        "played": 38,
+        "won": 10,
+        "drawn": 11,
+        "lost": 17,
+        "gf": 48,
+        "ga": 57,
+        "points": 41,
+        "goal_difference": -9,
+        "league_position": 17,
+        "season": "2025-26"
+      },
+      {
+        "team": "West Ham",
+        "played": 38,
+        "won": 10,
+        "drawn": 9,
+        "lost": 19,
+        "gf": 46,
+        "ga": 65,
+        "points": 39,
+        "goal_difference": -19,
+        "league_position": 18,
+        "season": "2025-26"
+      },
+      {
+        "team": "Burnley",
+        "played": 38,
+        "won": 4,
+        "drawn": 10,
+        "lost": 24,
+        "gf": 38,
+        "ga": 75,
+        "points": 22,
+        "goal_difference": -37,
+        "league_position": 19,
+        "season": "2025-26"
+      },
+      {
+        "team": "Wolves",
+        "played": 38,
+        "won": 3,
+        "drawn": 11,
+        "lost": 24,
+        "gf": 27,
+        "ga": 68,
+        "points": 20,
+        "goal_difference": -41,
+        "league_position": 20,
+        "season": "2025-26"
+      }
+    ]
+  }
+}

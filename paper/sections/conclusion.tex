@@ -1,0 +1,33 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+The withdrawal of commercially licensed statistics from the largest free football data
+source in January 2026 removed most of the vocabulary that public role analysis had come to
+depend on. This paper measured what remains. Merging the surviving statistics with an
+independent expected goals source yields \NFeatures{} usable features, and on those
+features a role discovery pipeline recovers a single robust division between attacking and
+defensive involvement, which cuts across listed positions rather than reproducing them, and
+little else that survives scrutiny.
+
+The negative results are the substantive ones. The selection rule returns two clusters in
+every scope. Density based clustering, which is free to conclude that no clusters exist,
+concludes exactly that within every position group. Bootstrap resampling, cross-season
+replication and empirical Bayes shrinkage independently agree that the divisions within the
+defender and forward groups are substantially descriptions of sampling noise. The
+goalkeeper partition recovers team strength rather than goalkeeping. Reporting these as
+findings rather than suppressing them is the point: a study of this kind run without the
+stability checks would have produced six confidently named archetypes and a goalkeeper
+taxonomy, and most of it would have been wrong.
+
+Two results are strong enough to carry forward. Correlations between statistics reverse
+sign across position groups often enough that pooled correlation analysis of football data
+should be considered unsafe by default. Club level summaries built from the same features
+correlate with final league position at almost identical strength across two independent
+seasons, so aggregation to the club recovers stability that individual players do not
+have.
+
+The broader lesson concerns dependence. An entire layer of public football analysis rested
+on a single source holding a single commercial licence, and when that licence ended the
+layer went with it. The work here is reproducible from a public pipeline, which is what
+made it possible to measure the loss precisely rather than estimate it, and that
+reproducibility is worth more now than it was before January 2026.

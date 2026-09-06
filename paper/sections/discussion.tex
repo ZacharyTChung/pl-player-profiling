@@ -1,0 +1,98 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What the archetypes mean, and where they break}
+
+The six outfield archetypes describe three axes rather than six independent types, since
+standardising within position group before a two-way split forces the two centroids in
+each group to be mirror images. Each axis orders players from low to high attacking
+involvement within their listed group, and in every group the high involvement end is
+distinguished by crossing and chance creation while the low involvement end is
+distinguished by defensive actions or, in the case of defenders, by the absence of anything
+positive at all. That an ordering exists is a real result. That it is a single ordering
+rather than a taxonomy is the limit the data now imposes.
+
+The evidence on how far to trust these divisions is unusually consistent. Bootstrap
+resampling, replication on an independent season and shrinkage toward the position mean are
+three different tests of three different failure modes, and they agree on which partitions
+hold. The midfield split survives all three. The defender and forward splits fail all
+three, and the forward split reaches an adjusted Rand index below zero in the least
+favourable bootstrap resample, meaning the partition recovered there was worse than a
+random relabelling. A reader who wants one sentence of practical guidance should take this
+one: use the global attacking involvement axis, and do not characterise an individual
+defender or forward by his within-group cluster.
+
+The goalkeeper analysis deserves separate emphasis because it failed for a reason worth
+recording. The partition that the selection rule returned explains more variance in team
+points per match than in save percentage. In other words the goalkeeper clusters recover
+the quality of the team in front of the goalkeeper rather than the goalkeeper himself. With
+post-shot expected goals removed, almost every surviving goalkeeper statistic is a function
+of how much and what quality of shooting the defence permits, so this is close to
+inevitable. Reporting the partition without that check would have produced plausible
+looking goalkeeper archetypes that were actually a league table in disguise.
+
+\subsection{Listed positions and data-driven roles}
+
+The clusters do not recover listed positions, and the interesting part is where they
+disagree. The global division places every defender and a majority of midfielders on one
+side, with the remaining midfielders and every forward on the other, so it cuts the midfield
+in half and leaves the defender and forward groups intact. The players it reassigns are
+recognisable: holding midfielders sit with the defenders, and attacking midfielders sit
+with the forwards. That the same players are also the ones a supervised classifier places
+in the wrong group is corroboration from a second method, although the enrichment over
+chance is modest because the hybrid flag is broad.
+
+The similarity search makes the limitation concrete in a way the aggregate statistics do
+not. A holding midfielder's nearest statistical neighbours are creative attacking
+midfielders, because the surviving features contain nothing that describes his actual job.
+Tackles by pitch third, blocks, clearances, pressures and passing volume are all gone, so
+the only distinctive things left in his profile are set piece deliveries and key passes,
+and the metric duly finds the players who share those. An inverted full back returns centre
+backs for the same reason. These are not failures of the method but measurements of what
+the data no longer contains, and they are the clearest illustration in the paper of what
+the withdrawal cost.
+
+\subsection{Limitations}
+
+Season aggregates discard context: a tackle count does not say where the tackles happened,
+and an expected goals total does not distinguish six poor chances from two good ones.
+Nothing here is possession adjusted, which systematically inflates the defensive counts of
+players in teams that spend more time without the ball, and with team strength correlating
+strongly with the first principal component that is a real confound rather than a
+theoretical one. Per-90 rates remain noisy above the minutes threshold, which is why the
+shrinkage analysis matters and why its within-group verdict should be believed. Merging a
+second expected goals provider introduces a model whose assumptions differ from the one
+that produced the original values, and although we never mix the two sources for the same
+quantity, the creation block and the shooting block now come from different modelling
+traditions. Roughly three percent of records failed to match across the two sources and
+carry missing values for the Understat block. The study covers one league and two seasons.
+Finally, the clusters are descriptive and carry no causal content: an archetype label
+records how a player's season looked, not why, and certainly not how he would perform in a
+different team.
+
+\subsection{Applications}
+
+For scouting and recruitment the honest use of this work is narrow but real. The global
+involvement axis and the club level signatures are stable enough to support questions about
+squad composition, such as whether a club's minutes are concentrated in one part of the
+distribution, and the twenty panel comparison makes that legible at a glance. The similarity
+search is usable for forwards and full backs, where the surviving features capture most of
+what defines the role, and should not be used for central midfielders or centre backs,
+where they do not. For tactical analysis the correlation divergence result is the most
+directly applicable: any analysis that pools across positions when computing relationships
+between statistics is averaging over sign reversals.
+
+\subsection{Future work}
+
+The obvious extension is data. Event and tracking data would restore everything the
+withdrawal removed and more, at the cost of the reproducibility that a public source
+provides. Within public data, match level statistics remain available in a reduced form and
+would support the role drift analysis that was scoped out of this study, tracking whether a
+player's profile moves between archetypes across a season rather than assuming a season is
+homogeneous. Extending to other leagues would test whether the two-cluster result is a
+property of the reduced feature set or of the Premier League specifically, and we expect the
+former. A more careful treatment of possession adjustment would address the confound
+between defensive volume and team strength directly. Finally, the empirical Bayes machinery
+developed here is more broadly useful than the single use it is put to: any per-90 ranking
+computed over partial seasons is subject to the same problem, and most published ones do
+not correct for it.

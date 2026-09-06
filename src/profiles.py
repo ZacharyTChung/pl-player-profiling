@@ -250,7 +250,7 @@ def _names(players: list[str]) -> str:
 
 def _no_dashes(text: str, where: str) -> str:
     """Guard the ground rule that no em dash or en dash reaches the paper."""
-    for bad, label in (("—", "em dash"), ("–", "en dash")):
+    for bad, label in (("\u2014", "em dash"), ("\u2013", "en dash")):
         if bad in text:
             raise ValueError(f"{label} found in {where}: {text[:120]!r}")
     return text
@@ -279,7 +279,7 @@ def _justify_df0(ctx: dict) -> str:
         "recoveries with which a defender could be described positively. The members closest "
         f"to the centroid are {_names(cited)}, who are central defenders in the conventional "
         "sense. The split is provisional: bootstrap resampling of the defender scope gives a "
-        f"mean adjusted Rand index of {ctx['ari']:.3f}, the weakest of the four scopes analysed "
+        f"mean adjusted Rand index of {ctx['ari']:.3f}, the lowest of the four scopes analysed "
         f"and far below the global figure of {ctx['ari_global']:.3f}, so the boundary between "
         "the two defender clusters moves substantially under resampling even though the "
         "direction of the contrast does not."
@@ -310,13 +310,14 @@ def _justify_df1(ctx: dict) -> str:
 def _justify_mf0(ctx: dict) -> str:
     c, cited = ctx["centroid"], ctx["cited"]
     return (
-        "Midfield is the only position group where the two cluster solution has genuinely "
-        f"two-sided content. This cluster of {ctx['n']} midfielders sits below the midfield "
+        "Unlike the defender split, the midfield split has real content on both sides. This "
+        f"cluster of {ctx['n']} midfielders sits below the midfield "
         f"mean on every attacking measure, with shots on target per 90 "
         f"{_dev(c, 'shots_on_target_p90')} it, non-penalty expected goals per 90 "
         f"{_dev(c, 'np_xg_p90')}, shots per 90 {_dev(c, 'shots_p90')} and expected assists per "
-        f"90 {_dev(c, 'xa_p90')}, and it is the only outfield cluster whose positive deviations "
-        f"are defensive: interceptions per 90 {_dev(c, 'interceptions_p90')} the midfield mean "
+        f"90 {_dev(c, 'xa_p90')}, and it is the only cluster in the study whose positive "
+        "deviations are all defensive or disciplinary rather than attacking: interceptions per "
+        f"90 sit {_dev(c, 'interceptions_p90')} the midfield mean "
         f"and tackles won per 90 {_dev(c, 'tackles_won_p90')} it. The negative attacking side "
         "of the contrast is the larger part of it, which is why the name records the ball "
         "winning tilt second rather than first. The members closest to the centroid are "
@@ -332,7 +333,7 @@ def _justify_mf1(ctx: dict) -> str:
     c, cited = ctx["centroid"], ctx["cited"]
     return (
         f"The second midfield cluster, {ctx['n']} players, is the mirror of the first and is "
-        "the clearest high involvement group in the study. Its centroid sits "
+        "the high involvement side of the midfield contrast. Its centroid sits "
         f"{_dev(c, 'shots_on_target_p90')} the midfield mean on shots on target per 90, "
         f"{_dev(c, 'np_xg_p90')} on non-penalty expected goals per 90, {_dev(c, 'shots_p90')} "
         f"on shots per 90, {_dev(c, 'xa_p90')} on expected assists per 90 and "
@@ -360,14 +361,14 @@ def _justify_fw0(ctx: dict) -> str:
         f"{_dev(c, 'xg_buildup_p90')}, while non-penalty expected goals per 90 sit "
         f"{_dev(c, 'np_xg_p90')} the mean, shots on target per 90 "
         f"{_dev(c, 'shots_on_target_p90')} and shot accuracy {_dev(c, 'shot_accuracy_pct')}. "
-        f"The members closest to the centroid are {_names(cited)}, all of whom are listed and "
-        "used as centre forwards. The forward scope is the least reliable in the study. With "
-        f"only {ctx['n_group']} eligible forwards the bootstrap mean adjusted Rand index is "
-        f"{ctx['ari']:.3f} with a standard deviation of {ctx['ari_sd']:.3f}, and the minimum "
-        f"across {ctx['n_boot']} resamples is {ctx['ari_min']:.3f}, which is below zero and so "
-        "no better than a random relabelling in the worst case. The contrast described here is "
-        "clear in the centroid, but the assignment of any individual borderline forward should "
-        "not be relied on."
+        f"The members closest to the centroid are {_names(cited)}, who are centre forwards in "
+        "ordinary football terms. The forward scope is the most volatile in the study. With "
+        f"only {ctx['n_group']} eligible forwards the bootstrap adjusted Rand index has a mean "
+        f"of {ctx['ari']:.3f} and a standard deviation of {ctx['ari_sd']:.3f} against "
+        f"{ctx['ari_sd_mf']:.3f} for midfielders, and its minimum across {ctx['n_boot']} "
+        f"resamples is {ctx['ari_min']:.3f}, which is below zero and so no better than a random "
+        "relabelling in the worst case. The contrast described here is clear in the centroid, "
+        "but the assignment of any individual borderline forward should not be relied on."
     )
 
 
@@ -381,12 +382,12 @@ def _justify_fw1(ctx: dict) -> str:
         f"per 90 are {_dev(c, 'np_xg_p90')} the mean, shots on target per 90 "
         f"{_dev(c, 'shots_on_target_p90')} and goals per shot {_dev(c, 'goals_per_shot')}. The "
         f"members closest to the centroid are {_names(cited)}, which is a wide forward group in "
-        "ordinary football terms. Two cautions apply. The cluster holds only "
-        f"{ctx['n']} players, and the forward bootstrap mean adjusted Rand index is "
-        f"{ctx['ari']:.3f} with a standard deviation of {ctx['ari_sd']:.3f} and a minimum of "
-        f"{ctx['ari_min']:.3f}. This is therefore the weakest supported archetype in the paper "
-        "and is reported as a description of the fitted centroid rather than as a stable "
-        "partition of forwards."
+        f"ordinary football terms. Two cautions apply. The cluster holds only {ctx['n']} "
+        "players, the smallest of the six archetypes, and the forward bootstrap mean adjusted "
+        f"Rand index is {ctx['ari']:.3f} with a standard deviation of {ctx['ari_sd']:.3f} and a "
+        f"minimum of {ctx['ari_min']:.3f}. It is reported as a description of the fitted "
+        "centroid rather than as a stable partition of forwards, and no claim about an "
+        "individual player's membership should rest on it."
     )
 
 
@@ -539,6 +540,7 @@ def build_archetypes(frame: pd.DataFrame, stability: dict, season: str) -> list[
                 "ari_min": scope["ari_min"],
                 "n_boot": scope["n_bootstrap"],
                 "ari_global": global_ari,
+                "ari_sd_mf": scopes["MF"]["ari_sd"],
             }
             justification = _no_dashes(JUSTIFIERS[label](ctx), f"justification for {label}")
             records.append(
@@ -726,10 +728,16 @@ def outlier_report(table: pd.DataFrame, season: str) -> dict:
 # --------------------------------------------------------------------------------------
 
 
-def _radar_setup(ax: plt.Axes, limit: float, *, labelsize: float | None = None) -> np.ndarray:
+def _radar_setup(
+    ax: plt.Axes,
+    limit: float,
+    *,
+    label_angle: float = 18.0,
+    labelsize: float | None = None,
+) -> np.ndarray:
     """Common polar furniture. Returns the closed angle array for RADAR_AXES.
 
-    The radial tick labels are pushed onto the bisector between the first two spokes and
+    The radial tick labels are pushed onto the emptiest bisector between two spokes and
     given a surface-coloured box, because at the default position they sit underneath the
     plotted polygons and become unreadable.
     """
@@ -751,7 +759,7 @@ def _radar_setup(ax: plt.Axes, limit: float, *, labelsize: float | None = None) 
         fontsize=plotting.BASE_FONT_PT - 3,
         color=plotting.INK_SECONDARY,
     )
-    ax.set_rlabel_position(np.degrees(angles[1]) / 2.0)
+    ax.set_rlabel_position(label_angle)
     for text in ax.get_yticklabels():
         text.set_bbox({"facecolor": plotting.SURFACE, "edgecolor": "none", "pad": 0.8})
         text.set_zorder(7)
@@ -772,6 +780,20 @@ def _radar_limit(centroids: dict) -> float:
     return float(max(1.0, np.ceil(peak * 4.0) / 4.0))
 
 
+def _quiet_angle(centroids: dict) -> float:
+    """Bisector, in degrees, of the adjacent spoke pair carrying the least ink.
+
+    The radial tick labels are parked there so that they do not land on a plotted line.
+    """
+    n = len(F.RADAR_AXES)
+    loads = np.zeros(n)
+    for centroid in centroids.values():
+        loads += np.abs(centroid[F.RADAR_AXES].to_numpy(float))
+    pairs = loads + np.roll(loads, -1)
+    index = int(np.argmin(pairs))
+    return float(360.0 * (index + 0.5) / n)
+
+
 def figure_radar(profile: dict, records: dict[str, dict]) -> None:
     """Both archetypes of one position group overlaid on the fixed ten axes."""
     group = profile["group"]
@@ -785,7 +807,7 @@ def figure_radar(profile: dict, records: dict[str, dict]) -> None:
     fig = plt.figure(figsize=(plotting.WIDTH_COLUMN, 4.7))
     fig.set_layout_engine("none")
     ax = fig.add_axes((0.20, 0.155, 0.60, 0.655), projection="polar")
-    angles = _radar_setup(ax, limit)
+    angles = _radar_setup(ax, limit, label_angle=_quiet_angle(profile["centroids"]))
     for label, color, mark in zip(labels, colors, marks, strict=True):
         values = _radar_values(profile["centroids"][label])
         record = records[label]
@@ -840,7 +862,12 @@ def figure_radar_panel(profile: dict, records: dict[str, dict]) -> None:
     for index, (label, color, mark) in enumerate(zip(labels, colors, marks, strict=True)):
         centre = (index + 0.5) / len(labels)
         ax = fig.add_axes((centre - width / 2.0, 0.085, width, height), projection="polar")
-        angles = _radar_setup(ax, limit, labelsize=plotting.BASE_FONT_PT - 3)
+        angles = _radar_setup(
+            ax,
+            limit,
+            label_angle=_quiet_angle(profile["centroids"]),
+            labelsize=plotting.BASE_FONT_PT - 3,
+        )
         for other in labels:
             if other == label:
                 continue

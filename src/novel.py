@@ -277,6 +277,20 @@ def short_name(name: str, limit: int = 15) -> str:
     return label if len(label) <= limit else label[: limit - 1] + "…"
 
 
+def cell_ink(cmap, normalised: float) -> str:
+    """Pick the annotation colour that contrasts better with the cell behind it.
+
+    Chosen by WCAG relative luminance rather than by a hand-set threshold, because the
+    sequential ramp crosses the point where dark text stops winning fairly late.
+    """
+    r, g, b = cmap(float(np.clip(normalised, 0.0, 1.0)))[:3]
+    channels = [c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4 for c in (r, g, b)]
+    luminance = 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+    on_dark = 1.05 / (luminance + 0.05)
+    on_light = (luminance + 0.05) / 0.05
+    return plotting.SURFACE if on_dark > on_light else plotting.INK_PRIMARY
+
+
 def match_labels(reference: np.ndarray, other: np.ndarray) -> dict[int, int]:
     """Relabel ``other`` onto ``reference`` by maximising the agreement count."""
     ref_ids = sorted(set(reference.tolist()))
@@ -501,7 +515,6 @@ def figure_similarity_heatmap(payload: dict) -> None:
     span = max(vmax - vmin, 1e-9)
     for r, q in enumerate(queries):
         for c, neighbour in enumerate(q["neighbours"]):
-            dark = (values[r, c] - vmin) / span > 0.55
             ax.text(
                 c,
                 r,
@@ -509,14 +522,14 @@ def figure_similarity_heatmap(payload: dict) -> None:
                 ha="center",
                 va="center",
                 fontsize=plotting.BASE_FONT_PT - 2.5,
-                color=plotting.SURFACE if dark else plotting.INK_PRIMARY,
+                color=cell_ink(plotting.SEQUENTIAL, (values[r, c] - vmin) / span),
                 linespacing=1.35,
             )
 
     ax.set_xticks(range(n_cols), [f"#{i + 1}" for i in range(n_cols)])
     ax.set_yticks(
         range(n_rows),
-        [f"{short_name(q['player'], 18)}  ({q['position_group']})" for q in queries],
+        [f"{short_name(q['player'], 24)}  ({q['position_group']})" for q in queries],
     )
     ax.set_xlabel("Nearest neighbour rank")
     ax.set_title(
@@ -761,7 +774,7 @@ def figure_cross_season_transitions(payload: dict) -> None:
                     ha="center",
                     va="center",
                     fontsize=plotting.BASE_FONT_PT - 1,
-                    color=plotting.SURFACE if value > 55 else plotting.INK_PRIMARY,
+                    color=cell_ink(plotting.SEQUENTIAL, value / 100.0),
                     linespacing=1.3,
                 )
         ax.set_xticks(range(table.shape[1]), [str(c) for c in table.columns])
@@ -1099,8 +1112,11 @@ def figure_shrinkage_effect(season: str, eligible: pd.DataFrame, shrunken: pd.Da
         zx = (eligible[feature].to_numpy(dtype=float) - m) / s
         zy = (shrunken[feature].to_numpy(dtype=float) - m) / s
         panels.append((zx, zy))
-        limits.extend([np.percentile(zx, 0.5), np.percentile(zx, 99.5)])
-    lo, hi = float(np.min(limits)) - 0.4, float(np.max(limits)) + 0.4
+        limits.extend([zx, zy])
+    pooled = np.concatenate(limits)
+    lo = float(np.percentile(pooled, 0.2)) - 0.4
+    hi = float(np.percentile(pooled, 99.8)) + 0.4
+    off_scale = int(sum(int(((z < lo) | (z > hi)).sum()) for pair in panels for z in pair))
 
     for ax, feature, (zx, zy) in zip(axes, F.OUTFIELD_CORE, panels, strict=True):
         ax.plot([lo, hi], [lo, hi], color=plotting.INK_MUTED, linewidth=0.7, linestyle="--")
@@ -1119,6 +1135,13 @@ def figure_shrinkage_effect(season: str, eligible: pd.DataFrame, shrunken: pd.Da
         ax.set_title(DISPLAY_NAME[feature], loc="left", fontsize=plotting.BASE_FONT_PT - 1)
         ax.set_xlim(lo, hi)
         ax.set_ylim(lo, hi)
+
+    # The last row is not full, so the bottom visible panel of each column needs its own
+    # tick labels back. Shared axes would otherwise leave two columns without any.
+    ncols = 4
+    for i, ax in enumerate(axes):
+        if i + ncols >= len(axes):
+            ax.tick_params(labelbottom=True)
 
     fig.supxlabel("observed value, z units of the position group", fontsize=plotting.BASE_FONT_PT)
     fig.supylabel("shrunken value, same units", fontsize=plotting.BASE_FONT_PT)
@@ -1139,9 +1162,15 @@ def figure_shrinkage_effect(season: str, eligible: pd.DataFrame, shrunken: pd.Da
         spare.set_visible(True)
         spare.axis("off")
         spare.legend(handles=handles, loc="center", frameon=False, title="position group")
+    tail = (
+        f"\n{off_scale} of {2 * len(F.OUTFIELD_CORE) * len(eligible)} plotted values sit "
+        "outside the shared axes"
+        if off_scale
+        else ""
+    )
     fig.suptitle(
-        f"Empirical Bayes shrinkage moves every player towards his group mean, {season}\n"
-        "dashed line is no shrinkage; vertical compression is the reliability weight",
+        f"Empirical Bayes shrinkage pulls every player towards his group mean, {season}\n"
+        f"dashed line is no shrinkage; a flat cloud is a feature judged to be all noise{tail}",
         x=0.01,
         ha="left",
         fontsize=plotting.BASE_FONT_PT,
@@ -1167,12 +1196,15 @@ def figure_shrinkage_by_minutes(season: str, comparison: dict) -> None:
             marker=plotting.POSITION_MARKERS[group],
             label=group,
         )
-    lowest = frame.nsmallest(3, "mean_shrinkage_weight")
+    extremes = pd.concat(
+        [frame.nsmallest(1, "mean_shrinkage_weight"), frame.nlargest(1, "mean_shrinkage_weight")]
+    )
     plotting.annotate_points(
         ax,
-        lowest["minutes"].to_numpy(),
-        lowest["mean_shrinkage_weight"].to_numpy(),
-        [short_name(p, 13) for p in lowest["player"]],
+        extremes["minutes"].to_numpy(),
+        extremes["mean_shrinkage_weight"].to_numpy(),
+        [short_name(p, 16) for p in extremes["player"]],
+        offset=(5.0, -1.0),
     )
     plotting.style_axis(
         ax,
@@ -1201,7 +1233,7 @@ def figure_shrinkage_by_minutes(season: str, comparison: dict) -> None:
             ax.text(
                 xi,
                 height + ceiling * 0.03,
-                f"{height:.0f}",
+                f"{height:.1f}%",
                 ha="center",
                 va="bottom",
                 fontsize=plotting.BASE_FONT_PT - 2.5,
@@ -1218,7 +1250,7 @@ def figure_shrinkage_by_minutes(season: str, comparison: dict) -> None:
     ax.legend(loc="upper right", title="clustering scope")
 
     fig.suptitle(
-        f"Shrinkage bites hardest where minutes are fewest, {season}",
+        f"Reliability and cluster movement against minutes played, {season}",
         x=0.01,
         ha="left",
         fontsize=plotting.BASE_FONT_PT,
@@ -1322,8 +1354,7 @@ def empirical_bayes_shrinkage() -> dict:
             for scope in config.OUTFIELD_GROUPS
         },
         "n_changed_within_group": {
-            scope: global_block["by_scope"][scope]["n_changed"]
-            for scope in config.OUTFIELD_GROUPS
+            scope: global_block["by_scope"][scope]["n_changed"] for scope in config.OUTFIELD_GROUPS
         },
         "verdict": global_block["verdict"],
         "verdict_within_group": global_block["verdict_within_group"],
@@ -1396,10 +1427,17 @@ def _print_summary(similarity: dict, replication: dict, shrinkage: dict) -> None
         )
     head = shrinkage["headline"]
     print(
-        f"  shrinkage: {head['n_changed_global']} of {head['n_global']} change cluster, "
+        f"  shrinkage: {head['n_changed_global']} of {head['n_global']} change global cluster, "
         f"ARI {head['adjusted_rand_index_global']:.3f}, verdict {head['verdict']}, "
         f"k changed anywhere: {head['k_changed_anywhere']}"
     )
+    for scope in config.OUTFIELD_GROUPS:
+        print(
+            f"    {scope} within group: ARI "
+            f"{head['adjusted_rand_index_within_group'][scope]:.3f} "
+            f"changed={head['n_changed_within_group'][scope]} "
+            f"({head['verdict_within_group'][scope]})"
+        )
 
 
 if __name__ == "__main__":

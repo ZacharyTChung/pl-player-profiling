@@ -40,6 +40,22 @@ def load_results(name: str) -> dict | None:
     return json.loads(path.read_text())
 
 
+def season_block(obj: Any, season: str) -> Any:
+    """Return the block for a season, whether the file nests by season or not.
+
+    The analysis modules were written independently, so some metric files are keyed by
+    season at the top level and others are flat with a ``season`` field. Both shapes are
+    accepted rather than requiring every module to be rewritten.
+    """
+    if not isinstance(obj, dict):
+        return None
+    if season in obj:
+        return obj[season]
+    if obj.get("season") == season:
+        return obj
+    return None
+
+
 def dig(obj: Any, *path: str | int, default: Any = _MISSING) -> Any:
     """Walk a nested structure, tolerating absent branches."""
     cur = obj
@@ -651,6 +667,79 @@ def build_macros() -> Macros:
         m.add("KeeperEtaSavePct", eta.get("gk_save_pct"), places=2)
     m.add("KeeperAxesBuilt", len(dig(kcomp, primary, "axes_built") or []))
     m.add("KeeperAxesLost", len(dig(kcomp, primary, "axes_not_buildable") or []))
+
+    # Supervised validation
+    clf = load("position_classification")
+    m.add("BaselineAccuracy", dig(season_block(clf, primary), "baseline", "accuracy"), places=3)
+    m.add("BaselineMacroF", dig(season_block(clf, primary), "baseline", "macro_f1"), places=3)
+    models = dig(season_block(clf, primary), "models") or {}
+    for key, block in models.items():
+        label = "LGBM" if "light" in key or "gbm" in key or "boost" in key else "Logit"
+        m.add(f"{label}Accuracy", block.get("accuracy"), places=3)
+        m.add(f"{label}MacroF", block.get("macro_f1"), places=3)
+    mis = load("misclassified_vs_hybrid")
+    for key, block in (dig(season_block(mis, primary), "models") or {}).items():
+        label = "LGBM" if ("light" in key or "gbm" in key) else "Logit"
+        m.add(f"Overlap{label}", block.get("overlap_rate_of_misclassified"), places=3)
+        m.add(f"Enrichment{label}", block.get("enrichment_ratio"), places=2)
+        m.add(f"Misclassified{label}", block.get("n_misclassified"))
+
+    # Archetype sizes, keyed by the generated labels so the paper can cite them.
+    arche = load_results("archetypes")
+    _ordinal = {"0": "Zero", "1": "One"}
+    for entry in dig(season_block(arche, primary), "archetypes") or []:
+        label = str(entry.get("label", ""))
+        group, _, idx = label.partition("-")
+        suffix = _ordinal.get(idx)
+        if suffix and group:
+            m.add(f"N{group}{suffix}", entry.get("n_players"))
+    fin = load("finishing_above_role")
+    m.add("FinishingRSq", dig(season_block(fin, primary), "cv_r2_out_of_fold"), places=3)
+    m.add(
+        "FinishingRSqLeaky",
+        dig(season_block(fin, primary), "leakage", "cv_r2_with_xg_chain_added_back"),
+        places=3,
+    )
+    m.add(
+        "FinishingLeakCorr",
+        dig(season_block(fin, primary), "leakage", "corr_chain_minus_buildup_with_target"),
+        places=3,
+    )
+
+    # Team signatures
+    teams = load("team_signatures")
+    m.add("NTeams", dig(season_block(teams, primary), "n_teams"))
+    m.add("NStyleGroups", dig(season_block(teams, primary), "n_style_groups"))
+    m.add(
+        "TeamPCOneRho",
+        dig(season_block(teams, primary), "pca1_centroid_vs_league_position", "spearman_rho"),
+        places=3,
+    )
+    m.add(
+        "TeamPCOneRhoRepl",
+        dig(season_block(teams, repl), "pca1_centroid_vs_league_position", "spearman_rho"),
+        places=3,
+    )
+
+    # Cross-season replication
+    rep = load("cross_season_replication")
+    m.add("NCommonPlayers", dig(rep, "n_common_eligible"))
+    for scope in ("global", "DF", "MF", "FW"):
+        label = "Global" if scope == "global" else scope
+        m.add(f"CrossSeasonARI{label}", dig(rep, "scopes", scope, "adjusted_rand_index"), places=3)
+        m.add(f"CrossSeasonChanged{label}", dig(rep, "scopes", scope, "n_changed_cluster"))
+
+    # Empirical Bayes shrinkage
+    shr = load("shrinkage")
+    m.add("ShrinkARIGlobal", dig(shr, "headline", "adjusted_rand_index_global"), places=3)
+    m.add("ShrinkChangedGlobal", dig(shr, "headline", "n_changed_global"))
+    for grp in ("DF", "MF", "FW"):
+        m.add(
+            f"ShrinkARI{grp}",
+            dig(shr, "headline", "adjusted_rand_index_within_group", grp),
+            places=3,
+        )
+        m.add(f"ShrinkChanged{grp}", dig(shr, "headline", "n_changed_within_group", grp))
 
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))

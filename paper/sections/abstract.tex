@@ -1,0 +1,17 @@
+In January 2026 the largest free source of advanced football statistics removed every
+metric derived from its commercial provider, retroactively and without replacement.
+Expected goals, passing volume, carrying, chance creation and the entire advanced
+goalkeeping table ceased to be publicly available. We measure what player role structure
+survives that withdrawal. Merging the statistics that remain with an independent expected
+goals source yields \NFeatures{} features for \NEligiblePrimary{} Premier League outfield
+players, on which we run dimensionality reduction, clustering under a selection rule fixed
+in advance, bootstrap stability, supervised validation, and a replication on a second
+season. Three results hold. Correlations reverse sign across position groups for
+\NPairsSignFlip{} of \NPairsTotal{} feature pairs, so pooled correlation analysis describes
+no real population. The data supports one binary division, attacking against defensive
+involvement, which cuts across listed positions at an adjusted Rand index of only
+\ARIvsPosition{} while a supervised model reaches \LGBMAccuracy{} accuracy on the same
+features. That global division survives shrinkage toward the position mean at
+\ShrinkARIGlobal{}, whereas the divisions within defender and forward groups fall to
+\ShrinkARIDF{} and \ShrinkARIFW{} and are substantially descriptions of sampling noise.
+Public football data now supports coarser role analysis than it did a year ago.
