@@ -1,0 +1,160 @@
+{
+  "2024-25": {
+    "season": "2024-25",
+    "understat_match": {
+      "fbref_rows": 574,
+      "understat_rows": 562,
+      "matched": 557,
+      "match_rate": 0.9704,
+      "by_method": {
+        "exact": 522,
+        "token_subset": 25,
+        "fuzzy": 10,
+        "unmatched": 17
+      },
+      "ambiguous_token_matches": []
+    },
+    "rows_per_squad": 574,
+    "rows_aggregated": 562,
+    "rows_outfield": 518,
+    "rows_outfield_eligible": 366,
+    "rows_keepers": 44,
+    "players_multi_club": 12,
+    "position_group_counts": {
+      "MF": 241,
+      "DF": 190,
+      "FW": 87,
+      "GK": 44
+    },
+    "features_used": [
+      "np_xg_p90",
+      "xa_p90",
+      "key_passes_p90",
+      "xg_chain_p90",
+      "xg_buildup_p90",
+      "shots_p90",
+      "shots_on_target_p90",
+      "goals_non_penalty_p90",
+      "assists_p90",
+      "crosses_p90",
+      "interceptions_p90",
+      "tackles_won_p90",
+      "fouls_committed_p90",
+      "fouls_drawn_p90",
+      "offsides_p90",
+      "cards_yellow_p90",
+      "shot_accuracy_pct",
+      "goals_per_shot"
+    ],
+    "features_dropped_missing": [],
+    "missingness": {
+      "goals_per_shot": 0.1236,
+      "shot_accuracy_pct": 0.1236,
+      "xa_p90": 0.0,
+      "cards_yellow_p90": 0.0,
+      "offsides_p90": 0.0,
+      "fouls_drawn_p90": 0.0,
+      "fouls_committed_p90": 0.0,
+      "tackles_won_p90": 0.0,
+      "interceptions_p90": 0.0,
+      "np_xg_p90": 0.0,
+      "assists_p90": 0.0,
+      "goals_non_penalty_p90": 0.0,
+      "shots_on_target_p90": 0.0,
+      "shots_p90": 0.0,
+      "xg_buildup_p90": 0.0,
+      "xg_chain_p90": 0.0,
+      "key_passes_p90": 0.0,
+      "crosses_p90": 0.0
+    },
+    "imputed_cells": {
+      "shot_accuracy_pct": 2,
+      "goals_per_shot": 2
+    },
+    "minutes_threshold": 450,
+    "minutes_sensitivity_counts": {
+      "270": 403,
+      "450": 366,
+      "900": 296
+    }
+  },
+  "2025-26": {
+    "season": "2025-26",
+    "understat_match": {
+      "fbref_rows": 551,
+      "understat_rows": 537,
+      "matched": 530,
+      "match_rate": 0.9619,
+      "by_method": {
+        "exact": 495,
+        "token_subset": 23,
+        "fuzzy": 12,
+        "unmatched": 21
+      },
+      "ambiguous_token_matches": []
+    },
+    "rows_per_squad": 551,
+    "rows_aggregated": 537,
+    "rows_outfield": 497,
+    "rows_outfield_eligible": 372,
+    "rows_keepers": 40,
+    "players_multi_club": 14,
+    "position_group_counts": {
+      "MF": 238,
+      "DF": 173,
+      "FW": 86,
+      "GK": 40
+    },
+    "features_used": [
+      "np_xg_p90",
+      "xa_p90",
+      "key_passes_p90",
+      "xg_chain_p90",
+      "xg_buildup_p90",
+      "shots_p90",
+      "shots_on_target_p90",
+      "goals_non_penalty_p90",
+      "assists_p90",
+      "crosses_p90",
+      "interceptions_p90",
+      "tackles_won_p90",
+      "fouls_committed_p90",
+      "fouls_drawn_p90",
+      "offsides_p90",
+      "cards_yellow_p90",
+      "shot_accuracy_pct",
+      "goals_per_shot"
+    ],
+    "features_dropped_missing": [],
+    "missingness": {
+      "goals_per_shot": 0.1087,
+      "shot_accuracy_pct": 0.1087,
+      "xa_p90": 0.0,
+      "cards_yellow_p90": 0.0,
+      "offsides_p90": 0.0,
+      "fouls_drawn_p90": 0.0,
+      "fouls_committed_p90": 0.0,
+      "tackles_won_p90": 0.0,
+      "interceptions_p90": 0.0,
+      "np_xg_p90": 0.0,
+      "assists_p90": 0.0,
+      "goals_non_penalty_p90": 0.0,
+      "shots_on_target_p90": 0.0,
+      "shots_p90": 0.0,
+      "xg_buildup_p90": 0.0,
+      "xg_chain_p90": 0.0,
+      "key_passes_p90": 0.0,
+      "crosses_p90": 0.0
+    },
+    "imputed_cells": {
+      "shot_accuracy_pct": 4,
+      "goals_per_shot": 4
+    },
+    "minutes_threshold": 450,
+    "minutes_sensitivity_counts": {
+      "270": 395,
+      "450": 372,
+      "900": 316
+    }
+  }
+}
