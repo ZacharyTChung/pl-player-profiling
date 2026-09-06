@@ -1,0 +1,359 @@
+{
+  "season": "2024-25",
+  "target": "position_group",
+  "features": [
+    "np_xg_p90",
+    "xa_p90",
+    "key_passes_p90",
+    "xg_chain_p90",
+    "xg_buildup_p90",
+    "shots_p90",
+    "shots_on_target_p90",
+    "goals_non_penalty_p90",
+    "assists_p90",
+    "crosses_p90",
+    "interceptions_p90",
+    "tackles_won_p90",
+    "fouls_committed_p90",
+    "fouls_drawn_p90",
+    "offsides_p90",
+    "cards_yellow_p90",
+    "shot_accuracy_pct",
+    "goals_per_shot"
+  ],
+  "n_features": 18,
+  "n_players": 366,
+  "class_counts": {
+    "DF": 136,
+    "MF": 181,
+    "FW": 49
+  },
+  "class_shares": {
+    "DF": 0.3716,
+    "MF": 0.4945,
+    "FW": 0.1339
+  },
+  "cross_validation": {
+    "scheme": "stratified k-fold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "scoring_source": "out-of-fold predictions pooled over the five folds"
+  },
+  "baseline": {
+    "accuracy": 0.4945,
+    "balanced_accuracy": 0.3333,
+    "macro_f1": 0.2206,
+    "weighted_f1": 0.3273,
+    "per_class": {
+      "DF": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 136
+      },
+      "MF": {
+        "precision": 0.4945,
+        "recall": 1.0,
+        "f1": 0.6618,
+        "support": 181
+      },
+      "FW": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 49
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "DF",
+        "MF",
+        "FW"
+      ],
+      "orientation": "rows are listed position, columns are predicted position",
+      "counts": [
+        [
+          0,
+          136,
+          0
+        ],
+        [
+          0,
+          181,
+          0
+        ],
+        [
+          0,
+          49,
+          0
+        ]
+      ],
+      "row_normalised": [
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ]
+      ]
+    },
+    "strategy": "most_frequent",
+    "majority_class": "MF"
+  },
+  "models": {
+    "logistic_regression": {
+      "accuracy": 0.8033,
+      "balanced_accuracy": 0.7721,
+      "macro_f1": 0.7792,
+      "weighted_f1": 0.8019,
+      "per_class": {
+        "DF": {
+          "precision": 0.8138,
+          "recall": 0.8676,
+          "f1": 0.8399,
+          "support": 136
+        },
+        "MF": {
+          "precision": 0.809,
+          "recall": 0.7956,
+          "f1": 0.8022,
+          "support": 181
+        },
+        "FW": {
+          "precision": 0.7442,
+          "recall": 0.6531,
+          "f1": 0.6957,
+          "support": 49
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "DF",
+          "MF",
+          "FW"
+        ],
+        "orientation": "rows are listed position, columns are predicted position",
+        "counts": [
+          [
+            118,
+            18,
+            0
+          ],
+          [
+            26,
+            144,
+            11
+          ],
+          [
+            1,
+            16,
+            32
+          ]
+        ],
+        "row_normalised": [
+          [
+            0.8676,
+            0.1324,
+            0.0
+          ],
+          [
+            0.1436,
+            0.7956,
+            0.0608
+          ],
+          [
+            0.0204,
+            0.3265,
+            0.6531
+          ]
+        ]
+      },
+      "per_fold": {
+        "accuracy": [
+          0.8243,
+          0.7123,
+          0.8767,
+          0.7945,
+          0.8082
+        ],
+        "macro_f1": [
+          0.7886,
+          0.6721,
+          0.8798,
+          0.7659,
+          0.7917
+        ],
+        "accuracy_mean": 0.8032,
+        "accuracy_sd": 0.0596,
+        "macro_f1_mean": 0.7796,
+        "macro_f1_sd": 0.0742
+      },
+      "accuracy_over_baseline": 0.3088,
+      "macro_f1_over_baseline": 0.5586
+    },
+    "lightgbm": {
+      "accuracy": 0.8169,
+      "balanced_accuracy": 0.7745,
+      "macro_f1": 0.7852,
+      "weighted_f1": 0.816,
+      "per_class": {
+        "DF": {
+          "precision": 0.8779,
+          "recall": 0.8456,
+          "f1": 0.8614,
+          "support": 136
+        },
+        "MF": {
+          "precision": 0.7969,
+          "recall": 0.8453,
+          "f1": 0.8204,
+          "support": 181
+        },
+        "FW": {
+          "precision": 0.7209,
+          "recall": 0.6327,
+          "f1": 0.6739,
+          "support": 49
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "DF",
+          "MF",
+          "FW"
+        ],
+        "orientation": "rows are listed position, columns are predicted position",
+        "counts": [
+          [
+            115,
+            21,
+            0
+          ],
+          [
+            16,
+            153,
+            12
+          ],
+          [
+            0,
+            18,
+            31
+          ]
+        ],
+        "row_normalised": [
+          [
+            0.8456,
+            0.1544,
+            0.0
+          ],
+          [
+            0.0884,
+            0.8453,
+            0.0663
+          ],
+          [
+            0.0,
+            0.3673,
+            0.6327
+          ]
+        ]
+      },
+      "per_fold": {
+        "accuracy": [
+          0.8243,
+          0.7808,
+          0.8356,
+          0.7671,
+          0.8767
+        ],
+        "macro_f1": [
+          0.7886,
+          0.7429,
+          0.8049,
+          0.7255,
+          0.8608
+        ],
+        "accuracy_mean": 0.8169,
+        "accuracy_sd": 0.0441,
+        "macro_f1_mean": 0.7845,
+        "macro_f1_sd": 0.0535
+      },
+      "accuracy_over_baseline": 0.3224,
+      "macro_f1_over_baseline": 0.5646
+    }
+  },
+  "logistic_standardised_coefficients": {
+    "DF": {
+      "np_xg_p90": 0.0232,
+      "xa_p90": -0.1338,
+      "key_passes_p90": -0.7423,
+      "xg_chain_p90": -0.64,
+      "xg_buildup_p90": 0.8621,
+      "shots_p90": -1.1723,
+      "shots_on_target_p90": -0.7833,
+      "goals_non_penalty_p90": -0.4205,
+      "assists_p90": 0.0924,
+      "crosses_p90": 0.6205,
+      "interceptions_p90": 0.756,
+      "tackles_won_p90": 0.3598,
+      "fouls_committed_p90": -0.9015,
+      "fouls_drawn_p90": -0.1907,
+      "offsides_p90": 0.0926,
+      "cards_yellow_p90": 0.0721,
+      "shot_accuracy_pct": 0.4087,
+      "goals_per_shot": 0.1848
+    },
+    "MF": {
+      "np_xg_p90": -0.6646,
+      "xa_p90": -0.1695,
+      "key_passes_p90": 1.253,
+      "xg_chain_p90": 0.4794,
+      "xg_buildup_p90": -0.5682,
+      "shots_p90": 0.5864,
+      "shots_on_target_p90": 0.4636,
+      "goals_non_penalty_p90": 0.0483,
+      "assists_p90": -0.3184,
+      "crosses_p90": -0.4139,
+      "interceptions_p90": 0.5682,
+      "tackles_won_p90": 0.2301,
+      "fouls_committed_p90": 0.4671,
+      "fouls_drawn_p90": 0.2139,
+      "offsides_p90": -0.3022,
+      "cards_yellow_p90": -0.0921,
+      "shot_accuracy_pct": 0.0563,
+      "goals_per_shot": -0.2059
+    },
+    "FW": {
+      "np_xg_p90": 0.6414,
+      "xa_p90": 0.3032,
+      "key_passes_p90": -0.5107,
+      "xg_chain_p90": 0.1605,
+      "xg_buildup_p90": -0.2939,
+      "shots_p90": 0.5859,
+      "shots_on_target_p90": 0.3197,
+      "goals_non_penalty_p90": 0.3722,
+      "assists_p90": 0.226,
+      "crosses_p90": -0.2066,
+      "interceptions_p90": -1.3243,
+      "tackles_won_p90": -0.59,
+      "fouls_committed_p90": 0.4344,
+      "fouls_drawn_p90": -0.0232,
+      "offsides_p90": 0.2096,
+      "cards_yellow_p90": 0.0201,
+      "shot_accuracy_pct": -0.465,
+      "goals_per_shot": 0.0211
+    }
+  },
+  "headline_metric": "macro_f1",
+  "notes": "Macro F1 is the headline because the classes are unbalanced and accuracy rewards a model for getting midfielders right. All model scores are pooled out-of-fold scores, so nothing here is measured on training data."
+}

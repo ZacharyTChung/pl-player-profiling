@@ -18,111 +18,19 @@ import config
 TEX_FILES = sorted(config.PAPER.rglob("*.tex"))
 MACROS_FILE = config.RESULTS / "macros.tex"
 
-#: Macros provided by LaTeX itself or by the packages the paper loads.
-_BUILTIN_PREFIXES = (
-    "begin",
-    "end",
-    "section",
-    "subsection",
-    "subsubsection",
-    "paragraph",
-    "cite",
-    "citep",
-    "citet",
-    "citealp",
-    "ref",
-    "label",
-    "input",
-    "include",
-    "includegraphics",
-    "caption",
-    "textbf",
-    "textit",
-    "emph",
-    "texttt",
-    "textsc",
-    "footnote",
-    "item",
-    "usepackage",
-    "documentclass",
-    "title",
-    "author",
-    "date",
-    "maketitle",
-    "newcommand",
-    "renewcommand",
-    "bibliography",
-    "bibliographystyle",
-    "toprule",
-    "midrule",
-    "bottomrule",
-    "cmidrule",
-    "multicolumn",
-    "multirow",
-    "hline",
-    "centering",
-    "small",
-    "footnotesize",
-    "large",
-    "Large",
-    "num",
-    "si",
+#: LaTeX and package commands that happen to start with a capital letter.
+_UPPERCASE_BUILTINS = {
     "SI",
-    "percent",
-    "приложение",
-    "appendix",
-    "clearpage",
-    "newpage",
-    "noindent",
-    "quad",
-    "qquad",
-    "hspace",
-    "vspace",
-    "left",
-    "right",
-    "frac",
-    "times",
-    "leq",
-    "geq",
-    "alpha",
-    "beta",
-    "sigma",
-    "mu",
-    "subfloat",
-    "subfigure",
-    "url",
-    "href",
-    "today",
-    "tableofcontents",
-    "abstract",
-    "maketitleabstract",
-    "phantomsection",
-    "addcontentsline",
-    "text",
-    "mathrm",
-    "hat",
-    "bar",
-    "sum",
-    "log",
-    "exp",
-    "sqrt",
-    "cdot",
-    "ldots",
-    "dots",
-    "textwidth",
-    "linewidth",
-    "columnwidth",
-    "resizebox",
-    "scriptsize",
-    "tiny",
-    "normalsize",
-    "raggedright",
-    "arraybackslash",
-    "toprule",
-    "addlinespace",
-    "bfseries",
-    "itshape",
-)
+    "Large",
+    "LaTeX",
+    "TeX",
+    "Huge",
+    "Roman",
+    "Alph",
+    "AA",
+    "S",
+    "P",
+}
 
 
 def _tex_bodies() -> str:
@@ -173,20 +81,20 @@ def test_every_included_graphic_exists() -> None:
 
 
 def test_every_cited_macro_is_defined() -> None:
+    """Every generated macro the paper cites must exist in results/macros.tex.
+
+    Generated macros are CamelCase by construction (``\\NEligiblePrimary``), while LaTeX
+    and package commands are lowercase. Checking the capitalised namespace therefore
+    catches a stale or misspelled project macro without maintaining a whitelist of every
+    command the document class provides.
+    """
     body = _strip_comments(_tex_bodies())
     used = set(re.findall(r"\\([A-Za-z]+)", body))
     defined = defined_macros()
-    unknown = {
-        m
-        for m in used
-        if m not in defined and not m.startswith(_BUILTIN_PREFIXES) and m not in _BUILTIN_PREFIXES
-    }
-    # Macros the paper defines inline in its own preamble are fine.
     inline = set(re.findall(r"\\newcommand\s*\{?\\([A-Za-z]+)\}?", body))
-    unknown -= inline
-    assert not unknown, (
-        f"macros used by the paper but not defined in results/macros.tex: {sorted(unknown)}"
-    )
+    candidates = {m for m in used if m[:1].isupper()} - _UPPERCASE_BUILTINS - inline
+    unknown = sorted(candidates - defined)
+    assert not unknown, f"macros used by the paper but not defined in results/macros.tex: {unknown}"
 
 
 def test_no_hardcoded_numbers_in_result_sentences() -> None:

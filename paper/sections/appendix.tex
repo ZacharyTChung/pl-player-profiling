@@ -48,3 +48,59 @@ with his club, listed position, assigned archetype and distance from his cluster
 centroid.
 
 \input{../results/tables/cluster_membership.tex}
+
+\section{Supplementary figures}
+\label{sec:appendix:supplementary}
+
+Figure~\ref{fig:corrheatmap} gives the full hierarchically clustered Spearman correlation
+matrix over the outfield feature set, from which the divergence analysis in
+Section~\ref{sec:results:divergence} is derived. Figure~\ref{fig:pcascree} reports the
+scree and cumulative variance curves: \PCNinetyComponents{} components are required to
+reach the ninety percent threshold, so the feature set is not close to low rank, and the
+first three components together account for \PCCumThree{} of the variance.
+Figure~\ref{fig:pcabiplot} shows the loadings biplot. Figure~\ref{fig:keepercorr} gives
+the correlation structure of the surviving goalkeeper features and
+Figure~\ref{fig:keepercompositedistributions} the distribution of the two goalkeeper
+composites.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{corr_heatmap_all.pdf}
+  \caption{Hierarchically clustered Spearman correlation matrix over the outfield feature
+  set in the primary season.}
+  \label{fig:corrheatmap}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{pca_scree.pdf}
+    \caption{Scree and cumulative variance.}
+    \label{fig:pcascree}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{pca_biplot.pdf}
+    \caption{Loadings biplot.}
+    \label{fig:pcabiplot}
+  \end{subfigure}
+  \caption{Principal component structure of the outfield feature set.}
+  \label{fig:pcapanel}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{keeper_corr_heatmap.pdf}
+    \caption{Surviving goalkeeper features.}
+    \label{fig:keepercorr}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{keeper_composite_distributions.pdf}
+    \caption{Goalkeeper composite distributions.}
+    \label{fig:keepercompositedistributions}
+  \end{subfigure}
+  \caption{Supplementary goalkeeper material.}
+  \label{fig:keepersupplementary}
+\end{figure}

@@ -1,0 +1,2398 @@
+{
+  "question": "Per-90 rates over partial seasons are noisy, and most so where minutes are fewest. Does the partition describe playing roles, or sampling noise?",
+  "model": {
+    "likelihood": "y_i | theta_i has mean theta_i and variance kappa_g / n_i",
+    "prior": "theta_i has mean mu_g and variance tau_g^2 within position group",
+    "posterior_mean": "B_i y_i + (1 - B_i) mu_g with B_i = tau^2 / (tau^2 + kappa / n_i)",
+    "exposure": {
+      "per_90_features": "nineties, that is minutes divided by 90",
+      "ratio_features": "shots, since both ratios are computed per shot"
+    },
+    "variance_component_estimator": "E[(y_i - mu_g)^2] = tau_g^2 + kappa_g / n_i is linear in 1 / n_i, so the two components are separately identified by regressing squared deviations on inverse exposure with an intercept. Ordinary least squares gives the starting value and two weighted least squares iterations with weights 1 / fitted^2 follow, because squared deviations are heteroscedastic.",
+    "fallback": "If the estimated slope is not positive, kappa falls back to the Poisson value mu_g for counts or the binomial value p(1-p) on the ratio scale, and tau^2 is recovered as the residual mean squared deviation.",
+    "assumptions": [
+      "One stable true rate per player per season, so mid-season role change is read as sampling noise and shrunk away.",
+      "Sampling variance inversely proportional to exposure with a constant shared within position group, so players are exchangeable up to exposure.",
+      "Exposure fixed and independent of the true rate. This is false in the direction that matters, since better players play more, so mu_g leans towards high-minute players and shrinkage is mildly conservative.",
+      "Only first and second moments are used, so the posterior mean is exact under Gaussian assumptions and the best linear predictor otherwise.",
+      "The moment regression centres on an estimated mean, so tau^2 carries a small downward bias of order one over the group size."
+    ]
+  },
+  "refit": "Shrunken features are re-standardised exactly as src.preprocess standardises the raw ones, globally and within position group, then the clustering is refitted under the same declared config.K_RULE. Re-standardising removes the uniform scale compression and leaves the part that matters, which is that low-minute players are pulled in further than high-minute players.",
+  "seasons": {
+    "2024-25": {
+      "hyperparameters": {
+        "prior_pool": {
+          "source": "aggregated_2024-25.parquet, outfield only",
+          "min_minutes": 90,
+          "n_players": 456,
+          "n_by_group": {
+            "MF": 218,
+            "DF": 170,
+            "FW": 68
+          },
+          "rationale": "The unfiltered pool keeps the low-minute players that config.MIN_MINUTES excludes. They carry little weight on the prior mean but they are the observations that identify the sampling variance slope."
+        },
+        "by_group": {
+          "DF": {
+            "np_xg_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.053611,
+              "tau_squared": 0.000686,
+              "kappa": 0.011017,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.053611,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.492,
+              "diagnostics": {
+                "ols_intercept": 0.000686,
+                "ols_slope": 0.011017,
+                "mean_squared_deviation": 0.002146
+              }
+            },
+            "xa_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.059334,
+              "tau_squared": 0.00324,
+              "kappa": 0.011723,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.059334,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.8113,
+              "diagnostics": {
+                "ols_intercept": 0.00324,
+                "ols_slope": 0.011723,
+                "mean_squared_deviation": 0.004868
+              }
+            },
+            "key_passes_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.521727,
+              "tau_squared": 0.178177,
+              "kappa": 0.372159,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.521727,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.8816,
+              "diagnostics": {
+                "ols_intercept": 0.178177,
+                "ols_slope": 0.372159,
+                "mean_squared_deviation": 0.231502
+              }
+            },
+            "xg_chain_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.342425,
+              "tau_squared": 0.017791,
+              "kappa": 0.076791,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.342425,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.7828,
+              "diagnostics": {
+                "ols_intercept": 0.017791,
+                "ols_slope": 0.076791,
+                "mean_squared_deviation": 0.029849
+              }
+            },
+            "xg_buildup_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.295844,
+              "tau_squared": 0.013737,
+              "kappa": 0.060905,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.295844,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.7782,
+              "diagnostics": {
+                "ols_intercept": 0.013737,
+                "ols_slope": 0.060905,
+                "mean_squared_deviation": 0.023478
+              }
+            },
+            "shots_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.558255,
+              "tau_squared": 0.059233,
+              "kappa": 0.690681,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.558255,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.5716,
+              "diagnostics": {
+                "ols_intercept": 0.059233,
+                "ols_slope": 0.690681,
+                "mean_squared_deviation": 0.175496
+              }
+            },
+            "shots_on_target_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.157828,
+              "tau_squared": 0.003924,
+              "kappa": 0.167641,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.157828,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.2669,
+              "diagnostics": {
+                "ols_intercept": 0.003924,
+                "ols_slope": 0.167641,
+                "mean_squared_deviation": 0.035154
+              }
+            },
+            "goals_non_penalty_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.040663,
+              "tau_squared": 0.002074,
+              "kappa": 0.015195,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.040663,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.6798,
+              "diagnostics": {
+                "ols_intercept": 0.002074,
+                "ols_slope": 0.015195,
+                "mean_squared_deviation": 0.003971
+              }
+            },
+            "assists_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.049278,
+              "tau_squared": 0.0,
+              "kappa": 0.049278,
+              "kappa_source": "plugin_poisson_or_binomial",
+              "plugin_kappa": 0.049278,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": 0.005333,
+                "ols_slope": -0.000224,
+                "mean_squared_deviation": 0.0053
+              }
+            },
+            "crosses_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 1.257452,
+              "tau_squared": 2.441823,
+              "kappa": 1.257452,
+              "kappa_source": "plugin_poisson_or_binomial",
+              "plugin_kappa": 1.257452,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.968,
+              "diagnostics": {
+                "ols_intercept": 2.711111,
+                "ols_slope": -0.606868,
+                "mean_squared_deviation": 2.623197
+              }
+            },
+            "interceptions_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.986595,
+              "tau_squared": 0.076985,
+              "kappa": 1.000916,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.986595,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.5447,
+              "diagnostics": {
+                "ols_intercept": 0.076985,
+                "ols_slope": 1.000916,
+                "mean_squared_deviation": 0.237386
+              }
+            },
+            "tackles_won_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 1.069644,
+              "tau_squared": 0.106767,
+              "kappa": 1.694507,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.069644,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.495,
+              "diagnostics": {
+                "ols_intercept": 0.106767,
+                "ols_slope": 1.694507,
+                "mean_squared_deviation": 0.387745
+              }
+            },
+            "fouls_committed_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.833592,
+              "tau_squared": 0.069032,
+              "kappa": 0.966594,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.833592,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.5263,
+              "diagnostics": {
+                "ols_intercept": 0.069032,
+                "ols_slope": 0.966594,
+                "mean_squared_deviation": 0.194425
+              }
+            },
+            "fouls_drawn_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.697474,
+              "tau_squared": 0.16606,
+              "kappa": 0.810104,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.697474,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.7613,
+              "diagnostics": {
+                "ols_intercept": 0.16606,
+                "ols_slope": 0.810104,
+                "mean_squared_deviation": 0.27575
+              }
+            },
+            "offsides_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.064785,
+              "tau_squared": 0.00267,
+              "kappa": 0.03937,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.064785,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.5134,
+              "diagnostics": {
+                "ols_intercept": 0.00267,
+                "ols_slope": 0.03937,
+                "mean_squared_deviation": 0.007589
+              }
+            },
+            "cards_yellow_p90": {
+              "exposure": "nineties",
+              "n_pool": 170,
+              "mu": 0.193322,
+              "tau_squared": 0.0,
+              "kappa": 0.233169,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.193322,
+              "median_exposure": 15.556,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -0.000853,
+                "ols_slope": 0.233169,
+                "mean_squared_deviation": 0.03385
+              }
+            },
+            "shot_accuracy_pct": {
+              "exposure": "shots",
+              "n_pool": 158,
+              "mu": 28.271605,
+              "tau_squared": 26.059112,
+              "kappa": 1957.450312,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2027.876848,
+              "median_exposure": 7.5,
+              "reliability_at_median_exposure": 0.0908,
+              "diagnostics": {
+                "ols_intercept": 26.059112,
+                "ols_slope": 1957.450312,
+                "mean_squared_deviation": 547.880662
+              }
+            },
+            "goals_per_shot": {
+              "exposure": "shots",
+              "n_pool": 158,
+              "mu": 0.07284,
+              "tau_squared": 0.0,
+              "kappa": 0.075823,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.067534,
+              "median_exposure": 7.5,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -4.7e-05,
+                "ols_slope": 0.075823,
+                "mean_squared_deviation": 0.016098
+              }
+            }
+          },
+          "MF": {
+            "np_xg_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.161852,
+              "tau_squared": 0.011442,
+              "kappa": 0.076233,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.161852,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.7207,
+              "diagnostics": {
+                "ols_intercept": 0.011442,
+                "ols_slope": 0.076233,
+                "mean_squared_deviation": 0.020855
+              }
+            },
+            "xa_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.157185,
+              "tau_squared": 0.006412,
+              "kappa": 0.05238,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.157185,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.6779,
+              "diagnostics": {
+                "ols_intercept": 0.006412,
+                "ols_slope": 0.05238,
+                "mean_squared_deviation": 0.013913
+              }
+            },
+            "key_passes_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 1.28692,
+              "tau_squared": 0.327597,
+              "kappa": 1.090553,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.28692,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.8378,
+              "diagnostics": {
+                "ols_intercept": 0.327597,
+                "ols_slope": 1.090553,
+                "mean_squared_deviation": 0.469373
+              }
+            },
+            "xg_chain_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.516008,
+              "tau_squared": 0.030959,
+              "kappa": 0.144247,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.516008,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.7868,
+              "diagnostics": {
+                "ols_intercept": 0.030959,
+                "ols_slope": 0.144247,
+                "mean_squared_deviation": 0.050483
+              }
+            },
+            "xg_buildup_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.287618,
+              "tau_squared": 0.007556,
+              "kappa": 0.128598,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.287618,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.5026,
+              "diagnostics": {
+                "ols_intercept": 0.007556,
+                "ols_slope": 0.128598,
+                "mean_squared_deviation": 0.024435
+              }
+            },
+            "shots_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 1.54908,
+              "tau_squared": 0.645488,
+              "kappa": 2.344562,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.54908,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.8256,
+              "diagnostics": {
+                "ols_intercept": 0.645488,
+                "ols_slope": 2.344562,
+                "mean_squared_deviation": 0.94626
+              }
+            },
+            "shots_on_target_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.533005,
+              "tau_squared": 0.108685,
+              "kappa": 0.714931,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.533005,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.7233,
+              "diagnostics": {
+                "ols_intercept": 0.108685,
+                "ols_slope": 0.714931,
+                "mean_squared_deviation": 0.199706
+              }
+            },
+            "goals_non_penalty_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.147092,
+              "tau_squared": 0.013972,
+              "kappa": 0.081487,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.147092,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.7467,
+              "diagnostics": {
+                "ols_intercept": 0.013972,
+                "ols_slope": 0.081487,
+                "mean_squared_deviation": 0.024267
+              }
+            },
+            "assists_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.135694,
+              "tau_squared": 0.00918,
+              "kappa": 0.051487,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.135694,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.754,
+              "diagnostics": {
+                "ols_intercept": 0.00918,
+                "ols_slope": 0.051487,
+                "mean_squared_deviation": 0.015839
+              }
+            },
+            "crosses_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 2.284269,
+              "tau_squared": 2.834774,
+              "kappa": 3.502397,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2.284269,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.933,
+              "diagnostics": {
+                "ols_intercept": 2.834774,
+                "ols_slope": 3.502397,
+                "mean_squared_deviation": 3.315088
+              }
+            },
+            "interceptions_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.736275,
+              "tau_squared": 0.118632,
+              "kappa": 1.064712,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.736275,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.657,
+              "diagnostics": {
+                "ols_intercept": 0.118632,
+                "ols_slope": 1.064712,
+                "mean_squared_deviation": 0.265884
+              }
+            },
+            "tackles_won_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 1.168324,
+              "tau_squared": 0.175733,
+              "kappa": 2.143691,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.168324,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.585,
+              "diagnostics": {
+                "ols_intercept": 0.175733,
+                "ols_slope": 2.143691,
+                "mean_squared_deviation": 0.48602
+              }
+            },
+            "fouls_committed_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 1.289091,
+              "tau_squared": 0.174015,
+              "kappa": 2.308741,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.289091,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.5645,
+              "diagnostics": {
+                "ols_intercept": 0.174015,
+                "ols_slope": 2.308741,
+                "mean_squared_deviation": 0.509051
+              }
+            },
+            "fouls_drawn_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 1.296419,
+              "tau_squared": 0.300953,
+              "kappa": 1.706368,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.296419,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.752,
+              "diagnostics": {
+                "ols_intercept": 0.300953,
+                "ols_slope": 1.706368,
+                "mean_squared_deviation": 0.513541
+              }
+            },
+            "offsides_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.159305,
+              "tau_squared": 0.013127,
+              "kappa": 0.265038,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.159305,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.4599,
+              "diagnostics": {
+                "ols_intercept": 0.013127,
+                "ols_slope": 0.265038,
+                "mean_squared_deviation": 0.049751
+              }
+            },
+            "cards_yellow_p90": {
+              "exposure": "nineties",
+              "n_pool": 218,
+              "mu": 0.222809,
+              "tau_squared": 0.0,
+              "kappa": 0.44419,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.222809,
+              "median_exposure": 17.194,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -0.012471,
+                "ols_slope": 0.44419,
+                "mean_squared_deviation": 0.04828
+              }
+            },
+            "shot_accuracy_pct": {
+              "exposure": "shots",
+              "n_pool": 212,
+              "mu": 34.407849,
+              "tau_squared": 19.559982,
+              "kappa": 2421.090772,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2256.884816,
+              "median_exposure": 20.0,
+              "reliability_at_median_exposure": 0.1391,
+              "diagnostics": {
+                "ols_intercept": 19.559982,
+                "ols_slope": 2421.090772,
+                "mean_squared_deviation": 331.442936
+              }
+            },
+            "goals_per_shot": {
+              "exposure": "shots",
+              "n_pool": 212,
+              "mu": 0.101612,
+              "tau_squared": 0.0,
+              "kappa": 0.084942,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.091287,
+              "median_exposure": 20.0,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -0.000771,
+                "ols_slope": 0.084942,
+                "mean_squared_deviation": 0.009837
+              }
+            }
+          },
+          "FW": {
+            "np_xg_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.419524,
+              "tau_squared": 0.012454,
+              "kappa": 0.179945,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.419524,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.4563,
+              "diagnostics": {
+                "ols_intercept": 0.012454,
+                "ols_slope": 0.179945,
+                "mean_squared_deviation": 0.045053
+              }
+            },
+            "xa_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.15517,
+              "tau_squared": 0.011559,
+              "kappa": 0.015714,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.15517,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.8992,
+              "diagnostics": {
+                "ols_intercept": 0.011559,
+                "ols_slope": 0.015714,
+                "mean_squared_deviation": 0.014396
+              }
+            },
+            "key_passes_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 1.068346,
+              "tau_squared": 0.247413,
+              "kappa": 0.680483,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.068346,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.8151,
+              "diagnostics": {
+                "ols_intercept": 0.247413,
+                "ols_slope": 0.680483,
+                "mean_squared_deviation": 0.37687
+              }
+            },
+            "xg_chain_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.635845,
+              "tau_squared": 0.01233,
+              "kappa": 0.319402,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.635845,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.3189,
+              "diagnostics": {
+                "ols_intercept": 0.01233,
+                "ols_slope": 0.319402,
+                "mean_squared_deviation": 0.073479
+              }
+            },
+            "xg_buildup_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.168347,
+              "tau_squared": 0.004944,
+              "kappa": 0.036126,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.168347,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.624,
+              "diagnostics": {
+                "ols_intercept": 0.004944,
+                "ols_slope": 0.036126,
+                "mean_squared_deviation": 0.012527
+              }
+            },
+            "shots_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 2.529167,
+              "tau_squared": 0.213001,
+              "kappa": 3.914859,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2.529167,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.3975,
+              "diagnostics": {
+                "ols_intercept": 0.213001,
+                "ols_slope": 3.914859,
+                "mean_squared_deviation": 0.83908
+              }
+            },
+            "shots_on_target_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 1.045919,
+              "tau_squared": 0.055271,
+              "kappa": 1.182659,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.045919,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.3618,
+              "diagnostics": {
+                "ols_intercept": 0.055271,
+                "ols_slope": 1.182659,
+                "mean_squared_deviation": 0.248344
+              }
+            },
+            "goals_non_penalty_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.358834,
+              "tau_squared": 0.012742,
+              "kappa": 0.24658,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.358834,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.3853,
+              "diagnostics": {
+                "ols_intercept": 0.012742,
+                "ols_slope": 0.24658,
+                "mean_squared_deviation": 0.053132
+              }
+            },
+            "assists_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.153932,
+              "tau_squared": 0.010554,
+              "kappa": 0.066594,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.153932,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.6578,
+              "diagnostics": {
+                "ols_intercept": 0.010554,
+                "ols_slope": 0.066594,
+                "mean_squared_deviation": 0.021827
+              }
+            },
+            "crosses_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 1.249802,
+              "tau_squared": 1.987239,
+              "kappa": 1.249802,
+              "kappa_source": "plugin_poisson_or_binomial",
+              "plugin_kappa": 1.249802,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.9507,
+              "diagnostics": {
+                "ols_intercept": 2.455148,
+                "ols_slope": -1.24633,
+                "mean_squared_deviation": 2.223809
+              }
+            },
+            "interceptions_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.221213,
+              "tau_squared": 0.0,
+              "kappa": 0.578496,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.221213,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -0.012185,
+                "ols_slope": 0.578496,
+                "mean_squared_deviation": 0.102967
+              }
+            },
+            "tackles_won_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.511746,
+              "tau_squared": 0.027454,
+              "kappa": 1.137747,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.511746,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.2264,
+              "diagnostics": {
+                "ols_intercept": 0.027454,
+                "ols_slope": 1.137747,
+                "mean_squared_deviation": 0.453794
+              }
+            },
+            "fouls_committed_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 1.194753,
+              "tau_squared": 0.151243,
+              "kappa": 3.010471,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.194753,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.3786,
+              "diagnostics": {
+                "ols_intercept": 0.151243,
+                "ols_slope": 3.010471,
+                "mean_squared_deviation": 0.766291
+              }
+            },
+            "fouls_drawn_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 1.228394,
+              "tau_squared": 0.19739,
+              "kappa": 2.767485,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.228394,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.4638,
+              "diagnostics": {
+                "ols_intercept": 0.19739,
+                "ols_slope": 2.767485,
+                "mean_squared_deviation": 0.889564
+              }
+            },
+            "offsides_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.503591,
+              "tau_squared": 0.090645,
+              "kappa": 0.192506,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.503591,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.851,
+              "diagnostics": {
+                "ols_intercept": 0.090645,
+                "ols_slope": 0.192506,
+                "mean_squared_deviation": 0.126155
+              }
+            },
+            "cards_yellow_p90": {
+              "exposure": "nineties",
+              "n_pool": 68,
+              "mu": 0.151893,
+              "tau_squared": 0.0,
+              "kappa": 0.715168,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.151893,
+              "median_exposure": 12.128,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -0.063475,
+                "ols_slope": 0.715168,
+                "mean_squared_deviation": 0.091713
+              }
+            },
+            "shot_accuracy_pct": {
+              "exposure": "shots",
+              "n_pool": 67,
+              "mu": 41.354293,
+              "tau_squared": 16.041653,
+              "kappa": 2287.114737,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2425.251744,
+              "median_exposure": 31.0,
+              "reliability_at_median_exposure": 0.1786,
+              "diagnostics": {
+                "ols_intercept": 16.041653,
+                "ols_slope": 2287.114737,
+                "mean_squared_deviation": 203.85062
+              }
+            },
+            "goals_per_shot": {
+              "exposure": "shots",
+              "n_pool": 67,
+              "mu": 0.154373,
+              "tau_squared": 0.001558,
+              "kappa": 0.076785,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.130542,
+              "median_exposure": 31.0,
+              "reliability_at_median_exposure": 0.3862,
+              "diagnostics": {
+                "ols_intercept": 0.001558,
+                "ols_slope": 0.076785,
+                "mean_squared_deviation": 0.007519
+              }
+            }
+          }
+        }
+      },
+      "shrinkage_summary": {
+        "n_players": 366,
+        "mean_shrinkage_weight": 0.5578,
+        "min_player_mean_weight": 0.3205,
+        "max_player_mean_weight": 0.72,
+        "by_feature": {
+          "np_xg_p90": {
+            "mean_weight": 0.6207,
+            "min_weight": 0.2477,
+            "max_weight": 0.8506,
+            "mean_abs_change": 0.02905
+          },
+          "xa_p90": {
+            "mean_weight": 0.7595,
+            "min_weight": 0.3807,
+            "max_weight": 0.9603,
+            "mean_abs_change": 0.01732
+          },
+          "key_passes_p90": {
+            "mean_weight": 0.851,
+            "min_weight": 0.6014,
+            "max_weight": 0.9479,
+            "mean_abs_change": 0.06744
+          },
+          "xg_chain_p90": {
+            "mean_weight": 0.7326,
+            "min_weight": 0.1633,
+            "max_weight": 0.898,
+            "mean_abs_change": 0.04069
+          },
+          "xg_buildup_p90": {
+            "mean_weight": 0.6361,
+            "min_weight": 0.2279,
+            "max_weight": 0.8955,
+            "mean_abs_change": 0.03799
+          },
+          "shots_p90": {
+            "mean_weight": 0.691,
+            "min_weight": 0.2157,
+            "max_weight": 0.9126,
+            "mean_abs_change": 0.14114
+          },
+          "shots_on_target_p90": {
+            "mean_weight": 0.5282,
+            "min_weight": 0.1102,
+            "max_weight": 0.8522,
+            "mean_abs_change": 0.09346
+          },
+          "goals_non_penalty_p90": {
+            "mean_weight": 0.6876,
+            "min_weight": 0.2071,
+            "max_weight": 0.8667,
+            "mean_abs_change": 0.03129
+          },
+          "assists_p90": {
+            "mean_weight": 0.4638,
+            "min_weight": 0.0,
+            "max_weight": 0.8712,
+            "mean_abs_change": 0.03503
+          },
+          "crosses_p90": {
+            "mean_weight": 0.9458,
+            "min_weight": 0.8026,
+            "max_weight": 0.9866,
+            "mean_abs_change": 0.07312
+          },
+          "interceptions_p90": {
+            "mean_weight": 0.5374,
+            "min_weight": 0.0,
+            "max_weight": 0.8087,
+            "mean_abs_change": 0.12865
+          },
+          "tackles_won_p90": {
+            "mean_weight": 0.527,
+            "min_weight": 0.1087,
+            "max_weight": 0.7567,
+            "mean_abs_change": 0.18523
+          },
+          "fouls_committed_p90": {
+            "mean_weight": 0.5498,
+            "min_weight": 0.2025,
+            "max_weight": 0.7409,
+            "mean_abs_change": 0.18801
+          },
+          "fouls_drawn_p90": {
+            "mean_weight": 0.7275,
+            "min_weight": 0.265,
+            "max_weight": 0.8862,
+            "mean_abs_change": 0.12975
+          },
+          "offsides_p90": {
+            "mean_weight": 0.5525,
+            "min_weight": 0.1992,
+            "max_weight": 0.9393,
+            "mean_abs_change": 0.04954
+          },
+          "cards_yellow_p90": {
+            "mean_weight": 0.0,
+            "min_weight": 0.0,
+            "max_weight": 0.0,
+            "mean_abs_change": 0.10399
+          },
+          "shot_accuracy_pct": {
+            "mean_weight": 0.1685,
+            "min_weight": 0.0,
+            "max_weight": 0.5123,
+            "mean_abs_change": 10.14835
+          },
+          "goals_per_shot": {
+            "mean_weight": 0.0614,
+            "min_weight": 0.0,
+            "max_weight": 0.6886,
+            "mean_abs_change": 0.06395
+          }
+        }
+      },
+      "partition_comparison": {
+        "by_scope": {
+          "global": {
+            "n": 366,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.9453,
+            "n_changed": 5,
+            "pct_changed": 1.37,
+            "cluster_sizes_original": {
+              "0": 243,
+              "1": 123
+            },
+            "cluster_sizes_shrunken": {
+              "0": 244,
+              "1": 122
+            }
+          },
+          "DF": {
+            "n": 136,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.453,
+            "n_changed": 21,
+            "pct_changed": 15.44,
+            "cluster_sizes_original": {
+              "0": 98,
+              "1": 38
+            },
+            "cluster_sizes_shrunken": {
+              "0": 99,
+              "1": 37
+            }
+          },
+          "MF": {
+            "n": 181,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.713,
+            "n_changed": 14,
+            "pct_changed": 7.73,
+            "cluster_sizes_original": {
+              "0": 94,
+              "1": 87
+            },
+            "cluster_sizes_shrunken": {
+              "0": 108,
+              "1": 73
+            }
+          },
+          "FW": {
+            "n": 49,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.4424,
+            "n_changed": 8,
+            "pct_changed": 16.33,
+            "cluster_sizes_original": {
+              "0": 30,
+              "1": 19
+            },
+            "cluster_sizes_shrunken": {
+              "0": 22,
+              "1": 27
+            }
+          }
+        },
+        "by_minutes_bin": {
+          "450-900": {
+            "n": 70,
+            "n_changed": 2,
+            "pct_changed": 2.86,
+            "mean_shrinkage_weight": 0.4148,
+            "median_minutes": 696.0
+          },
+          "900-1500": {
+            "n": 76,
+            "n_changed": 2,
+            "pct_changed": 2.63,
+            "mean_shrinkage_weight": 0.5067,
+            "median_minutes": 1162.5
+          },
+          "1500-2200": {
+            "n": 93,
+            "n_changed": 1,
+            "pct_changed": 1.08,
+            "mean_shrinkage_weight": 0.591,
+            "median_minutes": 1842.0
+          },
+          "2200+": {
+            "n": 127,
+            "n_changed": 0,
+            "pct_changed": 0.0,
+            "mean_shrinkage_weight": 0.6429,
+            "median_minutes": 2743.0
+          }
+        },
+        "minutes_bin_edges": [
+          450.0,
+          900.0,
+          1500.0,
+          2200.0,
+          Infinity
+        ],
+        "lowest_minute_movers": [
+          {
+            "player": "Wilson Odobert",
+            "position_group": "FW",
+            "minutes": 850,
+            "mean_shrinkage_weight": 0.4113
+          },
+          {
+            "player": "Kasey McAteer",
+            "position_group": "MF",
+            "minutes": 852,
+            "mean_shrinkage_weight": 0.4856
+          },
+          {
+            "player": "Marshall Munetsi",
+            "position_group": "MF",
+            "minutes": 1078,
+            "mean_shrinkage_weight": 0.5316
+          },
+          {
+            "player": "Kamaldeen Sulemana",
+            "position_group": "FW",
+            "minutes": 1402,
+            "mean_shrinkage_weight": 0.5001
+          },
+          {
+            "player": "Emile Smith Rowe",
+            "position_group": "MF",
+            "minutes": 2043,
+            "mean_shrinkage_weight": 0.6402
+          }
+        ],
+        "verdict_bands": {
+          "survives": 0.8,
+          "partly_survives": 0.5
+        },
+        "verdict": "survives"
+      }
+    },
+    "2025-26": {
+      "hyperparameters": {
+        "prior_pool": {
+          "source": "aggregated_2025-26.parquet, outfield only",
+          "min_minutes": 90,
+          "n_players": 438,
+          "n_by_group": {
+            "MF": 208,
+            "DF": 161,
+            "FW": 69
+          },
+          "rationale": "The unfiltered pool keeps the low-minute players that config.MIN_MINUTES excludes. They carry little weight on the prior mean but they are the observations that identify the sampling variance slope."
+        },
+        "by_group": {
+          "DF": {
+            "np_xg_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.06134,
+              "tau_squared": 0.001352,
+              "kappa": 0.016738,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.06134,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.6006,
+              "diagnostics": {
+                "ols_intercept": 0.001352,
+                "ols_slope": 0.016738,
+                "mean_squared_deviation": 0.004762
+              }
+            },
+            "xa_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.058339,
+              "tau_squared": 0.002927,
+              "kappa": 0.002679,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.058339,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.9532,
+              "diagnostics": {
+                "ols_intercept": 0.002927,
+                "ols_slope": 0.002679,
+                "mean_squared_deviation": 0.003243
+              }
+            },
+            "key_passes_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.512304,
+              "tau_squared": 0.135276,
+              "kappa": 0.330439,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.512304,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.884,
+              "diagnostics": {
+                "ols_intercept": 0.135276,
+                "ols_slope": 0.330439,
+                "mean_squared_deviation": 0.17619
+              }
+            },
+            "xg_chain_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.305125,
+              "tau_squared": 0.017936,
+              "kappa": 0.049492,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.305125,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.8709,
+              "diagnostics": {
+                "ols_intercept": 0.017936,
+                "ols_slope": 0.049492,
+                "mean_squared_deviation": 0.023601
+              }
+            },
+            "xg_buildup_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.256053,
+              "tau_squared": 0.014609,
+              "kappa": 0.037612,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.256053,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.8785,
+              "diagnostics": {
+                "ols_intercept": 0.014609,
+                "ols_slope": 0.037612,
+                "mean_squared_deviation": 0.01892
+              }
+            },
+            "shots_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.605843,
+              "tau_squared": 0.089099,
+              "kappa": 0.297963,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.605843,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.8478,
+              "diagnostics": {
+                "ols_intercept": 0.089099,
+                "ols_slope": 0.297963,
+                "mean_squared_deviation": 0.125135
+              }
+            },
+            "shots_on_target_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.175428,
+              "tau_squared": 0.00799,
+              "kappa": 0.145101,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.175428,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.5063,
+              "diagnostics": {
+                "ols_intercept": 0.00799,
+                "ols_slope": 0.145101,
+                "mean_squared_deviation": 0.027736
+              }
+            },
+            "goals_non_penalty_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.042609,
+              "tau_squared": 0.000239,
+              "kappa": 0.041089,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.042609,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.0977,
+              "diagnostics": {
+                "ols_intercept": 0.000239,
+                "ols_slope": 0.041089,
+                "mean_squared_deviation": 0.006057
+              }
+            },
+            "assists_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.051264,
+              "tau_squared": 0.002392,
+              "kappa": 0.026565,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.051264,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.6264,
+              "diagnostics": {
+                "ols_intercept": 0.002392,
+                "ols_slope": 0.026565,
+                "mean_squared_deviation": 0.005394
+              }
+            },
+            "crosses_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 1.3242,
+              "tau_squared": 2.10822,
+              "kappa": 1.678609,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.3242,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.959,
+              "diagnostics": {
+                "ols_intercept": 2.10822,
+                "ols_slope": 1.678609,
+                "mean_squared_deviation": 2.31838
+              }
+            },
+            "interceptions_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 1.008296,
+              "tau_squared": 0.079694,
+              "kappa": 0.960984,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.008296,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.607,
+              "diagnostics": {
+                "ols_intercept": 0.079694,
+                "ols_slope": 0.960984,
+                "mean_squared_deviation": 0.181694
+              }
+            },
+            "tackles_won_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 1.016285,
+              "tau_squared": 0.107478,
+              "kappa": 1.052055,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.016285,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.6555,
+              "diagnostics": {
+                "ols_intercept": 0.107478,
+                "ols_slope": 1.052055,
+                "mean_squared_deviation": 0.238389
+              }
+            },
+            "fouls_committed_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.89778,
+              "tau_squared": 0.037192,
+              "kappa": 1.559819,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.89778,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.3075,
+              "diagnostics": {
+                "ols_intercept": 0.037192,
+                "ols_slope": 1.559819,
+                "mean_squared_deviation": 0.23215
+              }
+            },
+            "fouls_drawn_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.754974,
+              "tau_squared": 0.177727,
+              "kappa": 0.517051,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.754974,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.8649,
+              "diagnostics": {
+                "ols_intercept": 0.177727,
+                "ols_slope": 0.517051,
+                "mean_squared_deviation": 0.238599
+              }
+            },
+            "offsides_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.061583,
+              "tau_squared": 0.004149,
+              "kappa": 0.01963,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.061583,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.7974,
+              "diagnostics": {
+                "ols_intercept": 0.004149,
+                "ols_slope": 0.01963,
+                "mean_squared_deviation": 0.006292
+              }
+            },
+            "cards_yellow_p90": {
+              "exposure": "nineties",
+              "n_pool": 161,
+              "mu": 0.187745,
+              "tau_squared": 0.0,
+              "kappa": 0.275727,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.187745,
+              "median_exposure": 18.622,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -0.00079,
+                "ols_slope": 0.275727,
+                "mean_squared_deviation": 0.028832
+              }
+            },
+            "shot_accuracy_pct": {
+              "exposure": "shots",
+              "n_pool": 151,
+              "mu": 28.956044,
+              "tau_squared": 27.910731,
+              "kappa": 1763.155087,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2057.151914,
+              "median_exposure": 10.0,
+              "reliability_at_median_exposure": 0.1367,
+              "diagnostics": {
+                "ols_intercept": 27.910731,
+                "ols_slope": 1763.155087,
+                "mean_squared_deviation": 411.157887
+              }
+            },
+            "goals_per_shot": {
+              "exposure": "shots",
+              "n_pool": 151,
+              "mu": 0.070879,
+              "tau_squared": 0.001465,
+              "kappa": 0.048762,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.065855,
+              "median_exposure": 10.0,
+              "reliability_at_median_exposure": 0.231,
+              "diagnostics": {
+                "ols_intercept": 0.001465,
+                "ols_slope": 0.048762,
+                "mean_squared_deviation": 0.010549
+              }
+            }
+          },
+          "MF": {
+            "np_xg_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.141535,
+              "tau_squared": 0.008991,
+              "kappa": 0.022565,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.141535,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.8694,
+              "diagnostics": {
+                "ols_intercept": 0.008991,
+                "ols_slope": 0.022565,
+                "mean_squared_deviation": 0.012054
+              }
+            },
+            "xa_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.143363,
+              "tau_squared": 0.0064,
+              "kappa": 0.020066,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.143363,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.842,
+              "diagnostics": {
+                "ols_intercept": 0.0064,
+                "ols_slope": 0.020066,
+                "mean_squared_deviation": 0.009106
+              }
+            },
+            "key_passes_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 1.200339,
+              "tau_squared": 0.32202,
+              "kappa": 0.84862,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.200339,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.8637,
+              "diagnostics": {
+                "ols_intercept": 0.32202,
+                "ols_slope": 0.84862,
+                "mean_squared_deviation": 0.437313
+              }
+            },
+            "xg_chain_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.453202,
+              "tau_squared": 0.023603,
+              "kappa": 0.162719,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.453202,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.7079,
+              "diagnostics": {
+                "ols_intercept": 0.023603,
+                "ols_slope": 0.162719,
+                "mean_squared_deviation": 0.045764
+              }
+            },
+            "xg_buildup_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.26051,
+              "tau_squared": 0.010676,
+              "kappa": 0.073547,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.26051,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.708,
+              "diagnostics": {
+                "ols_intercept": 0.010676,
+                "ols_slope": 0.073547,
+                "mean_squared_deviation": 0.020767
+              }
+            },
+            "shots_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 1.463235,
+              "tau_squared": 0.425262,
+              "kappa": 1.412698,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.463235,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.8341,
+              "diagnostics": {
+                "ols_intercept": 0.425262,
+                "ols_slope": 1.412698,
+                "mean_squared_deviation": 0.60675
+              }
+            },
+            "shots_on_target_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.479745,
+              "tau_squared": 0.06999,
+              "kappa": 0.202442,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.479745,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.8524,
+              "diagnostics": {
+                "ols_intercept": 0.06999,
+                "ols_slope": 0.202442,
+                "mean_squared_deviation": 0.095839
+              }
+            },
+            "goals_non_penalty_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.13396,
+              "tau_squared": 0.006651,
+              "kappa": 0.098405,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.13396,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.5303,
+              "diagnostics": {
+                "ols_intercept": 0.006651,
+                "ols_slope": 0.098405,
+                "mean_squared_deviation": 0.020637
+              }
+            },
+            "assists_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.12168,
+              "tau_squared": 0.004591,
+              "kappa": 0.097285,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.12168,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.4408,
+              "diagnostics": {
+                "ols_intercept": 0.004591,
+                "ols_slope": 0.097285,
+                "mean_squared_deviation": 0.018576
+              }
+            },
+            "crosses_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 2.386165,
+              "tau_squared": 2.726412,
+              "kappa": 2.386165,
+              "kappa_source": "plugin_poisson_or_binomial",
+              "plugin_kappa": 2.386165,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.9502,
+              "diagnostics": {
+                "ols_intercept": 3.076568,
+                "ols_slope": -0.27559,
+                "mean_squared_deviation": 3.040335
+              }
+            },
+            "interceptions_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.778085,
+              "tau_squared": 0.138824,
+              "kappa": 0.480263,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.778085,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.8284,
+              "diagnostics": {
+                "ols_intercept": 0.138824,
+                "ols_slope": 0.480263,
+                "mean_squared_deviation": 0.198832
+              }
+            },
+            "tackles_won_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 1.091217,
+              "tau_squared": 0.203289,
+              "kappa": 0.673145,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.091217,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.8346,
+              "diagnostics": {
+                "ols_intercept": 0.203289,
+                "ols_slope": 0.673145,
+                "mean_squared_deviation": 0.290634
+              }
+            },
+            "fouls_committed_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 1.159313,
+              "tau_squared": 0.123632,
+              "kappa": 1.856076,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.159313,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.5267,
+              "diagnostics": {
+                "ols_intercept": 0.123632,
+                "ols_slope": 1.856076,
+                "mean_squared_deviation": 0.342716
+              }
+            },
+            "fouls_drawn_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 1.222107,
+              "tau_squared": 0.314089,
+              "kappa": 1.174208,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.222107,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.8171,
+              "diagnostics": {
+                "ols_intercept": 0.314089,
+                "ols_slope": 1.174208,
+                "mean_squared_deviation": 0.463449
+              }
+            },
+            "offsides_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.149589,
+              "tau_squared": 0.025701,
+              "kappa": 0.146431,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.149589,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.7457,
+              "diagnostics": {
+                "ols_intercept": 0.025701,
+                "ols_slope": 0.146431,
+                "mean_squared_deviation": 0.043177
+              }
+            },
+            "cards_yellow_p90": {
+              "exposure": "nineties",
+              "n_pool": 208,
+              "mu": 0.190893,
+              "tau_squared": 0.009298,
+              "kappa": 0.144075,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.190893,
+              "median_exposure": 16.706,
+              "reliability_at_median_exposure": 0.5188,
+              "diagnostics": {
+                "ols_intercept": 0.009298,
+                "ols_slope": 0.144075,
+                "mean_squared_deviation": 0.025299
+              }
+            },
+            "shot_accuracy_pct": {
+              "exposure": "shots",
+              "n_pool": 204,
+              "mu": 32.786573,
+              "tau_squared": 21.346099,
+              "kappa": 1815.591056,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2203.697916,
+              "median_exposure": 19.5,
+              "reliability_at_median_exposure": 0.1865,
+              "diagnostics": {
+                "ols_intercept": 21.346099,
+                "ols_slope": 1815.591056,
+                "mean_squared_deviation": 223.292826
+              }
+            },
+            "goals_per_shot": {
+              "exposure": "shots",
+              "n_pool": 204,
+              "mu": 0.098417,
+              "tau_squared": 0.001571,
+              "kappa": 0.039907,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.088731,
+              "median_exposure": 19.5,
+              "reliability_at_median_exposure": 0.4343,
+              "diagnostics": {
+                "ols_intercept": 0.001571,
+                "ols_slope": 0.039907,
+                "mean_squared_deviation": 0.005872
+              }
+            }
+          },
+          "FW": {
+            "np_xg_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.414306,
+              "tau_squared": 0.016077,
+              "kappa": 0.17613,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.414306,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.5416,
+              "diagnostics": {
+                "ols_intercept": 0.016077,
+                "ols_slope": 0.17613,
+                "mean_squared_deviation": 0.041077
+              }
+            },
+            "xa_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.112156,
+              "tau_squared": 0.005042,
+              "kappa": 0.010395,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.112156,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.8626,
+              "diagnostics": {
+                "ols_intercept": 0.005042,
+                "ols_slope": 0.010395,
+                "mean_squared_deviation": 0.006596
+              }
+            },
+            "key_passes_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.877097,
+              "tau_squared": 0.091158,
+              "kappa": 1.591431,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.877097,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.4258,
+              "diagnostics": {
+                "ols_intercept": 0.091158,
+                "ols_slope": 1.591431,
+                "mean_squared_deviation": 0.355729
+              }
+            },
+            "xg_chain_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.552179,
+              "tau_squared": 0.016884,
+              "kappa": 0.276948,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.552179,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.4411,
+              "diagnostics": {
+                "ols_intercept": 0.016884,
+                "ols_slope": 0.276948,
+                "mean_squared_deviation": 0.058986
+              }
+            },
+            "xg_buildup_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.135376,
+              "tau_squared": 0.0,
+              "kappa": 0.201049,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.135376,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.0,
+              "diagnostics": {
+                "ols_intercept": -0.005683,
+                "ols_slope": 0.201049,
+                "mean_squared_deviation": 0.013652
+              }
+            },
+            "shots_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 2.450563,
+              "tau_squared": 0.109807,
+              "kappa": 5.806586,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2.450563,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.1967,
+              "diagnostics": {
+                "ols_intercept": 0.109807,
+                "ols_slope": 5.806586,
+                "mean_squared_deviation": 0.916829
+              }
+            },
+            "shots_on_target_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.945509,
+              "tau_squared": 0.140358,
+              "kappa": 0.30595,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.945509,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.8559,
+              "diagnostics": {
+                "ols_intercept": 0.140358,
+                "ols_slope": 0.30595,
+                "mean_squared_deviation": 0.184919
+              }
+            },
+            "goals_non_penalty_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.325721,
+              "tau_squared": 0.022528,
+              "kappa": 0.175395,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.325721,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.6244,
+              "diagnostics": {
+                "ols_intercept": 0.022528,
+                "ols_slope": 0.175395,
+                "mean_squared_deviation": 0.04822
+              }
+            },
+            "assists_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.09598,
+              "tau_squared": 0.000366,
+              "kappa": 0.119826,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.09598,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.038,
+              "diagnostics": {
+                "ols_intercept": 0.000366,
+                "ols_slope": 0.119826,
+                "mean_squared_deviation": 0.020317
+              }
+            },
+            "crosses_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 1.117048,
+              "tau_squared": 3.095802,
+              "kappa": 1.117048,
+              "kappa_source": "plugin_poisson_or_binomial",
+              "plugin_kappa": 1.117048,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.9729,
+              "diagnostics": {
+                "ols_intercept": 3.841782,
+                "ols_slope": -3.453046,
+                "mean_squared_deviation": 3.269789
+              }
+            },
+            "interceptions_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.236888,
+              "tau_squared": 0.011402,
+              "kappa": 0.264618,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.236888,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.358,
+              "diagnostics": {
+                "ols_intercept": 0.011402,
+                "ols_slope": 0.264618,
+                "mean_squared_deviation": 0.049983
+              }
+            },
+            "tackles_won_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.504408,
+              "tau_squared": 0.061847,
+              "kappa": 1.152885,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.504408,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.4098,
+              "diagnostics": {
+                "ols_intercept": 0.061847,
+                "ols_slope": 1.152885,
+                "mean_squared_deviation": 0.21589
+              }
+            },
+            "fouls_committed_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 1.336578,
+              "tau_squared": 0.207801,
+              "kappa": 1.627938,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.336578,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.623,
+              "diagnostics": {
+                "ols_intercept": 0.207801,
+                "ols_slope": 1.627938,
+                "mean_squared_deviation": 0.450508
+              }
+            },
+            "fouls_drawn_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 1.115006,
+              "tau_squared": 0.088832,
+              "kappa": 2.848807,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 1.115006,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.2876,
+              "diagnostics": {
+                "ols_intercept": 0.088832,
+                "ols_slope": 2.848807,
+                "mean_squared_deviation": 0.530659
+              }
+            },
+            "offsides_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.456417,
+              "tau_squared": 0.031209,
+              "kappa": 0.566321,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.456417,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.4163,
+              "diagnostics": {
+                "ols_intercept": 0.031209,
+                "ols_slope": 0.566321,
+                "mean_squared_deviation": 0.124354
+              }
+            },
+            "cards_yellow_p90": {
+              "exposure": "nineties",
+              "n_pool": 69,
+              "mu": 0.14295,
+              "tau_squared": 0.002844,
+              "kappa": 0.163177,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.14295,
+              "median_exposure": 12.944,
+              "reliability_at_median_exposure": 0.1841,
+              "diagnostics": {
+                "ols_intercept": 0.002844,
+                "ols_slope": 0.163177,
+                "mean_squared_deviation": 0.023646
+              }
+            },
+            "shot_accuracy_pct": {
+              "exposure": "shots",
+              "n_pool": 69,
+              "mu": 38.583333,
+              "tau_squared": 41.636917,
+              "kappa": 1959.561081,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 2369.659722,
+              "median_exposure": 29.0,
+              "reliability_at_median_exposure": 0.3813,
+              "diagnostics": {
+                "ols_intercept": 41.636917,
+                "ols_slope": 1959.561081,
+                "mean_squared_deviation": 158.349177
+              }
+            },
+            "goals_per_shot": {
+              "exposure": "shots",
+              "n_pool": 69,
+              "mu": 0.149583,
+              "tau_squared": 0.002386,
+              "kappa": 0.088613,
+              "kappa_source": "moment_regression",
+              "plugin_kappa": 0.127208,
+              "median_exposure": 29.0,
+              "reliability_at_median_exposure": 0.4385,
+              "diagnostics": {
+                "ols_intercept": 0.002386,
+                "ols_slope": 0.088613,
+                "mean_squared_deviation": 0.007486
+              }
+            }
+          }
+        }
+      },
+      "shrinkage_summary": {
+        "n_players": 372,
+        "mean_shrinkage_weight": 0.6303,
+        "min_player_mean_weight": 0.3086,
+        "max_player_mean_weight": 0.8306,
+        "by_feature": {
+          "np_xg_p90": {
+            "mean_weight": 0.7243,
+            "min_weight": 0.2971,
+            "max_weight": 0.9379,
+            "mean_abs_change": 0.01932
+          },
+          "xa_p90": {
+            "mean_weight": 0.8834,
+            "min_weight": 0.6193,
+            "max_weight": 0.9765,
+            "mean_abs_change": 0.00756
+          },
+          "key_passes_p90": {
+            "mean_weight": 0.8074,
+            "min_weight": 0.2392,
+            "max_weight": 0.9396,
+            "mean_abs_change": 0.0749
+          },
+          "xg_chain_p90": {
+            "mean_weight": 0.732,
+            "min_weight": 0.2507,
+            "max_weight": 0.9323,
+            "mean_abs_change": 0.03892
+          },
+          "xg_buildup_p90": {
+            "mean_weight": 0.6634,
+            "min_weight": 0.0,
+            "max_weight": 0.9365,
+            "mean_abs_change": 0.02668
+          },
+          "shots_p90": {
+            "mean_weight": 0.7451,
+            "min_weight": 0.094,
+            "max_weight": 0.9195,
+            "mean_abs_change": 0.12296
+          },
+          "shots_on_target_p90": {
+            "mean_weight": 0.7256,
+            "min_weight": 0.2237,
+            "max_weight": 0.9436,
+            "mean_abs_change": 0.04195
+          },
+          "goals_non_penalty_p90": {
+            "mean_weight": 0.3972,
+            "min_weight": 0.0295,
+            "max_weight": 0.8241,
+            "mean_abs_change": 0.0421
+          },
+          "assists_p90": {
+            "mean_weight": 0.4587,
+            "min_weight": 0.0165,
+            "max_weight": 0.7738,
+            "mean_abs_change": 0.03876
+          },
+          "crosses_p90": {
+            "mean_weight": 0.9538,
+            "min_weight": 0.8535,
+            "max_weight": 0.9902,
+            "mean_abs_change": 0.06
+          },
+          "interceptions_p90": {
+            "mean_weight": 0.6811,
+            "min_weight": 0.1913,
+            "max_weight": 0.9164,
+            "mean_abs_change": 0.08962
+          },
+          "tackles_won_p90": {
+            "mean_weight": 0.7084,
+            "min_weight": 0.2275,
+            "max_weight": 0.9197,
+            "mean_abs_change": 0.10075
+          },
+          "fouls_committed_p90": {
+            "mean_weight": 0.4747,
+            "min_weight": 0.1109,
+            "max_weight": 0.8232,
+            "mean_abs_change": 0.18719
+          },
+          "fouls_drawn_p90": {
+            "mean_weight": 0.7578,
+            "min_weight": 0.1461,
+            "max_weight": 0.9289,
+            "mean_abs_change": 0.10949
+          },
+          "offsides_p90": {
+            "mean_weight": 0.7185,
+            "min_weight": 0.2322,
+            "max_weight": 0.8893,
+            "mean_abs_change": 0.03846
+          },
+          "cards_yellow_p90": {
+            "mean_weight": 0.2879,
+            "min_weight": 0.0,
+            "max_weight": 0.7099,
+            "mean_abs_change": 0.07446
+          },
+          "shot_accuracy_pct": {
+            "mean_weight": 0.2338,
+            "min_weight": 0.0,
+            "max_weight": 0.7281,
+            "mean_abs_change": 8.30499
+          },
+          "goals_per_shot": {
+            "mean_weight": 0.3923,
+            "min_weight": 0.0,
+            "max_weight": 0.7799,
+            "mean_abs_change": 0.03952
+          }
+        }
+      },
+      "partition_comparison": {
+        "by_scope": {
+          "global": {
+            "n": 372,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.8434,
+            "n_changed": 15,
+            "pct_changed": 4.03,
+            "cluster_sizes_original": {
+              "0": 247,
+              "1": 125
+            },
+            "cluster_sizes_shrunken": {
+              "0": 240,
+              "1": 132
+            }
+          },
+          "DF": {
+            "n": 138,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.8054,
+            "n_changed": 7,
+            "pct_changed": 5.07,
+            "cluster_sizes_original": {
+              "0": 83,
+              "1": 55
+            },
+            "cluster_sizes_shrunken": {
+              "0": 90,
+              "1": 48
+            }
+          },
+          "MF": {
+            "n": 179,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.9776,
+            "n_changed": 1,
+            "pct_changed": 0.56,
+            "cluster_sizes_original": {
+              "0": 105,
+              "1": 74
+            },
+            "cluster_sizes_shrunken": {
+              "0": 106,
+              "1": 73
+            }
+          },
+          "FW": {
+            "n": 55,
+            "k_original": 2,
+            "k_original_from_rule": 2,
+            "k_shrunken_from_rule": 2,
+            "k_changed": false,
+            "adjusted_rand_index": 0.1943,
+            "n_changed": 15,
+            "pct_changed": 27.27,
+            "cluster_sizes_original": {
+              "0": 39,
+              "1": 16
+            },
+            "cluster_sizes_shrunken": {
+              "0": 28,
+              "1": 27
+            }
+          }
+        },
+        "by_minutes_bin": {
+          "450-900": {
+            "n": 56,
+            "n_changed": 2,
+            "pct_changed": 3.57,
+            "mean_shrinkage_weight": 0.4762,
+            "median_minutes": 681.0
+          },
+          "900-1500": {
+            "n": 97,
+            "n_changed": 9,
+            "pct_changed": 9.28,
+            "mean_shrinkage_weight": 0.5818,
+            "median_minutes": 1173.0
+          },
+          "1500-2200": {
+            "n": 103,
+            "n_changed": 3,
+            "pct_changed": 2.91,
+            "mean_shrinkage_weight": 0.6582,
+            "median_minutes": 1814.0
+          },
+          "2200+": {
+            "n": 116,
+            "n_changed": 1,
+            "pct_changed": 0.86,
+            "mean_shrinkage_weight": 0.7204,
+            "median_minutes": 2788.5
+          }
+        },
+        "minutes_bin_edges": [
+          450.0,
+          900.0,
+          1500.0,
+          2200.0,
+          Infinity
+        ],
+        "lowest_minute_movers": [
+          {
+            "player": "Wilfried Gnonto",
+            "position_group": "FW",
+            "minutes": 537,
+            "mean_shrinkage_weight": 0.3117
+          },
+          {
+            "player": "Daniel James",
+            "position_group": "FW",
+            "minutes": 559,
+            "mean_shrinkage_weight": 0.3235
+          },
+          {
+            "player": "Ryan Christie",
+            "position_group": "MF",
+            "minutes": 994,
+            "mean_shrinkage_weight": 0.6328
+          },
+          {
+            "player": "Jhon Arias",
+            "position_group": "FW",
+            "minutes": 1124,
+            "mean_shrinkage_weight": 0.4275
+          },
+          {
+            "player": "Adam Armstrong",
+            "position_group": "FW",
+            "minutes": 1140,
+            "mean_shrinkage_weight": 0.4323
+          },
+          {
+            "player": "Dan Ndoye",
+            "position_group": "MF",
+            "minutes": 1173,
+            "mean_shrinkage_weight": 0.6494
+          },
+          {
+            "player": "Hannibal Mejbri",
+            "position_group": "MF",
+            "minutes": 1229,
+            "mean_shrinkage_weight": 0.662
+          },
+          {
+            "player": "Loum Tchaouna",
+            "position_group": "MF",
+            "minutes": 1272,
+            "mean_shrinkage_weight": 0.6718
+          },
+          {
+            "player": "Anthony Elanga",
+            "position_group": "FW",
+            "minutes": 1319,
+            "mean_shrinkage_weight": 0.4533
+          },
+          {
+            "player": "Maxim De Cuyper",
+            "position_group": "DF",
+            "minutes": 1414,
+            "mean_shrinkage_weight": 0.5837
+          },
+          {
+            "player": "Hwang Hee-chan",
+            "position_group": "FW",
+            "minutes": 1446,
+            "mean_shrinkage_weight": 0.47
+          },
+          {
+            "player": "Chemsdine Talbi",
+            "position_group": "MF",
+            "minutes": 1561,
+            "mean_shrinkage_weight": 0.7052
+          },
+          {
+            "player": "Randal Kolo Muani",
+            "position_group": "FW",
+            "minutes": 1664,
+            "mean_shrinkage_weight": 0.4928
+          },
+          {
+            "player": "Keane Lewis-Potter",
+            "position_group": "DF",
+            "minutes": 1972,
+            "mean_shrinkage_weight": 0.6463
+          },
+          {
+            "player": "Tom\u00e1\u0161 Sou\u010dek",
+            "position_group": "MF",
+            "minutes": 2200,
+            "mean_shrinkage_weight": 0.7534
+          }
+        ],
+        "verdict_bands": {
+          "survives": 0.8,
+          "partly_survives": 0.5
+        },
+        "verdict": "survives"
+      }
+    }
+  },
+  "headline": {
+    "season": "2024-25",
+    "adjusted_rand_index_global": 0.9453,
+    "n_changed_global": 5,
+    "n_global": 366,
+    "k_changed_anywhere": false,
+    "verdict": "survives"
+  }
+}

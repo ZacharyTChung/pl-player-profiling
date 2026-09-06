@@ -188,10 +188,17 @@ RADAR_AXES = [
 
 #: Features used to predict npxG/90 in the "finishing above role" regression. Shooting
 #: columns are excluded so the model can only use non-shooting behaviour.
+#:
+#: ``xg_chain_p90`` is deliberately absent even though it is not a shooting statistic by
+#: name. Understat's xGChain credits a player for every possession he was involved in,
+#: including the ones he finished himself, so it carries the target inside it: it
+#: correlates with npxG per ninety at 0.904, and including it lifts the cross-validated
+#: coefficient of determination from 0.536 to 0.892 by letting the model reconstruct the
+#: outcome rather than predict it. xGBuildup is retained because it explicitly strips
+#: shots and key passes, which is exactly the leak-free part of the same measure.
 NON_SHOOTING_FEATURES = [
     "xa_p90",
     "key_passes_p90",
-    "xg_chain_p90",
     "xg_buildup_p90",
     "crosses_p90",
     "interceptions_p90",

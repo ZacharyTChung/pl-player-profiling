@@ -118,6 +118,9 @@ POSTERIOR_SPLIT_THRESHOLD = 0.6
 
 HYBRID_TABLE_N = 20
 
+#: Reporting convention for calling the clusters a recovery of the listed positions.
+RECOVERY_ARI_THRESHOLD = 0.5
+
 #: Per-90 columns quoted in the hybrid table. Read from the unstandardised table so the
 #: values in the paper are in football units, not z units.
 HYBRID_STAT_COLS = [
@@ -900,6 +903,20 @@ def analyse_season(
         "ari_vs_kmeans": _r(
             adjusted_rand_score(result["labels"]["global"], posterior.argmax(axis=1)), 4
         ),
+        "component_sizes": {
+            str(c): int((posterior.argmax(axis=1) == c).sum()) for c in range(k_global)
+        },
+        "vs_position_group": {
+            "adjusted_rand_index": _r(
+                adjusted_rand_score(global_frame["position_group"], posterior.argmax(axis=1)), 4
+            ),
+            "normalized_mutual_info": _r(
+                normalized_mutual_info_score(
+                    global_frame["position_group"], posterior.argmax(axis=1)
+                ),
+                4,
+            ),
+        },
     }
     result["x_global"] = x_global
     return result
@@ -1198,11 +1215,16 @@ def _position_answer(primary: dict) -> dict:
     ari = global_stats["adjusted_rand_index"]
     purity = global_stats["cluster_purity"]
     k = primary["selection"]["global"]["chosen_k"]
-    recovers = bool(ari >= 0.5)
+    recovers = bool(ari >= RECOVERY_ARI_THRESHOLD)
     return {
         "global_k": k,
         "adjusted_rand_index_vs_position_group": ari,
         "cluster_purity_vs_position_group": purity,
+        "recovery_threshold_ari": RECOVERY_ARI_THRESHOLD,
+        "recovery_threshold_note": (
+            "a declared reporting convention, not a test: an adjusted Rand index of at "
+            "least this value is called substantial recovery"
+        ),
         "clusters_recover_listed_positions": recovers,
         "statement": (
             f"At k={k} the global clustering scores an adjusted Rand index of {ari:.3f} "

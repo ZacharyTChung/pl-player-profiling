@@ -1,0 +1,837 @@
+{
+  "question": "Do the archetypes describe stable playing roles, or are they single-season artefacts? The clustering is refitted on 2025-26 from scratch under the same declared rule and the two assignments are compared on the players who are eligible in both seasons.",
+  "k_rule": {
+    "silhouette_tolerance": 0.02,
+    "top_n_rank": 3,
+    "min_criteria": 2,
+    "tiebreak": "davies_bouldin"
+  },
+  "min_minutes": 450,
+  "space": "standardised",
+  "n_eligible": {
+    "2024-25": 366,
+    "2025-26": 372
+  },
+  "n_common_eligible": 242,
+  "n_common_same_position_group": 226,
+  "position_group_changes": [
+    {
+      "player": "Anthony Elanga",
+      "from": "MF",
+      "to": "FW"
+    },
+    {
+      "player": "Archie Gray",
+      "from": "DF",
+      "to": "MF"
+    },
+    {
+      "player": "Brennan Johnson",
+      "from": "FW",
+      "to": "MF"
+    },
+    {
+      "player": "Diogo Dalot",
+      "from": "MF",
+      "to": "DF"
+    },
+    {
+      "player": "Hwang Hee-chan",
+      "from": "MF",
+      "to": "FW"
+    },
+    {
+      "player": "Kyle Walker-Peters",
+      "from": "MF",
+      "to": "DF"
+    },
+    {
+      "player": "Lamare Bogarde",
+      "from": "DF",
+      "to": "MF"
+    },
+    {
+      "player": "Mathys Tel",
+      "from": "FW",
+      "to": "MF"
+    },
+    {
+      "player": "Myles Lewis-Skelly",
+      "from": "DF",
+      "to": "MF"
+    },
+    {
+      "player": "Nathaniel Clyne",
+      "from": "DF",
+      "to": "MF"
+    },
+    {
+      "player": "Noni Madueke",
+      "from": "MF",
+      "to": "FW"
+    },
+    {
+      "player": "Oliver Scarles",
+      "from": "MF",
+      "to": "DF"
+    },
+    {
+      "player": "Omar Marmoush",
+      "from": "MF",
+      "to": "FW"
+    },
+    {
+      "player": "Rayan A\u00eft-Nouri",
+      "from": "MF",
+      "to": "DF"
+    },
+    {
+      "player": "Ryan Sessegnon",
+      "from": "MF",
+      "to": "DF"
+    },
+    {
+      "player": "Wilson Odobert",
+      "from": "FW",
+      "to": "MF"
+    }
+  ],
+  "k_selected_by_rule": {
+    "2024-25": {
+      "global": 2,
+      "DF": 2,
+      "MF": 2,
+      "FW": 2
+    },
+    "2025-26": {
+      "global": 2,
+      "DF": 2,
+      "MF": 2,
+      "FW": 2
+    }
+  },
+  "rule_branch": {
+    "2024-25": {
+      "global": "primary",
+      "DF": "primary",
+      "MF": "primary",
+      "FW": "primary"
+    },
+    "2025-26": {
+      "global": "primary",
+      "DF": "primary",
+      "MF": "primary",
+      "FW": "primary"
+    }
+  },
+  "scopes": {
+    "global": {
+      "n_common": 242,
+      "k_2024_25": 2,
+      "k_2025_26": 2,
+      "k_matches": true,
+      "adjusted_rand_index": 0.5845,
+      "n_changed_cluster": 28,
+      "pct_changed_cluster": 11.57,
+      "transition_counts": {
+        "0": {
+          "0": 67,
+          "1": 17
+        },
+        "1": {
+          "0": 11,
+          "1": 147
+        }
+      },
+      "transition_row_pct": {
+        "0": {
+          "0": 79.76,
+          "1": 20.24
+        },
+        "1": {
+          "0": 6.96,
+          "1": 93.04
+        }
+      },
+      "note": "Cluster ids for 2025-26 are matched to 2024-25 by optimal assignment on the KMeans centroids so the table reads down the diagonal. The adjusted Rand index is invariant to that relabelling."
+    },
+    "DF": {
+      "n_common": 89,
+      "k_2024_25": 2,
+      "k_2025_26": 2,
+      "k_matches": true,
+      "adjusted_rand_index": 0.5263,
+      "n_changed_cluster": 12,
+      "pct_changed_cluster": 13.48,
+      "transition_counts": {
+        "0": {
+          "0": 51,
+          "1": 9
+        },
+        "1": {
+          "0": 3,
+          "1": 26
+        }
+      },
+      "transition_row_pct": {
+        "0": {
+          "0": 85.0,
+          "1": 15.0
+        },
+        "1": {
+          "0": 10.34,
+          "1": 89.66
+        }
+      },
+      "note": "Cluster ids for 2025-26 are matched to 2024-25 by optimal assignment on the KMeans centroids so the table reads down the diagonal. The adjusted Rand index is invariant to that relabelling."
+    },
+    "MF": {
+      "n_common": 111,
+      "k_2024_25": 2,
+      "k_2025_26": 2,
+      "k_matches": true,
+      "adjusted_rand_index": 0.4038,
+      "n_changed_cluster": 20,
+      "pct_changed_cluster": 18.02,
+      "transition_counts": {
+        "0": {
+          "0": 44,
+          "1": 15
+        },
+        "1": {
+          "0": 5,
+          "1": 47
+        }
+      },
+      "transition_row_pct": {
+        "0": {
+          "0": 74.58,
+          "1": 25.42
+        },
+        "1": {
+          "0": 9.62,
+          "1": 90.38
+        }
+      },
+      "note": "Cluster ids for 2025-26 are matched to 2024-25 by optimal assignment on the KMeans centroids so the table reads down the diagonal. The adjusted Rand index is invariant to that relabelling."
+    },
+    "FW": {
+      "n_common": 26,
+      "k_2024_25": 2,
+      "k_2025_26": 2,
+      "k_matches": true,
+      "adjusted_rand_index": 0.4527,
+      "n_changed_cluster": 4,
+      "pct_changed_cluster": 15.38,
+      "transition_counts": {
+        "0": {
+          "0": 16,
+          "1": 1
+        },
+        "1": {
+          "0": 3,
+          "1": 6
+        }
+      },
+      "transition_row_pct": {
+        "0": {
+          "0": 94.12,
+          "1": 5.88
+        },
+        "1": {
+          "0": 33.33,
+          "1": 66.67
+        }
+      },
+      "note": "Cluster ids for 2025-26 are matched to 2024-25 by optimal assignment on the KMeans centroids so the table reads down the diagonal. The adjusted Rand index is invariant to that relabelling."
+    }
+  },
+  "largest_movers_global": [
+    {
+      "player": "Ryan Sessegnon",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "DF",
+      "position_group_changed": true,
+      "team_2024_25": "Fulham",
+      "team_2025_26": "Fulham",
+      "minutes_2024_25": 580,
+      "minutes_2025_26": 1823,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 7.751,
+      "largest_feature_changes": [
+        {
+          "feature": "goals_non_penalty_p90",
+          "value_2024_25": 0.621,
+          "value_2025_26": 0.148,
+          "change_in_2024_25_group_sd": -3.483
+        },
+        {
+          "feature": "shots_on_target_p90",
+          "value_2024_25": 1.241,
+          "value_2025_26": 0.197,
+          "change_in_2024_25_group_sd": -2.713
+        },
+        {
+          "feature": "fouls_committed_p90",
+          "value_2024_25": 3.103,
+          "value_2025_26": 1.629,
+          "change_in_2024_25_group_sd": -2.676
+        },
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.31,
+          "value_2025_26": 0.049,
+          "change_in_2024_25_group_sd": -2.344
+        }
+      ]
+    },
+    {
+      "player": "Dwight McNeil",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Everton",
+      "team_2025_26": "Everton",
+      "minutes_2024_25": 1371,
+      "minutes_2025_26": 1168,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 6.482,
+      "largest_feature_changes": [
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.394,
+          "value_2025_26": 0.077,
+          "change_in_2024_25_group_sd": -2.846
+        },
+        {
+          "feature": "xa_p90",
+          "value_2024_25": 0.396,
+          "value_2025_26": 0.134,
+          "change_in_2024_25_group_sd": -2.744
+        },
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.167,
+          "value_2025_26": 0.0,
+          "change_in_2024_25_group_sd": -2.356
+        },
+        {
+          "feature": "crosses_p90",
+          "value_2024_25": 6.827,
+          "value_2025_26": 3.082,
+          "change_in_2024_25_group_sd": -2.145
+        }
+      ]
+    },
+    {
+      "player": "Anthony Elanga",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "FW",
+      "position_group_changed": true,
+      "team_2024_25": "Nottingham",
+      "team_2025_26": "Newcastle",
+      "minutes_2024_25": 2501,
+      "minutes_2025_26": 1319,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 6.095,
+      "largest_feature_changes": [
+        {
+          "feature": "offsides_p90",
+          "value_2024_25": 0.648,
+          "value_2025_26": 0.136,
+          "change_in_2024_25_group_sd": -3.03
+        },
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.396,
+          "value_2025_26": 0.068,
+          "change_in_2024_25_group_sd": -2.943
+        },
+        {
+          "feature": "shot_accuracy_pct",
+          "value_2024_25": 54.545,
+          "value_2025_26": 23.529,
+          "change_in_2024_25_group_sd": -2.259
+        },
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.136,
+          "value_2025_26": 0.0,
+          "change_in_2024_25_group_sd": -1.928
+        }
+      ]
+    },
+    {
+      "player": "Simon Adingra",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Brighton",
+      "team_2025_26": "Sunderland",
+      "minutes_2024_25": 1097,
+      "minutes_2025_26": 653,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 5.395,
+      "largest_feature_changes": [
+        {
+          "feature": "fouls_committed_p90",
+          "value_2024_25": 1.067,
+          "value_2025_26": 2.481,
+          "change_in_2024_25_group_sd": 2.567
+        },
+        {
+          "feature": "shots_p90",
+          "value_2024_25": 2.707,
+          "value_2025_26": 0.827,
+          "change_in_2024_25_group_sd": -2.211
+        },
+        {
+          "feature": "cards_yellow_p90",
+          "value_2024_25": 0.0,
+          "value_2025_26": 0.276,
+          "change_in_2024_25_group_sd": 1.948
+        },
+        {
+          "feature": "np_xg_p90",
+          "value_2024_25": 0.257,
+          "value_2025_26": 0.046,
+          "change_in_2024_25_group_sd": -1.738
+        }
+      ]
+    },
+    {
+      "player": "Patrick Dorgu",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Manchester Utd",
+      "team_2025_26": "Manchester Utd",
+      "minutes_2024_25": 842,
+      "minutes_2025_26": 1449,
+      "cluster_2024_25": 1,
+      "cluster_2025_26": 0,
+      "distance_moved_sd_units": 5.15,
+      "largest_feature_changes": [
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.0,
+          "value_2025_26": 0.16,
+          "change_in_2024_25_group_sd": 2.262
+        },
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.0,
+          "value_2025_26": 0.248,
+          "change_in_2024_25_group_sd": 2.232
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "value_2024_25": 0.0,
+          "value_2025_26": 0.248,
+          "change_in_2024_25_group_sd": 1.831
+        },
+        {
+          "feature": "shot_accuracy_pct",
+          "value_2024_25": 20.0,
+          "value_2025_26": 44.0,
+          "change_in_2024_25_group_sd": 1.748
+        }
+      ]
+    },
+    {
+      "player": "Tom Cairney",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Fulham",
+      "team_2025_26": "Fulham",
+      "minutes_2024_25": 628,
+      "minutes_2025_26": 775,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 5.136,
+      "largest_feature_changes": [
+        {
+          "feature": "xg_buildup_p90",
+          "value_2024_25": 0.777,
+          "value_2025_26": 0.392,
+          "change_in_2024_25_group_sd": -2.864
+        },
+        {
+          "feature": "fouls_drawn_p90",
+          "value_2024_25": 2.723,
+          "value_2025_26": 1.277,
+          "change_in_2024_25_group_sd": -2.211
+        },
+        {
+          "feature": "xg_chain_p90",
+          "value_2024_25": 0.871,
+          "value_2025_26": 0.503,
+          "change_in_2024_25_group_sd": -1.861
+        },
+        {
+          "feature": "shot_accuracy_pct",
+          "value_2024_25": 36.364,
+          "value_2025_26": 11.765,
+          "change_in_2024_25_group_sd": -1.792
+        }
+      ]
+    },
+    {
+      "player": "Mason Mount",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Manchester Utd",
+      "team_2025_26": "Manchester Utd",
+      "minutes_2024_25": 622,
+      "minutes_2025_26": 1017,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 5.123,
+      "largest_feature_changes": [
+        {
+          "feature": "shots_on_target_p90",
+          "value_2024_25": 1.302,
+          "value_2025_26": 0.442,
+          "change_in_2024_25_group_sd": -2.235
+        },
+        {
+          "feature": "np_xg_p90",
+          "value_2024_25": 0.425,
+          "value_2025_26": 0.154,
+          "change_in_2024_25_group_sd": -2.229
+        },
+        {
+          "feature": "cards_yellow_p90",
+          "value_2024_25": 0.434,
+          "value_2025_26": 0.177,
+          "change_in_2024_25_group_sd": -1.817
+        },
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.05,
+          "value_2025_26": 0.158,
+          "change_in_2024_25_group_sd": 1.525
+        }
+      ]
+    },
+    {
+      "player": "Brennan Johnson",
+      "position_group_2024_25": "FW",
+      "position_group_2025_26": "MF",
+      "position_group_changed": true,
+      "team_2024_25": "Tottenham",
+      "team_2025_26": "Crystal Palace / Tottenham",
+      "minutes_2024_25": 2177,
+      "minutes_2025_26": 1722,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 4.982,
+      "largest_feature_changes": [
+        {
+          "feature": "xg_chain_p90",
+          "value_2024_25": 0.681,
+          "value_2025_26": 0.274,
+          "change_in_2024_25_group_sd": -2.052
+        },
+        {
+          "feature": "np_xg_p90",
+          "value_2024_25": 0.461,
+          "value_2025_26": 0.136,
+          "change_in_2024_25_group_sd": -1.922
+        },
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.204,
+          "value_2025_26": 0.087,
+          "change_in_2024_25_group_sd": -1.829
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "value_2024_25": 0.455,
+          "value_2025_26": 0.105,
+          "change_in_2024_25_group_sd": -1.808
+        }
+      ]
+    },
+    {
+      "player": "Wilson Odobert",
+      "position_group_2024_25": "FW",
+      "position_group_2025_26": "MF",
+      "position_group_changed": true,
+      "team_2024_25": "Tottenham",
+      "team_2025_26": "Tottenham",
+      "minutes_2024_25": 850,
+      "minutes_2025_26": 985,
+      "cluster_2024_25": 1,
+      "cluster_2025_26": 0,
+      "distance_moved_sd_units": 4.589,
+      "largest_feature_changes": [
+        {
+          "feature": "interceptions_p90",
+          "value_2024_25": 0.424,
+          "value_2025_26": 0.0,
+          "change_in_2024_25_group_sd": -2.701
+        },
+        {
+          "feature": "key_passes_p90",
+          "value_2024_25": 0.635,
+          "value_2025_26": 1.827,
+          "change_in_2024_25_group_sd": 2.227
+        },
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.0,
+          "value_2025_26": 0.183,
+          "change_in_2024_25_group_sd": 1.479
+        },
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.077,
+          "value_2025_26": 0.0,
+          "change_in_2024_25_group_sd": -1.205
+        }
+      ]
+    },
+    {
+      "player": "Justin Devenny",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Crystal Palace",
+      "team_2025_26": "Crystal Palace",
+      "minutes_2024_25": 507,
+      "minutes_2025_26": 796,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 4.529,
+      "largest_feature_changes": [
+        {
+          "feature": "shot_accuracy_pct",
+          "value_2024_25": 60.0,
+          "value_2025_26": 30.769,
+          "change_in_2024_25_group_sd": -2.129
+        },
+        {
+          "feature": "fouls_drawn_p90",
+          "value_2024_25": 0.0,
+          "value_2025_26": 1.131,
+          "change_in_2024_25_group_sd": 1.73
+        },
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.178,
+          "value_2025_26": 0.0,
+          "change_in_2024_25_group_sd": -1.594
+        },
+        {
+          "feature": "shots_on_target_p90",
+          "value_2024_25": 1.065,
+          "value_2025_26": 0.452,
+          "change_in_2024_25_group_sd": -1.593
+        }
+      ]
+    },
+    {
+      "player": "Carlos Alcaraz",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Everton / Southampton",
+      "team_2025_26": "Everton",
+      "minutes_2024_25": 774,
+      "minutes_2025_26": 689,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 4.498,
+      "largest_feature_changes": [
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.349,
+          "value_2025_26": 0.131,
+          "change_in_2024_25_group_sd": -1.96
+        },
+        {
+          "feature": "shots_on_target_p90",
+          "value_2024_25": 1.395,
+          "value_2025_26": 0.653,
+          "change_in_2024_25_group_sd": -1.929
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "value_2024_25": 0.233,
+          "value_2025_26": 0.0,
+          "change_in_2024_25_group_sd": -1.714
+        },
+        {
+          "feature": "shot_accuracy_pct",
+          "value_2024_25": 44.444,
+          "value_2025_26": 25.0,
+          "change_in_2024_25_group_sd": -1.416
+        }
+      ]
+    },
+    {
+      "player": "Casemiro",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Manchester Utd",
+      "team_2025_26": "Manchester Utd",
+      "minutes_2024_25": 1494,
+      "minutes_2025_26": 2571,
+      "cluster_2024_25": 1,
+      "cluster_2025_26": 0,
+      "distance_moved_sd_units": 4.398,
+      "largest_feature_changes": [
+        {
+          "feature": "tackles_won_p90",
+          "value_2024_25": 3.133,
+          "value_2025_26": 1.575,
+          "change_in_2024_25_group_sd": -2.844
+        },
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.031,
+          "value_2025_26": 0.173,
+          "change_in_2024_25_group_sd": 2.005
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "value_2024_25": 0.06,
+          "value_2025_26": 0.315,
+          "change_in_2024_25_group_sd": 1.878
+        },
+        {
+          "feature": "np_xg_p90",
+          "value_2024_25": 0.117,
+          "value_2025_26": 0.23,
+          "change_in_2024_25_group_sd": 0.933
+        }
+      ]
+    },
+    {
+      "player": "Jack Hinshelwood",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Brighton",
+      "team_2025_26": "Brighton",
+      "minutes_2024_25": 1842,
+      "minutes_2025_26": 1741,
+      "cluster_2024_25": 1,
+      "cluster_2025_26": 0,
+      "distance_moved_sd_units": 4.136,
+      "largest_feature_changes": [
+        {
+          "feature": "goals_per_shot",
+          "value_2024_25": 0.278,
+          "value_2025_26": 0.108,
+          "change_in_2024_25_group_sd": -2.399
+        },
+        {
+          "feature": "cards_yellow_p90",
+          "value_2024_25": 0.244,
+          "value_2025_26": 0.0,
+          "change_in_2024_25_group_sd": -1.726
+        },
+        {
+          "feature": "fouls_committed_p90",
+          "value_2024_25": 0.879,
+          "value_2025_26": 1.654,
+          "change_in_2024_25_group_sd": 1.406
+        },
+        {
+          "feature": "shots_p90",
+          "value_2024_25": 0.879,
+          "value_2025_26": 1.913,
+          "change_in_2024_25_group_sd": 1.215
+        }
+      ]
+    },
+    {
+      "player": "Keane Lewis-Potter",
+      "position_group_2024_25": "DF",
+      "position_group_2025_26": "DF",
+      "position_group_changed": false,
+      "team_2024_25": "Brentford",
+      "team_2025_26": "Brentford",
+      "minutes_2024_25": 3093,
+      "minutes_2025_26": 1972,
+      "cluster_2024_25": 1,
+      "cluster_2025_26": 0,
+      "distance_moved_sd_units": 4.007,
+      "largest_feature_changes": [
+        {
+          "feature": "shots_p90",
+          "value_2024_25": 0.815,
+          "value_2025_26": 1.415,
+          "change_in_2024_25_group_sd": 1.834
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "value_2024_25": 0.029,
+          "value_2025_26": 0.137,
+          "change_in_2024_25_group_sd": 1.795
+        },
+        {
+          "feature": "fouls_drawn_p90",
+          "value_2024_25": 0.902,
+          "value_2025_26": 1.643,
+          "change_in_2024_25_group_sd": 1.563
+        },
+        {
+          "feature": "np_xg_p90",
+          "value_2024_25": 0.095,
+          "value_2025_26": 0.147,
+          "change_in_2024_25_group_sd": 1.418
+        }
+      ]
+    },
+    {
+      "player": "Jean-Ricner Bellegarde",
+      "position_group_2024_25": "MF",
+      "position_group_2025_26": "MF",
+      "position_group_changed": false,
+      "team_2024_25": "Wolves",
+      "team_2025_26": "Wolves",
+      "minutes_2024_25": 1677,
+      "minutes_2025_26": 1248,
+      "cluster_2024_25": 0,
+      "cluster_2025_26": 1,
+      "distance_moved_sd_units": 3.879,
+      "largest_feature_changes": [
+        {
+          "feature": "assists_p90",
+          "value_2024_25": 0.376,
+          "value_2025_26": 0.072,
+          "change_in_2024_25_group_sd": -2.726
+        },
+        {
+          "feature": "cards_yellow_p90",
+          "value_2024_25": 0.161,
+          "value_2025_26": 0.361,
+          "change_in_2024_25_group_sd": 1.41
+        },
+        {
+          "feature": "xa_p90",
+          "value_2024_25": 0.217,
+          "value_2025_26": 0.088,
+          "change_in_2024_25_group_sd": -1.356
+        },
+        {
+          "feature": "shot_accuracy_pct",
+          "value_2024_25": 22.727,
+          "value_2025_26": 33.333,
+          "change_in_2024_25_group_sd": 0.772
+        }
+      ]
+    }
+  ],
+  "mover_note": "Movers are ranked by the Euclidean distance travelled between seasons in the eighteen features, each scaled by its 2024-25 within-position-group standard deviation so both seasons are measured on one fixed ruler. Values quoted are raw per-90 rates."
+}

@@ -1,0 +1,655 @@
+{
+  "season": "2024-25",
+  "target": "np_xg_p90",
+  "features": [
+    "xa_p90",
+    "key_passes_p90",
+    "xg_buildup_p90",
+    "crosses_p90",
+    "interceptions_p90",
+    "tackles_won_p90",
+    "fouls_committed_p90",
+    "fouls_drawn_p90",
+    "offsides_p90",
+    "cards_yellow_p90"
+  ],
+  "n_features": 10,
+  "n_players": 366,
+  "model": "ridge, alpha selected by generalised cross validation inside each fold",
+  "cross_validation": {
+    "scheme": "k-fold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42
+  },
+  "target_sd": 0.1557,
+  "cv_r2_out_of_fold": 0.533,
+  "cv_r2_fold_mean": 0.5347,
+  "cv_r2_fold_sd": 0.0667,
+  "cv_r2_per_fold": [
+    0.4644,
+    0.6213,
+    0.5045,
+    0.5881,
+    0.4951
+  ],
+  "cv_r2_out_of_fold_leak_free": 0.5363,
+  "in_sample_r2": 0.5771,
+  "residual_sd": 0.1064,
+  "share_of_variance_unexplained": 0.467,
+  "alpha_full_sample": 31.62278,
+  "coefficients_standardised": {
+    "xa_p90": 0.0242,
+    "key_passes_p90": 0.02699,
+    "xg_buildup_p90": -0.0076,
+    "crosses_p90": -0.03186,
+    "interceptions_p90": -0.02457,
+    "tackles_won_p90": -0.0247,
+    "fouls_committed_p90": 0.02234,
+    "fouls_drawn_p90": 0.00967,
+    "offsides_p90": 0.05722,
+    "cards_yellow_p90": -0.0136
+  },
+  "leakage": {
+    "leaky_features": [
+      "xg_chain_p90",
+      "xg_buildup_p90"
+    ],
+    "explanation": "Understat xGChain is the expected goals of every possession the player touched, including the possessions he finished himself, and xGBuildup is the same total with shots and key passes removed. Their difference therefore contains the player's own non-penalty expected goals, which is the regression target.",
+    "corr_chain_minus_buildup_with_target": 0.9039,
+    "cv_r2_specified": 0.533,
+    "cv_r2_with_xg_chain_added_back": 0.8921,
+    "cv_r2_without_chain_and_buildup": 0.5363,
+    "r2_inflation_from_xg_chain": 0.3591
+  },
+  "caveat": "This regression is not a measurement of finishing ability and its headline R squared is not evidence that it is a good model. Understat's xGChain includes the expected goals of possessions the player finished himself and xGBuildup excludes shots and key passes, so the difference between the two columns contains the target almost by construction. See the leakage block for the correlation and for the ablation R squared with xGChain removed. The specified leaderboard ranks players whose own shots are an unusual share of the possessions they touch. The leak-free leaderboard ranks players whose shot volume is unusual given a model that leaves roughly half the variance unexplained, which is still ample room for team attacking volume, penalty box occupancy and single season noise on 450 to 3000 minutes. Read neither as a ranking of talent.",
+  "caveat_with_value": "Cross validated R squared on the specified feature set is 0.533. xGChain is excluded from that feature set because Understat credits it for possessions the player finished himself: its difference from xGBuildup correlates with npxG per 90 at 0.904, and a model that includes it reaches 0.892 by reconstructing the target rather than predicting it. With the leak removed the fit still leaves roughly half the variance unexplained, so the leaderboard does not measure finishing ability.",
+  "top_15_above_role": [
+    {
+      "player": "Diogo Jota",
+      "team": "Liverpool",
+      "position_group": "FW",
+      "minutes": 1196,
+      "np_xg_p90_actual": 0.768,
+      "np_xg_p90_expected": 0.1935,
+      "residual": 0.5745
+    },
+    {
+      "player": "Erling Haaland",
+      "team": "Manchester City",
+      "position_group": "FW",
+      "minutes": 2736,
+      "np_xg_p90_actual": 0.6878,
+      "np_xg_p90_expected": 0.2231,
+      "residual": 0.4647
+    },
+    {
+      "player": "Richarlison",
+      "team": "Tottenham",
+      "position_group": "FW",
+      "minutes": 504,
+      "np_xg_p90_actual": 0.7684,
+      "np_xg_p90_expected": 0.3115,
+      "residual": 0.4569
+    },
+    {
+      "player": "Rodrigo Muniz",
+      "team": "Fulham",
+      "position_group": "FW",
+      "minutes": 964,
+      "np_xg_p90_actual": 0.6384,
+      "np_xg_p90_expected": 0.2537,
+      "residual": 0.3847
+    },
+    {
+      "player": "Fabio Carvalho",
+      "team": "Brentford",
+      "position_group": "FW",
+      "minutes": 455,
+      "np_xg_p90_actual": 0.4641,
+      "np_xg_p90_expected": 0.115,
+      "residual": 0.3491
+    },
+    {
+      "player": "Yoane Wissa",
+      "team": "Brentford",
+      "position_group": "FW",
+      "minutes": 2919,
+      "np_xg_p90_actual": 0.6392,
+      "np_xg_p90_expected": 0.2999,
+      "residual": 0.3393
+    },
+    {
+      "player": "Noni Madueke",
+      "team": "Chelsea",
+      "position_group": "MF",
+      "minutes": 2033,
+      "np_xg_p90_actual": 0.5251,
+      "np_xg_p90_expected": 0.2042,
+      "residual": 0.3209
+    },
+    {
+      "player": "Eddie Nketiah",
+      "team": "Crystal Palace",
+      "position_group": "FW",
+      "minutes": 1034,
+      "np_xg_p90_actual": 0.6226,
+      "np_xg_p90_expected": 0.343,
+      "residual": 0.2796
+    },
+    {
+      "player": "Mason Mount",
+      "team": "Manchester Utd",
+      "position_group": "MF",
+      "minutes": 622,
+      "np_xg_p90_actual": 0.4253,
+      "np_xg_p90_expected": 0.1623,
+      "residual": 0.2631
+    },
+    {
+      "player": "Ross Barkley",
+      "team": "Aston Villa",
+      "position_group": "MF",
+      "minutes": 581,
+      "np_xg_p90_actual": 0.3347,
+      "np_xg_p90_expected": 0.0783,
+      "residual": 0.2565
+    },
+    {
+      "player": "Ollie Watkins",
+      "team": "Aston Villa",
+      "position_group": "FW",
+      "minutes": 2598,
+      "np_xg_p90_actual": 0.5927,
+      "np_xg_p90_expected": 0.3376,
+      "residual": 0.2552
+    },
+    {
+      "player": "Dango Ouattara",
+      "team": "Bournemouth",
+      "position_group": "MF",
+      "minutes": 2005,
+      "np_xg_p90_actual": 0.4908,
+      "np_xg_p90_expected": 0.2579,
+      "residual": 0.2329
+    },
+    {
+      "player": "Danny Welbeck",
+      "team": "Brighton",
+      "position_group": "FW",
+      "minutes": 2115,
+      "np_xg_p90_actual": 0.4125,
+      "np_xg_p90_expected": 0.1869,
+      "residual": 0.2257
+    },
+    {
+      "player": "Christopher Nkunku",
+      "team": "Chelsea",
+      "position_group": "MF",
+      "minutes": 921,
+      "np_xg_p90_actual": 0.4913,
+      "np_xg_p90_expected": 0.2663,
+      "residual": 0.2251
+    },
+    {
+      "player": "Brennan Johnson",
+      "team": "Tottenham",
+      "position_group": "FW",
+      "minutes": 2177,
+      "np_xg_p90_actual": 0.4615,
+      "np_xg_p90_expected": 0.2477,
+      "residual": 0.2138
+    }
+  ],
+  "bottom_15_below_role": [
+    {
+      "player": "Niclas F\u00fcllkrug",
+      "team": "West Ham",
+      "position_group": "FW",
+      "minutes": 790,
+      "np_xg_p90_actual": 0.2466,
+      "np_xg_p90_expected": 0.6279,
+      "residual": -0.3814
+    },
+    {
+      "player": "Timo Werner",
+      "team": "Tottenham",
+      "position_group": "FW",
+      "minutes": 516,
+      "np_xg_p90_actual": 0.1663,
+      "np_xg_p90_expected": 0.4974,
+      "residual": -0.3311
+    },
+    {
+      "player": "J\u00e1der Dur\u00e1n",
+      "team": "Aston Villa",
+      "position_group": "FW",
+      "minutes": 638,
+      "np_xg_p90_actual": 0.0,
+      "np_xg_p90_expected": 0.3156,
+      "residual": -0.3156
+    },
+    {
+      "player": "Bobby De Cordova-Reid",
+      "team": "Leicester City",
+      "position_group": "MF",
+      "minutes": 744,
+      "np_xg_p90_actual": 0.0807,
+      "np_xg_p90_expected": 0.3025,
+      "residual": -0.2218
+    },
+    {
+      "player": "Raheem Sterling",
+      "team": "Arsenal",
+      "position_group": "FW",
+      "minutes": 499,
+      "np_xg_p90_actual": 0.1751,
+      "np_xg_p90_expected": 0.3933,
+      "residual": -0.2182
+    },
+    {
+      "player": "Jadon Sancho",
+      "team": "Chelsea",
+      "position_group": "MF",
+      "minutes": 1764,
+      "np_xg_p90_actual": 0.1233,
+      "np_xg_p90_expected": 0.318,
+      "residual": -0.1947
+    },
+    {
+      "player": "Jack Clarke",
+      "team": "Ipswich Town",
+      "position_group": "MF",
+      "minutes": 1181,
+      "np_xg_p90_actual": 0.0992,
+      "np_xg_p90_expected": 0.2726,
+      "residual": -0.1734
+    },
+    {
+      "player": "Crysencio Summerville",
+      "team": "West Ham",
+      "position_group": "MF",
+      "minutes": 786,
+      "np_xg_p90_actual": 0.2077,
+      "np_xg_p90_expected": 0.3678,
+      "residual": -0.1601
+    },
+    {
+      "player": "Patrick Dorgu",
+      "team": "Manchester Utd",
+      "position_group": "MF",
+      "minutes": 842,
+      "np_xg_p90_actual": 0.0422,
+      "np_xg_p90_expected": 0.1977,
+      "residual": -0.1555
+    },
+    {
+      "player": "Mads Roerslev",
+      "team": "Brentford",
+      "position_group": "DF",
+      "minutes": 1101,
+      "np_xg_p90_actual": 0.0181,
+      "np_xg_p90_expected": 0.1697,
+      "residual": -0.1516
+    },
+    {
+      "player": "Matheus Nunes",
+      "team": "Manchester City",
+      "position_group": "DF",
+      "minutes": 1674,
+      "np_xg_p90_actual": 0.064,
+      "np_xg_p90_expected": 0.2154,
+      "residual": -0.1514
+    },
+    {
+      "player": "Brajan Gruda",
+      "team": "Brighton",
+      "position_group": "MF",
+      "minutes": 687,
+      "np_xg_p90_actual": 0.1328,
+      "np_xg_p90_expected": 0.279,
+      "residual": -0.1463
+    },
+    {
+      "player": "Jacob Ramsey",
+      "team": "Aston Villa",
+      "position_group": "MF",
+      "minutes": 1623,
+      "np_xg_p90_actual": 0.0806,
+      "np_xg_p90_expected": 0.2268,
+      "residual": -0.1462
+    },
+    {
+      "player": "Jeremy Doku",
+      "team": "Manchester City",
+      "position_group": "MF",
+      "minutes": 1516,
+      "np_xg_p90_actual": 0.1125,
+      "np_xg_p90_expected": 0.2555,
+      "residual": -0.143
+    },
+    {
+      "player": "Jakub Kiwior",
+      "team": "Arsenal",
+      "position_group": "DF",
+      "minutes": 1122,
+      "np_xg_p90_actual": 0.0172,
+      "np_xg_p90_expected": 0.155,
+      "residual": -0.1378
+    }
+  ],
+  "leak_free_model": {
+    "features": [
+      "xa_p90",
+      "key_passes_p90",
+      "crosses_p90",
+      "interceptions_p90",
+      "tackles_won_p90",
+      "fouls_committed_p90",
+      "fouls_drawn_p90",
+      "offsides_p90",
+      "cards_yellow_p90"
+    ],
+    "n_features": 9,
+    "alpha_full_sample": 31.62278,
+    "cv_r2_out_of_fold": 0.5363,
+    "cv_r2_fold_mean": 0.5386,
+    "cv_r2_fold_sd": 0.0658,
+    "cv_r2_per_fold": [
+      0.4633,
+      0.6168,
+      0.5033,
+      0.5981,
+      0.5114
+    ],
+    "in_sample_r2": 0.5753,
+    "residual_sd": 0.106,
+    "share_of_variance_unexplained": 0.4637,
+    "coefficients_standardised": {
+      "xa_p90": 0.02358,
+      "key_passes_p90": 0.02469,
+      "crosses_p90": -0.03052,
+      "interceptions_p90": -0.02575,
+      "tackles_won_p90": -0.02482,
+      "fouls_committed_p90": 0.02317,
+      "fouls_drawn_p90": 0.00986,
+      "offsides_p90": 0.05931,
+      "cards_yellow_p90": -0.01415
+    },
+    "top_15_above_role": [
+      {
+        "player": "Diogo Jota",
+        "team": "Liverpool",
+        "position_group": "FW",
+        "minutes": 1196,
+        "np_xg_p90_actual": 0.768,
+        "np_xg_p90_expected": 0.1905,
+        "residual": 0.5775
+      },
+      {
+        "player": "Erling Haaland",
+        "team": "Manchester City",
+        "position_group": "FW",
+        "minutes": 2736,
+        "np_xg_p90_actual": 0.6878,
+        "np_xg_p90_expected": 0.2224,
+        "residual": 0.4654
+      },
+      {
+        "player": "Richarlison",
+        "team": "Tottenham",
+        "position_group": "FW",
+        "minutes": 504,
+        "np_xg_p90_actual": 0.7684,
+        "np_xg_p90_expected": 0.3108,
+        "residual": 0.4576
+      },
+      {
+        "player": "Rodrigo Muniz",
+        "team": "Fulham",
+        "position_group": "FW",
+        "minutes": 964,
+        "np_xg_p90_actual": 0.6384,
+        "np_xg_p90_expected": 0.2535,
+        "residual": 0.3849
+      },
+      {
+        "player": "Yoane Wissa",
+        "team": "Brentford",
+        "position_group": "FW",
+        "minutes": 2919,
+        "np_xg_p90_actual": 0.6392,
+        "np_xg_p90_expected": 0.2975,
+        "residual": 0.3417
+      },
+      {
+        "player": "Fabio Carvalho",
+        "team": "Brentford",
+        "position_group": "FW",
+        "minutes": 455,
+        "np_xg_p90_actual": 0.4641,
+        "np_xg_p90_expected": 0.1241,
+        "residual": 0.34
+      },
+      {
+        "player": "Noni Madueke",
+        "team": "Chelsea",
+        "position_group": "MF",
+        "minutes": 2033,
+        "np_xg_p90_actual": 0.5251,
+        "np_xg_p90_expected": 0.2069,
+        "residual": 0.3182
+      },
+      {
+        "player": "Eddie Nketiah",
+        "team": "Crystal Palace",
+        "position_group": "FW",
+        "minutes": 1034,
+        "np_xg_p90_actual": 0.6226,
+        "np_xg_p90_expected": 0.3421,
+        "residual": 0.2805
+      },
+      {
+        "player": "Mason Mount",
+        "team": "Manchester Utd",
+        "position_group": "MF",
+        "minutes": 622,
+        "np_xg_p90_actual": 0.4253,
+        "np_xg_p90_expected": 0.1636,
+        "residual": 0.2617
+      },
+      {
+        "player": "Ollie Watkins",
+        "team": "Aston Villa",
+        "position_group": "FW",
+        "minutes": 2598,
+        "np_xg_p90_actual": 0.5927,
+        "np_xg_p90_expected": 0.3372,
+        "residual": 0.2555
+      },
+      {
+        "player": "Ross Barkley",
+        "team": "Aston Villa",
+        "position_group": "MF",
+        "minutes": 581,
+        "np_xg_p90_actual": 0.3347,
+        "np_xg_p90_expected": 0.084,
+        "residual": 0.2507
+      },
+      {
+        "player": "Dango Ouattara",
+        "team": "Bournemouth",
+        "position_group": "MF",
+        "minutes": 2005,
+        "np_xg_p90_actual": 0.4908,
+        "np_xg_p90_expected": 0.2577,
+        "residual": 0.2331
+      },
+      {
+        "player": "Christopher Nkunku",
+        "team": "Chelsea",
+        "position_group": "MF",
+        "minutes": 921,
+        "np_xg_p90_actual": 0.4913,
+        "np_xg_p90_expected": 0.2601,
+        "residual": 0.2312
+      },
+      {
+        "player": "Danny Welbeck",
+        "team": "Brighton",
+        "position_group": "FW",
+        "minutes": 2115,
+        "np_xg_p90_actual": 0.4125,
+        "np_xg_p90_expected": 0.1835,
+        "residual": 0.2291
+      },
+      {
+        "player": "Alexander Isak",
+        "team": "Newcastle",
+        "position_group": "FW",
+        "minutes": 2756,
+        "np_xg_p90_actual": 0.6307,
+        "np_xg_p90_expected": 0.4159,
+        "residual": 0.2147
+      }
+    ],
+    "bottom_15_below_role": [
+      {
+        "player": "Niclas F\u00fcllkrug",
+        "team": "West Ham",
+        "position_group": "FW",
+        "minutes": 790,
+        "np_xg_p90_actual": 0.2466,
+        "np_xg_p90_expected": 0.6366,
+        "residual": -0.39
+      },
+      {
+        "player": "Timo Werner",
+        "team": "Tottenham",
+        "position_group": "FW",
+        "minutes": 516,
+        "np_xg_p90_actual": 0.1663,
+        "np_xg_p90_expected": 0.5038,
+        "residual": -0.3376
+      },
+      {
+        "player": "J\u00e1der Dur\u00e1n",
+        "team": "Aston Villa",
+        "position_group": "FW",
+        "minutes": 638,
+        "np_xg_p90_actual": 0.0,
+        "np_xg_p90_expected": 0.3152,
+        "residual": -0.3152
+      },
+      {
+        "player": "Raheem Sterling",
+        "team": "Arsenal",
+        "position_group": "FW",
+        "minutes": 499,
+        "np_xg_p90_actual": 0.1751,
+        "np_xg_p90_expected": 0.3961,
+        "residual": -0.221
+      },
+      {
+        "player": "Bobby De Cordova-Reid",
+        "team": "Leicester City",
+        "position_group": "MF",
+        "minutes": 744,
+        "np_xg_p90_actual": 0.0807,
+        "np_xg_p90_expected": 0.2933,
+        "residual": -0.2126
+      },
+      {
+        "player": "Jadon Sancho",
+        "team": "Chelsea",
+        "position_group": "MF",
+        "minutes": 1764,
+        "np_xg_p90_actual": 0.1233,
+        "np_xg_p90_expected": 0.3157,
+        "residual": -0.1924
+      },
+      {
+        "player": "Jack Clarke",
+        "team": "Ipswich Town",
+        "position_group": "MF",
+        "minutes": 1181,
+        "np_xg_p90_actual": 0.0992,
+        "np_xg_p90_expected": 0.261,
+        "residual": -0.1618
+      },
+      {
+        "player": "Matheus Nunes",
+        "team": "Manchester City",
+        "position_group": "DF",
+        "minutes": 1674,
+        "np_xg_p90_actual": 0.064,
+        "np_xg_p90_expected": 0.2242,
+        "residual": -0.1602
+      },
+      {
+        "player": "Patrick Dorgu",
+        "team": "Manchester Utd",
+        "position_group": "MF",
+        "minutes": 842,
+        "np_xg_p90_actual": 0.0422,
+        "np_xg_p90_expected": 0.1979,
+        "residual": -0.1557
+      },
+      {
+        "player": "Crysencio Summerville",
+        "team": "West Ham",
+        "position_group": "MF",
+        "minutes": 786,
+        "np_xg_p90_actual": 0.2077,
+        "np_xg_p90_expected": 0.3589,
+        "residual": -0.1512
+      },
+      {
+        "player": "Jacob Ramsey",
+        "team": "Aston Villa",
+        "position_group": "MF",
+        "minutes": 1623,
+        "np_xg_p90_actual": 0.0806,
+        "np_xg_p90_expected": 0.2297,
+        "residual": -0.1491
+      },
+      {
+        "player": "Brajan Gruda",
+        "team": "Brighton",
+        "position_group": "MF",
+        "minutes": 687,
+        "np_xg_p90_actual": 0.1328,
+        "np_xg_p90_expected": 0.2784,
+        "residual": -0.1457
+      },
+      {
+        "player": "Jeremy Doku",
+        "team": "Manchester City",
+        "position_group": "MF",
+        "minutes": 1516,
+        "np_xg_p90_actual": 0.1125,
+        "np_xg_p90_expected": 0.258,
+        "residual": -0.1455
+      },
+      {
+        "player": "Mads Roerslev",
+        "team": "Brentford",
+        "position_group": "DF",
+        "minutes": 1101,
+        "np_xg_p90_actual": 0.0181,
+        "np_xg_p90_expected": 0.1614,
+        "residual": -0.1433
+      },
+      {
+        "player": "Jakub Kiwior",
+        "team": "Arsenal",
+        "position_group": "DF",
+        "minutes": 1122,
+        "np_xg_p90_actual": 0.0172,
+        "np_xg_p90_expected": 0.1552,
+        "residual": -0.1381
+      }
+    ],
+    "note": "Both Understat chain columns removed. This is the fit to quote if a single number is wanted for how much of shot volume a non-shooting role explains."
+  }
+}

@@ -475,6 +475,8 @@
     "global_k": 2,
     "adjusted_rand_index_vs_position_group": 0.2257,
     "cluster_purity_vs_position_group": 0.5792,
+    "recovery_threshold_ari": 0.5,
+    "recovery_threshold_note": "a declared reporting convention, not a test: an adjusted Rand index of at least this value is called substantial recovery",
     "clusters_recover_listed_positions": false,
     "statement": "At k=2 the global clustering scores an adjusted Rand index of 0.226 against the listed position group, with a cluster purity of 0.579. That is weak agreement: the partition the data supports is not the listed position partition, it is a coarser attacking against defending split that cuts across the midfield."
   }

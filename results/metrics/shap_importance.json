@@ -1,0 +1,675 @@
+{
+  "season": "2024-25",
+  "model": "lightgbm",
+  "fit": "full sample, no held-out split, interpretability only",
+  "explainer": "shap.TreeExplainer, exact tree SHAP",
+  "units": "log-odds contribution to the class score",
+  "n_players": 366,
+  "features": [
+    "np_xg_p90",
+    "xa_p90",
+    "key_passes_p90",
+    "xg_chain_p90",
+    "xg_buildup_p90",
+    "shots_p90",
+    "shots_on_target_p90",
+    "goals_non_penalty_p90",
+    "assists_p90",
+    "crosses_p90",
+    "interceptions_p90",
+    "tackles_won_p90",
+    "fouls_committed_p90",
+    "fouls_drawn_p90",
+    "offsides_p90",
+    "cards_yellow_p90",
+    "shot_accuracy_pct",
+    "goals_per_shot"
+  ],
+  "class_order": [
+    "DF",
+    "MF",
+    "FW"
+  ],
+  "overall_ranking": [
+    {
+      "rank": 1,
+      "feature": "shots_p90",
+      "label": "Shots",
+      "mean_abs_shap": 0.63232
+    },
+    {
+      "rank": 2,
+      "feature": "key_passes_p90",
+      "label": "Key passes",
+      "mean_abs_shap": 0.61057
+    },
+    {
+      "rank": 3,
+      "feature": "interceptions_p90",
+      "label": "Interceptions",
+      "mean_abs_shap": 0.58354
+    },
+    {
+      "rank": 4,
+      "feature": "shots_on_target_p90",
+      "label": "Shots on target",
+      "mean_abs_shap": 0.32493
+    },
+    {
+      "rank": 5,
+      "feature": "fouls_committed_p90",
+      "label": "Fouls committed",
+      "mean_abs_shap": 0.31214
+    },
+    {
+      "rank": 6,
+      "feature": "np_xg_p90",
+      "label": "npxG",
+      "mean_abs_shap": 0.30018
+    },
+    {
+      "rank": 7,
+      "feature": "fouls_drawn_p90",
+      "label": "Fouls drawn",
+      "mean_abs_shap": 0.26156
+    },
+    {
+      "rank": 8,
+      "feature": "xg_buildup_p90",
+      "label": "xGBuildup",
+      "mean_abs_shap": 0.23828
+    },
+    {
+      "rank": 9,
+      "feature": "offsides_p90",
+      "label": "Offsides",
+      "mean_abs_shap": 0.21956
+    },
+    {
+      "rank": 10,
+      "feature": "tackles_won_p90",
+      "label": "Tackles won",
+      "mean_abs_shap": 0.21339
+    },
+    {
+      "rank": 11,
+      "feature": "crosses_p90",
+      "label": "Crosses",
+      "mean_abs_shap": 0.18618
+    },
+    {
+      "rank": 12,
+      "feature": "xa_p90",
+      "label": "xA",
+      "mean_abs_shap": 0.1319
+    },
+    {
+      "rank": 13,
+      "feature": "cards_yellow_p90",
+      "label": "Yellow cards",
+      "mean_abs_shap": 0.12749
+    },
+    {
+      "rank": 14,
+      "feature": "xg_chain_p90",
+      "label": "xGChain",
+      "mean_abs_shap": 0.12036
+    },
+    {
+      "rank": 15,
+      "feature": "shot_accuracy_pct",
+      "label": "Shot accuracy %",
+      "mean_abs_shap": 0.10086
+    },
+    {
+      "rank": 16,
+      "feature": "goals_non_penalty_p90",
+      "label": "NP goals",
+      "mean_abs_shap": 0.08524
+    },
+    {
+      "rank": 17,
+      "feature": "goals_per_shot",
+      "label": "Goals per shot",
+      "mean_abs_shap": 0.08499
+    },
+    {
+      "rank": 18,
+      "feature": "assists_p90",
+      "label": "Assists",
+      "mean_abs_shap": 0.04832
+    }
+  ],
+  "own_class_ranking": [
+    {
+      "rank": 1,
+      "feature": "key_passes_p90",
+      "label": "Key passes",
+      "mean_abs_shap": 0.82011,
+      "mean_signed_shap": 0.63055
+    },
+    {
+      "rank": 2,
+      "feature": "shots_p90",
+      "label": "Shots",
+      "mean_abs_shap": 0.73013,
+      "mean_signed_shap": 0.65404
+    },
+    {
+      "rank": 3,
+      "feature": "interceptions_p90",
+      "label": "Interceptions",
+      "mean_abs_shap": 0.55282,
+      "mean_signed_shap": 0.43901
+    },
+    {
+      "rank": 4,
+      "feature": "fouls_committed_p90",
+      "label": "Fouls committed",
+      "mean_abs_shap": 0.38954,
+      "mean_signed_shap": 0.27717
+    },
+    {
+      "rank": 5,
+      "feature": "np_xg_p90",
+      "label": "npxG",
+      "mean_abs_shap": 0.35796,
+      "mean_signed_shap": 0.32694
+    },
+    {
+      "rank": 6,
+      "feature": "shots_on_target_p90",
+      "label": "Shots on target",
+      "mean_abs_shap": 0.34512,
+      "mean_signed_shap": 0.3014
+    },
+    {
+      "rank": 7,
+      "feature": "fouls_drawn_p90",
+      "label": "Fouls drawn",
+      "mean_abs_shap": 0.32206,
+      "mean_signed_shap": 0.18347
+    },
+    {
+      "rank": 8,
+      "feature": "xg_buildup_p90",
+      "label": "xGBuildup",
+      "mean_abs_shap": 0.28114,
+      "mean_signed_shap": 0.12667
+    },
+    {
+      "rank": 9,
+      "feature": "offsides_p90",
+      "label": "Offsides",
+      "mean_abs_shap": 0.25741,
+      "mean_signed_shap": 0.16498
+    },
+    {
+      "rank": 10,
+      "feature": "crosses_p90",
+      "label": "Crosses",
+      "mean_abs_shap": 0.22889,
+      "mean_signed_shap": 0.07658
+    },
+    {
+      "rank": 11,
+      "feature": "tackles_won_p90",
+      "label": "Tackles won",
+      "mean_abs_shap": 0.22591,
+      "mean_signed_shap": 0.13178
+    },
+    {
+      "rank": 12,
+      "feature": "cards_yellow_p90",
+      "label": "Yellow cards",
+      "mean_abs_shap": 0.17349,
+      "mean_signed_shap": 0.07833
+    },
+    {
+      "rank": 13,
+      "feature": "xa_p90",
+      "label": "xA",
+      "mean_abs_shap": 0.17345,
+      "mean_signed_shap": 0.11812
+    },
+    {
+      "rank": 14,
+      "feature": "xg_chain_p90",
+      "label": "xGChain",
+      "mean_abs_shap": 0.14511,
+      "mean_signed_shap": 0.08452
+    },
+    {
+      "rank": 15,
+      "feature": "shot_accuracy_pct",
+      "label": "Shot accuracy %",
+      "mean_abs_shap": 0.11801,
+      "mean_signed_shap": 0.03624
+    },
+    {
+      "rank": 16,
+      "feature": "goals_non_penalty_p90",
+      "label": "NP goals",
+      "mean_abs_shap": 0.10704,
+      "mean_signed_shap": 0.0773
+    },
+    {
+      "rank": 17,
+      "feature": "goals_per_shot",
+      "label": "Goals per shot",
+      "mean_abs_shap": 0.08598,
+      "mean_signed_shap": 0.04798
+    },
+    {
+      "rank": 18,
+      "feature": "assists_p90",
+      "label": "Assists",
+      "mean_abs_shap": 0.05972,
+      "mean_signed_shap": 0.02779
+    }
+  ],
+  "by_class": {
+    "DF": [
+      {
+        "rank": 1,
+        "feature": "shots_p90",
+        "label": "Shots",
+        "mean_abs_shap": 0.93645,
+        "mean_signed_shap": 0.00402
+      },
+      {
+        "rank": 2,
+        "feature": "shots_on_target_p90",
+        "label": "Shots on target",
+        "mean_abs_shap": 0.71362,
+        "mean_signed_shap": -0.01991
+      },
+      {
+        "rank": 3,
+        "feature": "key_passes_p90",
+        "label": "Key passes",
+        "mean_abs_shap": 0.67148,
+        "mean_signed_shap": -0.01829
+      },
+      {
+        "rank": 4,
+        "feature": "fouls_committed_p90",
+        "label": "Fouls committed",
+        "mean_abs_shap": 0.51089,
+        "mean_signed_shap": -0.02691
+      },
+      {
+        "rank": 5,
+        "feature": "np_xg_p90",
+        "label": "npxG",
+        "mean_abs_shap": 0.40501,
+        "mean_signed_shap": 0.0369
+      },
+      {
+        "rank": 6,
+        "feature": "xg_buildup_p90",
+        "label": "xGBuildup",
+        "mean_abs_shap": 0.37263,
+        "mean_signed_shap": -0.00259
+      },
+      {
+        "rank": 7,
+        "feature": "interceptions_p90",
+        "label": "Interceptions",
+        "mean_abs_shap": 0.29377,
+        "mean_signed_shap": 0.00549
+      },
+      {
+        "rank": 8,
+        "feature": "crosses_p90",
+        "label": "Crosses",
+        "mean_abs_shap": 0.25884,
+        "mean_signed_shap": -0.01386
+      },
+      {
+        "rank": 9,
+        "feature": "fouls_drawn_p90",
+        "label": "Fouls drawn",
+        "mean_abs_shap": 0.21175,
+        "mean_signed_shap": -0.00753
+      },
+      {
+        "rank": 10,
+        "feature": "xa_p90",
+        "label": "xA",
+        "mean_abs_shap": 0.20192,
+        "mean_signed_shap": 0.03285
+      },
+      {
+        "rank": 11,
+        "feature": "xg_chain_p90",
+        "label": "xGChain",
+        "mean_abs_shap": 0.11333,
+        "mean_signed_shap": -0.00712
+      },
+      {
+        "rank": 12,
+        "feature": "shot_accuracy_pct",
+        "label": "Shot accuracy %",
+        "mean_abs_shap": 0.10335,
+        "mean_signed_shap": 0.01457
+      },
+      {
+        "rank": 13,
+        "feature": "offsides_p90",
+        "label": "Offsides",
+        "mean_abs_shap": 0.08062,
+        "mean_signed_shap": 0.00356
+      },
+      {
+        "rank": 14,
+        "feature": "goals_non_penalty_p90",
+        "label": "NP goals",
+        "mean_abs_shap": 0.0798,
+        "mean_signed_shap": 0.01843
+      },
+      {
+        "rank": 15,
+        "feature": "tackles_won_p90",
+        "label": "Tackles won",
+        "mean_abs_shap": 0.07386,
+        "mean_signed_shap": -0.00555
+      },
+      {
+        "rank": 16,
+        "feature": "assists_p90",
+        "label": "Assists",
+        "mean_abs_shap": 0.06802,
+        "mean_signed_shap": -0.01198
+      },
+      {
+        "rank": 17,
+        "feature": "cards_yellow_p90",
+        "label": "Yellow cards",
+        "mean_abs_shap": 0.06437,
+        "mean_signed_shap": 0.00174
+      },
+      {
+        "rank": 18,
+        "feature": "goals_per_shot",
+        "label": "Goals per shot",
+        "mean_abs_shap": 0.03488,
+        "mean_signed_shap": 0.00072
+      }
+    ],
+    "MF": [
+      {
+        "rank": 1,
+        "feature": "key_passes_p90",
+        "label": "Key passes",
+        "mean_abs_shap": 0.97327,
+        "mean_signed_shap": 0.0237
+      },
+      {
+        "rank": 2,
+        "feature": "fouls_drawn_p90",
+        "label": "Fouls drawn",
+        "mean_abs_shap": 0.46077,
+        "mean_signed_shap": -0.02892
+      },
+      {
+        "rank": 3,
+        "feature": "shots_p90",
+        "label": "Shots",
+        "mean_abs_shap": 0.37294,
+        "mean_signed_shap": 0.00585
+      },
+      {
+        "rank": 4,
+        "feature": "fouls_committed_p90",
+        "label": "Fouls committed",
+        "mean_abs_shap": 0.3296,
+        "mean_signed_shap": 0.02489
+      },
+      {
+        "rank": 5,
+        "feature": "offsides_p90",
+        "label": "Offsides",
+        "mean_abs_shap": 0.27653,
+        "mean_signed_shap": -0.01124
+      },
+      {
+        "rank": 6,
+        "feature": "tackles_won_p90",
+        "label": "Tackles won",
+        "mean_abs_shap": 0.25663,
+        "mean_signed_shap": -0.00519
+      },
+      {
+        "rank": 7,
+        "feature": "cards_yellow_p90",
+        "label": "Yellow cards",
+        "mean_abs_shap": 0.24595,
+        "mean_signed_shap": 0.006
+      },
+      {
+        "rank": 8,
+        "feature": "interceptions_p90",
+        "label": "Interceptions",
+        "mean_abs_shap": 0.21759,
+        "mean_signed_shap": -0.02398
+      },
+      {
+        "rank": 9,
+        "feature": "xg_buildup_p90",
+        "label": "xGBuildup",
+        "mean_abs_shap": 0.21152,
+        "mean_signed_shap": -0.0049
+      },
+      {
+        "rank": 10,
+        "feature": "crosses_p90",
+        "label": "Crosses",
+        "mean_abs_shap": 0.16912,
+        "mean_signed_shap": -0.00356
+      },
+      {
+        "rank": 11,
+        "feature": "xa_p90",
+        "label": "xA",
+        "mean_abs_shap": 0.15602,
+        "mean_signed_shap": -0.00338
+      },
+      {
+        "rank": 12,
+        "feature": "xg_chain_p90",
+        "label": "xGChain",
+        "mean_abs_shap": 0.13082,
+        "mean_signed_shap": 0.01683
+      },
+      {
+        "rank": 13,
+        "feature": "np_xg_p90",
+        "label": "npxG",
+        "mean_abs_shap": 0.12952,
+        "mean_signed_shap": 0.00497
+      },
+      {
+        "rank": 14,
+        "feature": "goals_non_penalty_p90",
+        "label": "NP goals",
+        "mean_abs_shap": 0.09518,
+        "mean_signed_shap": -0.00355
+      },
+      {
+        "rank": 15,
+        "feature": "shots_on_target_p90",
+        "label": "Shots on target",
+        "mean_abs_shap": 0.08916,
+        "mean_signed_shap": -0.00454
+      },
+      {
+        "rank": 16,
+        "feature": "shot_accuracy_pct",
+        "label": "Shot accuracy %",
+        "mean_abs_shap": 0.08692,
+        "mean_signed_shap": -0.01296
+      },
+      {
+        "rank": 17,
+        "feature": "goals_per_shot",
+        "label": "Goals per shot",
+        "mean_abs_shap": 0.06602,
+        "mean_signed_shap": 0.00721
+      },
+      {
+        "rank": 18,
+        "feature": "assists_p90",
+        "label": "Assists",
+        "mean_abs_shap": 0.05033,
+        "mean_signed_shap": 0.00709
+      }
+    ],
+    "FW": [
+      {
+        "rank": 1,
+        "feature": "interceptions_p90",
+        "label": "Interceptions",
+        "mean_abs_shap": 1.23926,
+        "mean_signed_shap": 0.01971
+      },
+      {
+        "rank": 2,
+        "feature": "shots_p90",
+        "label": "Shots",
+        "mean_abs_shap": 0.58756,
+        "mean_signed_shap": -0.04073
+      },
+      {
+        "rank": 3,
+        "feature": "np_xg_p90",
+        "label": "npxG",
+        "mean_abs_shap": 0.36601,
+        "mean_signed_shap": 0.03687
+      },
+      {
+        "rank": 4,
+        "feature": "tackles_won_p90",
+        "label": "Tackles won",
+        "mean_abs_shap": 0.30967,
+        "mean_signed_shap": -0.02954
+      },
+      {
+        "rank": 5,
+        "feature": "offsides_p90",
+        "label": "Offsides",
+        "mean_abs_shap": 0.30152,
+        "mean_signed_shap": -0.01928
+      },
+      {
+        "rank": 6,
+        "feature": "key_passes_p90",
+        "label": "Key passes",
+        "mean_abs_shap": 0.18696,
+        "mean_signed_shap": 0.01777
+      },
+      {
+        "rank": 7,
+        "feature": "shots_on_target_p90",
+        "label": "Shots on target",
+        "mean_abs_shap": 0.17199,
+        "mean_signed_shap": 0.00381
+      },
+      {
+        "rank": 8,
+        "feature": "goals_per_shot",
+        "label": "Goals per shot",
+        "mean_abs_shap": 0.15407,
+        "mean_signed_shap": -0.00714
+      },
+      {
+        "rank": 9,
+        "feature": "xg_buildup_p90",
+        "label": "xGBuildup",
+        "mean_abs_shap": 0.13068,
+        "mean_signed_shap": -0.00343
+      },
+      {
+        "rank": 10,
+        "feature": "crosses_p90",
+        "label": "Crosses",
+        "mean_abs_shap": 0.13058,
+        "mean_signed_shap": 0.00199
+      },
+      {
+        "rank": 11,
+        "feature": "xg_chain_p90",
+        "label": "xGChain",
+        "mean_abs_shap": 0.11694,
+        "mean_signed_shap": -0.0008
+      },
+      {
+        "rank": 12,
+        "feature": "shot_accuracy_pct",
+        "label": "Shot accuracy %",
+        "mean_abs_shap": 0.11231,
+        "mean_signed_shap": 0.00033
+      },
+      {
+        "rank": 13,
+        "feature": "fouls_drawn_p90",
+        "label": "Fouls drawn",
+        "mean_abs_shap": 0.11217,
+        "mean_signed_shap": -0.00399
+      },
+      {
+        "rank": 14,
+        "feature": "fouls_committed_p90",
+        "label": "Fouls committed",
+        "mean_abs_shap": 0.09593,
+        "mean_signed_shap": -0.00153
+      },
+      {
+        "rank": 15,
+        "feature": "goals_non_penalty_p90",
+        "label": "NP goals",
+        "mean_abs_shap": 0.08074,
+        "mean_signed_shap": 0.00232
+      },
+      {
+        "rank": 16,
+        "feature": "cards_yellow_p90",
+        "label": "Yellow cards",
+        "mean_abs_shap": 0.07214,
+        "mean_signed_shap": -0.00301
+      },
+      {
+        "rank": 17,
+        "feature": "xa_p90",
+        "label": "xA",
+        "mean_abs_shap": 0.03776,
+        "mean_signed_shap": 0.01486
+      },
+      {
+        "rank": 18,
+        "feature": "assists_p90",
+        "label": "Assists",
+        "mean_abs_shap": 0.02659,
+        "mean_signed_shap": 0.00156
+      }
+    ]
+  },
+  "top3_by_class": {
+    "DF": [
+      "Shots",
+      "Shots on target",
+      "Key passes"
+    ],
+    "MF": [
+      "Key passes",
+      "Fouls drawn",
+      "Shots"
+    ],
+    "FW": [
+      "Interceptions",
+      "Shots",
+      "npxG"
+    ]
+  },
+  "notes": "overall_ranking averages the per-class mean absolute SHAP over DF, MF and FW. own_class_ranking uses, for each player, the SHAP value attached to that player's own listed position group, so its sign is readable: positive means the feature pushed the player toward the position he is listed at. The beeswarm figure plots the own-class values."
+}

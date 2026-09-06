@@ -565,11 +565,98 @@ def build_macros() -> Macros:
         m.add(f"BootARIMin{label}", dig(stab, "seasons", primary, scope, "ari_min"), places=3)
     m.add("ARIvsPosition", dig(vspos, "answer", "adjusted_rand_index_vs_position_group"), places=3)
     m.add("PurityVsPosition", dig(vspos, "answer", "cluster_purity_vs_position_group"), places=3)
+    m.add(
+        "NMIvsPosition",
+        dig(vspos, "seasons", primary, "global", "position_group", "normalized_mutual_info"),
+        places=3,
+    )
+    m.add(
+        "ARIvsPositionFull",
+        dig(vspos, "seasons", primary, "global", "position_full", "adjusted_rand_index"),
+        places=3,
+    )
+    m.add(
+        "ARIWithinFW",
+        dig(vspos, "seasons", primary, "FW", "position_full", "adjusted_rand_index"),
+        places=3,
+    )
+
+    # Algorithm comparison. HDBSCAN is the strongest corroboration available, because it
+    # is free to declare that no clusters exist, and within position groups it does.
+    algo = load("cluster_algorithms")
+    scopes = dig(algo, "seasons", primary, "scopes") or {}
+    for scope in ("global", "DF", "MF", "FW"):
+        label = "Global" if scope == "global" else scope
+        m.add(
+            f"Silhouette{label}",
+            dig(scopes, scope, "kmeans", "silhouette", "standardised"),
+            places=3,
+        )
+        m.add(
+            f"HDBSCANNoise{label}",
+            dig(scopes, scope, "hdbscan", "standardised", "5", "noise_fraction"),
+            places=3,
+        )
+        m.add(
+            f"HDBSCANClusters{label}",
+            dig(scopes, scope, "hdbscan", "standardised", "5", "n_clusters"),
+        )
+    m.add(
+        "PCASensitivityARI", dig(scopes, "global", "kmeans", "ari_standardised_vs_pca90"), places=3
+    )
+    m.add("PCANinetyComponents", dig(scopes, "global", "pca90", "n_components"))
+    m.add(
+        "GMMvsKMeansARI",
+        dig(algo, "seasons", primary, "gmm_posterior_fit", "ari_vs_kmeans"),
+        places=3,
+    )
+
+    hyb = load("hybrid_players")
+    counts = dig(hyb, "seasons", primary, "counts") or {}
+    m.add("NHybridPlayers", counts.get("n_disagreeing"))
+    m.add("NPosteriorSplit", counts.get("n_posterior_split"))
+    m.add("NHybridFlagged", counts.get("n_flagged"))
 
     # Goalkeeper availability
     m.add("NKeeperAdvEmpty", dig(keep_avail, "summary", "keeper_adv_all_null", primary))
     m.add("NKeeperAdvStatCols", dig(keep_avail, "summary", "keeper_adv_stat_columns", primary))
     m.add("NKeeperAdvUsable", dig(keep_avail, "summary", "keeper_adv_usable", primary))
+
+    # Goalkeeper analysis
+    kdesc, kclust, kcomp = (
+        load("keeper_descriptive"),
+        load("keeper_clusters"),
+        load("keeper_composites"),
+    )
+    m.add("NKeepersEligible", dig(kdesc, primary, "n_eligible"))
+    m.add("NKeepersEligibleRepl", dig(kdesc, repl, "n_eligible"))
+    m.add("KeeperFeatureCount", dig(kdesc, primary, "surviving_feature_count"))
+    m.add("KeeperSavesRSq", dig(kcomp, primary, "saves_on_sota_regression", "r_squared"), places=3)
+    m.add(
+        "KeeperSavesResidSE",
+        dig(kcomp, primary, "saves_on_sota_regression", "residual_std_error"),
+        places=2,
+    )
+    m.add("KeeperWorkloadR", dig(kdesc, primary, "savepct_vs_workload", "pearson_r"), places=3)
+    m.add("KeeperWorkloadP", dig(kdesc, primary, "savepct_vs_workload", "p_value"), places=3)
+    m.add("KeeperWorkloadRRepl", dig(kdesc, repl, "savepct_vs_workload", "pearson_r"), places=3)
+    m.add("KeeperKPrimary", dig(kclust, primary, "chosen_k"))
+    m.add("KeeperKRepl", dig(kclust, repl, "chosen_k"))
+    m.add("KeeperSilhouettePrimary", dig(kclust, primary, "silhouette"), places=3)
+    m.add("KeeperSilhouetteRepl", dig(kclust, repl, "silhouette"), places=3)
+    m.add("KeeperMinClusterRepl", dig(kclust, repl, "min_cluster_size"))
+    eta = dig(kclust, primary, "variance_explained_by_cluster") or {}
+    if isinstance(eta, dict):
+        m.add("KeeperEtaTeamPoints", eta.get("team_points_per_match"), places=2)
+        m.add("KeeperEtaSavePct", eta.get("gk_save_pct"), places=2)
+    m.add("KeeperAxesBuilt", len(dig(kcomp, primary, "axes_built") or []))
+    m.add("KeeperAxesLost", len(dig(kcomp, primary, "axes_not_buildable") or []))
+
+    # Additional descriptive counts
+    m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))
+    m.add("NPairsTotal", dig(div, primary, "n_pairs"))
+    m.add("PCNinetyComponents", dig(pca, primary, "n_components_for_90pct"))
+    m.add("PCCumThree", dig(pca, primary, "cumulative_explained_variance", 2), places=3)
 
     return m
 

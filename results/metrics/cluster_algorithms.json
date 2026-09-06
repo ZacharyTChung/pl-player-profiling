@@ -758,7 +758,15 @@
         "covariance_type": "full",
         "k": 2,
         "bic": 9918.83,
-        "ari_vs_kmeans": 0.3728
+        "ari_vs_kmeans": 0.3728,
+        "component_sizes": {
+          "0": 194,
+          "1": 172
+        },
+        "vs_position_group": {
+          "adjusted_rand_index": 0.249,
+          "normalized_mutual_info": 0.2831
+        }
       }
     },
     "2025-26": {
@@ -1506,7 +1514,15 @@
         "covariance_type": "full",
         "k": 2,
         "bic": 11190.07,
-        "ari_vs_kmeans": 0.6925
+        "ari_vs_kmeans": 0.6925,
+        "component_sizes": {
+          "0": 222,
+          "1": 150
+        },
+        "vs_position_group": {
+          "adjusted_rand_index": 0.2262,
+          "normalized_mutual_info": 0.2901
+        }
       }
     }
   }

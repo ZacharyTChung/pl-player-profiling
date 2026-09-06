@@ -1,0 +1,854 @@
+{
+  "season": "2024-25",
+  "space": "outfield_z_bygroup_2024-25, within position group",
+  "metric": "cosine similarity on the 18 within-group z-scored features",
+  "why_cosine": "On centred features cosine compares the shape of a player's profile, what he does more and less of than his positional peers, rather than the overall magnitude of his involvement.",
+  "n_neighbours": 5,
+  "feature_set": [
+    "np_xg_p90",
+    "xa_p90",
+    "key_passes_p90",
+    "xg_chain_p90",
+    "xg_buildup_p90",
+    "shots_p90",
+    "shots_on_target_p90",
+    "goals_non_penalty_p90",
+    "assists_p90",
+    "crosses_p90",
+    "interceptions_p90",
+    "tackles_won_p90",
+    "fouls_committed_p90",
+    "fouls_drawn_p90",
+    "offsides_p90",
+    "cards_yellow_p90",
+    "shot_accuracy_pct",
+    "goals_per_shot"
+  ],
+  "absent_feature_families": [
+    "pass volume, completion and pass length",
+    "progressive passes, progressive carries and progressive receptions",
+    "touches by pitch third, carries and take-ons",
+    "shot-creating and goal-creating actions",
+    "tackles attempted by pitch third, blocks, clearances and pressures",
+    "aerial duels won and lost",
+    "possession share and positional or tracking data"
+  ],
+  "reading_caveat": "Similarity is driven by shooting volume and quality, Understat expected creation, crossing, and three duel or defensive counts. No passing, possession, carrying or positional data survives in public form, so players who differ mainly in how they pass or carry the ball cannot be separated by this metric.",
+  "queries_requested": [
+    "Mohamed Salah",
+    "Cole Palmer",
+    "Bruno Fernandes",
+    "Declan Rice",
+    "Erling Haaland",
+    "Alexander Isak",
+    "Bukayo Saka",
+    "Virgil van Dijk",
+    "Trent Alexander-Arnold",
+    "Marc Cucurella"
+  ],
+  "queries_absent_from_eligible_set": [],
+  "defining_feature_n": 3,
+  "agreement_tolerance": 1.0,
+  "queries": [
+    {
+      "player": "Mohamed Salah",
+      "position_group": "MF",
+      "position_full": "MF",
+      "team": "Liverpool",
+      "minutes": 3371,
+      "cluster_within_group_label": "MF-1",
+      "group_pool_size": 181,
+      "defining_features": [
+        {
+          "feature": "xg_chain_p90",
+          "z": 4.024
+        },
+        {
+          "feature": "np_xg_p90",
+          "z": 3.273
+        },
+        {
+          "feature": "assists_p90",
+          "z": 3.164
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Cody Gakpo",
+          "team": "Liverpool",
+          "position_full": "MF",
+          "minutes": 1935,
+          "cosine_similarity": 0.9213,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 2,
+          "player": "Cole Palmer",
+          "team": "Chelsea",
+          "position_full": "MF",
+          "minutes": 3191,
+          "cosine_similarity": 0.8568,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 3,
+          "player": "Ismaila Sarr",
+          "team": "Crystal Palace",
+          "position_full": "MF",
+          "minutes": 2711,
+          "cosine_similarity": 0.8539,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 4,
+          "player": "Marcus Rashford",
+          "team": "Manchester Utd / Aston Villa",
+          "position_full": "MF",
+          "minutes": 1422,
+          "cosine_similarity": 0.8117,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 5,
+          "player": "Dango Ouattara",
+          "team": "Bournemouth",
+          "position_full": "MF,FW",
+          "minutes": 2005,
+          "cosine_similarity": 0.8063,
+          "cluster_within_group_label": "MF-1"
+        }
+      ],
+      "mean_similarity": 0.85,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 1.115,
+        "mean_abs_z_gap_on_defining_features": 2.122,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": false,
+        "largest_mismatch_feature": "assists_p90",
+        "largest_mismatch_gap": 2.555
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.850. Within his position group the query player is furthest from the mean on xGChain/90 z=+4.02, npxG/90 z=+3.27, Assists/90 z=+3.16, and the neighbour set does not track those features closely (mean absolute z gap 2.12 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on Assists/90 (mean absolute z gap 2.56). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Cole Palmer",
+      "position_group": "MF",
+      "position_full": "MF",
+      "team": "Chelsea",
+      "minutes": 3191,
+      "cluster_within_group_label": "MF-1",
+      "group_pool_size": 181,
+      "defining_features": [
+        {
+          "feature": "shots_p90",
+          "z": 2.362
+        },
+        {
+          "feature": "shots_on_target_p90",
+          "z": 2.356
+        },
+        {
+          "feature": "xa_p90",
+          "z": 2.247
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Eberechi Eze",
+          "team": "Crystal Palace",
+          "position_full": "MF",
+          "minutes": 2588,
+          "cosine_similarity": 0.8803,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 2,
+          "player": "Phil Foden",
+          "team": "Manchester City",
+          "position_full": "MF,FW",
+          "minutes": 1777,
+          "cosine_similarity": 0.8768,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 3,
+          "player": "Mohamed Salah",
+          "team": "Liverpool",
+          "position_full": "MF",
+          "minutes": 3371,
+          "cosine_similarity": 0.8568,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 4,
+          "player": "Cody Gakpo",
+          "team": "Liverpool",
+          "position_full": "MF",
+          "minutes": 1935,
+          "cosine_similarity": 0.8482,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 5,
+          "player": "Kevin De Bruyne",
+          "team": "Manchester City",
+          "position_full": "MF,FW",
+          "minutes": 1702,
+          "cosine_similarity": 0.8245,
+          "cluster_within_group_label": "MF-1"
+        }
+      ],
+      "mean_similarity": 0.8573,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 0.718,
+        "mean_abs_z_gap_on_defining_features": 0.865,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": true,
+        "largest_mismatch_feature": "xg_chain_p90",
+        "largest_mismatch_gap": 1.136
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.857. Within his position group the query player is furthest from the mean on Shots/90 z=+2.36, SoT/90 z=+2.36, xA/90 z=+2.25, and the neighbour set tracks those features closely (mean absolute z gap 0.86 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on xGChain/90 (mean absolute z gap 1.14). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Bruno Fernandes",
+      "position_group": "MF",
+      "position_full": "MF",
+      "team": "Manchester Utd",
+      "minutes": 3018,
+      "cluster_within_group_label": "MF-1",
+      "group_pool_size": 181,
+      "defining_features": [
+        {
+          "feature": "key_passes_p90",
+          "z": 2.357
+        },
+        {
+          "feature": "crosses_p90",
+          "z": 1.863
+        },
+        {
+          "feature": "xa_p90",
+          "z": 1.616
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Kevin De Bruyne",
+          "team": "Manchester City",
+          "position_full": "MF,FW",
+          "minutes": 1702,
+          "cosine_similarity": 0.8839,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 2,
+          "player": "S\u00e1vio",
+          "team": "Manchester City",
+          "position_full": "MF,FW",
+          "minutes": 1766,
+          "cosine_similarity": 0.8206,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 3,
+          "player": "Marcus Tavernier",
+          "team": "Bournemouth",
+          "position_full": "MF",
+          "minutes": 1939,
+          "cosine_similarity": 0.7775,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 4,
+          "player": "Adama Traor\u00e9",
+          "team": "Fulham",
+          "position_full": "MF",
+          "minutes": 1772,
+          "cosine_similarity": 0.7463,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 5,
+          "player": "Reiss Nelson",
+          "team": "Fulham / Arsenal",
+          "position_full": "MF",
+          "minutes": 490,
+          "cosine_similarity": 0.7441,
+          "cluster_within_group_label": "MF-1"
+        }
+      ],
+      "mean_similarity": 0.7945,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 0.625,
+        "mean_abs_z_gap_on_defining_features": 0.728,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": true,
+        "largest_mismatch_feature": "tackles_won_p90",
+        "largest_mismatch_gap": 1.325
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.794. Within his position group the query player is furthest from the mean on Key passes/90 z=+2.36, Crosses/90 z=+1.86, xA/90 z=+1.62, and the neighbour set tracks those features closely (mean absolute z gap 0.73 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on Tackles won/90 (mean absolute z gap 1.32). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Declan Rice",
+      "position_group": "MF",
+      "position_full": "MF",
+      "team": "Arsenal",
+      "minutes": 2825,
+      "cluster_within_group_label": "MF-1",
+      "group_pool_size": 181,
+      "defining_features": [
+        {
+          "feature": "crosses_p90",
+          "z": 1.641
+        },
+        {
+          "feature": "xa_p90",
+          "z": 1.445
+        },
+        {
+          "feature": "fouls_drawn_p90",
+          "z": -1.221
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Christian Eriksen",
+          "team": "Manchester Utd",
+          "position_full": "MF",
+          "minutes": 1061,
+          "cosine_similarity": 0.8282,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 2,
+          "player": "Dwight McNeil",
+          "team": "Everton",
+          "position_full": "MF",
+          "minutes": 1371,
+          "cosine_similarity": 0.8104,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 3,
+          "player": "Mikkel Damsgaard",
+          "team": "Brentford",
+          "position_full": "MF",
+          "minutes": 2911,
+          "cosine_similarity": 0.772,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 4,
+          "player": "Andreas Pereira",
+          "team": "Fulham",
+          "position_full": "MF",
+          "minutes": 2013,
+          "cosine_similarity": 0.7614,
+          "cluster_within_group_label": "MF-1"
+        },
+        {
+          "rank": 5,
+          "player": "Martin \u00d8degaard",
+          "team": "Arsenal",
+          "position_full": "MF",
+          "minutes": 2325,
+          "cosine_similarity": 0.7559,
+          "cluster_within_group_label": "MF-1"
+        }
+      ],
+      "mean_similarity": 0.7856,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 0.595,
+        "mean_abs_z_gap_on_defining_features": 0.676,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": true,
+        "largest_mismatch_feature": "crosses_p90",
+        "largest_mismatch_gap": 0.995
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.786. Within his position group the query player is furthest from the mean on Crosses/90 z=+1.64, xA/90 z=+1.45, Fouls drawn/90 z=-1.22, and the neighbour set tracks those features closely (mean absolute z gap 0.68 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on Crosses/90 (mean absolute z gap 0.99). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Erling Haaland",
+      "position_group": "FW",
+      "position_full": "FW",
+      "team": "Manchester City",
+      "minutes": 2736,
+      "cluster_within_group_label": "FW-0",
+      "group_pool_size": 49,
+      "defining_features": [
+        {
+          "feature": "shots_on_target_p90",
+          "z": 2.458
+        },
+        {
+          "feature": "np_xg_p90",
+          "z": 1.659
+        },
+        {
+          "feature": "shot_accuracy_pct",
+          "z": 1.544
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Alexander Isak",
+          "team": "Newcastle",
+          "position_full": "FW",
+          "minutes": 2756,
+          "cosine_similarity": 0.8271,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 2,
+          "player": "Ollie Watkins",
+          "team": "Aston Villa",
+          "position_full": "FW",
+          "minutes": 2598,
+          "cosine_similarity": 0.7779,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 3,
+          "player": "Yoane Wissa",
+          "team": "Brentford",
+          "position_full": "FW",
+          "minutes": 2919,
+          "cosine_similarity": 0.7464,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 4,
+          "player": "Rodrigo Muniz",
+          "team": "Fulham",
+          "position_full": "FW",
+          "minutes": 964,
+          "cosine_similarity": 0.554,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 5,
+          "player": "Jean-Philippe Mateta",
+          "team": "Crystal Palace",
+          "position_full": "FW",
+          "minutes": 2648,
+          "cosine_similarity": 0.5296,
+          "cluster_within_group_label": "FW-0"
+        }
+      ],
+      "mean_similarity": 0.687,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 0.614,
+        "mean_abs_z_gap_on_defining_features": 0.922,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": true,
+        "largest_mismatch_feature": "fouls_drawn_p90",
+        "largest_mismatch_gap": 1.608
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.687. Within his position group the query player is furthest from the mean on SoT/90 z=+2.46, npxG/90 z=+1.66, SoT pct z=+1.54, and the neighbour set tracks those features closely (mean absolute z gap 0.92 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on Fouls drawn/90 (mean absolute z gap 1.61). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Alexander Isak",
+      "position_group": "FW",
+      "position_full": "FW",
+      "team": "Newcastle",
+      "minutes": 2756,
+      "cluster_within_group_label": "FW-0",
+      "group_pool_size": 49,
+      "defining_features": [
+        {
+          "feature": "goals_non_penalty_p90",
+          "z": 1.372
+        },
+        {
+          "feature": "goals_per_shot",
+          "z": 1.354
+        },
+        {
+          "feature": "fouls_drawn_p90",
+          "z": -1.333
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Erling Haaland",
+          "team": "Manchester City",
+          "position_full": "FW",
+          "minutes": 2736,
+          "cosine_similarity": 0.8271,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 2,
+          "player": "Ollie Watkins",
+          "team": "Aston Villa",
+          "position_full": "FW",
+          "minutes": 2598,
+          "cosine_similarity": 0.797,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 3,
+          "player": "Yoane Wissa",
+          "team": "Brentford",
+          "position_full": "FW",
+          "minutes": 2919,
+          "cosine_similarity": 0.6854,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 4,
+          "player": "Jean-Philippe Mateta",
+          "team": "Crystal Palace",
+          "position_full": "FW",
+          "minutes": 2648,
+          "cosine_similarity": 0.6546,
+          "cluster_within_group_label": "FW-0"
+        },
+        {
+          "rank": 5,
+          "player": "Nicolas Jackson",
+          "team": "Chelsea",
+          "position_full": "FW",
+          "minutes": 2220,
+          "cosine_similarity": 0.556,
+          "cluster_within_group_label": "FW-0"
+        }
+      ],
+      "mean_similarity": 0.704,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 0.547,
+        "mean_abs_z_gap_on_defining_features": 0.777,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": true,
+        "largest_mismatch_feature": "fouls_drawn_p90",
+        "largest_mismatch_gap": 1.007
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.704. Within his position group the query player is furthest from the mean on npGoals/90 z=+1.37, Goals per shot z=+1.35, Fouls drawn/90 z=-1.33, and the neighbour set tracks those features closely (mean absolute z gap 0.78 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on Fouls drawn/90 (mean absolute z gap 1.01). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Bukayo Saka",
+      "position_group": "FW",
+      "position_full": "FW,MF",
+      "team": "Arsenal",
+      "minutes": 1729,
+      "cluster_within_group_label": "FW-1",
+      "group_pool_size": 49,
+      "defining_features": [
+        {
+          "feature": "xa_p90",
+          "z": 3.93
+        },
+        {
+          "feature": "key_passes_p90",
+          "z": 3.683
+        },
+        {
+          "feature": "assists_p90",
+          "z": 2.935
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Son Heung-min",
+          "team": "Tottenham",
+          "position_full": "FW,MF",
+          "minutes": 2110,
+          "cosine_similarity": 0.8298,
+          "cluster_within_group_label": "FW-1"
+        },
+        {
+          "rank": 2,
+          "player": "Leandro Trossard",
+          "team": "Arsenal",
+          "position_full": "FW",
+          "minutes": 2546,
+          "cosine_similarity": 0.7132,
+          "cluster_within_group_label": "FW-1"
+        },
+        {
+          "rank": 3,
+          "player": "Timo Werner",
+          "team": "Tottenham",
+          "position_full": "FW,MF",
+          "minutes": 516,
+          "cosine_similarity": 0.6798,
+          "cluster_within_group_label": "FW-1"
+        },
+        {
+          "rank": 4,
+          "player": "Anthony Gordon",
+          "team": "Newcastle",
+          "position_full": "FW,MF",
+          "minutes": 2434,
+          "cosine_similarity": 0.582,
+          "cluster_within_group_label": "FW-1"
+        },
+        {
+          "rank": 5,
+          "player": "Jacob Murphy",
+          "team": "Newcastle",
+          "position_full": "FW,MF",
+          "minutes": 2360,
+          "cosine_similarity": 0.5667,
+          "cluster_within_group_label": "FW-1"
+        }
+      ],
+      "mean_similarity": 0.6743,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 1.065,
+        "mean_abs_z_gap_on_defining_features": 1.977,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": false,
+        "largest_mismatch_feature": "key_passes_p90",
+        "largest_mismatch_gap": 2.319
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.674. Within his position group the query player is furthest from the mean on xA/90 z=+3.93, Key passes/90 z=+3.68, Assists/90 z=+2.94, and the neighbour set does not track those features closely (mean absolute z gap 1.98 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on Key passes/90 (mean absolute z gap 2.32). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Virgil van Dijk",
+      "position_group": "DF",
+      "position_full": "DF",
+      "team": "Liverpool",
+      "minutes": 3330,
+      "cluster_within_group_label": "DF-0",
+      "group_pool_size": 136,
+      "defining_features": [
+        {
+          "feature": "xg_buildup_p90",
+          "z": 2.018
+        },
+        {
+          "feature": "xg_chain_p90",
+          "z": 1.63
+        },
+        {
+          "feature": "interceptions_p90",
+          "z": 1.382
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "R\u00faben Dias",
+          "team": "Manchester City",
+          "position_full": "DF,MF",
+          "minutes": 2271,
+          "cosine_similarity": 0.7519,
+          "cluster_within_group_label": "DF-0"
+        },
+        {
+          "rank": 2,
+          "player": "Jo\u0161ko Gvardiol",
+          "team": "Manchester City",
+          "position_full": "DF",
+          "minutes": 3277,
+          "cosine_similarity": 0.7153,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 3,
+          "player": "Joe Gomez",
+          "team": "Liverpool",
+          "position_full": "DF",
+          "minutes": 519,
+          "cosine_similarity": 0.6649,
+          "cluster_within_group_label": "DF-0"
+        },
+        {
+          "rank": 4,
+          "player": "Tosin Adarabioyo",
+          "team": "Chelsea",
+          "position_full": "DF",
+          "minutes": 1409,
+          "cosine_similarity": 0.6358,
+          "cluster_within_group_label": "DF-0"
+        },
+        {
+          "rank": 5,
+          "player": "Adam Webster",
+          "team": "Brighton",
+          "position_full": "DF",
+          "minutes": 887,
+          "cosine_similarity": 0.6283,
+          "cluster_within_group_label": "DF-0"
+        }
+      ],
+      "mean_similarity": 0.6792,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 0.601,
+        "mean_abs_z_gap_on_defining_features": 0.797,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": true,
+        "largest_mismatch_feature": "interceptions_p90",
+        "largest_mismatch_gap": 1.431
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.679. Within his position group the query player is furthest from the mean on xGBuildup/90 z=+2.02, xGChain/90 z=+1.63, Interceptions/90 z=+1.38, and the neighbour set tracks those features closely (mean absolute z gap 0.80 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on Interceptions/90 (mean absolute z gap 1.43). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Trent Alexander-Arnold",
+      "position_group": "DF",
+      "position_full": "DF",
+      "team": "Liverpool",
+      "minutes": 2365,
+      "cluster_within_group_label": "DF-1",
+      "group_pool_size": 136,
+      "defining_features": [
+        {
+          "feature": "xa_p90",
+          "z": 4.015
+        },
+        {
+          "feature": "shots_p90",
+          "z": 3.582
+        },
+        {
+          "feature": "key_passes_p90",
+          "z": 3.363
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Pedro Porro",
+          "team": "Tottenham",
+          "position_full": "DF",
+          "minutes": 2610,
+          "cosine_similarity": 0.9247,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 2,
+          "player": "Ian Maatsen",
+          "team": "Aston Villa",
+          "position_full": "DF",
+          "minutes": 1139,
+          "cosine_similarity": 0.8645,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 3,
+          "player": "Lewis Hall",
+          "team": "Newcastle",
+          "position_full": "DF",
+          "minutes": 2189,
+          "cosine_similarity": 0.6802,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 4,
+          "player": "Malo Gusto",
+          "team": "Chelsea",
+          "position_full": "DF",
+          "minutes": 1862,
+          "cosine_similarity": 0.676,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 5,
+          "player": "Reece James",
+          "team": "Chelsea",
+          "position_full": "DF,MF",
+          "minutes": 1063,
+          "cosine_similarity": 0.6656,
+          "cluster_within_group_label": "DF-1"
+        }
+      ],
+      "mean_similarity": 0.7622,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 1.04,
+        "mean_abs_z_gap_on_defining_features": 1.917,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": false,
+        "largest_mismatch_feature": "xa_p90",
+        "largest_mismatch_gap": 2.342
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.762. Within his position group the query player is furthest from the mean on xA/90 z=+4.01, Shots/90 z=+3.58, Key passes/90 z=+3.36, and the neighbour set does not track those features closely (mean absolute z gap 1.92 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on xA/90 (mean absolute z gap 2.34). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    },
+    {
+      "player": "Marc Cucurella",
+      "position_group": "DF",
+      "position_full": "DF",
+      "team": "Chelsea",
+      "minutes": 2988,
+      "cluster_within_group_label": "DF-1",
+      "group_pool_size": 136,
+      "defining_features": [
+        {
+          "feature": "goals_non_penalty_p90",
+          "z": 1.839
+        },
+        {
+          "feature": "shots_on_target_p90",
+          "z": 1.713
+        },
+        {
+          "feature": "np_xg_p90",
+          "z": 1.218
+        }
+      ],
+      "neighbours": [
+        {
+          "rank": 1,
+          "player": "Riccardo Calafiori",
+          "team": "Arsenal",
+          "position_full": "DF",
+          "minutes": 983,
+          "cosine_similarity": 0.7972,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 2,
+          "player": "Nico O'Reilly",
+          "team": "Manchester City",
+          "position_full": "DF",
+          "minutes": 528,
+          "cosine_similarity": 0.7307,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 3,
+          "player": "Cristian Romero",
+          "team": "Tottenham",
+          "position_full": "DF",
+          "minutes": 1416,
+          "cosine_similarity": 0.7235,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 4,
+          "player": "Trevoh Chalobah",
+          "team": "Crystal Palace / Chelsea",
+          "position_full": "DF",
+          "minutes": 1970,
+          "cosine_similarity": 0.6331,
+          "cluster_within_group_label": "DF-1"
+        },
+        {
+          "rank": 5,
+          "player": "John Stones",
+          "team": "Manchester City",
+          "position_full": "DF",
+          "minutes": 548,
+          "cosine_similarity": 0.5908,
+          "cluster_within_group_label": "DF-0"
+        }
+      ],
+      "mean_similarity": 0.6951,
+      "neighbour_agreement": {
+        "mean_abs_z_gap_all_features": 0.865,
+        "mean_abs_z_gap_on_defining_features": 1.187,
+        "tolerance": 1.0,
+        "consistent_on_defining_features": false,
+        "largest_mismatch_feature": "goals_non_penalty_p90",
+        "largest_mismatch_gap": 1.669
+      },
+      "note": "Mean cosine similarity to the five neighbours is 0.695. Within his position group the query player is furthest from the mean on npGoals/90 z=+1.84, SoT/90 z=+1.71, npxG/90 z=+1.22, and the neighbour set does not track those features closely (mean absolute z gap 1.19 against a declared tolerance of 1.00). Across all eighteen features the neighbours differ from him most on npGoals/90 (mean absolute z gap 1.67). Similarity here is computed from shooting, expected creation, crossing and three duel or defensive counts only, so two players who pass very differently can still appear as neighbours."
+    }
+  ]
+}

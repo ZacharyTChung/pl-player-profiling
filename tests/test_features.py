@@ -99,7 +99,12 @@ def test_radar_and_headline_axes_are_real_features() -> None:
 
 
 def test_non_shooting_features_exclude_shooting() -> None:
-    """The finishing-above-role regression must not see shooting volume."""
+    """The finishing-above-role regression must not see shooting volume.
+
+    xg_chain_p90 is banned alongside the obvious shooting columns because Understat
+    credits it for possessions the player finished himself, which makes it a proxy for
+    the regression target rather than an independent measure of role.
+    """
     banned = {
         "shots_p90",
         "shots_on_target_p90",
@@ -107,6 +112,7 @@ def test_non_shooting_features_exclude_shooting() -> None:
         "goals_non_penalty_p90",
         "shot_accuracy_pct",
         "goals_per_shot",
+        "xg_chain_p90",
     }
     assert not (set(F.NON_SHOOTING_FEATURES) & banned)
 

@@ -115,3 +115,155 @@ should be read.
   for visual contrast only and is not used for clustering.}
   \label{fig:embeddings}
 \end{figure}
+
+\subsection{How many roles the data supports}
+\label{sec:results:clustering}
+
+Applying the consensus rule declared in Section~\ref{sec:methods} to the four selection
+criteria gives $k=\KGlobal{}$ for the global clustering and the same value within each of
+the three position groups. The full criterion curves appear in
+Figure~\ref{fig:kselection} and Appendix~\ref{sec:appendix:kselection}. This is the second
+principal result of the paper. The surviving public feature set supports a binary
+division within each position group and nothing finer. Requesting more clusters produces
+partitions that the criteria do not support and that resampling does not reproduce.
+
+Stability separates the position groups sharply. Across \BootstrapN{} bootstrap resamples
+the mean adjusted Rand index against the reference partition is \BootARIGlobal{} globally
+and \BootARIMF{} for midfielders, both of which describe a partition that reappears almost
+unchanged under resampling. For defenders the mean falls to \BootARIDF{} with a standard
+deviation of \BootARISDDF{}, and for forwards to \BootARIFW{} with a standard deviation of
+\BootARISDFW{}. The minimum adjusted Rand index observed across forward resamples is
+\BootARIMinFW{}, which is to say that in the least favourable resample the partition
+recovered is no better than chance. Forwards number only \NFWPrimary{} players above the
+minutes threshold, so this is partly a sample size problem, but it is a real limit on what
+can be claimed. The consensus co-assignment structure is shown in
+Figure~\ref{fig:consensus}.
+
+The relationship between discovered clusters and listed positions is weak. The global
+partition scores an adjusted Rand index of \ARIvsPosition{} against the four-way position
+group with a cluster purity of \PurityVsPosition{}, so the clusters are not a rediscovery
+of the positions that the source already records. Figure~\ref{fig:clustervsposition} shows
+where the two disagree. Read together with the embedding geometry, the interpretation is
+that the dominant axis in the surviving data is not defender against forward but
+attacking involvement against defensive involvement, which cuts across the listed groups
+and places a ball-playing full back nearer an ordinary midfielder than a defensive
+counterpart at his own listed position.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{k_selection_curves.pdf}
+  \caption{Cluster selection criteria across candidate cluster counts. The consensus rule
+  was fixed before fitting and selects the same value in every scope.}
+  \label{fig:kselection}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{consensus_matrix.pdf}
+    \caption{Bootstrap co-assignment.}
+    \label{fig:consensus}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{cluster_vs_position.pdf}
+    \caption{Clusters against listed positions.}
+    \label{fig:clustervsposition}
+  \end{subfigure}
+  \caption{Cluster stability and the correspondence with listed positions.}
+  \label{fig:clustervalidation}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.75\textwidth]{cluster_scatter_pca.pdf}
+  \caption{The selected partition shown in the principal component space.}
+  \label{fig:clusterscatter}
+\end{figure}
+
+\subsection{Goalkeepers}
+\label{sec:results:keepers}
+
+The goalkeeper analysis is the clearest illustration of what the withdrawal cost.
+\NKeeperAdvEmpty{} of the \NKeeperAdvStatCols{} statistical columns in the advanced
+goalkeeping table are empty, and the \NKeeperAdvUsable{} that survive are duplicated in
+the basic table, so the advanced table contributes nothing whatsoever. Of the five
+composite axes the study set out to build, \KeeperAxesBuilt{} can be constructed and
+\KeeperAxesLost{} cannot. No proxy is substituted for the missing four, because no
+surviving column measures sweeping, distribution or cross handling even approximately.
+
+With post-shot expected goals unavailable, shot stopping is estimated by regressing saves
+on shots on target faced and treating the residual as saves above volume. The regression
+returns a coefficient of determination of \KeeperSavesRSq{}, which is high almost by
+construction, since every shot on target is either saved or conceded. The informative
+quantity is the residual spread, a standard error of \KeeperSavesResidSE{} saves across
+the season. This index adjusts for how much work a goalkeeper receives but not for how
+hard that work is, which is precisely what post-shot expected goals provided, so it should
+be read as a weak substitute rather than an equivalent.
+
+Save percentage shows no relationship with workload. The correlation is
+\KeeperWorkloadR{} in the primary season at a p-value of \KeeperWorkloadP{}, and it
+changes sign to \KeeperWorkloadRRepl{} in the replication season. A relationship whose
+sign is not stable across two seasons is the strongest available form of a null result.
+
+Goalkeeper clustering does not produce meaningful structure, and we report that rather
+than presenting a partition. The same consensus rule selects \KeeperKPrimary{} clusters in
+the primary season at a silhouette of \KeeperSilhouettePrimary{} but \KeeperKRepl{}
+clusters in the replication season at \KeeperSilhouetteRepl{}, so the cluster count does
+not replicate. The smallest replication cluster contains \KeeperMinClusterRepl{} members,
+below the floor fixed before fitting. Most decisively, cluster membership explains more
+variance in situational quantities than in goalkeeping ones: the proportion of variance
+explained is \KeeperEtaTeamPoints{} for team points per match against \KeeperEtaSavePct{}
+for save percentage. The partition recovers the strength of the team in front of the
+goalkeeper, not the goalkeeper. No archetype names are assigned.
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{keeper_saves_vs_sota.pdf}
+    \caption{Saves against shots on target faced.}
+    \label{fig:keepersaves}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{keeper_savepct_vs_workload.pdf}
+    \caption{Save percentage against workload.}
+    \label{fig:keeperworkload}
+  \end{subfigure}
+  \caption{Goalkeeper shot stopping and workload, the only two dimensions the surviving
+  data supports.}
+  \label{fig:keepers}
+\end{figure}
+
+Figure~\ref{fig:keeperranking} ranks eligible goalkeepers on the saves above volume
+index, and Figure~\ref{fig:keepercomposites} places them on the two axes that survive.
+The distribution of both composites is given in
+Figure~\ref{fig:keepercompositedistributions}, and the correlation structure of the
+surviving goalkeeper features in Figure~\ref{fig:keepercorr}. The partition itself is
+shown in Figure~\ref{fig:keeperclusters}, presented for completeness rather than as a
+finding, for the reasons given above.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{keeper_shot_stopping_ranking.pdf}
+  \caption{Goalkeepers ranked by saves above the volume of shots on target faced. The
+  index adjusts for how much work a goalkeeper receives but not for its difficulty.}
+  \label{fig:keeperranking}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{keeper_composites.pdf}
+    \caption{The two surviving composite axes.}
+    \label{fig:keepercomposites}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{keeper_clusters_pca.pdf}
+    \caption{The goalkeeper partition, shown for completeness.}
+    \label{fig:keeperclusters}
+  \end{subfigure}
+  \caption{Goalkeeper composites and the partition that the validation checks reject.}
+  \label{fig:keeperpanel}
+\end{figure}
