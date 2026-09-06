@@ -7,14 +7,14 @@
   "n_distinguishing_features": 8,
   "n_representative_players": 10,
   "n_boundary_players": 3,
-  "bootstrap_ari_global": 0.9079,
+  "bootstrap_ari_global": 0.9144,
   "replication_centroid_correlation": {
-    "DF-0": 0.8277,
-    "DF-1": 0.8277,
-    "MF-0": 0.9852,
-    "MF-1": 0.9852,
-    "FW-0": 0.9358,
-    "FW-1": 0.9358
+    "DF-0": 0.8272,
+    "DF-1": 0.8272,
+    "MF-0": 0.987,
+    "MF-1": 0.987,
+    "FW-0": 0.9353,
+    "FW-1": 0.9353
   },
   "archetypes": [
     {
@@ -51,6 +51,11 @@
           "z_deviation": -0.3072
         },
         {
+          "feature": "tackles_won_padj_p90",
+          "label": "Tackles won/90 (adj)",
+          "z_deviation": -0.2529
+        },
+        {
           "feature": "offsides_p90",
           "label": "Offsides/90",
           "z_deviation": -0.2478
@@ -59,11 +64,6 @@
           "feature": "xg_chain_p90",
           "label": "xGChain/90",
           "z_deviation": -0.2451
-        },
-        {
-          "feature": "tackles_won_p90",
-          "label": "Tackles won/90",
-          "z_deviation": -0.2366
         }
       ],
       "representative_players": [
@@ -72,70 +72,70 @@
           "team": "Fulham",
           "position_full": "DF",
           "minutes": 3074,
-          "distance_to_centroid": 1.476
+          "distance_to_centroid": 1.453
         },
         {
           "player": "Emmanuel Agbadou",
           "team": "Wolves",
           "position_full": "DF",
           "minutes": 1410,
-          "distance_to_centroid": 1.679
+          "distance_to_centroid": 1.676
         },
         {
           "player": "Jan Paul van Hecke",
           "team": "Brighton",
           "position_full": "DF",
           "minutes": 2958,
-          "distance_to_centroid": 1.769
+          "distance_to_centroid": 1.754
         },
         {
           "player": "Max Kilman",
           "team": "West Ham",
           "position_full": "DF",
           "minutes": 3348,
-          "distance_to_centroid": 1.818
-        },
-        {
-          "player": "Jacob Greaves",
-          "team": "Ipswich Town",
-          "position_full": "DF",
-          "minutes": 2205,
-          "distance_to_centroid": 1.869
+          "distance_to_centroid": 1.821
         },
         {
           "player": "Matt Doherty",
           "team": "Wolves",
           "position_full": "DF,MF",
           "minutes": 2109,
-          "distance_to_centroid": 1.885
+          "distance_to_centroid": 1.886
         },
         {
           "player": "Issa Diop",
           "team": "Fulham",
           "position_full": "DF",
           "minutes": 1339,
-          "distance_to_centroid": 1.948
+          "distance_to_centroid": 1.922
+        },
+        {
+          "player": "Jacob Greaves",
+          "team": "Ipswich Town",
+          "position_full": "DF",
+          "minutes": 2205,
+          "distance_to_centroid": 1.923
         },
         {
           "player": "Joachim Andersen",
           "team": "Fulham / Crystal Palace",
           "position_full": "DF",
           "minutes": 2673,
-          "distance_to_centroid": 1.994
+          "distance_to_centroid": 1.997
         },
         {
-          "player": "Jarrad Branthwaite",
+          "player": "Dan Burn",
+          "team": "Newcastle",
+          "position_full": "DF",
+          "minutes": 3330,
+          "distance_to_centroid": 2.065
+        },
+        {
+          "player": "James Tarkowski",
           "team": "Everton",
           "position_full": "DF",
-          "minutes": 2511,
-          "distance_to_centroid": 2.063
-        },
-        {
-          "player": "Dara O'Shea",
-          "team": "Ipswich Town",
-          "position_full": "DF",
-          "minutes": 3122,
-          "distance_to_centroid": 2.069
+          "minutes": 2922,
+          "distance_to_centroid": 2.083
         }
       ],
       "boundary_players": [
@@ -144,27 +144,27 @@
           "team": "West Ham",
           "position_full": "DF,MF",
           "minutes": 2113,
-          "boundary_margin": 0.14
-        },
-        {
-          "player": "Álex Moreno",
-          "team": "Nottingham",
-          "position_full": "DF",
-          "minutes": 955,
-          "boundary_margin": 0.253
+          "boundary_margin": 0.178
         },
         {
           "player": "Noussair Mazraoui",
           "team": "Manchester Utd",
           "position_full": "DF,MF",
           "minutes": 2838,
-          "boundary_margin": 0.338
+          "boundary_margin": 0.251
+        },
+        {
+          "player": "Kostas Tsimikas",
+          "team": "Liverpool",
+          "position_full": "DF",
+          "minutes": 837,
+          "boundary_margin": 0.252
         }
       ],
-      "bootstrap_ari": 0.5821,
-      "bootstrap_ari_sd": 0.2214,
+      "bootstrap_ari": 0.6071,
+      "bootstrap_ari_sd": 0.2164,
       "bootstrap_ari_min": 0.0182,
-      "justification": "This is the larger of the two defender clusters, holding 98 of the 136 eligible defenders, and it is defined by what is absent rather than by any positive signature. All eight of its most distinguishing features are negative deviations from the defender mean: key passes per 90 sit 0.44 standard deviations below it, assists per 90 0.42 standard deviations below, expected assists per 90 0.42 standard deviations below, crosses per 90 0.36 standard deviations below and shots per 90 0.31 standard deviations below. Nothing in the eighteen features sits materially above the defender average, the largest positive deviation being only 0.04 standard deviations, so the honest description is low attacking involvement rather than a defensive speciality. That limitation is a property of the data and not of the players, because the withdrawal of the Opta-derived tables left no tackling detail, no pressing, no aerial duels and no ball recoveries with which a defender could be described positively. The members closest to the centroid are Calvin Bassey, Emmanuel Agbadou, Jan Paul van Hecke and Max Kilman, who are central defenders in the conventional sense. The split is provisional: bootstrap resampling of the defender scope gives a mean adjusted Rand index of 0.582, the lowest of the four scopes analysed and far below the global figure of 0.908, so the boundary between the two defender clusters moves substantially under resampling even though the direction of the contrast does not.",
+      "justification": "This is the larger of the two defender clusters, holding 98 of the 136 eligible defenders, and it is defined by what is absent rather than by any positive signature. All eight of its most distinguishing features are negative deviations from the defender mean: key passes per 90 sit 0.44 standard deviations below it, assists per 90 0.42 standard deviations below, expected assists per 90 0.42 standard deviations below, crosses per 90 0.36 standard deviations below and shots per 90 0.31 standard deviations below. Nothing in the eighteen features sits materially above the defender average, the largest positive deviation being only 0.04 standard deviations, so the honest description is low attacking involvement rather than a defensive speciality. That limitation is a property of the data and not of the players, because the withdrawal of the Opta-derived tables left no tackling detail, no pressing, no aerial duels and no ball recoveries with which a defender could be described positively. The members closest to the centroid are Calvin Bassey, Emmanuel Agbadou, Jan Paul van Hecke and Max Kilman, who are central defenders in the conventional sense. The split is provisional: bootstrap resampling of the defender scope gives a mean adjusted Rand index of 0.607, the lowest of the four scopes analysed and far below the global figure of 0.914, so the boundary between the two defender clusters moves substantially under resampling even though the direction of the contrast does not.",
       "centroid": {
         "np_xg_p90": -0.1273,
         "xa_p90": -0.4173,
@@ -176,9 +176,9 @@
         "goals_non_penalty_p90": -0.1326,
         "assists_p90": -0.4211,
         "crosses_p90": -0.3573,
-        "interceptions_p90": -0.1122,
-        "tackles_won_p90": -0.2366,
-        "fouls_committed_p90": -0.1619,
+        "interceptions_padj_p90": -0.1374,
+        "tackles_won_padj_p90": -0.2529,
+        "fouls_committed_padj_p90": -0.1711,
         "fouls_drawn_p90": -0.176,
         "offsides_p90": -0.2478,
         "cards_yellow_p90": 0.0144,
@@ -220,6 +220,11 @@
           "z_deviation": 0.7924
         },
         {
+          "feature": "tackles_won_padj_p90",
+          "label": "Tackles won/90 (adj)",
+          "z_deviation": 0.6521
+        },
+        {
           "feature": "offsides_p90",
           "label": "Offsides/90",
           "z_deviation": 0.639
@@ -228,11 +233,6 @@
           "feature": "xg_chain_p90",
           "label": "xGChain/90",
           "z_deviation": 0.6321
-        },
-        {
-          "feature": "tackles_won_p90",
-          "label": "Tackles won/90",
-          "z_deviation": 0.6101
         }
       ],
       "representative_players": [
@@ -241,70 +241,70 @@
           "team": "Chelsea",
           "position_full": "DF",
           "minutes": 1862,
-          "distance_to_centroid": 2.31
+          "distance_to_centroid": 2.37
         },
         {
           "player": "Djed Spence",
           "team": "Tottenham",
           "position_full": "DF",
           "minutes": 1792,
-          "distance_to_centroid": 2.491
+          "distance_to_centroid": 2.512
         },
         {
           "player": "Ben White",
           "team": "Arsenal",
           "position_full": "DF",
           "minutes": 1198,
-          "distance_to_centroid": 2.673
+          "distance_to_centroid": 2.678
         },
         {
           "player": "Pervis Estupiñán",
           "team": "Brighton",
           "position_full": "DF",
           "minutes": 2402,
-          "distance_to_centroid": 2.763
-        },
-        {
-          "player": "Milos Kerkez",
-          "team": "Bournemouth",
-          "position_full": "DF",
-          "minutes": 3336,
-          "distance_to_centroid": 2.781
+          "distance_to_centroid": 2.762
         },
         {
           "player": "Reece James",
           "team": "Chelsea",
           "position_full": "DF,MF",
           "minutes": 1063,
-          "distance_to_centroid": 2.794
+          "distance_to_centroid": 2.784
+        },
+        {
+          "player": "Milos Kerkez",
+          "team": "Bournemouth",
+          "position_full": "DF",
+          "minutes": 3336,
+          "distance_to_centroid": 2.824
         },
         {
           "player": "Aaron Wan-Bissaka",
           "team": "West Ham",
           "position_full": "DF,MF",
           "minutes": 3154,
-          "distance_to_centroid": 3.171
+          "distance_to_centroid": 3.094
         },
         {
           "player": "Jurriën Timber",
           "team": "Arsenal",
           "position_full": "DF",
           "minutes": 2417,
-          "distance_to_centroid": 3.26
+          "distance_to_centroid": 3.255
         },
         {
           "player": "Neco Williams",
           "team": "Nottingham",
           "position_full": "DF,MF",
           "minutes": 2594,
-          "distance_to_centroid": 3.574
+          "distance_to_centroid": 3.494
         },
         {
-          "player": "Keane Lewis-Potter",
-          "team": "Brentford",
-          "position_full": "DF,MF",
-          "minutes": 3093,
-          "distance_to_centroid": 3.689
+          "player": "Dean Huijsen",
+          "team": "Bournemouth",
+          "position_full": "DF",
+          "minutes": 2427,
+          "distance_to_centroid": 3.653
         }
       ],
       "boundary_players": [
@@ -313,27 +313,27 @@
           "team": "Crystal Palace / Chelsea",
           "position_full": "DF",
           "minutes": 1970,
-          "boundary_margin": 0.026
+          "boundary_margin": 0.02
         },
         {
           "player": "Dean Huijsen",
           "team": "Bournemouth",
           "position_full": "DF",
           "minutes": 2427,
-          "boundary_margin": 0.097
+          "boundary_margin": 0.113
         },
         {
           "player": "Lisandro Martínez",
           "team": "Manchester Utd",
           "position_full": "DF",
           "minutes": 1751,
-          "boundary_margin": 0.192
+          "boundary_margin": 0.261
         }
       ],
-      "bootstrap_ari": 0.5821,
-      "bootstrap_ari_sd": 0.2214,
+      "bootstrap_ari": 0.6071,
+      "bootstrap_ari_sd": 0.2164,
       "bootstrap_ari_min": 0.0182,
-      "justification": "The smaller defender cluster, 38 of 136 eligible defenders, is defined by wide attacking output, and all eight of its distinguishing features are positive. Key passes per 90 sit 1.14 standard deviations above the defender mean, assists per 90 1.09 standard deviations above, expected assists per 90 1.08 standard deviations above, crosses per 90 0.92 standard deviations above and shots per 90 0.79 standard deviations above, with tackles won per 90 also 0.61 standard deviations above the mean. Because the deviations are one-sided this is the high involvement end of a single dominant contrast rather than a separate tactical instruction, and the players it selects are full backs and wing backs: Malo Gusto, Djed Spence, Pervis Estupiñán, Milos Kerkez and Reece James are the members closest to the centroid. The label describes output and not intent, since the surviving features cannot separate a defender who is asked to overlap from one who plays in a team that crosses often. Bootstrap stability for the defender scope is a mean adjusted Rand index of 0.582 with a standard deviation of 0.221 and a minimum of 0.018 across 200 resamples, so the membership of this cluster should be read as indicative rather than settled.",
+      "justification": "The smaller defender cluster, 38 of 136 eligible defenders, is defined by wide attacking output, and all eight of its distinguishing features are positive. Key passes per 90 sit 1.14 standard deviations above the defender mean, assists per 90 1.09 standard deviations above, expected assists per 90 1.08 standard deviations above, crosses per 90 0.92 standard deviations above and shots per 90 0.79 standard deviations above, with possession adjusted tackles won also 0.65 standard deviations above the mean. Because the deviations are one-sided this is the high involvement end of a single dominant contrast rather than a separate tactical instruction, and the players it selects are full backs and wing backs: Malo Gusto, Djed Spence, Pervis Estupiñán, Milos Kerkez and Reece James are the members closest to the centroid. The label describes output and not intent, since the surviving features cannot separate a defender who is asked to overlap from one who plays in a team that crosses often. Bootstrap stability for the defender scope is a mean adjusted Rand index of 0.607 with a standard deviation of 0.216 and a minimum of 0.018 across 200 resamples, so the membership of this cluster should be read as indicative rather than settled.",
       "centroid": {
         "np_xg_p90": 0.3284,
         "xa_p90": 1.0761,
@@ -345,9 +345,9 @@
         "goals_non_penalty_p90": 0.3421,
         "assists_p90": 1.086,
         "crosses_p90": 0.9216,
-        "interceptions_p90": 0.2893,
-        "tackles_won_p90": 0.6101,
-        "fouls_committed_p90": 0.4176,
+        "interceptions_padj_p90": 0.3543,
+        "tackles_won_padj_p90": 0.6521,
+        "fouls_committed_padj_p90": 0.4412,
         "fouls_drawn_p90": 0.4539,
         "offsides_p90": 0.639,
         "cards_yellow_p90": -0.0372,
@@ -360,48 +360,48 @@
       "name": "Ball winning, low attacking involvement midfielders",
       "summary": "Midfielders below the midfield average on every attacking measure, with modest positive deviations on interceptions and tackles won.",
       "position_group": "MF",
-      "n_players": 94,
+      "n_players": 100,
       "n_position_group": 181,
       "distinguishing_features": [
         {
           "feature": "shots_on_target_p90",
           "label": "Shots on target/90",
-          "z_deviation": -0.6899
-        },
-        {
-          "feature": "np_xg_p90",
-          "label": "npxG/90",
-          "z_deviation": -0.667
+          "z_deviation": -0.6605
         },
         {
           "feature": "shots_p90",
           "label": "Shots/90",
-          "z_deviation": -0.6576
+          "z_deviation": -0.6455
         },
         {
-          "feature": "goals_non_penalty_p90",
-          "label": "Non-penalty goals/90",
-          "z_deviation": -0.6502
-        },
-        {
-          "feature": "xa_p90",
-          "label": "xA/90",
-          "z_deviation": -0.6158
+          "feature": "np_xg_p90",
+          "label": "npxG/90",
+          "z_deviation": -0.6428
         },
         {
           "feature": "xg_chain_p90",
           "label": "xGChain/90",
-          "z_deviation": -0.607
+          "z_deviation": -0.6172
+        },
+        {
+          "feature": "xa_p90",
+          "label": "xA/90",
+          "z_deviation": -0.6022
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "label": "Non-penalty goals/90",
+          "z_deviation": -0.5962
         },
         {
           "feature": "key_passes_p90",
           "label": "Key passes/90",
-          "z_deviation": -0.5926
+          "z_deviation": -0.5923
         },
         {
-          "feature": "interceptions_p90",
-          "label": "Interceptions/90",
-          "z_deviation": 0.555
+          "feature": "assists_p90",
+          "label": "Assists/90",
+          "z_deviation": -0.4773
         }
       ],
       "representative_players": [
@@ -410,118 +410,118 @@
           "team": "Ipswich Town",
           "position_full": "MF",
           "minutes": 2751,
-          "distance_to_centroid": 1.645
+          "distance_to_centroid": 1.722
         },
         {
           "player": "Daichi Kamada",
           "team": "Crystal Palace",
           "position_full": "MF",
           "minutes": 1564,
-          "distance_to_centroid": 1.67
-        },
-        {
-          "player": "Kobbie Mainoo",
-          "team": "Manchester Utd",
-          "position_full": "MF",
-          "minutes": 1651,
-          "distance_to_centroid": 1.751
+          "distance_to_centroid": 1.754
         },
         {
           "player": "Nélson Semedo",
           "team": "Wolves",
           "position_full": "MF,DF",
           "minutes": 2886,
-          "distance_to_centroid": 1.864
-        },
-        {
-          "player": "Lucas Bergvall",
-          "team": "Tottenham",
-          "position_full": "MF",
-          "minutes": 1212,
-          "distance_to_centroid": 1.943
+          "distance_to_centroid": 1.848
         },
         {
           "player": "Mateus Fernandes",
           "team": "Southampton",
           "position_full": "MF",
           "minutes": 2909,
-          "distance_to_centroid": 1.95
+          "distance_to_centroid": 1.859
+        },
+        {
+          "player": "Kobbie Mainoo",
+          "team": "Manchester Utd",
+          "position_full": "MF",
+          "minutes": 1651,
+          "distance_to_centroid": 1.929
         },
         {
           "player": "Yasin Ayari",
           "team": "Brighton",
           "position_full": "MF",
           "minutes": 1965,
-          "distance_to_centroid": 1.98
+          "distance_to_centroid": 1.953
         },
         {
           "player": "James Garner",
           "team": "Everton",
           "position_full": "MF,DF",
           "minutes": 1594,
-          "distance_to_centroid": 2.014
-        },
-        {
-          "player": "Yehor Yarmoliuk",
-          "team": "Brentford",
-          "position_full": "MF",
-          "minutes": 1450,
-          "distance_to_centroid": 2.048
+          "distance_to_centroid": 2.039
         },
         {
           "player": "Wilfred Ndidi",
           "team": "Leicester City",
           "position_full": "MF",
           "minutes": 2324,
-          "distance_to_centroid": 2.077
+          "distance_to_centroid": 2.098
+        },
+        {
+          "player": "Sandro Tonali",
+          "team": "Newcastle",
+          "position_full": "MF",
+          "minutes": 2630,
+          "distance_to_centroid": 2.138
+        },
+        {
+          "player": "Yehor Yarmoliuk",
+          "team": "Brentford",
+          "position_full": "MF",
+          "minutes": 1450,
+          "distance_to_centroid": 2.161
         }
       ],
       "boundary_players": [
         {
-          "player": "Tomáš Souček",
-          "team": "West Ham",
+          "player": "Jean-Ricner Bellegarde",
+          "team": "Wolves",
           "position_full": "MF",
-          "minutes": 2567,
-          "boundary_margin": 0.107
+          "minutes": 1677,
+          "boundary_margin": 0.065
         },
         {
-          "player": "Kasey McAteer",
-          "team": "Leicester City",
+          "player": "Omari Hutchinson",
+          "team": "Ipswich Town",
           "position_full": "MF",
-          "minutes": 852,
-          "boundary_margin": 0.188
+          "minutes": 2583,
+          "boundary_margin": 0.085
         },
         {
-          "player": "Jack Harrison",
-          "team": "Everton",
-          "position_full": "MF,FW",
-          "minutes": 2076,
-          "boundary_margin": 0.212
+          "player": "Jordan Ayew",
+          "team": "Leicester City / Crystal Palace",
+          "position_full": "MF",
+          "minutes": 1659,
+          "boundary_margin": 0.096
         }
       ],
-      "bootstrap_ari": 0.8367,
-      "bootstrap_ari_sd": 0.1132,
-      "bootstrap_ari_min": 0.5286,
-      "justification": "Unlike the defender split, the midfield split has real content on both sides. This cluster of 94 midfielders sits below the midfield mean on every attacking measure, with shots on target per 90 0.69 standard deviations below it, non-penalty expected goals per 90 0.67 standard deviations below, shots per 90 0.66 standard deviations below and expected assists per 90 0.62 standard deviations below, and it is the only cluster in the study whose positive deviations are all defensive or disciplinary rather than attacking: interceptions per 90 sit 0.55 standard deviations above the midfield mean and tackles won per 90 0.45 standard deviations above it. The negative attacking side of the contrast is the larger part of it, which is why the name records the ball winning tilt second rather than first. The members closest to the centroid are Sam Morsy, Kobbie Mainoo, James Garner, Wilfred Ndidi and Lucas Bergvall. This is the best supported of the three within-group splits: bootstrap resampling gives a mean adjusted Rand index of 0.837 for midfielders with a standard deviation of 0.113 and a minimum of 0.529 over 200 resamples, so the partition survives resampling in a way the defender and forward partitions do not.",
+      "bootstrap_ari": 0.8153,
+      "bootstrap_ari_sd": 0.1046,
+      "bootstrap_ari_min": 0.5793,
+      "justification": "Unlike the defender split, the midfield split has real content on both sides. This cluster of 100 midfielders sits below the midfield mean on every attacking measure, with shots on target per 90 0.66 standard deviations below it, non-penalty expected goals per 90 0.64 standard deviations below, shots per 90 0.65 standard deviations below and expected assists per 90 0.60 standard deviations below, and it is the only cluster in the study whose positive deviations are all defensive or disciplinary rather than attacking: interceptions per 90 sit 0.46 standard deviations above the midfield mean and tackles won per 90 0.35 standard deviations above it. The negative attacking side of the contrast is the larger part of it, which is why the name records the ball winning tilt second rather than first. The members closest to the centroid are Sam Morsy, Kobbie Mainoo, James Garner, Wilfred Ndidi and Sandro Tonali. This is the best supported of the three within-group splits: bootstrap resampling gives a mean adjusted Rand index of 0.815 for midfielders with a standard deviation of 0.105 and a minimum of 0.579 over 200 resamples, so the partition survives resampling in a way the defender and forward partitions do not.",
       "centroid": {
-        "np_xg_p90": -0.667,
-        "xa_p90": -0.6158,
-        "key_passes_p90": -0.5926,
-        "xg_chain_p90": -0.607,
-        "xg_buildup_p90": -0.0833,
-        "shots_p90": -0.6576,
-        "shots_on_target_p90": -0.6899,
-        "goals_non_penalty_p90": -0.6502,
-        "assists_p90": -0.5093,
-        "crosses_p90": -0.4573,
-        "interceptions_p90": 0.555,
-        "tackles_won_p90": 0.4481,
-        "fouls_committed_p90": 0.3065,
-        "fouls_drawn_p90": -0.1361,
-        "offsides_p90": -0.4365,
-        "cards_yellow_p90": 0.3463,
-        "shot_accuracy_pct": -0.4275,
-        "goals_per_shot": -0.4895
+        "np_xg_p90": -0.6428,
+        "xa_p90": -0.6022,
+        "key_passes_p90": -0.5923,
+        "xg_chain_p90": -0.6172,
+        "xg_buildup_p90": -0.1206,
+        "shots_p90": -0.6455,
+        "shots_on_target_p90": -0.6605,
+        "goals_non_penalty_p90": -0.5962,
+        "assists_p90": -0.4773,
+        "crosses_p90": -0.4369,
+        "interceptions_padj_p90": 0.4578,
+        "tackles_won_padj_p90": 0.3477,
+        "fouls_committed_padj_p90": 0.2552,
+        "fouls_drawn_p90": -0.0954,
+        "offsides_p90": -0.3994,
+        "cards_yellow_p90": 0.3079,
+        "shot_accuracy_pct": -0.3566,
+        "goals_per_shot": -0.3732
       }
     },
     {
@@ -529,48 +529,48 @@
       "name": "High attacking involvement midfielders",
       "summary": "Midfielders above the midfield average on shooting and creation together, and below it on defensive counting stats.",
       "position_group": "MF",
-      "n_players": 87,
+      "n_players": 81,
       "n_position_group": 181,
       "distinguishing_features": [
         {
           "feature": "shots_on_target_p90",
           "label": "Shots on target/90",
-          "z_deviation": 0.7454
-        },
-        {
-          "feature": "np_xg_p90",
-          "label": "npxG/90",
-          "z_deviation": 0.7206
+          "z_deviation": 0.8154
         },
         {
           "feature": "shots_p90",
           "label": "Shots/90",
-          "z_deviation": 0.7106
+          "z_deviation": 0.7969
         },
         {
-          "feature": "goals_non_penalty_p90",
-          "label": "Non-penalty goals/90",
-          "z_deviation": 0.7026
-        },
-        {
-          "feature": "xa_p90",
-          "label": "xA/90",
-          "z_deviation": 0.6654
+          "feature": "np_xg_p90",
+          "label": "npxG/90",
+          "z_deviation": 0.7935
         },
         {
           "feature": "xg_chain_p90",
           "label": "xGChain/90",
-          "z_deviation": 0.6559
+          "z_deviation": 0.762
+        },
+        {
+          "feature": "xa_p90",
+          "label": "xA/90",
+          "z_deviation": 0.7435
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "label": "Non-penalty goals/90",
+          "z_deviation": 0.7361
         },
         {
           "feature": "key_passes_p90",
           "label": "Key passes/90",
-          "z_deviation": 0.6402
+          "z_deviation": 0.7312
         },
         {
-          "feature": "interceptions_p90",
-          "label": "Interceptions/90",
-          "z_deviation": -0.5996
+          "feature": "assists_p90",
+          "label": "Assists/90",
+          "z_deviation": 0.5893
         }
       ],
       "representative_players": [
@@ -579,118 +579,118 @@
           "team": "Nottingham",
           "position_full": "MF",
           "minutes": 2803,
-          "distance_to_centroid": 1.946
+          "distance_to_centroid": 2.012
         },
         {
           "player": "Dejan Kulusevski",
           "team": "Tottenham",
           "position_full": "MF,FW",
           "minutes": 2389,
-          "distance_to_centroid": 2.112
+          "distance_to_centroid": 2.194
         },
         {
           "player": "Enzo Fernández",
           "team": "Chelsea",
           "position_full": "MF",
           "minutes": 2947,
-          "distance_to_centroid": 2.159
-        },
-        {
-          "player": "Justin Kluivert",
-          "team": "Bournemouth",
-          "position_full": "MF",
-          "minutes": 2340,
-          "distance_to_centroid": 2.337
+          "distance_to_centroid": 2.232
         },
         {
           "player": "Alex Iwobi",
           "team": "Fulham",
           "position_full": "MF",
           "minutes": 2981,
-          "distance_to_centroid": 2.342
+          "distance_to_centroid": 2.337
+        },
+        {
+          "player": "Justin Kluivert",
+          "team": "Bournemouth",
+          "position_full": "MF",
+          "minutes": 2340,
+          "distance_to_centroid": 2.372
         },
         {
           "player": "Kaoru Mitoma",
           "team": "Brighton",
           "position_full": "MF",
           "minutes": 2603,
-          "distance_to_centroid": 2.434
-        },
-        {
-          "player": "Morgan Rogers",
-          "team": "Aston Villa",
-          "position_full": "MF",
-          "minutes": 3114,
-          "distance_to_centroid": 2.535
-        },
-        {
-          "player": "Amad Diallo",
-          "team": "Manchester Utd",
-          "position_full": "MF,FW",
-          "minutes": 1901,
-          "distance_to_centroid": 2.557
+          "distance_to_centroid": 2.457
         },
         {
           "player": "Marcus Tavernier",
           "team": "Bournemouth",
           "position_full": "MF",
           "minutes": 1939,
-          "distance_to_centroid": 2.612
+          "distance_to_centroid": 2.475
         },
         {
-          "player": "Stephy Mavididi",
-          "team": "Leicester City",
+          "player": "Amad Diallo",
+          "team": "Manchester Utd",
+          "position_full": "MF,FW",
+          "minutes": 1901,
+          "distance_to_centroid": 2.554
+        },
+        {
+          "player": "Morgan Rogers",
+          "team": "Aston Villa",
           "position_full": "MF",
-          "minutes": 1615,
-          "distance_to_centroid": 2.656
+          "minutes": 3114,
+          "distance_to_centroid": 2.649
+        },
+        {
+          "player": "Matt O'Riley",
+          "team": "Brighton",
+          "position_full": "MF",
+          "minutes": 938,
+          "distance_to_centroid": 2.708
         }
       ],
       "boundary_players": [
         {
-          "player": "Bobby De Cordova-Reid",
+          "player": "Iliman Ndiaye",
+          "team": "Everton",
+          "position_full": "MF,FW",
+          "minutes": 2430,
+          "boundary_margin": 0.137
+        },
+        {
+          "player": "Alexis Mac Allister",
+          "team": "Liverpool",
+          "position_full": "MF",
+          "minutes": 2599,
+          "boundary_margin": 0.147
+        },
+        {
+          "player": "Abdul Fatawu Issahaku",
           "team": "Leicester City",
           "position_full": "MF,FW",
-          "minutes": 744,
-          "boundary_margin": 0.119
-        },
-        {
-          "player": "Jean-Ricner Bellegarde",
-          "team": "Wolves",
-          "position_full": "MF",
-          "minutes": 1677,
-          "boundary_margin": 0.123
-        },
-        {
-          "player": "Hwang Hee-chan",
-          "team": "Wolves",
-          "position_full": "MF,FW",
-          "minutes": 661,
-          "boundary_margin": 0.136
+          "minutes": 579,
+          "boundary_margin": 0.169
         }
       ],
-      "bootstrap_ari": 0.8367,
-      "bootstrap_ari_sd": 0.1132,
-      "bootstrap_ari_min": 0.5286,
-      "justification": "The second midfield cluster, 87 players, is the mirror of the first and is the high involvement side of the midfield contrast. Its centroid sits 0.75 standard deviations above the midfield mean on shots on target per 90, 0.72 standard deviations above on non-penalty expected goals per 90, 0.71 standard deviations above on shots per 90, 0.67 standard deviations above on expected assists per 90 and 0.64 standard deviations above on key passes per 90, while interceptions per 90 are 0.60 standard deviations below the mean and tackles won per 90 0.48 standard deviations below it. Shooting and creation load on the same side of the split, which means the eighteen surviving features cannot separate a midfielder who scores from one who supplies, and no such distinction is claimed here. The members closest to the centroid are Morgan Gibbs-White, Dejan Kulusevski, Kaoru Mitoma, Morgan Rogers and Amad Diallo, a set that mixes central attacking midfielders with wide midfielders and so cuts across the listed position strings. Bootstrap stability for the midfield scope is a mean adjusted Rand index of 0.837, the strongest of the three position groups and close to the global figure of 0.908.",
+      "bootstrap_ari": 0.8153,
+      "bootstrap_ari_sd": 0.1046,
+      "bootstrap_ari_min": 0.5793,
+      "justification": "The second midfield cluster, 81 players, is the mirror of the first and is the high involvement side of the midfield contrast. Its centroid sits 0.82 standard deviations above the midfield mean on shots on target per 90, 0.79 standard deviations above on non-penalty expected goals per 90, 0.80 standard deviations above on shots per 90, 0.74 standard deviations above on expected assists per 90 and 0.73 standard deviations above on key passes per 90, while interceptions per 90 are 0.57 standard deviations below the mean and tackles won per 90 0.43 standard deviations below it. Shooting and creation load on the same side of the split, which means the eighteen surviving features cannot separate a midfielder who scores from one who supplies, and no such distinction is claimed here. The members closest to the centroid are Morgan Gibbs-White, Dejan Kulusevski, Kaoru Mitoma, Morgan Rogers and Amad Diallo, a set that mixes central attacking midfielders with wide midfielders and so cuts across the listed position strings. Bootstrap stability for the midfield scope is a mean adjusted Rand index of 0.815, the strongest of the three position groups and close to the global figure of 0.914.",
       "centroid": {
-        "np_xg_p90": 0.7206,
-        "xa_p90": 0.6654,
-        "key_passes_p90": 0.6402,
-        "xg_chain_p90": 0.6559,
-        "xg_buildup_p90": 0.09,
-        "shots_p90": 0.7106,
-        "shots_on_target_p90": 0.7454,
-        "goals_non_penalty_p90": 0.7026,
-        "assists_p90": 0.5502,
-        "crosses_p90": 0.4941,
-        "interceptions_p90": -0.5996,
-        "tackles_won_p90": -0.4841,
-        "fouls_committed_p90": -0.3311,
-        "fouls_drawn_p90": 0.147,
-        "offsides_p90": 0.4717,
-        "cards_yellow_p90": -0.3741,
-        "shot_accuracy_pct": 0.4619,
-        "goals_per_shot": 0.5289
+        "np_xg_p90": 0.7935,
+        "xa_p90": 0.7435,
+        "key_passes_p90": 0.7312,
+        "xg_chain_p90": 0.762,
+        "xg_buildup_p90": 0.1489,
+        "shots_p90": 0.7969,
+        "shots_on_target_p90": 0.8154,
+        "goals_non_penalty_p90": 0.7361,
+        "assists_p90": 0.5893,
+        "crosses_p90": 0.5393,
+        "interceptions_padj_p90": -0.5652,
+        "tackles_won_padj_p90": -0.4292,
+        "fouls_committed_padj_p90": -0.3151,
+        "fouls_drawn_p90": 0.1178,
+        "offsides_p90": 0.4931,
+        "cards_yellow_p90": -0.3802,
+        "shot_accuracy_pct": 0.4402,
+        "goals_per_shot": 0.4607
       }
     },
     {
@@ -748,99 +748,99 @@
           "team": "Arsenal",
           "position_full": "FW",
           "minutes": 1875,
-          "distance_to_centroid": 1.744
+          "distance_to_centroid": 1.795
         },
         {
           "player": "Nicolas Jackson",
           "team": "Chelsea",
           "position_full": "FW",
           "minutes": 2220,
-          "distance_to_centroid": 1.945
-        },
-        {
-          "player": "Jean-Philippe Mateta",
-          "team": "Crystal Palace",
-          "position_full": "FW",
-          "minutes": 2648,
-          "distance_to_centroid": 2.044
+          "distance_to_centroid": 1.923
         },
         {
           "player": "Beto",
           "team": "Everton",
           "position_full": "FW",
           "minutes": 1534,
-          "distance_to_centroid": 2.095
+          "distance_to_centroid": 2.052
+        },
+        {
+          "player": "Jean-Philippe Mateta",
+          "team": "Crystal Palace",
+          "position_full": "FW",
+          "minutes": 2648,
+          "distance_to_centroid": 2.086
         },
         {
           "player": "Evanilson",
           "team": "Bournemouth",
           "position_full": "FW",
           "minutes": 2319,
-          "distance_to_centroid": 2.194
+          "distance_to_centroid": 2.195
         },
         {
           "player": "Yoane Wissa",
           "team": "Brentford",
           "position_full": "FW",
           "minutes": 2919,
-          "distance_to_centroid": 2.26
+          "distance_to_centroid": 2.265
         },
         {
           "player": "Ollie Watkins",
           "team": "Aston Villa",
           "position_full": "FW",
           "minutes": 2598,
-          "distance_to_centroid": 2.302
+          "distance_to_centroid": 2.296
         },
         {
           "player": "Dominic Solanke",
           "team": "Tottenham",
           "position_full": "FW",
           "minutes": 2201,
-          "distance_to_centroid": 2.465
+          "distance_to_centroid": 2.444
         },
         {
           "player": "Brennan Johnson",
           "team": "Tottenham",
           "position_full": "FW,MF",
           "minutes": 2177,
-          "distance_to_centroid": 2.534
+          "distance_to_centroid": 2.549
         },
         {
           "player": "George Hirst",
           "team": "Ipswich Town",
           "position_full": "FW",
           "minutes": 661,
-          "distance_to_centroid": 2.605
+          "distance_to_centroid": 2.569
         }
       ],
       "boundary_players": [
-        {
-          "player": "Danny Welbeck",
-          "team": "Brighton",
-          "position_full": "FW",
-          "minutes": 2115,
-          "boundary_margin": 0.385
-        },
         {
           "player": "Diogo Jota",
           "team": "Liverpool",
           "position_full": "FW",
           "minutes": 1196,
-          "boundary_margin": 0.391
+          "boundary_margin": 0.362
+        },
+        {
+          "player": "Danny Welbeck",
+          "team": "Brighton",
+          "position_full": "FW",
+          "minutes": 2115,
+          "boundary_margin": 0.392
         },
         {
           "player": "Rasmus Højlund",
           "team": "Manchester Utd",
           "position_full": "FW",
           "minutes": 2004,
-          "boundary_margin": 0.466
+          "boundary_margin": 0.478
         }
       ],
-      "bootstrap_ari": 0.6009,
-      "bootstrap_ari_sd": 0.2862,
-      "bootstrap_ari_min": -0.0691,
-      "justification": "The larger forward cluster, 30 of 49 eligible forwards, is separated from the other by an absence of wide play at least as much as by shooting. Crosses per 90 is its single largest deviation at 0.61 standard deviations below the forward mean, with key passes per 90 0.45 standard deviations below, expected assists per 90 0.43 standard deviations below and expected goals buildup per 90 0.39 standard deviations below, while non-penalty expected goals per 90 sit 0.46 standard deviations above the mean, shots on target per 90 0.42 standard deviations above and shot accuracy 0.38 standard deviations above. The members closest to the centroid are Kai Havertz, Nicolas Jackson, Jean-Philippe Mateta, Ollie Watkins and Dominic Solanke, who are centre forwards in ordinary football terms. The forward scope is the most volatile in the study. With only 49 eligible forwards the bootstrap adjusted Rand index has a mean of 0.601 and a standard deviation of 0.286 against 0.113 for midfielders, and its minimum across 200 resamples is -0.069, which is below zero and so no better than a random relabelling in the worst case. The contrast described here is clear in the centroid, but the assignment of any individual borderline forward should not be relied on.",
+      "bootstrap_ari": 0.6021,
+      "bootstrap_ari_sd": 0.2811,
+      "bootstrap_ari_min": -0.0652,
+      "justification": "The larger forward cluster, 30 of 49 eligible forwards, is separated from the other by an absence of wide play at least as much as by shooting. Crosses per 90 is its single largest deviation at 0.61 standard deviations below the forward mean, with key passes per 90 0.45 standard deviations below, expected assists per 90 0.43 standard deviations below and expected goals buildup per 90 0.39 standard deviations below, while non-penalty expected goals per 90 sit 0.46 standard deviations above the mean, shots on target per 90 0.42 standard deviations above and shot accuracy 0.38 standard deviations above. The members closest to the centroid are Kai Havertz, Nicolas Jackson, Jean-Philippe Mateta, Ollie Watkins and Dominic Solanke, who are centre forwards in ordinary football terms. The forward scope is the most volatile in the study. With only 49 eligible forwards the bootstrap adjusted Rand index has a mean of 0.602 and a standard deviation of 0.281 against 0.105 for midfielders, and its minimum across 200 resamples is -0.065, which is below zero and so no better than a random relabelling in the worst case. The contrast described here is clear in the centroid, but the assignment of any individual borderline forward should not be relied on.",
       "centroid": {
         "np_xg_p90": 0.4585,
         "xa_p90": -0.4349,
@@ -852,9 +852,9 @@
         "goals_non_penalty_p90": 0.4204,
         "assists_p90": -0.3734,
         "crosses_p90": -0.6107,
-        "interceptions_p90": -0.2062,
-        "tackles_won_p90": -0.2083,
-        "fouls_committed_p90": 0.3312,
+        "interceptions_padj_p90": -0.2117,
+        "tackles_won_padj_p90": -0.2163,
+        "fouls_committed_padj_p90": 0.3201,
         "fouls_drawn_p90": 0.0851,
         "offsides_p90": 0.3509,
         "cards_yellow_p90": 0.2449,
@@ -917,70 +917,70 @@
           "team": "Arsenal",
           "position_full": "FW",
           "minutes": 2546,
-          "distance_to_centroid": 1.246
+          "distance_to_centroid": 1.278
         },
         {
           "player": "Gabriel Martinelli",
           "team": "Arsenal",
           "position_full": "FW,MF",
           "minutes": 2290,
-          "distance_to_centroid": 2.193
+          "distance_to_centroid": 2.166
         },
         {
           "player": "Mathys Tel",
           "team": "Tottenham",
           "position_full": "FW",
           "minutes": 911,
-          "distance_to_centroid": 2.446
+          "distance_to_centroid": 2.449
         },
         {
           "player": "Harvey Barnes",
           "team": "Newcastle",
           "position_full": "FW,MF",
           "minutes": 1755,
-          "distance_to_centroid": 2.679
+          "distance_to_centroid": 2.686
         },
         {
           "player": "Anthony Gordon",
           "team": "Newcastle",
           "position_full": "FW,MF",
           "minutes": 2434,
-          "distance_to_centroid": 2.951
+          "distance_to_centroid": 2.959
         },
         {
           "player": "Ethan Nwaneri",
           "team": "Arsenal",
           "position_full": "FW,MF",
           "minutes": 895,
-          "distance_to_centroid": 2.982
+          "distance_to_centroid": 2.984
         },
         {
           "player": "Joshua Zirkzee",
           "team": "Manchester Utd",
           "position_full": "FW,MF",
           "minutes": 1402,
-          "distance_to_centroid": 3.119
+          "distance_to_centroid": 3.121
         },
         {
           "player": "João Pedro",
           "team": "Brighton",
           "position_full": "FW,MF",
           "minutes": 1948,
-          "distance_to_centroid": 3.293
+          "distance_to_centroid": 3.289
         },
         {
           "player": "Son Heung-min",
           "team": "Tottenham",
           "position_full": "FW,MF",
           "minutes": 2110,
-          "distance_to_centroid": 3.426
+          "distance_to_centroid": 3.424
         },
         {
           "player": "Jacob Murphy",
           "team": "Newcastle",
           "position_full": "FW,MF",
           "minutes": 2360,
-          "distance_to_centroid": 3.436
+          "distance_to_centroid": 3.428
         }
       ],
       "boundary_players": [
@@ -989,27 +989,27 @@
           "team": "Brentford",
           "position_full": "FW,MF",
           "minutes": 455,
-          "boundary_margin": 0.435
+          "boundary_margin": 0.428
         },
         {
           "player": "Adam Armstrong",
           "team": "Southampton",
           "position_full": "FW,MF",
           "minutes": 1248,
-          "boundary_margin": 0.458
+          "boundary_margin": 0.442
         },
         {
           "player": "Luis Díaz",
           "team": "Liverpool",
           "position_full": "FW,MF",
           "minutes": 2399,
-          "boundary_margin": 0.564
+          "boundary_margin": 0.572
         }
       ],
-      "bootstrap_ari": 0.6009,
-      "bootstrap_ari_sd": 0.2862,
-      "bootstrap_ari_min": -0.0691,
-      "justification": "The smaller forward cluster, 19 players, inverts that profile. Crosses per 90 sit 0.96 standard deviations above the forward mean, key passes per 90 0.71 standard deviations above, expected assists per 90 0.69 standard deviations above and expected goals buildup per 90 0.62 standard deviations above, while non-penalty expected goals per 90 are 0.72 standard deviations below the mean, shots on target per 90 0.67 standard deviations below and goals per shot 0.59 standard deviations below. The members closest to the centroid are Leandro Trossard, Gabriel Martinelli, Anthony Gordon, Harvey Barnes and Son Heung-min, which is a wide forward group in ordinary football terms. Two cautions apply. The cluster holds only 19 players, the smallest of the six archetypes, and the forward bootstrap mean adjusted Rand index is 0.601 with a standard deviation of 0.286 and a minimum of -0.069. It is reported as a description of the fitted centroid rather than as a stable partition of forwards, and no claim about an individual player's membership should rest on it.",
+      "bootstrap_ari": 0.6021,
+      "bootstrap_ari_sd": 0.2811,
+      "bootstrap_ari_min": -0.0652,
+      "justification": "The smaller forward cluster, 19 players, inverts that profile. Crosses per 90 sit 0.96 standard deviations above the forward mean, key passes per 90 0.71 standard deviations above, expected assists per 90 0.69 standard deviations above and expected goals buildup per 90 0.62 standard deviations above, while non-penalty expected goals per 90 are 0.72 standard deviations below the mean, shots on target per 90 0.67 standard deviations below and goals per shot 0.59 standard deviations below. The members closest to the centroid are Leandro Trossard, Gabriel Martinelli, Anthony Gordon, Harvey Barnes and Son Heung-min, which is a wide forward group in ordinary football terms. Two cautions apply. The cluster holds only 19 players, the smallest of the six archetypes, and the forward bootstrap mean adjusted Rand index is 0.602 with a standard deviation of 0.281 and a minimum of -0.065. It is reported as a description of the fitted centroid rather than as a stable partition of forwards, and no claim about an individual player's membership should rest on it.",
       "centroid": {
         "np_xg_p90": -0.724,
         "xa_p90": 0.6866,
@@ -1021,9 +1021,9 @@
         "goals_non_penalty_p90": -0.6638,
         "assists_p90": 0.5896,
         "crosses_p90": 0.9642,
-        "interceptions_p90": 0.3255,
-        "tackles_won_p90": 0.3289,
-        "fouls_committed_p90": -0.5229,
+        "interceptions_padj_p90": 0.3342,
+        "tackles_won_padj_p90": 0.3415,
+        "fouls_committed_padj_p90": -0.5054,
         "fouls_drawn_p90": -0.1344,
         "offsides_p90": -0.5541,
         "cards_yellow_p90": -0.3868,

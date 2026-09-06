@@ -129,10 +129,10 @@
         "position_group": {
           "contingency": {
             "0": {
-              "MF": 94
+              "MF": 100
             },
             "1": {
-              "MF": 87
+              "MF": 81
             }
           },
           "adjusted_rand_index": 0.0,
@@ -141,12 +141,12 @@
             "0": {
               "label": "MF",
               "share": 1.0,
-              "n": 94
+              "n": 100
             },
             "1": {
               "label": "MF",
               "share": 1.0,
-              "n": 87
+              "n": 81
             }
           },
           "cluster_purity": 1.0
@@ -154,28 +154,28 @@
         "position_full": {
           "contingency": {
             "0": {
-              "MF": 72,
-              "MF,DF": 16,
-              "MF,FW": 6
+              "MF": 75,
+              "MF,DF": 17,
+              "MF,FW": 8
             },
             "1": {
-              "MF": 55,
-              "MF,DF": 3,
-              "MF,FW": 29
+              "MF": 52,
+              "MF,DF": 2,
+              "MF,FW": 27
             }
           },
-          "adjusted_rand_index": 0.0538,
-          "normalized_mutual_info": 0.1043,
+          "adjusted_rand_index": 0.0514,
+          "normalized_mutual_info": 0.0987,
           "dominant_label_per_cluster": {
             "0": {
               "label": "MF",
-              "share": 0.766,
-              "n": 94
+              "share": 0.75,
+              "n": 100
             },
             "1": {
               "label": "MF",
-              "share": 0.6322,
-              "n": 87
+              "share": 0.642,
+              "n": 81
             }
           },
           "cluster_purity": 0.7017
@@ -243,29 +243,29 @@
             "0": {
               "DF": 136,
               "FW": 7,
-              "MF": 104
+              "MF": 103
             },
             "1": {
               "DF": 2,
               "FW": 48,
-              "MF": 75
+              "MF": 76
             }
           },
-          "adjusted_rand_index": 0.2047,
-          "normalized_mutual_info": 0.2763,
+          "adjusted_rand_index": 0.206,
+          "normalized_mutual_info": 0.2772,
           "dominant_label_per_cluster": {
             "0": {
               "label": "DF",
-              "share": 0.5506,
-              "n": 247
+              "share": 0.5528,
+              "n": 246
             },
             "1": {
               "label": "MF",
-              "share": 0.6,
-              "n": 125
+              "share": 0.6032,
+              "n": 126
             }
           },
-          "cluster_purity": 0.5672
+          "cluster_purity": 0.5699
         },
         "position_full": {
           "contingency": {
@@ -274,7 +274,7 @@
               "DF,MF": 27,
               "FW": 1,
               "FW,MF": 6,
-              "MF": 77,
+              "MF": 76,
               "MF,DF": 14,
               "MF,FW": 13
             },
@@ -283,26 +283,26 @@
               "DF,MF": 2,
               "FW": 32,
               "FW,MF": 16,
-              "MF": 52,
+              "MF": 53,
               "MF,DF": 1,
               "MF,FW": 22
             }
           },
-          "adjusted_rand_index": 0.1468,
-          "normalized_mutual_info": 0.2318,
+          "adjusted_rand_index": 0.1473,
+          "normalized_mutual_info": 0.2323,
           "dominant_label_per_cluster": {
             "0": {
               "label": "DF",
-              "share": 0.4413,
-              "n": 247
+              "share": 0.4431,
+              "n": 246
             },
             "1": {
               "label": "MF",
-              "share": 0.416,
-              "n": 125
+              "share": 0.4206,
+              "n": 126
             }
           },
-          "cluster_purity": 0.4328
+          "cluster_purity": 0.4355
         }
       },
       "DF": {
@@ -363,10 +363,10 @@
         "position_group": {
           "contingency": {
             "0": {
-              "MF": 105
+              "MF": 106
             },
             "1": {
-              "MF": 74
+              "MF": 73
             }
           },
           "adjusted_rand_index": 0.0,
@@ -375,12 +375,12 @@
             "0": {
               "label": "MF",
               "share": 1.0,
-              "n": 105
+              "n": 106
             },
             "1": {
               "label": "MF",
               "share": 1.0,
-              "n": 74
+              "n": 73
             }
           },
           "cluster_purity": 1.0
@@ -390,26 +390,26 @@
             "0": {
               "MF": 78,
               "MF,DF": 14,
-              "MF,FW": 13
+              "MF,FW": 14
             },
             "1": {
               "MF": 51,
               "MF,DF": 1,
-              "MF,FW": 22
+              "MF,FW": 21
             }
           },
-          "adjusted_rand_index": 0.0227,
-          "normalized_mutual_info": 0.0624,
+          "adjusted_rand_index": 0.0162,
+          "normalized_mutual_info": 0.056,
           "dominant_label_per_cluster": {
             "0": {
               "label": "MF",
-              "share": 0.7429,
-              "n": 105
+              "share": 0.7358,
+              "n": 106
             },
             "1": {
               "label": "MF",
-              "share": 0.6892,
-              "n": 74
+              "share": 0.6986,
+              "n": 73
             }
           },
           "cluster_purity": 0.7207

@@ -19,6 +19,39 @@ only as unexplained missingness far downstream. Feature selection against observ
 rather than published schemas is now a necessary step when working with public football
 data.
 
+\subsection{Correcting defensive counts for possession}
+\label{sec:results:padj}
+
+Before any structure is estimated, the defensive counts have to be separated from the
+opportunity to record them. Across the \PadjTeamSeasons{} team-seasons available, team
+possession ranges from \PadjPossessionMin{} to \PadjPossessionMax{} percent, and team
+defensive volume does rise as opponent possession rises, so the confound is real. It is
+much weaker than proportional, however. The fitted elasticities are
+\ElasticityInterceptions{} for interceptions, \ElasticityTackles{} for tackles won and
+\ElasticityFouls{} for fouls committed, against the value of one that the conventional
+adjustment assumes.
+
+That difference matters, and Table~\ref{tab:padj} shows why. The three raw correlations
+with team possession are \PadjCorrRawInterceptions{}, \PadjCorrRawTackles{} and
+\PadjCorrRawFouls{}, all negative, since a player whose team keeps the ball records fewer
+defensive actions. Applying the conventional exponent overshoots every one of them: the
+correlations become \PadjCorrUnitInterceptions{}, \PadjCorrUnitTackles{} and
+\PadjCorrUnitFouls{}, reversing sign in all three cases and, for fouls committed, ending
+further from zero than where it started. The correction passes through the confound and out
+the other side. Adjusting with the measured elasticity instead leaves
+\PadjCorrAdjInterceptions{}, \PadjCorrAdjTackles{} and \PadjCorrAdjFouls{}, which are
+three to four times closer to zero than the conventional exponent achieves and are the
+smallest residual dependence available from either choice.
+
+Two qualifications belong with this. The correction is calibrated on a league whose
+possession shares are relatively compressed, so the elasticities should not be transported
+to a competition with a wider spread without refitting. More importantly, adjusting the
+defensive counts does not make the feature set as a whole team-neutral, because the
+attacking statistics still scale with a team's own share of the ball. What follows should
+be read as having removed one identifiable confound, not all of them.
+
+\input{../results/tables/possession_adjustment.tex}
+
 \subsection{Descriptive structure}
 \label{sec:results:descriptive}
 
@@ -481,9 +514,14 @@ change cluster, the adjusted Rand index between the original and shrunken partit
 players move falls monotonically with minutes played, exactly as the noise account
 predicts.
 
-The within group partitions do not survive. The adjusted Rand index falls to
-\ShrinkARIDF{} for defenders, with \ShrinkChangedDF{} of \NDFPrimary{} moving, and to
-\ShrinkARIFW{} for forwards, while midfielders retain \ShrinkARIMF{}. The mechanism is
+The within group partitions fare worse, and they do not fare equally. For defenders the
+adjusted Rand index falls to \ShrinkARIDF{}, with \ShrinkChangedDF{} of \NDFPrimary{}
+players moving, which is a partition largely dissolved by removing sampling noise.
+Midfielders retain \ShrinkARIMF{} and forwards \ShrinkARIFW{}, both of which survive in
+part rather than collapsing. The forward figure is notably higher than it was before the
+possession correction of Section~\ref{sec:results:padj} was applied, which is itself
+informative: some of what previously looked like noise in the forward partition was
+exposure to opponent possession, and removing it left a more reproducible split. The mechanism is
 visible in the estimated variance components: several features are assigned an estimated
 between-player variance of zero within a position group, meaning the model attributes
 their entire observed spread to sampling noise and collapses them to the group mean,
@@ -491,12 +529,16 @@ removing them from the clustering altogether. Shot accuracy retains very little
 reliability, because its true spread between players is small relative to the noise in
 estimating it from a season of shots.
 
-This matters because the scopes that dissolve under shrinkage are the same ones that had
-weak bootstrap stability and weak cross-season replication. Three independent lines of
-evidence point to the same conclusion, which is stated plainly here: the global division
-between attacking and defensive involvement is a real property of players, while the finer
-divisions within the defender and forward groups are substantially a description of
-sampling noise and should not be used to characterise individual players.
+Read alongside the bootstrap and replication results, the three tests do not deliver a
+single uniform verdict, and reporting them as though they did would overstate the case.
+Defenders fail all three: bootstrap stability of \BootARIDF{}, cross-season agreement of
+\CrossSeasonARIDF{}, and near dissolution under shrinkage. Forwards fail two of the three,
+with a bootstrap minimum of \BootARIMinFW{} across resamples and cross-season agreement of
+\CrossSeasonARIFW{}, while partly surviving shrinkage. Midfielders pass all three. The
+conclusion that survives every test is therefore narrower than a single summary sentence
+would suggest: the global division between attacking and defensive involvement is a real
+property of players, the midfield split is trustworthy, and the defender split should not
+be used to characterise an individual at all.
 Figures~\ref{fig:shrinkage} and \ref{fig:shrinkageminutes} show the effect.
 
 \begin{figure}[t]

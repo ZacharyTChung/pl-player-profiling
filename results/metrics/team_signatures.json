@@ -36,7 +36,7 @@
     "n_style_groups": 3,
     "archetype_share_vs_league_position": {
       "Ball winning, low attacking involvement midfielders": {
-        "spearman_rho": 0.7564,
+        "spearman_rho": 0.7759,
         "p_value": 0.0001
       },
       "Crossing and chance creating defenders": {
@@ -48,8 +48,8 @@
         "p_value": 0.6385
       },
       "High attacking involvement midfielders": {
-        "spearman_rho": -0.5889,
-        "p_value": 0.0063
+        "spearman_rho": -0.6371,
+        "p_value": 0.0025
       },
       "Low attacking involvement defenders": {
         "spearman_rho": 0.3023,
@@ -61,22 +61,22 @@
       }
     },
     "pca1_centroid_vs_league_position": {
-      "spearman_rho": -0.7789,
+      "spearman_rho": -0.7714,
       "p_value": 0.0001
     },
     "most_distinctive_teams": {
-      "Southampton": 0.6038,
+      "Southampton": 0.5762,
+      "Chelsea": 0.5625,
       "Tottenham": 0.5406,
-      "Chelsea": 0.5349,
-      "Arsenal": 0.4711,
-      "Newcastle": 0.47
+      "Leicester City": 0.5248,
+      "Manchester City": 0.4723
     },
     "least_distinctive_teams": {
-      "Ipswich Town": 0.2809,
-      "Nottingham": 0.214,
-      "Manchester Utd": 0.1747,
-      "Aston Villa": 0.1662,
-      "Brentford": 0.1296
+      "Nottingham": 0.2416,
+      "Brighton": 0.2036,
+      "Aston Villa": 0.1938,
+      "Manchester Utd": 0.1863,
+      "Brentford": 0.1572
     },
     "composition": {
       "Arsenal": {
@@ -112,10 +112,10 @@
         "Shot taking central forwards": 0.0872
       },
       "Brighton": {
-        "Ball winning, low attacking involvement midfielders": 0.1413,
+        "Ball winning, low attacking involvement midfielders": 0.1976,
         "Crossing and chance creating defenders": 0.1307,
         "Crossing and creating wide forwards": 0.0595,
-        "High attacking involvement midfielders": 0.3415,
+        "High attacking involvement midfielders": 0.2852,
         "Low attacking involvement defenders": 0.2623,
         "Shot taking central forwards": 0.0646
       },
@@ -152,18 +152,18 @@
         "Shot taking central forwards": 0.1036
       },
       "Ipswich Town": {
-        "Ball winning, low attacking involvement midfielders": 0.3601,
+        "Ball winning, low attacking involvement midfielders": 0.4381,
         "Crossing and chance creating defenders": 0.0828,
         "Crossing and creating wide forwards": 0.0,
-        "High attacking involvement midfielders": 0.1642,
+        "High attacking involvement midfielders": 0.0862,
         "Low attacking involvement defenders": 0.2947,
         "Shot taking central forwards": 0.0982
       },
       "Leicester City": {
-        "Ball winning, low attacking involvement midfielders": 0.3271,
+        "Ball winning, low attacking involvement midfielders": 0.399,
         "Crossing and chance creating defenders": 0.0,
         "Crossing and creating wide forwards": 0.0,
-        "High attacking involvement midfielders": 0.1831,
+        "High attacking involvement midfielders": 0.1112,
         "Low attacking involvement defenders": 0.4054,
         "Shot taking central forwards": 0.0845
       },
@@ -232,10 +232,10 @@
         "Shot taking central forwards": 0.0234
       },
       "Wolves": {
-        "Ball winning, low attacking involvement midfielders": 0.4235,
+        "Ball winning, low attacking involvement midfielders": 0.4937,
         "Crossing and chance creating defenders": 0.0,
         "Crossing and creating wide forwards": 0.0,
-        "High attacking involvement midfielders": 0.2349,
+        "High attacking involvement midfielders": 0.1647,
         "Low attacking involvement defenders": 0.264,
         "Shot taking central forwards": 0.0777
       }
@@ -552,8 +552,8 @@
         "p_value": 0.8016
       },
       "High attacking involvement midfielders": {
-        "spearman_rho": -0.5774,
-        "p_value": 0.0077
+        "spearman_rho": -0.5579,
+        "p_value": 0.0106
       },
       "Low attacking involvement defenders": {
         "spearman_rho": 0.3744,
@@ -565,22 +565,22 @@
       }
     },
     "pca1_centroid_vs_league_position": {
-      "spearman_rho": -0.7805,
+      "spearman_rho": -0.7835,
       "p_value": 0.0
     },
     "most_distinctive_teams": {
-      "Manchester Utd": 0.6178,
-      "Arsenal": 0.6142,
-      "Wolves": 0.524,
-      "Brighton": 0.4963,
-      "Burnley": 0.4872
+      "Manchester Utd": 0.6226,
+      "Arsenal": 0.619,
+      "Wolves": 0.5192,
+      "Brighton": 0.5011,
+      "Burnley": 0.4824
     },
     "least_distinctive_teams": {
-      "Leeds United": 0.1912,
-      "West Ham": 0.1866,
-      "Fulham": 0.1494,
-      "Nottingham": 0.1444,
-      "Brentford": 0.1139
+      "Leeds United": 0.1864,
+      "West Ham": 0.1818,
+      "Fulham": 0.1542,
+      "Nottingham": 0.1492,
+      "Brentford": 0.1187
     },
     "composition": {
       "Arsenal": {
@@ -712,10 +712,10 @@
         "Shot taking central forwards": 0.1139
       },
       "Sunderland": {
-        "Ball winning, low attacking involvement midfielders": 0.3543,
+        "Ball winning, low attacking involvement midfielders": 0.4022,
         "Crossing and chance creating defenders": 0.2446,
         "Crossing and creating wide forwards": 0.0,
-        "High attacking involvement midfielders": 0.0673,
+        "High attacking involvement midfielders": 0.0194,
         "Low attacking involvement defenders": 0.2156,
         "Shot taking central forwards": 0.1182
       },

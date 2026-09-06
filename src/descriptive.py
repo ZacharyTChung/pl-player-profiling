@@ -55,8 +55,11 @@ FEATURE_LABELS = {
     "assists_p90": "Assists",
     "crosses_p90": "Crosses",
     "interceptions_p90": "Interceptions",
+    "interceptions_padj_p90": "Interceptions (adj)",
     "tackles_won_p90": "Tackles won",
+    "tackles_won_padj_p90": "Tackles won (adj)",
     "fouls_committed_p90": "Fouls committed",
+    "fouls_committed_padj_p90": "Fouls committed (adj)",
     "fouls_drawn_p90": "Fouls drawn",
     "offsides_p90": "Offsides",
     "cards_yellow_p90": "Yellow cards",
@@ -66,7 +69,7 @@ FEATURE_LABELS = {
 
 #: Metrics shown in the distribution figure, chosen to span the creation, finishing and
 #: defensive ends of the surviving feature set.
-DISTRIBUTION_METRICS = ["np_xg_p90", "xa_p90", "tackles_won_p90", "key_passes_p90"]
+DISTRIBUTION_METRICS = ["np_xg_p90", "xa_p90", "tackles_won_padj_p90", "key_passes_p90"]
 
 
 def label(feature: str) -> str:

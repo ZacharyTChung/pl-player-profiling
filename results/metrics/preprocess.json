@@ -37,9 +37,9 @@
       "goals_non_penalty_p90",
       "assists_p90",
       "crosses_p90",
-      "interceptions_p90",
-      "tackles_won_p90",
-      "fouls_committed_p90",
+      "interceptions_padj_p90",
+      "tackles_won_padj_p90",
+      "fouls_committed_padj_p90",
       "fouls_drawn_p90",
       "offsides_p90",
       "cards_yellow_p90",
@@ -54,9 +54,9 @@
       "cards_yellow_p90": 0.0,
       "offsides_p90": 0.0,
       "fouls_drawn_p90": 0.0,
-      "fouls_committed_p90": 0.0,
-      "tackles_won_p90": 0.0,
-      "interceptions_p90": 0.0,
+      "fouls_committed_padj_p90": 0.0,
+      "tackles_won_padj_p90": 0.0,
+      "interceptions_padj_p90": 0.0,
       "np_xg_p90": 0.0,
       "assists_p90": 0.0,
       "goals_non_penalty_p90": 0.0,
@@ -76,6 +76,85 @@
       "270": 403,
       "450": 366,
       "900": 296
+    },
+    "possession_adjustment": {
+      "reference_possession": 50.0,
+      "adjusted_counts": [
+        "interceptions",
+        "tackles_won",
+        "fouls_committed"
+      ],
+      "elasticity_mode": "estimated",
+      "elasticity": {
+        "method": "ordinary least squares of log team defensive volume per ninety on log opponent possession, pooled across team-seasons",
+        "n_team_seasons": 40,
+        "opponent_possession_min": 38.7,
+        "opponent_possession_max": 59.4,
+        "per_feature": {
+          "interceptions": {
+            "elasticity": 0.5252,
+            "elasticity_by_season": {
+              "2024-25": 0.6354,
+              "2025-26": 0.4104
+            },
+            "log_log_correlation": 0.4892,
+            "n": 40,
+            "unit_elasticity_overcorrection_factor": 1.9
+          },
+          "tackles_won": {
+            "elasticity": 0.4325,
+            "elasticity_by_season": {
+              "2024-25": 0.3845,
+              "2025-26": 0.4812
+            },
+            "log_log_correlation": 0.4571,
+            "n": 40,
+            "unit_elasticity_overcorrection_factor": 2.31
+          },
+          "fouls_committed": {
+            "elasticity": 0.283,
+            "elasticity_by_season": {
+              "2024-25": 0.342,
+              "2025-26": 0.2211
+            },
+            "log_log_correlation": 0.3163,
+            "n": 40,
+            "unit_elasticity_overcorrection_factor": 3.53
+          }
+        },
+        "elasticities": {
+          "interceptions": 0.5252,
+          "tackles_won": 0.4325,
+          "fouls_committed": 0.283
+        }
+      },
+      "team_possession_min": 40.6,
+      "team_possession_max": 61.3,
+      "team_possession_mean": 49.99,
+      "factor_min": 0.9312,
+      "factor_max": 1.1118,
+      "factor_mean": 1.0052,
+      "confound_removal": {
+        "interceptions": {
+          "elasticity_used": 0.5252,
+          "corr_raw_with_possession": -0.1223,
+          "corr_adjusted_with_possession": -0.0217,
+          "corr_unit_elasticity_with_possession": 0.0704
+        },
+        "tackles_won": {
+          "elasticity_used": 0.4325,
+          "corr_raw_with_possession": -0.1113,
+          "corr_adjusted_with_possession": -0.0178,
+          "corr_unit_elasticity_with_possession": 0.105
+        },
+        "fouls_committed": {
+          "elasticity_used": 0.283,
+          "corr_raw_with_possession": -0.102,
+          "corr_adjusted_with_possession": -0.037,
+          "corr_unit_elasticity_with_possession": 0.1294
+        }
+      },
+      "note": "Factor is the exposure ratio, the reference opponent possession divided by the actual one, raised to the fitted elasticity. A value above one belongs to a player whose team had more of the ball than average and whose raw defensive counts therefore understate his rate of action per opportunity."
     }
   },
   "2025-26": {
@@ -116,9 +195,9 @@
       "goals_non_penalty_p90",
       "assists_p90",
       "crosses_p90",
-      "interceptions_p90",
-      "tackles_won_p90",
-      "fouls_committed_p90",
+      "interceptions_padj_p90",
+      "tackles_won_padj_p90",
+      "fouls_committed_padj_p90",
       "fouls_drawn_p90",
       "offsides_p90",
       "cards_yellow_p90",
@@ -133,9 +212,9 @@
       "cards_yellow_p90": 0.0,
       "offsides_p90": 0.0,
       "fouls_drawn_p90": 0.0,
-      "fouls_committed_p90": 0.0,
-      "tackles_won_p90": 0.0,
-      "interceptions_p90": 0.0,
+      "fouls_committed_padj_p90": 0.0,
+      "tackles_won_padj_p90": 0.0,
+      "interceptions_padj_p90": 0.0,
       "np_xg_p90": 0.0,
       "assists_p90": 0.0,
       "goals_non_penalty_p90": 0.0,
@@ -155,6 +234,85 @@
       "270": 395,
       "450": 372,
       "900": 316
+    },
+    "possession_adjustment": {
+      "reference_possession": 50.0,
+      "adjusted_counts": [
+        "interceptions",
+        "tackles_won",
+        "fouls_committed"
+      ],
+      "elasticity_mode": "estimated",
+      "elasticity": {
+        "method": "ordinary least squares of log team defensive volume per ninety on log opponent possession, pooled across team-seasons",
+        "n_team_seasons": 40,
+        "opponent_possession_min": 38.7,
+        "opponent_possession_max": 59.4,
+        "per_feature": {
+          "interceptions": {
+            "elasticity": 0.5252,
+            "elasticity_by_season": {
+              "2024-25": 0.6354,
+              "2025-26": 0.4104
+            },
+            "log_log_correlation": 0.4892,
+            "n": 40,
+            "unit_elasticity_overcorrection_factor": 1.9
+          },
+          "tackles_won": {
+            "elasticity": 0.4325,
+            "elasticity_by_season": {
+              "2024-25": 0.3845,
+              "2025-26": 0.4812
+            },
+            "log_log_correlation": 0.4571,
+            "n": 40,
+            "unit_elasticity_overcorrection_factor": 2.31
+          },
+          "fouls_committed": {
+            "elasticity": 0.283,
+            "elasticity_by_season": {
+              "2024-25": 0.342,
+              "2025-26": 0.2211
+            },
+            "log_log_correlation": 0.3163,
+            "n": 40,
+            "unit_elasticity_overcorrection_factor": 3.53
+          }
+        },
+        "elasticities": {
+          "interceptions": 0.5252,
+          "tackles_won": 0.4325,
+          "fouls_committed": 0.283
+        }
+      },
+      "team_possession_min": 42.5,
+      "team_possession_max": 60.7,
+      "team_possession_mean": 50.04,
+      "factor_min": 0.9438,
+      "factor_max": 1.1047,
+      "factor_mean": 1.0041,
+      "confound_removal": {
+        "interceptions": {
+          "elasticity_used": 0.5252,
+          "corr_raw_with_possession": -0.0389,
+          "corr_adjusted_with_possession": 0.0609,
+          "corr_unit_elasticity_with_possession": 0.1502
+        },
+        "tackles_won": {
+          "elasticity_used": 0.4325,
+          "corr_raw_with_possession": -0.0843,
+          "corr_adjusted_with_possession": 0.0115,
+          "corr_unit_elasticity_with_possession": 0.1404
+        },
+        "fouls_committed": {
+          "elasticity_used": 0.283,
+          "corr_raw_with_possession": -0.0633,
+          "corr_adjusted_with_possession": 0.0078,
+          "corr_unit_elasticity_with_possession": 0.1893
+        }
+      },
+      "note": "Factor is the exposure ratio, the reference opponent possession divided by the actual one, raised to the fitted elasticity. A value above one belongs to a player whose team had more of the ball than average and whose raw defensive counts therefore understate his rate of action per opportunity."
     }
   }
 }

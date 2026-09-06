@@ -7,19 +7,19 @@
     "2024-25": {
       "global": {
         "n_bootstrap": 200,
-        "ari_mean": 0.9079,
-        "ari_sd": 0.0732,
+        "ari_mean": 0.9144,
+        "ari_sd": 0.0724,
         "ari_min": 0.7085,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
             "n": 243,
-            "mean_coassignment": 0.9419,
+            "mean_coassignment": 0.9459,
             "low_stability": false
           },
           "1": {
             "n": 123,
-            "mean_coassignment": 0.983,
+            "mean_coassignment": 0.9846,
             "low_stability": false
           }
         },
@@ -27,19 +27,19 @@
       },
       "DF": {
         "n_bootstrap": 200,
-        "ari_mean": 0.5821,
-        "ari_sd": 0.2214,
+        "ari_mean": 0.6071,
+        "ari_sd": 0.2164,
         "ari_min": 0.0182,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
             "n": 98,
-            "mean_coassignment": 0.8735,
+            "mean_coassignment": 0.8792,
             "low_stability": false
           },
           "1": {
             "n": 38,
-            "mean_coassignment": 0.6991,
+            "mean_coassignment": 0.7264,
             "low_stability": false
           }
         },
@@ -47,19 +47,19 @@
       },
       "MF": {
         "n_bootstrap": 200,
-        "ari_mean": 0.8367,
-        "ari_sd": 0.1132,
-        "ari_min": 0.5286,
+        "ari_mean": 0.8153,
+        "ari_sd": 0.1046,
+        "ari_min": 0.5793,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
-            "n": 94,
-            "mean_coassignment": 0.9649,
+            "n": 100,
+            "mean_coassignment": 0.9042,
             "low_stability": false
           },
           "1": {
-            "n": 87,
-            "mean_coassignment": 0.8772,
+            "n": 81,
+            "mean_coassignment": 0.9192,
             "low_stability": false
           }
         },
@@ -67,19 +67,19 @@
       },
       "FW": {
         "n_bootstrap": 200,
-        "ari_mean": 0.6009,
-        "ari_sd": 0.2862,
-        "ari_min": -0.0691,
+        "ari_mean": 0.6021,
+        "ari_sd": 0.2811,
+        "ari_min": -0.0652,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
             "n": 30,
-            "mean_coassignment": 0.8532,
+            "mean_coassignment": 0.8523,
             "low_stability": false
           },
           "1": {
             "n": 19,
-            "mean_coassignment": 0.8229,
+            "mean_coassignment": 0.8236,
             "low_stability": false
           }
         },
@@ -89,19 +89,19 @@
     "2025-26": {
       "global": {
         "n_bootstrap": 200,
-        "ari_mean": 0.9128,
-        "ari_sd": 0.0699,
-        "ari_min": 0.6935,
+        "ari_mean": 0.9143,
+        "ari_sd": 0.0639,
+        "ari_min": 0.7111,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
-            "n": 247,
-            "mean_coassignment": 0.9476,
+            "n": 246,
+            "mean_coassignment": 0.9522,
             "low_stability": false
           },
           "1": {
-            "n": 125,
-            "mean_coassignment": 0.9783,
+            "n": 126,
+            "mean_coassignment": 0.9712,
             "low_stability": false
           }
         },
@@ -109,19 +109,19 @@
       },
       "DF": {
         "n_bootstrap": 200,
-        "ari_mean": 0.6573,
-        "ari_sd": 0.259,
-        "ari_min": -0.0058,
+        "ari_mean": 0.688,
+        "ari_sd": 0.2516,
+        "ari_min": 0.0235,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
             "n": 83,
-            "mean_coassignment": 0.9255,
+            "mean_coassignment": 0.9382,
             "low_stability": false
           },
           "1": {
             "n": 55,
-            "mean_coassignment": 0.732,
+            "mean_coassignment": 0.746,
             "low_stability": false
           }
         },
@@ -129,19 +129,19 @@
       },
       "MF": {
         "n_bootstrap": 200,
-        "ari_mean": 0.9048,
-        "ari_sd": 0.0848,
-        "ari_min": 0.4982,
+        "ari_mean": 0.8864,
+        "ari_sd": 0.1036,
+        "ari_min": 0.4725,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
-            "n": 105,
-            "mean_coassignment": 0.9401,
+            "n": 106,
+            "mean_coassignment": 0.9194,
             "low_stability": false
           },
           "1": {
-            "n": 74,
-            "mean_coassignment": 0.9705,
+            "n": 73,
+            "mean_coassignment": 0.9781,
             "low_stability": false
           }
         },
@@ -149,19 +149,19 @@
       },
       "FW": {
         "n_bootstrap": 200,
-        "ari_mean": 0.4599,
-        "ari_sd": 0.3352,
-        "ari_min": -0.0363,
+        "ari_mean": 0.4713,
+        "ari_sd": 0.3406,
+        "ari_min": -0.0416,
         "ari_max": 1.0,
         "per_cluster": {
           "0": {
             "n": 39,
-            "mean_coassignment": 0.7888,
+            "mean_coassignment": 0.7902,
             "low_stability": false
           },
           "1": {
             "n": 16,
-            "mean_coassignment": 0.6577,
+            "mean_coassignment": 0.6746,
             "low_stability": false
           }
         },

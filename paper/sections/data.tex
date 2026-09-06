@@ -90,7 +90,11 @@ At the chosen threshold \NEligiblePrimary{} outfield players are eligible in
 \NDFPrimary{} defenders, \NMFPrimary{} midfielders and \NFWPrimary{} forwards.
 
 Counting statistics are divided by nineties played. Quantities that are already rates,
-such as shot accuracy, are left alone rather than being divided a second time. Minutes
+such as shot accuracy, are left alone rather than being divided a second time. The three
+statistics that can only be recorded while the opponent has the ball, interceptions,
+tackles won and fouls committed, are additionally corrected for how much time a player's
+team spends out of possession, by the procedure set out in
+Section~\ref{sec:methods:padj}. Minutes
 and nineties are retained as context columns and never used as features, since squad
 usage describes a player's opportunity rather than the role he performs within it. For
 the same reason the team success columns, points per match and goal difference while on
@@ -112,9 +116,10 @@ position stratified analysis, and both versions are retained.
 
 Season aggregates discard context. A tackle count does not record where on the pitch the
 tackles happened, an expected goals total does not distinguish a striker who takes six
-low quality shots from one who takes two good ones, and no statistic here is adjusted for
-the share of possession a player's team enjoys, which systematically inflates the
-defensive counts of players in teams that spend more time without the ball. Per-90 rates
+low quality shots from one who takes two good ones, and the possession correction described in
+Section~\ref{sec:methods:padj} reaches only the three statistics recorded while the
+opponent has the ball, leaving the attacking statistics still sensitive to how much of it
+a player's team enjoys. Per-90 rates
 computed over a partial season remain noisy even above the minutes threshold, which is
 the motivation for the shrinkage analysis in Section~\ref{sec:results:shrinkage}. The
 study covers one league and two seasons, so nothing here should be read as a claim about

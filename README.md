@@ -80,7 +80,7 @@ limited, and the raw parquet files are committed, so the pipeline runs against t
 ```
 config.py          seeds, thresholds, the k selection rule, paths
 src/ingest.py      FBref and Understat retrieval
-src/preprocess.py  merge, filter, per-90, standardise
+src/preprocess.py  merge, filter, per-90, possession adjust, standardise
 src/features.py    the feature sets, verified against observed values
 src/*.py           one module per analysis phase
 src/tables.py      generates results/macros.tex and results/tables/*.tex
@@ -107,23 +107,32 @@ dashes, sentence-initial "And", bullet lists and a list of filler phrases anywhe
 
 1. **The withdrawal is a trap, not just a loss.** Tables resolve correctly and return
    nothing. Feature selection must be made against observed values.
-2. **Correlations reverse sign across positions.** 87 of 153 feature pairs change sign
+2. **The standard possession adjustment overcorrects by 2 to 3 times.** Defensive counts
+   must be corrected for how long a team spends without the ball, and the conventional
+   formula assumes direct proportionality. Fitted against 40 team-seasons the elasticities
+   are 0.53 (interceptions), 0.43 (tackles won) and 0.28 (fouls committed). Applying an
+   exponent of 1 does not remove the confound, it flips its sign and enlarges it. Using
+   the measured exponent takes the primary-season correlation with team possession from
+   0.122 to 0.022, 0.111 to 0.018, and 0.102 to 0.037.
+3. **Correlations reverse sign across positions.** 87 of 153 feature pairs change sign
    between defenders, midfielders and forwards, and all ten of the most divergent pairs do.
    Pooled correlation analysis of football data should be considered unsafe by default.
-3. **The data supports one binary division.** The selection rule returns two clusters in
+4. **The data supports one binary division.** The selection rule returns two clusters in
    every scope. HDBSCAN, free to find nothing, labels 100 percent of every position group
    as noise. The division found is attacking against defensive involvement, agreeing with
    listed positions at an adjusted Rand index of only 0.226, while a supervised model
-   reaches 0.817 accuracy on the same features.
-4. **That division is robust; the finer ones are not.** Bootstrap stability, cross-season
-   replication and empirical Bayes shrinkage agree. The global partition holds at 0.945
-   under shrinkage; the defender and forward partitions fall to 0.453 and 0.442.
-5. **Goalkeeper clusters recover team strength, not goalkeeping.** Cluster membership
+   reaches 0.803 accuracy on the same features.
+5. **That division is robust; the within-group ones are weaker, and unevenly so.** The
+   global partition holds at 0.945 under shrinkage. The defender partition fails all three
+   tests, falling to 0.453. The forward partition fails bootstrap stability and
+   cross-season replication but partly survives shrinkage at 0.626. Midfielders pass all
+   three.
+6. **Goalkeeper clusters recover team strength, not goalkeeping.** Cluster membership
    explains 0.72 of the variance in team points per match against 0.25 in save percentage,
    so the partition is reported as a negative result and no archetypes are named.
-6. **Club summaries are stable where players are not.** The minutes-weighted club position
-   on the first principal component correlates with final league position at -0.779 and
-   -0.780 across two independent seasons.
+7. **Club summaries are stable where players are not.** The minutes-weighted club position
+   on the first principal component correlates with final league position at -0.771 and
+   -0.784 across two independent seasons.
 
 ## Licence and data
 

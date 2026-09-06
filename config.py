@@ -60,6 +60,49 @@ POSITION_GROUPS = ["GK", "DF", "MF", "FW"]
 OUTFIELD_GROUPS = ["DF", "MF", "FW"]
 
 # --------------------------------------------------------------------------------------
+# Possession adjustment
+# --------------------------------------------------------------------------------------
+# Defensive actions can only happen while the opponent has the ball, so a player in a
+# team that concedes possession accumulates them through exposure rather than through
+# role or ability. Counts are rescaled to a common opponent-possession baseline:
+#
+#     padj = raw_per90 * PADJ_REFERENCE / (100 - team_possession_pct)
+#
+# A team with 65 percent of the ball faces 35 percent opponent possession and has its
+# defensive counts scaled up by 50/35, while a team with 35 percent is scaled down by
+# 50/65. The reference of 50 is the league average by construction, so the adjustment
+# leaves the league-wide mean roughly unchanged and only redistributes between teams.
+PADJ_REFERENCE_POSSESSION = 50.0
+
+#: Counting statistics that occur while the opponent has the ball. Fouls committed are
+#: included because they are overwhelmingly defensive events, and the choice is reported
+#: as a sensitivity in the possession analysis rather than assumed.
+PADJ_COUNTS = ["interceptions", "tackles_won", "fouls_committed"]
+
+#: Team-level source column for each adjusted count, used to estimate the elasticity.
+PADJ_TEAM_SOURCES = {
+    "interceptions": "Performance__Int",
+    "tackles_won": "Performance__TklW",
+    "fouls_committed": "Performance__Fls",
+}
+
+#: The exponent applied to the exposure ratio.
+#:
+#: The textbook adjustment uses 1.0, which assumes defensive actions scale in direct
+#: proportion to opponent possession. That assumption is testable, and in this league it
+#: is false: regressing log team defensive volume on log opponent possession over the
+#: forty team-seasons available gives elasticities near 0.3 to 0.5. Applying an exponent
+#: of 1.0 therefore overcorrects by a factor of two to three and, as the tests in
+#: tests/test_preprocess.py demonstrate, injects more team dependence than it removes.
+#: "estimated" fits the exponent per feature from the team data; "unit" reproduces the
+#: textbook behaviour and is retained so the comparison can be reported.
+PADJ_ELASTICITY_MODE = "estimated"
+PADJ_UNIT_ELASTICITY = 1.0
+
+#: Guard against a degenerate divisor. No Premier League side has ever approached this.
+PADJ_MIN_OPPONENT_POSSESSION = 5.0
+
+# --------------------------------------------------------------------------------------
 # Clustering
 # --------------------------------------------------------------------------------------
 K_MIN, K_MAX = 2, 12

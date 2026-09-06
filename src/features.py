@@ -20,6 +20,8 @@ and the paper use. Names on the right are the raw source columns.
 
 from __future__ import annotations
 
+import config
+
 # --------------------------------------------------------------------------------------
 # Source maps: canonical_name -> (raw table, raw column)
 # --------------------------------------------------------------------------------------
@@ -123,9 +125,22 @@ OUTFIELD_RATES = [
     "goals_per_shot",
 ]
 
+#: Counting statistics that occur while the opponent has the ball, and which are
+#: therefore used in their possession-adjusted form. See ``config.PADJ_COUNTS``.
+DEFENSIVE_COUNTS = list(config.PADJ_COUNTS)
+
 #: The clustering feature set. Team-strength columns are deliberately excluded because
-#: they describe the squad a player happens to be in, not the role he performs.
-OUTFIELD_CORE = [f"{c}_p90" for c in OUTFIELD_COUNTS] + OUTFIELD_RATES
+#: they describe the squad a player happens to be in, not the role he performs. The
+#: defensive counts enter possession-adjusted, because their raw rates confound what a
+#: player does with how often his team is out of possession, which is itself a function
+#: of team strength and would smuggle the same confound back in through another door.
+OUTFIELD_CORE = [
+    f"{c}_padj_p90" if c in DEFENSIVE_COUNTS else f"{c}_p90" for c in OUTFIELD_COUNTS
+] + OUTFIELD_RATES
+
+#: The identical set before possession adjustment, retained so the effect of the
+#: adjustment can be measured rather than asserted.
+OUTFIELD_CORE_RAW = [f"{c}_p90" for c in OUTFIELD_COUNTS] + OUTFIELD_RATES
 
 # Context columns retained alongside the features but never used as features.
 CONTEXT_COLS = [
@@ -166,9 +181,9 @@ HEADLINE_METRICS = [
     "shots_p90",
     "shot_accuracy_pct",
     "crosses_p90",
-    "interceptions_p90",
-    "tackles_won_p90",
-    "fouls_committed_p90",
+    "interceptions_padj_p90",
+    "tackles_won_padj_p90",
+    "fouls_committed_padj_p90",
     "offsides_p90",
 ]
 
@@ -181,8 +196,8 @@ RADAR_AXES = [
     "xg_chain_p90",
     "xg_buildup_p90",
     "crosses_p90",
-    "tackles_won_p90",
-    "interceptions_p90",
+    "tackles_won_padj_p90",
+    "interceptions_padj_p90",
     "fouls_drawn_p90",
 ]
 
@@ -201,9 +216,9 @@ NON_SHOOTING_FEATURES = [
     "key_passes_p90",
     "xg_buildup_p90",
     "crosses_p90",
-    "interceptions_p90",
-    "tackles_won_p90",
-    "fouls_committed_p90",
+    "interceptions_padj_p90",
+    "tackles_won_padj_p90",
+    "fouls_committed_padj_p90",
     "fouls_drawn_p90",
     "offsides_p90",
     "cards_yellow_p90",

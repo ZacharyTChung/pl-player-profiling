@@ -251,9 +251,9 @@ def table_feature_dictionary() -> None:
         "goals_non_penalty_p90": ("FBref", "Goals excluding penalties"),
         "assists_p90": ("FBref", "Assists"),
         "crosses_p90": ("FBref", "Crosses attempted"),
-        "interceptions_p90": ("FBref", "Interceptions"),
-        "tackles_won_p90": ("FBref", "Tackles won"),
-        "fouls_committed_p90": ("FBref", "Fouls committed"),
+        "interceptions_padj_p90": ("FBref", "Interceptions, possession adjusted"),
+        "tackles_won_padj_p90": ("FBref", "Tackles won, possession adjusted"),
+        "fouls_committed_padj_p90": ("FBref", "Fouls committed, possession adjusted"),
         "fouls_drawn_p90": ("FBref", "Fouls drawn"),
         "offsides_p90": ("FBref", "Times caught offside"),
         "cards_yellow_p90": ("FBref", "Yellow cards"),
@@ -469,6 +469,47 @@ def table_cluster_membership() -> None:
         )
     lines += [r"\bottomrule", r"\end{longtable}"]
     _write_table("cluster_membership", "\n".join(lines))
+
+
+def table_possession_adjustment(pre: dict | None) -> None:
+    """Elasticities and the confound before and after adjustment."""
+    padj = dig(season_block(pre, config.SEASON_PRIMARY), "possession_adjustment")
+    removal = dig(padj, "confound_removal")
+    if not removal:
+        return
+    labels = {
+        "interceptions": "Interceptions",
+        "tackles_won": "Tackles won",
+        "fouls_committed": "Fouls committed",
+    }
+    lines = [
+        r"\begin{table}[t]",
+        r"\centering",
+        r"\small",
+        r"\caption{Possession adjustment. The elasticity is fitted from team totals. The "
+        r"final three columns give the correlation between each per-90 rate and team "
+        r"possession: unadjusted, adjusted with the fitted elasticity, and adjusted with "
+        r"the conventional exponent of one. A value near zero is the goal.}",
+        r"\label{tab:padj}",
+        r"\begin{tabular}{lrrrr}",
+        r"\toprule",
+        r" & & \multicolumn{3}{c}{Correlation with team possession} \\",
+        r"\cmidrule(lr){3-5}",
+        r"Statistic & Elasticity & Unadjusted & Adjusted & Exponent one \\",
+        r"\midrule",
+    ]
+    for count, label in labels.items():
+        b = removal.get(count)
+        if not b:
+            continue
+        lines.append(
+            f"{label} & {num(b.get('elasticity_used'), 3)} & "
+            f"{num(b.get('corr_raw_with_possession'), 3)} & "
+            f"{num(b.get('corr_adjusted_with_possession'), 3)} & "
+            f"{num(b.get('corr_unit_elasticity_with_possession'), 3)} \\\\"
+        )
+    lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
+    _write_table("possession_adjustment", "\n".join(lines))
 
 
 def table_minutes_sensitivity(pre: dict | None, sens: dict | None) -> None:
@@ -747,6 +788,29 @@ def build_macros() -> Macros:
         )
         m.add(f"ShrinkChanged{grp}", dig(shr, "headline", "n_changed_within_group", grp))
 
+    # Possession adjustment
+    padj = dig(season_block(pre, primary), "possession_adjustment") or {}
+    _suffix = {
+        "interceptions": "Interceptions",
+        "tackles_won": "Tackles",
+        "fouls_committed": "Fouls",
+    }
+    m.add("PadjRefPossession", padj.get("reference_possession"), places=0)
+    m.add("PadjTeamSeasons", dig(padj, "elasticity", "n_team_seasons"))
+    m.add("PadjPossessionMin", padj.get("team_possession_min"), places=1)
+    m.add("PadjPossessionMax", padj.get("team_possession_max"), places=1)
+    for count, suffix in _suffix.items():
+        m.add(f"Elasticity{suffix}", dig(padj, "elasticity", "elasticities", count), places=3)
+        m.add(
+            f"PadjOvercorrect{suffix}",
+            dig(padj, "elasticity", "per_feature", count, "unit_elasticity_overcorrection_factor"),
+            places=1,
+        )
+        block = dig(padj, "confound_removal", count) or {}
+        m.add(f"PadjCorrRaw{suffix}", block.get("corr_raw_with_possession"), places=3)
+        m.add(f"PadjCorrAdj{suffix}", block.get("corr_adjusted_with_possession"), places=3)
+        m.add(f"PadjCorrUnit{suffix}", block.get("corr_unit_elasticity_with_possession"), places=3)
+
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))
     m.add("NPairsTotal", dig(div, primary, "n_pairs"))
@@ -774,6 +838,7 @@ def main() -> None:
     table_k_selection(load("cluster_selection"))
     table_cluster_membership()
     table_minutes_sensitivity(load("preprocess"), load("minutes_sensitivity"))
+    table_possession_adjustment(load("preprocess"))
 
     macros = build_macros()
     count = macros.write(config.RESULTS / "macros.tex")

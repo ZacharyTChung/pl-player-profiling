@@ -12,15 +12,16 @@ distinguished by defensive actions or, in the case of defenders, by the absence 
 positive at all. That an ordering exists is a real result. That it is a single ordering
 rather than a taxonomy is the limit the data now imposes.
 
-The evidence on how far to trust these divisions is unusually consistent. Bootstrap
-resampling, replication on an independent season and shrinkage toward the position mean are
-three different tests of three different failure modes, and they agree on which partitions
-hold. The midfield split survives all three. The defender and forward splits fail all
-three, and the forward split reaches an adjusted Rand index below zero in the least
-favourable bootstrap resample, meaning the partition recovered there was worse than a
-random relabelling. A reader who wants one sentence of practical guidance should take this
-one: use the global attacking involvement axis, and do not characterise an individual
-defender or forward by his within-group cluster.
+Bootstrap resampling, replication on an independent season and shrinkage toward the
+position mean test three different failure modes, and they do not return a single verdict.
+The midfield split passes all three. The defender split fails all three. The forward split
+fails two, reaching an adjusted Rand index below zero in the least favourable bootstrap
+resample, meaning the partition recovered there was worse than a random relabelling, while
+partly surviving shrinkage once defensive counts are corrected for possession. A reader who
+wants one sentence of practical guidance should take this one: use the global attacking
+involvement axis, treat the midfield split as usable, treat the forward split as suggestive
+at best given only \NFWPrimary{} eligible players, and do not characterise an individual
+defender by his within-group cluster.
 
 The goalkeeper analysis deserves separate emphasis because it failed for a reason worth
 recording. The partition that the selection rule returned explains more variance in team
@@ -56,10 +57,14 @@ the withdrawal cost.
 
 Season aggregates discard context: a tackle count does not say where the tackles happened,
 and an expected goals total does not distinguish six poor chances from two good ones.
-Nothing here is possession adjusted, which systematically inflates the defensive counts of
-players in teams that spend more time without the ball, and with team strength correlating
-strongly with the first principal component that is a real confound rather than a
-theoretical one. Per-90 rates remain noisy above the minutes threshold, which is why the
+The defensive counts are possession adjusted, using an elasticity measured from the data
+rather than the conventional assumption of direct proportionality, which
+Section~\ref{sec:results:padj} shows would have overcorrected badly. That removes the
+exposure confound from those three features, but it does not make the feature set
+team-neutral overall: the attacking statistics still scale with a team's own share of the
+ball, and the first principal component remains strongly related to team strength.
+Correcting both directions would require an instrument this data cannot supply, so the
+residual confound is acknowledged rather than solved. Per-90 rates remain noisy above the minutes threshold, which is why the
 shrinkage analysis matters and why its within-group verdict should be believed. Merging a
 second expected goals provider introduces a model whose assumptions differ from the one
 that produced the original values, and although we never mix the two sources for the same
@@ -91,8 +96,11 @@ would support the role drift analysis that was scoped out of this study, trackin
 player's profile moves between archetypes across a season rather than assuming a season is
 homogeneous. Extending to other leagues would test whether the two-cluster result is a
 property of the reduced feature set or of the Premier League specifically, and we expect the
-former. A more careful treatment of possession adjustment would address the confound
-between defensive volume and team strength directly. Finally, the empirical Bayes machinery
+former. Symmetric adjustment of the attacking statistics for a team's own possession would address
+the part of the team-strength confound that the present correction leaves untouched,
+although it needs an exposure model rather than a single elasticity, because a player's
+attacking opportunity depends on where his team uses the ball and not only on how much of
+it it has. Finally, the empirical Bayes machinery
 developed here is more broadly useful than the single use it is put to: any per-90 ranking
 computed over partial seasons is subject to the same problem, and most published ones do
 not correct for it.

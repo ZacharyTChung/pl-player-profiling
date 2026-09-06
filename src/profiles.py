@@ -113,7 +113,9 @@ RADAR_LABELS = {
     "xg_buildup_p90": "xGBuildup",
     "crosses_p90": "Crosses",
     "tackles_won_p90": "Tackles won",
+    "tackles_won_padj_p90": "Tackles won (adj)",
     "interceptions_p90": "Interceptions",
+    "interceptions_padj_p90": "Interceptions (adj)",
     "fouls_drawn_p90": "Fouls drawn",
 }
 
@@ -130,8 +132,11 @@ FEATURE_LABELS = {
     "assists_p90": "Assists/90",
     "crosses_p90": "Crosses/90",
     "interceptions_p90": "Interceptions/90",
+    "interceptions_padj_p90": "Interceptions/90 (adj)",
     "tackles_won_p90": "Tackles won/90",
+    "tackles_won_padj_p90": "Tackles won/90 (adj)",
     "fouls_committed_p90": "Fouls committed/90",
+    "fouls_committed_padj_p90": "Fouls committed/90 (adj)",
     "fouls_drawn_p90": "Fouls drawn/90",
     "offsides_p90": "Offsides/90",
     "cards_yellow_p90": "Yellow cards/90",
@@ -152,8 +157,11 @@ PROSE_LABELS = {
     "assists_p90": "assists per 90",
     "crosses_p90": "crosses per 90",
     "interceptions_p90": "interceptions per 90",
+    "interceptions_padj_p90": "interceptions per 90 (adj)",
     "tackles_won_p90": "tackles won per 90",
+    "tackles_won_padj_p90": "tackles won per 90 (adj)",
     "fouls_committed_p90": "fouls committed per 90",
+    "fouls_committed_padj_p90": "fouls committed per 90 (adj)",
     "fouls_drawn_p90": "fouls drawn per 90",
     "offsides_p90": "offsides per 90",
     "cards_yellow_p90": "yellow cards per 90",
@@ -204,7 +212,7 @@ ARCHETYPE_SUMMARIES = {
 CITED_PLAYERS = {
     "DF-0": ["Calvin Bassey", "Emmanuel Agbadou", "Jan Paul van Hecke", "Max Kilman"],
     "DF-1": ["Malo Gusto", "Djed Spence", "Pervis Estupiñán", "Milos Kerkez", "Reece James"],
-    "MF-0": ["Sam Morsy", "Kobbie Mainoo", "James Garner", "Wilfred Ndidi", "Lucas Bergvall"],
+    "MF-0": ["Sam Morsy", "Kobbie Mainoo", "James Garner", "Wilfred Ndidi", "Sandro Tonali"],
     "MF-1": [
         "Morgan Gibbs-White",
         "Dejan Kulusevski",
@@ -294,7 +302,7 @@ def _justify_df1(ctx: dict) -> str:
         f"positive. Key passes per 90 sit {_dev(c, 'key_passes_p90')} the defender mean, "
         f"assists per 90 {_dev(c, 'assists_p90')}, expected assists per 90 "
         f"{_dev(c, 'xa_p90')}, crosses per 90 {_dev(c, 'crosses_p90')} and shots per 90 "
-        f"{_dev(c, 'shots_p90')}, with tackles won per 90 also {_dev(c, 'tackles_won_p90')} "
+        f"{_dev(c, 'shots_p90')}, with possession adjusted tackles won also {_dev(c, 'tackles_won_padj_p90')} "
         "the mean. Because the deviations are one-sided this is the high involvement end of a "
         "single dominant contrast rather than a separate tactical instruction, and the players "
         f"it selects are full backs and wing backs: {_names(cited)} are the members closest to "
@@ -317,8 +325,8 @@ def _justify_mf0(ctx: dict) -> str:
         f"{_dev(c, 'np_xg_p90')}, shots per 90 {_dev(c, 'shots_p90')} and expected assists per "
         f"90 {_dev(c, 'xa_p90')}, and it is the only cluster in the study whose positive "
         "deviations are all defensive or disciplinary rather than attacking: interceptions per "
-        f"90 sit {_dev(c, 'interceptions_p90')} the midfield mean "
-        f"and tackles won per 90 {_dev(c, 'tackles_won_p90')} it. The negative attacking side "
+        f"90 sit {_dev(c, 'interceptions_padj_p90')} the midfield mean "
+        f"and tackles won per 90 {_dev(c, 'tackles_won_padj_p90')} it. The negative attacking side "
         "of the contrast is the larger part of it, which is why the name records the ball "
         "winning tilt second rather than first. The members closest to the centroid are "
         f"{_names(cited)}. This is the best supported of the three within-group splits: "
@@ -338,8 +346,8 @@ def _justify_mf1(ctx: dict) -> str:
         f"{_dev(c, 'np_xg_p90')} on non-penalty expected goals per 90, {_dev(c, 'shots_p90')} "
         f"on shots per 90, {_dev(c, 'xa_p90')} on expected assists per 90 and "
         f"{_dev(c, 'key_passes_p90')} on key passes per 90, while interceptions per 90 are "
-        f"{_dev(c, 'interceptions_p90')} the mean and tackles won per 90 "
-        f"{_dev(c, 'tackles_won_p90')} it. Shooting and creation load on the same side of the "
+        f"{_dev(c, 'interceptions_padj_p90')} the mean and tackles won per 90 "
+        f"{_dev(c, 'tackles_won_padj_p90')} it. Shooting and creation load on the same side of the "
         "split, which means the eighteen surviving features cannot separate a midfielder who "
         "scores from one who supplies, and no such distinction is claimed here. The members "
         f"closest to the centroid are {_names(cited)}, a set that mixes central attacking "

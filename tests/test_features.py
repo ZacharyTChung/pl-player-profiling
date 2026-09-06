@@ -87,7 +87,11 @@ def test_outfield_core_has_variance(season: str) -> None:
 
 
 def test_derived_feature_lists_are_consistent() -> None:
-    assert [f"{c}_p90" for c in F.OUTFIELD_COUNTS] + F.OUTFIELD_RATES == F.OUTFIELD_CORE
+    expected = [
+        f"{c}_padj_p90" if c in F.DEFENSIVE_COUNTS else f"{c}_p90" for c in F.OUTFIELD_COUNTS
+    ] + F.OUTFIELD_RATES
+    assert expected == F.OUTFIELD_CORE
+    assert [f"{c}_p90" for c in F.OUTFIELD_COUNTS] + F.OUTFIELD_RATES == F.OUTFIELD_CORE_RAW
     assert [f"{c}_p90" for c in F.KEEPER_COUNTS] + F.KEEPER_RATES == F.KEEPER_CORE
     assert len(set(F.OUTFIELD_CORE)) == len(F.OUTFIELD_CORE), "duplicate feature names"
 
@@ -122,3 +126,24 @@ def test_team_strength_columns_are_not_features() -> None:
     banned = {"team_points_per_match", "team_plus_minus_per90", "on_off"}
     assert not (set(F.OUTFIELD_CORE) & banned)
     assert banned <= set(F.CONTEXT_COLS)
+
+
+def test_defensive_counts_enter_possession_adjusted() -> None:
+    """Raw defensive rates must never reach the clustering feature set.
+
+    Their raw form confounds what a player does with how often his team is out of
+    possession, which tracks team strength, so admitting one would reintroduce exactly
+    the confound the adjustment exists to remove.
+    """
+    for count in F.DEFENSIVE_COUNTS:
+        assert f"{count}_padj_p90" in F.OUTFIELD_CORE
+        assert f"{count}_p90" not in F.OUTFIELD_CORE
+    for derived in (F.HEADLINE_METRICS, F.RADAR_AXES, F.NON_SHOOTING_FEATURES):
+        for count in F.DEFENSIVE_COUNTS:
+            assert f"{count}_p90" not in derived
+
+
+def test_attacking_counts_are_not_possession_adjusted() -> None:
+    """Only opponent-ball events are adjusted. Adjusting shooting would double count."""
+    for count in ("np_xg", "xa", "key_passes", "shots", "crosses", "offsides"):
+        assert f"{count}_padj_p90" not in F.OUTFIELD_CORE

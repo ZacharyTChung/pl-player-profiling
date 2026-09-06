@@ -112,6 +112,22 @@ def load_understat(season: str) -> pd.DataFrame:
     return out.drop(columns=["team", "player"])
 
 
+def load_team_possession(season: str) -> pd.DataFrame:
+    """Team possession share, needed to adjust defensive counts for exposure.
+
+    Possession survived the January 2026 withdrawal even though the touch counts it is
+    derived from did not, which is what makes the adjustment possible at all.
+    """
+    df = pd.read_parquet(config.DATA_RAW / season / "teams_standard.parquet")
+    if "Poss" not in df.columns:
+        raise KeyError(f"{season}: teams_standard has no Poss column")
+    out = df[["team", "Poss"]].rename(columns={"Poss": "team_possession"})
+    out["team_possession"] = pd.to_numeric(out["team_possession"], errors="coerce")
+    if out["team_possession"].isna().any():
+        raise ValueError(f"{season}: team possession is not fully populated")
+    return out
+
+
 # --------------------------------------------------------------------------------------
 # Cross-source matching
 # --------------------------------------------------------------------------------------
@@ -257,7 +273,13 @@ def aggregate_per_player(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
     out["_squads"] = 1
 
-    weighted = ["team_points_per_match", "team_plus_minus_per90", "on_off", "pct_squad_minutes"]
+    weighted = [
+        "team_points_per_match",
+        "team_plus_minus_per90",
+        "on_off",
+        "pct_squad_minutes",
+        "team_possession",
+    ]
     for col in weighted:
         out[f"_w_{col}"] = out[col] * out["minutes"]
 
@@ -302,6 +324,103 @@ def aggregate_per_player(df: pd.DataFrame) -> pd.DataFrame:
     res["goals_per_shot"] = np.where(res["shots"] > 0, res["goals"] / res["shots"], np.nan)
     res = res.rename(columns={"_squads": "n_squads"})
     return res
+
+
+def estimate_possession_elasticity(seasons: list[str]) -> dict:
+    """Fit how strongly team defensive volume actually responds to opponent possession.
+
+    The textbook possession adjustment multiplies a defensive rate by
+    ``reference / opponent_possession``, which assumes the rate is directly proportional
+    to time spent out of possession. That is an empirical claim, not a definition, and it
+    can be checked. Regressing log team defensive volume per ninety on log opponent
+    possession across the available team-seasons gives the elasticity: the percentage
+    change in defensive volume for a one percent change in opponent possession.
+
+    Estimating from team totals rather than player rates is deliberate. The quantity being
+    corrected is a team-level exposure effect, and player rates carry position and role
+    variation that would swamp it.
+
+    Pooling the seasons is also deliberate. Twenty clubs give a noisy slope, and the
+    exponent is a nuisance parameter rather than a target: it uses no player-level or
+    cluster-level information, so a shared value cannot manufacture the cross-season
+    agreement that the replication analysis measures.
+    """
+    frames = []
+    for season in seasons:
+        misc = pd.read_parquet(config.DATA_RAW / season / f"teams_{'misc'}.parquet")
+        std = pd.read_parquet(config.DATA_RAW / season / "teams_standard.parquet")
+        merged = misc.merge(std[["team", "Poss"]], on="team", how="inner")
+        merged["nineties"] = pd.to_numeric(merged["90s"], errors="coerce")
+        merged["opponent_possession"] = 100.0 - pd.to_numeric(merged["Poss"], errors="coerce")
+        for count, source in config.PADJ_TEAM_SOURCES.items():
+            merged[count] = pd.to_numeric(merged[source], errors="coerce") / merged["nineties"]
+        merged["season"] = season
+        frames.append(merged)
+    pooled = pd.concat(frames, ignore_index=True)
+
+    report: dict = {
+        "method": (
+            "ordinary least squares of log team defensive volume per ninety on log "
+            "opponent possession, pooled across team-seasons"
+        ),
+        "n_team_seasons": int(len(pooled)),
+        "opponent_possession_min": round(float(pooled["opponent_possession"].min()), 2),
+        "opponent_possession_max": round(float(pooled["opponent_possession"].max()), 2),
+        "per_feature": {},
+    }
+    alphas: dict[str, float] = {}
+    for count in config.PADJ_COUNTS:
+        sub = pooled[[count, "opponent_possession", "season"]].dropna()
+        sub = sub[(sub[count] > 0) & (sub["opponent_possession"] > 0)]
+        x = np.log(sub["opponent_possession"].to_numpy(dtype=float))
+        y = np.log(sub[count].to_numpy(dtype=float))
+        alpha, intercept = np.polyfit(x, y, 1)
+        by_season = {}
+        for season, grp in sub.groupby("season"):
+            xs = np.log(grp["opponent_possession"].to_numpy(dtype=float))
+            ys = np.log(grp[count].to_numpy(dtype=float))
+            by_season[str(season)] = round(float(np.polyfit(xs, ys, 1)[0]), 4)
+        alphas[count] = float(alpha)
+        report["per_feature"][count] = {
+            "elasticity": round(float(alpha), 4),
+            "elasticity_by_season": by_season,
+            "log_log_correlation": round(float(np.corrcoef(x, y)[0, 1]), 4),
+            "n": int(len(sub)),
+            "unit_elasticity_overcorrection_factor": round(1.0 / float(alpha), 2),
+        }
+    report["elasticities"] = {k: round(v, 4) for k, v in alphas.items()}
+    return {"alphas": alphas, "report": report}
+
+
+def possession_adjust(df: pd.DataFrame, alphas: dict[str, float]) -> pd.DataFrame:
+    """Rescale defensive per-90 counts to a common opponent-possession baseline.
+
+    Defensive actions require the opponent to have the ball, so their raw rate confounds
+    what a player does with how often his team is out of possession. Each count is
+    multiplied by ``(reference / opponent_possession) ** alpha``, where alpha is the
+    measured elasticity from :func:`estimate_possession_elasticity` rather than the
+    conventional 1.0. A player at a club with league-average possession is unchanged; the
+    rest are corrected toward what they would have recorded facing an average share of
+    the ball, by the amount the data says exposure actually matters.
+
+    The adjustment is applied to the per-90 rate, so the result is still a rate per ninety
+    minutes and remains directly comparable across players.
+    """
+    out = df.copy()
+    opponent = (100.0 - out["team_possession"]).clip(lower=config.PADJ_MIN_OPPONENT_POSSESSION)
+    ratio = config.PADJ_REFERENCE_POSSESSION / opponent
+    out["possession_exposure_ratio"] = ratio
+    for col, alpha in alphas.items():
+        raw = f"{col}_p90"
+        if raw not in out.columns:
+            continue
+        factor = ratio**alpha
+        out[f"{col}_padj_factor"] = factor
+        out[f"{col}_padj_p90"] = out[raw] * factor
+    # A single representative factor for reporting, using the mean fitted elasticity.
+    mean_alpha = float(np.mean(list(alphas.values()))) if alphas else 1.0
+    out["possession_adjustment_factor"] = ratio**mean_alpha
+    return out
 
 
 def to_per90(df: pd.DataFrame, counts: list[str]) -> pd.DataFrame:
@@ -369,18 +488,58 @@ def zscore(df: pd.DataFrame, cols: list[str], group: str | None = None) -> pd.Da
 # --------------------------------------------------------------------------------------
 
 
+def _padj_confound_report(eligible: pd.DataFrame, alphas: dict[str, float]) -> dict:
+    """Measure how much team dependence the adjustment actually removes.
+
+    Reports the correlation between each defensive rate and team possession before and
+    after adjustment, alongside the counterfactual under the conventional exponent of
+    one. The counterfactual is the evidence that direct proportionality overcorrects.
+    """
+    ratio = eligible["possession_exposure_ratio"]
+    possession = eligible["team_possession"]
+    out = {}
+    for count, alpha in alphas.items():
+        raw_col, adj_col = f"{count}_p90", f"{count}_padj_p90"
+        if raw_col not in eligible.columns:
+            continue
+        unit = eligible[raw_col] * ratio**config.PADJ_UNIT_ELASTICITY
+        out[count] = {
+            "elasticity_used": round(float(alpha), 4),
+            "corr_raw_with_possession": round(float(eligible[raw_col].corr(possession)), 4),
+            "corr_adjusted_with_possession": round(float(eligible[adj_col].corr(possession)), 4),
+            "corr_unit_elasticity_with_possession": round(float(unit.corr(possession)), 4),
+        }
+    return out
+
+
 def build_season(season: str) -> dict:
     fb = load_fbref_canonical(season)
     us = load_understat(season)
     merged, match_report = match_understat(fb, us)
     merged = parse_positions(merged)
 
+    possession = load_team_possession(season)
+    merged = merged.merge(possession, on="team", how="left")
+    unmatched_teams = sorted(merged.loc[merged["team_possession"].isna(), "team"].unique())
+    if unmatched_teams:
+        raise KeyError(f"{season}: no team possession for {unmatched_teams}")
+
     per_squad = merged.copy()
     per_squad["nineties"] = per_squad["minutes"] / 90.0
     per_squad = to_per90(per_squad, F.OUTFIELD_COUNTS)
+    elasticity = estimate_possession_elasticity(config.SEASONS)
+    alphas = (
+        elasticity["alphas"]
+        if config.PADJ_ELASTICITY_MODE == "estimated"
+        else dict.fromkeys(config.PADJ_COUNTS, config.PADJ_UNIT_ELASTICITY)
+    )
+    per_squad = possession_adjust(per_squad, alphas)
 
+    # Possession is minutes-weighted across clubs for movers, so the adjustment reflects
+    # the share of the ball a player actually played in front of.
     aggregated = aggregate_per_player(merged)
     aggregated = to_per90(aggregated, F.OUTFIELD_COUNTS)
+    aggregated = possession_adjust(aggregated, alphas)
 
     outfield = aggregated[aggregated["position_group"].isin(config.OUTFIELD_GROUPS)].copy()
     miss = missingness_report(outfield, F.OUTFIELD_CORE)
@@ -422,6 +581,26 @@ def build_season(season: str) -> dict:
         "imputed_cells": imputed,
         "minutes_threshold": config.MIN_MINUTES,
         "minutes_sensitivity_counts": sensitivity,
+        "possession_adjustment": {
+            "reference_possession": config.PADJ_REFERENCE_POSSESSION,
+            "adjusted_counts": list(config.PADJ_COUNTS),
+            "elasticity_mode": config.PADJ_ELASTICITY_MODE,
+            "elasticity": elasticity["report"],
+            "team_possession_min": round(float(possession["team_possession"].min()), 2),
+            "team_possession_max": round(float(possession["team_possession"].max()), 2),
+            "team_possession_mean": round(float(possession["team_possession"].mean()), 2),
+            "factor_min": round(float(eligible["possession_adjustment_factor"].min()), 4),
+            "factor_max": round(float(eligible["possession_adjustment_factor"].max()), 4),
+            "factor_mean": round(float(eligible["possession_adjustment_factor"].mean()), 4),
+            "confound_removal": _padj_confound_report(eligible, alphas),
+            "note": (
+                "Factor is the exposure ratio, the reference opponent possession divided "
+                "by the actual one, raised to the fitted elasticity. A value above one "
+                "belongs to a player whose team had more of the ball than average and "
+                "whose raw defensive counts therefore understate his rate of action per "
+                "opportunity."
+            ),
+        },
     }
 
 

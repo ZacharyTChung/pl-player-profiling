@@ -129,8 +129,8 @@ HYBRID_STAT_COLS = [
     "key_passes_p90",
     "xg_buildup_p90",
     "crosses_p90",
-    "tackles_won_p90",
-    "interceptions_p90",
+    "tackles_won_padj_p90",
+    "interceptions_padj_p90",
 ]
 
 

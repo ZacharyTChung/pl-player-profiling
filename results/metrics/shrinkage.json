@@ -51,7 +51,7 @@
           },
           "FW": {
             "features_with_zero_between_player_variance": [
-              "interceptions_p90",
+              "interceptions_padj_p90",
               "cards_yellow_p90"
             ],
             "meaning": "The moment regression attributes all observed spread in this feature to sampling noise, so every player in the group receives the group mean and the feature becomes constant within the group. It then carries no within-group information at all after re-standardisation."
@@ -219,52 +219,52 @@
                 "mean_squared_deviation": 2.623197
               }
             },
-            "interceptions_p90": {
+            "interceptions_padj_p90": {
               "exposure": "nineties",
               "n_pool": 170,
-              "mu": 0.986595,
-              "tau_squared": 0.076985,
-              "kappa": 1.000916,
+              "mu": 0.990092,
+              "tau_squared": 0.079375,
+              "kappa": 0.94863,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.986595,
+              "plugin_kappa": 0.990092,
               "median_exposure": 15.556,
-              "reliability_at_median_exposure": 0.5447,
+              "reliability_at_median_exposure": 0.5655,
               "diagnostics": {
-                "ols_intercept": 0.076985,
-                "ols_slope": 1.000916,
-                "mean_squared_deviation": 0.237386
+                "ols_intercept": 0.079375,
+                "ols_slope": 0.94863,
+                "mean_squared_deviation": 0.229288
               }
             },
-            "tackles_won_p90": {
+            "tackles_won_padj_p90": {
               "exposure": "nineties",
               "n_pool": 170,
-              "mu": 1.069644,
-              "tau_squared": 0.106767,
-              "kappa": 1.694507,
+              "mu": 1.073932,
+              "tau_squared": 0.123552,
+              "kappa": 1.515388,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.069644,
+              "plugin_kappa": 1.073932,
               "median_exposure": 15.556,
-              "reliability_at_median_exposure": 0.495,
+              "reliability_at_median_exposure": 0.5591,
               "diagnostics": {
-                "ols_intercept": 0.106767,
-                "ols_slope": 1.694507,
-                "mean_squared_deviation": 0.387745
+                "ols_intercept": 0.123552,
+                "ols_slope": 1.515388,
+                "mean_squared_deviation": 0.372967
               }
             },
-            "fouls_committed_p90": {
+            "fouls_committed_padj_p90": {
               "exposure": "nineties",
               "n_pool": 170,
-              "mu": 0.833592,
-              "tau_squared": 0.069032,
-              "kappa": 0.966594,
+              "mu": 0.836905,
+              "tau_squared": 0.074752,
+              "kappa": 0.955144,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.833592,
+              "plugin_kappa": 0.836905,
               "median_exposure": 15.556,
-              "reliability_at_median_exposure": 0.5263,
+              "reliability_at_median_exposure": 0.549,
               "diagnostics": {
-                "ols_intercept": 0.069032,
-                "ols_slope": 0.966594,
-                "mean_squared_deviation": 0.194425
+                "ols_intercept": 0.074752,
+                "ols_slope": 0.955144,
+                "mean_squared_deviation": 0.198771
               }
             },
             "fouls_drawn_p90": {
@@ -509,52 +509,52 @@
                 "mean_squared_deviation": 3.315088
               }
             },
-            "interceptions_p90": {
+            "interceptions_padj_p90": {
               "exposure": "nineties",
               "n_pool": 218,
-              "mu": 0.736275,
-              "tau_squared": 0.118632,
-              "kappa": 1.064712,
+              "mu": 0.734174,
+              "tau_squared": 0.121159,
+              "kappa": 0.975534,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.736275,
+              "plugin_kappa": 0.734174,
               "median_exposure": 17.194,
-              "reliability_at_median_exposure": 0.657,
+              "reliability_at_median_exposure": 0.6811,
               "diagnostics": {
-                "ols_intercept": 0.118632,
-                "ols_slope": 1.064712,
-                "mean_squared_deviation": 0.265884
+                "ols_intercept": 0.121159,
+                "ols_slope": 0.975534,
+                "mean_squared_deviation": 0.256876
               }
             },
-            "tackles_won_p90": {
+            "tackles_won_padj_p90": {
               "exposure": "nineties",
               "n_pool": 218,
-              "mu": 1.168324,
-              "tau_squared": 0.175733,
-              "kappa": 2.143691,
+              "mu": 1.16614,
+              "tau_squared": 0.171136,
+              "kappa": 2.195346,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.168324,
+              "plugin_kappa": 1.16614,
               "median_exposure": 17.194,
-              "reliability_at_median_exposure": 0.585,
+              "reliability_at_median_exposure": 0.5727,
               "diagnostics": {
-                "ols_intercept": 0.175733,
-                "ols_slope": 2.143691,
-                "mean_squared_deviation": 0.48602
+                "ols_intercept": 0.171136,
+                "ols_slope": 2.195346,
+                "mean_squared_deviation": 0.490565
               }
             },
-            "fouls_committed_p90": {
+            "fouls_committed_padj_p90": {
               "exposure": "nineties",
               "n_pool": 218,
-              "mu": 1.289091,
-              "tau_squared": 0.174015,
-              "kappa": 2.308741,
+              "mu": 1.287882,
+              "tau_squared": 0.16599,
+              "kappa": 2.400647,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.289091,
+              "plugin_kappa": 1.287882,
               "median_exposure": 17.194,
-              "reliability_at_median_exposure": 0.5645,
+              "reliability_at_median_exposure": 0.5431,
               "diagnostics": {
-                "ols_intercept": 0.174015,
-                "ols_slope": 2.308741,
-                "mean_squared_deviation": 0.509051
+                "ols_intercept": 0.16599,
+                "ols_slope": 2.400647,
+                "mean_squared_deviation": 0.515201
               }
             },
             "fouls_drawn_p90": {
@@ -799,52 +799,52 @@
                 "mean_squared_deviation": 2.223809
               }
             },
-            "interceptions_p90": {
+            "interceptions_padj_p90": {
               "exposure": "nineties",
               "n_pool": 68,
-              "mu": 0.221213,
+              "mu": 0.226218,
               "tau_squared": 0.0,
-              "kappa": 0.578496,
+              "kappa": 0.687479,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.221213,
+              "plugin_kappa": 0.226218,
               "median_exposure": 12.128,
               "reliability_at_median_exposure": 0.0,
               "diagnostics": {
-                "ols_intercept": -0.012185,
-                "ols_slope": 0.578496,
-                "mean_squared_deviation": 0.102967
+                "ols_intercept": -0.015706,
+                "ols_slope": 0.687479,
+                "mean_squared_deviation": 0.10923
               }
             },
-            "tackles_won_p90": {
+            "tackles_won_padj_p90": {
               "exposure": "nineties",
               "n_pool": 68,
-              "mu": 0.511746,
-              "tau_squared": 0.027454,
-              "kappa": 1.137747,
+              "mu": 0.521828,
+              "tau_squared": 0.040425,
+              "kappa": 1.040737,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.511746,
+              "plugin_kappa": 0.521828,
               "median_exposure": 12.128,
-              "reliability_at_median_exposure": 0.2264,
+              "reliability_at_median_exposure": 0.3202,
               "diagnostics": {
-                "ols_intercept": 0.027454,
-                "ols_slope": 1.137747,
-                "mean_squared_deviation": 0.453794
+                "ols_intercept": 0.040425,
+                "ols_slope": 1.040737,
+                "mean_squared_deviation": 0.459493
               }
             },
-            "fouls_committed_p90": {
+            "fouls_committed_padj_p90": {
               "exposure": "nineties",
               "n_pool": 68,
-              "mu": 1.194753,
-              "tau_squared": 0.151243,
-              "kappa": 3.010471,
+              "mu": 1.200121,
+              "tau_squared": 0.148938,
+              "kappa": 2.90543,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.194753,
+              "plugin_kappa": 1.200121,
               "median_exposure": 12.128,
-              "reliability_at_median_exposure": 0.3786,
+              "reliability_at_median_exposure": 0.3834,
               "diagnostics": {
-                "ols_intercept": 0.151243,
-                "ols_slope": 3.010471,
-                "mean_squared_deviation": 0.766291
+                "ols_intercept": 0.148938,
+                "ols_slope": 2.90543,
+                "mean_squared_deviation": 0.736773
               }
             },
             "fouls_drawn_p90": {
@@ -932,9 +932,9 @@
       },
       "shrinkage_summary": {
         "n_players": 366,
-        "mean_shrinkage_weight": 0.5578,
-        "min_player_mean_weight": 0.3205,
-        "max_player_mean_weight": 0.72,
+        "mean_shrinkage_weight": 0.5604,
+        "min_player_mean_weight": 0.3238,
+        "max_player_mean_weight": 0.7195,
         "by_feature": {
           "np_xg_p90": {
             "mean_weight": 0.6207,
@@ -996,23 +996,23 @@
             "max_weight": 0.9866,
             "mean_abs_change": 0.07312
           },
-          "interceptions_p90": {
-            "mean_weight": 0.5374,
+          "interceptions_padj_p90": {
+            "mean_weight": 0.5557,
             "min_weight": 0.0,
-            "max_weight": 0.8087,
-            "mean_abs_change": 0.12865
+            "max_weight": 0.8249,
+            "mean_abs_change": 0.12125
           },
-          "tackles_won_p90": {
-            "mean_weight": 0.527,
-            "min_weight": 0.1087,
-            "max_weight": 0.7567,
-            "mean_abs_change": 0.18523
+          "tackles_won_padj_p90": {
+            "mean_weight": 0.5569,
+            "min_weight": 0.1641,
+            "max_weight": 0.756,
+            "mean_abs_change": 0.17626
           },
-          "fouls_committed_p90": {
-            "mean_weight": 0.5498,
-            "min_weight": 0.2025,
-            "max_weight": 0.7409,
-            "mean_abs_change": 0.18801
+          "fouls_committed_padj_p90": {
+            "mean_weight": 0.5483,
+            "min_weight": 0.2058,
+            "max_weight": 0.7484,
+            "mean_abs_change": 0.18968
           },
           "fouls_drawn_p90": {
             "mean_weight": 0.7275,
@@ -1092,17 +1092,17 @@
             "k_original_from_rule": 2,
             "k_shrunken_from_rule": 2,
             "k_changed": false,
-            "adjusted_rand_index": 0.713,
-            "n_changed": 14,
-            "pct_changed": 7.73,
+            "adjusted_rand_index": 0.7704,
+            "n_changed": 11,
+            "pct_changed": 6.08,
             "verdict": "partly_survives",
             "cluster_sizes_original": {
-              "0": 94,
-              "1": 87
+              "0": 100,
+              "1": 81
             },
             "cluster_sizes_shrunken": {
-              "0": 108,
-              "1": 73
+              "0": 111,
+              "1": 70
             }
           },
           "FW": {
@@ -1111,17 +1111,17 @@
             "k_original_from_rule": 2,
             "k_shrunken_from_rule": 2,
             "k_changed": false,
-            "adjusted_rand_index": 0.4424,
-            "n_changed": 8,
-            "pct_changed": 16.33,
-            "verdict": "dissolves",
+            "adjusted_rand_index": 0.6261,
+            "n_changed": 5,
+            "pct_changed": 10.2,
+            "verdict": "partly_survives",
             "cluster_sizes_original": {
               "0": 30,
               "1": 19
             },
             "cluster_sizes_shrunken": {
-              "0": 22,
-              "1": 27
+              "0": 25,
+              "1": 24
             }
           }
         },
@@ -1130,27 +1130,27 @@
             "n": 70,
             "n_changed_global": 2,
             "pct_changed_global": 2.86,
-            "n_changed_within_group": 10,
-            "pct_changed_within_group": 14.29,
-            "mean_shrinkage_weight": 0.4148,
+            "n_changed_within_group": 7,
+            "pct_changed_within_group": 10.0,
+            "mean_shrinkage_weight": 0.4169,
             "median_minutes": 696.0
           },
           "900-1500": {
             "n": 76,
             "n_changed_global": 2,
             "pct_changed_global": 2.63,
-            "n_changed_within_group": 9,
-            "pct_changed_within_group": 11.84,
-            "mean_shrinkage_weight": 0.5067,
+            "n_changed_within_group": 8,
+            "pct_changed_within_group": 10.53,
+            "mean_shrinkage_weight": 0.51,
             "median_minutes": 1162.5
           },
           "1500-2200": {
             "n": 93,
             "n_changed_global": 1,
             "pct_changed_global": 1.08,
-            "n_changed_within_group": 10,
-            "pct_changed_within_group": 10.75,
-            "mean_shrinkage_weight": 0.591,
+            "n_changed_within_group": 8,
+            "pct_changed_within_group": 8.6,
+            "mean_shrinkage_weight": 0.5933,
             "median_minutes": 1842.0
           },
           "2200+": {
@@ -1159,7 +1159,7 @@
             "pct_changed_global": 0.0,
             "n_changed_within_group": 14,
             "pct_changed_within_group": 11.02,
-            "mean_shrinkage_weight": 0.6429,
+            "mean_shrinkage_weight": 0.6455,
             "median_minutes": 2743.0
           }
         },
@@ -1175,7 +1175,7 @@
             "player": "Diego G\u00f3mez",
             "position_group": "MF",
             "minutes": 516,
-            "mean_shrinkage_weight": 0.3898,
+            "mean_shrinkage_weight": 0.3896,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1183,7 +1183,7 @@
             "player": "Oleksandr Zinchenko",
             "position_group": "DF",
             "minutes": 527,
-            "mean_shrinkage_weight": 0.356,
+            "mean_shrinkage_weight": 0.361,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1191,7 +1191,7 @@
             "player": "Nico O'Reilly",
             "position_group": "DF",
             "minutes": 528,
-            "mean_shrinkage_weight": 0.3551,
+            "mean_shrinkage_weight": 0.3602,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1199,31 +1199,7 @@
             "player": "Abdul Fatawu Issahaku",
             "position_group": "MF",
             "minutes": 579,
-            "mean_shrinkage_weight": 0.413,
-            "changed_global_cluster": false,
-            "changed_within_group_cluster": true
-          },
-          {
-            "player": "Hwang Hee-chan",
-            "position_group": "MF",
-            "minutes": 661,
-            "mean_shrinkage_weight": 0.4349,
-            "changed_global_cluster": false,
-            "changed_within_group_cluster": true
-          },
-          {
-            "player": "Bobby De Cordova-Reid",
-            "position_group": "MF",
-            "minutes": 744,
-            "mean_shrinkage_weight": 0.458,
-            "changed_global_cluster": false,
-            "changed_within_group_cluster": true
-          },
-          {
-            "player": "Niclas F\u00fcllkrug",
-            "position_group": "FW",
-            "minutes": 790,
-            "mean_shrinkage_weight": 0.4035,
+            "mean_shrinkage_weight": 0.4128,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1231,7 +1207,7 @@
             "player": "Aaron Cresswell",
             "position_group": "DF",
             "minutes": 824,
-            "mean_shrinkage_weight": 0.4243,
+            "mean_shrinkage_weight": 0.4301,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1239,7 +1215,7 @@
             "player": "Kostas Tsimikas",
             "position_group": "DF",
             "minutes": 837,
-            "mean_shrinkage_weight": 0.4262,
+            "mean_shrinkage_weight": 0.432,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1247,7 +1223,7 @@
             "player": "Wilson Odobert",
             "position_group": "FW",
             "minutes": 850,
-            "mean_shrinkage_weight": 0.4113,
+            "mean_shrinkage_weight": 0.4162,
             "changed_global_cluster": true,
             "changed_within_group_cluster": false
           },
@@ -1255,7 +1231,7 @@
             "player": "Kasey McAteer",
             "position_group": "MF",
             "minutes": 852,
-            "mean_shrinkage_weight": 0.4856,
+            "mean_shrinkage_weight": 0.4853,
             "changed_global_cluster": true,
             "changed_within_group_cluster": false
           },
@@ -1263,7 +1239,7 @@
             "player": "Tariq Lamptey",
             "position_group": "DF",
             "minutes": 860,
-            "mean_shrinkage_weight": 0.4318,
+            "mean_shrinkage_weight": 0.4377,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1271,7 +1247,7 @@
             "player": "\u00c1lex Moreno",
             "position_group": "DF",
             "minutes": 955,
-            "mean_shrinkage_weight": 0.4486,
+            "mean_shrinkage_weight": 0.4545,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1279,7 +1255,7 @@
             "player": "Riccardo Calafiori",
             "position_group": "DF",
             "minutes": 983,
-            "mean_shrinkage_weight": 0.4556,
+            "mean_shrinkage_weight": 0.4615,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -1287,7 +1263,31 @@
             "player": "Vladim\u00edr Coufal",
             "position_group": "DF",
             "minutes": 1067,
-            "mean_shrinkage_weight": 0.4668,
+            "mean_shrinkage_weight": 0.4728,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Marshall Munetsi",
+            "position_group": "MF",
+            "minutes": 1078,
+            "mean_shrinkage_weight": 0.5312,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Luke Thomas",
+            "position_group": "DF",
+            "minutes": 1110,
+            "mean_shrinkage_weight": 0.4777,
+            "changed_global_cluster": false,
+            "changed_within_group_cluster": true
+          },
+          {
+            "player": "Darwin N\u00fa\u00f1ez",
+            "position_group": "FW",
+            "minutes": 1133,
+            "mean_shrinkage_weight": 0.4771,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           }
@@ -1300,7 +1300,7 @@
         "verdict_within_group": {
           "DF": "dissolves",
           "MF": "partly_survives",
-          "FW": "dissolves"
+          "FW": "partly_survives"
         },
         "verdict": "survives"
       }
@@ -1498,52 +1498,52 @@
                 "mean_squared_deviation": 2.31838
               }
             },
-            "interceptions_p90": {
+            "interceptions_padj_p90": {
               "exposure": "nineties",
               "n_pool": 161,
-              "mu": 1.008296,
-              "tau_squared": 0.079694,
-              "kappa": 0.960984,
+              "mu": 1.013441,
+              "tau_squared": 0.070237,
+              "kappa": 1.208194,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.008296,
+              "plugin_kappa": 1.013441,
               "median_exposure": 18.622,
-              "reliability_at_median_exposure": 0.607,
+              "reliability_at_median_exposure": 0.5198,
               "diagnostics": {
-                "ols_intercept": 0.079694,
-                "ols_slope": 0.960984,
-                "mean_squared_deviation": 0.181694
+                "ols_intercept": 0.070237,
+                "ols_slope": 1.208194,
+                "mean_squared_deviation": 0.195968
               }
             },
-            "tackles_won_p90": {
+            "tackles_won_padj_p90": {
               "exposure": "nineties",
               "n_pool": 161,
-              "mu": 1.016285,
-              "tau_squared": 0.107478,
-              "kappa": 1.052055,
+              "mu": 1.021195,
+              "tau_squared": 0.111729,
+              "kappa": 1.054708,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.016285,
+              "plugin_kappa": 1.021195,
               "median_exposure": 18.622,
-              "reliability_at_median_exposure": 0.6555,
+              "reliability_at_median_exposure": 0.6636,
               "diagnostics": {
-                "ols_intercept": 0.107478,
-                "ols_slope": 1.052055,
-                "mean_squared_deviation": 0.238389
+                "ols_intercept": 0.111729,
+                "ols_slope": 1.054708,
+                "mean_squared_deviation": 0.243779
               }
             },
-            "fouls_committed_p90": {
+            "fouls_committed_padj_p90": {
               "exposure": "nineties",
               "n_pool": 161,
-              "mu": 0.89778,
-              "tau_squared": 0.037192,
-              "kappa": 1.559819,
+              "mu": 0.901349,
+              "tau_squared": 0.040975,
+              "kappa": 1.578581,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.89778,
+              "plugin_kappa": 0.901349,
               "median_exposure": 18.622,
-              "reliability_at_median_exposure": 0.3075,
+              "reliability_at_median_exposure": 0.3259,
               "diagnostics": {
-                "ols_intercept": 0.037192,
-                "ols_slope": 1.559819,
-                "mean_squared_deviation": 0.23215
+                "ols_intercept": 0.040975,
+                "ols_slope": 1.578581,
+                "mean_squared_deviation": 0.233828
               }
             },
             "fouls_drawn_p90": {
@@ -1788,52 +1788,52 @@
                 "mean_squared_deviation": 3.040335
               }
             },
-            "interceptions_p90": {
+            "interceptions_padj_p90": {
               "exposure": "nineties",
               "n_pool": 208,
-              "mu": 0.778085,
-              "tau_squared": 0.138824,
-              "kappa": 0.480263,
+              "mu": 0.778543,
+              "tau_squared": 0.136567,
+              "kappa": 0.489724,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.778085,
+              "plugin_kappa": 0.778543,
               "median_exposure": 16.706,
-              "reliability_at_median_exposure": 0.8284,
+              "reliability_at_median_exposure": 0.8233,
               "diagnostics": {
-                "ols_intercept": 0.138824,
-                "ols_slope": 0.480263,
-                "mean_squared_deviation": 0.198832
+                "ols_intercept": 0.136567,
+                "ols_slope": 0.489724,
+                "mean_squared_deviation": 0.198
               }
             },
-            "tackles_won_p90": {
+            "tackles_won_padj_p90": {
               "exposure": "nineties",
               "n_pool": 208,
-              "mu": 1.091217,
-              "tau_squared": 0.203289,
-              "kappa": 0.673145,
+              "mu": 1.089555,
+              "tau_squared": 0.193759,
+              "kappa": 0.666337,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.091217,
+              "plugin_kappa": 1.089555,
               "median_exposure": 16.706,
-              "reliability_at_median_exposure": 0.8346,
+              "reliability_at_median_exposure": 0.8293,
               "diagnostics": {
-                "ols_intercept": 0.203289,
-                "ols_slope": 0.673145,
-                "mean_squared_deviation": 0.290634
+                "ols_intercept": 0.193759,
+                "ols_slope": 0.666337,
+                "mean_squared_deviation": 0.280204
               }
             },
-            "fouls_committed_p90": {
+            "fouls_committed_padj_p90": {
               "exposure": "nineties",
               "n_pool": 208,
-              "mu": 1.159313,
-              "tau_squared": 0.123632,
-              "kappa": 1.856076,
+              "mu": 1.160695,
+              "tau_squared": 0.124664,
+              "kappa": 1.818129,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.159313,
+              "plugin_kappa": 1.160695,
               "median_exposure": 16.706,
-              "reliability_at_median_exposure": 0.5267,
+              "reliability_at_median_exposure": 0.5339,
               "diagnostics": {
-                "ols_intercept": 0.123632,
-                "ols_slope": 1.856076,
-                "mean_squared_deviation": 0.342716
+                "ols_intercept": 0.124664,
+                "ols_slope": 1.818129,
+                "mean_squared_deviation": 0.340709
               }
             },
             "fouls_drawn_p90": {
@@ -2078,52 +2078,52 @@
                 "mean_squared_deviation": 3.269789
               }
             },
-            "interceptions_p90": {
+            "interceptions_padj_p90": {
               "exposure": "nineties",
               "n_pool": 69,
-              "mu": 0.236888,
-              "tau_squared": 0.011402,
-              "kappa": 0.264618,
+              "mu": 0.236812,
+              "tau_squared": 0.012813,
+              "kappa": 0.230461,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.236888,
+              "plugin_kappa": 0.236812,
               "median_exposure": 12.944,
-              "reliability_at_median_exposure": 0.358,
+              "reliability_at_median_exposure": 0.4185,
               "diagnostics": {
-                "ols_intercept": 0.011402,
-                "ols_slope": 0.264618,
-                "mean_squared_deviation": 0.049983
+                "ols_intercept": 0.012813,
+                "ols_slope": 0.230461,
+                "mean_squared_deviation": 0.04698
               }
             },
-            "tackles_won_p90": {
+            "tackles_won_padj_p90": {
               "exposure": "nineties",
               "n_pool": 69,
-              "mu": 0.504408,
-              "tau_squared": 0.061847,
-              "kappa": 1.152885,
+              "mu": 0.507732,
+              "tau_squared": 0.062257,
+              "kappa": 1.100165,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 0.504408,
+              "plugin_kappa": 0.507732,
               "median_exposure": 12.944,
-              "reliability_at_median_exposure": 0.4098,
+              "reliability_at_median_exposure": 0.4228,
               "diagnostics": {
-                "ols_intercept": 0.061847,
-                "ols_slope": 1.152885,
-                "mean_squared_deviation": 0.21589
+                "ols_intercept": 0.062257,
+                "ols_slope": 1.100165,
+                "mean_squared_deviation": 0.209539
               }
             },
-            "fouls_committed_p90": {
+            "fouls_committed_padj_p90": {
               "exposure": "nineties",
               "n_pool": 69,
-              "mu": 1.336578,
-              "tau_squared": 0.207801,
-              "kappa": 1.627938,
+              "mu": 1.335031,
+              "tau_squared": 0.181928,
+              "kappa": 1.803041,
               "kappa_source": "moment_regression",
-              "plugin_kappa": 1.336578,
+              "plugin_kappa": 1.335031,
               "median_exposure": 12.944,
-              "reliability_at_median_exposure": 0.623,
+              "reliability_at_median_exposure": 0.5664,
               "diagnostics": {
-                "ols_intercept": 0.207801,
-                "ols_slope": 1.627938,
-                "mean_squared_deviation": 0.450508
+                "ols_intercept": 0.181928,
+                "ols_slope": 1.803041,
+                "mean_squared_deviation": 0.447808
               }
             },
             "fouls_drawn_p90": {
@@ -2211,8 +2211,8 @@
       },
       "shrinkage_summary": {
         "n_players": 372,
-        "mean_shrinkage_weight": 0.6303,
-        "min_player_mean_weight": 0.3086,
+        "mean_shrinkage_weight": 0.6292,
+        "min_player_mean_weight": 0.3084,
         "max_player_mean_weight": 0.8306,
         "by_feature": {
           "np_xg_p90": {
@@ -2275,23 +2275,23 @@
             "max_weight": 0.9902,
             "mean_abs_change": 0.06
           },
-          "interceptions_p90": {
-            "mean_weight": 0.6811,
-            "min_weight": 0.1913,
-            "max_weight": 0.9164,
-            "mean_abs_change": 0.08962
+          "interceptions_padj_p90": {
+            "mean_weight": 0.6571,
+            "min_weight": 0.2333,
+            "max_weight": 0.9136,
+            "mean_abs_change": 0.10003
           },
-          "tackles_won_p90": {
-            "mean_weight": 0.7084,
-            "min_weight": 0.2275,
-            "max_weight": 0.9197,
-            "mean_abs_change": 0.10075
+          "tackles_won_padj_p90": {
+            "mean_weight": 0.7106,
+            "min_weight": 0.237,
+            "max_weight": 0.9169,
+            "mean_abs_change": 0.10092
           },
-          "fouls_committed_p90": {
-            "mean_weight": 0.4747,
-            "min_weight": 0.1109,
-            "max_weight": 0.8232,
-            "mean_abs_change": 0.18719
+          "fouls_committed_padj_p90": {
+            "mean_weight": 0.477,
+            "min_weight": 0.1196,
+            "max_weight": 0.7863,
+            "mean_abs_change": 0.18765
           },
           "fouls_drawn_p90": {
             "mean_weight": 0.7578,
@@ -2333,13 +2333,13 @@
             "k_original_from_rule": 2,
             "k_shrunken_from_rule": 2,
             "k_changed": false,
-            "adjusted_rand_index": 0.8434,
-            "n_changed": 15,
-            "pct_changed": 4.03,
+            "adjusted_rand_index": 0.8335,
+            "n_changed": 16,
+            "pct_changed": 4.3,
             "verdict": "survives",
             "cluster_sizes_original": {
-              "0": 247,
-              "1": 125
+              "0": 246,
+              "1": 126
             },
             "cluster_sizes_shrunken": {
               "0": 240,
@@ -2371,13 +2371,13 @@
             "k_original_from_rule": 2,
             "k_shrunken_from_rule": 2,
             "k_changed": false,
-            "adjusted_rand_index": 0.9776,
-            "n_changed": 1,
-            "pct_changed": 0.56,
+            "adjusted_rand_index": 0.9555,
+            "n_changed": 2,
+            "pct_changed": 1.12,
             "verdict": "survives",
             "cluster_sizes_original": {
-              "0": 105,
-              "1": 74
+              "0": 106,
+              "1": 73
             },
             "cluster_sizes_shrunken": {
               "0": 106,
@@ -2407,11 +2407,11 @@
         "by_minutes_bin": {
           "450-900": {
             "n": 56,
-            "n_changed_global": 2,
-            "pct_changed_global": 3.57,
+            "n_changed_global": 3,
+            "pct_changed_global": 5.36,
             "n_changed_within_group": 4,
             "pct_changed_within_group": 7.14,
-            "mean_shrinkage_weight": 0.4762,
+            "mean_shrinkage_weight": 0.475,
             "median_minutes": 681.0
           },
           "900-1500": {
@@ -2420,16 +2420,16 @@
             "pct_changed_global": 9.28,
             "n_changed_within_group": 9,
             "pct_changed_within_group": 9.28,
-            "mean_shrinkage_weight": 0.5818,
+            "mean_shrinkage_weight": 0.5806,
             "median_minutes": 1173.0
           },
           "1500-2200": {
             "n": 103,
             "n_changed_global": 3,
             "pct_changed_global": 2.91,
-            "n_changed_within_group": 4,
-            "pct_changed_within_group": 3.88,
-            "mean_shrinkage_weight": 0.6582,
+            "n_changed_within_group": 5,
+            "pct_changed_within_group": 4.85,
+            "mean_shrinkage_weight": 0.6572,
             "median_minutes": 1814.0
           },
           "2200+": {
@@ -2438,7 +2438,7 @@
             "pct_changed_global": 0.86,
             "n_changed_within_group": 6,
             "pct_changed_within_group": 5.17,
-            "mean_shrinkage_weight": 0.7204,
+            "mean_shrinkage_weight": 0.7195,
             "median_minutes": 2788.5
           }
         },
@@ -2454,7 +2454,7 @@
             "player": "Wilfried Gnonto",
             "position_group": "FW",
             "minutes": 537,
-            "mean_shrinkage_weight": 0.3117,
+            "mean_shrinkage_weight": 0.3116,
             "changed_global_cluster": true,
             "changed_within_group_cluster": false
           },
@@ -2470,7 +2470,7 @@
             "player": "Joshua Zirkzee",
             "position_group": "FW",
             "minutes": 626,
-            "mean_shrinkage_weight": 0.3527,
+            "mean_shrinkage_weight": 0.3528,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -2478,15 +2478,23 @@
             "player": "Joshua Acheampong",
             "position_group": "DF",
             "minutes": 666,
-            "mean_shrinkage_weight": 0.4591,
+            "mean_shrinkage_weight": 0.4558,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
+          },
+          {
+            "player": "Carlos Alcaraz",
+            "position_group": "MF",
+            "minutes": 689,
+            "mean_shrinkage_weight": 0.5616,
+            "changed_global_cluster": true,
+            "changed_within_group_cluster": false
           },
           {
             "player": "Eliezer Mayenda",
             "position_group": "FW",
             "minutes": 759,
-            "mean_shrinkage_weight": 0.3648,
+            "mean_shrinkage_weight": 0.3651,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -2494,7 +2502,7 @@
             "player": "Armando Broja",
             "position_group": "FW",
             "minutes": 860,
-            "mean_shrinkage_weight": 0.3874,
+            "mean_shrinkage_weight": 0.3879,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -2502,7 +2510,7 @@
             "player": "Ryan Christie",
             "position_group": "MF",
             "minutes": 994,
-            "mean_shrinkage_weight": 0.6328,
+            "mean_shrinkage_weight": 0.6325,
             "changed_global_cluster": true,
             "changed_within_group_cluster": true
           },
@@ -2510,7 +2518,7 @@
             "player": "Rodrigo Muniz",
             "position_group": "FW",
             "minutes": 1000,
-            "mean_shrinkage_weight": 0.4272,
+            "mean_shrinkage_weight": 0.4279,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -2518,7 +2526,7 @@
             "player": "Nicol\u00f2 Savona",
             "position_group": "DF",
             "minutes": 1028,
-            "mean_shrinkage_weight": 0.5257,
+            "mean_shrinkage_weight": 0.5221,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -2526,7 +2534,7 @@
             "player": "Jo\u00ebl Veltman",
             "position_group": "DF",
             "minutes": 1058,
-            "mean_shrinkage_weight": 0.5277,
+            "mean_shrinkage_weight": 0.5242,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -2534,7 +2542,7 @@
             "player": "Liam Delap",
             "position_group": "FW",
             "minutes": 1107,
-            "mean_shrinkage_weight": 0.4458,
+            "mean_shrinkage_weight": 0.4466,
             "changed_global_cluster": false,
             "changed_within_group_cluster": true
           },
@@ -2542,7 +2550,7 @@
             "player": "Jhon Arias",
             "position_group": "FW",
             "minutes": 1124,
-            "mean_shrinkage_weight": 0.4275,
+            "mean_shrinkage_weight": 0.4284,
             "changed_global_cluster": true,
             "changed_within_group_cluster": false
           },
@@ -2550,7 +2558,7 @@
             "player": "Adam Armstrong",
             "position_group": "FW",
             "minutes": 1140,
-            "mean_shrinkage_weight": 0.4323,
+            "mean_shrinkage_weight": 0.4332,
             "changed_global_cluster": true,
             "changed_within_group_cluster": true
           },
@@ -2558,15 +2566,7 @@
             "player": "Dan Ndoye",
             "position_group": "MF",
             "minutes": 1173,
-            "mean_shrinkage_weight": 0.6494,
-            "changed_global_cluster": true,
-            "changed_within_group_cluster": false
-          },
-          {
-            "player": "Hannibal Mejbri",
-            "position_group": "MF",
-            "minutes": 1229,
-            "mean_shrinkage_weight": 0.662,
+            "mean_shrinkage_weight": 0.6491,
             "changed_global_cluster": true,
             "changed_within_group_cluster": false
           }
@@ -2593,19 +2593,19 @@
     "k_changed_anywhere": false,
     "adjusted_rand_index_within_group": {
       "DF": 0.453,
-      "MF": 0.713,
-      "FW": 0.4424
+      "MF": 0.7704,
+      "FW": 0.6261
     },
     "n_changed_within_group": {
       "DF": 21,
-      "MF": 14,
-      "FW": 8
+      "MF": 11,
+      "FW": 5
     },
     "verdict": "survives",
     "verdict_within_group": {
       "DF": "dissolves",
       "MF": "partly_survives",
-      "FW": "dissolves"
+      "FW": "partly_survives"
     },
     "reading": "The global partition and the within-group partitions behave differently under the same shrinkage, so they must be reported separately. The global split rests on the large between-role differences that shrinkage leaves intact. The within-group splits rest on finer distinctions, several of which the estimator attributes to sampling noise, and they move correspondingly more."
   }

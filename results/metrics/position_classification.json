@@ -12,9 +12,9 @@
     "goals_non_penalty_p90",
     "assists_p90",
     "crosses_p90",
-    "interceptions_p90",
-    "tackles_won_p90",
-    "fouls_committed_p90",
+    "interceptions_padj_p90",
+    "tackles_won_padj_p90",
+    "fouls_committed_padj_p90",
     "fouls_drawn_p90",
     "offsides_p90",
     "cards_yellow_p90",
@@ -112,21 +112,21 @@
   },
   "models": {
     "logistic_regression": {
-      "accuracy": 0.8033,
-      "balanced_accuracy": 0.7721,
-      "macro_f1": 0.7792,
-      "weighted_f1": 0.8019,
+      "accuracy": 0.8115,
+      "balanced_accuracy": 0.7782,
+      "macro_f1": 0.7856,
+      "weighted_f1": 0.8101,
       "per_class": {
         "DF": {
-          "precision": 0.8138,
-          "recall": 0.8676,
-          "f1": 0.8399,
+          "precision": 0.8264,
+          "recall": 0.875,
+          "f1": 0.85,
           "support": 136
         },
         "MF": {
-          "precision": 0.809,
-          "recall": 0.7956,
-          "f1": 0.8022,
+          "precision": 0.8156,
+          "recall": 0.8066,
+          "f1": 0.8111,
           "support": 181
         },
         "FW": {
@@ -145,13 +145,13 @@
         "orientation": "rows are listed position, columns are predicted position",
         "counts": [
           [
-            118,
-            18,
+            119,
+            17,
             0
           ],
           [
-            26,
-            144,
+            24,
+            146,
             11
           ],
           [
@@ -162,13 +162,13 @@
         ],
         "row_normalised": [
           [
-            0.8676,
-            0.1324,
+            0.875,
+            0.125,
             0.0
           ],
           [
-            0.1436,
-            0.7956,
+            0.1326,
+            0.8066,
             0.0608
           ],
           [
@@ -180,49 +180,49 @@
       },
       "per_fold": {
         "accuracy": [
-          0.8243,
+          0.8378,
           0.7123,
-          0.8767,
+          0.8904,
           0.7945,
-          0.8082
+          0.8219
         ],
         "macro_f1": [
-          0.7886,
+          0.7989,
           0.6721,
-          0.8798,
+          0.8902,
           0.7659,
-          0.7917
+          0.8022
         ],
-        "accuracy_mean": 0.8032,
-        "accuracy_sd": 0.0596,
-        "macro_f1_mean": 0.7796,
-        "macro_f1_sd": 0.0742
+        "accuracy_mean": 0.8114,
+        "accuracy_sd": 0.0655,
+        "macro_f1_mean": 0.7859,
+        "macro_f1_sd": 0.0785
       },
-      "accuracy_over_baseline": 0.3088,
-      "macro_f1_over_baseline": 0.5586
+      "accuracy_over_baseline": 0.317,
+      "macro_f1_over_baseline": 0.565
     },
     "lightgbm": {
-      "accuracy": 0.8169,
-      "balanced_accuracy": 0.7745,
-      "macro_f1": 0.7852,
-      "weighted_f1": 0.816,
+      "accuracy": 0.8033,
+      "balanced_accuracy": 0.7542,
+      "macro_f1": 0.7689,
+      "weighted_f1": 0.8016,
       "per_class": {
         "DF": {
-          "precision": 0.8779,
-          "recall": 0.8456,
-          "f1": 0.8614,
+          "precision": 0.8626,
+          "recall": 0.8309,
+          "f1": 0.8464,
           "support": 136
         },
         "MF": {
-          "precision": 0.7969,
-          "recall": 0.8453,
-          "f1": 0.8204,
+          "precision": 0.7795,
+          "recall": 0.8398,
+          "f1": 0.8085,
           "support": 181
         },
         "FW": {
-          "precision": 0.7209,
-          "recall": 0.6327,
-          "f1": 0.6739,
+          "precision": 0.725,
+          "recall": 0.5918,
+          "f1": 0.6517,
           "support": 49
         }
       },
@@ -235,123 +235,123 @@
         "orientation": "rows are listed position, columns are predicted position",
         "counts": [
           [
-            115,
-            21,
+            113,
+            23,
             0
           ],
           [
-            16,
-            153,
-            12
+            18,
+            152,
+            11
           ],
           [
             0,
-            18,
-            31
+            20,
+            29
           ]
         ],
         "row_normalised": [
           [
-            0.8456,
-            0.1544,
+            0.8309,
+            0.1691,
             0.0
           ],
           [
-            0.0884,
-            0.8453,
-            0.0663
+            0.0994,
+            0.8398,
+            0.0608
           ],
           [
             0.0,
-            0.3673,
-            0.6327
+            0.4082,
+            0.5918
           ]
         ]
       },
       "per_fold": {
         "accuracy": [
-          0.8243,
-          0.7808,
-          0.8356,
+          0.8108,
           0.7671,
-          0.8767
+          0.8219,
+          0.7534,
+          0.863
         ],
         "macro_f1": [
-          0.7886,
-          0.7429,
-          0.8049,
-          0.7255,
-          0.8608
+          0.7781,
+          0.7323,
+          0.803,
+          0.6927,
+          0.8358
         ],
-        "accuracy_mean": 0.8169,
+        "accuracy_mean": 0.8032,
         "accuracy_sd": 0.0441,
-        "macro_f1_mean": 0.7845,
-        "macro_f1_sd": 0.0535
+        "macro_f1_mean": 0.7684,
+        "macro_f1_sd": 0.0567
       },
-      "accuracy_over_baseline": 0.3224,
-      "macro_f1_over_baseline": 0.5646
+      "accuracy_over_baseline": 0.3088,
+      "macro_f1_over_baseline": 0.5483
     }
   },
   "logistic_standardised_coefficients": {
     "DF": {
-      "np_xg_p90": 0.0232,
-      "xa_p90": -0.1338,
-      "key_passes_p90": -0.7423,
-      "xg_chain_p90": -0.64,
-      "xg_buildup_p90": 0.8621,
-      "shots_p90": -1.1723,
-      "shots_on_target_p90": -0.7833,
-      "goals_non_penalty_p90": -0.4205,
-      "assists_p90": 0.0924,
-      "crosses_p90": 0.6205,
-      "interceptions_p90": 0.756,
-      "tackles_won_p90": 0.3598,
-      "fouls_committed_p90": -0.9015,
-      "fouls_drawn_p90": -0.1907,
-      "offsides_p90": 0.0926,
-      "cards_yellow_p90": 0.0721,
-      "shot_accuracy_pct": 0.4087,
-      "goals_per_shot": 0.1848
+      "np_xg_p90": 0.0327,
+      "xa_p90": -0.1271,
+      "key_passes_p90": -0.768,
+      "xg_chain_p90": -0.6285,
+      "xg_buildup_p90": 0.8468,
+      "shots_p90": -1.2108,
+      "shots_on_target_p90": -0.7718,
+      "goals_non_penalty_p90": -0.4241,
+      "assists_p90": 0.0851,
+      "crosses_p90": 0.6335,
+      "interceptions_padj_p90": 0.7546,
+      "tackles_won_padj_p90": 0.3611,
+      "fouls_committed_padj_p90": -0.8843,
+      "fouls_drawn_p90": -0.1889,
+      "offsides_p90": 0.1002,
+      "cards_yellow_p90": 0.0637,
+      "shot_accuracy_pct": 0.4159,
+      "goals_per_shot": 0.1927
     },
     "MF": {
-      "np_xg_p90": -0.6646,
-      "xa_p90": -0.1695,
-      "key_passes_p90": 1.253,
-      "xg_chain_p90": 0.4794,
-      "xg_buildup_p90": -0.5682,
-      "shots_p90": 0.5864,
-      "shots_on_target_p90": 0.4636,
-      "goals_non_penalty_p90": 0.0483,
-      "assists_p90": -0.3184,
-      "crosses_p90": -0.4139,
-      "interceptions_p90": 0.5682,
-      "tackles_won_p90": 0.2301,
-      "fouls_committed_p90": 0.4671,
-      "fouls_drawn_p90": 0.2139,
-      "offsides_p90": -0.3022,
-      "cards_yellow_p90": -0.0921,
-      "shot_accuracy_pct": 0.0563,
-      "goals_per_shot": -0.2059
+      "np_xg_p90": -0.6687,
+      "xa_p90": -0.1862,
+      "key_passes_p90": 1.2547,
+      "xg_chain_p90": 0.4729,
+      "xg_buildup_p90": -0.5959,
+      "shots_p90": 0.6048,
+      "shots_on_target_p90": 0.4505,
+      "goals_non_penalty_p90": 0.0358,
+      "assists_p90": -0.3119,
+      "crosses_p90": -0.4133,
+      "interceptions_padj_p90": 0.5208,
+      "tackles_won_padj_p90": 0.2026,
+      "fouls_committed_padj_p90": 0.4302,
+      "fouls_drawn_p90": 0.2244,
+      "offsides_p90": -0.3147,
+      "cards_yellow_p90": -0.0634,
+      "shot_accuracy_pct": 0.0713,
+      "goals_per_shot": -0.2051
     },
     "FW": {
-      "np_xg_p90": 0.6414,
-      "xa_p90": 0.3032,
-      "key_passes_p90": -0.5107,
-      "xg_chain_p90": 0.1605,
-      "xg_buildup_p90": -0.2939,
-      "shots_p90": 0.5859,
-      "shots_on_target_p90": 0.3197,
-      "goals_non_penalty_p90": 0.3722,
-      "assists_p90": 0.226,
-      "crosses_p90": -0.2066,
-      "interceptions_p90": -1.3243,
-      "tackles_won_p90": -0.59,
-      "fouls_committed_p90": 0.4344,
-      "fouls_drawn_p90": -0.0232,
-      "offsides_p90": 0.2096,
-      "cards_yellow_p90": 0.0201,
-      "shot_accuracy_pct": -0.465,
-      "goals_per_shot": 0.0211
+      "np_xg_p90": 0.636,
+      "xa_p90": 0.3132,
+      "key_passes_p90": -0.4867,
+      "xg_chain_p90": 0.1557,
+      "xg_buildup_p90": -0.2509,
+      "shots_p90": 0.606,
+      "shots_on_target_p90": 0.3213,
+      "goals_non_penalty_p90": 0.3883,
+      "assists_p90": 0.2268,
+      "crosses_p90": -0.2202,
+      "interceptions_padj_p90": -1.2755,
+      "tackles_won_padj_p90": -0.5637,
+      "fouls_committed_padj_p90": 0.4541,
+      "fouls_drawn_p90": -0.0355,
+      "offsides_p90": 0.2144,
+      "cards_yellow_p90": -0.0003,
+      "shot_accuracy_pct": -0.4872,
+      "goals_per_shot": 0.0124
     }
   },
   "headline_metric": "macro_f1",

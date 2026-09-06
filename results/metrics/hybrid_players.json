@@ -30,54 +30,31 @@
         "n_players": 366,
         "n_disagreeing": 154,
         "n_posterior_split": 4,
-        "n_both": 3,
-        "n_flagged": 155
+        "n_both": 4,
+        "n_flagged": 154
       },
       "top_players": [
         {
-          "player": "Jack Taylor",
-          "team": "Ipswich Town",
+          "player": "Mateo Kova\u010di\u0107",
+          "team": "Manchester City",
           "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 860,
-          "age": 26.0,
+          "listed_position_full": "MF,DF",
+          "minutes": 2198,
+          "age": 30.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.5208,
+          "gmm_max_posterior": 0.5053,
           "disagrees_with_listed_group": true,
           "posterior_split": true,
           "stats_per90": {
-            "np_xg_p90": 0.061,
-            "xa_p90": 0.08,
-            "key_passes_p90": 0.523,
-            "xg_buildup_p90": 0.256,
-            "crosses_p90": 0.733,
-            "tackles_won_p90": 1.151,
-            "interceptions_p90": 0.942
-          }
-        },
-        {
-          "player": "Orel Mangala",
-          "team": "Everton",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 1261,
-          "age": 26.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.538,
-          "disagrees_with_listed_group": true,
-          "posterior_split": true,
-          "stats_per90": {
-            "np_xg_p90": 0.051,
-            "xa_p90": 0.035,
-            "key_passes_p90": 0.571,
-            "xg_buildup_p90": 0.144,
-            "crosses_p90": 0.428,
-            "tackles_won_p90": 0.571,
-            "interceptions_p90": 1.499
+            "np_xg_p90": 0.074,
+            "xa_p90": 0.151,
+            "key_passes_p90": 1.351,
+            "xg_buildup_p90": 0.547,
+            "crosses_p90": 0.0,
+            "tackles_won_padj_p90": 1.784,
+            "interceptions_padj_p90": 1.031
           }
         },
         {
@@ -90,7 +67,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.5416,
+          "gmm_max_posterior": 0.5701,
           "disagrees_with_listed_group": true,
           "posterior_split": true,
           "stats_per90": {
@@ -99,31 +76,54 @@
             "key_passes_p90": 0.995,
             "xg_buildup_p90": 0.279,
             "crosses_p90": 1.931,
-            "tackles_won_p90": 0.585,
-            "interceptions_p90": 0.468
+            "tackles_won_padj_p90": 0.563,
+            "interceptions_padj_p90": 0.447
           }
         },
         {
-          "player": "Pervis Estupi\u00f1\u00e1n",
-          "team": "Brighton",
-          "listed_position_group": "DF",
-          "listed_position_full": "DF",
-          "minutes": 2402,
+          "player": "Jack Taylor",
+          "team": "Ipswich Town",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 860,
           "age": 26.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
-          "cluster_within_group": "DF-1",
-          "gmm_max_posterior": 0.5814,
-          "disagrees_with_listed_group": false,
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.5706,
+          "disagrees_with_listed_group": true,
           "posterior_split": true,
           "stats_per90": {
-            "np_xg_p90": 0.049,
-            "xa_p90": 0.087,
-            "key_passes_p90": 1.012,
-            "xg_buildup_p90": 0.398,
-            "crosses_p90": 4.459,
-            "tackles_won_p90": 1.649,
-            "interceptions_p90": 1.461
+            "np_xg_p90": 0.061,
+            "xa_p90": 0.08,
+            "key_passes_p90": 0.523,
+            "xg_buildup_p90": 0.256,
+            "crosses_p90": 0.733,
+            "tackles_won_padj_p90": 1.069,
+            "interceptions_padj_p90": 0.86
+          }
+        },
+        {
+          "player": "Orel Mangala",
+          "team": "Everton",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 1261,
+          "age": 26.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.5857,
+          "disagrees_with_listed_group": true,
+          "posterior_split": true,
+          "stats_per90": {
+            "np_xg_p90": 0.051,
+            "xa_p90": 0.035,
+            "key_passes_p90": 0.571,
+            "xg_buildup_p90": 0.144,
+            "crosses_p90": 0.428,
+            "tackles_won_padj_p90": 0.531,
+            "interceptions_padj_p90": 1.373
           }
         },
         {
@@ -136,7 +136,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-1",
-          "gmm_max_posterior": 0.6152,
+          "gmm_max_posterior": 0.6155,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -145,100 +145,8 @@
             "key_passes_p90": 1.57,
             "xg_buildup_p90": 0.703,
             "crosses_p90": 1.919,
-            "tackles_won_p90": 2.267,
-            "interceptions_p90": 1.221
-          }
-        },
-        {
-          "player": "Will Hughes",
-          "team": "Crystal Palace",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 2108,
-          "age": 29.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.6984,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.039,
-            "xa_p90": 0.144,
-            "key_passes_p90": 1.409,
-            "xg_buildup_p90": 0.337,
-            "crosses_p90": 2.989,
-            "tackles_won_p90": 1.537,
-            "interceptions_p90": 0.897
-          }
-        },
-        {
-          "player": "Mateo Kova\u010di\u0107",
-          "team": "Manchester City",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF,DF",
-          "minutes": 2198,
-          "age": 30.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.7535,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.074,
-            "xa_p90": 0.151,
-            "key_passes_p90": 1.351,
-            "xg_buildup_p90": 0.547,
-            "crosses_p90": 0.0,
-            "tackles_won_p90": 1.597,
-            "interceptions_p90": 0.901
-          }
-        },
-        {
-          "player": "Kyle Walker-Peters",
-          "team": "Southampton",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF,DF",
-          "minutes": 2918,
-          "age": 27.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.7537,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.036,
-            "xa_p90": 0.086,
-            "key_passes_p90": 0.709,
-            "xg_buildup_p90": 0.214,
-            "crosses_p90": 1.542,
-            "tackles_won_p90": 0.987,
-            "interceptions_p90": 0.586
-          }
-        },
-        {
-          "player": "William Smallbone",
-          "team": "Southampton",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 690,
-          "age": 24.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.7538,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.09,
-            "xa_p90": 0.077,
-            "key_passes_p90": 1.304,
-            "xg_buildup_p90": 0.298,
-            "crosses_p90": 4.696,
-            "tackles_won_p90": 1.565,
-            "interceptions_p90": 0.261
+            "tackles_won_padj_p90": 2.314,
+            "interceptions_padj_p90": 1.252
           }
         },
         {
@@ -251,7 +159,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.7842,
+          "gmm_max_posterior": 0.7454,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -260,123 +168,54 @@
             "key_passes_p90": 0.958,
             "xg_buildup_p90": 0.383,
             "crosses_p90": 1.848,
-            "tackles_won_p90": 1.095,
-            "interceptions_p90": 1.095
+            "tackles_won_padj_p90": 1.108,
+            "interceptions_padj_p90": 1.11
           }
         },
         {
-          "player": "Christian N\u00f8rgaard",
-          "team": "Brentford",
+          "player": "Kyle Walker-Peters",
+          "team": "Southampton",
           "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 2819,
-          "age": 30.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8238,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.184,
-            "xa_p90": 0.061,
-            "key_passes_p90": 0.575,
-            "xg_buildup_p90": 0.355,
-            "crosses_p90": 0.575,
-            "tackles_won_p90": 1.501,
-            "interceptions_p90": 1.469
-          }
-        },
-        {
-          "player": "Edson \u00c1lvarez",
-          "team": "West Ham",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 1772,
-          "age": 26.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8248,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.016,
-            "xa_p90": 0.04,
-            "key_passes_p90": 0.609,
-            "xg_buildup_p90": 0.174,
-            "crosses_p90": 0.356,
-            "tackles_won_p90": 1.321,
-            "interceptions_p90": 0.914
-          }
-        },
-        {
-          "player": "Jo\u00e3o Gomes",
-          "team": "Wolves",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 2974,
-          "age": 23.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8564,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.087,
-            "xa_p90": 0.036,
-            "key_passes_p90": 0.666,
-            "xg_buildup_p90": 0.32,
-            "crosses_p90": 0.878,
-            "tackles_won_p90": 2.36,
-            "interceptions_p90": 0.757
-          }
-        },
-        {
-          "player": "Carlos Baleba",
-          "team": "Brighton",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 2661,
-          "age": 20.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8615,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.097,
-            "xa_p90": 0.055,
-            "key_passes_p90": 0.71,
-            "xg_buildup_p90": 0.449,
-            "crosses_p90": 0.304,
-            "tackles_won_p90": 1.488,
-            "interceptions_p90": 1.657
-          }
-        },
-        {
-          "player": "Sa\u0161a Luki\u0107",
-          "team": "Fulham",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 2344,
+          "listed_position_full": "MF,DF",
+          "minutes": 2918,
           "age": 27.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8668,
+          "gmm_max_posterior": 0.7474,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
-            "np_xg_p90": 0.059,
-            "xa_p90": 0.119,
-            "key_passes_p90": 1.037,
-            "xg_buildup_p90": 0.301,
-            "crosses_p90": 2.419,
-            "tackles_won_p90": 1.459,
-            "interceptions_p90": 0.998
+            "np_xg_p90": 0.036,
+            "xa_p90": 0.086,
+            "key_passes_p90": 0.709,
+            "xg_buildup_p90": 0.214,
+            "crosses_p90": 1.542,
+            "tackles_won_padj_p90": 0.974,
+            "interceptions_padj_p90": 0.577
+          }
+        },
+        {
+          "player": "William Smallbone",
+          "team": "Southampton",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 690,
+          "age": 24.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.7956,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.09,
+            "xa_p90": 0.077,
+            "key_passes_p90": 1.304,
+            "xg_buildup_p90": 0.298,
+            "crosses_p90": 4.696,
+            "tackles_won_padj_p90": 1.545,
+            "interceptions_padj_p90": 0.257
           }
         },
         {
@@ -389,7 +228,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8827,
+          "gmm_max_posterior": 0.8038,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -398,8 +237,77 @@
             "key_passes_p90": 0.731,
             "xg_buildup_p90": 0.086,
             "crosses_p90": 2.459,
-            "tackles_won_p90": 1.329,
-            "interceptions_p90": 0.864
+            "tackles_won_padj_p90": 1.234,
+            "interceptions_padj_p90": 0.789
+          }
+        },
+        {
+          "player": "Edson \u00c1lvarez",
+          "team": "West Ham",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 1772,
+          "age": 26.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.8345,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.016,
+            "xa_p90": 0.04,
+            "key_passes_p90": 0.609,
+            "xg_buildup_p90": 0.174,
+            "crosses_p90": 0.356,
+            "tackles_won_padj_p90": 1.303,
+            "interceptions_padj_p90": 0.899
+          }
+        },
+        {
+          "player": "Christian N\u00f8rgaard",
+          "team": "Brentford",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 2819,
+          "age": 30.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.8386,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.184,
+            "xa_p90": 0.061,
+            "key_passes_p90": 0.575,
+            "xg_buildup_p90": 0.355,
+            "crosses_p90": 0.575,
+            "tackles_won_padj_p90": 1.474,
+            "interceptions_padj_p90": 1.437
+          }
+        },
+        {
+          "player": "Sa\u0161a Luki\u0107",
+          "team": "Fulham",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 2344,
+          "age": 27.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.8538,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.059,
+            "xa_p90": 0.119,
+            "key_passes_p90": 1.037,
+            "xg_buildup_p90": 0.301,
+            "crosses_p90": 2.419,
+            "tackles_won_padj_p90": 1.489,
+            "interceptions_padj_p90": 1.023
           }
         },
         {
@@ -412,7 +320,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8914,
+          "gmm_max_posterior": 0.8643,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -421,54 +329,54 @@
             "key_passes_p90": 1.282,
             "xg_buildup_p90": 0.344,
             "crosses_p90": 3.206,
-            "tackles_won_p90": 1.466,
-            "interceptions_p90": 0.916
+            "tackles_won_padj_p90": 1.496,
+            "interceptions_padj_p90": 0.939
           }
         },
         {
-          "player": "Mario Lemina",
-          "team": "Wolves",
+          "player": "Will Hughes",
+          "team": "Crystal Palace",
           "listed_position_group": "MF",
-          "listed_position_full": "MF,DF",
-          "minutes": 1364,
-          "age": 30.0,
+          "listed_position_full": "MF",
+          "minutes": 2108,
+          "age": 29.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8973,
+          "gmm_max_posterior": 0.8664,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
-            "np_xg_p90": 0.079,
-            "xa_p90": 0.085,
-            "key_passes_p90": 0.66,
-            "xg_buildup_p90": 0.256,
-            "crosses_p90": 0.66,
-            "tackles_won_p90": 2.177,
-            "interceptions_p90": 1.716
+            "np_xg_p90": 0.039,
+            "xa_p90": 0.144,
+            "key_passes_p90": 1.409,
+            "xg_buildup_p90": 0.337,
+            "crosses_p90": 2.989,
+            "tackles_won_padj_p90": 1.45,
+            "interceptions_padj_p90": 0.835
           }
         },
         {
-          "player": "N\u00e9lson Semedo",
+          "player": "Jo\u00e3o Gomes",
           "team": "Wolves",
           "listed_position_group": "MF",
-          "listed_position_full": "MF,DF",
-          "minutes": 2886,
-          "age": 30.0,
+          "listed_position_full": "MF",
+          "minutes": 2974,
+          "age": 23.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.9091,
+          "gmm_max_posterior": 0.8682,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
-            "np_xg_p90": 0.031,
-            "xa_p90": 0.068,
-            "key_passes_p90": 0.78,
-            "xg_buildup_p90": 0.225,
-            "crosses_p90": 1.965,
-            "tackles_won_p90": 1.185,
-            "interceptions_p90": 0.717
+            "np_xg_p90": 0.087,
+            "xa_p90": 0.036,
+            "key_passes_p90": 0.666,
+            "xg_buildup_p90": 0.32,
+            "crosses_p90": 0.878,
+            "tackles_won_padj_p90": 2.323,
+            "interceptions_padj_p90": 0.742
           }
         },
         {
@@ -481,7 +389,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.9128,
+          "gmm_max_posterior": 0.877,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -490,8 +398,100 @@
             "key_passes_p90": 0.678,
             "xg_buildup_p90": 0.261,
             "crosses_p90": 3.105,
-            "tackles_won_p90": 1.807,
-            "interceptions_p90": 1.129
+            "tackles_won_padj_p90": 1.681,
+            "interceptions_padj_p90": 1.034
+          }
+        },
+        {
+          "player": "Mario Lemina",
+          "team": "Wolves",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF,DF",
+          "minutes": 1364,
+          "age": 30.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.8894,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.079,
+            "xa_p90": 0.085,
+            "key_passes_p90": 0.66,
+            "xg_buildup_p90": 0.256,
+            "crosses_p90": 0.66,
+            "tackles_won_padj_p90": 2.143,
+            "interceptions_padj_p90": 1.682
+          }
+        },
+        {
+          "player": "Carlos Baleba",
+          "team": "Brighton",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 2661,
+          "age": 20.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.8941,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.097,
+            "xa_p90": 0.055,
+            "key_passes_p90": 0.71,
+            "xg_buildup_p90": 0.449,
+            "crosses_p90": 0.304,
+            "tackles_won_padj_p90": 1.519,
+            "interceptions_padj_p90": 1.699
+          }
+        },
+        {
+          "player": "N\u00e9lson Semedo",
+          "team": "Wolves",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF,DF",
+          "minutes": 2886,
+          "age": 30.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.8968,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.031,
+            "xa_p90": 0.068,
+            "key_passes_p90": 0.78,
+            "xg_buildup_p90": 0.225,
+            "crosses_p90": 1.965,
+            "tackles_won_padj_p90": 1.166,
+            "interceptions_padj_p90": 0.703
+          }
+        },
+        {
+          "player": "Wilfred Ndidi",
+          "team": "Leicester City",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 2324,
+          "age": 27.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.9039,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.076,
+            "xa_p90": 0.108,
+            "key_passes_p90": 0.658,
+            "xg_buildup_p90": 0.21,
+            "crosses_p90": 1.162,
+            "tackles_won_padj_p90": 1.789,
+            "interceptions_padj_p90": 0.998
           }
         }
       ]
@@ -509,14 +509,14 @@
           "dominant_listed_group": "DF",
           "listed_group_counts": {
             "DF": 136,
-            "MF": 104,
+            "MF": 103,
             "FW": 7
           }
         },
         "1": {
           "dominant_listed_group": "MF",
           "listed_group_counts": {
-            "MF": 75,
+            "MF": 76,
             "FW": 48,
             "DF": 2
           }
@@ -524,33 +524,33 @@
       },
       "counts": {
         "n_players": 372,
-        "n_disagreeing": 161,
-        "n_posterior_split": 7,
-        "n_both": 5,
-        "n_flagged": 163
+        "n_disagreeing": 160,
+        "n_posterior_split": 8,
+        "n_both": 7,
+        "n_flagged": 161
       },
       "top_players": [
         {
-          "player": "Angel Gomes",
-          "team": "Wolves",
+          "player": "Declan Rice",
+          "team": "Arsenal",
           "listed_position_group": "MF",
-          "listed_position_full": "MF,FW",
-          "minutes": 461,
-          "age": 24.0,
+          "listed_position_full": "MF",
+          "minutes": 3094,
+          "age": 26.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.5104,
+          "cluster_within_group": "MF-1",
+          "gmm_max_posterior": 0.5012,
           "disagrees_with_listed_group": true,
           "posterior_split": true,
           "stats_per90": {
-            "np_xg_p90": 0.038,
-            "xa_p90": 0.058,
-            "key_passes_p90": 1.171,
-            "xg_buildup_p90": 0.265,
-            "crosses_p90": 2.343,
-            "tackles_won_p90": 0.976,
-            "interceptions_p90": 0.195
+            "np_xg_p90": 0.108,
+            "xa_p90": 0.237,
+            "key_passes_p90": 1.833,
+            "xg_buildup_p90": 0.377,
+            "crosses_p90": 5.149,
+            "tackles_won_padj_p90": 1.019,
+            "interceptions_padj_p90": 1.032
           }
         },
         {
@@ -563,7 +563,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.5315,
+          "gmm_max_posterior": 0.502,
           "disagrees_with_listed_group": true,
           "posterior_split": true,
           "stats_per90": {
@@ -572,54 +572,8 @@
             "key_passes_p90": 1.282,
             "xg_buildup_p90": 0.312,
             "crosses_p90": 1.465,
-            "tackles_won_p90": 1.373,
-            "interceptions_p90": 0.641
-          }
-        },
-        {
-          "player": "Mathias Jensen",
-          "team": "Brentford",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 2247,
-          "age": 29.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.5492,
-          "disagrees_with_listed_group": true,
-          "posterior_split": true,
-          "stats_per90": {
-            "np_xg_p90": 0.064,
-            "xa_p90": 0.214,
-            "key_passes_p90": 1.322,
-            "xg_buildup_p90": 0.281,
-            "crosses_p90": 4.967,
-            "tackles_won_p90": 0.921,
-            "interceptions_p90": 0.841
-          }
-        },
-        {
-          "player": "Mason Mount",
-          "team": "Manchester Utd",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 1017,
-          "age": 26.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.5676,
-          "disagrees_with_listed_group": true,
-          "posterior_split": true,
-          "stats_per90": {
-            "np_xg_p90": 0.154,
-            "xa_p90": 0.122,
-            "key_passes_p90": 1.239,
-            "xg_buildup_p90": 0.41,
-            "crosses_p90": 1.947,
-            "tackles_won_p90": 1.15,
-            "interceptions_p90": 0.796
+            "tackles_won_padj_p90": 1.404,
+            "interceptions_padj_p90": 0.658
           }
         },
         {
@@ -632,7 +586,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.5744,
+          "gmm_max_posterior": 0.5063,
           "disagrees_with_listed_group": true,
           "posterior_split": true,
           "stats_per90": {
@@ -641,77 +595,54 @@
             "key_passes_p90": 1.064,
             "xg_buildup_p90": 0.086,
             "crosses_p90": 1.301,
-            "tackles_won_p90": 0.946,
-            "interceptions_p90": 0.473
+            "tackles_won_padj_p90": 0.907,
+            "interceptions_padj_p90": 0.45
           }
         },
         {
-          "player": "Djed Spence",
-          "team": "Tottenham",
-          "listed_position_group": "DF",
-          "listed_position_full": "DF,MF",
-          "minutes": 2056,
-          "age": 24.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "DF-1",
-          "gmm_max_posterior": 0.5798,
-          "disagrees_with_listed_group": false,
-          "posterior_split": true,
-          "stats_per90": {
-            "np_xg_p90": 0.05,
-            "xa_p90": 0.081,
-            "key_passes_p90": 0.438,
-            "xg_buildup_p90": 0.135,
-            "crosses_p90": 2.145,
-            "tackles_won_p90": 1.094,
-            "interceptions_p90": 0.657
-          }
-        },
-        {
-          "player": "Kieran Trippier",
-          "team": "Newcastle",
-          "listed_position_group": "DF",
-          "listed_position_full": "DF",
-          "minutes": 1586,
-          "age": 34.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "DF-1",
-          "gmm_max_posterior": 0.583,
-          "disagrees_with_listed_group": false,
-          "posterior_split": true,
-          "stats_per90": {
-            "np_xg_p90": 0.005,
-            "xa_p90": 0.103,
-            "key_passes_p90": 1.589,
-            "xg_buildup_p90": 0.267,
-            "crosses_p90": 5.448,
-            "tackles_won_p90": 0.738,
-            "interceptions_p90": 0.397
-          }
-        },
-        {
-          "player": "Declan Rice",
-          "team": "Arsenal",
+          "player": "Mason Mount",
+          "team": "Manchester Utd",
           "listed_position_group": "MF",
           "listed_position_full": "MF",
-          "minutes": 3094,
+          "minutes": 1017,
           "age": 26.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-1",
-          "gmm_max_posterior": 0.6189,
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.5497,
           "disagrees_with_listed_group": true,
-          "posterior_split": false,
+          "posterior_split": true,
           "stats_per90": {
-            "np_xg_p90": 0.108,
-            "xa_p90": 0.237,
-            "key_passes_p90": 1.833,
-            "xg_buildup_p90": 0.377,
-            "crosses_p90": 5.149,
-            "tackles_won_p90": 0.96,
-            "interceptions_p90": 0.96
+            "np_xg_p90": 0.154,
+            "xa_p90": 0.122,
+            "key_passes_p90": 1.239,
+            "xg_buildup_p90": 0.41,
+            "crosses_p90": 1.947,
+            "tackles_won_padj_p90": 1.17,
+            "interceptions_padj_p90": 0.813
+          }
+        },
+        {
+          "player": "Mathias Jensen",
+          "team": "Brentford",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 2247,
+          "age": 29.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.5584,
+          "disagrees_with_listed_group": true,
+          "posterior_split": true,
+          "stats_per90": {
+            "np_xg_p90": 0.064,
+            "xa_p90": 0.214,
+            "key_passes_p90": 1.322,
+            "xg_buildup_p90": 0.281,
+            "crosses_p90": 4.967,
+            "tackles_won_padj_p90": 0.902,
+            "interceptions_padj_p90": 0.82
           }
         },
         {
@@ -724,63 +655,63 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.6587,
+          "gmm_max_posterior": 0.5744,
           "disagrees_with_listed_group": true,
-          "posterior_split": false,
+          "posterior_split": true,
           "stats_per90": {
             "np_xg_p90": 0.213,
             "xa_p90": 0.034,
             "key_passes_p90": 0.45,
             "xg_buildup_p90": 0.186,
             "crosses_p90": 0.573,
-            "tackles_won_p90": 0.941,
-            "interceptions_p90": 0.655
+            "tackles_won_padj_p90": 0.886,
+            "interceptions_padj_p90": 0.609
           }
         },
         {
-          "player": "Harrison Armstrong",
-          "team": "Everton",
+          "player": "Angel Gomes",
+          "team": "Wolves",
           "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 529,
-          "age": 18.0,
+          "listed_position_full": "MF,FW",
+          "minutes": 461,
+          "age": 24.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.6689,
+          "gmm_max_posterior": 0.5924,
           "disagrees_with_listed_group": true,
-          "posterior_split": false,
+          "posterior_split": true,
           "stats_per90": {
-            "np_xg_p90": 0.075,
-            "xa_p90": 0.021,
-            "key_passes_p90": 0.681,
-            "xg_buildup_p90": 0.229,
-            "crosses_p90": 0.51,
-            "tackles_won_p90": 1.701,
-            "interceptions_p90": 0.681
+            "np_xg_p90": 0.038,
+            "xa_p90": 0.058,
+            "key_passes_p90": 1.171,
+            "xg_buildup_p90": 0.265,
+            "crosses_p90": 2.343,
+            "tackles_won_padj_p90": 0.921,
+            "interceptions_padj_p90": 0.182
           }
         },
         {
-          "player": "Leon Bailey",
-          "team": "Aston Villa",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 459,
-          "age": 27.0,
+          "player": "Kieran Trippier",
+          "team": "Newcastle",
+          "listed_position_group": "DF",
+          "listed_position_full": "DF",
+          "minutes": 1586,
+          "age": 34.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.7189,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
+          "cluster_within_group": "DF-1",
+          "gmm_max_posterior": 0.5356,
+          "disagrees_with_listed_group": false,
+          "posterior_split": true,
           "stats_per90": {
-            "np_xg_p90": 0.139,
-            "xa_p90": 0.219,
-            "key_passes_p90": 2.353,
-            "xg_buildup_p90": 0.228,
-            "crosses_p90": 3.725,
-            "tackles_won_p90": 1.176,
-            "interceptions_p90": 0.784
+            "np_xg_p90": 0.005,
+            "xa_p90": 0.103,
+            "key_passes_p90": 1.589,
+            "xg_buildup_p90": 0.267,
+            "crosses_p90": 5.448,
+            "tackles_won_padj_p90": 0.754,
+            "interceptions_padj_p90": 0.408
           }
         },
         {
@@ -793,7 +724,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-1",
-          "gmm_max_posterior": 0.7232,
+          "gmm_max_posterior": 0.6711,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -802,8 +733,8 @@
             "key_passes_p90": 1.563,
             "xg_buildup_p90": 0.246,
             "crosses_p90": 3.274,
-            "tackles_won_p90": 0.67,
-            "interceptions_p90": 0.558
+            "tackles_won_padj_p90": 0.68,
+            "interceptions_padj_p90": 0.568
           }
         },
         {
@@ -816,7 +747,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.7923,
+          "gmm_max_posterior": 0.6789,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -825,31 +756,8 @@
             "key_passes_p90": 0.791,
             "xg_buildup_p90": 0.235,
             "crosses_p90": 1.922,
-            "tackles_won_p90": 1.244,
-            "interceptions_p90": 0.113
-          }
-        },
-        {
-          "player": "Jackson Tchatchoua",
-          "team": "Wolves",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF,DF",
-          "minutes": 1845,
-          "age": 23.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8362,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.005,
-            "xa_p90": 0.109,
-            "key_passes_p90": 1.024,
-            "xg_buildup_p90": 0.203,
-            "crosses_p90": 4.39,
-            "tackles_won_p90": 0.732,
-            "interceptions_p90": 0.683
+            "tackles_won_padj_p90": 1.202,
+            "interceptions_padj_p90": 0.108
           }
         },
         {
@@ -862,7 +770,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "FW-1",
-          "gmm_max_posterior": 0.8655,
+          "gmm_max_posterior": 0.7555,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -871,31 +779,8 @@
             "key_passes_p90": 1.024,
             "xg_buildup_p90": 0.126,
             "crosses_p90": 5.663,
-            "tackles_won_p90": 0.751,
-            "interceptions_p90": 0.205
-          }
-        },
-        {
-          "player": "James Ward-Prowse",
-          "team": "Burnley / West Ham",
-          "listed_position_group": "MF",
-          "listed_position_full": "MF",
-          "minutes": 1097,
-          "age": 30.0,
-          "cluster_global": 0,
-          "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8656,
-          "disagrees_with_listed_group": true,
-          "posterior_split": false,
-          "stats_per90": {
-            "np_xg_p90": 0.015,
-            "xa_p90": 0.281,
-            "key_passes_p90": 1.887,
-            "xg_buildup_p90": 0.252,
-            "crosses_p90": 6.071,
-            "tackles_won_p90": 0.492,
-            "interceptions_p90": 1.723
+            "tackles_won_padj_p90": 0.767,
+            "interceptions_padj_p90": 0.21
           }
         },
         {
@@ -907,8 +792,8 @@
           "age": 20.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
-          "cluster_within_group": "MF-1",
-          "gmm_max_posterior": 0.8677,
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.7775,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -917,8 +802,8 @@
             "key_passes_p90": 0.692,
             "xg_buildup_p90": 0.069,
             "crosses_p90": 2.883,
-            "tackles_won_p90": 0.346,
-            "interceptions_p90": 0.173
+            "tackles_won_padj_p90": 0.332,
+            "interceptions_padj_p90": 0.164
           }
         },
         {
@@ -931,7 +816,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "FW-1",
-          "gmm_max_posterior": 0.8707,
+          "gmm_max_posterior": 0.7919,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -940,31 +825,31 @@
             "key_passes_p90": 1.028,
             "xg_buildup_p90": 0.043,
             "crosses_p90": 0.974,
-            "tackles_won_p90": 0.865,
-            "interceptions_p90": 0.108
+            "tackles_won_padj_p90": 0.868,
+            "interceptions_padj_p90": 0.109
           }
         },
         {
-          "player": "Sa\u0161a Luki\u0107",
-          "team": "Fulham",
+          "player": "Leon Bailey",
+          "team": "Aston Villa",
           "listed_position_group": "MF",
           "listed_position_full": "MF",
-          "minutes": 1734,
-          "age": 28.0,
+          "minutes": 459,
+          "age": 27.0,
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8728,
+          "gmm_max_posterior": 0.8189,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
-            "np_xg_p90": 0.121,
-            "xa_p90": 0.112,
-            "key_passes_p90": 1.401,
-            "xg_buildup_p90": 0.174,
-            "crosses_p90": 3.529,
-            "tackles_won_p90": 1.453,
-            "interceptions_p90": 0.83
+            "np_xg_p90": 0.139,
+            "xa_p90": 0.219,
+            "key_passes_p90": 2.353,
+            "xg_buildup_p90": 0.228,
+            "crosses_p90": 3.725,
+            "tackles_won_padj_p90": 1.216,
+            "interceptions_padj_p90": 0.817
           }
         },
         {
@@ -977,7 +862,7 @@
           "cluster_global": 0,
           "cluster_dominant_group": "DF",
           "cluster_within_group": "MF-0",
-          "gmm_max_posterior": 0.8783,
+          "gmm_max_posterior": 0.8218,
           "disagrees_with_listed_group": true,
           "posterior_split": false,
           "stats_per90": {
@@ -986,8 +871,123 @@
             "key_passes_p90": 0.92,
             "xg_buildup_p90": 0.14,
             "crosses_p90": 2.406,
-            "tackles_won_p90": 0.637,
-            "interceptions_p90": 0.142
+            "tackles_won_padj_p90": 0.599,
+            "interceptions_padj_p90": 0.131
+          }
+        },
+        {
+          "player": "Jackson Tchatchoua",
+          "team": "Wolves",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF,DF",
+          "minutes": 1845,
+          "age": 23.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.8382,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.005,
+            "xa_p90": 0.109,
+            "key_passes_p90": 1.024,
+            "xg_buildup_p90": 0.203,
+            "crosses_p90": 4.39,
+            "tackles_won_padj_p90": 0.69,
+            "interceptions_padj_p90": 0.636
+          }
+        },
+        {
+          "player": "Maxim De Cuyper",
+          "team": "Brighton",
+          "listed_position_group": "DF",
+          "listed_position_full": "DF,MF",
+          "minutes": 1414,
+          "age": 24.0,
+          "cluster_global": 1,
+          "cluster_dominant_group": "MF",
+          "cluster_within_group": "DF-1",
+          "gmm_max_posterior": 0.8543,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.111,
+            "xa_p90": 0.298,
+            "key_passes_p90": 2.037,
+            "xg_buildup_p90": 0.222,
+            "crosses_p90": 4.901,
+            "tackles_won_padj_p90": 0.659,
+            "interceptions_padj_p90": 0.731
+          }
+        },
+        {
+          "player": "Keane Lewis-Potter",
+          "team": "Brentford",
+          "listed_position_group": "DF",
+          "listed_position_full": "DF,MF",
+          "minutes": 1972,
+          "age": 24.0,
+          "cluster_global": 1,
+          "cluster_dominant_group": "MF",
+          "cluster_within_group": "DF-1",
+          "gmm_max_posterior": 0.8702,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.147,
+            "xa_p90": 0.124,
+            "key_passes_p90": 0.867,
+            "xg_buildup_p90": 0.146,
+            "crosses_p90": 3.149,
+            "tackles_won_padj_p90": 0.626,
+            "interceptions_padj_p90": 0.445
+          }
+        },
+        {
+          "player": "Pape Matar Sarr",
+          "team": "Tottenham",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 1398,
+          "age": 22.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.9005,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.132,
+            "xa_p90": 0.157,
+            "key_passes_p90": 0.708,
+            "xg_buildup_p90": 0.319,
+            "crosses_p90": 0.515,
+            "tackles_won_padj_p90": 1.357,
+            "interceptions_padj_p90": 0.905
+          }
+        },
+        {
+          "player": "Sa\u0161a Luki\u0107",
+          "team": "Fulham",
+          "listed_position_group": "MF",
+          "listed_position_full": "MF",
+          "minutes": 1734,
+          "age": 28.0,
+          "cluster_global": 0,
+          "cluster_dominant_group": "DF",
+          "cluster_within_group": "MF-0",
+          "gmm_max_posterior": 0.9122,
+          "disagrees_with_listed_group": true,
+          "posterior_split": false,
+          "stats_per90": {
+            "np_xg_p90": 0.121,
+            "xa_p90": 0.112,
+            "key_passes_p90": 1.401,
+            "xg_buildup_p90": 0.174,
+            "crosses_p90": 3.529,
+            "tackles_won_padj_p90": 1.475,
+            "interceptions_padj_p90": 0.846
           }
         }
       ]
