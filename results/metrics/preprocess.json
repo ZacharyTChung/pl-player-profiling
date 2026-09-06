@@ -26,6 +26,11 @@
       "FW": 87,
       "GK": 44
     },
+    "eligible_position_group_counts": {
+      "MF": 181,
+      "DF": 136,
+      "FW": 49
+    },
     "features_used": [
       "np_xg_p90",
       "xa_p90",
@@ -183,6 +188,11 @@
       "DF": 173,
       "FW": 86,
       "GK": 40
+    },
+    "eligible_position_group_counts": {
+      "MF": 179,
+      "DF": 138,
+      "FW": 55
     },
     "features_used": [
       "np_xg_p90",

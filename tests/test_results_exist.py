@@ -157,3 +157,38 @@ def test_every_input_fragment_exists() -> None:
         if not any(c.exists() for c in candidates):
             missing.append(ref)
     assert not missing, f"table fragments the paper inputs but which were not generated: {missing}"
+
+
+def _macro_values() -> dict[str, str]:
+    if not MACROS_FILE.exists():
+        pytest.skip("run `make tables` first")
+    body = MACROS_FILE.read_text(encoding="utf8", errors="ignore")
+    return dict(re.findall(r"\\newcommand\{\\([A-Za-z]+)\}\{([^}]*)\}", body))
+
+
+def test_position_counts_sum_to_the_eligible_total() -> None:
+    """Counts quoted as the analysis sample must actually be the analysis sample.
+
+    The pool counts and the post-filter counts differ by more than a hundred players, and
+    an earlier revision cited the pool counts alongside the eligible total, which did not
+    add up. Arithmetic the reader can check has to check out.
+    """
+    macros = _macro_values()
+    needed = ["NDFPrimary", "NMFPrimary", "NFWPrimary", "NEligiblePrimary"]
+    if any(n not in macros for n in needed):
+        pytest.skip("position macros not generated yet")
+    total = sum(int(macros[f"N{g}Primary"].replace(",", "")) for g in ("DF", "MF", "FW"))
+    assert total == int(macros["NEligiblePrimary"].replace(",", "")), (
+        f"position groups sum to {total} but the eligible total is {macros['NEligiblePrimary']}"
+    )
+
+
+def test_pool_counts_exceed_eligible_counts() -> None:
+    """Sanity check that the two count families were not swapped."""
+    macros = _macro_values()
+    if "NDFPool" not in macros:
+        pytest.skip("pool macros not generated yet")
+    for group in ("DF", "MF", "FW"):
+        pool = int(macros[f"N{group}Pool"].replace(",", ""))
+        eligible = int(macros[f"N{group}Primary"].replace(",", ""))
+        assert pool >= eligible, f"{group}: pool {pool} is smaller than eligible {eligible}"

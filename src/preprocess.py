@@ -575,6 +575,10 @@ def build_season(season: str) -> dict:
         "rows_keepers": int(len(keepers)),
         "players_multi_club": int((aggregated["n_squads"] > 1).sum()),
         "position_group_counts": aggregated["position_group"].value_counts().to_dict(),
+        # Counts after the minutes filter. The pool counts above include players who are
+        # retained for the descriptive tables but excluded from clustering, so quoting
+        # them as the analysis sample would not sum to the eligible total.
+        "eligible_position_group_counts": (eligible["position_group"].value_counts().to_dict()),
         "features_used": usable,
         "features_dropped_missing": miss["dropped_over_threshold"],
         "missingness": miss["per_column"],

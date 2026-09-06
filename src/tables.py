@@ -578,8 +578,11 @@ def build_macros() -> Macros:
     m.add("NKeepersPrimary", dig(pre, primary, "rows_keepers"))
     m.add("NKeepersRepl", dig(pre, repl, "rows_keepers"))
     m.add("NMultiClubPrimary", dig(pre, primary, "players_multi_club"))
+    # Eligible counts, not pool counts: these are quoted in the text as the analysis
+    # sample and must sum to NEligiblePrimary.
     for grp in ("DF", "MF", "FW"):
-        m.add(f"N{grp}Primary", dig(pre, primary, "position_group_counts", grp))
+        m.add(f"N{grp}Primary", dig(pre, primary, "eligible_position_group_counts", grp))
+        m.add(f"N{grp}Pool", dig(pre, primary, "position_group_counts", grp))
     m.add_pct("MatchRatePrimary", dig(pre, primary, "understat_match", "match_rate"))
     m.add_pct("MatchRateRepl", dig(pre, repl, "understat_match", "match_rate"))
 
