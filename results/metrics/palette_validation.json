@@ -1,0 +1,21 @@
+{
+  "tool": "dataviz validate_palette.js",
+  "surface": "#FCFCFB",
+  "mode": "light",
+  "pairs": "all",
+  "categorical": [
+    "#1F6FB2",
+    "#C1500A",
+    "#00875F",
+    "#A1548C"
+  ],
+  "result": "ALL CHECKS PASS",
+  "checks": {
+    "lightness_band": "PASS, all 4 inside L 0.43-0.77",
+    "chroma_floor": "PASS, all 4 >= 0.1",
+    "cvd_separation": "WARN, worst all-pairs #A1548C vs #00875F dE 6.2 deutan",
+    "normal_vision_floor": "PASS, worst all-pairs #A1548C vs #C1500A dE 15.9",
+    "contrast_vs_surface": "PASS, all 4 >= 3:1"
+  },
+  "note": "The CVD warning sits in the 6 to 8 floor band, which is permitted only alongside secondary encoding. Every categorical mark in this paper also carries a distinct marker shape and a direct or legend label, so the condition is met. Five and six hue sets were tested and none cleared the normal-vision floor over all pairs at print contrast, so more than four categories are faceted rather than coloured."
+}
