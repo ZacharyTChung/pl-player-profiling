@@ -52,6 +52,52 @@ be read as having removed one identifiable confound, not all of them.
 
 \input{../results/tables/possession_adjustment.tex}
 
+\subsection{Why the correction is one sided}
+\label{sec:results:symmetric}
+
+Correcting only the defensive statistics invites an obvious objection. Attacking output
+also depends on possession, so the feature set is still team dependent and the correction
+looks like half a correction. The objection is worth testing rather than answering by
+assertion, and the test produces the sharpest methodological result in the paper.
+
+The two sides of the ball do not behave alike. Fitted the same way, against a team's own
+possession rather than the opponent's, the attacking elasticities are \BetaShots{} for
+shots, \BetaNPXG{} for non-penalty expected goals, \BetaGoals{} for non-penalty goals,
+\BetaAssists{} for assists, \BetaXGChain{} for xGChain and \BetaXGBuildup{} for
+xGBuildup. Every one of them except crossing, at \BetaCrosses{}, exceeds one, while every
+defensive elasticity falls well below it. Figure~\ref{fig:elasticities} shows the two
+families either side of the proportional line.
+
+That asymmetry is not a curiosity, it is the whole argument. For defending, opponent
+possession is an exposure denominator in the plain sense that a tackle cannot occur while
+your own side holds the ball, and the sub-proportional response says exposure is exactly
+what it measures. For attacking, an elasticity above one says the opposite: ten percent
+more of the ball buys appreciably more than ten percent more output. Returns to possession
+are increasing. That is a statement about football rather than about measurement, so
+dividing it out would remove signal along with any bias. The two Understat involvement
+measures make the point most starkly, since both exceed two: a side that keeps the ball
+does not merely have more possessions, its players are involved in more of each.
+
+The counterfactual was nonetheless computed. Applying the fitted exponents to the attacking
+block as well moves the correlation between club centroids and final league position from
+\SymCorrBaseline{} to \SymCorrAdjusted{}, so a symmetric correction does remove a real
+part of the team relationship rather than nothing at all. It does not remove all of it, the
+partition moves at an adjusted Rand index of \SymARI{} against the one reported here, and
+the silhouette drifts from \SymSilhouetteBase{} to \SymSilhouetteAdj{}. The choice is
+therefore a judgement rather than a fact, and it is recorded as one: we treat possession
+driven productivity as something a role profile should reflect, not something to divide
+away, and a reader who takes the opposite view has the numbers to see what that would cost.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{possession_elasticities.pdf}
+  \caption{Possession elasticities for both families of statistic, fitted from team totals.
+  Defensive volume responds to opponent possession less than proportionately, while
+  attacking output responds to a team's own possession more than proportionately. Crossing
+  is the one attacking statistic that behaves like a defensive one.}
+  \label{fig:elasticities}
+\end{figure}
+
 \subsection{Descriptive structure}
 \label{sec:results:descriptive}
 

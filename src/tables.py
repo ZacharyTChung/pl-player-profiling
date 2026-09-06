@@ -855,6 +855,39 @@ def build_macros() -> Macros:
             f"Cosine{grp}", dig(td, "archetype_axes", "within_group_centroid_cosine", grp), places=2
         )
 
+    # Symmetric adjustment counterfactual
+    sym = load("symmetric_adjustment")
+    _beta = {
+        "xg_buildup": "XGBuildup",
+        "xg_chain": "XGChain",
+        "assists": "Assists",
+        "goals_non_penalty": "Goals",
+        "xa": "XA",
+        "np_xg": "NPXG",
+        "key_passes": "KeyPasses",
+        "shots": "Shots",
+        "crosses": "Crosses",
+    }
+    for canon, suffix in _beta.items():
+        m.add(
+            f"Beta{suffix}",
+            dig(sym, "attacking_elasticities", "per_feature", canon, "elasticity"),
+            places=2,
+        )
+    m.add("SymCorrBaseline", dig(sym, "baseline", "team_pc1_vs_league_position"), places=3)
+    m.add(
+        "SymCorrAdjusted",
+        dig(sym, "symmetric_counterfactual", "team_pc1_vs_league_position"),
+        places=3,
+    )
+    m.add(
+        "SymARI",
+        dig(sym, "symmetric_counterfactual", "adjusted_rand_index_vs_baseline"),
+        places=3,
+    )
+    m.add("SymSilhouetteBase", dig(sym, "baseline", "silhouette"), places=3)
+    m.add("SymSilhouetteAdj", dig(sym, "symmetric_counterfactual", "silhouette"), places=3)
+
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))
     m.add("NPairsTotal", dig(div, primary, "n_pairs"))

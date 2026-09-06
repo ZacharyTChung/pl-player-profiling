@@ -72,6 +72,9 @@ limited, and the raw parquet files are committed, so the pipeline runs against t
 | `keepers` | 30 s | |
 | `teams` | 30 s | |
 | `novel` | 3 min | Shrinkage refits the clustering |
+| `sensitivity` | 2 min | Refits selection and stability at three thresholds |
+| `threed` | 30 s | Four three dimensional scenes, two viewpoints each |
+| `symmetric` | 2 min | Symmetric possession adjustment counterfactual |
 | `tables` | 10 s | |
 | `paper` | 40 s | Three LaTeX passes plus bibtex |
 
@@ -83,6 +86,9 @@ src/ingest.py      FBref and Understat retrieval
 src/preprocess.py  merge, filter, per-90, possession adjust, standardise
 src/features.py    the feature sets, verified against observed values
 src/*.py           one module per analysis phase
+src/sensitivity.py minutes threshold sensitivity
+src/threed.py      three dimensional views
+src/symmetric.py   symmetric possession adjustment counterfactual
 src/tables.py      generates results/macros.tex and results/tables/*.tex
 data/raw/          untouched pulls, one parquet per table per season
 results/metrics/   every computed number as JSON
@@ -107,32 +113,47 @@ dashes, sentence-initial "And", bullet lists and a list of filler phrases anywhe
 
 1. **The withdrawal is a trap, not just a loss.** Tables resolve correctly and return
    nothing. Feature selection must be made against observed values.
-2. **The standard possession adjustment overcorrects by 2 to 3 times.** Defensive counts
+2. **Possession elasticities are asymmetric, which is why the correction is one sided.**
+   Defensive volume responds to opponent possession sub-proportionally (0.28 to 0.53), so
+   opponent possession is a genuine exposure denominator. Attacking output responds to a
+   team's own possession super-proportionally: shots 1.09, npxG 1.48, goals 1.63, assists
+   1.72, xGChain 2.12, xGBuildup 2.44. Increasing returns to possession are a football
+   fact, not a measurement artefact, so dividing them out removes signal. The symmetric
+   counterfactual is computed anyway: it moves the club-to-league-position correlation
+   from -0.861 to -0.610 at a cost of moving the partition (ARI 0.872).
+3. **The standard possession adjustment overcorrects by 2 to 3 times.** Defensive counts
    must be corrected for how long a team spends without the ball, and the conventional
    formula assumes direct proportionality. Fitted against 40 team-seasons the elasticities
    are 0.53 (interceptions), 0.43 (tackles won) and 0.28 (fouls committed). Applying an
    exponent of 1 does not remove the confound, it flips its sign and enlarges it. Using
    the measured exponent takes the primary-season correlation with team possession from
    0.122 to 0.022, 0.111 to 0.018, and 0.102 to 0.037.
-3. **Correlations reverse sign across positions.** 87 of 153 feature pairs change sign
+4. **Correlations reverse sign across positions.** 87 of 153 feature pairs change sign
    between defenders, midfielders and forwards, and all ten of the most divergent pairs do.
    Pooled correlation analysis of football data should be considered unsafe by default.
-4. **The data supports one binary division.** The selection rule returns two clusters in
+5. **The data supports one binary division.** The selection rule returns two clusters in
    every scope. HDBSCAN, free to find nothing, labels 100 percent of every position group
    as noise. The division found is attacking against defensive involvement, agreeing with
    listed positions at an adjusted Rand index of only 0.226, while a supervised model
    reaches 0.803 accuracy on the same features.
-5. **That division is robust; the within-group ones are weaker, and unevenly so.** The
+6. **That division is robust; the within-group ones are weaker, and unevenly so.** The
    global partition holds at 0.945 under shrinkage. The defender partition fails all three
    tests, falling to 0.453. The forward partition fails bootstrap stability and
    cross-season replication but partly survives shrinkage at 0.626. Midfielders pass all
    three.
-6. **Goalkeeper clusters recover team strength, not goalkeeping.** Cluster membership
+7. **Goalkeeper clusters recover team strength, not goalkeeping.** Cluster membership
    explains 0.72 of the variance in team points per match against 0.25 in save percentage,
    so the partition is reported as a negative result and no archetypes are named.
-7. **Club summaries are stable where players are not.** The minutes-weighted club position
+8. **Club summaries are stable where players are not.** The minutes-weighted club position
    on the first principal component correlates with final league position at -0.771 and
    -0.784 across two independent seasons.
+9. **The minutes threshold barely matters.** Two clusters at 270, 450 and 900 minutes,
+   silhouette between 0.286 and 0.302, and the partition agrees with the one used at ARI
+   0.967 and 0.986.
+10. **The third component is duels and discipline, and it does not predict league
+    position.** Club centroids correlate with final position at -0.861 on PC1 and -0.695 on
+    PC2 but only 0.209 on PC3. Separately, the two archetype centroids in each position
+    group have a cosine of exactly -1, so six archetypes describe three axes.
 
 ## Licence and data
 

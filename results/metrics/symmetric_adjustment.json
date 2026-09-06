@@ -1,0 +1,88 @@
+{
+  "season": "2024-25",
+  "question": "Should the attacking statistics be possession adjusted in the same way as the defensive ones?",
+  "defensive_elasticities": {
+    "interceptions": 0.5252,
+    "tackles_won": 0.4325,
+    "fouls_committed": 0.283
+  },
+  "attacking_elasticities": {
+    "n_team_seasons": 40,
+    "per_feature": {
+      "shots": {
+        "elasticity": 1.0908,
+        "log_log_correlation": 0.7571,
+        "n": 40,
+        "super_proportional": true
+      },
+      "shots_on_target": {
+        "elasticity": 1.0823,
+        "log_log_correlation": 0.6881,
+        "n": 40,
+        "super_proportional": true
+      },
+      "goals_non_penalty": {
+        "elasticity": 1.6315,
+        "log_log_correlation": 0.6779,
+        "n": 40,
+        "super_proportional": true
+      },
+      "assists": {
+        "elasticity": 1.7243,
+        "log_log_correlation": 0.6325,
+        "n": 40,
+        "super_proportional": true
+      },
+      "crosses": {
+        "elasticity": 0.4192,
+        "log_log_correlation": 0.3787,
+        "n": 40,
+        "super_proportional": false
+      },
+      "np_xg": {
+        "elasticity": 1.4787,
+        "log_log_correlation": 0.6853,
+        "n": 40,
+        "super_proportional": true
+      },
+      "xa": {
+        "elasticity": 1.5514,
+        "log_log_correlation": 0.708,
+        "n": 40,
+        "super_proportional": true
+      },
+      "key_passes": {
+        "elasticity": 1.2712,
+        "log_log_correlation": 0.7647,
+        "n": 40,
+        "super_proportional": true
+      },
+      "xg_chain": {
+        "elasticity": 2.1155,
+        "log_log_correlation": 0.8014,
+        "n": 40,
+        "super_proportional": true
+      },
+      "xg_buildup": {
+        "elasticity": 2.4412,
+        "log_log_correlation": 0.8381,
+        "n": 40,
+        "super_proportional": true
+      }
+    }
+  },
+  "asymmetry": "Defensive elasticities are below one and attacking elasticities above it. Opponent possession is an exposure denominator for defending, because a tackle cannot occur while your own team holds the ball. Own possession is not merely exposure for attacking: returns to it are increasing, which is a property of football rather than of the measurement, so dividing it out would remove signal rather than bias.",
+  "baseline": {
+    "chosen_k": 2,
+    "silhouette": 0.2853,
+    "team_pc1_vs_league_position": -0.8608
+  },
+  "symmetric_counterfactual": {
+    "chosen_k": 2,
+    "silhouette": 0.281,
+    "team_pc1_vs_league_position": -0.6101,
+    "adjusted_rand_index_vs_baseline": 0.8719,
+    "n_changed": 354
+  },
+  "verdict": "Adopted: one sided adjustment. The counterfactual is reported so the choice can be checked, not because it is preferred."
+}
