@@ -22,14 +22,48 @@ Studies of football player roles routinely report a set of discovered archetypes
 
 ## Comments field
 
-73 pages, 65 figures. Code and data:
-https://github.com/<your-account>/pl-player-profiling
+73 pages, 65 figures. Code and data: https://github.com/ZacharyTChung/pl-player-profiling
 
 ## Categories
 
 Primary: stat.AP (Applications). The contribution is a claim about football data.
 Cross-list: cs.LG (Machine Learning) and stat.ML, which is where the cluster validity
 argument will find its other audience.
+
+## What only you can do
+
+arXiv gates the three steps below on your identity, so they cannot be automated.
+
+1. **Register**, at https://arxiv.org/user/register, with your university address rather
+   than a personal one. arXiv treats an institutional address as evidence of community
+   membership and it is the difference between a fast path and a slow one.
+2. **Get endorsed.** arXiv requires endorsement before a first submission in a category.
+   Start the submission and pick the category; arXiv emails you a six-character code to
+   pass to an endorser. The natural endorsers are authors of the arXiv papers this work
+   cites, because an endorser should know the subject area:
+   - Aalbers and Van Haaren, arXiv:1809.05173, cross-listed in exactly our three
+     categories and the closest paper to ours in subject.
+   - Pappalardo et al., arXiv:1802.04987, PlayeRank.
+   - McInnes et al., arXiv:1802.03426, UMAP.
+   - Lundberg and Lee, arXiv:1705.07874, SHAP.
+   Each abstract page has a "Which authors of this paper are endorsers?" link, visible
+   once you are logged in, which tells you who currently qualifies. Endorsers must have
+   published in the domain within the last five years, so check that link rather than
+   assuming. Do not mass-email candidates; arXiv considers that abuse.
+3. **Submit.** Upload `submission.tar.gz`, paste the fields above, choose a licence, and
+   accept the terms yourself. Expect a moderation hold of anywhere from a day to a week.
+
+## Google Scholar
+
+There is nothing to submit. Scholar crawls arXiv and will index the paper on its own,
+typically within days to a few weeks of it going live. Two things are worth doing once it
+appears:
+
+- Create a Scholar profile at https://scholar.google.com/citations, sign in with your
+  Google account, and claim the paper. This is what makes you searchable as an author
+  rather than just the paper being findable.
+- Link the profile to your ORCID iD, which keeps authorship attached to you rather than
+  to a name string that another Zachary Chung could collide with.
 
 ## Date of this package
 
