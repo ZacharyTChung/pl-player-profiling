@@ -1,0 +1,600 @@
+{
+  "question": "Is the role space clustered, or continuous?",
+  "n_features": 33,
+  "scopes": {
+    "All outfield": {
+      "null_calibration": {
+        "scope": "All outfield",
+        "n": 9263,
+        "d": 33,
+        "n_simulations": 25,
+        "by_k": {
+          "2": {
+            "observed": 0.273,
+            "null_mean": 0.2074,
+            "null_sd": 0.0037,
+            "null_max": 0.2151,
+            "z_against_null": 17.96,
+            "exceeds_every_simulation": true
+          },
+          "3": {
+            "observed": 0.1929,
+            "null_mean": 0.1365,
+            "null_sd": 0.0023,
+            "null_max": 0.1418,
+            "z_against_null": 24.95,
+            "exceeds_every_simulation": true
+          },
+          "4": {
+            "observed": 0.1922,
+            "null_mean": 0.1344,
+            "null_sd": 0.0019,
+            "null_max": 0.138,
+            "z_against_null": 30.76,
+            "exceeds_every_simulation": true
+          },
+          "5": {
+            "observed": 0.1775,
+            "null_mean": 0.1131,
+            "null_sd": 0.0013,
+            "null_max": 0.1155,
+            "z_against_null": 51.02,
+            "exceeds_every_simulation": true
+          },
+          "6": {
+            "observed": 0.1525,
+            "null_mean": 0.1006,
+            "null_sd": 0.0013,
+            "null_max": 0.1033,
+            "z_against_null": 39.61,
+            "exceeds_every_simulation": true
+          },
+          "7": {
+            "observed": 0.1481,
+            "null_mean": 0.0904,
+            "null_sd": 0.0021,
+            "null_max": 0.0946,
+            "z_against_null": 27.73,
+            "exceeds_every_simulation": true
+          },
+          "8": {
+            "observed": 0.1424,
+            "null_mean": 0.0871,
+            "null_sd": 0.0024,
+            "null_max": 0.0909,
+            "z_against_null": 23.46,
+            "exceeds_every_simulation": true
+          },
+          "9": {
+            "observed": 0.1232,
+            "null_mean": 0.0829,
+            "null_sd": 0.0019,
+            "null_max": 0.0874,
+            "z_against_null": 21.5,
+            "exceeds_every_simulation": true
+          },
+          "10": {
+            "observed": 0.1176,
+            "null_mean": 0.08,
+            "null_sd": 0.0014,
+            "null_max": 0.0833,
+            "z_against_null": 26.51,
+            "exceeds_every_simulation": true
+          }
+        },
+        "observed_best_k": 2,
+        "observed_best_silhouette": 0.273,
+        "null_best_silhouette_mean": 0.2074,
+        "separation_ratio": 1.316
+      },
+      "dip_tests": {
+        "PC1": {
+          "dip": 0.01761,
+          "p_value": 0.0,
+          "multimodal_at_005": true,
+          "explained_variance": 0.3986
+        },
+        "PC2": {
+          "dip": 0.0019,
+          "p_value": 0.9988,
+          "multimodal_at_005": false,
+          "explained_variance": 0.1731
+        },
+        "PC3": {
+          "dip": 0.00204,
+          "p_value": 0.9969,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0703
+        },
+        "PC4": {
+          "dip": 0.0025,
+          "p_value": 0.9906,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0514
+        },
+        "PC5": {
+          "dip": 0.00297,
+          "p_value": 0.9183,
+          "multimodal_at_005": false,
+          "explained_variance": 0.034
+        }
+      },
+      "mixture_bic": {
+        "bic_by_k": {
+          "2": 711863.1,
+          "3": 636928.4,
+          "4": 602209.4,
+          "5": 580767.8,
+          "6": 567573.8,
+          "7": 554793.6,
+          "8": 544897.7,
+          "9": 538431.3,
+          "10": 533750.1
+        },
+        "best_k": 10,
+        "monotone": true
+      },
+      "density": {
+        "25": {
+          "n_clusters": 2,
+          "noise_fraction": 0.8796
+        },
+        "50": {
+          "n_clusters": 2,
+          "noise_fraction": 0.8652
+        },
+        "100": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        }
+      }
+    },
+    "DF": {
+      "null_calibration": {
+        "scope": "DF",
+        "n": 3793,
+        "d": 33,
+        "n_simulations": 25,
+        "by_k": {
+          "2": {
+            "observed": 0.2606,
+            "null_mean": 0.1906,
+            "null_sd": 0.0029,
+            "null_max": 0.1965,
+            "z_against_null": 24.22,
+            "exceeds_every_simulation": true
+          },
+          "3": {
+            "observed": 0.1927,
+            "null_mean": 0.1151,
+            "null_sd": 0.0027,
+            "null_max": 0.1215,
+            "z_against_null": 28.85,
+            "exceeds_every_simulation": true
+          },
+          "4": {
+            "observed": 0.1459,
+            "null_mean": 0.1067,
+            "null_sd": 0.002,
+            "null_max": 0.11,
+            "z_against_null": 19.91,
+            "exceeds_every_simulation": true
+          },
+          "5": {
+            "observed": 0.1145,
+            "null_mean": 0.0867,
+            "null_sd": 0.0012,
+            "null_max": 0.0887,
+            "z_against_null": 24.11,
+            "exceeds_every_simulation": true
+          },
+          "6": {
+            "observed": 0.0846,
+            "null_mean": 0.0804,
+            "null_sd": 0.0013,
+            "null_max": 0.0838,
+            "z_against_null": 3.21,
+            "exceeds_every_simulation": true
+          },
+          "7": {
+            "observed": 0.0824,
+            "null_mean": 0.0779,
+            "null_sd": 0.0016,
+            "null_max": 0.0814,
+            "z_against_null": 2.82,
+            "exceeds_every_simulation": true
+          },
+          "8": {
+            "observed": 0.0819,
+            "null_mean": 0.0735,
+            "null_sd": 0.0016,
+            "null_max": 0.0764,
+            "z_against_null": 5.08,
+            "exceeds_every_simulation": true
+          },
+          "9": {
+            "observed": 0.0759,
+            "null_mean": 0.0686,
+            "null_sd": 0.0012,
+            "null_max": 0.0705,
+            "z_against_null": 6.32,
+            "exceeds_every_simulation": true
+          },
+          "10": {
+            "observed": 0.0699,
+            "null_mean": 0.0657,
+            "null_sd": 0.0012,
+            "null_max": 0.0681,
+            "z_against_null": 3.46,
+            "exceeds_every_simulation": true
+          }
+        },
+        "observed_best_k": 2,
+        "observed_best_silhouette": 0.2606,
+        "null_best_silhouette_mean": 0.1906,
+        "separation_ratio": 1.367
+      },
+      "dip_tests": {
+        "PC1": {
+          "dip": 0.01927,
+          "p_value": 0.0,
+          "multimodal_at_005": true,
+          "explained_variance": 0.369
+        },
+        "PC2": {
+          "dip": 0.00303,
+          "p_value": 0.9982,
+          "multimodal_at_005": false,
+          "explained_variance": 0.1138
+        },
+        "PC3": {
+          "dip": 0.0031,
+          "p_value": 0.9975,
+          "multimodal_at_005": false,
+          "explained_variance": 0.081
+        },
+        "PC4": {
+          "dip": 0.00304,
+          "p_value": 0.9981,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0516
+        },
+        "PC5": {
+          "dip": 0.00351,
+          "p_value": 0.9939,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0422
+        }
+      },
+      "mixture_bic": {
+        "bic_by_k": {
+          "2": 286614.4,
+          "3": 273511.7,
+          "4": 262121.4,
+          "5": 258210.3,
+          "6": 254502.2,
+          "7": 251094.7,
+          "8": 248979.3,
+          "9": 247716.9,
+          "10": 246131.9
+        },
+        "best_k": 10,
+        "monotone": true
+      },
+      "density": {
+        "25": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        },
+        "50": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        },
+        "100": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        }
+      }
+    },
+    "MF": {
+      "null_calibration": {
+        "scope": "MF",
+        "n": 3766,
+        "d": 33,
+        "n_simulations": 25,
+        "by_k": {
+          "2": {
+            "observed": 0.2489,
+            "null_mean": 0.2011,
+            "null_sd": 0.0032,
+            "null_max": 0.2073,
+            "z_against_null": 14.99,
+            "exceeds_every_simulation": true
+          },
+          "3": {
+            "observed": 0.181,
+            "null_mean": 0.1256,
+            "null_sd": 0.0027,
+            "null_max": 0.1303,
+            "z_against_null": 20.3,
+            "exceeds_every_simulation": true
+          },
+          "4": {
+            "observed": 0.141,
+            "null_mean": 0.1253,
+            "null_sd": 0.0023,
+            "null_max": 0.1283,
+            "z_against_null": 6.78,
+            "exceeds_every_simulation": true
+          },
+          "5": {
+            "observed": 0.1094,
+            "null_mean": 0.1048,
+            "null_sd": 0.0017,
+            "null_max": 0.1097,
+            "z_against_null": 2.74,
+            "exceeds_every_simulation": false
+          },
+          "6": {
+            "observed": 0.0961,
+            "null_mean": 0.0937,
+            "null_sd": 0.0018,
+            "null_max": 0.0974,
+            "z_against_null": 1.33,
+            "exceeds_every_simulation": false
+          },
+          "7": {
+            "observed": 0.0902,
+            "null_mean": 0.0832,
+            "null_sd": 0.0019,
+            "null_max": 0.0876,
+            "z_against_null": 3.64,
+            "exceeds_every_simulation": true
+          },
+          "8": {
+            "observed": 0.0804,
+            "null_mean": 0.0772,
+            "null_sd": 0.0021,
+            "null_max": 0.0806,
+            "z_against_null": 1.56,
+            "exceeds_every_simulation": false
+          },
+          "9": {
+            "observed": 0.0774,
+            "null_mean": 0.0733,
+            "null_sd": 0.002,
+            "null_max": 0.078,
+            "z_against_null": 2.06,
+            "exceeds_every_simulation": false
+          },
+          "10": {
+            "observed": 0.0739,
+            "null_mean": 0.0706,
+            "null_sd": 0.0017,
+            "null_max": 0.0748,
+            "z_against_null": 1.92,
+            "exceeds_every_simulation": false
+          }
+        },
+        "observed_best_k": 2,
+        "observed_best_silhouette": 0.2489,
+        "null_best_silhouette_mean": 0.2011,
+        "separation_ratio": 1.237
+      },
+      "dip_tests": {
+        "PC1": {
+          "dip": 0.01378,
+          "p_value": 0.0,
+          "multimodal_at_005": true,
+          "explained_variance": 0.3916
+        },
+        "PC2": {
+          "dip": 0.00294,
+          "p_value": 0.999,
+          "multimodal_at_005": false,
+          "explained_variance": 0.1528
+        },
+        "PC3": {
+          "dip": 0.00308,
+          "p_value": 0.9978,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0538
+        },
+        "PC4": {
+          "dip": 0.00339,
+          "p_value": 0.9951,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0484
+        },
+        "PC5": {
+          "dip": 0.00332,
+          "p_value": 0.9957,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0367
+        }
+      },
+      "mixture_bic": {
+        "bic_by_k": {
+          "2": 302921.6,
+          "3": 291650.4,
+          "4": 279655.7,
+          "5": 274106.8,
+          "6": 270300.8,
+          "7": 268226.2,
+          "8": 265283.2,
+          "9": 262450.1,
+          "10": 260834.5
+        },
+        "best_k": 10,
+        "monotone": true
+      },
+      "density": {
+        "25": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        },
+        "50": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        },
+        "100": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        }
+      }
+    },
+    "FW": {
+      "null_calibration": {
+        "scope": "FW",
+        "n": 1704,
+        "d": 33,
+        "n_simulations": 25,
+        "by_k": {
+          "2": {
+            "observed": 0.247,
+            "null_mean": 0.1658,
+            "null_sd": 0.0062,
+            "null_max": 0.1793,
+            "z_against_null": 13.18,
+            "exceeds_every_simulation": true
+          },
+          "3": {
+            "observed": 0.1414,
+            "null_mean": 0.1071,
+            "null_sd": 0.0034,
+            "null_max": 0.1138,
+            "z_against_null": 10.15,
+            "exceeds_every_simulation": true
+          },
+          "4": {
+            "observed": 0.1048,
+            "null_mean": 0.1009,
+            "null_sd": 0.0027,
+            "null_max": 0.1073,
+            "z_against_null": 1.46,
+            "exceeds_every_simulation": false
+          },
+          "5": {
+            "observed": 0.084,
+            "null_mean": 0.0848,
+            "null_sd": 0.0029,
+            "null_max": 0.0893,
+            "z_against_null": -0.28,
+            "exceeds_every_simulation": false
+          },
+          "6": {
+            "observed": 0.0756,
+            "null_mean": 0.0762,
+            "null_sd": 0.0026,
+            "null_max": 0.0822,
+            "z_against_null": -0.24,
+            "exceeds_every_simulation": false
+          },
+          "7": {
+            "observed": 0.0774,
+            "null_mean": 0.0723,
+            "null_sd": 0.0021,
+            "null_max": 0.0761,
+            "z_against_null": 2.37,
+            "exceeds_every_simulation": true
+          },
+          "8": {
+            "observed": 0.0714,
+            "null_mean": 0.0695,
+            "null_sd": 0.0022,
+            "null_max": 0.0738,
+            "z_against_null": 0.85,
+            "exceeds_every_simulation": false
+          },
+          "9": {
+            "observed": 0.0725,
+            "null_mean": 0.0658,
+            "null_sd": 0.0024,
+            "null_max": 0.0687,
+            "z_against_null": 2.79,
+            "exceeds_every_simulation": true
+          },
+          "10": {
+            "observed": 0.0721,
+            "null_mean": 0.0626,
+            "null_sd": 0.0018,
+            "null_max": 0.0662,
+            "z_against_null": 5.2,
+            "exceeds_every_simulation": true
+          }
+        },
+        "observed_best_k": 2,
+        "observed_best_silhouette": 0.247,
+        "null_best_silhouette_mean": 0.1658,
+        "separation_ratio": 1.49
+      },
+      "dip_tests": {
+        "PC1": {
+          "dip": 0.00526,
+          "p_value": 0.9936,
+          "multimodal_at_005": false,
+          "explained_variance": 0.3103
+        },
+        "PC2": {
+          "dip": 0.00653,
+          "p_value": 0.9525,
+          "multimodal_at_005": false,
+          "explained_variance": 0.1391
+        },
+        "PC3": {
+          "dip": 0.00647,
+          "p_value": 0.956,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0751
+        },
+        "PC4": {
+          "dip": 0.00481,
+          "p_value": 0.9964,
+          "multimodal_at_005": false,
+          "explained_variance": 0.052
+        },
+        "PC5": {
+          "dip": 0.00522,
+          "p_value": 0.9938,
+          "multimodal_at_005": false,
+          "explained_variance": 0.0496
+        }
+      },
+      "mixture_bic": {
+        "bic_by_k": {
+          "2": 141155.8,
+          "3": 136399.1,
+          "4": 134204.8,
+          "5": 132772.5,
+          "6": 131414.1,
+          "7": 130241.5,
+          "8": 129809.1,
+          "9": 129339.8,
+          "10": 129268.9
+        },
+        "best_k": 10,
+        "monotone": true
+      },
+      "density": {
+        "25": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        },
+        "50": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        },
+        "100": {
+          "n_clusters": 0,
+          "noise_fraction": 1.0
+        }
+      }
+    }
+  },
+  "summary": {
+    "separation_ratio_min": 1.237,
+    "separation_ratio_max": 1.49,
+    "pc1_multimodal_anywhere": true,
+    "verdict": "At least one scope shows separation beyond the clusterless null."
+  }
+}

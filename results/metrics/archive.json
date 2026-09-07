@@ -1,0 +1,184 @@
+{
+  "source": "worldfootballR_data mirror of FBref advanced season tables",
+  "provenance_note": "A third party mirror, used because the primary source deleted these columns in January 2026 and the mirror predates the deletion.",
+  "audit": {
+    "rows": 13822,
+    "seasons": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "competitions": [
+      "Bundesliga",
+      "La Liga",
+      "Ligue 1",
+      "Premier League",
+      "Serie A"
+    ],
+    "features_mapped": 36,
+    "null_rate_by_feature": {
+      "shot_accuracy_pct": 0.1817,
+      "take_on_success_pct": 0.1521,
+      "tackle_win_pct": 0.1163,
+      "aerials_won_pct": 0.1228,
+      "pass_cmp_short_pct": 0.0165,
+      "pass_cmp_medium_pct": 0.0196,
+      "pass_cmp_long_pct": 0.0457
+    },
+    "season_coverage": {
+      "checked_seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ]
+    },
+    "excluded_seasons": {
+      "2023": "carrying block absent from the mirror after FBref renamed it"
+    }
+  },
+  "seasons": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "leagues": [
+    "Premier League",
+    "La Liga",
+    "Bundesliga",
+    "Serie A",
+    "Ligue 1"
+  ],
+  "n_features": 33,
+  "features": [
+    "np_xg_p90",
+    "shots_p90",
+    "goals_non_penalty_p90",
+    "xag_p90",
+    "key_passes_p90",
+    "sca_p90",
+    "gca_p90",
+    "passes_final_third_p90",
+    "passes_penalty_area_p90",
+    "crosses_p90",
+    "progressive_passes_p90",
+    "progressive_carries_p90",
+    "progressive_receptions_p90",
+    "carries_final_third_p90",
+    "touches_def_pen_p90",
+    "touches_def_third_p90",
+    "touches_mid_third_p90",
+    "touches_att_third_p90",
+    "touches_att_pen_p90",
+    "take_ons_p90",
+    "tackles_padj_p90",
+    "interceptions_padj_p90",
+    "blocks_padj_p90",
+    "clearances_padj_p90",
+    "ball_recoveries_p90",
+    "fouls_committed_padj_p90",
+    "shot_accuracy_pct",
+    "take_on_success_pct",
+    "tackle_win_pct",
+    "aerials_won_pct",
+    "pass_cmp_short_pct",
+    "pass_cmp_medium_pct",
+    "pass_cmp_long_pct"
+  ],
+  "elasticities": {
+    "tackles": 0.1717,
+    "interceptions": 0.3529,
+    "blocks": 0.4393,
+    "clearances": 0.9581,
+    "fouls_committed": 0.4429
+  },
+  "elasticity_detail": {
+    "tackles": {
+      "elasticity": 0.1717,
+      "n_team_seasons": 490,
+      "log_log_correlation": 0.2249
+    },
+    "interceptions": {
+      "elasticity": 0.3529,
+      "n_team_seasons": 490,
+      "log_log_correlation": 0.1638
+    },
+    "blocks": {
+      "elasticity": 0.4393,
+      "n_team_seasons": 490,
+      "log_log_correlation": 0.5793
+    },
+    "clearances": {
+      "elasticity": 0.9581,
+      "n_team_seasons": 490,
+      "log_log_correlation": 0.5716
+    },
+    "fouls_committed": {
+      "elasticity": 0.4429,
+      "n_team_seasons": 490,
+      "log_log_correlation": 0.4465
+    }
+  },
+  "rows_all": 13822,
+  "rows_outfield": 12785,
+  "rows_eligible": 9263,
+  "rows_keepers": 1035,
+  "eligible_by_position": {
+    "DF": 3793,
+    "MF": 3766,
+    "FW": 1704
+  },
+  "eligible_by_league": {
+    "Serie A": 1949,
+    "La Liga": 1941,
+    "Ligue 1": 1859,
+    "Premier League": 1847,
+    "Bundesliga": 1667
+  },
+  "eligible_by_season": {
+    "2018": 1837,
+    "2019": 1840,
+    "2020": 1830,
+    "2021": 1871,
+    "2022": 1885
+  },
+  "imputed_cells": {
+    "np_xg_p90": 5,
+    "shots_p90": 10,
+    "xag_p90": 5,
+    "key_passes_p90": 10,
+    "sca_p90": 10,
+    "gca_p90": 10,
+    "passes_final_third_p90": 10,
+    "passes_penalty_area_p90": 10,
+    "crosses_p90": 10,
+    "progressive_passes_p90": 10,
+    "progressive_carries_p90": 10,
+    "progressive_receptions_p90": 10,
+    "carries_final_third_p90": 10,
+    "touches_def_pen_p90": 10,
+    "touches_def_third_p90": 10,
+    "touches_mid_third_p90": 10,
+    "touches_att_third_p90": 10,
+    "touches_att_pen_p90": 10,
+    "take_ons_p90": 10,
+    "tackles_padj_p90": 10,
+    "interceptions_padj_p90": 10,
+    "blocks_padj_p90": 10,
+    "clearances_padj_p90": 10,
+    "ball_recoveries_p90": 10,
+    "fouls_committed_padj_p90": 10,
+    "shot_accuracy_pct": 123,
+    "take_on_success_pct": 146,
+    "tackle_win_pct": 16,
+    "aerials_won_pct": 13,
+    "pass_cmp_short_pct": 10,
+    "pass_cmp_medium_pct": 10,
+    "pass_cmp_long_pct": 10
+  }
+}
