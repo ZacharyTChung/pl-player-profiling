@@ -1,0 +1,133 @@
+{
+  "named": true,
+  "space": "archive_keeper_technique",
+  "k": 2,
+  "silhouette": 0.189212,
+  "bootstrap_ari_mean": 0.5701,
+  "verdict": "technique",
+  "condition": "named because the situation versus technique validation on this partition returned mean eta squared 0.1349 for the technique block against 0.0194 for the situational block",
+  "vocabulary_note": "names are read off the composite axes each cluster departs from zero on. The football expectation of a shot stopper, a sweeper keeper and a distributor was not imposed, and the partition does not reproduce it: shot stopping and distribution separate the clusters far less than off-line activity does.",
+  "archetypes": {
+    "0": {
+      "name": "Line keeper",
+      "n": 411,
+      "share": 0.5931,
+      "composites": {
+        "shot_stopping": -0.1645,
+        "sweeping": -0.3258,
+        "distribution": 0.1084,
+        "cross_handling": -0.5609,
+        "workload": 0.1249
+      },
+      "leading_axes": [
+        {
+          "axis": "cross_handling",
+          "z": -0.5609
+        },
+        {
+          "axis": "sweeping",
+          "z": -0.3258
+        }
+      ],
+      "justification": "411 keeper-seasons. The profile is led by cross_handling at -0.56 standard deviations and sweeping at -0.33. In football units the cluster stops 5.982 percent of the crosses it faces against 7.484 for the pool, makes 0.556 defensive actions outside the area per 90 against 0.666, at an average 13.903 yards from goal against 14.445, launches 45.227 percent of its passes against 46.628, and runs a PSxG minus goals allowed of -0.083 per 90 against -0.032.",
+      "exemplars": [
+        "Beno\u00eet Costil (Bordeaux 2020)",
+        "Andreas Luthe (Union Berlin 2022)",
+        "Unai Sim\u00f3n (Athletic Club 2021)",
+        "Sergio Asenjo (Villarreal 2020)",
+        "C\u00e1rdenas (Levante 2022)",
+        "Thomas Strakosha (Lazio 2019)"
+      ],
+      "raw_means": {
+        "gk_save_pct": 68.068,
+        "gk_clean_sheet_pct": 24.272,
+        "gk_goals_against_per90": 1.488,
+        "gk_sota_p90": 4.214,
+        "gk_psxg_p90": 1.356,
+        "gk_psxg_per_sot": 0.292,
+        "gk_psxg_net_p90": -0.083,
+        "gk_crosses_stopped_pct": 5.982,
+        "gk_sweeper_per90": 0.556,
+        "gk_sweeper_distance": 13.903,
+        "gk_launch_pct": 45.227,
+        "gk_pass_length": 39.086
+      },
+      "pool_means": {
+        "gk_save_pct": 69.171,
+        "gk_clean_sheet_pct": 26.201,
+        "gk_goals_against_per90": 1.416,
+        "gk_sota_p90": 4.141,
+        "gk_psxg_p90": 1.34,
+        "gk_psxg_per_sot": 0.295,
+        "gk_psxg_net_p90": -0.032,
+        "gk_crosses_stopped_pct": 7.484,
+        "gk_sweeper_per90": 0.666,
+        "gk_sweeper_distance": 14.445,
+        "gk_launch_pct": 46.628,
+        "gk_pass_length": 39.92
+      }
+    },
+    "1": {
+      "name": "Sweeper claimer",
+      "n": 282,
+      "share": 0.4069,
+      "composites": {
+        "shot_stopping": 0.2397,
+        "sweeping": 0.4748,
+        "distribution": -0.158,
+        "cross_handling": 0.8175,
+        "workload": -0.1821
+      },
+      "leading_axes": [
+        {
+          "axis": "cross_handling",
+          "z": 0.8175
+        },
+        {
+          "axis": "sweeping",
+          "z": 0.4748
+        }
+      ],
+      "justification": "282 keeper-seasons. The profile is led by cross_handling at +0.82 standard deviations and sweeping at +0.47. In football units the cluster stops 9.673 percent of the crosses it faces against 7.484 for the pool, makes 0.826 defensive actions outside the area per 90 against 0.666, at an average 15.234 yards from goal against 14.445, launches 48.67 percent of its passes against 46.628, and runs a PSxG minus goals allowed of +0.043 per 90 against -0.032.",
+      "exemplars": [
+        "Sergio Asenjo (Villarreal 2019)",
+        "Kevin Trapp (Eint Frankfurt 2019)",
+        "Iv\u00e1n Villar (Celta Vigo 2021)",
+        "Koen Casteels (Wolfsburg 2020)",
+        "Ludovic Butelle (Angers 2019)",
+        "Stefan Ortega (Arminia 2021)"
+      ],
+      "raw_means": {
+        "gk_save_pct": 70.778,
+        "gk_clean_sheet_pct": 29.013,
+        "gk_goals_against_per90": 1.311,
+        "gk_sota_p90": 4.035,
+        "gk_psxg_p90": 1.318,
+        "gk_psxg_per_sot": 0.298,
+        "gk_psxg_net_p90": 0.043,
+        "gk_crosses_stopped_pct": 9.673,
+        "gk_sweeper_per90": 0.826,
+        "gk_sweeper_distance": 15.234,
+        "gk_launch_pct": 48.67,
+        "gk_pass_length": 41.135
+      },
+      "pool_means": {
+        "gk_save_pct": 69.171,
+        "gk_clean_sheet_pct": 26.201,
+        "gk_goals_against_per90": 1.416,
+        "gk_sota_p90": 4.141,
+        "gk_psxg_p90": 1.34,
+        "gk_psxg_per_sot": 0.295,
+        "gk_psxg_net_p90": -0.032,
+        "gk_crosses_stopped_pct": 7.484,
+        "gk_sweeper_per90": 0.666,
+        "gk_sweeper_distance": 14.445,
+        "gk_launch_pct": 46.628,
+        "gk_pass_length": 39.92
+      }
+    }
+  },
+  "primary_space": "full",
+  "primary_space_verdict": "situation",
+  "archetype_space": "technique"
+}

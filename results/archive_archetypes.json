@@ -1,0 +1,1236 @@
+{
+  "sample": "archive, five seasons 2018 to 2022, five leagues, pooled",
+  "n_players": 9263,
+  "n_features": 33,
+  "k_per_position_group": 2,
+  "selection_note": "Two archetypes per position group and no more. The declared consensus rule in config.K_RULE returns k=2 in every scope on this feature set, and the null calibration in results/metrics/structure.json shows that the two mode structure exceeds every clusterless simulation while the silhouette at larger k converges on that null, so a finer taxonomy would be reporting the shape of the algorithm rather than the shape of the data.",
+  "space": "the 33 archive.OUTFIELD_CORE features z-scored within position group, so a centroid coordinate is the standardised deviation of the cluster from its position group mean",
+  "naming_rule": "Names were assigned after inspecting the centroid tables and the member lists, and are deliberately descriptive of the measured profile. Where a split is essentially high against low involvement the name says so rather than implying a tactical instruction the data cannot support.",
+  "structural_note": "The features are z-scored within position group, so the group mean is the origin and the two centroids of a k=2 partition are exactly anti-parallel: the size weighted sum of the two centroids is zero, so one is a negative multiple of the other. The two archetypes inside a position group are therefore the two ends of a single axis rather than two independently shaped profiles, and the larger cluster necessarily carries the smaller deviations. This is a property of the partition and not a discovery about football. It matters most for the forwards, where the split is uneven at roughly three to one, so the smaller cluster shows deviations above one standard deviation while its counterpart sits near a third of that.",
+  "n_distinguishing_features": 10,
+  "n_representative_players": 10,
+  "n_boundary_players": 3,
+  "mean_switch_rate_between_consecutive_seasons": 0.0777,
+  "mean_adjusted_rand_index_between_consecutive_seasons": 0.834,
+  "mean_adjusted_rand_index_league_refits": 0.8828,
+  "archetypes": [
+    {
+      "label": "DF-0",
+      "name": "Deep central defenders",
+      "position_group": "DF",
+      "n_players": 2094,
+      "n_position_group": 3793,
+      "share_of_position_group": 0.5521,
+      "summary": "Defenders concentrated in their own third and their own box, clearing and winning headers, with almost no crossing or attacking third involvement.",
+      "distinguishing_features": [
+        {
+          "feature": "touches_att_third_p90",
+          "label": "Touches, attacking third/90",
+          "z_deviation": -0.7937,
+          "mean_in_cluster": 3.5592,
+          "mean_in_counterpart": 18.9678
+        },
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses/90",
+          "z_deviation": -0.7469,
+          "mean_in_cluster": 0.2404,
+          "mean_in_counterpart": 2.3943
+        },
+        {
+          "feature": "passes_penalty_area_p90",
+          "label": "Passes into box/90",
+          "z_deviation": -0.7037,
+          "mean_in_cluster": 0.2055,
+          "mean_in_counterpart": 1.0807
+        },
+        {
+          "feature": "touches_def_pen_p90",
+          "label": "Touches, own box/90",
+          "z_deviation": 0.6973,
+          "mean_in_cluster": 7.7503,
+          "mean_in_counterpart": 3.3421
+        },
+        {
+          "feature": "sca_p90",
+          "label": "Shot creating actions/90",
+          "z_deviation": -0.6942,
+          "mean_in_cluster": 0.5679,
+          "mean_in_counterpart": 1.8031
+        },
+        {
+          "feature": "progressive_receptions_p90",
+          "label": "Progressive receptions/90",
+          "z_deviation": -0.6841,
+          "mean_in_cluster": 0.4407,
+          "mean_in_counterpart": 2.3684
+        },
+        {
+          "feature": "touches_def_third_p90",
+          "label": "Touches, defensive third/90",
+          "z_deviation": 0.6804,
+          "mean_in_cluster": 31.7117,
+          "mean_in_counterpart": 18.9711
+        },
+        {
+          "feature": "carries_final_third_p90",
+          "label": "Carries into final third/90",
+          "z_deviation": -0.6764,
+          "mean_in_cluster": 0.4901,
+          "mean_in_counterpart": 1.7131
+        },
+        {
+          "feature": "key_passes_p90",
+          "label": "Key passes/90",
+          "z_deviation": -0.6738,
+          "mean_in_cluster": 0.1937,
+          "mean_in_counterpart": 0.9325
+        },
+        {
+          "feature": "clearances_padj_p90",
+          "label": "Clearances/90 (adj)",
+          "z_deviation": 0.6235,
+          "mean_in_cluster": 4.978,
+          "mean_in_counterpart": 2.4466
+        }
+      ],
+      "representative_players": [
+        {
+          "player": "\u00c7a\u011flar S\u00f6y\u00fcnc\u00fc",
+          "team": "Freiburg",
+          "league": "Bundesliga",
+          "season": 2018,
+          "position_full": "DF",
+          "minutes": 2153,
+          "distance_to_centroid": 1.609
+        },
+        {
+          "player": "Lo\u00efc Perrin",
+          "team": "Saint-\u00c9tienne",
+          "league": "Ligue 1",
+          "season": 2019,
+          "position_full": "DF",
+          "minutes": 2700,
+          "distance_to_centroid": 1.693
+        },
+        {
+          "player": "Nicolas Nkoulou",
+          "team": "Torino",
+          "league": "Serie A",
+          "season": 2018,
+          "position_full": "DF",
+          "minutes": 3258,
+          "distance_to_centroid": 1.949
+        },
+        {
+          "player": "Ohis Felix Uduokhai",
+          "team": "Wolfsburg",
+          "league": "Bundesliga",
+          "season": 2018,
+          "position_full": "DF",
+          "minutes": 1560,
+          "distance_to_centroid": 2.007
+        },
+        {
+          "player": "Benjamin Pavard",
+          "team": "Stuttgart",
+          "league": "Bundesliga",
+          "season": 2018,
+          "position_full": "DF",
+          "minutes": 3060,
+          "distance_to_centroid": 2.036
+        },
+        {
+          "player": "Moussa Niakhate",
+          "team": "Mainz 05",
+          "league": "Bundesliga",
+          "season": 2019,
+          "position_full": "DF",
+          "minutes": 2789,
+          "distance_to_centroid": 2.119
+        },
+        {
+          "player": "Diego Llorente",
+          "team": "Real Sociedad",
+          "league": "La Liga",
+          "season": 2019,
+          "position_full": "DF",
+          "minutes": 1752,
+          "distance_to_centroid": 2.182
+        },
+        {
+          "player": "Pablo Martinez",
+          "team": "N\u00eemes",
+          "league": "Ligue 1",
+          "season": 2020,
+          "position_full": "DF",
+          "minutes": 2339,
+          "distance_to_centroid": 2.184
+        },
+        {
+          "player": "Nicolas Pallois",
+          "team": "Nantes",
+          "league": "Ligue 1",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 2776,
+          "distance_to_centroid": 2.211
+        },
+        {
+          "player": "I\u00f1igo Mart\u00ednez",
+          "team": "Athletic Club",
+          "league": "La Liga",
+          "season": 2019,
+          "position_full": "DF",
+          "minutes": 2902,
+          "distance_to_centroid": 2.249
+        }
+      ],
+      "boundary_players": [
+        {
+          "player": "Cifu",
+          "team": "Elche",
+          "league": "La Liga",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 451,
+          "margin": 0.019
+        },
+        {
+          "player": "Juan Cruz Armada",
+          "team": "Osasuna",
+          "league": "La Liga",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 1962,
+          "margin": 0.02
+        },
+        {
+          "player": "Danny Rose",
+          "team": "Newcastle Utd",
+          "league": "Premier League",
+          "season": 2020,
+          "position_full": "DF",
+          "minutes": 863,
+          "margin": 0.023
+        }
+      ],
+      "justification": "These 2,094 player-seasons, 55 percent of all defenders in the sample, are the central defenders, recovered from the statistics rather than read off the position label. They average 31.71 against 18.97 touches in the defensive third per 90 and 7.75 against 3.34 touches in their own penalty area, which puts them 0.68 standard deviations above the defender mean on defensive third touches. They clear the ball 4.98 against 2.45 times per 90 after possession adjustment, win 62.0 percent against 49.7 percent of their aerial duels and complete 90.0 percent against 80.4 percent of medium range passes and 67.5 percent against 51.4 percent of long passes, so their distribution is short, safe and lateral. The attacking side of the profile is close to absent: 0.24 against 2.39 crosses per 90, 3.56 against 18.97 touches in the attacking third and 0.57 against 1.80 shot creating actions. Representative members are \u00c7a\u011flar S\u00f6y\u00fcnc\u00fc, Lo\u00efc Perrin, Nicolas Nkoulou, Benjamin Pavard and Diego Llorente. The listed position does not encode this split, since most members of both defender clusters are listed simply as DF, which is the point: the clustering separates centre backs from wide defenders on measured behaviour where the label cannot. Membership is stable across time and competition: between 4 and 7 percent of defenders who play two consecutive seasons change cluster, the adjusted Rand index between consecutive seasons runs from 0.72 to 0.84, and refitting the same two cluster partition inside a single league recovers the pooled one with an adjusted Rand index from 0.89 to 0.97."
+    },
+    {
+      "label": "DF-1",
+      "name": "Wide attacking defenders",
+      "position_group": "DF",
+      "n_players": 1699,
+      "n_position_group": 3793,
+      "share_of_position_group": 0.4479,
+      "summary": "Defenders who cross, carry and receive progressive passes in the attacking third at roughly ten times the rate of the other defender cluster.",
+      "distinguishing_features": [
+        {
+          "feature": "touches_att_third_p90",
+          "label": "Touches, attacking third/90",
+          "z_deviation": 0.9782,
+          "mean_in_cluster": 18.9678,
+          "mean_in_counterpart": 3.5592
+        },
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses/90",
+          "z_deviation": 0.9205,
+          "mean_in_cluster": 2.3943,
+          "mean_in_counterpart": 0.2404
+        },
+        {
+          "feature": "passes_penalty_area_p90",
+          "label": "Passes into box/90",
+          "z_deviation": 0.8673,
+          "mean_in_cluster": 1.0807,
+          "mean_in_counterpart": 0.2055
+        },
+        {
+          "feature": "touches_def_pen_p90",
+          "label": "Touches, own box/90",
+          "z_deviation": -0.8595,
+          "mean_in_cluster": 3.3421,
+          "mean_in_counterpart": 7.7503
+        },
+        {
+          "feature": "sca_p90",
+          "label": "Shot creating actions/90",
+          "z_deviation": 0.8556,
+          "mean_in_cluster": 1.8031,
+          "mean_in_counterpart": 0.5679
+        },
+        {
+          "feature": "progressive_receptions_p90",
+          "label": "Progressive receptions/90",
+          "z_deviation": 0.8432,
+          "mean_in_cluster": 2.3684,
+          "mean_in_counterpart": 0.4407
+        },
+        {
+          "feature": "touches_def_third_p90",
+          "label": "Touches, defensive third/90",
+          "z_deviation": -0.8386,
+          "mean_in_cluster": 18.9711,
+          "mean_in_counterpart": 31.7117
+        },
+        {
+          "feature": "carries_final_third_p90",
+          "label": "Carries into final third/90",
+          "z_deviation": 0.8336,
+          "mean_in_cluster": 1.7131,
+          "mean_in_counterpart": 0.4901
+        },
+        {
+          "feature": "key_passes_p90",
+          "label": "Key passes/90",
+          "z_deviation": 0.8304,
+          "mean_in_cluster": 0.9325,
+          "mean_in_counterpart": 0.1937
+        },
+        {
+          "feature": "clearances_padj_p90",
+          "label": "Clearances/90 (adj)",
+          "z_deviation": -0.7685,
+          "mean_in_cluster": 2.4466,
+          "mean_in_counterpart": 4.978
+        }
+      ],
+      "representative_players": [
+        {
+          "player": "Jos\u00e9 Luis Gay\u00e0",
+          "team": "Valencia",
+          "league": "La Liga",
+          "season": 2019,
+          "position_full": "DF",
+          "minutes": 3137,
+          "distance_to_centroid": 2.315
+        },
+        {
+          "player": "K\u00e9vin Rodrigues",
+          "team": "Real Sociedad",
+          "league": "La Liga",
+          "season": 2018,
+          "position_full": "DF",
+          "minutes": 1635,
+          "distance_to_centroid": 2.335
+        },
+        {
+          "player": "Sergio Reguil\u00f3n",
+          "team": "Tottenham",
+          "league": "Premier League",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 2244,
+          "distance_to_centroid": 2.376
+        },
+        {
+          "player": "Stefan Lainer",
+          "team": "M'Gladbach",
+          "league": "Bundesliga",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 2768,
+          "distance_to_centroid": 2.397
+        },
+        {
+          "player": "Mihailo Risti\u0107",
+          "team": "Montpellier",
+          "league": "Ligue 1",
+          "season": 2022,
+          "position_full": "DF",
+          "minutes": 1803,
+          "distance_to_centroid": 2.451
+        },
+        {
+          "player": "M\u00ebrgim Vojvoda",
+          "team": "Torino",
+          "league": "Serie A",
+          "season": 2022,
+          "position_full": "DF",
+          "minutes": 1976,
+          "distance_to_centroid": 2.453
+        },
+        {
+          "player": "Jos\u00e9 Luis Gay\u00e0",
+          "team": "Valencia",
+          "league": "La Liga",
+          "season": 2018,
+          "position_full": "DF",
+          "minutes": 2916,
+          "distance_to_centroid": 2.489
+        },
+        {
+          "player": "Mihailo Risti\u0107",
+          "team": "Montpellier",
+          "league": "Ligue 1",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 2236,
+          "distance_to_centroid": 2.528
+        },
+        {
+          "player": "Timothy Castagne",
+          "team": "Leicester City",
+          "league": "Premier League",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 2345,
+          "distance_to_centroid": 2.557
+        },
+        {
+          "player": "Christopher Lenz",
+          "team": "Union Berlin",
+          "league": "Bundesliga",
+          "season": 2021,
+          "position_full": "DF,FW",
+          "minutes": 2248,
+          "distance_to_centroid": 2.574
+        }
+      ],
+      "boundary_players": [
+        {
+          "player": "Japhet Tanganga",
+          "team": "Tottenham",
+          "league": "Premier League",
+          "season": 2022,
+          "position_full": "DF",
+          "minutes": 735,
+          "margin": 0.006
+        },
+        {
+          "player": "Tom Lacoux",
+          "team": "Bordeaux",
+          "league": "Ligue 1",
+          "season": 2022,
+          "position_full": "DF,MF",
+          "minutes": 907,
+          "margin": 0.029
+        },
+        {
+          "player": "Tyrick Mitchell",
+          "team": "Crystal Palace",
+          "league": "Premier League",
+          "season": 2021,
+          "position_full": "DF",
+          "minutes": 1710,
+          "margin": 0.036
+        }
+      ],
+      "justification": "These 1,699 player-seasons are the wide defenders, and the separation from their central counterparts is the largest in the study. They cross 2.39 against 0.24 times per 90, which is 0.92 standard deviations above the defender mean, touch the ball 18.97 against 3.56 times per 90 in the attacking third, receive 2.37 against 0.44 progressive passes and carry the ball into the final third 1.71 against 0.49 times. Their creation follows: 0.93 against 0.19 key passes per 90, 1.08 against 0.21 passes into the penalty area and 1.80 against 0.57 shot creating actions. They attempt 1.62 against 0.41 take-ons per 90 and complete a smaller share of them, 56.7 percent against 71.7 percent, because they attempt them against set defenders in wide areas. The defensive side is correspondingly lighter, with 2.45 against 4.98 possession adjusted clearances and 49.7 percent against 62.0 percent of aerial duels won. Representative members are Jos\u00e9 Luis Gay\u00e0, Sergio Reguil\u00f3n, Stefan Lainer, Timothy Castagne and K\u00e9vin Rodrigues, all full backs or wing backs. Membership is stable across time and competition: between 4 and 7 percent of defenders who play two consecutive seasons change cluster, the adjusted Rand index between consecutive seasons runs from 0.72 to 0.84, and refitting the same two cluster partition inside a single league recovers the pooled one with an adjusted Rand index from 0.89 to 0.97."
+    },
+    {
+      "label": "MF-0",
+      "name": "Deep ball winning midfielders",
+      "position_group": "MF",
+      "n_players": 1939,
+      "n_position_group": 3766,
+      "share_of_position_group": 0.5149,
+      "summary": "Midfielders who recover, tackle and pass from the defensive and middle thirds, and who reach the opposition box far less often than the midfield average.",
+      "distinguishing_features": [
+        {
+          "feature": "progressive_receptions_p90",
+          "label": "Progressive receptions/90",
+          "z_deviation": -0.7637,
+          "mean_in_cluster": 2.1565,
+          "mean_in_counterpart": 6.4571
+        },
+        {
+          "feature": "touches_att_pen_p90",
+          "label": "Touches, opposition box/90",
+          "z_deviation": -0.705,
+          "mean_in_cluster": 1.1179,
+          "mean_in_counterpart": 3.4664
+        },
+        {
+          "feature": "touches_def_third_p90",
+          "label": "Touches, defensive third/90",
+          "z_deviation": 0.7019,
+          "mean_in_cluster": 14.8637,
+          "mean_in_counterpart": 7.5779
+        },
+        {
+          "feature": "touches_att_third_p90",
+          "label": "Touches, attacking third/90",
+          "z_deviation": -0.6962,
+          "mean_in_cluster": 12.745,
+          "mean_in_counterpart": 24.0461
+        },
+        {
+          "feature": "ball_recoveries_p90",
+          "label": "Ball recoveries/90",
+          "z_deviation": 0.6741,
+          "mean_in_cluster": 10.4908,
+          "mean_in_counterpart": 7.1047
+        },
+        {
+          "feature": "touches_def_pen_p90",
+          "label": "Touches, own box/90",
+          "z_deviation": 0.6663,
+          "mean_in_cluster": 2.5453,
+          "mean_in_counterpart": 0.9958
+        },
+        {
+          "feature": "shots_p90",
+          "label": "Shots/90",
+          "z_deviation": -0.6149,
+          "mean_in_cluster": 0.9252,
+          "mean_in_counterpart": 1.9177
+        },
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses/90",
+          "z_deviation": -0.6109,
+          "mean_in_cluster": 0.6197,
+          "mean_in_counterpart": 1.9654
+        },
+        {
+          "feature": "np_xg_p90",
+          "label": "npxG/90",
+          "z_deviation": -0.5851,
+          "mean_in_cluster": 0.0662,
+          "mean_in_counterpart": 0.1805
+        },
+        {
+          "feature": "take_ons_p90",
+          "label": "Take-ons attempted/90",
+          "z_deviation": -0.585,
+          "mean_in_cluster": 1.3105,
+          "mean_in_counterpart": 2.994
+        }
+      ],
+      "representative_players": [
+        {
+          "player": "Jo\u00e3o Moutinho",
+          "team": "Wolves",
+          "league": "Premier League",
+          "season": 2022,
+          "position_full": "MF",
+          "minutes": 2970,
+          "distance_to_centroid": 2.002
+        },
+        {
+          "player": "Habib Ma\u00efga",
+          "team": "Metz",
+          "league": "Ligue 1",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 2693,
+          "distance_to_centroid": 2.032
+        },
+        {
+          "player": "Douglas Luiz",
+          "team": "Aston Villa",
+          "league": "Premier League",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 2781,
+          "distance_to_centroid": 2.132
+        },
+        {
+          "player": "Daniele Baselli",
+          "team": "Torino",
+          "league": "Serie A",
+          "season": 2018,
+          "position_full": "MF",
+          "minutes": 2521,
+          "distance_to_centroid": 2.192
+        },
+        {
+          "player": "Thomas Monconduit",
+          "team": "Amiens",
+          "league": "Ligue 1",
+          "season": 2018,
+          "position_full": "MF",
+          "minutes": 2948,
+          "distance_to_centroid": 2.221
+        },
+        {
+          "player": "Sandro Tonali",
+          "team": "Milan",
+          "league": "Serie A",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 1330,
+          "distance_to_centroid": 2.226
+        },
+        {
+          "player": "Sergi Darder",
+          "team": "Espanyol",
+          "league": "La Liga",
+          "season": 2018,
+          "position_full": "MF",
+          "minutes": 2782,
+          "distance_to_centroid": 2.252
+        },
+        {
+          "player": "Luka Milivojevi\u0107",
+          "team": "Crystal Palace",
+          "league": "Premier League",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 2359,
+          "distance_to_centroid": 2.256
+        },
+        {
+          "player": "Oriol Romeu",
+          "team": "Southampton",
+          "league": "Premier League",
+          "season": 2022,
+          "position_full": "MF",
+          "minutes": 2889,
+          "distance_to_centroid": 2.282
+        },
+        {
+          "player": "Mark Noble",
+          "team": "West Ham",
+          "league": "Premier League",
+          "season": 2018,
+          "position_full": "MF",
+          "minutes": 2400,
+          "distance_to_centroid": 2.285
+        }
+      ],
+      "boundary_players": [
+        {
+          "player": "Renato Sanches",
+          "team": "Lille",
+          "league": "Ligue 1",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 1270,
+          "margin": 0.002
+        },
+        {
+          "player": "James Milner",
+          "team": "Liverpool",
+          "league": "Premier League",
+          "season": 2019,
+          "position_full": "MF,DF",
+          "minutes": 1789,
+          "margin": 0.003
+        },
+        {
+          "player": "John Lundstram",
+          "team": "Sheffield Utd",
+          "league": "Premier League",
+          "season": 2020,
+          "position_full": "MF",
+          "minutes": 2458,
+          "margin": 0.01
+        }
+      ],
+      "justification": "These 1,939 player-seasons are the deep midfielders. They make 10.49 against 7.10 ball recoveries per 90, 2.34 against 1.57 possession adjusted tackles and 1.31 against 0.82 possession adjusted interceptions, win 49.6 percent against 33.5 percent of their aerial duels, and take 14.86 against 7.58 touches in the defensive third and 37.40 against 26.22 in the middle third. The important detail is that they are not passive: they play 4.07 against 2.53 passes into the final third per 90 and 4.00 against 3.48 progressive passes, both above the midfield mean, so they progress the ball by passing it forward rather than by carrying it or receiving it high. What separates them is where they finish the move rather than whether they advance it, since they take only 1.12 against 3.47 touches in the opposition box, receive 2.16 against 6.46 progressive passes and shoot 0.93 against 1.92 times per 90. Representative members are Jo\u00e3o Moutinho, Douglas Luiz, Sandro Tonali, Luka Milivojevi\u0107 and Oriol Romeu. Membership is stable across time and competition: between 9 and 10 percent of midfielders who play two consecutive seasons change cluster, the adjusted Rand index between consecutive seasons runs from 0.63 to 0.67, and refitting the same two cluster partition inside a single league recovers the pooled one with an adjusted Rand index from 0.72 to 0.97."
+    },
+    {
+      "label": "MF-1",
+      "name": "Advanced attacking midfielders",
+      "position_group": "MF",
+      "n_players": 1827,
+      "n_position_group": 3766,
+      "share_of_position_group": 0.4851,
+      "summary": "Midfielders who receive progressively, touch the ball in the attacking third and the opposition box, shoot and cross, and defend much less.",
+      "distinguishing_features": [
+        {
+          "feature": "progressive_receptions_p90",
+          "label": "Progressive receptions/90",
+          "z_deviation": 0.8105,
+          "mean_in_cluster": 6.4571,
+          "mean_in_counterpart": 2.1565
+        },
+        {
+          "feature": "touches_att_pen_p90",
+          "label": "Touches, opposition box/90",
+          "z_deviation": 0.7482,
+          "mean_in_cluster": 3.4664,
+          "mean_in_counterpart": 1.1179
+        },
+        {
+          "feature": "touches_def_third_p90",
+          "label": "Touches, defensive third/90",
+          "z_deviation": -0.7449,
+          "mean_in_cluster": 7.5779,
+          "mean_in_counterpart": 14.8637
+        },
+        {
+          "feature": "touches_att_third_p90",
+          "label": "Touches, attacking third/90",
+          "z_deviation": 0.7389,
+          "mean_in_cluster": 24.0461,
+          "mean_in_counterpart": 12.745
+        },
+        {
+          "feature": "ball_recoveries_p90",
+          "label": "Ball recoveries/90",
+          "z_deviation": -0.7154,
+          "mean_in_cluster": 7.1047,
+          "mean_in_counterpart": 10.4908
+        },
+        {
+          "feature": "touches_def_pen_p90",
+          "label": "Touches, own box/90",
+          "z_deviation": -0.7072,
+          "mean_in_cluster": 0.9958,
+          "mean_in_counterpart": 2.5453
+        },
+        {
+          "feature": "shots_p90",
+          "label": "Shots/90",
+          "z_deviation": 0.6526,
+          "mean_in_cluster": 1.9177,
+          "mean_in_counterpart": 0.9252
+        },
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses/90",
+          "z_deviation": 0.6484,
+          "mean_in_cluster": 1.9654,
+          "mean_in_counterpart": 0.6197
+        },
+        {
+          "feature": "np_xg_p90",
+          "label": "npxG/90",
+          "z_deviation": 0.6209,
+          "mean_in_cluster": 0.1805,
+          "mean_in_counterpart": 0.0662
+        },
+        {
+          "feature": "take_ons_p90",
+          "label": "Take-ons attempted/90",
+          "z_deviation": 0.6209,
+          "mean_in_cluster": 2.994,
+          "mean_in_counterpart": 1.3105
+        }
+      ],
+      "representative_players": [
+        {
+          "player": "Brais M\u00e9ndez",
+          "team": "Celta Vigo",
+          "league": "La Liga",
+          "season": 2019,
+          "position_full": "MF",
+          "minutes": 2349,
+          "distance_to_centroid": 2.198
+        },
+        {
+          "player": "Andreas Pereira",
+          "team": "Manchester Utd",
+          "league": "Premier League",
+          "season": 2020,
+          "position_full": "MF",
+          "minutes": 1484,
+          "distance_to_centroid": 2.282
+        },
+        {
+          "player": "\u00d3scar Rodr\u00edguez Arnaiz",
+          "team": "Legan\u00e9s",
+          "league": "La Liga",
+          "season": 2019,
+          "position_full": "MF",
+          "minutes": 2504,
+          "distance_to_centroid": 2.302
+        },
+        {
+          "player": "Matheus Pereira",
+          "team": "West Brom",
+          "league": "Premier League",
+          "season": 2021,
+          "position_full": "MF,FW",
+          "minutes": 2577,
+          "distance_to_centroid": 2.324
+        },
+        {
+          "player": "Hamed Junior Traor\u00e8",
+          "team": "Sassuolo",
+          "league": "Serie A",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 1789,
+          "distance_to_centroid": 2.367
+        },
+        {
+          "player": "Dominick Drexler",
+          "team": "K\u00f6ln",
+          "league": "Bundesliga",
+          "season": 2020,
+          "position_full": "MF",
+          "minutes": 1587,
+          "distance_to_centroid": 2.428
+        },
+        {
+          "player": "Nathan Redmond",
+          "team": "Southampton",
+          "league": "Premier League",
+          "season": 2018,
+          "position_full": "MF",
+          "minutes": 1945,
+          "distance_to_centroid": 2.45
+        },
+        {
+          "player": "Nathan Redmond",
+          "team": "Southampton",
+          "league": "Premier League",
+          "season": 2020,
+          "position_full": "MF,FW",
+          "minutes": 2762,
+          "distance_to_centroid": 2.499
+        },
+        {
+          "player": "Angelo Fulgini",
+          "team": "Angers",
+          "league": "Ligue 1",
+          "season": 2018,
+          "position_full": "MF",
+          "minutes": 1529,
+          "distance_to_centroid": 2.513
+        },
+        {
+          "player": "Gio Reyna",
+          "team": "Dortmund",
+          "league": "Bundesliga",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 1976,
+          "distance_to_centroid": 2.529
+        }
+      ],
+      "boundary_players": [
+        {
+          "player": "Anton\u00edn Bar\u00e1k",
+          "team": "Hellas Verona",
+          "league": "Serie A",
+          "season": 2021,
+          "position_full": "MF",
+          "minutes": 2765,
+          "margin": 0.012
+        },
+        {
+          "player": "Mattias Svanberg",
+          "team": "Bologna",
+          "league": "Serie A",
+          "season": 2019,
+          "position_full": "MF",
+          "minutes": 1176,
+          "margin": 0.012
+        },
+        {
+          "player": "Brais M\u00e9ndez",
+          "team": "Celta Vigo",
+          "league": "La Liga",
+          "season": 2022,
+          "position_full": "MF",
+          "minutes": 3021,
+          "margin": 0.018
+        }
+      ],
+      "justification": "These 1,827 player-seasons are the advanced midfielders and wide attacking midfielders, and the listed position half agrees, since the largest single listed value inside the cluster is the dual designation MF,FW. They receive 6.46 against 2.16 progressive passes per 90, which is 0.81 standard deviations above the midfield mean, take 3.47 against 1.12 touches in the opposition penalty area and 24.05 against 12.74 in the attacking third, and carry the ball progressively 6.02 against 3.83 times. Their output follows from that position: 1.92 against 0.93 shots per 90, 0.18 against 0.07 non-penalty expected goals, 1.52 against 0.81 key passes and 1.97 against 0.62 crosses. They defend far less, with 7.10 against 10.49 ball recoveries and 1.57 against 2.34 possession adjusted tackles per 90, and they complete a smaller share of their passing at every distance, 84.1 percent against 87.7 percent short and 78.5 percent against 86.6 percent medium, which is what passing into congested areas costs. Representative members are Brais M\u00e9ndez, Andreas Pereira, Nathan Redmond, Hamed Junior Traor\u00e8 and Gio Reyna. Membership is stable across time and competition: between 9 and 10 percent of midfielders who play two consecutive seasons change cluster, the adjusted Rand index between consecutive seasons runs from 0.63 to 0.67, and refitting the same two cluster partition inside a single league recovers the pooled one with an adjusted Rand index from 0.72 to 0.97."
+    },
+    {
+      "label": "FW-0",
+      "name": "Low involvement centre forwards",
+      "position_group": "FW",
+      "n_players": 1241,
+      "n_position_group": 1704,
+      "share_of_position_group": 0.7283,
+      "summary": "Forwards whose shooting matches the forward average but whose carrying, passing and touches outside the penalty area sit well below it.",
+      "distinguishing_features": [
+        {
+          "feature": "progressive_carries_p90",
+          "label": "Progressive carries/90",
+          "z_deviation": -0.4752,
+          "mean_in_cluster": 2.5647,
+          "mean_in_counterpart": 7.0356
+        },
+        {
+          "feature": "carries_final_third_p90",
+          "label": "Carries into final third/90",
+          "z_deviation": -0.4471,
+          "mean_in_cluster": 0.8157,
+          "mean_in_counterpart": 2.1707
+        },
+        {
+          "feature": "touches_att_third_p90",
+          "label": "Touches, attacking third/90",
+          "z_deviation": -0.447,
+          "mean_in_cluster": 17.3877,
+          "mean_in_counterpart": 28.176
+        },
+        {
+          "feature": "passes_penalty_area_p90",
+          "label": "Passes into box/90",
+          "z_deviation": -0.4422,
+          "mean_in_cluster": 0.5508,
+          "mean_in_counterpart": 1.5459
+        },
+        {
+          "feature": "progressive_passes_p90",
+          "label": "Progressive passes/90",
+          "z_deviation": -0.4283,
+          "mean_in_cluster": 1.4,
+          "mean_in_counterpart": 3.3382
+        },
+        {
+          "feature": "sca_p90",
+          "label": "Shot creating actions/90",
+          "z_deviation": -0.4191,
+          "mean_in_cluster": 2.1064,
+          "mean_in_counterpart": 3.6892
+        },
+        {
+          "feature": "key_passes_p90",
+          "label": "Key passes/90",
+          "z_deviation": -0.4106,
+          "mean_in_cluster": 0.8832,
+          "mean_in_counterpart": 1.7324
+        },
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses/90",
+          "z_deviation": -0.3991,
+          "mean_in_cluster": 0.7408,
+          "mean_in_counterpart": 2.093
+        },
+        {
+          "feature": "touches_mid_third_p90",
+          "label": "Touches, middle third/90",
+          "z_deviation": -0.3684,
+          "mean_in_cluster": 16.5004,
+          "mean_in_counterpart": 23.3814
+        },
+        {
+          "feature": "xag_p90",
+          "label": "xAG/90",
+          "z_deviation": -0.3523,
+          "mean_in_cluster": 0.107,
+          "mean_in_counterpart": 0.2132
+        }
+      ],
+      "representative_players": [
+        {
+          "player": "Mohamed Lamine Bayo",
+          "team": "Clermont Foot",
+          "league": "Ligue 1",
+          "season": 2022,
+          "position_full": "FW",
+          "minutes": 2413,
+          "distance_to_centroid": 1.554
+        },
+        {
+          "player": "Ollie Watkins",
+          "team": "Aston Villa",
+          "league": "Premier League",
+          "season": 2022,
+          "position_full": "FW",
+          "minutes": 2952,
+          "distance_to_centroid": 2.1
+        },
+        {
+          "player": "Kike",
+          "team": "Osasuna",
+          "league": "La Liga",
+          "season": 2022,
+          "position_full": "FW",
+          "minutes": 1862,
+          "distance_to_centroid": 2.12
+        },
+        {
+          "player": "Jo\u00e3o Pedro",
+          "team": "Cagliari",
+          "league": "Serie A",
+          "season": 2022,
+          "position_full": "FW",
+          "minutes": 3323,
+          "distance_to_centroid": 2.176
+        },
+        {
+          "player": "Kike",
+          "team": "Eibar",
+          "league": "La Liga",
+          "season": 2021,
+          "position_full": "FW",
+          "minutes": 3087,
+          "distance_to_centroid": 2.261
+        },
+        {
+          "player": "Sergi Guardiola",
+          "team": "Rayo Vallecano",
+          "league": "La Liga",
+          "season": 2022,
+          "position_full": "FW",
+          "minutes": 1710,
+          "distance_to_centroid": 2.312
+        },
+        {
+          "player": "Luis Javier Su\u00e1rez",
+          "team": "Granada",
+          "league": "La Liga",
+          "season": 2022,
+          "position_full": "FW",
+          "minutes": 2844,
+          "distance_to_centroid": 2.346
+        },
+        {
+          "player": "Enes \u00dcnal",
+          "team": "Valladolid",
+          "league": "La Liga",
+          "season": 2020,
+          "position_full": "FW",
+          "minutes": 2344,
+          "distance_to_centroid": 2.37
+        },
+        {
+          "player": "Habib Diallo",
+          "team": "Strasbourg",
+          "league": "Ligue 1",
+          "season": 2021,
+          "position_full": "FW,MF",
+          "minutes": 2322,
+          "distance_to_centroid": 2.37
+        },
+        {
+          "player": "Robin Quaison",
+          "team": "Mainz 05",
+          "league": "Bundesliga",
+          "season": 2018,
+          "position_full": "FW,MF",
+          "minutes": 1409,
+          "distance_to_centroid": 2.407
+        }
+      ],
+      "boundary_players": [
+        {
+          "player": "Roger Assal\u00e9",
+          "team": "Legan\u00e9s",
+          "league": "La Liga",
+          "season": 2020,
+          "position_full": "FW,MF",
+          "minutes": 531,
+          "margin": 0.034
+        },
+        {
+          "player": "Moanes Dabbur",
+          "team": "Hoffenheim",
+          "league": "Bundesliga",
+          "season": 2022,
+          "position_full": "FW,MF",
+          "minutes": 1310,
+          "margin": 0.037
+        },
+        {
+          "player": "Wahbi Khazri",
+          "team": "Saint-\u00c9tienne",
+          "league": "Ligue 1",
+          "season": 2022,
+          "position_full": "FW,MF",
+          "minutes": 2225,
+          "margin": 0.042
+        }
+      ],
+      "justification": "These 1,241 player-seasons are 73 percent of all forwards, and they are defined by what they do not do rather than by any positive extreme. Their shooting is at the forward average, 0.34 against 0.30 non-penalty expected goals per 90 and 0.32 against 0.31 non-penalty goals, and their box presence is close to it as well, 4.92 against 5.39 touches in the opposition penalty area. Everything that happens before the shot is far below it. They carry the ball progressively 2.56 against 7.04 times per 90, play 1.40 against 3.34 progressive passes and 0.55 against 1.55 passes into the penalty area, register 2.11 against 3.69 shot creating actions, and touch the ball only 16.50 against 23.38 times in the middle third. They also complete less of their passing, 77.3 percent against 84.3 percent short. Representative members are Ollie Watkins, Jo\u00e3o Pedro, Enes \u00dcnal, Habib Diallo and Luis Javier Su\u00e1rez. This is the penalty area centre forward who is fed rather than the one who builds, and the honest reading of the cluster is low involvement outside the box rather than a distinct finishing skill, because the finishing statistics do not separate it. Membership is stable across time and competition: between 8 and 11 percent of forwards who play two consecutive seasons change cluster, the adjusted Rand index between consecutive seasons runs from 0.58 to 0.67, and refitting the same two cluster partition inside a single league recovers the pooled one with an adjusted Rand index from 0.66 to 0.99."
+    },
+    {
+      "label": "FW-1",
+      "name": "Creating and carrying forwards",
+      "position_group": "FW",
+      "n_players": 463,
+      "n_position_group": 1704,
+      "share_of_position_group": 0.2717,
+      "summary": "Forwards who drop into the build-up, carry the ball progressively and create chances at more than one standard deviation above the forward average.",
+      "distinguishing_features": [
+        {
+          "feature": "progressive_carries_p90",
+          "label": "Progressive carries/90",
+          "z_deviation": 1.2737,
+          "mean_in_cluster": 7.0356,
+          "mean_in_counterpart": 2.5647
+        },
+        {
+          "feature": "carries_final_third_p90",
+          "label": "Carries into final third/90",
+          "z_deviation": 1.1983,
+          "mean_in_cluster": 2.1707,
+          "mean_in_counterpart": 0.8157
+        },
+        {
+          "feature": "touches_att_third_p90",
+          "label": "Touches, attacking third/90",
+          "z_deviation": 1.1981,
+          "mean_in_cluster": 28.176,
+          "mean_in_counterpart": 17.3877
+        },
+        {
+          "feature": "passes_penalty_area_p90",
+          "label": "Passes into box/90",
+          "z_deviation": 1.1853,
+          "mean_in_cluster": 1.5459,
+          "mean_in_counterpart": 0.5508
+        },
+        {
+          "feature": "progressive_passes_p90",
+          "label": "Progressive passes/90",
+          "z_deviation": 1.148,
+          "mean_in_cluster": 3.3382,
+          "mean_in_counterpart": 1.4
+        },
+        {
+          "feature": "sca_p90",
+          "label": "Shot creating actions/90",
+          "z_deviation": 1.1233,
+          "mean_in_cluster": 3.6892,
+          "mean_in_counterpart": 2.1064
+        },
+        {
+          "feature": "key_passes_p90",
+          "label": "Key passes/90",
+          "z_deviation": 1.1007,
+          "mean_in_cluster": 1.7324,
+          "mean_in_counterpart": 0.8832
+        },
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses/90",
+          "z_deviation": 1.0698,
+          "mean_in_cluster": 2.093,
+          "mean_in_counterpart": 0.7408
+        },
+        {
+          "feature": "touches_mid_third_p90",
+          "label": "Touches, middle third/90",
+          "z_deviation": 0.9874,
+          "mean_in_cluster": 23.3814,
+          "mean_in_counterpart": 16.5004
+        },
+        {
+          "feature": "xag_p90",
+          "label": "xAG/90",
+          "z_deviation": 0.9443,
+          "mean_in_cluster": 0.2132,
+          "mean_in_counterpart": 0.107
+        }
+      ],
+      "representative_players": [
+        {
+          "player": "Amine Gouiri",
+          "team": "Nice",
+          "league": "Ligue 1",
+          "season": 2022,
+          "position_full": "FW,MF",
+          "minutes": 2754,
+          "distance_to_centroid": 2.528
+        },
+        {
+          "player": "Amine Gouiri",
+          "team": "Nice",
+          "league": "Ligue 1",
+          "season": 2021,
+          "position_full": "FW,MF",
+          "minutes": 2747,
+          "distance_to_centroid": 2.636
+        },
+        {
+          "player": "Musa Barrow",
+          "team": "Bologna",
+          "league": "Serie A",
+          "season": 2022,
+          "position_full": "FW,MF",
+          "minutes": 2134,
+          "distance_to_centroid": 2.905
+        },
+        {
+          "player": "Diogo Jota",
+          "team": "Wolves",
+          "league": "Premier League",
+          "season": 2019,
+          "position_full": "FW,MF",
+          "minutes": 2355,
+          "distance_to_centroid": 2.919
+        },
+        {
+          "player": "Wilfried Zaha",
+          "team": "Crystal Palace",
+          "league": "Premier League",
+          "season": 2022,
+          "position_full": "FW,MF",
+          "minutes": 2760,
+          "distance_to_centroid": 3.127
+        },
+        {
+          "player": "Nicolas P\u00e9p\u00e9",
+          "team": "Lille",
+          "league": "Ligue 1",
+          "season": 2018,
+          "position_full": "FW,MF",
+          "minutes": 2841,
+          "distance_to_centroid": 3.183
+        },
+        {
+          "player": "\u00c1ngel Correa",
+          "team": "Atl\u00e9tico Madrid",
+          "league": "La Liga",
+          "season": 2021,
+          "position_full": "FW,MF",
+          "minutes": 2393,
+          "distance_to_centroid": 3.239
+        },
+        {
+          "player": "Iago Aspas",
+          "team": "Celta Vigo",
+          "league": "La Liga",
+          "season": 2018,
+          "position_full": "FW",
+          "minutes": 2936,
+          "distance_to_centroid": 3.248
+        },
+        {
+          "player": "Dejan Kulusevski",
+          "team": "Parma",
+          "league": "Serie A",
+          "season": 2020,
+          "position_full": "FW,MF",
+          "minutes": 2930,
+          "distance_to_centroid": 3.258
+        },
+        {
+          "player": "Sadio Man\u00e9",
+          "team": "Liverpool",
+          "league": "Premier League",
+          "season": 2018,
+          "position_full": "FW,MF",
+          "minutes": 2190,
+          "distance_to_centroid": 3.268
+        }
+      ],
+      "boundary_players": [
+        {
+          "player": "Mark Uth",
+          "team": "Schalke 04",
+          "league": "Bundesliga",
+          "season": 2021,
+          "position_full": "FW,MF",
+          "minutes": 1494,
+          "margin": 0.002
+        },
+        {
+          "player": "Ryan Fraser",
+          "team": "Newcastle Utd",
+          "league": "Premier League",
+          "season": 2022,
+          "position_full": "FW,MF",
+          "minutes": 1465,
+          "margin": 0.015
+        },
+        {
+          "player": "Luca Siligardi",
+          "team": "Parma",
+          "league": "Serie A",
+          "season": 2019,
+          "position_full": "FW",
+          "minutes": 1639,
+          "margin": 0.016
+        }
+      ],
+      "justification": "These 463 player-seasons are the smallest of the six clusters and the most sharply drawn, because the forward split is uneven and the deviations concentrate on the smaller side. They carry the ball progressively 7.04 against 2.56 times per 90, which is 1.27 standard deviations above the forward mean, carry into the final third 2.17 against 0.82 times and attempt 3.65 against 1.90 take-ons. They create as much as they finish: 1.73 against 0.88 key passes per 90, 1.55 against 0.55 passes into the penalty area, 2.09 against 0.74 crosses and 3.69 against 2.11 shot creating actions. They also drop deep, taking 23.38 against 16.50 touches in the middle third and 5.08 against 3.19 in the defensive third, and they make 5.67 against 4.26 ball recoveries. Their own shooting is no better than the other forward cluster, 0.30 against 0.34 non-penalty expected goals per 90, so this is a wide or second forward who participates in the build-up rather than a superior scorer. Representative members are Amine Gouiri, Musa Barrow, Diogo Jota, Wilfried Zaha and Sadio Man\u00e9. Membership is stable across time and competition: between 8 and 11 percent of forwards who play two consecutive seasons change cluster, the adjusted Rand index between consecutive seasons runs from 0.58 to 0.67, and refitting the same two cluster partition inside a single league recovers the pooled one with an adjusted Rand index from 0.66 to 0.99."
+    }
+  ]
+}

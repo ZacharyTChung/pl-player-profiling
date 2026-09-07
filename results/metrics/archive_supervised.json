@@ -1,0 +1,1677 @@
+{
+  "question": "Can listed position be predicted from the full 33-feature set?",
+  "n_players": 9263,
+  "n_features": 33,
+  "features": [
+    "np_xg_p90",
+    "shots_p90",
+    "goals_non_penalty_p90",
+    "xag_p90",
+    "key_passes_p90",
+    "sca_p90",
+    "gca_p90",
+    "passes_final_third_p90",
+    "passes_penalty_area_p90",
+    "crosses_p90",
+    "progressive_passes_p90",
+    "progressive_carries_p90",
+    "progressive_receptions_p90",
+    "carries_final_third_p90",
+    "touches_def_pen_p90",
+    "touches_def_third_p90",
+    "touches_mid_third_p90",
+    "touches_att_third_p90",
+    "touches_att_pen_p90",
+    "take_ons_p90",
+    "tackles_padj_p90",
+    "interceptions_padj_p90",
+    "blocks_padj_p90",
+    "clearances_padj_p90",
+    "ball_recoveries_p90",
+    "fouls_committed_padj_p90",
+    "shot_accuracy_pct",
+    "take_on_success_pct",
+    "tackle_win_pct",
+    "aerials_won_pct",
+    "pass_cmp_short_pct",
+    "pass_cmp_medium_pct",
+    "pass_cmp_long_pct"
+  ],
+  "class_order": [
+    "DF",
+    "MF",
+    "FW"
+  ],
+  "class_counts": {
+    "DF": 3793,
+    "MF": 3766,
+    "FW": 1704
+  },
+  "cross_validation": "5-fold stratified, shuffled, seeded from config.RANDOM_STATE. Every number is from out-of-fold predictions. The baseline runs through the same folds.",
+  "majority_class": "DF",
+  "majority_class_share": 0.4095,
+  "models": {
+    "logistic_regression": {
+      "accuracy": 0.9308,
+      "balanced_accuracy": 0.9154,
+      "macro_f1": 0.9182,
+      "weighted_f1": 0.9306,
+      "per_class": {
+        "DF": {
+          "precision": 0.9742,
+          "recall": 0.9747,
+          "f1": 0.9744,
+          "support": 3793
+        },
+        "MF": {
+          "precision": 0.9094,
+          "recall": 0.9246,
+          "f1": 0.9169,
+          "support": 3766
+        },
+        "FW": {
+          "precision": 0.8804,
+          "recall": 0.8468,
+          "f1": 0.8633,
+          "support": 1704
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "DF",
+          "MF",
+          "FW"
+        ],
+        "counts": [
+          [
+            3697,
+            96,
+            0
+          ],
+          [
+            88,
+            3482,
+            196
+          ],
+          [
+            10,
+            251,
+            1443
+          ]
+        ],
+        "row_normalised": [
+          [
+            0.9746902188241497,
+            0.02530978117585025,
+            0.0
+          ],
+          [
+            0.02336696760488582,
+            0.9245884227296867,
+            0.05204460966542751
+          ],
+          [
+            0.005868544600938967,
+            0.14730046948356806,
+            0.846830985915493
+          ]
+        ]
+      }
+    },
+    "lightgbm": {
+      "accuracy": 0.934,
+      "balanced_accuracy": 0.9165,
+      "macro_f1": 0.9211,
+      "weighted_f1": 0.9337,
+      "per_class": {
+        "DF": {
+          "precision": 0.9763,
+          "recall": 0.9781,
+          "f1": 0.9772,
+          "support": 3793
+        },
+        "MF": {
+          "precision": 0.9094,
+          "recall": 0.9328,
+          "f1": 0.921,
+          "support": 3766
+        },
+        "FW": {
+          "precision": 0.8931,
+          "recall": 0.8386,
+          "f1": 0.865,
+          "support": 1704
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "DF",
+          "MF",
+          "FW"
+        ],
+        "counts": [
+          [
+            3710,
+            83,
+            0
+          ],
+          [
+            82,
+            3513,
+            171
+          ],
+          [
+            8,
+            267,
+            1429
+          ]
+        ],
+        "row_normalised": [
+          [
+            0.9781175850250461,
+            0.021882414974953864,
+            0.0
+          ],
+          [
+            0.02177376526818906,
+            0.9328199681359532,
+            0.045406266595857676
+          ],
+          [
+            0.004694835680751174,
+            0.15669014084507044,
+            0.8386150234741784
+          ]
+        ]
+      }
+    },
+    "majority_baseline": {
+      "accuracy": 0.4095,
+      "balanced_accuracy": 0.3333,
+      "macro_f1": 0.1937,
+      "weighted_f1": 0.2379,
+      "per_class": {
+        "DF": {
+          "precision": 0.4095,
+          "recall": 1.0,
+          "f1": 0.581,
+          "support": 3793
+        },
+        "MF": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3766
+        },
+        "FW": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1704
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "DF",
+          "MF",
+          "FW"
+        ],
+        "counts": [
+          [
+            3793,
+            0,
+            0
+          ],
+          [
+            3766,
+            0,
+            0
+          ],
+          [
+            1704,
+            0,
+            0
+          ]
+        ],
+        "row_normalised": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    }
+  },
+  "lift_over_baseline": {
+    "logistic_regression": {
+      "accuracy": 0.5213,
+      "macro_f1": 0.7245
+    },
+    "lightgbm": {
+      "accuracy": 0.5245,
+      "macro_f1": 0.7274
+    }
+  },
+  "shap": {
+    "question": "Which statistics define each position when the full feature set is present?",
+    "model": "lightgbm",
+    "fit": "all 9,263 rows, no held-out split, interpretability only",
+    "explainer": "shap.TreeExplainer, exact tree SHAP",
+    "explained_rows": 2000,
+    "explained_rows_note": "A stratified sub-sample of 2000 of the 9263 rows is explained. Exact tree SHAP is linear in the rows explained and the ranking is stable well below the full sample. The model itself is fitted on every row.",
+    "units": "log-odds contribution to the class score",
+    "features": [
+      "np_xg_p90",
+      "shots_p90",
+      "goals_non_penalty_p90",
+      "xag_p90",
+      "key_passes_p90",
+      "sca_p90",
+      "gca_p90",
+      "passes_final_third_p90",
+      "passes_penalty_area_p90",
+      "crosses_p90",
+      "progressive_passes_p90",
+      "progressive_carries_p90",
+      "progressive_receptions_p90",
+      "carries_final_third_p90",
+      "touches_def_pen_p90",
+      "touches_def_third_p90",
+      "touches_mid_third_p90",
+      "touches_att_third_p90",
+      "touches_att_pen_p90",
+      "take_ons_p90",
+      "tackles_padj_p90",
+      "interceptions_padj_p90",
+      "blocks_padj_p90",
+      "clearances_padj_p90",
+      "ball_recoveries_p90",
+      "fouls_committed_padj_p90",
+      "shot_accuracy_pct",
+      "take_on_success_pct",
+      "tackle_win_pct",
+      "aerials_won_pct",
+      "pass_cmp_short_pct",
+      "pass_cmp_medium_pct",
+      "pass_cmp_long_pct"
+    ],
+    "class_order": [
+      "DF",
+      "MF",
+      "FW"
+    ],
+    "overall_ranking": [
+      {
+        "rank": 1,
+        "feature": "touches_def_third_p90",
+        "label": "Touches def third",
+        "mean_abs_shap": 1.40744
+      },
+      {
+        "rank": 2,
+        "feature": "clearances_padj_p90",
+        "label": "Clearances (adj)",
+        "mean_abs_shap": 0.47205
+      },
+      {
+        "rank": 3,
+        "feature": "ball_recoveries_p90",
+        "label": "Ball recoveries",
+        "mean_abs_shap": 0.332
+      },
+      {
+        "rank": 4,
+        "feature": "progressive_receptions_p90",
+        "label": "Prog. receptions",
+        "mean_abs_shap": 0.32838
+      },
+      {
+        "rank": 5,
+        "feature": "crosses_p90",
+        "label": "Crosses",
+        "mean_abs_shap": 0.30986
+      },
+      {
+        "rank": 6,
+        "feature": "touches_att_pen_p90",
+        "label": "Touches opp box",
+        "mean_abs_shap": 0.24017
+      },
+      {
+        "rank": 7,
+        "feature": "tackle_win_pct",
+        "label": "Tackle win %",
+        "mean_abs_shap": 0.24011
+      },
+      {
+        "rank": 8,
+        "feature": "shots_p90",
+        "label": "Shots",
+        "mean_abs_shap": 0.21522
+      },
+      {
+        "rank": 9,
+        "feature": "passes_final_third_p90",
+        "label": "Passes final third",
+        "mean_abs_shap": 0.17144
+      },
+      {
+        "rank": 10,
+        "feature": "pass_cmp_medium_pct",
+        "label": "Medium pass %",
+        "mean_abs_shap": 0.15757
+      },
+      {
+        "rank": 11,
+        "feature": "touches_def_pen_p90",
+        "label": "Touches own box",
+        "mean_abs_shap": 0.14838
+      },
+      {
+        "rank": 12,
+        "feature": "sca_p90",
+        "label": "SCA",
+        "mean_abs_shap": 0.12806
+      },
+      {
+        "rank": 13,
+        "feature": "touches_att_third_p90",
+        "label": "Touches att third",
+        "mean_abs_shap": 0.12404
+      },
+      {
+        "rank": 14,
+        "feature": "tackles_padj_p90",
+        "label": "Tackles (adj)",
+        "mean_abs_shap": 0.12345
+      },
+      {
+        "rank": 15,
+        "feature": "touches_mid_third_p90",
+        "label": "Touches mid third",
+        "mean_abs_shap": 0.11825
+      },
+      {
+        "rank": 16,
+        "feature": "pass_cmp_long_pct",
+        "label": "Long pass %",
+        "mean_abs_shap": 0.11468
+      },
+      {
+        "rank": 17,
+        "feature": "progressive_carries_p90",
+        "label": "Prog. carries",
+        "mean_abs_shap": 0.10786
+      },
+      {
+        "rank": 18,
+        "feature": "interceptions_padj_p90",
+        "label": "Interceptions (adj)",
+        "mean_abs_shap": 0.10213
+      },
+      {
+        "rank": 19,
+        "feature": "fouls_committed_padj_p90",
+        "label": "Fouls (adj)",
+        "mean_abs_shap": 0.09141
+      },
+      {
+        "rank": 20,
+        "feature": "progressive_passes_p90",
+        "label": "Prog. passes",
+        "mean_abs_shap": 0.07824
+      },
+      {
+        "rank": 21,
+        "feature": "pass_cmp_short_pct",
+        "label": "Short pass %",
+        "mean_abs_shap": 0.07735
+      },
+      {
+        "rank": 22,
+        "feature": "xag_p90",
+        "label": "xAG",
+        "mean_abs_shap": 0.07375
+      },
+      {
+        "rank": 23,
+        "feature": "blocks_padj_p90",
+        "label": "Blocks (adj)",
+        "mean_abs_shap": 0.07254
+      },
+      {
+        "rank": 24,
+        "feature": "shot_accuracy_pct",
+        "label": "Shot accuracy %",
+        "mean_abs_shap": 0.07111
+      },
+      {
+        "rank": 25,
+        "feature": "np_xg_p90",
+        "label": "npxG",
+        "mean_abs_shap": 0.06703
+      },
+      {
+        "rank": 26,
+        "feature": "key_passes_p90",
+        "label": "Key passes",
+        "mean_abs_shap": 0.06103
+      },
+      {
+        "rank": 27,
+        "feature": "take_on_success_pct",
+        "label": "Take on success %",
+        "mean_abs_shap": 0.05938
+      },
+      {
+        "rank": 28,
+        "feature": "goals_non_penalty_p90",
+        "label": "NP goals",
+        "mean_abs_shap": 0.05446
+      },
+      {
+        "rank": 29,
+        "feature": "take_ons_p90",
+        "label": "Take ons",
+        "mean_abs_shap": 0.0522
+      },
+      {
+        "rank": 30,
+        "feature": "passes_penalty_area_p90",
+        "label": "Passes into box",
+        "mean_abs_shap": 0.04369
+      },
+      {
+        "rank": 31,
+        "feature": "gca_p90",
+        "label": "GCA",
+        "mean_abs_shap": 0.04305
+      },
+      {
+        "rank": 32,
+        "feature": "carries_final_third_p90",
+        "label": "Carries final third",
+        "mean_abs_shap": 0.03936
+      },
+      {
+        "rank": 33,
+        "feature": "aerials_won_pct",
+        "label": "Aerials won %",
+        "mean_abs_shap": 0.03443
+      }
+    ],
+    "own_class_ranking": [
+      {
+        "rank": 1,
+        "feature": "touches_def_third_p90",
+        "label": "Touches def third",
+        "mean_abs_shap": 1.8839,
+        "mean_signed_shap": 1.85882
+      },
+      {
+        "rank": 2,
+        "feature": "clearances_padj_p90",
+        "label": "Clearances (adj)",
+        "mean_abs_shap": 0.57091,
+        "mean_signed_shap": 0.49531
+      },
+      {
+        "rank": 3,
+        "feature": "crosses_p90",
+        "label": "Crosses",
+        "mean_abs_shap": 0.41813,
+        "mean_signed_shap": 0.17995
+      },
+      {
+        "rank": 4,
+        "feature": "ball_recoveries_p90",
+        "label": "Ball recoveries",
+        "mean_abs_shap": 0.37182,
+        "mean_signed_shap": 0.31162
+      },
+      {
+        "rank": 5,
+        "feature": "progressive_receptions_p90",
+        "label": "Prog. receptions",
+        "mean_abs_shap": 0.34303,
+        "mean_signed_shap": 0.33248
+      },
+      {
+        "rank": 6,
+        "feature": "tackle_win_pct",
+        "label": "Tackle win %",
+        "mean_abs_shap": 0.26557,
+        "mean_signed_shap": 0.18088
+      },
+      {
+        "rank": 7,
+        "feature": "shots_p90",
+        "label": "Shots",
+        "mean_abs_shap": 0.24017,
+        "mean_signed_shap": 0.17579
+      },
+      {
+        "rank": 8,
+        "feature": "touches_att_pen_p90",
+        "label": "Touches opp box",
+        "mean_abs_shap": 0.22735,
+        "mean_signed_shap": 0.16526
+      },
+      {
+        "rank": 9,
+        "feature": "passes_final_third_p90",
+        "label": "Passes final third",
+        "mean_abs_shap": 0.20629,
+        "mean_signed_shap": 0.11915
+      },
+      {
+        "rank": 10,
+        "feature": "touches_def_pen_p90",
+        "label": "Touches own box",
+        "mean_abs_shap": 0.19583,
+        "mean_signed_shap": 0.19065
+      },
+      {
+        "rank": 11,
+        "feature": "tackles_padj_p90",
+        "label": "Tackles (adj)",
+        "mean_abs_shap": 0.17434,
+        "mean_signed_shap": 0.08039
+      },
+      {
+        "rank": 12,
+        "feature": "pass_cmp_medium_pct",
+        "label": "Medium pass %",
+        "mean_abs_shap": 0.16788,
+        "mean_signed_shap": 0.07626
+      },
+      {
+        "rank": 13,
+        "feature": "touches_att_third_p90",
+        "label": "Touches att third",
+        "mean_abs_shap": 0.15696,
+        "mean_signed_shap": 0.06252
+      },
+      {
+        "rank": 14,
+        "feature": "pass_cmp_long_pct",
+        "label": "Long pass %",
+        "mean_abs_shap": 0.13816,
+        "mean_signed_shap": 0.04958
+      },
+      {
+        "rank": 15,
+        "feature": "sca_p90",
+        "label": "SCA",
+        "mean_abs_shap": 0.13637,
+        "mean_signed_shap": 0.09644
+      },
+      {
+        "rank": 16,
+        "feature": "touches_mid_third_p90",
+        "label": "Touches mid third",
+        "mean_abs_shap": 0.13617,
+        "mean_signed_shap": 0.05565
+      },
+      {
+        "rank": 17,
+        "feature": "progressive_carries_p90",
+        "label": "Prog. carries",
+        "mean_abs_shap": 0.13547,
+        "mean_signed_shap": 0.04236
+      },
+      {
+        "rank": 18,
+        "feature": "fouls_committed_padj_p90",
+        "label": "Fouls (adj)",
+        "mean_abs_shap": 0.11953,
+        "mean_signed_shap": 0.06098
+      },
+      {
+        "rank": 19,
+        "feature": "interceptions_padj_p90",
+        "label": "Interceptions (adj)",
+        "mean_abs_shap": 0.08571,
+        "mean_signed_shap": 0.06756
+      },
+      {
+        "rank": 20,
+        "feature": "progressive_passes_p90",
+        "label": "Prog. passes",
+        "mean_abs_shap": 0.08511,
+        "mean_signed_shap": 0.03877
+      },
+      {
+        "rank": 21,
+        "feature": "blocks_padj_p90",
+        "label": "Blocks (adj)",
+        "mean_abs_shap": 0.07993,
+        "mean_signed_shap": 0.05828
+      },
+      {
+        "rank": 22,
+        "feature": "pass_cmp_short_pct",
+        "label": "Short pass %",
+        "mean_abs_shap": 0.07552,
+        "mean_signed_shap": 0.04807
+      },
+      {
+        "rank": 23,
+        "feature": "key_passes_p90",
+        "label": "Key passes",
+        "mean_abs_shap": 0.07548,
+        "mean_signed_shap": 0.04324
+      },
+      {
+        "rank": 24,
+        "feature": "np_xg_p90",
+        "label": "npxG",
+        "mean_abs_shap": 0.0754,
+        "mean_signed_shap": 0.06113
+      },
+      {
+        "rank": 25,
+        "feature": "take_on_success_pct",
+        "label": "Take on success %",
+        "mean_abs_shap": 0.06151,
+        "mean_signed_shap": 0.00888
+      },
+      {
+        "rank": 26,
+        "feature": "carries_final_third_p90",
+        "label": "Carries final third",
+        "mean_abs_shap": 0.05135,
+        "mean_signed_shap": 0.02072
+      },
+      {
+        "rank": 27,
+        "feature": "passes_penalty_area_p90",
+        "label": "Passes into box",
+        "mean_abs_shap": 0.04914,
+        "mean_signed_shap": 0.01295
+      },
+      {
+        "rank": 28,
+        "feature": "take_ons_p90",
+        "label": "Take ons",
+        "mean_abs_shap": 0.04913,
+        "mean_signed_shap": 0.01407
+      },
+      {
+        "rank": 29,
+        "feature": "xag_p90",
+        "label": "xAG",
+        "mean_abs_shap": 0.04669,
+        "mean_signed_shap": 0.02689
+      },
+      {
+        "rank": 30,
+        "feature": "shot_accuracy_pct",
+        "label": "Shot accuracy %",
+        "mean_abs_shap": 0.04542,
+        "mean_signed_shap": 0.02161
+      },
+      {
+        "rank": 31,
+        "feature": "gca_p90",
+        "label": "GCA",
+        "mean_abs_shap": 0.04518,
+        "mean_signed_shap": 0.01036
+      },
+      {
+        "rank": 32,
+        "feature": "aerials_won_pct",
+        "label": "Aerials won %",
+        "mean_abs_shap": 0.04353,
+        "mean_signed_shap": 0.02653
+      },
+      {
+        "rank": 33,
+        "feature": "goals_non_penalty_p90",
+        "label": "NP goals",
+        "mean_abs_shap": 0.04273,
+        "mean_signed_shap": 0.03227
+      }
+    ],
+    "by_class": {
+      "DF": [
+        {
+          "rank": 1,
+          "feature": "touches_def_third_p90",
+          "label": "Touches def third",
+          "mean_abs_shap": 2.54509,
+          "mean_signed_shap": 0.07284,
+          "value_shap_spearman": 0.9581,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 2,
+          "feature": "clearances_padj_p90",
+          "label": "Clearances (adj)",
+          "mean_abs_shap": 0.7286,
+          "mean_signed_shap": -0.04848,
+          "value_shap_spearman": 0.9574,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 3,
+          "feature": "crosses_p90",
+          "label": "Crosses",
+          "mean_abs_shap": 0.5489,
+          "mean_signed_shap": 0.01427,
+          "value_shap_spearman": 0.8591,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 4,
+          "feature": "tackle_win_pct",
+          "label": "Tackle win %",
+          "mean_abs_shap": 0.47929,
+          "mean_signed_shap": -0.08854,
+          "value_shap_spearman": 0.9104,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 5,
+          "feature": "progressive_receptions_p90",
+          "label": "Prog. receptions",
+          "mean_abs_shap": 0.47189,
+          "mean_signed_shap": -0.04018,
+          "value_shap_spearman": -0.9418,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 6,
+          "feature": "shots_p90",
+          "label": "Shots",
+          "mean_abs_shap": 0.30155,
+          "mean_signed_shap": -0.04093,
+          "value_shap_spearman": -0.8812,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 7,
+          "feature": "touches_def_pen_p90",
+          "label": "Touches own box",
+          "mean_abs_shap": 0.28179,
+          "mean_signed_shap": 0.06128,
+          "value_shap_spearman": 0.9142,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 8,
+          "feature": "pass_cmp_long_pct",
+          "label": "Long pass %",
+          "mean_abs_shap": 0.19823,
+          "mean_signed_shap": 0.00927,
+          "value_shap_spearman": -0.9141,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 9,
+          "feature": "touches_mid_third_p90",
+          "label": "Touches mid third",
+          "mean_abs_shap": 0.18119,
+          "mean_signed_shap": 0.02314,
+          "value_shap_spearman": -0.9092,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 10,
+          "feature": "sca_p90",
+          "label": "SCA",
+          "mean_abs_shap": 0.16363,
+          "mean_signed_shap": -0.02504,
+          "value_shap_spearman": -0.9403,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 11,
+          "feature": "fouls_committed_padj_p90",
+          "label": "Fouls (adj)",
+          "mean_abs_shap": 0.15751,
+          "mean_signed_shap": -0.02767,
+          "value_shap_spearman": -0.9322,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 12,
+          "feature": "tackles_padj_p90",
+          "label": "Tackles (adj)",
+          "mean_abs_shap": 0.15471,
+          "mean_signed_shap": 0.03021,
+          "value_shap_spearman": -0.7887,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 13,
+          "feature": "touches_att_third_p90",
+          "label": "Touches att third",
+          "mean_abs_shap": 0.14713,
+          "mean_signed_shap": -0.02853,
+          "value_shap_spearman": 0.457,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 14,
+          "feature": "progressive_carries_p90",
+          "label": "Prog. carries",
+          "mean_abs_shap": 0.14193,
+          "mean_signed_shap": 0.01014,
+          "value_shap_spearman": 0.8031,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 15,
+          "feature": "touches_att_pen_p90",
+          "label": "Touches opp box",
+          "mean_abs_shap": 0.10335,
+          "mean_signed_shap": 0.00902,
+          "value_shap_spearman": 0.8905,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 16,
+          "feature": "take_on_success_pct",
+          "label": "Take on success %",
+          "mean_abs_shap": 0.0986,
+          "mean_signed_shap": 0.00605,
+          "value_shap_spearman": -0.8611,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 17,
+          "feature": "ball_recoveries_p90",
+          "label": "Ball recoveries",
+          "mean_abs_shap": 0.09615,
+          "mean_signed_shap": 0.0309,
+          "value_shap_spearman": -0.83,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 18,
+          "feature": "pass_cmp_medium_pct",
+          "label": "Medium pass %",
+          "mean_abs_shap": 0.09519,
+          "mean_signed_shap": 0.02299,
+          "value_shap_spearman": -0.7831,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 19,
+          "feature": "passes_final_third_p90",
+          "label": "Passes final third",
+          "mean_abs_shap": 0.09516,
+          "mean_signed_shap": 0.00917,
+          "value_shap_spearman": -0.7371,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 20,
+          "feature": "key_passes_p90",
+          "label": "Key passes",
+          "mean_abs_shap": 0.09128,
+          "mean_signed_shap": -0.0159,
+          "value_shap_spearman": -0.8668,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 21,
+          "feature": "pass_cmp_short_pct",
+          "label": "Short pass %",
+          "mean_abs_shap": 0.07421,
+          "mean_signed_shap": 0.00349,
+          "value_shap_spearman": 0.9148,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 22,
+          "feature": "np_xg_p90",
+          "label": "npxG",
+          "mean_abs_shap": 0.07139,
+          "mean_signed_shap": 0.00951,
+          "value_shap_spearman": -0.809,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 23,
+          "feature": "take_ons_p90",
+          "label": "Take ons",
+          "mean_abs_shap": 0.06373,
+          "mean_signed_shap": -0.01472,
+          "value_shap_spearman": 0.1145,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 24,
+          "feature": "aerials_won_pct",
+          "label": "Aerials won %",
+          "mean_abs_shap": 0.05179,
+          "mean_signed_shap": 0.00378,
+          "value_shap_spearman": 0.793,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 25,
+          "feature": "blocks_padj_p90",
+          "label": "Blocks (adj)",
+          "mean_abs_shap": 0.05044,
+          "mean_signed_shap": -0.00264,
+          "value_shap_spearman": 0.8111,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 26,
+          "feature": "progressive_passes_p90",
+          "label": "Prog. passes",
+          "mean_abs_shap": 0.04819,
+          "mean_signed_shap": -0.00358,
+          "value_shap_spearman": 0.8453,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 27,
+          "feature": "carries_final_third_p90",
+          "label": "Carries final third",
+          "mean_abs_shap": 0.04304,
+          "mean_signed_shap": 0.00591,
+          "value_shap_spearman": 0.8331,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 28,
+          "feature": "passes_penalty_area_p90",
+          "label": "Passes into box",
+          "mean_abs_shap": 0.04287,
+          "mean_signed_shap": 0.01308,
+          "value_shap_spearman": 0.7395,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 29,
+          "feature": "goals_non_penalty_p90",
+          "label": "NP goals",
+          "mean_abs_shap": 0.03937,
+          "mean_signed_shap": -0.00337,
+          "value_shap_spearman": -0.8929,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 30,
+          "feature": "interceptions_padj_p90",
+          "label": "Interceptions (adj)",
+          "mean_abs_shap": 0.0356,
+          "mean_signed_shap": 0.00352,
+          "value_shap_spearman": 0.2647,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 31,
+          "feature": "shot_accuracy_pct",
+          "label": "Shot accuracy %",
+          "mean_abs_shap": 0.03279,
+          "mean_signed_shap": 0.00318,
+          "value_shap_spearman": 0.548,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 32,
+          "feature": "xag_p90",
+          "label": "xAG",
+          "mean_abs_shap": 0.0295,
+          "mean_signed_shap": 0.00617,
+          "value_shap_spearman": -0.2217,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 33,
+          "feature": "gca_p90",
+          "label": "GCA",
+          "mean_abs_shap": 0.02573,
+          "mean_signed_shap": -0.00403,
+          "value_shap_spearman": 0.1531,
+          "identified_by": "presence"
+        }
+      ],
+      "MF": [
+        {
+          "rank": 1,
+          "feature": "touches_def_third_p90",
+          "label": "Touches def third",
+          "mean_abs_shap": 0.93738,
+          "mean_signed_shap": -0.11705,
+          "value_shap_spearman": -0.5894,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 2,
+          "feature": "clearances_padj_p90",
+          "label": "Clearances (adj)",
+          "mean_abs_shap": 0.6433,
+          "mean_signed_shap": -0.07639,
+          "value_shap_spearman": -0.8518,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 3,
+          "feature": "ball_recoveries_p90",
+          "label": "Ball recoveries",
+          "mean_abs_shap": 0.32328,
+          "mean_signed_shap": 0.0191,
+          "value_shap_spearman": 0.9283,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 4,
+          "feature": "crosses_p90",
+          "label": "Crosses",
+          "mean_abs_shap": 0.29543,
+          "mean_signed_shap": 0.02448,
+          "value_shap_spearman": -0.8507,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 5,
+          "feature": "passes_final_third_p90",
+          "label": "Passes final third",
+          "mean_abs_shap": 0.23932,
+          "mean_signed_shap": 0.01204,
+          "value_shap_spearman": 0.9159,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 6,
+          "feature": "tackle_win_pct",
+          "label": "Tackle win %",
+          "mean_abs_shap": 0.21207,
+          "mean_signed_shap": -0.00864,
+          "value_shap_spearman": -0.8512,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 7,
+          "feature": "touches_att_third_p90",
+          "label": "Touches att third",
+          "mean_abs_shap": 0.18947,
+          "mean_signed_shap": 0.02006,
+          "value_shap_spearman": -0.2406,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 8,
+          "feature": "pass_cmp_medium_pct",
+          "label": "Medium pass %",
+          "mean_abs_shap": 0.17702,
+          "mean_signed_shap": -0.00137,
+          "value_shap_spearman": 0.9154,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 9,
+          "feature": "tackles_padj_p90",
+          "label": "Tackles (adj)",
+          "mean_abs_shap": 0.15008,
+          "mean_signed_shap": 0.01149,
+          "value_shap_spearman": 0.9544,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 10,
+          "feature": "shots_p90",
+          "label": "Shots",
+          "mean_abs_shap": 0.13692,
+          "mean_signed_shap": 0.02189,
+          "value_shap_spearman": 0.6327,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 11,
+          "feature": "touches_def_pen_p90",
+          "label": "Touches own box",
+          "mean_abs_shap": 0.13547,
+          "mean_signed_shap": 0.00775,
+          "value_shap_spearman": -0.9478,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 12,
+          "feature": "sca_p90",
+          "label": "SCA",
+          "mean_abs_shap": 0.10528,
+          "mean_signed_shap": 0.02702,
+          "value_shap_spearman": 0.8447,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 13,
+          "feature": "touches_mid_third_p90",
+          "label": "Touches mid third",
+          "mean_abs_shap": 0.10128,
+          "mean_signed_shap": -0.01225,
+          "value_shap_spearman": 0.7302,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 14,
+          "feature": "progressive_receptions_p90",
+          "label": "Prog. receptions",
+          "mean_abs_shap": 0.09374,
+          "mean_signed_shap": 0.00342,
+          "value_shap_spearman": 0.3632,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 15,
+          "feature": "touches_att_pen_p90",
+          "label": "Touches opp box",
+          "mean_abs_shap": 0.08913,
+          "mean_signed_shap": 0.01914,
+          "value_shap_spearman": -0.7822,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 16,
+          "feature": "pass_cmp_long_pct",
+          "label": "Long pass %",
+          "mean_abs_shap": 0.08328,
+          "mean_signed_shap": -0.00657,
+          "value_shap_spearman": 0.6939,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 17,
+          "feature": "fouls_committed_padj_p90",
+          "label": "Fouls (adj)",
+          "mean_abs_shap": 0.07977,
+          "mean_signed_shap": 0.02103,
+          "value_shap_spearman": 0.7101,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 18,
+          "feature": "progressive_carries_p90",
+          "label": "Prog. carries",
+          "mean_abs_shap": 0.07674,
+          "mean_signed_shap": 0.00297,
+          "value_shap_spearman": -0.2841,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 19,
+          "feature": "progressive_passes_p90",
+          "label": "Prog. passes",
+          "mean_abs_shap": 0.06279,
+          "mean_signed_shap": -0.00603,
+          "value_shap_spearman": -0.0155,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 20,
+          "feature": "np_xg_p90",
+          "label": "npxG",
+          "mean_abs_shap": 0.05979,
+          "mean_signed_shap": 0.00045,
+          "value_shap_spearman": 0.3086,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 21,
+          "feature": "interceptions_padj_p90",
+          "label": "Interceptions (adj)",
+          "mean_abs_shap": 0.05554,
+          "mean_signed_shap": 0.00536,
+          "value_shap_spearman": 0.8425,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 22,
+          "feature": "key_passes_p90",
+          "label": "Key passes",
+          "mean_abs_shap": 0.055,
+          "mean_signed_shap": 0.02148,
+          "value_shap_spearman": 0.8943,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 23,
+          "feature": "blocks_padj_p90",
+          "label": "Blocks (adj)",
+          "mean_abs_shap": 0.05337,
+          "mean_signed_shap": 0.00202,
+          "value_shap_spearman": 0.2592,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 24,
+          "feature": "pass_cmp_short_pct",
+          "label": "Short pass %",
+          "mean_abs_shap": 0.04583,
+          "mean_signed_shap": 0.00029,
+          "value_shap_spearman": -0.3915,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 25,
+          "feature": "gca_p90",
+          "label": "GCA",
+          "mean_abs_shap": 0.04319,
+          "mean_signed_shap": 0.00035,
+          "value_shap_spearman": -0.1463,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 26,
+          "feature": "shot_accuracy_pct",
+          "label": "Shot accuracy %",
+          "mean_abs_shap": 0.03826,
+          "mean_signed_shap": 0.00143,
+          "value_shap_spearman": -0.7916,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 27,
+          "feature": "take_ons_p90",
+          "label": "Take ons",
+          "mean_abs_shap": 0.03491,
+          "mean_signed_shap": 0.00179,
+          "value_shap_spearman": 0.0631,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 28,
+          "feature": "passes_penalty_area_p90",
+          "label": "Passes into box",
+          "mean_abs_shap": 0.03275,
+          "mean_signed_shap": -0.00822,
+          "value_shap_spearman": -0.31,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 29,
+          "feature": "carries_final_third_p90",
+          "label": "Carries final third",
+          "mean_abs_shap": 0.03246,
+          "mean_signed_shap": -0.00037,
+          "value_shap_spearman": 0.1613,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 30,
+          "feature": "take_on_success_pct",
+          "label": "Take on success %",
+          "mean_abs_shap": 0.03168,
+          "mean_signed_shap": -0.00303,
+          "value_shap_spearman": 0.307,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 31,
+          "feature": "xag_p90",
+          "label": "xAG",
+          "mean_abs_shap": 0.02764,
+          "mean_signed_shap": 0.00825,
+          "value_shap_spearman": -0.4206,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 32,
+          "feature": "aerials_won_pct",
+          "label": "Aerials won %",
+          "mean_abs_shap": 0.0276,
+          "mean_signed_shap": 0.00515,
+          "value_shap_spearman": -0.7042,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 33,
+          "feature": "goals_non_penalty_p90",
+          "label": "NP goals",
+          "mean_abs_shap": 0.01145,
+          "mean_signed_shap": 0.00266,
+          "value_shap_spearman": 0.0566,
+          "identified_by": "presence"
+        }
+      ],
+      "FW": [
+        {
+          "rank": 1,
+          "feature": "touches_def_third_p90",
+          "label": "Touches def third",
+          "mean_abs_shap": 0.73984,
+          "mean_signed_shap": 0.00184,
+          "value_shap_spearman": -0.9009,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 2,
+          "feature": "ball_recoveries_p90",
+          "label": "Ball recoveries",
+          "mean_abs_shap": 0.57656,
+          "mean_signed_shap": -0.02108,
+          "value_shap_spearman": -0.9188,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 3,
+          "feature": "touches_att_pen_p90",
+          "label": "Touches opp box",
+          "mean_abs_shap": 0.52802,
+          "mean_signed_shap": 0.00421,
+          "value_shap_spearman": 0.8061,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 4,
+          "feature": "progressive_receptions_p90",
+          "label": "Prog. receptions",
+          "mean_abs_shap": 0.41952,
+          "mean_signed_shap": 0.06602,
+          "value_shap_spearman": 0.8543,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 5,
+          "feature": "interceptions_padj_p90",
+          "label": "Interceptions (adj)",
+          "mean_abs_shap": 0.21525,
+          "mean_signed_shap": -0.01289,
+          "value_shap_spearman": -0.8961,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 6,
+          "feature": "shots_p90",
+          "label": "Shots",
+          "mean_abs_shap": 0.2072,
+          "mean_signed_shap": -0.01014,
+          "value_shap_spearman": 0.9017,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 7,
+          "feature": "pass_cmp_medium_pct",
+          "label": "Medium pass %",
+          "mean_abs_shap": 0.2005,
+          "mean_signed_shap": -0.01321,
+          "value_shap_spearman": -0.943,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 8,
+          "feature": "passes_final_third_p90",
+          "label": "Passes final third",
+          "mean_abs_shap": 0.17986,
+          "mean_signed_shap": 5e-05,
+          "value_shap_spearman": -0.9557,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 9,
+          "feature": "xag_p90",
+          "label": "xAG",
+          "mean_abs_shap": 0.1641,
+          "mean_signed_shap": -0.01873,
+          "value_shap_spearman": 0.8136,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 10,
+          "feature": "shot_accuracy_pct",
+          "label": "Shot accuracy %",
+          "mean_abs_shap": 0.14229,
+          "mean_signed_shap": 0.00487,
+          "value_shap_spearman": 0.9148,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 11,
+          "feature": "progressive_passes_p90",
+          "label": "Prog. passes",
+          "mean_abs_shap": 0.12376,
+          "mean_signed_shap": -0.00907,
+          "value_shap_spearman": -0.5441,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 12,
+          "feature": "sca_p90",
+          "label": "SCA",
+          "mean_abs_shap": 0.11526,
+          "mean_signed_shap": -0.01913,
+          "value_shap_spearman": 0.7659,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 13,
+          "feature": "blocks_padj_p90",
+          "label": "Blocks (adj)",
+          "mean_abs_shap": 0.11381,
+          "mean_signed_shap": -0.00047,
+          "value_shap_spearman": -0.6969,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 14,
+          "feature": "goals_non_penalty_p90",
+          "label": "NP goals",
+          "mean_abs_shap": 0.11257,
+          "mean_signed_shap": -0.00848,
+          "value_shap_spearman": 0.9061,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 15,
+          "feature": "pass_cmp_short_pct",
+          "label": "Short pass %",
+          "mean_abs_shap": 0.11202,
+          "mean_signed_shap": -0.00248,
+          "value_shap_spearman": -0.8276,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 16,
+          "feature": "progressive_carries_p90",
+          "label": "Prog. carries",
+          "mean_abs_shap": 0.10492,
+          "mean_signed_shap": 0.00098,
+          "value_shap_spearman": -0.5887,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 17,
+          "feature": "crosses_p90",
+          "label": "Crosses",
+          "mean_abs_shap": 0.08523,
+          "mean_signed_shap": 0.0069,
+          "value_shap_spearman": -0.2699,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 18,
+          "feature": "touches_mid_third_p90",
+          "label": "Touches mid third",
+          "mean_abs_shap": 0.07227,
+          "mean_signed_shap": 0.01016,
+          "value_shap_spearman": -0.7225,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 19,
+          "feature": "np_xg_p90",
+          "label": "npxG",
+          "mean_abs_shap": 0.06992,
+          "mean_signed_shap": -0.00974,
+          "value_shap_spearman": 0.8451,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 20,
+          "feature": "tackles_padj_p90",
+          "label": "Tackles (adj)",
+          "mean_abs_shap": 0.06556,
+          "mean_signed_shap": -0.02353,
+          "value_shap_spearman": -0.5721,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 21,
+          "feature": "pass_cmp_long_pct",
+          "label": "Long pass %",
+          "mean_abs_shap": 0.06254,
+          "mean_signed_shap": 0.00939,
+          "value_shap_spearman": 0.7818,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 22,
+          "feature": "gca_p90",
+          "label": "GCA",
+          "mean_abs_shap": 0.06024,
+          "mean_signed_shap": 0.00391,
+          "value_shap_spearman": 0.5099,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 23,
+          "feature": "take_ons_p90",
+          "label": "Take ons",
+          "mean_abs_shap": 0.05796,
+          "mean_signed_shap": 0.00042,
+          "value_shap_spearman": 0.6953,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 24,
+          "feature": "passes_penalty_area_p90",
+          "label": "Passes into box",
+          "mean_abs_shap": 0.05546,
+          "mean_signed_shap": 0.00487,
+          "value_shap_spearman": 0.1229,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 25,
+          "feature": "take_on_success_pct",
+          "label": "Take on success %",
+          "mean_abs_shap": 0.04787,
+          "mean_signed_shap": 0.00463,
+          "value_shap_spearman": 0.7196,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 26,
+          "feature": "clearances_padj_p90",
+          "label": "Clearances (adj)",
+          "mean_abs_shap": 0.04425,
+          "mean_signed_shap": -0.00042,
+          "value_shap_spearman": -0.3829,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 27,
+          "feature": "carries_final_third_p90",
+          "label": "Carries final third",
+          "mean_abs_shap": 0.04257,
+          "mean_signed_shap": 0.00624,
+          "value_shap_spearman": -0.2781,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 28,
+          "feature": "fouls_committed_padj_p90",
+          "label": "Fouls (adj)",
+          "mean_abs_shap": 0.03697,
+          "mean_signed_shap": -0.00413,
+          "value_shap_spearman": 0.3791,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 29,
+          "feature": "key_passes_p90",
+          "label": "Key passes",
+          "mean_abs_shap": 0.03682,
+          "mean_signed_shap": 0.00036,
+          "value_shap_spearman": 0.2408,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 30,
+          "feature": "touches_att_third_p90",
+          "label": "Touches att third",
+          "mean_abs_shap": 0.03553,
+          "mean_signed_shap": -0.0032,
+          "value_shap_spearman": 0.7828,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 31,
+          "feature": "tackle_win_pct",
+          "label": "Tackle win %",
+          "mean_abs_shap": 0.02897,
+          "mean_signed_shap": 0.00246,
+          "value_shap_spearman": 0.1219,
+          "identified_by": "presence"
+        },
+        {
+          "rank": 32,
+          "feature": "touches_def_pen_p90",
+          "label": "Touches own box",
+          "mean_abs_shap": 0.02789,
+          "mean_signed_shap": 0.01325,
+          "value_shap_spearman": -0.4838,
+          "identified_by": "absence"
+        },
+        {
+          "rank": 33,
+          "feature": "aerials_won_pct",
+          "label": "Aerials won %",
+          "mean_abs_shap": 0.0239,
+          "mean_signed_shap": -0.00029,
+          "value_shap_spearman": -0.292,
+          "identified_by": "absence"
+        }
+      ]
+    },
+    "top5_by_class": {
+      "DF": [
+        "Touches def third",
+        "Clearances (adj)",
+        "Crosses",
+        "Tackle win %",
+        "Prog. receptions"
+      ],
+      "MF": [
+        "Touches def third",
+        "Clearances (adj)",
+        "Ball recoveries",
+        "Crosses",
+        "Passes final third"
+      ],
+      "FW": [
+        "Touches def third",
+        "Ball recoveries",
+        "Touches opp box",
+        "Prog. receptions",
+        "Interceptions (adj)"
+      ]
+    },
+    "presence_share_of_top5": {
+      "DF": 0.8,
+      "MF": 0.4,
+      "FW": 0.4
+    },
+    "presence_vs_absence": "value_shap_spearman is the rank correlation between a feature's value and the SHAP value it contributes to that class. A positive entry means the class is identified by high values of the statistic, so by what the player does. A negative entry means it is identified by low values, so by what the player does not do. presence_share_of_top5 is the fraction of each class's five strongest features that are positive.",
+    "notes": "overall_ranking averages the per-class mean absolute SHAP over DF, MF and FW. own_class_ranking uses, for each player, the SHAP value attached to that player's own listed group, so a positive value means the feature pushed the player toward the position he is listed at. The beeswarm plots those values."
+  }
+}

@@ -1,0 +1,624 @@
+{
+  "question": "How many dimensions does the role space really have?",
+  "n_players": 9263,
+  "n_features": 33,
+  "space": "the 33 archive features, z-scored over the whole outfield pool",
+  "explained_variance_ratio": [
+    0.3986,
+    0.1731,
+    0.0703,
+    0.0514,
+    0.034,
+    0.0296,
+    0.0259,
+    0.0251,
+    0.0209,
+    0.0183,
+    0.0178,
+    0.0158,
+    0.0136,
+    0.0123,
+    0.0111,
+    0.0105,
+    0.0088,
+    0.0081,
+    0.0074,
+    0.0068,
+    0.0067,
+    0.0053,
+    0.0046,
+    0.0045,
+    0.0037,
+    0.003,
+    0.0027,
+    0.0026,
+    0.0023,
+    0.0019,
+    0.0014,
+    0.0011,
+    0.001
+  ],
+  "cumulative_variance": [
+    0.3986,
+    0.5716,
+    0.6419,
+    0.6933,
+    0.7273,
+    0.7568,
+    0.7827,
+    0.8078,
+    0.8287,
+    0.8469,
+    0.8647,
+    0.8805,
+    0.8941,
+    0.9064,
+    0.9175,
+    0.928,
+    0.9368,
+    0.9449,
+    0.9523,
+    0.9591,
+    0.9659,
+    0.9711,
+    0.9758,
+    0.9803,
+    0.984,
+    0.9869,
+    0.9897,
+    0.9923,
+    0.9946,
+    0.9964,
+    0.9978,
+    0.999,
+    1.0
+  ],
+  "eigenvalues": [
+    13.1549,
+    5.7116,
+    2.3188,
+    1.6954,
+    1.1214,
+    0.9765,
+    0.8539,
+    0.8271,
+    0.6897,
+    0.6024,
+    0.5866,
+    0.521,
+    0.448,
+    0.4069,
+    0.3665,
+    0.3469,
+    0.2906,
+    0.2659,
+    0.2439,
+    0.2258,
+    0.2226,
+    0.1743,
+    0.1532,
+    0.148,
+    0.1229,
+    0.0977,
+    0.0897,
+    0.0859,
+    0.0758,
+    0.0619,
+    0.0464,
+    0.0373,
+    0.0341
+  ],
+  "n_components_for_90pct": 14,
+  "variance_target": 0.9,
+  "pc1_share": 0.3986,
+  "pc1_to_pc3_share": 0.6419,
+  "n_components_above_kaiser": 5,
+  "components": {
+    "PC1": {
+      "explained_variance_ratio": 0.3986,
+      "cumulative": 0.3986,
+      "loadings": {
+        "np_xg_p90": 0.2003,
+        "shots_p90": 0.227,
+        "goals_non_penalty_p90": 0.1808,
+        "xag_p90": 0.2075,
+        "key_passes_p90": 0.2077,
+        "sca_p90": 0.2278,
+        "gca_p90": 0.1951,
+        "passes_final_third_p90": -0.0799,
+        "passes_penalty_area_p90": 0.1742,
+        "crosses_p90": 0.1393,
+        "progressive_passes_p90": -0.0102,
+        "progressive_carries_p90": 0.1285,
+        "progressive_receptions_p90": 0.2486,
+        "carries_final_third_p90": 0.1492,
+        "touches_def_pen_p90": -0.2282,
+        "touches_def_third_p90": -0.2417,
+        "touches_mid_third_p90": -0.1085,
+        "touches_att_third_p90": 0.2352,
+        "touches_att_pen_p90": 0.2351,
+        "take_ons_p90": 0.1968,
+        "tackles_padj_p90": -0.1049,
+        "interceptions_padj_p90": -0.1512,
+        "blocks_padj_p90": -0.1351,
+        "clearances_padj_p90": -0.2195,
+        "ball_recoveries_p90": -0.1845,
+        "fouls_committed_padj_p90": 0.0326,
+        "shot_accuracy_pct": 0.0922,
+        "take_on_success_pct": -0.1,
+        "tackle_win_pct": -0.1559,
+        "aerials_won_pct": -0.182,
+        "pass_cmp_short_pct": -0.141,
+        "pass_cmp_medium_pct": -0.1717,
+        "pass_cmp_long_pct": -0.1023
+      },
+      "top_positive": [
+        {
+          "feature": "progressive_receptions_p90",
+          "label": "Prog. receptions",
+          "loading": 0.2486
+        },
+        {
+          "feature": "touches_att_third_p90",
+          "label": "Touches att third",
+          "loading": 0.2352
+        },
+        {
+          "feature": "touches_att_pen_p90",
+          "label": "Touches opp box",
+          "loading": 0.2351
+        },
+        {
+          "feature": "sca_p90",
+          "label": "SCA",
+          "loading": 0.2278
+        },
+        {
+          "feature": "shots_p90",
+          "label": "Shots",
+          "loading": 0.227
+        }
+      ],
+      "top_negative": [
+        {
+          "feature": "touches_def_third_p90",
+          "label": "Touches def third",
+          "loading": -0.2417
+        },
+        {
+          "feature": "touches_def_pen_p90",
+          "label": "Touches own box",
+          "loading": -0.2282
+        },
+        {
+          "feature": "clearances_padj_p90",
+          "label": "Clearances (adj)",
+          "loading": -0.2195
+        },
+        {
+          "feature": "ball_recoveries_p90",
+          "label": "Ball recoveries",
+          "loading": -0.1845
+        },
+        {
+          "feature": "aerials_won_pct",
+          "label": "Aerials won %",
+          "loading": -0.182
+        }
+      ],
+      "strongest": [
+        "Prog. receptions",
+        "Touches def third",
+        "Touches att third",
+        "Touches opp box",
+        "Touches own box"
+      ]
+    },
+    "PC2": {
+      "explained_variance_ratio": 0.1731,
+      "cumulative": 0.5716,
+      "loadings": {
+        "np_xg_p90": -0.1605,
+        "shots_p90": -0.0762,
+        "goals_non_penalty_p90": -0.1223,
+        "xag_p90": 0.1509,
+        "key_passes_p90": 0.1965,
+        "sca_p90": 0.1846,
+        "gca_p90": 0.1158,
+        "passes_final_third_p90": 0.3138,
+        "passes_penalty_area_p90": 0.2538,
+        "crosses_p90": 0.1697,
+        "progressive_passes_p90": 0.3664,
+        "progressive_carries_p90": 0.3053,
+        "progressive_receptions_p90": -0.0769,
+        "carries_final_third_p90": 0.2818,
+        "touches_def_pen_p90": -0.0333,
+        "touches_def_third_p90": 0.0591,
+        "touches_mid_third_p90": 0.315,
+        "touches_att_third_p90": 0.1751,
+        "touches_att_pen_p90": -0.1002,
+        "take_ons_p90": 0.0966,
+        "tackles_padj_p90": 0.1886,
+        "interceptions_padj_p90": 0.1229,
+        "blocks_padj_p90": 0.1238,
+        "clearances_padj_p90": -0.0372,
+        "ball_recoveries_p90": 0.1826,
+        "fouls_committed_padj_p90": -0.0134,
+        "shot_accuracy_pct": -0.056,
+        "take_on_success_pct": 0.047,
+        "tackle_win_pct": 0.062,
+        "aerials_won_pct": -0.0105,
+        "pass_cmp_short_pct": 0.2159,
+        "pass_cmp_medium_pct": 0.1661,
+        "pass_cmp_long_pct": 0.0441
+      },
+      "top_positive": [
+        {
+          "feature": "progressive_passes_p90",
+          "label": "Prog. passes",
+          "loading": 0.3664
+        },
+        {
+          "feature": "touches_mid_third_p90",
+          "label": "Touches mid third",
+          "loading": 0.315
+        },
+        {
+          "feature": "passes_final_third_p90",
+          "label": "Passes final third",
+          "loading": 0.3138
+        },
+        {
+          "feature": "progressive_carries_p90",
+          "label": "Prog. carries",
+          "loading": 0.3053
+        },
+        {
+          "feature": "carries_final_third_p90",
+          "label": "Carries final third",
+          "loading": 0.2818
+        }
+      ],
+      "top_negative": [
+        {
+          "feature": "np_xg_p90",
+          "label": "npxG",
+          "loading": -0.1605
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "label": "NP goals",
+          "loading": -0.1223
+        },
+        {
+          "feature": "touches_att_pen_p90",
+          "label": "Touches opp box",
+          "loading": -0.1002
+        },
+        {
+          "feature": "progressive_receptions_p90",
+          "label": "Prog. receptions",
+          "loading": -0.0769
+        },
+        {
+          "feature": "shots_p90",
+          "label": "Shots",
+          "loading": -0.0762
+        }
+      ],
+      "strongest": [
+        "Prog. passes",
+        "Touches mid third",
+        "Passes final third",
+        "Prog. carries",
+        "Carries final third"
+      ]
+    },
+    "PC3": {
+      "explained_variance_ratio": 0.0703,
+      "cumulative": 0.6419,
+      "loadings": {
+        "np_xg_p90": 0.2415,
+        "shots_p90": 0.1855,
+        "goals_non_penalty_p90": 0.2611,
+        "xag_p90": 0.0028,
+        "key_passes_p90": -0.0165,
+        "sca_p90": 0.0524,
+        "gca_p90": 0.1233,
+        "passes_final_third_p90": 0.2182,
+        "passes_penalty_area_p90": -0.0765,
+        "crosses_p90": -0.3647,
+        "progressive_passes_p90": 0.0912,
+        "progressive_carries_p90": 0.0416,
+        "progressive_receptions_p90": 0.0912,
+        "carries_final_third_p90": -0.0465,
+        "touches_def_pen_p90": 0.0655,
+        "touches_def_third_p90": 0.0514,
+        "touches_mid_third_p90": 0.2052,
+        "touches_att_third_p90": -0.0765,
+        "touches_att_pen_p90": 0.1324,
+        "take_ons_p90": -0.0563,
+        "tackles_padj_p90": -0.1936,
+        "interceptions_padj_p90": -0.1099,
+        "blocks_padj_p90": -0.2426,
+        "clearances_padj_p90": 0.0423,
+        "ball_recoveries_p90": -0.0235,
+        "fouls_committed_padj_p90": 0.0101,
+        "shot_accuracy_pct": 0.1137,
+        "take_on_success_pct": 0.2099,
+        "tackle_win_pct": -0.1214,
+        "aerials_won_pct": 0.0572,
+        "pass_cmp_short_pct": 0.1708,
+        "pass_cmp_medium_pct": 0.2987,
+        "pass_cmp_long_pct": 0.4838
+      },
+      "top_positive": [
+        {
+          "feature": "pass_cmp_long_pct",
+          "label": "Long pass %",
+          "loading": 0.4838
+        },
+        {
+          "feature": "pass_cmp_medium_pct",
+          "label": "Medium pass %",
+          "loading": 0.2987
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "label": "NP goals",
+          "loading": 0.2611
+        },
+        {
+          "feature": "np_xg_p90",
+          "label": "npxG",
+          "loading": 0.2415
+        },
+        {
+          "feature": "passes_final_third_p90",
+          "label": "Passes final third",
+          "loading": 0.2182
+        }
+      ],
+      "top_negative": [
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses",
+          "loading": -0.3647
+        },
+        {
+          "feature": "blocks_padj_p90",
+          "label": "Blocks (adj)",
+          "loading": -0.2426
+        },
+        {
+          "feature": "tackles_padj_p90",
+          "label": "Tackles (adj)",
+          "loading": -0.1936
+        },
+        {
+          "feature": "tackle_win_pct",
+          "label": "Tackle win %",
+          "loading": -0.1214
+        },
+        {
+          "feature": "interceptions_padj_p90",
+          "label": "Interceptions (adj)",
+          "loading": -0.1099
+        }
+      ],
+      "strongest": [
+        "Long pass %",
+        "Crosses",
+        "Medium pass %",
+        "NP goals",
+        "Blocks (adj)"
+      ]
+    },
+    "PC4": {
+      "explained_variance_ratio": 0.0514,
+      "cumulative": 0.6933,
+      "loadings": {
+        "np_xg_p90": -0.0222,
+        "shots_p90": 0.0226,
+        "goals_non_penalty_p90": -0.0669,
+        "xag_p90": -0.1364,
+        "key_passes_p90": -0.0696,
+        "sca_p90": -0.0131,
+        "gca_p90": -0.0898,
+        "passes_final_third_p90": 0.169,
+        "passes_penalty_area_p90": -0.1318,
+        "crosses_p90": -0.2105,
+        "progressive_passes_p90": 0.0693,
+        "progressive_carries_p90": -0.1245,
+        "progressive_receptions_p90": 0.0214,
+        "carries_final_third_p90": -0.0584,
+        "touches_def_pen_p90": -0.284,
+        "touches_def_third_p90": -0.238,
+        "touches_mid_third_p90": 0.1616,
+        "touches_att_third_p90": -0.0318,
+        "touches_att_pen_p90": -0.0678,
+        "take_ons_p90": -0.0057,
+        "tackles_padj_p90": 0.3278,
+        "interceptions_padj_p90": 0.0237,
+        "blocks_padj_p90": 0.0154,
+        "clearances_padj_p90": -0.2685,
+        "ball_recoveries_p90": 0.1654,
+        "fouls_committed_padj_p90": 0.6015,
+        "shot_accuracy_pct": -0.0966,
+        "take_on_success_pct": -0.0118,
+        "tackle_win_pct": -0.2184,
+        "aerials_won_pct": -0.0525,
+        "pass_cmp_short_pct": -0.1807,
+        "pass_cmp_medium_pct": -0.1084,
+        "pass_cmp_long_pct": 0.0748
+      },
+      "top_positive": [
+        {
+          "feature": "fouls_committed_padj_p90",
+          "label": "Fouls (adj)",
+          "loading": 0.6015
+        },
+        {
+          "feature": "tackles_padj_p90",
+          "label": "Tackles (adj)",
+          "loading": 0.3278
+        },
+        {
+          "feature": "passes_final_third_p90",
+          "label": "Passes final third",
+          "loading": 0.169
+        },
+        {
+          "feature": "ball_recoveries_p90",
+          "label": "Ball recoveries",
+          "loading": 0.1654
+        },
+        {
+          "feature": "touches_mid_third_p90",
+          "label": "Touches mid third",
+          "loading": 0.1616
+        }
+      ],
+      "top_negative": [
+        {
+          "feature": "touches_def_pen_p90",
+          "label": "Touches own box",
+          "loading": -0.284
+        },
+        {
+          "feature": "clearances_padj_p90",
+          "label": "Clearances (adj)",
+          "loading": -0.2685
+        },
+        {
+          "feature": "touches_def_third_p90",
+          "label": "Touches def third",
+          "loading": -0.238
+        },
+        {
+          "feature": "tackle_win_pct",
+          "label": "Tackle win %",
+          "loading": -0.2184
+        },
+        {
+          "feature": "crosses_p90",
+          "label": "Crosses",
+          "loading": -0.2105
+        }
+      ],
+      "strongest": [
+        "Fouls (adj)",
+        "Tackles (adj)",
+        "Touches own box",
+        "Clearances (adj)",
+        "Touches def third"
+      ]
+    },
+    "PC5": {
+      "explained_variance_ratio": 0.034,
+      "cumulative": 0.7273,
+      "loadings": {
+        "np_xg_p90": 0.2465,
+        "shots_p90": 0.152,
+        "goals_non_penalty_p90": 0.3086,
+        "xag_p90": 0.0718,
+        "key_passes_p90": -0.0397,
+        "sca_p90": 0.001,
+        "gca_p90": 0.1439,
+        "passes_final_third_p90": -0.0649,
+        "passes_penalty_area_p90": 0.023,
+        "crosses_p90": 0.0112,
+        "progressive_passes_p90": -0.011,
+        "progressive_carries_p90": 0.0009,
+        "progressive_receptions_p90": 0.0551,
+        "carries_final_third_p90": -0.0301,
+        "touches_def_pen_p90": 0.1457,
+        "touches_def_third_p90": 0.118,
+        "touches_mid_third_p90": -0.0035,
+        "touches_att_third_p90": 0.0402,
+        "touches_att_pen_p90": 0.1862,
+        "take_ons_p90": 0.0315,
+        "tackles_padj_p90": 0.335,
+        "interceptions_padj_p90": 0.2717,
+        "blocks_padj_p90": 0.3345,
+        "clearances_padj_p90": 0.1686,
+        "ball_recoveries_p90": 0.0617,
+        "fouls_committed_padj_p90": 0.2533,
+        "shot_accuracy_pct": 0.3642,
+        "take_on_success_pct": -0.1079,
+        "tackle_win_pct": 0.3042,
+        "aerials_won_pct": 0.2701,
+        "pass_cmp_short_pct": -0.0641,
+        "pass_cmp_medium_pct": -0.0596,
+        "pass_cmp_long_pct": -0.0164
+      },
+      "top_positive": [
+        {
+          "feature": "shot_accuracy_pct",
+          "label": "Shot accuracy %",
+          "loading": 0.3642
+        },
+        {
+          "feature": "tackles_padj_p90",
+          "label": "Tackles (adj)",
+          "loading": 0.335
+        },
+        {
+          "feature": "blocks_padj_p90",
+          "label": "Blocks (adj)",
+          "loading": 0.3345
+        },
+        {
+          "feature": "goals_non_penalty_p90",
+          "label": "NP goals",
+          "loading": 0.3086
+        },
+        {
+          "feature": "tackle_win_pct",
+          "label": "Tackle win %",
+          "loading": 0.3042
+        }
+      ],
+      "top_negative": [
+        {
+          "feature": "take_on_success_pct",
+          "label": "Take on success %",
+          "loading": -0.1079
+        },
+        {
+          "feature": "passes_final_third_p90",
+          "label": "Passes final third",
+          "loading": -0.0649
+        },
+        {
+          "feature": "pass_cmp_short_pct",
+          "label": "Short pass %",
+          "loading": -0.0641
+        },
+        {
+          "feature": "pass_cmp_medium_pct",
+          "label": "Medium pass %",
+          "loading": -0.0596
+        },
+        {
+          "feature": "key_passes_p90",
+          "label": "Key passes",
+          "loading": -0.0397
+        }
+      ],
+      "strongest": [
+        "Shot accuracy %",
+        "Tackles (adj)",
+        "Blocks (adj)",
+        "NP goals",
+        "Tackle win %"
+      ]
+    }
+  },
+  "interpretation": {
+    "PC1": "39.9 percent of the variance. Loads positively on Prog. receptions, Touches att third, Touches opp box and negatively on Touches def third, Touches own box, Clearances (adj).",
+    "PC2": "17.3 percent of the variance. Loads positively on Prog. passes, Touches mid third, Passes final third and negatively on npxG, NP goals, Touches opp box.",
+    "PC3": "7.0 percent of the variance. Loads positively on Long pass %, Medium pass %, NP goals and negatively on Crosses, Blocks (adj), Tackles (adj)."
+  },
+  "verdict": "The leading component is much the largest but carries well under half the variance on its own: PC1 takes 39.9 percent, PC1 to PC3 take 64.2 percent, and 14 components are needed to reach 90 percent. The space has one dominant axis and a long tail rather than a single dimension."
+}

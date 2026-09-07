@@ -98,6 +98,39 @@ observed and which ranks in the top three on at least two of the silhouette,
 Calinski-Harabasz and gap criteria, with Davies-Bouldin breaking ties. Which criteria
 agreed, and which did not, is reported alongside the choice.
 
+\subsection{Testing whether clusters exist at all}
+\label{sec:methods:null}
+
+Selecting a number of clusters presupposes that clusters are there to be counted. That
+presupposition is the weak point of the whole genre, because a partitioning algorithm
+returns a partition whatever it is given, and the internal criteria used to choose $k$ are
+computed on the partition rather than against any alternative. A silhouette of 0.27 sounds
+like evidence until one asks what silhouette structureless data of the same shape would
+have produced.
+
+We therefore calibrate against an explicit null. For each scope we draw
+\StrSimulations{} synthetic datasets from a multivariate normal with the empirical mean
+and covariance of the observed feature matrix, matching the real data in sample size,
+dimension and correlation structure while containing, by construction, no group structure
+at all. The identical $k$-selection procedure is run on each. The observed silhouette
+profile is then read against the distribution of simulated ones. Where the observed value
+falls inside that distribution, the partition at that $k$ is indistinguishable from one
+imposed on a continuum, and no claim is made from it.
+
+Three further instruments guard against the null calibration itself being misleading.
+Hartigan's dip test is applied to the leading principal components and asks directly
+whether a distribution is unimodal, which is a claim about the data rather than about any
+clustering of it. A Gaussian mixture model's Bayesian information criterion is computed
+across the same range of component counts, because unlike the silhouette it carries no
+built-in preference for few components. HDBSCAN \citep{campello2013density} is fitted at
+several minimum cluster sizes, because it is permitted to answer that there are no clusters
+and does so by assigning points to noise rather than by forcing them into groups.
+
+Agreement among instruments that fail in different ways is the standard of evidence used
+throughout the results. A continuum and a set of discrete types are different claims about
+the same data, and the paper takes care not to report the second when only the first is
+supported.
+
 \subsection{Stability and validation against listed positions}
 
 A partition can be produced from any dataset, so the question that matters is whether it

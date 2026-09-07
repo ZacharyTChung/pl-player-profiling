@@ -1,0 +1,206 @@
+{
+  "source": "worldfootballR mirror of FBref, scraped before the January 2026 withdrawal",
+  "seasons": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "excluded_seasons": {
+    "2023": "carrying block absent from the mirror after FBref renamed it"
+  },
+  "leagues": [
+    "Bundesliga",
+    "La Liga",
+    "Ligue 1",
+    "Premier League",
+    "Serie A"
+  ],
+  "keeper_seasons": 1039,
+  "rows_basic_table": 1039,
+  "rows_advanced_table": 1039,
+  "rows_with_no_advanced_match": 1,
+  "raw_table_coverage": {
+    "keepers": {
+      "rows": 1039,
+      "stat_columns": 19,
+      "columns_fully_empty": [],
+      "columns_with_any_value": 19,
+      "min_coverage": 0.7132,
+      "non_null_counts": {
+        "MP_Playing": 1039,
+        "Starts_Playing": 1039,
+        "Min_Playing": 1036,
+        "Mins_Per_90_Playing": 1039,
+        "GA": 1039,
+        "GA90": 1036,
+        "SoTA": 1038,
+        "Saves": 1038,
+        "Save_percent": 1018,
+        "W": 1039,
+        "D": 1039,
+        "L": 1039,
+        "CS": 1039,
+        "CS_percent": 999,
+        "PKatt_Penalty": 1039,
+        "PKA_Penalty": 1039,
+        "PKsv_Penalty": 1039,
+        "PKm_Penalty": 1039,
+        "Save_percent_Penalty": 741
+      }
+    },
+    "keepers_adv": {
+      "rows": 1039,
+      "stat_columns": 26,
+      "columns_fully_empty": [],
+      "columns_with_any_value": 26,
+      "min_coverage": 0.9798,
+      "non_null_counts": {
+        "Mins_Per_90": 1039,
+        "GA_Goals": 1039,
+        "PKA_Goals": 1039,
+        "FK_Goals": 1038,
+        "CK_Goals": 1038,
+        "OG_Goals": 1038,
+        "PSxG_Expected": 1038,
+        "PSxG_per_SoT_Expected": 1018,
+        "PSxG+_per__minus__Expected": 1038,
+        "_per_90_Expected": 1038,
+        "Cmp_Launched": 1038,
+        "Att_Launched": 1038,
+        "Cmp_percent_Launched": 1028,
+        "Att_Passes": 1038,
+        "Thr_Passes": 1038,
+        "Launch_percent_Passes": 1033,
+        "AvgLen_Passes": 1033,
+        "Att_Goal": 1038,
+        "Launch_percent_Goal": 1026,
+        "AvgLen_Goal": 1026,
+        "Opp_Crosses": 1038,
+        "Stp_Crosses": 1038,
+        "Stp_percent_Crosses": 1021,
+        "#OPA_Sweeper": 1038,
+        "#OPA_per_90_Sweeper": 1035,
+        "AvgDist_Sweeper": 1019
+      }
+    }
+  },
+  "canonical_features": {
+    "gk_minutes": {
+      "table": "keepers",
+      "column": "Min_Playing",
+      "non_null": 1036,
+      "coverage": 0.9971
+    },
+    "gk_save_pct": {
+      "table": "keepers",
+      "column": "Save_percent",
+      "non_null": 1018,
+      "coverage": 0.9798
+    },
+    "gk_clean_sheet_pct": {
+      "table": "keepers",
+      "column": "CS_percent",
+      "non_null": 999,
+      "coverage": 0.9615
+    },
+    "gk_goals_against_per90": {
+      "table": "keepers",
+      "column": "GA90",
+      "non_null": 1036,
+      "coverage": 0.9971
+    },
+    "gk_shots_on_target_against": {
+      "table": "keepers",
+      "column": "SoTA",
+      "non_null": 1038,
+      "coverage": 0.999
+    },
+    "gk_psxg": {
+      "table": "keepers_adv",
+      "column": "PSxG_Expected",
+      "non_null": 1038,
+      "coverage": 0.999
+    },
+    "gk_psxg_per_sot": {
+      "table": "keepers_adv",
+      "column": "PSxG_per_SoT_Expected",
+      "non_null": 1018,
+      "coverage": 0.9798
+    },
+    "gk_psxg_net": {
+      "table": "keepers_adv",
+      "column": "PSxG+_per__minus__Expected",
+      "non_null": 1038,
+      "coverage": 0.999
+    },
+    "gk_crosses_stopped_pct": {
+      "table": "keepers_adv",
+      "column": "Stp_percent_Crosses",
+      "non_null": 1021,
+      "coverage": 0.9827
+    },
+    "gk_sweeper_per90": {
+      "table": "keepers_adv",
+      "column": "#OPA_per_90_Sweeper",
+      "non_null": 1035,
+      "coverage": 0.9962
+    },
+    "gk_sweeper_distance": {
+      "table": "keepers_adv",
+      "column": "AvgDist_Sweeper",
+      "non_null": 1019,
+      "coverage": 0.9808
+    },
+    "gk_launch_pct": {
+      "table": "keepers_adv",
+      "column": "Launch_percent_Passes",
+      "non_null": 1033,
+      "coverage": 0.9942
+    },
+    "gk_pass_length": {
+      "table": "keepers_adv",
+      "column": "AvgLen_Passes",
+      "non_null": 1033,
+      "coverage": 0.9942
+    }
+  },
+  "all_canonical_columns_present": true,
+  "eligible_pool": {
+    "min_minutes": 450,
+    "keeper_seasons": 1039,
+    "eligible": 693,
+    "eligible_share": 0.667,
+    "eligible_by_season": {
+      "2018": 136,
+      "2019": 141,
+      "2020": 134,
+      "2021": 137,
+      "2022": 145
+    },
+    "eligible_by_league": {
+      "La Liga": 151,
+      "Serie A": 149,
+      "Ligue 1": 142,
+      "Premier League": 134,
+      "Bundesliga": 117
+    },
+    "feature_coverage_in_eligible_pool": {
+      "gk_save_pct": 1.0,
+      "gk_clean_sheet_pct": 1.0,
+      "gk_goals_against_per90": 1.0,
+      "gk_sota_p90": 1.0,
+      "gk_psxg_p90": 1.0,
+      "gk_psxg_per_sot": 1.0,
+      "gk_psxg_net_p90": 1.0,
+      "gk_crosses_stopped_pct": 1.0,
+      "gk_sweeper_per90": 1.0,
+      "gk_sweeper_distance": 1.0,
+      "gk_launch_pct": 1.0,
+      "gk_pass_length": 1.0
+    },
+    "unique_keepers": 272
+  },
+  "contrast": "The post-withdrawal pull of the same table serves 26 columns of which 23 hold no values. Here every column named in archive.KEEPER_SOURCES is populated for every eligible keeper-season."
+}

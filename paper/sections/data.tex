@@ -1,136 +1,97 @@
 \section{Data}
 \label{sec:data}
 
-\subsection{Sources and retrieval}
+\subsection{Primary sample}
 
-All statistics are season aggregates for the English Premier League, retrieved for the
-\SeasonPrimary{} season, which the study is about, and the \SeasonReplication{} season,
-which is used only for replication. Retrieval goes through the \texttt{soccerdata}
-library, which caches every page to disk and rate limits requests to one every seven
-seconds, so no request is ever issued twice and the source site is not burdened. Raw
-pages are cached before any transformation, and every retrieved table is written to
-disk untouched before a single column is renamed.
+The analysis uses season-aggregate player statistics for the \ArcNLeagues{} major European
+leagues, covering \ArcNSeasons{} seasons from \ArcSeasonFirst{} to \ArcSeasonLast{}, where
+a season is labelled by the calendar year in which it ends. The sample contains
+\ArcRows{} player-seasons, of which \ArcEligible{} are outfield players meeting the minutes
+threshold and \ArcKeepers{} are goalkeepers.
 
-Two properties of the retrieval path are worth recording, because both took work to
-establish and both affect what any replication of this study will encounter. The first
-is that FBref sits behind a challenge that returns a refusal to ordinary HTTP clients,
-so only the library release that drives a real browser can reach it. The second is that
-this release, while it can reach the site, exposes only five of the eleven season stat
-tables that the site publishes. We restore the missing six by subclassing the reader and
-re-declaring the table identifiers, reusing the library's own downloader, cache and
-parser rather than writing any request loop of our own. Establishing the correct
-identifiers required inspecting live pages, which is how we found that the goal and shot
-creation table is served under an identifier that does not match its documented name.
+These tables originate from FBref, which published advanced statistics derived from a
+commercial event-data provider. They are obtained here from a public mirror maintained by
+the worldfootballR project rather than from the site directly, and that choice needs
+stating plainly rather than burying. On 20 January 2026 the site's operator removed every
+statistic derived from that provider, retroactively and across completed seasons, after the
+licence was terminated. The mirror predates the removal. It is therefore a secondary source
+in the strict sense, and a reader should weigh it accordingly: it was scraped by a third
+party, we did not observe the scrape, and we cannot re-derive it from the primary source
+because the primary source no longer holds the data. What we can do, and do, is audit it.
+Row counts, per-column coverage and per-season coverage are checked on load, and the checks
+are part of the pipeline rather than a one-off inspection.
 
-\subsection{The withdrawal of advanced statistics}
-\label{sec:data:withdrawal}
+One season is excluded on those grounds. FBref restructured its ball-carrying columns for
+the season ending 2023 and the mirror did not follow the renames, so every carrying column
+is empty for that season while neighbouring columns are intact. An overall missingness rate
+hides this, because the affected columns are complete in the five retained seasons; a
+per-season rate exposes it immediately. The pipeline raises rather than imputing whenever a
+feature exceeds half missing within any retained season, so the exclusion is enforced by a
+check rather than by a comment.
 
-On 20 January 2026 the operator of FBref removed every statistic derived from its
-commercial data provider, following termination of the licence and a demand that the
-data be deleted. The removal was retroactive rather than prospective, so it applies to
-completed seasons as well as future ones.
+\subsection{Feature set}
 
-The practical consequence is more subtle than a set of missing tables, and it is a trap
-for anyone building on this source. The affected tables are still served, still carry
-their full column headers, and still return one row per player. Only the values are
-gone. A feature list assembled from the site's published schema therefore looks entirely
-correct and yields a feature matrix that is empty. Table~\ref{tab:availability} reports
-the audit we ran to establish exactly what survived, counting non-null values for every
-column of every table in both seasons.
+The outfield feature set contains \ArcFeatures{} features and is listed in full in
+Appendix~\ref{sec:appendix:features}. It spans six families: shot volume and quality
+including non-penalty expected goals; chance creation including expected assisted goals,
+key passes and shot and goal creating actions; ball progression through progressive passes,
+carries and receptions and entries into the final third and penalty area; touches broken
+down across the five pitch zones; take-ons attempted and their success rate; and defensive
+work through tackles, interceptions, blocks, clearances, ball recoveries and aerial duel
+success, together with passing accuracy at short, medium and long range.
+
+Counting statistics are divided by nineties played. Quantities published as rates are used
+as published rather than divided a second time. Minutes and appearances are retained as
+context and never enter the feature set, because squad usage describes a player's
+opportunity rather than the role he performs within it.
+
+Several features are undefined for some players by construction rather than by data loss: a
+player who attempted no shots has no shot accuracy, and a player who attempted no take-ons
+has no take-on success rate. After the minutes filter these affect at most eight percent of
+players in any single feature, and the affected values are median-imputed within position
+group and flagged.
+
+\subsection{Adjusting defensive counts for possession}
+\label{sec:data:padj}
+
+Defensive actions can only be recorded while the opponent has the ball, so their raw rates
+confound what a player does with how often his team is out of possession, which in turn
+tracks team strength. The correction and the reasoning behind its exact form are set out in
+Section~\ref{sec:methods:padj}. The point for the data description is that the five
+opponent-ball counts, tackles, interceptions, blocks, clearances and fouls committed, enter
+the feature set in adjusted form.
+
+\subsection{A second, deliberately impoverished sample}
+\label{sec:data:reduced}
+
+A separate sample is collected directly from the live site for the seasons ending 2025 and
+2026, after the withdrawal. It is not used for the main analysis. Its purpose is a
+robustness check: it contains roughly half the features of the primary sample, having lost
+expected goals, all passing and possession volume, shot and goal creating actions and the
+entire advanced goalkeeping table, and it therefore allows the central result to be
+re-derived on a much poorer description of the same game.
+
+That sample carries a methodological warning worth recording independently of this study.
+The affected tables are still served with complete column headers and one row per player,
+and only the values are gone, so a feature set assembled from the site's published schema
+resolves correctly and yields an empty matrix. Table~\ref{tab:availability} reports the
+audit. Feature selection against observed values rather than documentation is now a
+necessary step when working with this source. The withdrawal was also applied unevenly: at
+season level the columns were emptied, while at match level they were removed from the
+schema outright, so match reports remain usable for what survived, which
+Section~\ref{sec:results:drift} exploits.
 
 \input{../results/tables/data_availability.tex}
 
-What remains is close to the statistical vocabulary of two decades ago: appearances,
-minutes, goals, assists, shots, shots on target, cards, fouls committed and drawn,
-offsides, crosses, interceptions and tackles won, together with basic goalkeeping
-volume. What disappeared is the entire modern apparatus, including expected goals,
-expected assisted goals, shot and goal creating actions, every touch and carry and
-take-on count, all passing volume and progression, and, for goalkeepers, post-shot
-expected goals, sweeper actions, distribution length and cross handling.
+\subsection{Known limitations}
 
-The withdrawal was not applied uniformly across the site, and the difference is worth
-recording because it changes what a replication should expect. At season level the affected
-tables kept their full column headers and lost their values, which is the trap described
-above. At match level the same statistics were removed from the schema outright: the match
-summary table simply does not offer an expected goals column any more, rather than offering
-an empty one. Of the columns it does offer, all but two are populated. A consequence is
-that match reports remain a usable source for the statistics that survived, which
-Section~\ref{sec:results:drift} exploits to test whether a season aggregate describes one
-role or an average of several.
-
-\subsection{Restoring shot quality}
-
-Because a role discovery study with no measure of chance quality would be badly
-impoverished, we merge a second and independent source. Understat publishes its own
-expected goals model and continues to provide non-penalty expected goals, expected
-assists, key passes, shot counts, and the two possession involvement measures xGChain
-and xGBuildup. These restore the creation and shot quality block that the withdrawal
-removed, at the cost of introducing a second provider whose model differs from the one
-that produced the original FBref values. We treat that as a limitation rather than a
-repair, and we never mix an Understat quantity with an FBref quantity that measures the
-same thing.
-
-Records are matched across the two sources within club, using three passes of
-decreasing strictness: exact match on a normalised name, then a token subset rule that
-resolves short forms against full names, then an approximate string match. The token
-subset pass is accepted only when exactly one candidate matches, so a club fielding
-several players who share a given name can never be silently conflated. Seven clubs are
-named differently by the two sites and are mapped explicitly. The procedure matches
-\MatchRatePrimary{} percent of \SeasonPrimary{} records and \MatchRateRepl{} percent of
-\SeasonReplication{} records. Unmatched players retain missing values for the Understat
-block and are counted rather than quietly dropped.
-
-\subsection{Filtering, normalisation and feature construction}
-
-The \SeasonPrimary{} pull contains \NPlayersRawPrimary{} player records, of which
-\NOutfieldPrimary{} are outfield players and \NKeepersPrimary{} are goalkeepers. A
-player who changed club during the season appears once per club in the source. We retain
-those rows for reference but conduct every analysis on an aggregated row per player, in
-which counting statistics are summed and rates are recomputed from their components
-rather than averaged across spells of unequal length, since averaging a rate over
-unequal exposure is not the rate. \NMultiClubPrimary{} players required this treatment
-in \SeasonPrimary{}.
-
-Players with fewer than \MinMinutes{} minutes, five full matches, are excluded from
-clustering while being retained in the descriptive tables. The threshold trades sample
-size against the noise in a per-90 rate computed over a short exposure, and
-Appendix~\ref{sec:appendix:sensitivity} reports the same analysis at 270 and 900 minutes.
-At the chosen threshold \NEligiblePrimary{} outfield players are eligible in
-\SeasonPrimary{} and \NEligibleRepl{} in \SeasonReplication{}, distributed across
-\NDFPrimary{} defenders, \NMFPrimary{} midfielders and \NFWPrimary{} forwards.
-
-Counting statistics are divided by nineties played. Quantities that are already rates,
-such as shot accuracy, are left alone rather than being divided a second time. The three
-statistics that can only be recorded while the opponent has the ball, interceptions,
-tackles won and fouls committed, are additionally corrected for how much time a player's
-team spends out of possession, by the procedure set out in
-Section~\ref{sec:methods:padj}. Minutes
-and nineties are retained as context columns and never used as features, since squad
-usage describes a player's opportunity rather than the role he performs within it. For
-the same reason the team success columns, points per match and goal difference while on
-the pitch, are excluded from every feature set: they measure the quality of the squad a
-player happens to belong to.
-
-Positions are parsed from the source's comma separated string. The first listed position
-gives a primary position and a position group in defender, midfielder, forward and
-goalkeeper, while the full string is retained for the analysis of players listed at more
-than one position. The final outfield feature set contains \NFeatures{} features and is
-listed in full in Appendix~\ref{sec:appendix:features}. Every feature in it was confirmed
-to hold non-null values in both seasons before inclusion, which is the only reliable
-defence against the empty column problem described in
-Section~\ref{sec:data:withdrawal}. Features are standardised twice, once across the whole
-outfield pool for the global analysis and once within position group for the
-position stratified analysis, and both versions are retained.
-
-\subsection{Known limitations of the data}
-
-Season aggregates discard context. A tackle count does not record where on the pitch the
-tackles happened, an expected goals total does not distinguish a striker who takes six
-low quality shots from one who takes two good ones, and the possession correction described in
-Section~\ref{sec:methods:padj} reaches only the three statistics recorded while the
-opponent has the ball, leaving the attacking statistics still sensitive to how much of it
-a player's team enjoys. Per-90 rates
-computed over a partial season remain noisy even above the minutes threshold, which is
-the motivation for the shrinkage analysis in Section~\ref{sec:results:shrinkage}. The
-study covers one league and two seasons, so nothing here should be read as a claim about
-football in general.
+Season aggregates discard context. A tackle count does not say where on the pitch the
+tackles happened, and an expected goals total does not distinguish six poor chances from
+two good ones. The possession correction described above reaches only the opponent-ball
+statistics, so attacking output remains related to a team's own share of the ball, and
+Section~\ref{sec:results:symmetric} sets out why correcting that would remove signal rather
+than bias. Per-90 rates computed over partial seasons remain noisy, which motivates the
+shrinkage analysis in Section~\ref{sec:results:shrinkage}. The sample is recent European
+club football, so nothing here should be read as a claim about the game in other eras or at
+other levels. Finally, the clusters are descriptive and carry no causal content: a cluster
+label records how a player's season looked, not why.

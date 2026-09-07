@@ -1,0 +1,342 @@
+{
+  "question": "Does the two-cluster solution reproduce across seasons and leagues?",
+  "k": 2,
+  "n_features": 33,
+  "n_players_seasons": 9263,
+  "seasons": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "leagues": [
+    "Premier League",
+    "La Liga",
+    "Bundesliga",
+    "Serie A",
+    "Ligue 1"
+  ],
+  "method": "Each season and each league is standardised inside itself and clustered from scratch, so no scope borrows a centre, a scale or a starting point from the pool. Three comparisons are reported. ari_vs_pooled scores an independent fit against the pooled partition on the same rows. The season pairwise index scores one season's labels against another's on the players present in both, which mixes replication of the solution with real change in those players. The transfer index imports one scope's centroids into another scope's players and scores against that scope's own fit, which isolates replication of the solution.",
+  "pooled": {
+    "n": 9263,
+    "cluster_sizes": {
+      "0": 5371,
+      "1": 3892
+    }
+  },
+  "by_season": {
+    "2018": {
+      "n": 1837,
+      "cluster_sizes": {
+        "0": 1075,
+        "1": 762
+      },
+      "ari_vs_pooled": 0.9848,
+      "nmi_vs_pooled": 0.9671,
+      "axis_correlation_with_pooled": 0.9995
+    },
+    "2019": {
+      "n": 1840,
+      "cluster_sizes": {
+        "0": 749,
+        "1": 1091
+      },
+      "ari_vs_pooled": 0.9232,
+      "nmi_vs_pooled": 0.8782,
+      "axis_correlation_with_pooled": 0.9991
+    },
+    "2020": {
+      "n": 1830,
+      "cluster_sizes": {
+        "0": 1064,
+        "1": 766
+      },
+      "ari_vs_pooled": 0.9826,
+      "nmi_vs_pooled": 0.9608,
+      "axis_correlation_with_pooled": 0.9998
+    },
+    "2021": {
+      "n": 1871,
+      "cluster_sizes": {
+        "0": 1038,
+        "1": 833
+      },
+      "ari_vs_pooled": 0.9162,
+      "nmi_vs_pooled": 0.8706,
+      "axis_correlation_with_pooled": 0.9994
+    },
+    "2022": {
+      "n": 1885,
+      "cluster_sizes": {
+        "0": 1081,
+        "1": 804
+      },
+      "ari_vs_pooled": 0.9352,
+      "nmi_vs_pooled": 0.8935,
+      "axis_correlation_with_pooled": 0.9988
+    }
+  },
+  "by_league": {
+    "Premier League": {
+      "n": 1847,
+      "cluster_sizes": {
+        "0": 755,
+        "1": 1092
+      },
+      "ari_vs_pooled": 0.9935,
+      "nmi_vs_pooled": 0.9824,
+      "axis_correlation_with_pooled": 0.999
+    },
+    "La Liga": {
+      "n": 1941,
+      "cluster_sizes": {
+        "0": 822,
+        "1": 1119
+      },
+      "ari_vs_pooled": 0.9754,
+      "nmi_vs_pooled": 0.9511,
+      "axis_correlation_with_pooled": 0.9984
+    },
+    "Bundesliga": {
+      "n": 1667,
+      "cluster_sizes": {
+        "0": 760,
+        "1": 907
+      },
+      "ari_vs_pooled": 0.9316,
+      "nmi_vs_pooled": 0.8861,
+      "axis_correlation_with_pooled": 0.9983
+    },
+    "Serie A": {
+      "n": 1949,
+      "cluster_sizes": {
+        "0": 826,
+        "1": 1123
+      },
+      "ari_vs_pooled": 0.9877,
+      "nmi_vs_pooled": 0.9697,
+      "axis_correlation_with_pooled": 0.9989
+    },
+    "Ligue 1": {
+      "n": 1859,
+      "cluster_sizes": {
+        "0": 747,
+        "1": 1112
+      },
+      "ari_vs_pooled": 0.9574,
+      "nmi_vs_pooled": 0.9201,
+      "axis_correlation_with_pooled": 0.9983
+    }
+  },
+  "season_pairwise_shared_players": {
+    "2018 vs 2019": {
+      "n_shared_players": 1321,
+      "adjusted_rand_index": 0.7507,
+      "normalized_mutual_info": 0.6425,
+      "same_cluster_share": 0.0666
+    },
+    "2018 vs 2020": {
+      "n_shared_players": 1082,
+      "adjusted_rand_index": 0.679,
+      "normalized_mutual_info": 0.5631,
+      "same_cluster_share": 0.9122
+    },
+    "2018 vs 2021": {
+      "n_shared_players": 941,
+      "adjusted_rand_index": 0.6398,
+      "normalized_mutual_info": 0.5264,
+      "same_cluster_share": 0.9001
+    },
+    "2018 vs 2022": {
+      "n_shared_players": 817,
+      "adjusted_rand_index": 0.5696,
+      "normalized_mutual_info": 0.4571,
+      "same_cluster_share": 0.8776
+    },
+    "2019 vs 2020": {
+      "n_shared_players": 1281,
+      "adjusted_rand_index": 0.7355,
+      "normalized_mutual_info": 0.6238,
+      "same_cluster_share": 0.071
+    },
+    "2019 vs 2021": {
+      "n_shared_players": 1104,
+      "adjusted_rand_index": 0.7062,
+      "normalized_mutual_info": 0.6009,
+      "same_cluster_share": 0.0797
+    },
+    "2019 vs 2022": {
+      "n_shared_players": 949,
+      "adjusted_rand_index": 0.663,
+      "normalized_mutual_info": 0.5497,
+      "same_cluster_share": 0.0927
+    },
+    "2020 vs 2021": {
+      "n_shared_players": 1331,
+      "adjusted_rand_index": 0.7528,
+      "normalized_mutual_info": 0.6462,
+      "same_cluster_share": 0.9339
+    },
+    "2020 vs 2022": {
+      "n_shared_players": 1136,
+      "adjusted_rand_index": 0.7049,
+      "normalized_mutual_info": 0.5923,
+      "same_cluster_share": 0.9199
+    },
+    "2021 vs 2022": {
+      "n_shared_players": 1326,
+      "adjusted_rand_index": 0.7234,
+      "normalized_mutual_info": 0.6167,
+      "same_cluster_share": 0.9253
+    }
+  },
+  "season_pairwise_matrix": {
+    "order": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "values": [
+      [
+        1.0,
+        0.7507,
+        0.679,
+        0.6398,
+        0.5696
+      ],
+      [
+        0.7507,
+        1.0,
+        0.7355,
+        0.7062,
+        0.663
+      ],
+      [
+        0.679,
+        0.7355,
+        1.0,
+        0.7528,
+        0.7049
+      ],
+      [
+        0.6398,
+        0.7062,
+        0.7528,
+        1.0,
+        0.7234
+      ],
+      [
+        0.5696,
+        0.663,
+        0.7049,
+        0.7234,
+        1.0
+      ]
+    ]
+  },
+  "season_transfer_matrix": {
+    "order": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "values": [
+      [
+        1.0,
+        0.9698,
+        0.9891,
+        0.9368,
+        0.9747
+      ],
+      [
+        0.9697,
+        1.0,
+        0.9631,
+        0.9081,
+        0.9393
+      ],
+      [
+        0.9913,
+        0.9762,
+        1.0,
+        0.941,
+        0.9684
+      ],
+      [
+        0.9611,
+        0.9045,
+        0.961,
+        1.0,
+        0.9684
+      ],
+      [
+        0.9848,
+        0.9484,
+        0.9913,
+        0.9598,
+        1.0
+      ]
+    ]
+  },
+  "league_transfer_matrix": {
+    "order": [
+      "Premier League",
+      "La Liga",
+      "Bundesliga",
+      "Serie A",
+      "Ligue 1"
+    ],
+    "values": [
+      [
+        1.0,
+        0.9612,
+        0.9085,
+        0.9573,
+        0.9552
+      ],
+      [
+        0.9677,
+        1.0,
+        0.9177,
+        0.9857,
+        0.9447
+      ],
+      [
+        0.9318,
+        0.9491,
+        1.0,
+        0.9413,
+        0.9157
+      ],
+      [
+        0.9592,
+        0.9897,
+        0.9316,
+        1.0,
+        0.9406
+      ],
+      [
+        0.9763,
+        0.9192,
+        0.8926,
+        0.9254,
+        1.0
+      ]
+    ]
+  },
+  "summary": {
+    "season_pairwise_ari_mean": 0.6925,
+    "season_pairwise_ari_min": 0.5696,
+    "season_pairwise_ari_max": 0.7528,
+    "season_vs_pooled_ari_min": 0.9162,
+    "league_vs_pooled_ari_min": 0.9316,
+    "league_transfer_ari_mean": 0.9435,
+    "league_transfer_ari_min": 0.8926,
+    "axis_correlation_min": 0.9983
+  }
+}

@@ -152,6 +152,25 @@ class Macros:
     def add_raw(self, name: str, text: str) -> None:
         self._defs[name] = text
 
+    def add_year(self, name: str, value: Any) -> None:
+        """Years must not carry a thousands separator."""
+        if value is None:
+            self._skipped.append(name)
+            return
+        self._defs[name] = str(int(value))
+
+    def add_pvalue(self, name: str, value: Any, floor: float = 1e-4) -> None:
+        """Report a p-value, but never as a bare zero.
+
+        A p-value printed as 0 claims more than any finite test can, so anything below
+        the floor is reported as being below it.
+        """
+        if value is None:
+            self._skipped.append(name)
+            return
+        p = float(value)
+        self._defs[name] = f"<{floor:g}" if p < floor else f"{p:.4f}"
+
     @property
     def skipped(self) -> list[str]:
         return sorted(self._skipped)
@@ -951,6 +970,80 @@ def build_macros() -> Macros:
         m.add("LgElastMin", min(els), places=3)
         m.add("LgElastMax", max(els), places=3)
         m.add("LgElastCount", len(els) + len(config.PADJ_COUNTS))
+
+    # The archive sample: the paper's primary dataset
+    arch = load("archive")
+    m.add("ArcRows", dig(arch, "rows_all"))
+    m.add("ArcEligible", dig(arch, "rows_eligible"))
+    m.add("ArcKeepers", dig(arch, "rows_keepers"))
+    m.add("ArcFeatures", dig(arch, "n_features"))
+    m.add("ArcNSeasons", len(dig(arch, "seasons") or []))
+    m.add("ArcNLeagues", len(dig(arch, "leagues") or []))
+    seasons = dig(arch, "seasons") or []
+    if seasons:
+        m.add_year("ArcSeasonFirst", seasons[0])
+        m.add_year("ArcSeasonLast", seasons[-1])
+    for grp in ("DF", "MF", "FW"):
+        m.add(f"ArcN{grp}", dig(arch, "eligible_by_position", grp))
+    for count, tag in (
+        ("tackles", "Tackles"),
+        ("interceptions", "Interceptions"),
+        ("blocks", "Blocks"),
+        ("clearances", "Clearances"),
+        ("fouls_committed", "Fouls"),
+    ):
+        m.add(f"ArcElast{tag}", dig(arch, "elasticities", count), places=3)
+
+    # Structure: is the space clustered or continuous?
+    st = load("structure")
+    scopes = dig(st, "scopes") or {}
+    name_map = {"All outfield": "All", "DF": "DF", "MF": "MF", "FW": "FW"}
+    for scope, tag in name_map.items():
+        cal = dig(scopes, scope, "null_calibration") or {}
+        m.add(f"StrObs{tag}", cal.get("observed_best_silhouette"), places=3)
+        m.add(f"StrNull{tag}", cal.get("null_best_silhouette_mean"), places=3)
+        m.add(f"StrRatio{tag}", cal.get("separation_ratio"), places=3)
+        m.add(f"StrZ{tag}", dig(cal, "by_k", "2", "z_against_null"), places=1)
+        dip = dig(scopes, scope, "dip_tests", "PC1") or {}
+        m.add(f"StrDip{tag}", dip.get("dip"), places=4)
+        m.add_pvalue(f"StrDipP{tag}", dip.get("p_value"))
+        hd = dig(scopes, scope, "density", "50") or {}
+        m.add(f"StrNoise{tag}", hd.get("noise_fraction"), places=3)
+    m.add("StrSimulations", dig(scopes, "All outfield", "null_calibration", "n_simulations"))
+    m.add("StrRatioMin", dig(st, "summary", "separation_ratio_min"), places=3)
+    m.add("StrRatioMax", dig(st, "summary", "separation_ratio_max"), places=3)
+
+    # Goalkeepers on the primary sample
+    kav = load("archive_keeper_availability")
+    karc = load("archive_keeper_archetypes")
+    kclu = load("archive_keeper_clusters")
+    m.add("ArcKeeperSeasons", dig(kav, "keeper_seasons"))
+    cov = dig(kav, "canonical_features") or {}
+    rates = (
+        [v.get("coverage") for v in cov.values() if isinstance(v, dict) and v.get("coverage")]
+        if isinstance(cov, dict)
+        else []
+    )
+    if rates:
+        m.add("ArcKeeperCoverageMin", min(rates), places=3)
+    m.add("ArcKeeperK", dig(karc, "k"))
+    m.add("ArcKeeperSil", dig(karc, "silhouette"), places=3)
+    m.add("ArcKeeperBootARI", dig(karc, "bootstrap_ari_mean"), places=3)
+    m.add_raw("ArcKeeperPrimaryVerdict", tex_escape(dig(karc, "primary_space_verdict") or ""))
+    spaces = dig(kclu, "spaces") or {}
+    for key, tag in (("full", "Full"), ("technique", "Tech")):
+        sp = spaces.get(key) or {}
+        m.add(f"ArcKeeperSil{tag}", sp.get("silhouette"), places=3)
+        val = sp.get("validation") or {}
+        for side in ("situation", "technique"):
+            eta = dig(val, "mean_eta_squared", side) or dig(val, f"mean_eta_squared_{side}")
+            m.add(f"ArcKeeperEta{tag}{side.capitalize()}", eta, places=3)
+    arche = dig(karc, "archetypes") or {}
+    if isinstance(arche, dict):
+        for idx, (_label, entry) in enumerate(sorted(arche.items())):
+            tag = ["Zero", "One"][idx] if idx < 2 else str(idx)
+            m.add_raw(f"ArcKeeperName{tag}", tex_escape(entry.get("name", "")))
+            m.add(f"ArcKeeperN{tag}", entry.get("n_players") or entry.get("n"))
 
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))

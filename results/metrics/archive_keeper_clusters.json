@@ -1,0 +1,5547 @@
+{
+  "spaces": {
+    "full": {
+      "space": "archive_keeper_full",
+      "columns": [
+        "gk_save_pct",
+        "gk_clean_sheet_pct",
+        "gk_goals_against_per90",
+        "gk_sota_p90",
+        "gk_psxg_p90",
+        "gk_psxg_per_sot",
+        "gk_psxg_net_p90",
+        "gk_crosses_stopped_pct",
+        "gk_sweeper_per90",
+        "gk_sweeper_distance",
+        "gk_launch_pct",
+        "gk_pass_length"
+      ],
+      "n": 693,
+      "n_components": 6,
+      "explained_variance_ratio": [
+        0.3657,
+        0.171,
+        0.1557,
+        0.1126,
+        0.0738,
+        0.0686
+      ],
+      "explained_variance_total": 0.9474,
+      "k_range": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "k_range_note": "capped at 8 rather than config.K_MAX of 12 because 693 keeper-seasons cannot support twelve centroids",
+      "curves": {
+        "silhouette": {
+          "2": 0.20749,
+          "3": 0.165742,
+          "4": 0.161757,
+          "5": 0.156696,
+          "6": 0.140168,
+          "7": 0.139329,
+          "8": 0.137489
+        },
+        "davies_bouldin": {
+          "2": 1.648751,
+          "3": 1.835953,
+          "4": 1.695503,
+          "5": 1.694644,
+          "6": 1.70413,
+          "7": 1.632006,
+          "8": 1.575826
+        },
+        "calinski_harabasz": {
+          "2": 214.457461,
+          "3": 172.649823,
+          "4": 150.724364,
+          "5": 135.939754,
+          "6": 124.586072,
+          "7": 115.349154,
+          "8": 107.900385
+        },
+        "gap": {
+          "2": 1.206796,
+          "3": 1.241066,
+          "4": 1.253454,
+          "5": 1.259453,
+          "6": 1.258384,
+          "7": 1.260551,
+          "8": 1.258627
+        },
+        "gap_se": {
+          "2": 0.013346,
+          "3": 0.014005,
+          "4": 0.015386,
+          "5": 0.015378,
+          "6": 0.014988,
+          "7": 0.013724,
+          "8": 0.014379
+        }
+      },
+      "selection": {
+        "chosen_k": 2,
+        "rule_branch": "primary",
+        "tiebreak_applied": false,
+        "best_silhouette": 0.20749,
+        "silhouette_tolerance": 0.02,
+        "eligible_k": [
+          2
+        ],
+        "candidates": [
+          2
+        ],
+        "criteria_passed_by_k": {
+          "2": [
+            "silhouette",
+            "calinski_harabasz"
+          ],
+          "3": [
+            "silhouette",
+            "calinski_harabasz"
+          ],
+          "4": [
+            "silhouette",
+            "calinski_harabasz"
+          ],
+          "5": [
+            "gap"
+          ],
+          "6": [],
+          "7": [
+            "gap"
+          ],
+          "8": [
+            "gap"
+          ]
+        },
+        "ranks": {
+          "silhouette": {
+            "2": 1,
+            "3": 2,
+            "4": 3,
+            "5": 4,
+            "6": 5,
+            "7": 6,
+            "8": 7
+          },
+          "calinski_harabasz": {
+            "2": 1,
+            "3": 2,
+            "4": 3,
+            "5": 4,
+            "6": 5,
+            "7": 6,
+            "8": 7
+          },
+          "gap": {
+            "7": 1,
+            "5": 2,
+            "8": 3,
+            "6": 4,
+            "4": 5,
+            "3": 6,
+            "2": 7
+          }
+        },
+        "favoured_by_criterion": {
+          "silhouette": 2,
+          "davies_bouldin": 8,
+          "calinski_harabasz": 2,
+          "gap_max": 7,
+          "gap_tibshirani_1se": 3
+        }
+      },
+      "chosen_k": 2,
+      "silhouette": 0.20749,
+      "davies_bouldin": 1.648751,
+      "calinski_harabasz": 214.457461,
+      "cluster_sizes": {
+        "0": 402,
+        "1": 291
+      },
+      "stability": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.8692,
+        "ari_sd": 0.1179,
+        "ari_min": 0.4624,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 402,
+            "mean_coassignment": 0.9446,
+            "low_stability": false
+          },
+          "1": {
+            "n": 291,
+            "mean_coassignment": 0.9304,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "validation": {
+        "question": "does cluster membership track the situation the keeper was placed in, or what the keeper did",
+        "situation_block": [
+          "gk_goals_against_per90",
+          "gk_sota_p90",
+          "gk_psxg_p90",
+          "gk_psxg_per_sot",
+          "gk_clean_sheet_pct"
+        ],
+        "technique_block": [
+          "gk_psxg_net_p90",
+          "gk_save_pct",
+          "gk_sweeper_per90",
+          "gk_sweeper_distance",
+          "gk_crosses_stopped_pct",
+          "gk_launch_pct",
+          "gk_pass_length"
+        ],
+        "eta_squared_by_feature": {
+          "gk_save_pct": 0.249,
+          "gk_clean_sheet_pct": 0.4262,
+          "gk_goals_against_per90": 0.5001,
+          "gk_sota_p90": 0.3252,
+          "gk_psxg_p90": 0.4569,
+          "gk_psxg_per_sot": 0.221,
+          "gk_psxg_net_p90": 0.0937,
+          "gk_crosses_stopped_pct": 0.0099,
+          "gk_sweeper_per90": 0.0198,
+          "gk_sweeper_distance": 0.0661,
+          "gk_launch_pct": 0.1719,
+          "gk_pass_length": 0.1541
+        },
+        "mean_eta_squared_situation": 0.3859,
+        "mean_eta_squared_technique": 0.1092,
+        "technique_to_situation_ratio": 0.283,
+        "dominance_ratio_threshold": 1.5,
+        "majority_class_baseline_accuracy": 0.5801,
+        "membership_explained": {
+          "situation_full": {
+            "variables": [
+              "gk_goals_against_per90",
+              "gk_sota_p90",
+              "gk_psxg_p90",
+              "gk_psxg_per_sot",
+              "gk_clean_sheet_pct"
+            ],
+            "mcfadden_pseudo_r2": 0.7293,
+            "cv_accuracy": 0.9148,
+            "cv_accuracy_sd": 0.0204
+          },
+          "technique_full": {
+            "variables": [
+              "gk_psxg_net_p90",
+              "gk_save_pct",
+              "gk_sweeper_per90",
+              "gk_sweeper_distance",
+              "gk_crosses_stopped_pct",
+              "gk_launch_pct",
+              "gk_pass_length"
+            ],
+            "mcfadden_pseudo_r2": 0.4436,
+            "cv_accuracy": 0.8197,
+            "cv_accuracy_sd": 0.0297
+          },
+          "situation_core": {
+            "variables": [
+              "gk_goals_against_per90",
+              "gk_sota_p90"
+            ],
+            "mcfadden_pseudo_r2": 0.6665,
+            "cv_accuracy": 0.9004,
+            "cv_accuracy_sd": 0.0289
+          },
+          "technique_core": {
+            "variables": [
+              "gk_psxg_net_p90",
+              "gk_sweeper_distance",
+              "gk_launch_pct"
+            ],
+            "mcfadden_pseudo_r2": 0.2634,
+            "cv_accuracy": 0.7634,
+            "cv_accuracy_sd": 0.0409
+          }
+        },
+        "verdict": "situation",
+        "supports_archetypes": false
+      },
+      "cluster_profiles": {
+        "0": {
+          "n": 402,
+          "share": 0.5801,
+          "composites": {
+            "shot_stopping": -0.095,
+            "sweeping": -0.1693,
+            "distribution": -0.3434,
+            "cross_handling": -0.0847,
+            "workload": 0.5434
+          },
+          "raw_means": {
+            "gk_save_pct": 66.409,
+            "gk_clean_sheet_pct": 19.496,
+            "gk_goals_against_per90": 1.673,
+            "gk_sota_p90": 4.576,
+            "gk_psxg_p90": 1.539,
+            "gk_psxg_per_sot": 0.311,
+            "gk_psxg_net_p90": -0.083,
+            "gk_crosses_stopped_pct": 7.257,
+            "gk_sweeper_per90": 0.624,
+            "gk_sweeper_distance": 14.09,
+            "gk_launch_pct": 51.752,
+            "gk_pass_length": 42.234
+          }
+        },
+        "1": {
+          "n": 291,
+          "share": 0.4199,
+          "composites": {
+            "shot_stopping": 0.1313,
+            "sweeping": 0.2338,
+            "distribution": 0.4744,
+            "cross_handling": 0.117,
+            "workload": -0.7507
+          },
+          "raw_means": {
+            "gk_save_pct": 72.985,
+            "gk_clean_sheet_pct": 35.464,
+            "gk_goals_against_per90": 1.06,
+            "gk_sota_p90": 3.54,
+            "gk_psxg_p90": 1.066,
+            "gk_psxg_per_sot": 0.273,
+            "gk_psxg_net_p90": 0.039,
+            "gk_crosses_stopped_pct": 7.798,
+            "gk_sweeper_per90": 0.723,
+            "gk_sweeper_distance": 14.935,
+            "gk_launch_pct": 39.551,
+            "gk_pass_length": 36.723
+          }
+        }
+      },
+      "exemplars": {
+        "0": [
+          "Emil Audero (Sampdoria 2020)",
+          "Alessio Cragno (Cagliari 2018)",
+          "Aaron Ramsdale (Bournemouth 2020)",
+          "Pepe Reina (Aston Villa 2020)",
+          "Alexander N\u00fcbel (Schalke 04 2019)",
+          "Paul Bernardoni (N\u00eemes 2020)"
+        ],
+        "1": [
+          "Steve Mandanda (Marseille 2020)",
+          "Thomas Strakosha (Lazio 2019)",
+          "Hugo Lloris (Tottenham 2022)",
+          "Rui Silva (Betis 2022)",
+          "Unai Sim\u00f3n (Athletic Club 2022)",
+          "Anthony Lopes (Lyon 2020)"
+        ]
+      }
+    },
+    "technique": {
+      "space": "archive_keeper_technique",
+      "columns": [
+        "shot_stopping",
+        "sweeping",
+        "distribution",
+        "cross_handling"
+      ],
+      "n": 693,
+      "n_components": 4,
+      "explained_variance_ratio": [
+        0.3198,
+        0.2653,
+        0.2373,
+        0.1777
+      ],
+      "explained_variance_total": 1.0,
+      "k_range": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "k_range_note": "capped at 8 rather than config.K_MAX of 12 because 693 keeper-seasons cannot support twelve centroids",
+      "curves": {
+        "silhouette": {
+          "2": 0.189212,
+          "3": 0.18402,
+          "4": 0.185277,
+          "5": 0.179219,
+          "6": 0.181668,
+          "7": 0.186207,
+          "8": 0.183082
+        },
+        "davies_bouldin": {
+          "2": 1.879582,
+          "3": 1.59838,
+          "4": 1.423633,
+          "5": 1.363568,
+          "6": 1.365207,
+          "7": 1.278556,
+          "8": 1.278709
+        },
+        "calinski_harabasz": {
+          "2": 163.76367,
+          "3": 159.213034,
+          "4": 157.610584,
+          "5": 148.10883,
+          "6": 141.940965,
+          "7": 137.487865,
+          "8": 133.862276
+        },
+        "gap": {
+          "2": 1.326248,
+          "3": 1.311541,
+          "4": 1.303419,
+          "5": 1.293213,
+          "6": 1.28785,
+          "7": 1.283033,
+          "8": 1.281164
+        },
+        "gap_se": {
+          "2": 0.019778,
+          "3": 0.019572,
+          "4": 0.019447,
+          "5": 0.01908,
+          "6": 0.017061,
+          "7": 0.016369,
+          "8": 0.017182
+        }
+      },
+      "selection": {
+        "chosen_k": 2,
+        "rule_branch": "primary",
+        "tiebreak_applied": false,
+        "best_silhouette": 0.189212,
+        "silhouette_tolerance": 0.02,
+        "eligible_k": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "candidates": [
+          2,
+          3,
+          4
+        ],
+        "criteria_passed_by_k": {
+          "2": [
+            "silhouette",
+            "calinski_harabasz",
+            "gap"
+          ],
+          "3": [
+            "calinski_harabasz",
+            "gap"
+          ],
+          "4": [
+            "silhouette",
+            "calinski_harabasz",
+            "gap"
+          ],
+          "5": [],
+          "6": [],
+          "7": [
+            "silhouette"
+          ],
+          "8": []
+        },
+        "ranks": {
+          "silhouette": {
+            "2": 1,
+            "7": 2,
+            "4": 3,
+            "3": 4,
+            "8": 5,
+            "6": 6,
+            "5": 7
+          },
+          "calinski_harabasz": {
+            "2": 1,
+            "3": 2,
+            "4": 3,
+            "5": 4,
+            "6": 5,
+            "7": 6,
+            "8": 7
+          },
+          "gap": {
+            "2": 1,
+            "3": 2,
+            "4": 3,
+            "5": 4,
+            "6": 5,
+            "7": 6,
+            "8": 7
+          }
+        },
+        "favoured_by_criterion": {
+          "silhouette": 2,
+          "davies_bouldin": 7,
+          "calinski_harabasz": 2,
+          "gap_max": 2,
+          "gap_tibshirani_1se": 2
+        }
+      },
+      "chosen_k": 2,
+      "silhouette": 0.189212,
+      "davies_bouldin": 1.879582,
+      "calinski_harabasz": 163.76367,
+      "cluster_sizes": {
+        "0": 411,
+        "1": 282
+      },
+      "stability": {
+        "n_bootstrap": 200,
+        "ari_mean": 0.5701,
+        "ari_sd": 0.2859,
+        "ari_min": 0.0023,
+        "ari_max": 0.9726,
+        "per_cluster": {
+          "0": {
+            "n": 411,
+            "mean_coassignment": 0.8198,
+            "low_stability": false
+          },
+          "1": {
+            "n": 282,
+            "mean_coassignment": 0.7483,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "validation": {
+        "question": "does cluster membership track the situation the keeper was placed in, or what the keeper did",
+        "situation_block": [
+          "gk_goals_against_per90",
+          "gk_sota_p90",
+          "gk_psxg_p90",
+          "gk_psxg_per_sot",
+          "gk_clean_sheet_pct"
+        ],
+        "technique_block": [
+          "gk_psxg_net_p90",
+          "gk_save_pct",
+          "gk_sweeper_per90",
+          "gk_sweeper_distance",
+          "gk_crosses_stopped_pct",
+          "gk_launch_pct",
+          "gk_pass_length"
+        ],
+        "eta_squared_by_feature": {
+          "gk_save_pct": 0.0419,
+          "gk_clean_sheet_pct": 0.0372,
+          "gk_goals_against_per90": 0.0413,
+          "gk_sota_p90": 0.0097,
+          "gk_psxg_p90": 0.0029,
+          "gk_psxg_per_sot": 0.0057,
+          "gk_psxg_net_p90": 0.0997,
+          "gk_crosses_stopped_pct": 0.4585,
+          "gk_sweeper_per90": 0.1473,
+          "gk_sweeper_distance": 0.1623,
+          "gk_launch_pct": 0.0136,
+          "gk_pass_length": 0.0211
+        },
+        "mean_eta_squared_situation": 0.0194,
+        "mean_eta_squared_technique": 0.1349,
+        "technique_to_situation_ratio": 6.9687,
+        "dominance_ratio_threshold": 1.5,
+        "majority_class_baseline_accuracy": 0.5931,
+        "membership_explained": {
+          "situation_full": {
+            "variables": [
+              "gk_goals_against_per90",
+              "gk_sota_p90",
+              "gk_psxg_p90",
+              "gk_psxg_per_sot",
+              "gk_clean_sheet_pct"
+            ],
+            "mcfadden_pseudo_r2": 0.1157,
+            "cv_accuracy": 0.6579,
+            "cv_accuracy_sd": 0.0307
+          },
+          "technique_full": {
+            "variables": [
+              "gk_psxg_net_p90",
+              "gk_save_pct",
+              "gk_sweeper_per90",
+              "gk_sweeper_distance",
+              "gk_crosses_stopped_pct",
+              "gk_launch_pct",
+              "gk_pass_length"
+            ],
+            "mcfadden_pseudo_r2": 0.8672,
+            "cv_accuracy": 0.9697,
+            "cv_accuracy_sd": 0.0138
+          },
+          "situation_core": {
+            "variables": [
+              "gk_goals_against_per90",
+              "gk_sota_p90"
+            ],
+            "mcfadden_pseudo_r2": 0.0374,
+            "cv_accuracy": 0.6148,
+            "cv_accuracy_sd": 0.0223
+          },
+          "technique_core": {
+            "variables": [
+              "gk_psxg_net_p90",
+              "gk_sweeper_distance",
+              "gk_launch_pct"
+            ],
+            "mcfadden_pseudo_r2": 0.266,
+            "cv_accuracy": 0.7576,
+            "cv_accuracy_sd": 0.0225
+          }
+        },
+        "verdict": "technique",
+        "supports_archetypes": true
+      },
+      "cluster_profiles": {
+        "0": {
+          "n": 411,
+          "share": 0.5931,
+          "composites": {
+            "shot_stopping": -0.1645,
+            "sweeping": -0.3258,
+            "distribution": 0.1084,
+            "cross_handling": -0.5609,
+            "workload": 0.1249
+          },
+          "raw_means": {
+            "gk_save_pct": 68.068,
+            "gk_clean_sheet_pct": 24.272,
+            "gk_goals_against_per90": 1.488,
+            "gk_sota_p90": 4.214,
+            "gk_psxg_p90": 1.356,
+            "gk_psxg_per_sot": 0.292,
+            "gk_psxg_net_p90": -0.083,
+            "gk_crosses_stopped_pct": 5.982,
+            "gk_sweeper_per90": 0.556,
+            "gk_sweeper_distance": 13.903,
+            "gk_launch_pct": 45.227,
+            "gk_pass_length": 39.086
+          }
+        },
+        "1": {
+          "n": 282,
+          "share": 0.4069,
+          "composites": {
+            "shot_stopping": 0.2397,
+            "sweeping": 0.4748,
+            "distribution": -0.158,
+            "cross_handling": 0.8175,
+            "workload": -0.1821
+          },
+          "raw_means": {
+            "gk_save_pct": 70.778,
+            "gk_clean_sheet_pct": 29.013,
+            "gk_goals_against_per90": 1.311,
+            "gk_sota_p90": 4.035,
+            "gk_psxg_p90": 1.318,
+            "gk_psxg_per_sot": 0.298,
+            "gk_psxg_net_p90": 0.043,
+            "gk_crosses_stopped_pct": 9.673,
+            "gk_sweeper_per90": 0.826,
+            "gk_sweeper_distance": 15.234,
+            "gk_launch_pct": 48.67,
+            "gk_pass_length": 41.135
+          }
+        }
+      },
+      "exemplars": {
+        "0": [
+          "Beno\u00eet Costil (Bordeaux 2020)",
+          "Andreas Luthe (Union Berlin 2022)",
+          "Unai Sim\u00f3n (Athletic Club 2021)",
+          "Sergio Asenjo (Villarreal 2020)",
+          "C\u00e1rdenas (Levante 2022)",
+          "Thomas Strakosha (Lazio 2019)"
+        ],
+        "1": [
+          "Sergio Asenjo (Villarreal 2019)",
+          "Kevin Trapp (Eint Frankfurt 2019)",
+          "Iv\u00e1n Villar (Celta Vigo 2021)",
+          "Koen Casteels (Wolfsburg 2020)",
+          "Ludovic Butelle (Angers 2019)",
+          "Stefan Ortega (Arminia 2021)"
+        ]
+      }
+    }
+  },
+  "primary_space": "full",
+  "k_rule": {
+    "silhouette_tolerance": 0.02,
+    "top_n_rank": 3,
+    "min_criteria": 2,
+    "tiebreak": "davies_bouldin"
+  },
+  "assignments": [
+    {
+      "player": "Fernando Pacheco",
+      "squad": "Alav\u00e9s",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "R\u00e9gis Gurtner",
+      "squad": "Amiens",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ludovic Butelle",
+      "squad": "Angers",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alexandre Letellier",
+      "squad": "Angers",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mathieu Michel",
+      "squad": "Angers",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Petr \u010cech",
+      "squad": "Arsenal",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Etrit Berisha",
+      "squad": "Atalanta",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pierluigi Gollini",
+      "squad": "Atalanta",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Kepa Arrizabalaga",
+      "squad": "Athletic Club",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Iago Herrer\u00edn",
+      "squad": "Athletic Club",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jan Oblak",
+      "squad": "Atl\u00e9tico Madrid",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marwin Hitz",
+      "squad": "Augsburg",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marc-Andr\u00e9 ter Stegen",
+      "squad": "Barcelona",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Sven Ulreich",
+      "squad": "Bayern Munich",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Vid Belec",
+      "squad": "Benevento",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alberto Brignoli",
+      "squad": "Benevento",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Christian Puggioni",
+      "squad": "Benevento",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Antonio Ad\u00e1n",
+      "squad": "Betis",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Antonio Mirante",
+      "squad": "Bologna",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Beno\u00eet Costil",
+      "squad": "Bordeaux",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Asmir Begovi\u0107",
+      "squad": "Bournemouth",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mathew Ryan",
+      "squad": "Brighton",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Nick Pope",
+      "squad": "Burnley",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "R\u00e9my Vercoutre",
+      "squad": "Caen",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alessio Cragno",
+      "squad": "Cagliari",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rafael",
+      "squad": "Cagliari",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Sergio \u00c1lvarez",
+      "squad": "Celta Vigo",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rub\u00e9n Blanco",
+      "squad": "Celta Vigo",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Thibaut Courtois",
+      "squad": "Chelsea",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Stefano Sorrentino",
+      "squad": "Chievo",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex Cordaz",
+      "squad": "Crotone",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wayne Hennessey",
+      "squad": "Crystal Palace",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Juli\u00e1n Speroni",
+      "squad": "Crystal Palace",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Baptiste Reynet",
+      "squad": "Dijon",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Roman B\u00fcrki",
+      "squad": "Dortmund",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marko Dmitrovi\u0107",
+      "squad": "Eibar",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Luk\u00e1\u0161 Hr\u00e1deck\u00fd",
+      "squad": "Eint Frankfurt",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Diego L\u00f3pez",
+      "squad": "Espanyol",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pau L\u00f3pez",
+      "squad": "Espanyol",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jordan Pickford",
+      "squad": "Everton",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marco Sportiello",
+      "squad": "Fiorentina",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alexander Schwolow",
+      "squad": "Freiburg",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mattia Perin",
+      "squad": "Genoa",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vicente Guaita",
+      "squad": "Getafe",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Emiliano Mart\u00ednez",
+      "squad": "Getafe",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Yassine Bounou",
+      "squad": "Girona",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gorka Iraizoz",
+      "squad": "Girona",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Karl-Johan Johnsson",
+      "squad": "Guingamp",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Christian Mathenia",
+      "squad": "Hamburger SV",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Julian Pollersbeck",
+      "squad": "Hamburger SV",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Philipp Tschauner",
+      "squad": "Hannover 96",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "N\u00edcolas Andrade",
+      "squad": "Hellas Verona",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rune Jarstein",
+      "squad": "Hertha BSC",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Oliver Baumann",
+      "squad": "Hoffenheim",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jonas L\u00f6ssl",
+      "squad": "Huddersfield",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Samir Handanovi\u0107",
+      "squad": "Inter",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gianluigi Buffon",
+      "squad": "Juventus",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wojciech Szcz\u0119sny",
+      "squad": "Juventus",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Timo Horn",
+      "squad": "K\u00f6ln",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Costel Pantilimon",
+      "squad": "La Coru\u00f1a",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rub\u00e9n",
+      "squad": "La Coru\u00f1a",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Leandro Chichizola",
+      "squad": "Las Palmas",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ra\u00fal Lizoain",
+      "squad": "Las Palmas",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Thomas Strakosha",
+      "squad": "Lazio",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Iv\u00e1n Cu\u00e9llar",
+      "squad": "Legan\u00e9s",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kasper Schmeichel",
+      "squad": "Leicester City",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ra\u00fal Fern\u00e1ndez",
+      "squad": "Levante",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Oier Olaz\u00e1bal",
+      "squad": "Levante",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bernd Leno",
+      "squad": "Leverkusen",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mike Maignan",
+      "squad": "Lille",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Loris Karius",
+      "squad": "Liverpool",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Simon Mignolet",
+      "squad": "Liverpool",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Anthony Lopes",
+      "squad": "Lyon",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yann Sommer",
+      "squad": "M'Gladbach",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ren\u00e9 Adler",
+      "squad": "Mainz 05",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Florian M\u00fcller",
+      "squad": "Mainz 05",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Robin Zentner",
+      "squad": "Mainz 05",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Roberto",
+      "squad": "M\u00e1laga",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ederson",
+      "squad": "Manchester City",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "David de Gea",
+      "squad": "Manchester Utd",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Steve Mandanda",
+      "squad": "Marseille",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Yohann Pel\u00e9",
+      "squad": "Marseille",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Thomas Didillon",
+      "squad": "Metz",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Eiji Kawashima",
+      "squad": "Metz",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gianluigi Donnarumma",
+      "squad": "Milan",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Danijel Suba\u0161i\u0107",
+      "squad": "Monaco",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Benjamin Lecomte",
+      "squad": "Montpellier",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ciprian T\u0103t\u0103ru\u0219anu",
+      "squad": "Nantes",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Pepe Reina",
+      "squad": "Napoli",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Karl Darlow",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Martin D\u00fabravka",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rob Elliot",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Walter Ben\u00edtez",
+      "squad": "Nice",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yoan Cardinale",
+      "squad": "Nice",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alphonse Areola",
+      "squad": "Paris S-G",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "P\u00e9ter Gul\u00e1csi",
+      "squad": "RB Leipzig",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kiko Casilla",
+      "squad": "Real Madrid",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Keylor Navas",
+      "squad": "Real Madrid",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Miguel \u00c1ngel Moy\u00e1",
+      "squad": "Real Sociedad",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ger\u00f3nimo Rulli",
+      "squad": "Real Sociedad",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Tom\u00e1\u0161 Koubek",
+      "squad": "Rennes",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alisson",
+      "squad": "Roma",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "St\u00e9phane Ruffier",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Christian Puggioni",
+      "squad": "Sampdoria",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Emiliano Viviano",
+      "squad": "Sampdoria",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andrea Consigli",
+      "squad": "Sassuolo",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ralf F\u00e4hrmann",
+      "squad": "Schalke 04",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Sergio Rico",
+      "squad": "Sevilla",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "David Soria",
+      "squad": "Sevilla",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Fraser Forster",
+      "squad": "Southampton",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex McCarthy",
+      "squad": "Southampton",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alfred Gomis",
+      "squad": "SPAL",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex Meret",
+      "squad": "SPAL",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jack Butland",
+      "squad": "Stoke City",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bingourou Kamara",
+      "squad": "Strasbourg",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexandre Oukidja",
+      "squad": "Strasbourg",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ron-Robert Zieler",
+      "squad": "Stuttgart",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "\u0141ukasz Fabia\u0144ski",
+      "squad": "Swansea City",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Salvatore Sirigu",
+      "squad": "Torino",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Hugo Lloris",
+      "squad": "Tottenham",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alban Lafont",
+      "squad": "Toulouse",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mamadou Samassa",
+      "squad": "Troyes",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Erwin Zelazny",
+      "squad": "Troyes",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Albano Bizzarri",
+      "squad": "Udinese",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Simone Scuffet",
+      "squad": "Udinese",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jaume Dom\u00e9nech",
+      "squad": "Valencia",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Neto",
+      "squad": "Valencia",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Asenjo",
+      "squad": "Villarreal",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mariano Barbosa",
+      "squad": "Villarreal",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Heurelho Gomes",
+      "squad": "Watford",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Orestis Karnezis",
+      "squad": "Watford",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ji\u0159\u00ed Pavlenka",
+      "squad": "Werder Bremen",
+      "season_end_year": 2018,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ben Foster",
+      "squad": "West Brom",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Adri\u00e1n",
+      "squad": "West Ham",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Joe Hart",
+      "squad": "West Ham",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Koen Casteels",
+      "squad": "Wolfsburg",
+      "season_end_year": 2018,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Fernando Pacheco",
+      "squad": "Alav\u00e9s",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "R\u00e9gis Gurtner",
+      "squad": "Amiens",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ludovic Butelle",
+      "squad": "Angers",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Petr \u010cech",
+      "squad": "Arsenal",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bernd Leno",
+      "squad": "Arsenal",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Etrit Berisha",
+      "squad": "Atalanta",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Pierluigi Gollini",
+      "squad": "Atalanta",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Iago Herrer\u00edn",
+      "squad": "Athletic Club",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Unai Sim\u00f3n",
+      "squad": "Athletic Club",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jan Oblak",
+      "squad": "Atl\u00e9tico Madrid",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Gregor Kobel",
+      "squad": "Augsburg",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andreas Luthe",
+      "squad": "Augsburg",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marc-Andr\u00e9 ter Stegen",
+      "squad": "Barcelona",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Manuel Neuer",
+      "squad": "Bayern Munich",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sven Ulreich",
+      "squad": "Bayern Munich",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pau L\u00f3pez",
+      "squad": "Betis",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Joel Robles",
+      "squad": "Betis",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "\u0141ukasz Skorupski",
+      "squad": "Bologna",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Beno\u00eet Costil",
+      "squad": "Bordeaux",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Asmir Begovi\u0107",
+      "squad": "Bournemouth",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Artur Boruc",
+      "squad": "Bournemouth",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mathew Ryan",
+      "squad": "Brighton",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Joe Hart",
+      "squad": "Burnley",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Tom Heaton",
+      "squad": "Burnley",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Brice Samba",
+      "squad": "Caen",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alessio Cragno",
+      "squad": "Cagliari",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Neil Etheridge",
+      "squad": "Cardiff City",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Sergio \u00c1lvarez",
+      "squad": "Celta Vigo",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rub\u00e9n Blanco",
+      "squad": "Celta Vigo",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Kepa Arrizabalaga",
+      "squad": "Chelsea",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Adrian \u0160emper",
+      "squad": "Chievo",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Stefano Sorrentino",
+      "squad": "Chievo",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vicente Guaita",
+      "squad": "Crystal Palace",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wayne Hennessey",
+      "squad": "Crystal Palace",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "R\u00fanar Alex R\u00fanarsson",
+      "squad": "Dijon",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Bobby Allain",
+      "squad": "Dijon",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Roman B\u00fcrki",
+      "squad": "Dortmund",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Michael Rensing",
+      "squad": "D\u00fcsseldorf",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marko Dmitrovi\u0107",
+      "squad": "Eibar",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Asier Riesgo",
+      "squad": "Eibar",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kevin Trapp",
+      "squad": "Eint Frankfurt",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bart\u0142omiej Dr\u0105gowski",
+      "squad": "Empoli",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ivan Provedel",
+      "squad": "Empoli",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pietro Terracciano",
+      "squad": "Empoli",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Diego L\u00f3pez",
+      "squad": "Espanyol",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jordan Pickford",
+      "squad": "Everton",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alban Lafont",
+      "squad": "Fiorentina",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexander Schwolow",
+      "squad": "Freiburg",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marco Sportiello",
+      "squad": "Frosinone",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marcus Bettinelli",
+      "squad": "Fulham",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Rico",
+      "squad": "Fulham",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ionu\u021b Radu",
+      "squad": "Genoa",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Soria",
+      "squad": "Getafe",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Yassine Bounou",
+      "squad": "Girona",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gorka Iraizoz",
+      "squad": "Girona",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marc-Aur\u00e8le Caillard",
+      "squad": "Guingamp",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Karl-Johan Johnsson",
+      "squad": "Guingamp",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Michael Esser",
+      "squad": "Hannover 96",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rune Jarstein",
+      "squad": "Hertha BSC",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Oliver Baumann",
+      "squad": "Hoffenheim",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ben Hamer",
+      "squad": "Huddersfield",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jonas L\u00f6ssl",
+      "squad": "Huddersfield",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Aleksandar Jovanovi\u0107",
+      "squad": "Huesca",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Roberto Santamar\u00eda",
+      "squad": "Huesca",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Axel Werner",
+      "squad": "Huesca",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Samir Handanovi\u0107",
+      "squad": "Inter",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mattia Perin",
+      "squad": "Juventus",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wojciech Szcz\u0119sny",
+      "squad": "Juventus",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Thomas Strakosha",
+      "squad": "Lazio",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Iv\u00e1n Cu\u00e9llar",
+      "squad": "Legan\u00e9s",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kasper Schmeichel",
+      "squad": "Leicester City",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Aitor Fern\u00e1ndez",
+      "squad": "Levante",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Oier Olaz\u00e1bal",
+      "squad": "Levante",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Luk\u00e1\u0161 Hr\u00e1deck\u00fd",
+      "squad": "Leverkusen",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mike Maignan",
+      "squad": "Lille",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alisson",
+      "squad": "Liverpool",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Anthony Lopes",
+      "squad": "Lyon",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yann Sommer",
+      "squad": "M'Gladbach",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Florian M\u00fcller",
+      "squad": "Mainz 05",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Robin Zentner",
+      "squad": "Mainz 05",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ederson",
+      "squad": "Manchester City",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "David de Gea",
+      "squad": "Manchester Utd",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Steve Mandanda",
+      "squad": "Marseille",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yohann Pel\u00e9",
+      "squad": "Marseille",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gianluigi Donnarumma",
+      "squad": "Milan",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Diego Benaglio",
+      "squad": "Monaco",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Danijel Suba\u0161i\u0107",
+      "squad": "Monaco",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Benjamin Lecomte",
+      "squad": "Montpellier",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Maxime Dup\u00e9",
+      "squad": "Nantes",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ciprian T\u0103t\u0103ru\u0219anu",
+      "squad": "Nantes",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Orestis Karnezis",
+      "squad": "Napoli",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex Meret",
+      "squad": "Napoli",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Ospina",
+      "squad": "Napoli",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Martin D\u00fabravka",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Walter Ben\u00edtez",
+      "squad": "Nice",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Paul Bernardoni",
+      "squad": "N\u00eemes",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Fabian Bredlow",
+      "squad": "N\u00fcrnberg",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Christian Mathenia",
+      "squad": "N\u00fcrnberg",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alphonse Areola",
+      "squad": "Paris S-G",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gianluigi Buffon",
+      "squad": "Paris S-G",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Luigi Sepe",
+      "squad": "Parma",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Stole Dimitrievski",
+      "squad": "Rayo Vallecano",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alberto Garc\u00eda",
+      "squad": "Rayo Vallecano",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "P\u00e9ter Gul\u00e1csi",
+      "squad": "RB Leipzig",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Thibaut Courtois",
+      "squad": "Real Madrid",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Keylor Navas",
+      "squad": "Real Madrid",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Miguel \u00c1ngel Moy\u00e1",
+      "squad": "Real Sociedad",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ger\u00f3nimo Rulli",
+      "squad": "Real Sociedad",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Edouard Mendy",
+      "squad": "Reims",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Abdoulaye Diallo",
+      "squad": "Rennes",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Tom\u00e1\u0161 Koubek",
+      "squad": "Rennes",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Antonio Mirante",
+      "squad": "Roma",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Robin Olsen",
+      "squad": "Roma",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "St\u00e9phane Ruffier",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Emil Audero",
+      "squad": "Sampdoria",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Andrea Consigli",
+      "squad": "Sassuolo",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ralf F\u00e4hrmann",
+      "squad": "Schalke 04",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alexander N\u00fcbel",
+      "squad": "Schalke 04",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Tom\u00e1\u0161 Vacl\u00edk",
+      "squad": "Sevilla",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Angus Gunn",
+      "squad": "Southampton",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex McCarthy",
+      "squad": "Southampton",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alfred Gomis",
+      "squad": "SPAL",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Emiliano Viviano",
+      "squad": "SPAL",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Matz Sels",
+      "squad": "Strasbourg",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ron-Robert Zieler",
+      "squad": "Stuttgart",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Salvatore Sirigu",
+      "squad": "Torino",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Hugo Lloris",
+      "squad": "Tottenham",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mauro Goicoechea",
+      "squad": "Toulouse",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Baptiste Reynet",
+      "squad": "Toulouse",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Juan Musso",
+      "squad": "Udinese",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Simone Scuffet",
+      "squad": "Udinese",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Neto",
+      "squad": "Valencia",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jordi Masip",
+      "squad": "Valladolid",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Asenjo",
+      "squad": "Villarreal",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Andr\u00e9s Fern\u00e1ndez",
+      "squad": "Villarreal",
+      "season_end_year": 2019,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ben Foster",
+      "squad": "Watford",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ji\u0159\u00ed Pavlenka",
+      "squad": "Werder Bremen",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u0141ukasz Fabia\u0144ski",
+      "squad": "West Ham",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Koen Casteels",
+      "squad": "Wolfsburg",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Pavao Pervan",
+      "squad": "Wolfsburg",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rui Patr\u00edcio",
+      "squad": "Wolves",
+      "season_end_year": 2019,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Fernando Pacheco",
+      "squad": "Alav\u00e9s",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Roberto",
+      "squad": "Alav\u00e9s",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "R\u00e9gis Gurtner",
+      "squad": "Amiens",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ludovic Butelle",
+      "squad": "Angers",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Bernd Leno",
+      "squad": "Arsenal",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Emiliano Mart\u00ednez",
+      "squad": "Arsenal",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Tom Heaton",
+      "squad": "Aston Villa",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u00d8rjan Nyland",
+      "squad": "Aston Villa",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pepe Reina",
+      "squad": "Aston Villa",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pierluigi Gollini",
+      "squad": "Atalanta",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marco Sportiello",
+      "squad": "Atalanta",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Unai Sim\u00f3n",
+      "squad": "Athletic Club",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jan Oblak",
+      "squad": "Atl\u00e9tico Madrid",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Tom\u00e1\u0161 Koubek",
+      "squad": "Augsburg",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andreas Luthe",
+      "squad": "Augsburg",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marc-Andr\u00e9 ter Stegen",
+      "squad": "Barcelona",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Manuel Neuer",
+      "squad": "Bayern Munich",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Daniel Mart\u00edn",
+      "squad": "Betis",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Joel Robles",
+      "squad": "Betis",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u0141ukasz Skorupski",
+      "squad": "Bologna",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Beno\u00eet Costil",
+      "squad": "Bordeaux",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Aaron Ramsdale",
+      "squad": "Bournemouth",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Lorenzo Andrenacci",
+      "squad": "Brescia",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jesse Joronen",
+      "squad": "Brescia",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gautier Larsonneur",
+      "squad": "Brest",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mathew Ryan",
+      "squad": "Brighton",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Nick Pope",
+      "squad": "Burnley",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alessio Cragno",
+      "squad": "Cagliari",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Robin Olsen",
+      "squad": "Cagliari",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rafael",
+      "squad": "Cagliari",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rub\u00e9n Blanco",
+      "squad": "Celta Vigo",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Kepa Arrizabalaga",
+      "squad": "Chelsea",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Willy Caballero",
+      "squad": "Chelsea",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vicente Guaita",
+      "squad": "Crystal Palace",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "R\u00fanar Alex R\u00fanarsson",
+      "squad": "Dijon",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alfred Gomis",
+      "squad": "Dijon",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Roman B\u00fcrki",
+      "squad": "Dortmund",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Florian Kastenmeier",
+      "squad": "D\u00fcsseldorf",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Zack Steffen",
+      "squad": "D\u00fcsseldorf",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marko Dmitrovi\u0107",
+      "squad": "Eibar",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Frederik R\u00f8nnow",
+      "squad": "Eint Frankfurt",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Kevin Trapp",
+      "squad": "Eint Frankfurt",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Diego L\u00f3pez",
+      "squad": "Espanyol",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jordan Pickford",
+      "squad": "Everton",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Bart\u0142omiej Dr\u0105gowski",
+      "squad": "Fiorentina",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pietro Terracciano",
+      "squad": "Fiorentina",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mark Flekken",
+      "squad": "Freiburg",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexander Schwolow",
+      "squad": "Freiburg",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mattia Perin",
+      "squad": "Genoa",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ionu\u021b Radu",
+      "squad": "Genoa",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Soria",
+      "squad": "Getafe",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rui Silva",
+      "squad": "Granada",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marco Silvestri",
+      "squad": "Hellas Verona",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rune Jarstein",
+      "squad": "Hertha BSC",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Oliver Baumann",
+      "squad": "Hoffenheim",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Samir Handanovi\u0107",
+      "squad": "Inter",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gianluigi Buffon",
+      "squad": "Juventus",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wojciech Szcz\u0119sny",
+      "squad": "Juventus",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Timo Horn",
+      "squad": "K\u00f6ln",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Thomas Strakosha",
+      "squad": "Lazio",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gabriel",
+      "squad": "Lecce",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Iv\u00e1n Cu\u00e9llar",
+      "squad": "Legan\u00e9s",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Juan Soriano",
+      "squad": "Legan\u00e9s",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kasper Schmeichel",
+      "squad": "Leicester City",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Aitor Fern\u00e1ndez",
+      "squad": "Levante",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Luk\u00e1\u0161 Hr\u00e1deck\u00fd",
+      "squad": "Leverkusen",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mike Maignan",
+      "squad": "Lille",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Adri\u00e1n",
+      "squad": "Liverpool",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alisson",
+      "squad": "Liverpool",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Anthony Lopes",
+      "squad": "Lyon",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yann Sommer",
+      "squad": "M'Gladbach",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Florian M\u00fcller",
+      "squad": "Mainz 05",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Robin Zentner",
+      "squad": "Mainz 05",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Manolo Reina",
+      "squad": "Mallorca",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ederson",
+      "squad": "Manchester City",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "David de Gea",
+      "squad": "Manchester Utd",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Steve Mandanda",
+      "squad": "Marseille",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alexandre Oukidja",
+      "squad": "Metz",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Gianluigi Donnarumma",
+      "squad": "Milan",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Benjamin Lecomte",
+      "squad": "Monaco",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ger\u00f3nimo Rulli",
+      "squad": "Montpellier",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alban Lafont",
+      "squad": "Nantes",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex Meret",
+      "squad": "Napoli",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Ospina",
+      "squad": "Napoli",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Martin D\u00fabravka",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Walter Ben\u00edtez",
+      "squad": "Nice",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Paul Bernardoni",
+      "squad": "N\u00eemes",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Tim Krul",
+      "squad": "Norwich City",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Herrera",
+      "squad": "Osasuna",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rub\u00e9n",
+      "squad": "Osasuna",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jannik Huth",
+      "squad": "Paderborn 07",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Leopold Zingerle",
+      "squad": "Paderborn 07",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Keylor Navas",
+      "squad": "Paris S-G",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Luigi Sepe",
+      "squad": "Parma",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "P\u00e9ter Gul\u00e1csi",
+      "squad": "RB Leipzig",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Thibaut Courtois",
+      "squad": "Real Madrid",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Miguel \u00c1ngel Moy\u00e1",
+      "squad": "Real Sociedad",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "\u00c1lex Remiro",
+      "squad": "Real Sociedad",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Predrag Rajkovi\u0107",
+      "squad": "Reims",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Edouard Mendy",
+      "squad": "Rennes",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Pau L\u00f3pez",
+      "squad": "Roma",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Antonio Mirante",
+      "squad": "Roma",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jessy Moulin",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "St\u00e9phane Ruffier",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Emil Audero",
+      "squad": "Sampdoria",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andrea Consigli",
+      "squad": "Sassuolo",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Gianluca Pegolo",
+      "squad": "Sassuolo",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexander N\u00fcbel",
+      "squad": "Schalke 04",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Markus Schubert",
+      "squad": "Schalke 04",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yassine Bounou",
+      "squad": "Sevilla",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Tom\u00e1\u0161 Vacl\u00edk",
+      "squad": "Sevilla",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Dean Henderson",
+      "squad": "Sheffield Utd",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Angus Gunn",
+      "squad": "Southampton",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex McCarthy",
+      "squad": "Southampton",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Etrit Berisha",
+      "squad": "SPAL",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Karlo Letica",
+      "squad": "SPAL",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Matz Sels",
+      "squad": "Strasbourg",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Salvatore Sirigu",
+      "squad": "Torino",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Paulo Gazzaniga",
+      "squad": "Tottenham",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Hugo Lloris",
+      "squad": "Tottenham",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Baptiste Reynet",
+      "squad": "Toulouse",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Juan Musso",
+      "squad": "Udinese",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rafa\u0142 Gikiewicz",
+      "squad": "Union Berlin",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jasper Cillessen",
+      "squad": "Valencia",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jaume Dom\u00e9nech",
+      "squad": "Valencia",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jordi Masip",
+      "squad": "Valladolid",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Asenjo",
+      "squad": "Villarreal",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ben Foster",
+      "squad": "Watford",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ji\u0159\u00ed Pavlenka",
+      "squad": "Werder Bremen",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u0141ukasz Fabia\u0144ski",
+      "squad": "West Ham",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Roberto",
+      "squad": "West Ham",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Koen Casteels",
+      "squad": "Wolfsburg",
+      "season_end_year": 2020,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Pavao Pervan",
+      "squad": "Wolfsburg",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rui Patr\u00edcio",
+      "squad": "Wolves",
+      "season_end_year": 2020,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Fernando Pacheco",
+      "squad": "Alav\u00e9s",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Paul Bernardoni",
+      "squad": "Angers",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Stefan Ortega",
+      "squad": "Arminia",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bernd Leno",
+      "squad": "Arsenal",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Emiliano Mart\u00ednez",
+      "squad": "Aston Villa",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Pierluigi Gollini",
+      "squad": "Atalanta",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marco Sportiello",
+      "squad": "Atalanta",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Unai Sim\u00f3n",
+      "squad": "Athletic Club",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jan Oblak",
+      "squad": "Atl\u00e9tico Madrid",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rafa\u0142 Gikiewicz",
+      "squad": "Augsburg",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Neto",
+      "squad": "Barcelona",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marc-Andr\u00e9 ter Stegen",
+      "squad": "Barcelona",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Manuel Neuer",
+      "squad": "Bayern Munich",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Lorenzo Montip\u00f2",
+      "squad": "Benevento",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Claudio Bravo",
+      "squad": "Betis",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Joel Robles",
+      "squad": "Betis",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Angelo da Costa J\u00fanior",
+      "squad": "Bologna",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u0141ukasz Skorupski",
+      "squad": "Bologna",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Beno\u00eet Costil",
+      "squad": "Bordeaux",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gautier Larsonneur",
+      "squad": "Brest",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Mathew Ryan",
+      "squad": "Brighton",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Robert S\u00e1nchez",
+      "squad": "Brighton",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Nick Pope",
+      "squad": "Burnley",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jerem\u00edas Ledesma",
+      "squad": "C\u00e1diz",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alessio Cragno",
+      "squad": "Cagliari",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rub\u00e9n Blanco",
+      "squad": "Celta Vigo",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Iv\u00e1n Villar",
+      "squad": "Celta Vigo",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kepa Arrizabalaga",
+      "squad": "Chelsea",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Edouard Mendy",
+      "squad": "Chelsea",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex Cordaz",
+      "squad": "Crotone",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vicente Guaita",
+      "squad": "Crystal Palace",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Saturnin Allagb\u00e9",
+      "squad": "Dijon",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alfred Gomis",
+      "squad": "Dijon",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Anthony Racioppi",
+      "squad": "Dijon",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Roman B\u00fcrki",
+      "squad": "Dortmund",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marwin Hitz",
+      "squad": "Dortmund",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marko Dmitrovi\u0107",
+      "squad": "Eibar",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kevin Trapp",
+      "squad": "Eint Frankfurt",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u00c9dgar Bad\u00eda",
+      "squad": "Elche",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Paulo Gazzaniga",
+      "squad": "Elche",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Robin Olsen",
+      "squad": "Everton",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jordan Pickford",
+      "squad": "Everton",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bart\u0142omiej Dr\u0105gowski",
+      "squad": "Fiorentina",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Florian M\u00fcller",
+      "squad": "Freiburg",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alphonse Areola",
+      "squad": "Fulham",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mattia Perin",
+      "squad": "Genoa",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Soria",
+      "squad": "Getafe",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rub\u00e9n Y\u00e1\u00f1ez",
+      "squad": "Getafe",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Aar\u00f3n Escandell",
+      "squad": "Granada",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rui Silva",
+      "squad": "Granada",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marco Silvestri",
+      "squad": "Hellas Verona",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rune Jarstein",
+      "squad": "Hertha BSC",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexander Schwolow",
+      "squad": "Hertha BSC",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Oliver Baumann",
+      "squad": "Hoffenheim",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u00c1lvaro Fern\u00e1ndez",
+      "squad": "Huesca",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andr\u00e9s Fern\u00e1ndez",
+      "squad": "Huesca",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Samir Handanovi\u0107",
+      "squad": "Inter",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gianluigi Buffon",
+      "squad": "Juventus",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wojciech Szcz\u0119sny",
+      "squad": "Juventus",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Timo Horn",
+      "squad": "K\u00f6ln",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pepe Reina",
+      "squad": "Lazio",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Thomas Strakosha",
+      "squad": "Lazio",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Illan Meslier",
+      "squad": "Leeds United",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kasper Schmeichel",
+      "squad": "Leicester City",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jean-Louis Leca",
+      "squad": "Lens",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "C\u00e1rdenas",
+      "squad": "Levante",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Aitor Fern\u00e1ndez",
+      "squad": "Levante",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Luk\u00e1\u0161 Hr\u00e1deck\u00fd",
+      "squad": "Leverkusen",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mike Maignan",
+      "squad": "Lille",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alisson",
+      "squad": "Liverpool",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Matthieu Dreyer",
+      "squad": "Lorient",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Paul Nardi",
+      "squad": "Lorient",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Anthony Lopes",
+      "squad": "Lyon",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yann Sommer",
+      "squad": "M'Gladbach",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Robin Zentner",
+      "squad": "Mainz 05",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ederson",
+      "squad": "Manchester City",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "David de Gea",
+      "squad": "Manchester Utd",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Dean Henderson",
+      "squad": "Manchester Utd",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Steve Mandanda",
+      "squad": "Marseille",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexandre Oukidja",
+      "squad": "Metz",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Gianluigi Donnarumma",
+      "squad": "Milan",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Benjamin Lecomte",
+      "squad": "Monaco",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vito Mannone",
+      "squad": "Monaco",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Dimitry Bertaud",
+      "squad": "Montpellier",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jonas Omlin",
+      "squad": "Montpellier",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alban Lafont",
+      "squad": "Nantes",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex Meret",
+      "squad": "Napoli",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Ospina",
+      "squad": "Napoli",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Karl Darlow",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Martin D\u00fabravka",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Walter Ben\u00edtez",
+      "squad": "Nice",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Baptiste Reynet",
+      "squad": "N\u00eemes",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Herrera",
+      "squad": "Osasuna",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Keylor Navas",
+      "squad": "Paris S-G",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Rico",
+      "squad": "Paris S-G",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Luigi Sepe",
+      "squad": "Parma",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "P\u00e9ter Gul\u00e1csi",
+      "squad": "RB Leipzig",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Thibaut Courtois",
+      "squad": "Real Madrid",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "\u00c1lex Remiro",
+      "squad": "Real Sociedad",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Predrag Rajkovi\u0107",
+      "squad": "Reims",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alfred Gomis",
+      "squad": "Rennes",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Romain Salin",
+      "squad": "Rennes",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Daniel Fuzato",
+      "squad": "Roma",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pau L\u00f3pez",
+      "squad": "Roma",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Antonio Mirante",
+      "squad": "Roma",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Etienne Green",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jessy Moulin",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Emil Audero",
+      "squad": "Sampdoria",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andrea Consigli",
+      "squad": "Sassuolo",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ralf F\u00e4hrmann",
+      "squad": "Schalke 04",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Frederik R\u00f8nnow",
+      "squad": "Schalke 04",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yassine Bounou",
+      "squad": "Sevilla",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Tom\u00e1\u0161 Vacl\u00edk",
+      "squad": "Sevilla",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Aaron Ramsdale",
+      "squad": "Sheffield Utd",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Fraser Forster",
+      "squad": "Southampton",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alex McCarthy",
+      "squad": "Southampton",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ivan Provedel",
+      "squad": "Spezia",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jeroen Zoet",
+      "squad": "Spezia",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bingourou Kamara",
+      "squad": "Strasbourg",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Eiji Kawashima",
+      "squad": "Strasbourg",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Matz Sels",
+      "squad": "Strasbourg",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gregor Kobel",
+      "squad": "Stuttgart",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vanja Milinkovi\u0107-Savi\u0107",
+      "squad": "Torino",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Salvatore Sirigu",
+      "squad": "Torino",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Hugo Lloris",
+      "squad": "Tottenham",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Juan Musso",
+      "squad": "Udinese",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Andreas Luthe",
+      "squad": "Union Berlin",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jasper Cillessen",
+      "squad": "Valencia",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jaume Dom\u00e9nech",
+      "squad": "Valencia",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jordi Masip",
+      "squad": "Valladolid",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Roberto",
+      "squad": "Valladolid",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Asenjo",
+      "squad": "Villarreal",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ji\u0159\u00ed Pavlenka",
+      "squad": "Werder Bremen",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sam Johnstone",
+      "squad": "West Brom",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "\u0141ukasz Fabia\u0144ski",
+      "squad": "West Ham",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Koen Casteels",
+      "squad": "Wolfsburg",
+      "season_end_year": 2021,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Rui Patr\u00edcio",
+      "squad": "Wolves",
+      "season_end_year": 2021,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Fernando Pacheco",
+      "squad": "Alav\u00e9s",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Paul Bernardoni",
+      "squad": "Angers",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Anthony Mandrea",
+      "squad": "Angers",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Danijel Petkovi\u0107",
+      "squad": "Angers",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Stefan Ortega",
+      "squad": "Arminia",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Aaron Ramsdale",
+      "squad": "Arsenal",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Emiliano Mart\u00ednez",
+      "squad": "Aston Villa",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Juan Musso",
+      "squad": "Atalanta",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marco Sportiello",
+      "squad": "Atalanta",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Unai Sim\u00f3n",
+      "squad": "Athletic Club",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jan Oblak",
+      "squad": "Atl\u00e9tico Madrid",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rafa\u0142 Gikiewicz",
+      "squad": "Augsburg",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marc-Andr\u00e9 ter Stegen",
+      "squad": "Barcelona",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Manuel Neuer",
+      "squad": "Bayern Munich",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Sven Ulreich",
+      "squad": "Bayern Munich",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Claudio Bravo",
+      "squad": "Betis",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rui Silva",
+      "squad": "Betis",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Manuel Riemann",
+      "squad": "Bochum",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "\u0141ukasz Skorupski",
+      "squad": "Bologna",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Beno\u00eet Costil",
+      "squad": "Bordeaux",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ga\u00ebtan Poussin",
+      "squad": "Bordeaux",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u00c1lvaro Fern\u00e1ndez",
+      "squad": "Brentford",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Raya",
+      "squad": "Brentford",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marco Bizot",
+      "squad": "Brest",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Robert S\u00e1nchez",
+      "squad": "Brighton",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Nick Pope",
+      "squad": "Burnley",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jerem\u00edas Ledesma",
+      "squad": "C\u00e1diz",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alessio Cragno",
+      "squad": "Cagliari",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mat\u00edas Dituro",
+      "squad": "Celta Vigo",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Edouard Mendy",
+      "squad": "Chelsea",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Arthur Desmas",
+      "squad": "Clermont Foot",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ouparine Djoco",
+      "squad": "Clermont Foot",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jack Butland",
+      "squad": "Crystal Palace",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vicente Guaita",
+      "squad": "Crystal Palace",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gregor Kobel",
+      "squad": "Dortmund",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kevin Trapp",
+      "squad": "Eint Frankfurt",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u00c9dgar Bad\u00eda",
+      "squad": "Elche",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kiko Casilla",
+      "squad": "Elche",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Guglielmo Vicario",
+      "squad": "Empoli",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Diego L\u00f3pez",
+      "squad": "Espanyol",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jordan Pickford",
+      "squad": "Everton",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Bart\u0142omiej Dr\u0105gowski",
+      "squad": "Fiorentina",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Pietro Terracciano",
+      "squad": "Fiorentina",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mark Flekken",
+      "squad": "Freiburg",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Salvatore Sirigu",
+      "squad": "Genoa",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Soria",
+      "squad": "Getafe",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Lu\u00eds Maximiano",
+      "squad": "Granada",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Sascha Burchert",
+      "squad": "Greuther F\u00fcrth",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marius Funk",
+      "squad": "Greuther F\u00fcrth",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andreas Linde",
+      "squad": "Greuther F\u00fcrth",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Lorenzo Montip\u00f2",
+      "squad": "Hellas Verona",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marcel Lotka",
+      "squad": "Hertha BSC",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexander Schwolow",
+      "squad": "Hertha BSC",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Oliver Baumann",
+      "squad": "Hoffenheim",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Samir Handanovi\u0107",
+      "squad": "Inter",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wojciech Szcz\u0119sny",
+      "squad": "Juventus",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Timo Horn",
+      "squad": "K\u00f6ln",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Marvin Schw\u00e4be",
+      "squad": "K\u00f6ln",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pepe Reina",
+      "squad": "Lazio",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Thomas Strakosha",
+      "squad": "Lazio",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Illan Meslier",
+      "squad": "Leeds United",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Kasper Schmeichel",
+      "squad": "Leicester City",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wuilker Far\u00ed\u00f1ez",
+      "squad": "Lens",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jean-Louis Leca",
+      "squad": "Lens",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "C\u00e1rdenas",
+      "squad": "Levante",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Aitor Fern\u00e1ndez",
+      "squad": "Levante",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Luk\u00e1\u0161 Hr\u00e1deck\u00fd",
+      "squad": "Leverkusen",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Leonardo C\u00e9sar Jardim",
+      "squad": "Lille",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ivo Grbi\u0107",
+      "squad": "Lille",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alisson",
+      "squad": "Liverpool",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Matthieu Dreyer",
+      "squad": "Lorient",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Paul Nardi",
+      "squad": "Lorient",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Anthony Lopes",
+      "squad": "Lyon",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yann Sommer",
+      "squad": "M'Gladbach",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Robin Zentner",
+      "squad": "Mainz 05",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Manolo Reina",
+      "squad": "Mallorca",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Rico",
+      "squad": "Mallorca",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ederson",
+      "squad": "Manchester City",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "David de Gea",
+      "squad": "Manchester Utd",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pau L\u00f3pez",
+      "squad": "Marseille",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Steve Mandanda",
+      "squad": "Marseille",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marc-Aur\u00e8le Caillard",
+      "squad": "Metz",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexandre Oukidja",
+      "squad": "Metz",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Mike Maignan",
+      "squad": "Milan",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ciprian T\u0103t\u0103ru\u0219anu",
+      "squad": "Milan",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alexander N\u00fcbel",
+      "squad": "Monaco",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Dimitry Bertaud",
+      "squad": "Montpellier",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jonas Omlin",
+      "squad": "Montpellier",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alban Lafont",
+      "squad": "Nantes",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alex Meret",
+      "squad": "Napoli",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "David Ospina",
+      "squad": "Napoli",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Karl Darlow",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Martin D\u00fabravka",
+      "squad": "Newcastle Utd",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Walter Ben\u00edtez",
+      "squad": "Nice",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Angus Gunn",
+      "squad": "Norwich City",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Tim Krul",
+      "squad": "Norwich City",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Herrera",
+      "squad": "Osasuna",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Gianluigi Donnarumma",
+      "squad": "Paris S-G",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Keylor Navas",
+      "squad": "Paris S-G",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Stole Dimitrievski",
+      "squad": "Rayo Vallecano",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Luca Zidane",
+      "squad": "Rayo Vallecano",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "P\u00e9ter Gul\u00e1csi",
+      "squad": "RB Leipzig",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Thibaut Courtois",
+      "squad": "Real Madrid",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "\u00c1lex Remiro",
+      "squad": "Real Sociedad",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Predrag Rajkovi\u0107",
+      "squad": "Reims",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Do\u011fan Alemdar",
+      "squad": "Rennes",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Alfred Gomis",
+      "squad": "Rennes",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Rui Patr\u00edcio",
+      "squad": "Roma",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Stefan Bajic",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Paul Bernardoni",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Etienne Green",
+      "squad": "Saint-\u00c9tienne",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Vid Belec",
+      "squad": "Salernitana",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Luigi Sepe",
+      "squad": "Salernitana",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Emil Audero",
+      "squad": "Sampdoria",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Wladimiro Falcone",
+      "squad": "Sampdoria",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andrea Consigli",
+      "squad": "Sassuolo",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Yassine Bounou",
+      "squad": "Sevilla",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marko Dmitrovi\u0107",
+      "squad": "Sevilla",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Fraser Forster",
+      "squad": "Southampton",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Alex McCarthy",
+      "squad": "Southampton",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ivan Provedel",
+      "squad": "Spezia",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jeroen Zoet",
+      "squad": "Spezia",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Matz Sels",
+      "squad": "Strasbourg",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Florian M\u00fcller",
+      "squad": "Stuttgart",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Etrit Berisha",
+      "squad": "Torino",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Vanja Milinkovi\u0107-Savi\u0107",
+      "squad": "Torino",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Hugo Lloris",
+      "squad": "Tottenham",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Gauthier Gallon",
+      "squad": "Troyes",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jessy Moulin",
+      "squad": "Troyes",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Marco Silvestri",
+      "squad": "Udinese",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Andreas Luthe",
+      "squad": "Union Berlin",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Frederik R\u00f8nnow",
+      "squad": "Union Berlin",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Jasper Cillessen",
+      "squad": "Valencia",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Giorgi Mamardashvili",
+      "squad": "Valencia",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Luca Lezzerini",
+      "squad": "Venezia",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Niki M\u00e4enp\u00e4\u00e4",
+      "squad": "Venezia",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Romero",
+      "squad": "Venezia",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Sergio Asenjo",
+      "squad": "Villarreal",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Ger\u00f3nimo Rulli",
+      "squad": "Villarreal",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    },
+    {
+      "player": "Daniel Bachmann",
+      "squad": "Watford",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Ben Foster",
+      "squad": "Watford",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "\u0141ukasz Fabia\u0144ski",
+      "squad": "West Ham",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Koen Casteels",
+      "squad": "Wolfsburg",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Pavao Pervan",
+      "squad": "Wolfsburg",
+      "season_end_year": 2022,
+      "cluster_full": 0,
+      "cluster_technique": 0
+    },
+    {
+      "player": "Jos\u00e9 S\u00e1",
+      "squad": "Wolves",
+      "season_end_year": 2022,
+      "cluster_full": 1,
+      "cluster_technique": 1
+    }
+  ],
+  "conclusion": "The partition over all twelve features tracks situation. The partition over the technique composites tracks technique."
+}

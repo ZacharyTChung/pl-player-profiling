@@ -1,23 +1,55 @@
 \section{Results}
 \label{sec:results}
 
-\subsection{What survived the withdrawal}
-\label{sec:results:availability}
+\subsection{Is there structure at all?}
+\label{sec:results:structure}
 
-The audit reported in Table~\ref{tab:availability} establishes the scale of the loss. In
-the goalkeeping detail table, \NKeeperAdvEmpty{} of \NKeeperAdvStatCols{} statistical
-columns are entirely empty in both seasons, leaving three: nineties played, goals
-conceded and penalties conceded. Neither of the two surviving substantive columns
-supports any of the analyses that table exists to enable. The pattern is the same across
-the outfield tables, where passing, possession, and goal and shot creation retain their
-headers and lose their contents.
+The first question is not how many clusters there are but whether there are any, and it is
+answered against the null described in Section~\ref{sec:methods:null}: \StrSimulations{}
+synthetic datasets matched to the observed feature matrix in size, dimension and covariance
+but drawn from a single Gaussian and therefore containing no groups whatsoever.
 
-This is the first result of the paper, and it is a methodological one. A study that
-selected its features from the published schema of this source would produce an empty
-feature matrix while every column name resolved correctly, and the failure would surface
-only as unexplained missingness far downstream. Feature selection against observed values
-rather than published schemas is now a necessary step when working with public football
-data.
+The answer is that real structure exists, and that it is confined to a single division.
+Figure~\ref{fig:structurenull} shows the comparison. At two clusters the observed
+silhouette is \StrObsAll{} for the outfield pool against a null mean of \StrNullAll{}, a
+standard score of \StrZAll{}, and the observed value exceeds every one of the
+\StrSimulations{} simulations. The same holds within each position group: \StrObsDF{}
+against \StrNullDF{} for defenders, \StrObsMF{} against \StrNullMF{} for midfielders and
+\StrObsFW{} against \StrNullFW{} for forwards, with standard scores from \StrZFW{} to
+\StrZDF{} and no simulation reaching the observed value in any scope.
+
+Beyond two clusters the two curves converge. By around six clusters the observed silhouette
+is inside the simulated band in every position group, which is the central negative result
+of this paper stated precisely: the third, fourth and subsequent clusters that a taxonomy
+would name are not distinguishable from what a partitioning algorithm extracts from
+structureless data.
+
+Three further instruments agree. Hartigan's dip test rejects unimodality on the leading
+principal component at $p\,\StrDipPAll{}$ for the outfield pool, $p\,\StrDipPDF{}$ for
+defenders and $p\,\StrDipPMF{}$ for midfielders, so the dominant axis is genuinely
+two-moded rather than merely wide. Forwards are the exception, returning
+$p=\StrDipPFW{}$, which says the forward split is real by the silhouette calibration but
+that its leading axis is not detectably bimodal, and both halves of that are reported.
+Density-based clustering assigns \StrNoiseAll{} of the outfield pool to noise and every
+position group entirely to noise, which is what a density method does when handed a
+continuum with a density gradient rather than separated groups. The Gaussian mixture
+criterion declines monotonically to the top of the candidate range in every scope, which is
+the signature of a model absorbing extra components into a smooth density rather than
+identifying real ones, and it is reported for completeness rather than treated as
+selecting a number.
+
+Taken together the instruments support one claim and refuse a stronger one. Football role
+data contains a real division into two modes. It does not contain a taxonomy.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{structure_null.pdf}
+  \caption{Observed cluster quality against data constructed to contain no clusters. The
+  shaded band is two standard deviations of \StrSimulations{} simulations matched to the
+  observed data in size, dimension and covariance. The observed curve separates clearly at
+  two clusters and rejoins the null band as the number of clusters grows.}
+  \label{fig:structurenull}
+\end{figure}
 
 \subsection{Correcting defensive counts for possession}
 \label{sec:results:padj}
@@ -238,6 +270,36 @@ same coarse division wherever it is applied.
   \label{fig:leagues}
 \end{figure}
 
+\subsection{Robustness: the same result on half the features}
+\label{sec:results:reduced}
+
+The primary sample describes each player with \ArcFeatures{} features. A natural worry is
+that the two-mode result depends on that description, and in particular on the expected
+goals and possession blocks that dominate it. The second sample of
+Section~\ref{sec:data:reduced} provides an unusually clean test, because the withdrawal
+removed a specific and large part of the feature set without touching the population: the
+same competition, the same kind of players, roughly half the features.
+
+Repeating the analysis there returns the same answer. The declared rule selects two
+clusters globally and within every position group, agreement with listed positions remains
+weak at \ARIvsPosition{}, and bootstrap stability of the global partition is
+\BootARIGlobal{}. Density-based clustering again assigns every position group entirely to
+noise. Removing expected goals, all passing and possession volume, shot and goal creating
+actions and the entire advanced goalkeeping table changes what the two modes are made of
+without changing that there are two of them.
+
+That is informative in both directions. It supports the central claim, since a result that
+survives halving its own feature set is not an artefact of any particular measurement. It
+also bounds what richer data buys: the modern feature block sharpens the description of the
+two modes considerably, as Section~\ref{sec:results:archetypes} shows, but it does not
+reveal additional modes that the poorer description was hiding.
+
+The remainder of this section reports analyses conducted on the reduced sample, which is
+the Premier League for the seasons ending 2025 and 2026. They are retained because several
+of them, in particular the within-season role drift of
+Section~\ref{sec:results:drift}, depend on match-level data that only exists for that
+window. Each is marked by sample where the distinction matters.
+
 \subsection{The third dimension}
 \label{sec:results:threed}
 
@@ -380,89 +442,70 @@ counterpart at his own listed position.
 \subsection{Goalkeepers}
 \label{sec:results:keepers}
 
-The goalkeeper analysis is the clearest illustration of what the withdrawal cost.
-\NKeeperAdvEmpty{} of the \NKeeperAdvStatCols{} statistical columns in the advanced
-goalkeeping table are empty, and the \NKeeperAdvUsable{} that survive are duplicated in
-the basic table, so the advanced table contributes nothing whatsoever. Of the five
-composite axes the study set out to build, \KeeperAxesBuilt{} can be constructed and
-\KeeperAxesLost{} cannot. No proxy is substituted for the missing four, because no
-surviving column measures sweeping, distribution or cross handling even approximately.
+Goalkeepers are described by a different vocabulary from outfield players, and the primary
+sample supplies all of it: \ArcKeeperSeasons{} keeper-seasons with post-shot expected
+goals, sweeper actions and their average distance, cross stopping, launch rate and average
+pass length, at a worst per-column coverage of \ArcKeeperCoverageMin{}. Post-shot expected
+goals minus goals allowed is the proper measure of saves above expectation, because it
+conditions on the difficulty of the shots faced rather than only their number.
 
-With post-shot expected goals unavailable, shot stopping is estimated by regressing saves
-on shots on target faced and treating the residual as saves above volume. The regression
-returns a coefficient of determination of \KeeperSavesRSq{}, which is high almost by
-construction, since every shot on target is either saved or conceded. The informative
-quantity is the residual spread, a standard error of \KeeperSavesResidSE{} saves across
-the season. This index adjusts for how much work a goalkeeper receives but not for how
-hard that work is, which is precisely what post-shot expected goals provided, so it should
-be read as a weak substitute rather than an equivalent.
+The first attempt at a partition reproduces a trap worth reporting. Clustering on all
+available features returns \ArcKeeperK{} clusters at a silhouette of \ArcKeeperSilFull{},
+and the partition looks interpretable until it is asked what it is made of. Membership
+explains a mean of \ArcKeeperEtaFullSituation{} of the variance in situational quantities,
+the volume and quality of shooting a defence permits, against \ArcKeeperEtaFullTechnique{}
+in quantities describing what the goalkeeper does. The partition is largely a ranking of the
+teams in front of the goalkeepers. Named as archetypes it would be a league table wearing a
+tactical vocabulary.
 
-Save percentage shows no relationship with workload. The correlation is
-\KeeperWorkloadR{} in the primary season at a p-value of \KeeperWorkloadP{}, and it
-changes sign to \KeeperWorkloadRRepl{} in the replication season. A relationship whose
-sign is not stable across two seasons is the strongest available form of a null result.
+Excluding the exposure variables and clustering on technique alone reverses that
+completely. The same rule again returns \ArcKeeperK{} clusters, at a silhouette of
+\ArcKeeperSilTech{} and a bootstrap adjusted Rand index of \ArcKeeperBootARI{}, and now
+membership explains \ArcKeeperEtaTechTechnique{} of the variance in technique against
+\ArcKeeperEtaTechSituation{} in situation, a ratio of about seven. This partition describes
+goalkeepers.
 
-Goalkeeper clustering does not produce meaningful structure, and we report that rather
-than presenting a partition. The same consensus rule selects \KeeperKPrimary{} clusters in
-the primary season at a silhouette of \KeeperSilhouettePrimary{} but \KeeperKRepl{}
-clusters in the replication season at \KeeperSilhouetteRepl{}, so the cluster count does
-not replicate. The smallest replication cluster contains \KeeperMinClusterRepl{} members,
-below the floor fixed before fitting. Most decisively, cluster membership explains more
-variance in situational quantities than in goalkeeping ones: the proportion of variance
-explained is \KeeperEtaTeamPoints{} for team points per match against \KeeperEtaSavePct{}
-for save percentage. The partition recovers the strength of the team in front of the
-goalkeeper, not the goalkeeper. No archetype names are assigned.
+What it describes is not the expected taxonomy. The familiar trio of shot stopper, sweeper
+keeper and distributor is not what the data produces. The division is between
+\ArcKeeperNameZero{}s, \ArcKeeperNZero{} keeper-seasons who stay on their line, and
+\ArcKeeperNameOne{}s, \ArcKeeperNOne{} who come off it, separating on cross stopping and
+sweeping together. Distribution style barely separates the clusters at all, and neither
+does shot stopping ability. Both are real and measurable, and both are continua lying
+across the off-line division rather than dimensions of it. A goalkeeper who sweeps is not
+thereby a better or worse shot stopper, and how far he kicks the ball is close to
+independent of both.
+
+That is a substantive finding rather than a taxonomy, and it echoes the outfield result: the
+data supports one binary distinction plus continuous variation, not a set of types.
+Figures~\ref{fig:arckeeperstop} and \ref{fig:arckeeperclusters} show the shot stopping
+ranking and the partition.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{archive_keeper_shot_stopping.pdf}
+  \caption{Goalkeepers ranked by post-shot expected goals minus goals allowed, which
+  conditions on the difficulty of shots faced rather than only their volume.}
+  \label{fig:arckeeperstop}
+\end{figure}
 
 \begin{figure}[t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_saves_vs_sota.pdf}
-    \caption{Saves against shots on target faced.}
-    \label{fig:keepersaves}
+    \includegraphics[width=\textwidth]{archive_keeper_clusters.pdf}
+    \caption{The technique partition.}
+    \label{fig:arckeeperclusters}
   \end{subfigure}
   \hfill
   \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_savepct_vs_workload.pdf}
-    \caption{Save percentage against workload.}
-    \label{fig:keeperworkload}
+    \includegraphics[width=\textwidth]{archive_keeper_radar.pdf}
+    \caption{Composite profiles.}
+    \label{fig:arckeeperradar}
   \end{subfigure}
-  \caption{Goalkeeper shot stopping and workload, the only two dimensions the surviving
-  data supports.}
-  \label{fig:keepers}
+  \caption{Goalkeeper structure on the primary sample. The clusters separate on off-line
+  activity; distribution and shot stopping vary continuously across both.}
+  \label{fig:arckeeperpanel}
 \end{figure}
 
-Figure~\ref{fig:keeperranking} ranks eligible goalkeepers on the saves above volume
-index, and Figure~\ref{fig:keepercomposites} places them on the two axes that survive.
-The distribution of both composites is given in
-Figure~\ref{fig:keepercompositedistributions}, and the correlation structure of the
-surviving goalkeeper features in Figure~\ref{fig:keepercorr}. The partition itself is
-shown in Figure~\ref{fig:keeperclusters}, presented for completeness rather than as a
-finding, for the reasons given above.
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\textwidth]{keeper_shot_stopping_ranking.pdf}
-  \caption{Goalkeepers ranked by saves above the volume of shots on target faced. The
-  index adjusts for how much work a goalkeeper receives but not for its difficulty.}
-  \label{fig:keeperranking}
-\end{figure}
-
-\begin{figure}[t]
-  \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_composites.pdf}
-    \caption{The two surviving composite axes.}
-    \label{fig:keepercomposites}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_clusters_pca.pdf}
-    \caption{The goalkeeper partition, shown for completeness.}
-    \label{fig:keeperclusters}
-  \end{subfigure}
-  \caption{Goalkeeper composites and the partition that the validation checks reject.}
-  \label{fig:keeperpanel}
-\end{figure}
 
 \subsection{Archetypes}
 \label{sec:results:archetypes}

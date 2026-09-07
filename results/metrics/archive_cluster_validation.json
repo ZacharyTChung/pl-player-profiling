@@ -1,0 +1,389 @@
+{
+  "question": "Is the two-mode partition stable, and does it recover listed positions?",
+  "k": 2,
+  "n_features": 33,
+  "bootstrap_resamples": 50,
+  "bootstrap_note": "config.BOOTSTRAP_N is 200 and is used on the live sample. It is reduced to 50 here because every resample refits KMeans on up to 9,263 players and accumulates a co-assignment matrix of that dimension squared. The between-resample standard deviation reported per scope shows the reduction costs nothing at the precision quoted.",
+  "scopes": {
+    "All outfield": {
+      "n": 9263,
+      "k_selected_by_rule": 2,
+      "k_rule_branch": "primary",
+      "k_used": 2,
+      "silhouette_at_k": 0.2683,
+      "cluster_sizes": {
+        "0": 5371,
+        "1": 3892
+      },
+      "bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9883,
+        "ari_sd": 0.009,
+        "ari_min": 0.9585,
+        "ari_max": 0.9993,
+        "per_cluster": {
+          "0": {
+            "n": 5371,
+            "mean_coassignment": 0.9961,
+            "low_stability": false
+          },
+          "1": {
+            "n": 3892,
+            "mean_coassignment": 0.9918,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "position_group_is_constant": false,
+      "vs_position": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "DF": 3522,
+              "FW": 3,
+              "MF": 1846
+            },
+            "1": {
+              "DF": 271,
+              "FW": 1701,
+              "MF": 1920
+            }
+          },
+          "adjusted_rand_index": 0.2929,
+          "normalized_mutual_info": 0.3375,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.6557,
+              "n": 5371
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.4933,
+              "n": 3892
+            }
+          },
+          "cluster_purity": 0.5875
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "DF": 3120,
+              "DF,FW": 73,
+              "DF,MF": 329,
+              "FW": 1,
+              "FW,DF": 2,
+              "FW,MF": 0,
+              "MF": 1639,
+              "MF,DF": 178,
+              "MF,FW": 29
+            },
+            "1": {
+              "DF": 135,
+              "DF,FW": 45,
+              "DF,MF": 91,
+              "FW": 986,
+              "FW,DF": 17,
+              "FW,MF": 698,
+              "MF": 867,
+              "MF,DF": 100,
+              "MF,FW": 953
+            }
+          },
+          "adjusted_rand_index": 0.2616,
+          "normalized_mutual_info": 0.3166,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.5809,
+              "n": 5371
+            },
+            "1": {
+              "label": "FW",
+              "share": 0.2533,
+              "n": 3892
+            }
+          },
+          "cluster_purity": 0.4433
+        }
+      }
+    },
+    "DF": {
+      "n": 3793,
+      "k_selected_by_rule": 2,
+      "k_rule_branch": "primary",
+      "k_used": 2,
+      "silhouette_at_k": 0.2606,
+      "cluster_sizes": {
+        "0": 1699,
+        "1": 2094
+      },
+      "bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9903,
+        "ari_sd": 0.0101,
+        "ari_min": 0.9605,
+        "ari_max": 1.0,
+        "per_cluster": {
+          "0": {
+            "n": 1699,
+            "mean_coassignment": 0.9937,
+            "low_stability": false
+          },
+          "1": {
+            "n": 2094,
+            "mean_coassignment": 0.9964,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "position_group_is_constant": true,
+      "vs_position": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "DF": 1699
+            },
+            "1": {
+              "DF": 2094
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 1.0,
+              "n": 1699
+            },
+            "1": {
+              "label": "DF",
+              "share": 1.0,
+              "n": 2094
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "DF": 1265,
+              "DF,FW": 116,
+              "DF,MF": 318
+            },
+            "1": {
+              "DF": 1990,
+              "DF,FW": 2,
+              "DF,MF": 102
+            }
+          },
+          "adjusted_rand_index": 0.0653,
+          "normalized_mutual_info": 0.0859,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "DF",
+              "share": 0.7446,
+              "n": 1699
+            },
+            "1": {
+              "label": "DF",
+              "share": 0.9503,
+              "n": 2094
+            }
+          },
+          "cluster_purity": 0.8582
+        }
+      }
+    },
+    "MF": {
+      "n": 3766,
+      "k_selected_by_rule": 2,
+      "k_rule_branch": "primary",
+      "k_used": 2,
+      "silhouette_at_k": 0.2489,
+      "cluster_sizes": {
+        "0": 1827,
+        "1": 1939
+      },
+      "bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9791,
+        "ari_sd": 0.0136,
+        "ari_min": 0.9537,
+        "ari_max": 0.9983,
+        "per_cluster": {
+          "0": {
+            "n": 1827,
+            "mean_coassignment": 0.9901,
+            "low_stability": false
+          },
+          "1": {
+            "n": 1939,
+            "mean_coassignment": 0.9894,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "position_group_is_constant": true,
+      "vs_position": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "MF": 1827
+            },
+            "1": {
+              "MF": 1939
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "MF",
+              "share": 1.0,
+              "n": 1827
+            },
+            "1": {
+              "label": "MF",
+              "share": 1.0,
+              "n": 1939
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "MF": 795,
+              "MF,DF": 94,
+              "MF,FW": 938
+            },
+            "1": {
+              "MF": 1711,
+              "MF,DF": 184,
+              "MF,FW": 44
+            }
+          },
+          "adjusted_rand_index": 0.2311,
+          "normalized_mutual_info": 0.2416,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "MF,FW",
+              "share": 0.5134,
+              "n": 1827
+            },
+            "1": {
+              "label": "MF",
+              "share": 0.8824,
+              "n": 1939
+            }
+          },
+          "cluster_purity": 0.7034
+        }
+      }
+    },
+    "FW": {
+      "n": 1704,
+      "k_selected_by_rule": 2,
+      "k_rule_branch": "primary",
+      "k_used": 2,
+      "silhouette_at_k": 0.2458,
+      "cluster_sizes": {
+        "0": 463,
+        "1": 1241
+      },
+      "bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9616,
+        "ari_sd": 0.0219,
+        "ari_min": 0.9033,
+        "ari_max": 0.9961,
+        "per_cluster": {
+          "0": {
+            "n": 463,
+            "mean_coassignment": 0.9665,
+            "low_stability": false
+          },
+          "1": {
+            "n": 1241,
+            "mean_coassignment": 0.988,
+            "low_stability": false
+          }
+        },
+        "low_stability_clusters": []
+      },
+      "position_group_is_constant": true,
+      "vs_position": {
+        "position_group": {
+          "contingency": {
+            "0": {
+              "FW": 463
+            },
+            "1": {
+              "FW": 1241
+            }
+          },
+          "adjusted_rand_index": 0.0,
+          "normalized_mutual_info": 0.0,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "FW",
+              "share": 1.0,
+              "n": 463
+            },
+            "1": {
+              "label": "FW",
+              "share": 1.0,
+              "n": 1241
+            }
+          },
+          "cluster_purity": 1.0
+        },
+        "position_full": {
+          "contingency": {
+            "0": {
+              "FW": 123,
+              "FW,DF": 12,
+              "FW,MF": 328
+            },
+            "1": {
+              "FW": 864,
+              "FW,DF": 7,
+              "FW,MF": 370
+            }
+          },
+          "adjusted_rand_index": 0.1694,
+          "normalized_mutual_info": 0.1164,
+          "dominant_label_per_cluster": {
+            "0": {
+              "label": "FW,MF",
+              "share": 0.7084,
+              "n": 463
+            },
+            "1": {
+              "label": "FW",
+              "share": 0.6962,
+              "n": 1241
+            }
+          },
+          "cluster_purity": 0.6995
+        }
+      }
+    }
+  },
+  "answer": {
+    "adjusted_rand_index_vs_position_group": 0.2929,
+    "normalized_mutual_info_vs_position_group": 0.3375,
+    "cluster_purity_vs_position_group": 0.5875,
+    "adjusted_rand_index_vs_position_full": 0.2616,
+    "normalized_mutual_info_vs_position_full": 0.3166,
+    "thresholds": {
+      "recovers_at": 0.5,
+      "unrelated_below": 0.2
+    },
+    "verdict": "The clusters do not recover listed position groups. They overlap them well above chance but cut across them, so the partition is a different division of the same players rather than a rediscovery of the listed one."
+  }
+}

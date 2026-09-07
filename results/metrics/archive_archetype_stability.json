@@ -1,0 +1,469 @@
+{
+  "question": "Do the two modes inside a position group describe a stable playing role, or a season specific and league specific accident of the fit?",
+  "k_per_position_group": 2,
+  "n_players": 9263,
+  "seasons": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "leagues": [
+    "Premier League",
+    "La Liga",
+    "Bundesliga",
+    "Serie A",
+    "Ligue 1"
+  ],
+  "consecutive_seasons": {
+    "method": "Players are followed across seasons by name and nationality, with one row per player-season kept, the club spell with the most minutes. The adjusted Rand index is computed on the players who appear in both seasons of a pair and stay in the same listed position group, since a player who moves group is compared against a different pair of clusters and cannot be scored on the same partition.",
+    "n_tracked_players": 3479,
+    "players_with_two_or_more_seasons": 2327,
+    "players_with_all_five_seasons": 634,
+    "pairs": [
+      {
+        "from_season": 2018,
+        "to_season": 2019,
+        "n_players_both_seasons": 1321,
+        "n_kept_position_group": 1190,
+        "changed_position_group": 0.0992,
+        "switch_rate_any_change": 0.1688,
+        "switch_rate_within_group": 0.0773,
+        "switch_rate_expected_if_independent": 0.8033,
+        "adjusted_rand_index": 0.8345
+      },
+      {
+        "from_season": 2019,
+        "to_season": 2020,
+        "n_players_both_seasons": 1281,
+        "n_kept_position_group": 1175,
+        "changed_position_group": 0.0827,
+        "switch_rate_any_change": 0.1514,
+        "switch_rate_within_group": 0.0749,
+        "switch_rate_expected_if_independent": 0.806,
+        "adjusted_rand_index": 0.8435
+      },
+      {
+        "from_season": 2020,
+        "to_season": 2021,
+        "n_players_both_seasons": 1331,
+        "n_kept_position_group": 1217,
+        "changed_position_group": 0.0856,
+        "switch_rate_any_change": 0.1525,
+        "switch_rate_within_group": 0.0731,
+        "switch_rate_expected_if_independent": 0.8057,
+        "adjusted_rand_index": 0.8439
+      },
+      {
+        "from_season": 2021,
+        "to_season": 2022,
+        "n_players_both_seasons": 1326,
+        "n_kept_position_group": 1214,
+        "changed_position_group": 0.0845,
+        "switch_rate_any_change": 0.1629,
+        "switch_rate_within_group": 0.0857,
+        "switch_rate_expected_if_independent": 0.8064,
+        "adjusted_rand_index": 0.8141
+      }
+    ],
+    "mean_switch_rate_within_group": 0.0777,
+    "mean_adjusted_rand_index": 0.834,
+    "by_position_group": {
+      "DF": {
+        "pairs": [
+          {
+            "from_season": 2018,
+            "to_season": 2019,
+            "n": 526,
+            "switch_rate": 0.0551,
+            "adjusted_rand_index": 0.7912
+          },
+          {
+            "from_season": 2019,
+            "to_season": 2020,
+            "n": 511,
+            "switch_rate": 0.047,
+            "adjusted_rand_index": 0.8206
+          },
+          {
+            "from_season": 2020,
+            "to_season": 2021,
+            "n": 525,
+            "switch_rate": 0.0419,
+            "adjusted_rand_index": 0.8391
+          },
+          {
+            "from_season": 2021,
+            "to_season": 2022,
+            "n": 526,
+            "switch_rate": 0.0741,
+            "adjusted_rand_index": 0.7248
+          }
+        ],
+        "mean_switch_rate": 0.0545,
+        "mean_adjusted_rand_index": 0.7939
+      },
+      "MF": {
+        "pairs": [
+          {
+            "from_season": 2018,
+            "to_season": 2019,
+            "n": 463,
+            "switch_rate": 0.1015,
+            "adjusted_rand_index": 0.6341
+          },
+          {
+            "from_season": 2019,
+            "to_season": 2020,
+            "n": 469,
+            "switch_rate": 0.0917,
+            "adjusted_rand_index": 0.6662
+          },
+          {
+            "from_season": 2020,
+            "to_season": 2021,
+            "n": 493,
+            "switch_rate": 0.0994,
+            "adjusted_rand_index": 0.6412
+          },
+          {
+            "from_season": 2021,
+            "to_season": 2022,
+            "n": 484,
+            "switch_rate": 0.095,
+            "adjusted_rand_index": 0.6552
+          }
+        ],
+        "mean_switch_rate": 0.0969,
+        "mean_adjusted_rand_index": 0.6492
+      },
+      "FW": {
+        "pairs": [
+          {
+            "from_season": 2018,
+            "to_season": 2019,
+            "n": 201,
+            "switch_rate": 0.0796,
+            "adjusted_rand_index": 0.6651
+          },
+          {
+            "from_season": 2019,
+            "to_season": 2020,
+            "n": 195,
+            "switch_rate": 0.1077,
+            "adjusted_rand_index": 0.5809
+          },
+          {
+            "from_season": 2020,
+            "to_season": 2021,
+            "n": 199,
+            "switch_rate": 0.0905,
+            "adjusted_rand_index": 0.6401
+          },
+          {
+            "from_season": 2021,
+            "to_season": 2022,
+            "n": 204,
+            "switch_rate": 0.0931,
+            "adjusted_rand_index": 0.6357
+          }
+        ],
+        "mean_switch_rate": 0.0927,
+        "mean_adjusted_rand_index": 0.6304
+      }
+    }
+  },
+  "league_refits": {
+    "rows": [
+      {
+        "position_group": "DF",
+        "league": "Premier League",
+        "n": 748,
+        "adjusted_rand_index": 0.9059
+      },
+      {
+        "position_group": "DF",
+        "league": "La Liga",
+        "n": 778,
+        "adjusted_rand_index": 0.9693
+      },
+      {
+        "position_group": "DF",
+        "league": "Bundesliga",
+        "n": 684,
+        "adjusted_rand_index": 0.8918
+      },
+      {
+        "position_group": "DF",
+        "league": "Serie A",
+        "n": 839,
+        "adjusted_rand_index": 0.9022
+      },
+      {
+        "position_group": "DF",
+        "league": "Ligue 1",
+        "n": 744,
+        "adjusted_rand_index": 0.9157
+      },
+      {
+        "position_group": "MF",
+        "league": "Premier League",
+        "n": 761,
+        "adjusted_rand_index": 0.9327
+      },
+      {
+        "position_group": "MF",
+        "league": "La Liga",
+        "n": 804,
+        "adjusted_rand_index": 0.8793
+      },
+      {
+        "position_group": "MF",
+        "league": "Bundesliga",
+        "n": 678,
+        "adjusted_rand_index": 0.9133
+      },
+      {
+        "position_group": "MF",
+        "league": "Serie A",
+        "n": 733,
+        "adjusted_rand_index": 0.7218
+      },
+      {
+        "position_group": "MF",
+        "league": "Ligue 1",
+        "n": 790,
+        "adjusted_rand_index": 0.9698
+      },
+      {
+        "position_group": "FW",
+        "league": "Premier League",
+        "n": 338,
+        "adjusted_rand_index": 0.8038
+      },
+      {
+        "position_group": "FW",
+        "league": "La Liga",
+        "n": 359,
+        "adjusted_rand_index": 0.9187
+      },
+      {
+        "position_group": "FW",
+        "league": "Bundesliga",
+        "n": 305,
+        "adjusted_rand_index": 0.6573
+      },
+      {
+        "position_group": "FW",
+        "league": "Serie A",
+        "n": 377,
+        "adjusted_rand_index": 0.8741
+      },
+      {
+        "position_group": "FW",
+        "league": "Ligue 1",
+        "n": 325,
+        "adjusted_rand_index": 0.9869
+      }
+    ],
+    "overall_mean_adjusted_rand_index": 0.8828,
+    "by_position_group": {
+      "DF": {
+        "ari_mean": 0.917,
+        "ari_min": 0.8918,
+        "ari_max": 0.9693
+      },
+      "MF": {
+        "ari_mean": 0.8834,
+        "ari_min": 0.7218,
+        "ari_max": 0.9698
+      },
+      "FW": {
+        "ari_mean": 0.8482,
+        "ari_min": 0.6573,
+        "ari_max": 0.9869
+      }
+    }
+  },
+  "season_refits": {
+    "rows": [
+      {
+        "position_group": "DF",
+        "season": 2018,
+        "n": 738,
+        "adjusted_rand_index": 0.9946
+      },
+      {
+        "position_group": "DF",
+        "season": 2019,
+        "n": 746,
+        "adjusted_rand_index": 0.9733
+      },
+      {
+        "position_group": "DF",
+        "season": 2020,
+        "n": 755,
+        "adjusted_rand_index": 0.9322
+      },
+      {
+        "position_group": "DF",
+        "season": 2021,
+        "n": 771,
+        "adjusted_rand_index": 0.964
+      },
+      {
+        "position_group": "DF",
+        "season": 2022,
+        "n": 783,
+        "adjusted_rand_index": 0.9695
+      },
+      {
+        "position_group": "MF",
+        "season": 2018,
+        "n": 759,
+        "adjusted_rand_index": 0.9531
+      },
+      {
+        "position_group": "MF",
+        "season": 2019,
+        "n": 739,
+        "adjusted_rand_index": 0.9465
+      },
+      {
+        "position_group": "MF",
+        "season": 2020,
+        "n": 749,
+        "adjusted_rand_index": 0.9524
+      },
+      {
+        "position_group": "MF",
+        "season": 2021,
+        "n": 763,
+        "adjusted_rand_index": 0.9077
+      },
+      {
+        "position_group": "MF",
+        "season": 2022,
+        "n": 756,
+        "adjusted_rand_index": 0.9789
+      },
+      {
+        "position_group": "FW",
+        "season": 2018,
+        "n": 340,
+        "adjusted_rand_index": 0.9039
+      },
+      {
+        "position_group": "FW",
+        "season": 2019,
+        "n": 355,
+        "adjusted_rand_index": 0.977
+      },
+      {
+        "position_group": "FW",
+        "season": 2020,
+        "n": 326,
+        "adjusted_rand_index": 0.9478
+      },
+      {
+        "position_group": "FW",
+        "season": 2021,
+        "n": 337,
+        "adjusted_rand_index": 0.7686
+      },
+      {
+        "position_group": "FW",
+        "season": 2022,
+        "n": 346,
+        "adjusted_rand_index": 0.9639
+      }
+    ],
+    "overall_mean_adjusted_rand_index": 0.9422,
+    "by_position_group": {
+      "DF": {
+        "ari_mean": 0.9667,
+        "ari_min": 0.9322,
+        "ari_max": 0.9946
+      },
+      "MF": {
+        "ari_mean": 0.9477,
+        "ari_min": 0.9077,
+        "ari_max": 0.9789
+      },
+      "FW": {
+        "ari_mean": 0.9122,
+        "ari_min": 0.7686,
+        "ari_max": 0.977
+      }
+    }
+  },
+  "bootstrap_resampling": {
+    "DF": {
+      "n_bootstrap": 200,
+      "ari_mean": 0.9885,
+      "ari_sd": 0.0104,
+      "ari_min": 0.9526,
+      "ari_max": 1.0,
+      "per_cluster": {
+        "0": {
+          "n": 1391,
+          "mean_coassignment": 0.9982,
+          "low_stability": false
+        },
+        "1": {
+          "n": 1109,
+          "mean_coassignment": 0.9891,
+          "low_stability": false
+        }
+      },
+      "low_stability_clusters": [],
+      "n_subsampled": 2500,
+      "n_total": 3793
+    },
+    "MF": {
+      "n_bootstrap": 200,
+      "ari_mean": 0.9753,
+      "ari_sd": 0.0178,
+      "ari_min": 0.8864,
+      "ari_max": 1.0,
+      "per_cluster": {
+        "0": {
+          "n": 1276,
+          "mean_coassignment": 0.9782,
+          "low_stability": false
+        },
+        "1": {
+          "n": 1224,
+          "mean_coassignment": 0.9977,
+          "low_stability": false
+        }
+      },
+      "low_stability_clusters": [],
+      "n_subsampled": 2500,
+      "n_total": 3766
+    },
+    "FW": {
+      "n_bootstrap": 200,
+      "ari_mean": 0.9577,
+      "ari_sd": 0.0248,
+      "ari_min": 0.8672,
+      "ari_max": 0.9961,
+      "per_cluster": {
+        "0": {
+          "n": 1241,
+          "mean_coassignment": 0.9875,
+          "low_stability": false
+        },
+        "1": {
+          "n": 463,
+          "mean_coassignment": 0.9602,
+          "low_stability": false
+        }
+      },
+      "low_stability_clusters": [],
+      "n_subsampled": 1704,
+      "n_total": 1704
+    }
+  }
+}
