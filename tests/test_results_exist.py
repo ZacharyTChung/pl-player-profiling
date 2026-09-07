@@ -30,6 +30,9 @@ _UPPERCASE_BUILTINS = {
     "AA",
     "S",
     "P",
+    # Package commands that happen to be capitalised.
+    "FloatBarrier",
+    "AtBeginDocument",
 }
 
 

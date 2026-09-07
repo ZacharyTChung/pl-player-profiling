@@ -1,0 +1,233 @@
+"""Assemble a self-contained arXiv submission from the working tree.
+
+The repository layout is convenient to build from and wrong to upload. `paper/figures`
+is a symlink, which does not survive a tarball, and `main.tex` reaches outside its own
+directory for the generated macros and tables, which arXiv will not resolve. This script
+flattens both, ships only the figures the document actually includes, pins the date so
+the submitted PDF is reproducible, and then compiles the staged copy from scratch to
+prove it stands on its own.
+"""
+
+from __future__ import annotations
+
+import re
+import shutil
+import subprocess
+import sys
+import tarfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+PAPER = ROOT / "paper"
+RESULTS = ROOT / "results"
+FIGURES = ROOT / "figures"
+STAGE = ROOT / "submission"
+ARCHIVE = ROOT / "submission.tar.gz"
+
+
+def read(path: Path) -> str:
+    return path.read_text(encoding="utf8")
+
+
+def collect_included_figures(sources: list[Path]) -> set[str]:
+    """Only the figures the document includes, so nothing dead is uploaded."""
+    names: set[str] = set()
+    for src in sources:
+        for match in re.findall(r"\\includegraphics[^{]*\{([^}]+)\}", read(src)):
+            names.add(Path(match).name)
+    return names
+
+
+def rewrite_main(text: str, date: str) -> str:
+    """Point every path inside the staging directory and pin the date."""
+    text = text.replace(r"\input{../results/macros.tex}", r"\input{macros.tex}")
+    text = re.sub(r"\\input\{\.\./results/tables/([^}]+)\}", r"\\input{tables/\1}", text)
+    # \today would make the submitted PDF differ from the one checked here.
+    text = text.replace(r"\date{\today}", f"\\date{{{date}}}")
+    return text
+
+
+def rewrite_section(text: str) -> str:
+    return re.sub(r"\\input\{\.\./results/tables/([^}]+)\}", r"\\input{tables/\1}", text)
+
+
+def build(stage: Path) -> None:
+    """Compile the staged copy, failing loudly on anything arXiv would also reject."""
+    env_path = f"{Path.home()}/Library/TinyTeX/bin/universal-darwin"
+    env = {
+        **dict(__import__("os").environ),
+        "PATH": f"{env_path}:{__import__('os').environ['PATH']}",
+    }
+    result = subprocess.run(
+        ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", "main.tex"],
+        cwd=stage,
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+    log = (stage / "main.log").read_text(encoding="utf8", errors="ignore")
+    if result.returncode != 0:
+        sys.stderr.write(result.stdout[-3000:])
+        raise SystemExit("the staged submission does not compile")
+    for pattern, message in (
+        (r"LaTeX Warning: Citation .* undefined", "undefined citation"),
+        (r"LaTeX Warning: Reference .* undefined", "undefined reference"),
+        (r"multiply-defined", "multiply defined label"),
+    ):
+        if re.search(pattern, log):
+            raise SystemExit(f"the staged submission has an {message}")
+    pages = re.findall(r"Output written on main\.pdf \((\d+) pages", log)
+    print(f"  staged copy compiles cleanly: {pages[-1] if pages else '?'} pages")
+
+
+def render_abstract(macros: str, abstract: str) -> str:
+    """Expand the abstract into plain text for the arXiv metadata form.
+
+    arXiv wants the abstract typed into a web form, not read out of the source, so it is
+    the one place a number could be transcribed by hand and drift. Rendering it from the
+    same macro file the PDF uses removes that risk.
+    """
+    values = dict(re.findall(r"\\newcommand\{\\([A-Za-z]+)\}\{([^}]*)\}", macros))
+    text = re.sub(r"(?<!\\)%.*", "", abstract)
+
+    def expand(match: re.Match[str]) -> str:
+        name = match.group(1)
+        if name not in values:
+            raise SystemExit(f"abstract cites an undefined macro: {name}")
+        return values[name]
+
+    text = re.sub(r"\\([A-Za-z]+)\{\}", expand, text)
+    text = re.sub(r"\\cite[tp]?\{([^}]*)\}", r"[\1]", text)
+    text = re.sub(r"\\[a-zA-Z]+\{([^}]*)\}", r"\1", text)
+    # arXiv's abstract field is plain text: math mode, thin spaces and ties have to go.
+    text = text.replace("\\,", " ").replace("\\%", "%")
+    text = text.replace("$", "").replace("~", " ")
+    # Math mode spaces relations for us; plain text does not.
+    text = re.sub(r"([<>=])(?=\d)", r"\1 ", text)
+    text = re.sub(r"\\[a-zA-Z]+", "", text)
+    text = text.replace("\\", "")
+    return " ".join(text.split())
+
+
+def write_metadata(stage: Path, date: str) -> None:
+    """Everything the arXiv form asks for, in one file, so nothing is retyped."""
+    main = read(PAPER / "main.tex")
+    title = re.search(r"\\title\{(.+?)\}\n", main, re.S)
+    title_text = " ".join(title.group(1).split()) if title else "(no title found)"
+    authors = re.search(r"\\author\{(.+?)\}", main)
+    author_text = (authors.group(1).replace(r"\and", "|") if authors else "").strip()
+    author_text = ", ".join(part.strip() for part in author_text.split("|") if part.strip())
+
+    abstract = render_abstract(
+        read(RESULTS / "macros.tex"), read(PAPER / "sections" / "abstract.tex")
+    )
+    log = read(stage / "main.log")
+    pages = re.findall(r"Output written on main\.pdf \((\d+) pages", log)
+    figures = len(list((stage / "figures").glob("*")))
+
+    body = f"""# arXiv submission
+
+Generated by `make submission`. Every field below is read from the built paper, so it
+cannot drift from what compiles.
+
+## Upload
+
+`submission.tar.gz` at the repository root. It unpacks flat and was compiled from a bare
+directory as a check, so it does not depend on anything in this repository.
+
+## Title
+
+{title_text}
+
+## Authors
+
+{author_text}
+
+## Abstract
+
+{abstract}
+
+## Comments field
+
+{pages[-1] if pages else "?"} pages, {figures} figures. Code and data:
+https://github.com/<your-account>/pl-player-profiling
+
+## Categories
+
+Primary: stat.AP (Applications). The contribution is a claim about football data.
+Cross-list: cs.LG (Machine Learning) and stat.ML, which is where the cluster validity
+argument will find its other audience.
+
+## Date of this package
+
+{date}
+"""
+    (ROOT / "SUBMISSION.md").write_text(body, encoding="utf8")
+    print(f"  wrote SUBMISSION.md ({pages[-1] if pages else '?'} pages, {figures} figures)")
+
+
+def main() -> None:
+    date = (
+        subprocess.run(
+            ["git", "log", "-1", "--format=%cd", "--date=format:%B %-d, %Y"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        or "September 6, 2026"
+    )
+
+    if STAGE.exists():
+        shutil.rmtree(STAGE)
+    (STAGE / "sections").mkdir(parents=True)
+    (STAGE / "tables").mkdir()
+    (STAGE / "figures").mkdir()
+
+    sections = sorted((PAPER / "sections").glob("*.tex"))
+    for src in sections:
+        (STAGE / "sections" / src.name).write_text(rewrite_section(read(src)), encoding="utf8")
+
+    (STAGE / "main.tex").write_text(rewrite_main(read(PAPER / "main.tex"), date), encoding="utf8")
+    shutil.copy2(PAPER / "references.bib", STAGE / "references.bib")
+    shutil.copy2(RESULTS / "macros.tex", STAGE / "macros.tex")
+
+    # arXiv runs bibtex, but shipping the .bbl removes a class of failure entirely.
+    bbl = PAPER / "main.bbl"
+    if not bbl.exists():
+        raise SystemExit("paper/main.bbl is missing; run `make paper` first")
+    shutil.copy2(bbl, STAGE / "main.bbl")
+
+    used_tables = set()
+    for src in [STAGE / "main.tex", *sorted((STAGE / "sections").glob("*.tex"))]:
+        used_tables.update(re.findall(r"\\input\{tables/([^}]+)\}", read(src)))
+    for name in sorted(used_tables):
+        shutil.copy2(RESULTS / "tables" / name, STAGE / "tables" / name)
+
+    wanted = collect_included_figures(sections)
+    missing = [n for n in sorted(wanted) if not (FIGURES / n).exists()]
+    if missing:
+        raise SystemExit(f"figures referenced but not generated: {missing}")
+    for name in sorted(wanted):
+        shutil.copy2(FIGURES / name, STAGE / "figures" / name)
+
+    print(f"staged {len(sections)} sections, {len(used_tables)} tables, {len(wanted)} figures")
+    build(STAGE)
+    write_metadata(STAGE, date)
+
+    # arXiv wants sources, not the build products of our own test compile.
+    for junk in STAGE.glob("main.*"):
+        if junk.suffix not in {".tex", ".bbl", ".pdf"}:
+            junk.unlink()
+
+    with tarfile.open(ARCHIVE, "w:gz") as tar:
+        for path in sorted(STAGE.rglob("*")):
+            if path.is_file() and path.name != "main.pdf":
+                tar.add(path, arcname=str(path.relative_to(STAGE)))
+
+    size = ARCHIVE.stat().st_size / 1_048_576
+    print(f"wrote {ARCHIVE.relative_to(ROOT)} ({size:.1f} MB)")
+    print(f"proof PDF at {(STAGE / 'main.pdf').relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main()

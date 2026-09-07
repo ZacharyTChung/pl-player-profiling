@@ -1,0 +1,45 @@
+\begin{table}[t]
+\centering
+\small
+\caption{The primary feature set, with the FBref table each column was read from. Counting statistics are per ninety minutes played; the seven rate features are used as published. Five defensive counts are possession adjusted, as described in Section~\ref{sec:methods:padj}.}
+\label{tab:archivefeatures}
+\begin{tabular}{llp{7.0cm}}
+\toprule
+Feature & FBref table & Definition \\
+\midrule
+np xg p90 & standard & Non-penalty expected goals (per 90) \\
+shots p90 & shooting & Shots taken, excluding penalties (per 90) \\
+goals non penalty p90 & standard & Goals excluding penalties (per 90) \\
+xag p90 & standard & Expected assisted goals, the expected goals of shots a pass created (per 90) \\
+key passes p90 & passing & Passes leading directly to a shot (per 90) \\
+sca p90 & gca & Shot creating actions, the two offensive actions before a shot (per 90) \\
+gca p90 & gca & Goal creating actions, the two offensive actions before a goal (per 90) \\
+passes final third p90 & passing & Completed passes into the final third (per 90) \\
+passes penalty area p90 & passing & Completed passes into the penalty area (per 90) \\
+crosses p90 & misc & Crosses attempted (per 90) \\
+progressive passes p90 & passing & Completed passes moving the ball substantially toward goal (per 90) \\
+progressive carries p90 & possession & Carries moving the ball substantially toward goal (per 90) \\
+progressive receptions p90 & possession & Passes received in a progressive position (per 90) \\
+carries final third p90 & possession & Carries into the final third (per 90) \\
+touches def pen p90 & possession & Touches in the defending team's own penalty area (per 90) \\
+touches def third p90 & possession & Touches in the defensive third (per 90) \\
+touches mid third p90 & possession & Touches in the middle third (per 90) \\
+touches att third p90 & possession & Touches in the attacking third (per 90) \\
+touches att pen p90 & possession & Touches in the opposition penalty area (per 90) \\
+take ons p90 & possession & Take-ons attempted (per 90) \\
+tackles padj p90 & defense & Tackles, possession adjusted (per 90) \\
+interceptions padj p90 & misc & Interceptions, possession adjusted (per 90) \\
+blocks padj p90 & defense & Blocks of a pass or shot, possession adjusted (per 90) \\
+clearances padj p90 & defense & Clearances, possession adjusted (per 90) \\
+ball recoveries p90 & misc & Loose balls recovered (per 90) \\
+fouls committed padj p90 & misc & Fouls committed, possession adjusted (per 90) \\
+shot accuracy pct & shooting & Shots on target as a share of shots \\
+take on success pct & possession & Take-ons completed as a share of those attempted \\
+tackle win pct & defense & Duels won as a share of those contested \\
+aerials won pct & misc & Aerial duels won as a share of those contested \\
+pass cmp short pct & passing & Short passes completed as a share of those attempted \\
+pass cmp medium pct & passing & Medium passes completed as a share of those attempted \\
+pass cmp long pct & passing & Long passes completed as a share of those attempted \\
+\bottomrule
+\end{tabular}
+\end{table}

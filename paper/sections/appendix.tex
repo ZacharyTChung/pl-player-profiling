@@ -1,19 +1,30 @@
-\section{Feature dictionary}
+\section{Feature dictionaries}
 \label{sec:appendix:features}
 
-Table~\ref{tab:features} lists every feature in the outfield set, its source, and its
-definition. Counting statistics are expressed per ninety minutes played. The two rate
-features are used as published rather than divided a second time. Each feature was
-confirmed to hold non-null values in both seasons before being admitted, which is the
-check that distinguishes a live column from one whose values were withdrawn.
+The two samples are described by different feature sets drawn from different pulls, so each
+has its own dictionary. Table~\ref{tab:archivefeatures} lists the \ArcFeatures{} features
+of the primary sample with the FBref table each column was read from.
+Table~\ref{tab:features} lists the \NFeatures{} features of the reduced sample, which
+combines what survived the withdrawal with an independent expected goals source. In both,
+counting statistics are expressed per ninety minutes played and rate features are used as
+published rather than divided a second time.
+
+Every feature in the reduced set was confirmed to hold non-null values in both of its
+seasons before being admitted, which is the check that distinguishes a live column from one
+whose values were withdrawn. The primary set is audited differently, by per-column and
+per-season coverage on load, because its failure mode is a block missing from one season
+rather than a column emptied across all of them.
+
+\input{../results/tables/archive_feature_dictionary.tex}
 
 \input{../results/tables/feature_dictionary.tex}
 
 \section{Minutes threshold sensitivity}
 \label{sec:appendix:sensitivity}
 
-The main analysis excludes outfield players below \MinMinutes{} minutes. That threshold
-balances two errors: a low threshold admits players whose per-90 rates are dominated by
+Both samples exclude outfield players below \MinMinutes{} minutes, and this appendix tests
+the threshold on the reduced sample, where refitting the whole procedure three times is
+cheap. That threshold balances two errors: a low threshold admits players whose per-90 rates are dominated by
 sampling noise, while a high threshold discards genuine squad roles such as the impact
 substitute. Table~\ref{tab:sensitivity} repeats the entire selection and stability procedure at 270,
 \MinMinutes{} and 900 minutes, treating each threshold as an independent pool in which
@@ -30,7 +41,7 @@ reader who preferred a different threshold would reach the same conclusions.
 
 \input{../results/tables/minutes_sensitivity.tex}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{minutes_sensitivity.pdf}
   \caption{Eligible sample, silhouette and bootstrap stability across the candidate
@@ -42,8 +53,9 @@ reader who preferred a different threshold would reach the same conclusions.
 \label{sec:appendix:umap}
 
 Table~\ref{tab:umapgrid} reports trustworthiness for all twelve configurations of the
-neighbour count and minimum distance. Selection was by trustworthiness alone, decided
-before any embedding was inspected visually.
+neighbour count and minimum distance, on the reduced sample, which is the only one for which
+a manifold embedding is reported. Selection was by trustworthiness alone, decided before any
+embedding was inspected visually.
 
 \input{../results/tables/umap_grid.tex}
 
@@ -51,27 +63,37 @@ before any embedding was inspected visually.
 \label{sec:appendix:kselection}
 
 Table~\ref{tab:kselection} gives the silhouette coefficient, Davies-Bouldin index,
-Calinski-Harabasz index and gap statistic for every candidate number of clusters, for the
-global analysis and within each position group. The consensus rule described in
-Section~\ref{sec:methods} is applied to these values.
+Calinski-Harabasz index and gap statistic for every candidate number of clusters on the
+reduced sample, for the global analysis and within each position group. The consensus rule
+described in Section~\ref{sec:methods} is applied to these values, and the row the rule
+selects is marked in each scope.
+
+The corresponding evidence for the primary sample is Figure~\ref{fig:structurenull}, which plots
+the observed silhouette across the same candidate range in every scope against the
+clusterless null. That figure carries more information than a criteria table would, because
+the question the primary sample is used to answer is not which candidate scores best but
+whether any of them beats what a continuum produces.
 
 \input{../results/tables/k_selection.tex}
 
 \section{Cluster membership}
 \label{sec:appendix:membership}
 
-Table~\ref{tab:membership} lists every eligible outfield player in the earlier of the two reduced-sample seasons
-with his club, listed position, assigned archetype and distance from his cluster
-centroid.
-
-\input{../results/tables/cluster_membership.tex}
+Every player's archetype assignment is published as CSV in the accompanying repository
+rather than reproduced here, for both samples: \texttt{results/membership\_primary.csv}
+carries the \ArcEligible{} eligible player-seasons of the primary sample with club, league,
+season, listed position, minutes and assigned archetype, and
+\texttt{results/membership\_reduced.csv} carries the reduced sample with the same fields plus
+each player's distance from his cluster centroid. Both are regenerated by the pipeline, so
+they cannot drift from the numbers reported above.
 
 \section{Supplementary figures}
 \label{sec:appendix:supplementary}
 
-Figure~\ref{fig:corrheatmap} gives the full hierarchically clustered Spearman correlation
-matrix over the outfield feature set, from which the divergence analysis in
-Section~\ref{sec:results:divergence} is derived. Figure~\ref{fig:pcascree} reports the
+This section collects material from both samples, and each figure states which one it
+describes. Figure~\ref{fig:corrheatmap} gives the full hierarchically clustered Spearman
+correlation matrix over the reduced outfield feature set, from which the divergence analysis
+in Section~\ref{sec:results:divergence} is derived. Figure~\ref{fig:pcascree} reports the
 scree and cumulative variance curves: \PCNinetyComponents{} components are required to
 reach the ninety percent threshold, so the feature set is not close to low rank, and the
 first three components together account for \PCCumThree{} of the variance.
@@ -80,7 +102,7 @@ the correlation structure of the surviving goalkeeper features and
 Figure~\ref{fig:keepercompositedistributions} the distribution of the two goalkeeper
 composites.
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.9\textwidth]{corr_heatmap_all.pdf}
   \caption{Hierarchically clustered Spearman correlation matrix over the outfield feature
@@ -88,7 +110,7 @@ composites.
   \label{fig:corrheatmap}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{pca_scree.pdf}
@@ -105,7 +127,7 @@ composites.
   \label{fig:pcapanel}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{keeper_corr_heatmap.pdf}
@@ -122,7 +144,7 @@ composites.
   \label{fig:keepersupplementary}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{archive_keeper_corr.pdf}
@@ -153,42 +175,42 @@ profiles are mirror images by construction, since the features are standardised 
 before clustering. The two sets are drawn on different feature counts, so their axes are not
 directly comparable, and the comparison worth making is of shape rather than of extent.
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.68\textwidth]{archive_radar_DF.pdf}
   \caption{Defender archetypes, archive sample.}
   \label{fig:arcradarsingledf}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.68\textwidth]{archive_radar_MF.pdf}
   \caption{Midfielder archetypes, archive sample.}
   \label{fig:arcradarsinglemf}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.68\textwidth]{archive_radar_FW.pdf}
   \caption{Forward archetypes, archive sample.}
   \label{fig:arcradarsinglefw}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.68\textwidth]{radar_DF.pdf}
   \caption{Defender archetypes.}
   \label{fig:radarsingledf}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.68\textwidth]{radar_MF.pdf}
   \caption{Midfielder archetypes.}
   \label{fig:radarsinglemf}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.68\textwidth]{radar_FW.pdf}
   \caption{Forward archetypes.}
@@ -235,7 +257,7 @@ attacking involvement against defensive involvement, which cuts across the liste
 and places a ball-playing full back nearer an ordinary midfielder than a defensive
 counterpart at his own listed position.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{k_selection_curves.pdf}
   \caption{Cluster selection criteria across candidate cluster counts. The consensus rule
@@ -243,7 +265,7 @@ counterpart at his own listed position.
   \label{fig:kselection}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{consensus_matrix.pdf}
@@ -260,7 +282,7 @@ counterpart at his own listed position.
   \label{fig:clustervalidation}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=0.75\textwidth]{cluster_scatter_pca.pdf}
   \caption{The selected partition shown in the principal component space.}
@@ -288,7 +310,7 @@ rather than Pearson correlation throughout.
 
 \input{../results/tables/summary_by_position.tex}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{distributions_by_position.pdf}
   \caption{Distributions of four representative per-90 statistics across position groups
@@ -322,7 +344,7 @@ forwards rather than separated groups. That gradient, and not a set of islands, 
 honest description of the geometry, and it conditions how the clustering that follows
 should be read.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{embedding_comparison.pdf}
   \caption{Two-dimensional embeddings of the same feature set, coloured by listed position
@@ -369,7 +391,7 @@ group have a cosine of \CosineDF{} for defenders, \CosineMF{} for midfielders an
 within group before a two-way split. Figure~\ref{fig:threedaxes} shows the consequence: six
 archetypes occupy three lines through the origin, not six independent directions.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{pca3d_positions.pdf}
   \caption{Outfield players in the first three principal components, from two viewpoints.
@@ -378,7 +400,7 @@ archetypes occupy three lines through the origin, not six independent directions
   \label{fig:threedpositions}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{pca3d_clusters.pdf}
   \caption{The selected global partition in three components, with cluster centroids marked
@@ -387,7 +409,7 @@ archetypes occupy three lines through the origin, not six independent directions
   \label{fig:threedclusters}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{pca3d_teams.pdf}
   \caption{Clubs as minutes-weighted centroids in three components, shaded by final league
@@ -396,7 +418,7 @@ archetypes occupy three lines through the origin, not six independent directions
   \label{fig:threedteams}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{pca3d_archetype_axes.pdf}
   \caption{Archetype centroid directions, drawn as unit vectors so the figure shows
@@ -435,7 +457,7 @@ This changes the standing of the main result. Two clusters is not a fact about E
 is what the surviving public feature set can support, and the same feature set supports the
 same coarse division wherever it is applied.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{league_comparison.pdf}
   \caption{The pipeline applied unchanged to each of the big five leagues in the primary
@@ -484,7 +506,7 @@ than predicting it. Even at the honest value, roughly half the variance is unexp
 the residual leaderboard in Figure~\ref{fig:finishing} is presented as an illustration and
 not as a measurement of finishing ability.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{confusion_matrix.pdf}
@@ -521,7 +543,7 @@ players in the shared embedding against the rest of the league, which makes squa
 legible in a way that a composition bar cannot: clubs differ visibly in how far their
 defenders sit toward the midfield region.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{team_dendrogram.pdf}
@@ -538,7 +560,7 @@ defenders sit toward the midfield region.
   \label{fig:teamsignatures}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[!p]
   \centering
   \includegraphics[width=\textwidth]{team_panels.pdf}
   \caption{Each club's outfield players highlighted in the shared embedding, with the rest
@@ -615,7 +637,7 @@ property of players, the midfield split is trustworthy, and the defender split s
 be used to characterise an individual at all.
 Figures~\ref{fig:shrinkage} and \ref{fig:shrinkageminutes} show the effect.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{similarity_heatmap.pdf}
@@ -664,7 +686,7 @@ something that changed rather than a description of something stable. That is a 
 of season aggregates in general rather than of this feature set in particular, and it is one
 that only match level data can expose.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{role_drift.pdf}
   \caption{Rolling cluster assignment across the season for the \DriftTeam{} players who
@@ -697,7 +719,7 @@ while the pattern here is monotonic, and a rank correlation against age recovers
 underpowered against the alternative that actually holds, and reporting only the chi-square
 would have converted a real finding into a null one. Figure~\ref{fig:age} shows the shares.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{age_archetype.pdf}
   \caption{Share of each age band taken by each archetype, within position group. The
@@ -706,7 +728,7 @@ would have converted a real finding into a null one. Figure~\ref{fig:age} shows 
   \label{fig:age}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{shrinkage_effect.pdf}
@@ -724,7 +746,7 @@ would have converted a real finding into a null one. Figure~\ref{fig:age} shows 
   \label{fig:shrinkagepanel}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{outliers_scatter.pdf}
@@ -742,7 +764,7 @@ would have converted a real finding into a null one. Figure~\ref{fig:age} shows 
   \label{fig:outlierspanel}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=0.85\textwidth]{shap_beeswarm.pdf}
   \caption{Global SHAP values for the gradient boosted position classifier. Shooting
@@ -751,19 +773,17 @@ would have converted a real finding into a null one. Figure~\ref{fig:age} shows 
   \label{fig:shapbeeswarm}
 \end{figure}
 
-\section{Reduced-sample supplementary figures}
+\subsection{Supplementary figures}
 \label{sec:appendix:reduced}
 
-The figures collected here belong to the reduced sample of
-Section~\ref{sec:data:reduced}. They are reported for completeness, because the reduced
-sample is the robustness case for the main result rather than the main analysis itself.
-Figure~\ref{fig:redarchetypeprofiles} gives the centroid deviations and
+The figures collected here belong to the same reduced sample and are reported for
+completeness. Figure~\ref{fig:redarchetypeprofiles} gives the centroid deviations and
 Figure~\ref{fig:redradarpanels} the archetype radars. Figures~\ref{fig:redkeeperclusters} to
 \ref{fig:redkeeperranking} give the goalkeeper material that survives on that sample, which
 is limited to shot stopping and workload for the reasons set out in
 Section~\ref{sec:data:reduced}.
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{archetype_profiles.pdf}
   \caption{Centroid deviation of each archetype from its position group mean, reduced
@@ -771,7 +791,7 @@ Section~\ref{sec:data:reduced}.
   \label{fig:redarchetypeprofiles}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \begin{subfigure}[t]{0.32\textwidth}
     \includegraphics[width=\textwidth]{radar_panel_DF.pdf}
@@ -791,7 +811,7 @@ Section~\ref{sec:data:reduced}.
   \label{fig:redradarpanels}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{keeper_clusters_pca.pdf}
@@ -808,7 +828,7 @@ Section~\ref{sec:data:reduced}.
   \label{fig:redkeeperstructure}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{keeper_savepct_vs_workload.pdf}
@@ -827,7 +847,7 @@ Section~\ref{sec:data:reduced}.
   \label{fig:redkeepershotstopping}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{keeper_shot_stopping_ranking.pdf}
   \caption{Goalkeeper shot stopping ranking on the reduced sample.}

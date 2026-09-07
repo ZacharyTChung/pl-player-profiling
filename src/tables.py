@@ -298,6 +298,88 @@ def table_feature_dictionary() -> None:
     _write_table("feature_dictionary", "\n".join(lines))
 
 
+def table_archive_feature_dictionary() -> None:
+    """The primary feature set, with the FBref table each column was read from.
+
+    The reduced sample has its own dictionary because its features are a different set
+    drawn from a different pull, and conflating the two would misdescribe both.
+    """
+    from src import archive as A
+
+    definitions = {
+        "np_xg": "Non-penalty expected goals",
+        "shots": "Shots taken, excluding penalties",
+        "goals_non_penalty": "Goals excluding penalties",
+        "xag": "Expected assisted goals, the expected goals of shots a pass created",
+        "key_passes": "Passes leading directly to a shot",
+        "sca": "Shot creating actions, the two offensive actions before a shot",
+        "gca": "Goal creating actions, the two offensive actions before a goal",
+        "passes_final_third": "Completed passes into the final third",
+        "passes_penalty_area": "Completed passes into the penalty area",
+        "crosses": "Crosses attempted",
+        "progressive_passes": "Completed passes moving the ball substantially toward goal",
+        "progressive_carries": "Carries moving the ball substantially toward goal",
+        "progressive_receptions": "Passes received in a progressive position",
+        "carries_final_third": "Carries into the final third",
+        "touches_def_pen": "Touches in the defending team's own penalty area",
+        "touches_def_third": "Touches in the defensive third",
+        "touches_mid_third": "Touches in the middle third",
+        "touches_att_third": "Touches in the attacking third",
+        "touches_att_pen": "Touches in the opposition penalty area",
+        "take_ons": "Take-ons attempted",
+        "tackles": "Tackles, possession adjusted",
+        "interceptions": "Interceptions, possession adjusted",
+        "blocks": "Blocks of a pass or shot, possession adjusted",
+        "clearances": "Clearances, possession adjusted",
+        "ball_recoveries": "Loose balls recovered",
+        "fouls_committed": "Fouls committed, possession adjusted",
+        "shot_accuracy_pct": "Shots on target as a share of shots",
+        "take_on_success_pct": "Take-ons completed as a share of those attempted",
+        "tackle_win_pct": "Duels won as a share of those contested",
+        "aerials_won_pct": "Aerial duels won as a share of those contested",
+        "pass_cmp_short_pct": "Short passes completed as a share of those attempted",
+        "pass_cmp_medium_pct": "Medium passes completed as a share of those attempted",
+        "pass_cmp_long_pct": "Long passes completed as a share of those attempted",
+    }
+
+    rows = []
+    for feature in A.OUTFIELD_CORE:
+        base = feature[:-4] if feature.endswith("_p90") else feature
+        base = base[:-5] if base.endswith("_padj") else base
+        source = A.SOURCES.get(base)
+        table = source[0] if source else "derived"
+        definition = definitions.get(base)
+        if definition is None:
+            raise KeyError(f"no definition for archive feature {feature!r}; add one")
+        suffix = " (per 90)" if feature.endswith("_p90") else ""
+        rows.append(
+            f"{tex_escape(feature.replace('_', ' '))} & {tex_escape(table)} & "
+            f"{tex_escape(definition)}{suffix} \\\\"
+        )
+
+    body = "\n".join(
+        [
+            r"\begin{table}[t]",
+            r"\centering",
+            r"\small",
+            r"\caption{The primary feature set, with the FBref table each column was read "
+            r"from. Counting statistics are per ninety minutes played; the seven rate "
+            r"features are used as published. Five defensive counts are possession "
+            r"adjusted, as described in Section~\ref{sec:methods:padj}.}",
+            r"\label{tab:archivefeatures}",
+            r"\begin{tabular}{llp{7.0cm}}",
+            r"\toprule",
+            r"Feature & FBref table & Definition \\",
+            r"\midrule",
+            *rows,
+            r"\bottomrule",
+            r"\end{tabular}",
+            r"\end{table}",
+        ]
+    )
+    _write_table("archive_feature_dictionary", body)
+
+
 def table_umap_grid(grid: dict | None) -> None:
     if not grid:
         return
@@ -457,37 +539,25 @@ def table_k_selection(sel: dict | None) -> None:
         _write_table("k_selection", "\n".join(lines))
 
 
-def table_cluster_membership() -> None:
-    """Every eligible player with club, listed position, archetype and centroid distance."""
-    path = config.DATA_PROCESSED / f"archetypes_{config.SEASON_PRIMARY}.parquet"
-    if not path.exists():
+def write_reduced_membership() -> None:
+    """Publish the reduced sample's archetype assignments as CSV.
+
+    The paper cites this file rather than printing a roster of every player, so it has to
+    exist and be regenerated with everything else.
+    """
+    frames = []
+    for season in config.SEASONS:
+        path = config.DATA_PROCESSED / f"archetypes_{season}.parquet"
+        if path.exists():
+            frames.append(pd.read_parquet(path))
+    if not frames:
         return
-    df = pd.read_parquet(path).sort_values(["position_group", "archetype_name", "player"])
-    lines = [
-        r"\small",
-        # Fixed-width wrapping columns: archetype names run to several words and would
-        # otherwise push the table well past the text block.
-        r"\begin{longtable}{p{3.4cm}p{2.5cm}p{1.0cm}p{5.0cm}r}",
-        r"\caption{Cluster membership for every eligible outfield player in the earlier of the two "
-        r"reduced-sample seasons.}\\",
-        r"\label{tab:membership}\\",
-        r"\toprule",
-        r"Player & Club & Listed & Archetype & Distance \\",
-        r"\midrule",
-        r"\endfirsthead",
-        r"\toprule",
-        r"Player & Club & Listed & Archetype & Distance \\",
-        r"\midrule",
-        r"\endhead",
-    ]
-    for _, r in df.iterrows():
-        lines.append(
-            f"{tex_escape(r['player'])} & {tex_escape(r['team'])} & "
-            f"{tex_escape(r['position_group'])} & {tex_escape(r['archetype_name'])} & "
-            f"{num(r.get('distance_to_centroid'), 2)} \\\\"
-        )
-    lines += [r"\bottomrule", r"\end{longtable}"]
-    _write_table("cluster_membership", "\n".join(lines))
+    frame = pd.concat(frames, ignore_index=True).sort_values(
+        ["season", "team", "player"], kind="stable"
+    )
+    out = config.RESULTS / "membership_reduced.csv"
+    frame.to_csv(out, index=False)
+    print(f"wrote {out.relative_to(config.ROOT)} ({len(frame):,} rows)")
 
 
 def table_possession_adjustment(pre: dict | None) -> None:
@@ -1180,6 +1250,14 @@ def build_macros() -> Macros:
         m.add("SupPoleErrors", poles)
         m.add("SupMiddleErrors", middle)
         m.add_pct("SupPoleShare", poles / (poles + middle) if poles + middle else None, places=2)
+    # How many of each class's five strongest features identify it by presence rather
+    # than by absence. The paper reads these out as counts, so they are counts here.
+    shares = dig(sup, "shap", "presence_share_of_top5") or {}
+    for grp in ("DF", "MF", "FW"):
+        share = shares.get(grp)
+        if share is not None:
+            m.add(f"ShapPresence{grp}", round(share * 5), places=0)
+
     top = dig(sup, "shap", "overall_ranking") or []
     for n, entry in enumerate(top[:3]):
         m.add_raw(f"ShapArcTop{['One', 'Two', 'Three'][n]}", tex_escape(entry.get("label", "")))
@@ -1229,11 +1307,12 @@ def main() -> None:
 
     table_data_availability(load("keeper_data_availability"))
     table_feature_dictionary()
+    table_archive_feature_dictionary()
     table_umap_grid(load("umap_grid"))
     table_divergence(load("correlation_divergence"))
     table_summary_by_position(load("descriptive_summary"))
     table_k_selection(load("cluster_selection"))
-    table_cluster_membership()
+    write_reduced_membership()
     table_minutes_sensitivity(load("preprocess"), load("minutes_sensitivity"))
     table_possession_adjustment(load("preprocess"))
 

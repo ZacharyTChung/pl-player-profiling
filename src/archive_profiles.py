@@ -1507,6 +1507,31 @@ SELECTION_NOTE = (
 )
 
 
+def write_membership(table: pd.DataFrame) -> None:
+    """Publish every player's archetype assignment as CSV.
+
+    The paper points readers here instead of printing a roster of thousands of rows, so
+    this file is part of the paper's claims rather than a convenience.
+    """
+    columns = [
+        "player",
+        "team",
+        "league",
+        "season",
+        "position_group",
+        "position_full",
+        "minutes",
+        "archetype",
+    ]
+    frame = table[[c for c in columns if c in table.columns]].copy()
+    # `archetype` already carries the "DF-1" style label assigned by partition().
+    frame["archetype_name"] = [ARCHETYPE_NAMES[label] for label in frame["archetype"]]
+    frame = frame.sort_values(["season", "league", "team", "player"], kind="stable")
+    out = config.RESULTS / "membership_primary.csv"
+    frame.to_csv(out, index=False)
+    print(f"  wrote {out.relative_to(config.ROOT)} ({len(frame):,} rows)")
+
+
 def main() -> None:
     plotting.use_style()
     np.random.seed(config.RANDOM_STATE)
@@ -1541,6 +1566,8 @@ def main() -> None:
         for c in range(K)
     }
     ordered = [records[label] for label in ARCHETYPE_ORDER]
+
+    write_membership(table)
 
     print("  measuring stability across seasons and leagues")
     stability = stability_report(table, z_group)

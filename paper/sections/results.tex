@@ -41,7 +41,7 @@ selecting a number.
 Taken together the instruments support one claim and refuse a stronger one. Football role
 data contains a real division into two modes. It does not contain a taxonomy.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{structure_null.pdf}
   \caption{Observed cluster quality against data constructed to contain no clusters. The
@@ -83,7 +83,7 @@ interpretable variation that is continuous rather than clustered, which is preci
 variation a finer taxonomy would have to divide and, as
 Section~\ref{sec:results:structure} showed, cannot.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_pca.pdf}
   \caption{Principal components of the \ArcFeatures{} archive features over
@@ -151,9 +151,9 @@ still, at \ArcARIvsPositionFull{}. A partition that simply relabelled position w
 values near one, and a partition unrelated to position would return values near zero. These
 sit in between, which means the two modes divide the same players along a different line.
 
-Where that line falls is the informative part. Of the players in the defensive mode,
-\ArcModeDefFW{} are listed as forwards, out of \ArcModeDefDF{} defenders and
-\ArcModeDefMF{} midfielders; the attacking mode contains \ArcModeAttFW{} forwards against
+Where that line falls is the informative part. The defensive mode contains
+\ArcModeDefDF{} defenders, \ArcModeDefMF{} midfielders and \ArcModeDefFW{} forwards.
+The attacking mode contains \ArcModeAttFW{} forwards, \ArcModeAttMF{} midfielders and
 \ArcModeAttDF{} defenders. The poles are close to pure. \ArcSplitDF{} percent of defenders
 fall on one side and \ArcSplitFW{} percent of forwards on the other. Midfielders divide \ArcModeAttMF{} to \ArcModeDefMF{}, which puts \ArcSplitMF{}
 percent of them on the attacking side and is as close to an even split as the sample permits, and it is that even split that drags the agreement indices
@@ -168,7 +168,7 @@ each other. Two methods with no shared machinery agree that the space is an orde
 continuum whose density is concentrated at two ends, and that listed position is a coarse
 and partly arbitrary partition of it.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_cluster_vs_position.pdf}
   \caption{The pooled two-mode partition against listed position over \ArcEligible{} player
@@ -206,7 +206,7 @@ signature of its own, and one league's refit falls well below the others. Silhou
 separate it from the clusterless null, so there is real structure, but it reads more like a
 cut through a continuum of forward involvement than like two modes.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{archive_archetype_profiles.pdf}
   \caption{Centroid deviation of each archetype from its position group mean across the
@@ -214,7 +214,7 @@ cut through a continuum of forward involvement than like two modes.
   \label{fig:arcprofiles}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.32\textwidth}
     \includegraphics[width=\textwidth]{archive_radar_panel_DF.pdf}
@@ -270,7 +270,7 @@ no lower than \RepShareMin{} percent on the pair furthest apart in time. Roughly
 player in twelve moves between modes over a four-year span, which is a plausible rate of
 genuine role change and not the churn an unstable partition would produce.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_replication.pdf}
   \caption{Independent refits of the two-mode solution. Top left, agreement between seasons
@@ -312,14 +312,22 @@ The feature attributions agree. The three strongest features overall are
 \ShapArcTopOne{}, \ShapArcTopTwo{} and \ShapArcTopThree{}, all of which are territorial
 rather than technical, and touches in the defensive third alone carries more attribution
 than any other feature for all three classes. Position, as the data record it, is mostly a
-statement about where a player stands. The per-class panels in
-Figure~\ref{fig:archive_shap_by_class} add a detail the aggregate hides: defenders are
-identified overwhelmingly by what they do, with four of their five strongest features
-positively signed, while forwards and midfielders are identified as much by the absence of
-defensive volume as by the presence of attacking output. A class defined largely by
-negations is a class occupying one end of a scale.
+statement about where a player stands. Figure~\ref{fig:archive_shap_by_class} splits the
+attribution by class and shows that the three are separated by different things, defenders
+mostly by defensive volume and crossing and forwards mostly by where they receive the ball.
 
-\begin{figure}[htbp]
+The direction of each attribution adds a detail that magnitude alone hides. Ranking the
+correlation between a feature's value and the attribution it makes to a class separates a
+class identified by what its members do from one identified by what they do not, and the
+three classes differ on exactly that. \ShapPresenceDF{} of the five strongest features for
+defenders are positively signed, so defenders are recognised by the presence of what they do.
+Forwards and midfielders are recognised as much by the absence of defensive volume as by the
+presence of attacking output, with only \ShapPresenceFW{} and \ShapPresenceMF{} of their
+five positive respectively. A
+class defined largely by negations is a class occupying one end of a scale rather than a
+category with a signature of its own.
+
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_confusion.pdf}
   \caption{Out of fold confusion for both classifiers on \SupN{} player seasons. The corners
@@ -328,7 +336,7 @@ negations is a class occupying one end of a scale.
   \label{fig:archive_confusion}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_shap_beeswarm.pdf}
   \caption{SHAP values for the gradient boosted model, showing for each player the
@@ -337,12 +345,14 @@ negations is a class occupying one end of a scale.
   \label{fig:archive_shap}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_shap_by_class.pdf}
-  \caption{The five strongest features for each position group. Defenders are identified
-  mainly by the presence of defensive actions, whereas forwards and midfielders are
-  identified substantially by their absence.}
+  \caption{Mean absolute attribution per feature, split by position group. Touches in the
+  defensive third dominate for all three, and the profile of what matters differs sharply
+  between them: defenders are separated largely by defensive volume and crossing, forwards by
+  where they receive the ball. The panel shows magnitude only; the direction each feature
+  pushes is reported in the text.}
   \label{fig:archive_shap_by_class}
 \end{figure}
 
@@ -373,7 +383,7 @@ most. The list should therefore be read as evidence about the kind of player the
 description struggles with, and not as a ranking in which the fifteenth entry means what the
 first does.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_outliers.pdf}
   \caption{Isolation forest score against Mahalanobis distance within position group. The
@@ -470,7 +480,7 @@ therefore a judgement rather than a fact, and it is recorded as one: we treat po
 driven productivity as something a role profile should reflect, not something to divide
 away, and a reader who takes the opposite view has the numbers to see what that would cost.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{possession_elasticities.pdf}
   \caption{Possession elasticities for both families of statistic, fitted from team totals.
@@ -521,7 +531,7 @@ data supports one binary distinction plus continuous variation, not a set of typ
 Figures~\ref{fig:arckeeperstop} and \ref{fig:arckeeperclusters} show the shot stopping
 ranking and the partition.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{archive_keeper_shot_stopping.pdf}
   \caption{Goalkeepers ranked by post-shot expected goals minus goals allowed, which
@@ -529,7 +539,7 @@ ranking and the partition.
   \label{fig:arckeeperstop}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}
     \includegraphics[width=\textwidth]{archive_keeper_clusters.pdf}
@@ -614,7 +624,7 @@ opposite directions.
 
 \input{../results/tables/correlation_divergence.tex}
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{corr_divergence_top10.pdf}
   \caption{The ten feature pairs whose within-group correlation differs most across

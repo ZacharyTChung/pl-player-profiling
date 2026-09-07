@@ -1,0 +1,739 @@
+season,player,team,position_group,position_full,minutes,cluster_within_group_label,archetype_name,distance_to_centroid,boundary_margin
+2024-25,Ben White,Arsenal,DF,DF,1198,DF-1,Crossing and chance creating defenders,2.6784609477168964,0.4537380086976244
+2024-25,Bukayo Saka,Arsenal,FW,"FW,MF",1729,FW-1,Crossing and creating wide forwards,6.230972948807466,2.3406489148196084
+2024-25,Declan Rice,Arsenal,MF,MF,2825,MF-1,High attacking involvement midfielders,3.316491789706725,1.0872849059330552
+2024-25,Ethan Nwaneri,Arsenal,FW,"FW,MF",895,FW-1,Crossing and creating wide forwards,2.9839734569085996,1.8589185682485567
+2024-25,Gabriel Jesus,Arsenal,FW,FW,608,FW-0,Shot taking central forwards,5.68371595951017,1.1621195250316045
+2024-25,Gabriel Magalhães,Arsenal,DF,DF,2363,DF-0,Low attacking involvement defenders,4.16775705118656,0.5816522763375955
+2024-25,Gabriel Martinelli,Arsenal,FW,"FW,MF",2290,FW-1,Crossing and creating wide forwards,2.165570683106762,1.5662254734899048
+2024-25,Jakub Kiwior,Arsenal,DF,DF,1122,DF-0,Low attacking involvement defenders,3.045620579335601,2.2909300713819944
+2024-25,Jorginho,Arsenal,MF,MF,704,MF-0,"Ball winning, low attacking involvement midfielders",4.847054237888227,3.0150623648890367
+2024-25,Jurriën Timber,Arsenal,DF,DF,2417,DF-1,Crossing and chance creating defenders,3.254665049754168,0.7152017402088915
+2024-25,Kai Havertz,Arsenal,FW,FW,1875,FW-0,Shot taking central forwards,1.7950476821007584,2.1524539628951036
+2024-25,Leandro Trossard,Arsenal,FW,FW,2546,FW-1,Crossing and creating wide forwards,1.2779078878565642,3.0024421727277684
+2024-25,Martin Ødegaard,Arsenal,MF,MF,2325,MF-1,High attacking involvement midfielders,3.5569397836853978,2.418435960365589
+2024-25,Mikel Merino,Arsenal,MF,"MF,FW",1586,MF-1,High attacking involvement midfielders,4.279913861593879,1.1809820886791398
+2024-25,Myles Lewis-Skelly,Arsenal,DF,DF,1369,DF-0,Low attacking involvement defenders,5.974810453229626,0.8897056340940379
+2024-25,Oleksandr Zinchenko,Arsenal,DF,"DF,MF",527,DF-1,Crossing and chance creating defenders,5.556646610930395,0.7141540778022408
+2024-25,Raheem Sterling,Arsenal,FW,"FW,MF",499,FW-1,Crossing and creating wide forwards,5.728974363758619,1.9664854281551971
+2024-25,Riccardo Calafiori,Arsenal,DF,DF,983,DF-1,Crossing and chance creating defenders,5.537838096488037,1.108614556617443
+2024-25,Thomas Partey,Arsenal,MF,"MF,DF",2797,MF-0,"Ball winning, low attacking involvement midfielders",2.8959665046737224,2.2741297326394583
+2024-25,William Saliba,Arsenal,DF,DF,3039,DF-0,Low attacking involvement defenders,3.39639698163191,1.8975407395922046
+2024-25,Amadou Onana,Aston Villa,MF,MF,1617,MF-0,"Ball winning, low attacking involvement midfielders",3.3749872052658354,2.245826497886089
+2024-25,Boubacar Kamara,Aston Villa,MF,"MF,DF",1726,MF-0,"Ball winning, low attacking involvement midfielders",2.3017424026789515,3.338098721139022
+2024-25,Diego Carlos,Aston Villa,DF,DF,830,DF-0,Low attacking involvement defenders,3.3593902435685714,2.342069257524171
+2024-25,Ezri Konsa,Aston Villa,DF,DF,2936,DF-0,Low attacking involvement defenders,3.180111449939046,2.2989926003883667
+2024-25,Ian Maatsen,Aston Villa,DF,DF,1139,DF-1,Crossing and chance creating defenders,5.1794062147726505,3.227565769514606
+2024-25,Jacob Ramsey,Aston Villa,MF,MF,1623,MF-0,"Ball winning, low attacking involvement midfielders",2.838080382166509,1.1232506616423223
+2024-25,John McGinn,Aston Villa,MF,MF,2223,MF-0,"Ball winning, low attacking involvement midfielders",3.2887554868422364,1.2209735035761118
+2024-25,Jáder Durán,Aston Villa,FW,FW,638,FW-0,Shot taking central forwards,7.282593285780595,2.4616374511019368
+2024-25,Lamare Bogarde,Aston Villa,DF,"DF,MF",476,DF-0,Low attacking involvement defenders,5.838478400624462,1.153193231625604
+2024-25,Leon Bailey,Aston Villa,MF,MF,1139,MF-1,High attacking involvement midfielders,3.039663385024489,0.7773065972868403
+2024-25,Lucas Digne,Aston Villa,DF,DF,2351,DF-1,Crossing and chance creating defenders,4.500279353636075,2.2020593747789823
+2024-25,Marco Asensio,Aston Villa,MF,MF,743,MF-1,High attacking involvement midfielders,2.768577444585644,3.4409982944644715
+2024-25,Matty Cash,Aston Villa,DF,DF,2070,DF-0,Low attacking involvement defenders,4.0101356432530215,1.6772228096472368
+2024-25,Morgan Rogers,Aston Villa,MF,MF,3114,MF-1,High attacking involvement midfielders,2.6489806366031297,1.7826918526065696
+2024-25,Ollie Watkins,Aston Villa,FW,FW,2598,FW-0,Shot taking central forwards,2.2964538271199295,2.292578913056955
+2024-25,Pau Torres,Aston Villa,DF,DF,2020,DF-0,Low attacking involvement defenders,2.7004068746137477,3.03912449179244
+2024-25,Ross Barkley,Aston Villa,MF,MF,581,MF-1,High attacking involvement midfielders,5.013895334611643,1.2374758892908932
+2024-25,Tyrone Mings,Aston Villa,DF,DF,1120,DF-0,Low attacking involvement defenders,3.084878195909084,2.1963633292541105
+2024-25,Youri Tielemans,Aston Villa,MF,MF,3026,MF-1,High attacking involvement midfielders,3.645919534184532,0.19651743686627077
+2024-25,Axel Disasi,Aston Villa / Chelsea,DF,DF,854,DF-0,Low attacking involvement defenders,3.5479628395238456,1.4498272301555786
+2024-25,Adam Smith,Bournemouth,DF,DF,1590,DF-0,Low attacking involvement defenders,3.1257497181524028,2.1559853071127244
+2024-25,Alex Scott,Bournemouth,MF,MF,755,MF-0,"Ball winning, low attacking involvement midfielders",4.195380893337533,1.4617744651629598
+2024-25,Antoine Semenyo,Bournemouth,MF,MF,3203,MF-1,High attacking involvement midfielders,3.40467264070833,2.712498623375915
+2024-25,Dango Ouattara,Bournemouth,MF,"MF,FW",2005,MF-1,High attacking involvement midfielders,3.495881792803361,3.460942627254728
+2024-25,David Brooks,Bournemouth,MF,MF,960,MF-1,High attacking involvement midfielders,3.015792897523646,2.0567330747486627
+2024-25,Dean Huijsen,Bournemouth,DF,DF,2427,DF-1,Crossing and chance creating defenders,3.6533878983841332,0.11308064316562838
+2024-25,Evanilson,Bournemouth,FW,FW,2319,FW-0,Shot taking central forwards,2.1946307008409396,2.6521129587528525
+2024-25,Illia Zabarnyi,Bournemouth,DF,DF,3109,DF-0,Low attacking involvement defenders,2.3949259411594674,2.742408037838679
+2024-25,Julian Araujo,Bournemouth,DF,DF,497,DF-0,Low attacking involvement defenders,3.641916678697887,1.9011030865887313
+2024-25,Justin Kluivert,Bournemouth,MF,MF,2340,MF-1,High attacking involvement midfielders,2.372050370803357,3.0157251758431065
+2024-25,Lewis Cook,Bournemouth,MF,"MF,DF",2978,MF-0,"Ball winning, low attacking involvement midfielders",2.669558128712796,2.5176170234703963
+2024-25,Marcos Senesi,Bournemouth,DF,DF,1106,DF-0,Low attacking involvement defenders,4.067686430967489,1.1431891726137975
+2024-25,Marcus Tavernier,Bournemouth,MF,MF,1939,MF-1,High attacking involvement midfielders,2.4747706168793293,2.920820896730902
+2024-25,Milos Kerkez,Bournemouth,DF,DF,3336,DF-1,Crossing and chance creating defenders,2.8235411137466633,1.2069621825490495
+2024-25,Ryan Christie,Bournemouth,MF,MF,2117,MF-0,"Ball winning, low attacking involvement midfielders",2.3527837297843566,1.815794624620224
+2024-25,Tyler Adams,Bournemouth,MF,MF,1965,MF-0,"Ball winning, low attacking involvement midfielders",3.2279673451421234,3.6847153869372216
+2024-25,Bryan Mbeumo,Brentford,MF,"MF,FW",3414,MF-1,High attacking involvement midfielders,2.943508681607788,3.7660829701388407
+2024-25,Christian Nørgaard,Brentford,MF,MF,2819,MF-0,"Ball winning, low attacking involvement midfielders",2.643687046065303,1.9296352289895702
+2024-25,Ethan Pinnock,Brentford,DF,DF,1913,DF-0,Low attacking involvement defenders,3.2147231975153816,1.6815812487353115
+2024-25,Fabio Carvalho,Brentford,FW,"FW,MF",455,FW-1,Crossing and creating wide forwards,5.323644316787304,0.4284504005563967
+2024-25,Keane Lewis-Potter,Brentford,DF,"DF,MF",3093,DF-1,Crossing and chance creating defenders,3.7753320348131814,0.38229220290365795
+2024-25,Kevin Schade,Brentford,MF,"MF,FW",2293,MF-1,High attacking involvement midfielders,3.7626508365026137,2.590819461551696
+2024-25,Kristoffer Ajer,Brentford,DF,DF,1438,DF-0,Low attacking involvement defenders,2.548121303032733,1.2341457825825368
+2024-25,Mads Roerslev,Brentford,DF,DF,1101,DF-1,Crossing and chance creating defenders,4.531724723661557,0.5709119122943047
+2024-25,Mathias Jensen,Brentford,MF,MF,862,MF-0,"Ball winning, low attacking involvement midfielders",3.6747634006908925,1.1842399729903486
+2024-25,Michael Kayode,Brentford,DF,DF,528,DF-1,Crossing and chance creating defenders,4.179008579462085,1.1880368408904065
+2024-25,Mikkel Damsgaard,Brentford,MF,MF,2911,MF-1,High attacking involvement midfielders,4.09515109084235,0.6315253116786872
+2024-25,Nathan Collins,Brentford,DF,DF,3420,DF-0,Low attacking involvement defenders,2.3528478182639336,1.5071751498945503
+2024-25,Sepp van den Berg,Brentford,DF,DF,2586,DF-0,Low attacking involvement defenders,2.179102819530118,2.17267878597161
+2024-25,Vitaly Janelt,Brentford,MF,MF,2254,MF-0,"Ball winning, low attacking involvement midfielders",2.168515048046014,3.0653815436123035
+2024-25,Yehor Yarmoliuk,Brentford,MF,MF,1450,MF-0,"Ball winning, low attacking involvement midfielders",2.16056462267619,3.976994543329494
+2024-25,Yoane Wissa,Brentford,FW,FW,2919,FW-0,Shot taking central forwards,2.2652942579458806,2.567355069078026
+2024-25,Adam Webster,Brighton,DF,DF,887,DF-0,Low attacking involvement defenders,4.1320500156587725,1.0985910808674442
+2024-25,Brajan Gruda,Brighton,MF,"MF,FW",687,MF-1,High attacking involvement midfielders,4.5076921690692275,2.26840120302026
+2024-25,Carlos Baleba,Brighton,MF,MF,2661,MF-0,"Ball winning, low attacking involvement midfielders",2.809600275114986,2.646523528190277
+2024-25,Danny Welbeck,Brighton,FW,FW,2115,FW-0,Shot taking central forwards,2.8486242740229546,0.3922525265383121
+2024-25,Diego Gómez,Brighton,MF,MF,516,MF-1,High attacking involvement midfielders,5.421646673132695,0.30931205489827196
+2024-25,Georginio Rutter,Brighton,MF,"MF,FW",1656,MF-1,High attacking involvement midfielders,3.585917559672159,1.3604066076585029
+2024-25,Igor,Brighton,DF,DF,961,DF-0,Low attacking involvement defenders,3.798825360559989,2.37681250861708
+2024-25,Jack Hinshelwood,Brighton,MF,"MF,DF",1842,MF-0,"Ball winning, low attacking involvement midfielders",4.610117139900465,0.19542723112456617
+2024-25,Jan Paul van Hecke,Brighton,DF,DF,2958,DF-0,Low attacking involvement defenders,1.7540728869563746,1.9958560548652848
+2024-25,João Pedro,Brighton,FW,"FW,MF",1948,FW-1,Crossing and creating wide forwards,3.2894408884623103,1.3465380178882005
+2024-25,Joël Veltman,Brighton,DF,DF,1697,DF-0,Low attacking involvement defenders,4.557099565174304,0.757078450516862
+2024-25,Kaoru Mitoma,Brighton,MF,MF,2603,MF-1,High attacking involvement midfielders,2.4569427625981133,2.9368129294850513
+2024-25,Lewis Dunk,Brighton,DF,DF,2083,DF-0,Low attacking involvement defenders,2.6349283575346023,2.366654861250863
+2024-25,Mats Wieffer,Brighton,DF,"DF,MF",1015,DF-1,Crossing and chance creating defenders,6.151803770709515,2.2099194915964446
+2024-25,Matt O'Riley,Brighton,MF,MF,938,MF-1,High attacking involvement midfielders,2.7078344620650485,1.7333703039830786
+2024-25,Pervis Estupiñán,Brighton,DF,DF,2402,DF-1,Crossing and chance creating defenders,2.761549528866514,2.2577891645741324
+2024-25,Simon Adingra,Brighton,MF,MF,1097,MF-1,High attacking involvement midfielders,3.231170074941531,1.2153796120467746
+2024-25,Tariq Lamptey,Brighton,DF,"DF,MF",860,DF-1,Crossing and chance creating defenders,5.151877930497666,0.7230765668611054
+2024-25,Yankuba Minteh,Brighton,MF,MF,1838,MF-1,High attacking involvement midfielders,2.814139674266715,2.3651421705916973
+2024-25,Yasin Ayari,Brighton,MF,MF,1965,MF-0,"Ball winning, low attacking involvement midfielders",1.953284859264491,1.7919261204449015
+2024-25,Christopher Nkunku,Chelsea,MF,"MF,FW",921,MF-1,High attacking involvement midfielders,3.1645055839915215,2.691757830834787
+2024-25,Cole Palmer,Chelsea,MF,MF,3191,MF-1,High attacking involvement midfielders,3.628050307459037,4.150699825378606
+2024-25,Enzo Fernández,Chelsea,MF,MF,2947,MF-1,High attacking involvement midfielders,2.231846204216694,2.085499767072145
+2024-25,Jadon Sancho,Chelsea,MF,MF,1764,MF-1,High attacking involvement midfielders,3.498805287194224,1.4239221932897141
+2024-25,Levi Colwill,Chelsea,DF,DF,3149,DF-0,Low attacking involvement defenders,2.3803736484118465,1.1528661660649342
+2024-25,Malo Gusto,Chelsea,DF,DF,1862,DF-1,Crossing and chance creating defenders,2.369849668237886,1.9265681571739535
+2024-25,Marc Cucurella,Chelsea,DF,DF,2988,DF-1,Crossing and chance creating defenders,3.728919640036621,0.5782767933724897
+2024-25,Moisés Caicedo,Chelsea,MF,"MF,DF",3351,MF-0,"Ball winning, low attacking involvement midfielders",3.0832490147700096,3.438843101940064
+2024-25,Nicolas Jackson,Chelsea,FW,FW,2220,FW-0,Shot taking central forwards,1.9229438582369933,2.7268459207920213
+2024-25,Noni Madueke,Chelsea,MF,MF,2033,MF-1,High attacking involvement midfielders,3.5433534866990244,3.3385069767756055
+2024-25,Pedro Neto,Chelsea,MF,"MF,FW",2269,MF-1,High attacking involvement midfielders,2.776330600955011,2.2760609743011937
+2024-25,Reece James,Chelsea,DF,"DF,MF",1063,DF-1,Crossing and chance creating defenders,2.7839408195149353,1.1279636606277474
+2024-25,Roméo Lavia,Chelsea,MF,MF,797,MF-0,"Ball winning, low attacking involvement midfielders",4.014893772477941,3.769429318007054
+2024-25,Tosin Adarabioyo,Chelsea,DF,DF,1409,DF-0,Low attacking involvement defenders,3.268005372604328,1.072889971621462
+2024-25,Wesley Fofana,Chelsea,DF,DF,1172,DF-0,Low attacking involvement defenders,4.969277134750271,1.2120136554635117
+2024-25,Adam Wharton,Crystal Palace,MF,MF,1318,MF-0,"Ball winning, low attacking involvement midfielders",3.290112296540397,1.2673045859898244
+2024-25,Cheick Doucouré,Crystal Palace,MF,MF,452,MF-0,"Ball winning, low attacking involvement midfielders",5.21949918733408,2.6847090274190064
+2024-25,Chris Richards,Crystal Palace,DF,DF,1922,DF-0,Low attacking involvement defenders,2.6491967590009975,2.3515463220913966
+2024-25,Daichi Kamada,Crystal Palace,MF,MF,1564,MF-0,"Ball winning, low attacking involvement midfielders",1.7543874342199601,3.294348107989279
+2024-25,Daniel Muñoz,Crystal Palace,MF,MF,3228,MF-0,"Ball winning, low attacking involvement midfielders",3.5123572221884367,0.6623116578964798
+2024-25,Eberechi Eze,Crystal Palace,MF,MF,2588,MF-1,High attacking involvement midfielders,2.8399869583716972,3.6828284500725186
+2024-25,Eddie Nketiah,Crystal Palace,FW,"FW,MF",1034,FW-0,Shot taking central forwards,4.573470630267663,1.6023365959826847
+2024-25,Ismaila Sarr,Crystal Palace,MF,MF,2711,MF-1,High attacking involvement midfielders,3.1132564620393923,3.57210677993186
+2024-25,Jean-Philippe Mateta,Crystal Palace,FW,FW,2648,FW-0,Shot taking central forwards,2.0859024973752,2.173635254844386
+2024-25,Jefferson Lerma,Crystal Palace,MF,"MF,DF",2274,MF-0,"Ball winning, low attacking involvement midfielders",2.6094189085013375,3.4293439105166894
+2024-25,Justin Devenny,Crystal Palace,MF,MF,507,MF-1,High attacking involvement midfielders,4.225666086122764,0.8234474987797933
+2024-25,Marc Guéhi,Crystal Palace,DF,DF,3059,DF-0,Low attacking involvement defenders,2.4374439242095485,1.543202545998085
+2024-25,Maxence Lacroix,Crystal Palace,DF,DF,3116,DF-0,Low attacking involvement defenders,2.587388098427332,1.4363525619378477
+2024-25,Nathaniel Clyne,Crystal Palace,DF,"DF,MF",483,DF-0,Low attacking involvement defenders,3.1586965019755935,2.2187741101490372
+2024-25,Tyrick Mitchell,Crystal Palace,MF,MF,3092,MF-0,"Ball winning, low attacking involvement midfielders",3.312322378866919,1.7882100654860116
+2024-25,Will Hughes,Crystal Palace,MF,MF,2108,MF-0,"Ball winning, low attacking involvement midfielders",3.6807689604446057,2.6847921670014316
+2024-25,Trevoh Chalobah,Crystal Palace / Chelsea,DF,DF,1970,DF-1,Crossing and chance creating defenders,3.8612851054224695,0.02008325686616841
+2024-25,Abdoulaye Doucouré,Everton,MF,MF,2564,MF-0,"Ball winning, low attacking involvement midfielders",3.1065575690343334,1.409948067775638
+2024-25,Ashley Young,Everton,DF,DF,1875,DF-1,Crossing and chance creating defenders,4.018547258027052,1.0002955695628604
+2024-25,Beto,Everton,FW,FW,1534,FW-0,Shot taking central forwards,2.051902035220165,3.42504110825869
+2024-25,Dominic Calvert-Lewin,Everton,FW,FW,1609,FW-0,Shot taking central forwards,4.014494631689824,1.7904620452284261
+2024-25,Dwight McNeil,Everton,MF,MF,1371,MF-1,High attacking involvement midfielders,4.48766145994078,2.7234340391455367
+2024-25,Idrissa Gueye,Everton,MF,MF,3063,MF-0,"Ball winning, low attacking involvement midfielders",2.3438896641539504,4.101915140142761
+2024-25,Iliman Ndiaye,Everton,MF,"MF,FW",2430,MF-1,High attacking involvement midfielders,4.208287070914354,0.13671097324596992
+2024-25,Jack Harrison,Everton,MF,"MF,FW",2076,MF-0,"Ball winning, low attacking involvement midfielders",4.295408251567676,0.3785836220072012
+2024-25,Jake O'Brien,Everton,DF,DF,1571,DF-0,Low attacking involvement defenders,3.9950137074864376,1.4539856331166972
+2024-25,James Garner,Everton,MF,"MF,DF",1594,MF-0,"Ball winning, low attacking involvement midfielders",2.0389705627579207,3.615353399765261
+2024-25,James Tarkowski,Everton,DF,DF,2922,DF-0,Low attacking involvement defenders,2.082986326310817,1.899262823038268
+2024-25,Jarrad Branthwaite,Everton,DF,DF,2511,DF-0,Low attacking involvement defenders,2.1241437310847187,2.977521099644355
+2024-25,Jesper Lindstrøm,Everton,MF,MF,1239,MF-0,"Ball winning, low attacking involvement midfielders",3.681531987781242,0.2692995244825034
+2024-25,Michael Keane,Everton,DF,DF,1049,DF-0,Low attacking involvement defenders,5.829882409694218,1.2232967008806872
+2024-25,Orel Mangala,Everton,MF,MF,1261,MF-0,"Ball winning, low attacking involvement midfielders",2.8674776330712946,2.866665441251912
+2024-25,Tim Iroegbunam,Everton,MF,MF,574,MF-0,"Ball winning, low attacking involvement midfielders",4.933128743206252,3.518882100236615
+2024-25,Vitaliy Mykolenko,Everton,DF,DF,3082,DF-0,Low attacking involvement defenders,3.1434534483234495,0.681343297281737
+2024-25,Carlos Alcaraz,Everton / Southampton,MF,MF,774,MF-1,High attacking involvement midfielders,4.156050471969579,1.9219219093338777
+2024-25,Adama Traoré,Fulham,MF,MF,1772,MF-1,High attacking involvement midfielders,3.330471392211958,2.77052811430429
+2024-25,Alex Iwobi,Fulham,MF,MF,2981,MF-1,High attacking involvement midfielders,2.3372906286528803,2.9503693081162927
+2024-25,Andreas Pereira,Fulham,MF,MF,2013,MF-1,High attacking involvement midfielders,4.184864031433037,1.296809750923785
+2024-25,Antonee Robinson,Fulham,DF,"DF,MF",3167,DF-1,Crossing and chance creating defenders,4.275675187877152,2.281721538540239
+2024-25,Calvin Bassey,Fulham,DF,DF,3074,DF-0,Low attacking involvement defenders,1.4533570069725419,3.1679183850161587
+2024-25,Emile Smith Rowe,Fulham,MF,MF,2043,MF-1,High attacking involvement midfielders,3.0201394444248746,0.6557150216316523
+2024-25,Harry Wilson,Fulham,MF,"MF,FW",1162,MF-1,High attacking involvement midfielders,3.326883379799198,2.550810731653283
+2024-25,Issa Diop,Fulham,DF,DF,1339,DF-0,Low attacking involvement defenders,1.9221822338714656,3.3432638640268006
+2024-25,Kenny Tete,Fulham,DF,DF,1774,DF-1,Crossing and chance creating defenders,4.140279311231211,0.9027887337837006
+2024-25,Raúl Jiménez,Fulham,FW,FW,2494,FW-0,Shot taking central forwards,2.6027677746447204,0.8842760771319051
+2024-25,Rodrigo Muniz,Fulham,FW,FW,964,FW-0,Shot taking central forwards,4.345647781714186,2.331146578394627
+2024-25,Ryan Sessegnon,Fulham,MF,"MF,DF",580,MF-1,High attacking involvement midfielders,6.162341231061427,2.3552342404377757
+2024-25,Sander Berge,Fulham,MF,MF,2224,MF-0,"Ball winning, low attacking involvement midfielders",2.5910937395602875,3.8756648797106417
+2024-25,Saša Lukić,Fulham,MF,MF,2344,MF-0,"Ball winning, low attacking involvement midfielders",2.971985835036322,3.2161355305041237
+2024-25,Timothy Castagne,Fulham,DF,"DF,MF",1649,DF-0,Low attacking involvement defenders,2.9267649391051695,0.7132290479092713
+2024-25,Tom Cairney,Fulham,MF,MF,628,MF-1,High attacking involvement midfielders,5.50154741224904,0.9454785201498384
+2024-25,Reiss Nelson,Fulham / Arsenal,MF,MF,490,MF-1,High attacking involvement midfielders,3.2266345448825393,2.8322324281811446
+2024-25,Joachim Andersen,Fulham / Crystal Palace,DF,DF,2673,DF-0,Low attacking involvement defenders,1.9972088828474917,2.6545325896804606
+2024-25,Axel Tuanzebe,Ipswich Town,DF,DF,1710,DF-0,Low attacking involvement defenders,2.6883589809121378,2.527302361043016
+2024-25,Ben Johnson,Ipswich Town,MF,"MF,DF",1354,MF-0,"Ball winning, low attacking involvement midfielders",2.8857210454438866,2.2860065915436576
+2024-25,Cameron Burgess,Ipswich Town,DF,DF,1541,DF-0,Low attacking involvement defenders,3.217585588706668,1.8176882240286218
+2024-25,Conor Chaplin,Ipswich Town,MF,"MF,FW",857,MF-0,"Ball winning, low attacking involvement midfielders",2.9164533100625847,1.451704364960324
+2024-25,Dara O'Shea,Ipswich Town,DF,DF,3122,DF-0,Low attacking involvement defenders,2.100636495907914,2.4764637046026476
+2024-25,George Hirst,Ipswich Town,FW,FW,661,FW-0,Shot taking central forwards,2.5689246685669405,2.1617437701452182
+2024-25,Jack Clarke,Ipswich Town,MF,MF,1181,MF-0,"Ball winning, low attacking involvement midfielders",4.027300117821124,0.6788591843268481
+2024-25,Jack Taylor,Ipswich Town,MF,MF,860,MF-0,"Ball winning, low attacking involvement midfielders",2.432534548025272,3.019160414397838
+2024-25,Jacob Greaves,Ipswich Town,DF,DF,2205,DF-0,Low attacking involvement defenders,1.9232813869802208,3.03154353378346
+2024-25,Jens Cajuste,Ipswich Town,MF,MF,1959,MF-0,"Ball winning, low attacking involvement midfielders",2.8261398596891034,3.467719586960756
+2024-25,Kalvin Phillips,Ipswich Town,MF,MF,1237,MF-0,"Ball winning, low attacking involvement midfielders",2.8098970213655314,4.126401207622621
+2024-25,Leif Davis,Ipswich Town,DF,DF,2743,DF-1,Crossing and chance creating defenders,4.611587799873091,1.4987785802071976
+2024-25,Liam Delap,Ipswich Town,FW,FW,2593,FW-0,Shot taking central forwards,2.811517555383233,2.5362219710527913
+2024-25,Luke Woolfenden,Ipswich Town,DF,DF,1187,DF-0,Low attacking involvement defenders,4.151109047501483,2.810416160355344
+2024-25,Nathan Broadhead,Ipswich Town,MF,MF,702,MF-1,High attacking involvement midfielders,3.7674197553365105,1.4028446695310746
+2024-25,Omari Hutchinson,Ipswich Town,MF,MF,2583,MF-0,"Ball winning, low attacking involvement midfielders",3.300993251642347,0.08535317292811762
+2024-25,Sam Morsy,Ipswich Town,MF,MF,2751,MF-0,"Ball winning, low attacking involvement midfielders",1.7223629722479497,4.144154419249183
+2024-25,Sammie Szmodics,Ipswich Town,MF,MF,992,MF-1,High attacking involvement midfielders,5.678453205809099,1.3029467392867966
+2024-25,Wes Burns,Ipswich Town,MF,MF,926,MF-0,"Ball winning, low attacking involvement midfielders",3.8556591922673706,1.8878996354284658
+2024-25,Jaden Philogene Bidace,Ipswich Town / Aston Villa,MF,MF,806,MF-0,"Ball winning, low attacking involvement midfielders",4.275077437987331,1.1368795944864036
+2024-25,Julio Enciso,Ipswich Town / Brighton,MF,MF,1163,MF-1,High attacking involvement midfielders,4.257839019192037,2.291448226194566
+2024-25,Abdul Fatawu Issahaku,Leicester City,MF,"MF,FW",579,MF-1,High attacking involvement midfielders,5.445975801463319,0.16935306646945847
+2024-25,Bilal El Khannouss,Leicester City,MF,MF,2182,MF-0,"Ball winning, low attacking involvement midfielders",3.334321609021597,0.9102109413952357
+2024-25,Bobby De Cordova-Reid,Leicester City,MF,"MF,FW",744,MF-0,"Ball winning, low attacking involvement midfielders",4.649349429001053,0.2603296087935245
+2024-25,Boubakary Soumaré,Leicester City,MF,MF,2171,MF-0,"Ball winning, low attacking involvement midfielders",3.360500625510269,3.786699212125314
+2024-25,Caleb Okoli,Leicester City,DF,DF,1125,DF-0,Low attacking involvement defenders,3.0450671007031223,2.334619163064071
+2024-25,Conor Coady,Leicester City,DF,DF,1714,DF-0,Low attacking involvement defenders,5.358374320784783,2.2234317560595747
+2024-25,Facundo Buonanotte,Leicester City,MF,"MF,FW",1523,MF-1,High attacking involvement midfielders,3.849003137098905,0.5023475222046643
+2024-25,Harry Winks,Leicester City,MF,MF,1538,MF-0,"Ball winning, low attacking involvement midfielders",3.1737285881990083,2.2047848955764726
+2024-25,James Justin,Leicester City,DF,"DF,MF",2912,DF-0,Low attacking involvement defenders,2.818757933580885,0.5085125376924444
+2024-25,Jamie Vardy,Leicester City,FW,FW,2823,FW-0,Shot taking central forwards,3.0750657597371682,1.3471506692092707
+2024-25,Jannik Vestergaard,Leicester City,DF,DF,1391,DF-0,Low attacking involvement defenders,2.9596363755607316,2.9800058604524677
+2024-25,Kasey McAteer,Leicester City,MF,MF,852,MF-0,"Ball winning, low attacking involvement midfielders",3.500500630730613,0.4148176188725552
+2024-25,Luke Thomas,Leicester City,DF,DF,1110,DF-0,Low attacking involvement defenders,4.260880259806863,0.9792809240726434
+2024-25,Oliver Skipp,Leicester City,MF,MF,1129,MF-0,"Ball winning, low attacking involvement midfielders",4.015206971642074,3.4174746006492036
+2024-25,Patson Daka,Leicester City,MF,"MF,FW",736,MF-0,"Ball winning, low attacking involvement midfielders",4.79250409076067,1.18198360775596
+2024-25,Stephy Mavididi,Leicester City,MF,MF,1615,MF-1,High attacking involvement midfielders,2.809107158447405,0.5669884099592197
+2024-25,Victor Bernth Kristiansen,Leicester City,DF,"DF,MF",2482,DF-0,Low attacking involvement defenders,4.222270458749419,0.6724977652960042
+2024-25,Wilfred Ndidi,Leicester City,MF,MF,2324,MF-0,"Ball winning, low attacking involvement midfielders",2.097598865937129,3.1950517924534236
+2024-25,Wout Faes,Leicester City,DF,DF,2815,DF-0,Low attacking involvement defenders,2.3314125394642877,3.151147288846346
+2024-25,Jordan Ayew,Leicester City / Crystal Palace,MF,MF,1659,MF-0,"Ball winning, low attacking involvement midfielders",4.600236633882682,0.09558905530312067
+2024-25,Alexis Mac Allister,Liverpool,MF,MF,2599,MF-1,High attacking involvement midfielders,4.791483162350729,0.14654346871698642
+2024-25,Andy Robertson,Liverpool,DF,DF,2482,DF-1,Crossing and chance creating defenders,4.5926911150616005,1.3971946112859595
+2024-25,Cody Gakpo,Liverpool,MF,MF,1935,MF-1,High attacking involvement midfielders,3.234893859822572,3.887772519315021
+2024-25,Conor Bradley,Liverpool,DF,DF,754,DF-1,Crossing and chance creating defenders,6.536800028504457,2.2360812465775037
+2024-25,Curtis Jones,Liverpool,MF,"MF,DF",1712,MF-1,High attacking involvement midfielders,2.9383917555810037,0.558547320676924
+2024-25,Darwin Núñez,Liverpool,FW,FW,1133,FW-0,Shot taking central forwards,5.200328052273927,0.9889041119271775
+2024-25,Diogo Jota,Liverpool,FW,FW,1196,FW-0,Shot taking central forwards,5.191010055740592,0.36160442063822185
+2024-25,Dominik Szoboszlai,Liverpool,MF,MF,2491,MF-1,High attacking involvement midfielders,3.311466471473352,2.6557034267840756
+2024-25,Ibrahima Konaté,Liverpool,DF,DF,2560,DF-0,Low attacking involvement defenders,3.3412117976993665,0.7165281746474079
+2024-25,Jarell Quansah,Liverpool,DF,DF,495,DF-0,Low attacking involvement defenders,4.405319589895324,1.3168524980453462
+2024-25,Joe Gomez,Liverpool,DF,DF,519,DF-0,Low attacking involvement defenders,5.669007272936755,0.36641809309479445
+2024-25,Kostas Tsimikas,Liverpool,DF,DF,837,DF-0,Low attacking involvement defenders,6.149388021301943,0.25225013946363806
+2024-25,Luis Díaz,Liverpool,FW,"FW,MF",2399,FW-1,Crossing and creating wide forwards,4.398340293153231,0.5721358308072686
+2024-25,Mohamed Salah,Liverpool,MF,MF,3371,MF-1,High attacking involvement midfielders,7.034664009221449,4.199422729300028
+2024-25,Ryan Gravenberch,Liverpool,MF,MF,3160,MF-0,"Ball winning, low attacking involvement midfielders",3.56421457235044,2.7467681182463157
+2024-25,Trent Alexander-Arnold,Liverpool,DF,DF,2365,DF-1,Crossing and chance creating defenders,6.444533729690259,3.1617244404867533
+2024-25,Virgil van Dijk,Liverpool,DF,DF,3330,DF-0,Low attacking involvement defenders,4.083613633116177,0.844776841365757
+2024-25,Abdukodir Khusanov,Manchester City,DF,DF,503,DF-0,Low attacking involvement defenders,3.3803873376012414,2.279907278400444
+2024-25,Bernardo Silva,Manchester City,MF,MF,2670,MF-1,High attacking involvement midfielders,2.9558635422485406,0.20927648364179685
+2024-25,Erling Haaland,Manchester City,FW,FW,2736,FW-0,Shot taking central forwards,4.193464396568812,2.359244064210513
+2024-25,Jack Grealish,Manchester City,MF,"MF,FW",721,MF-1,High attacking involvement midfielders,4.817332141056268,1.6066479986185094
+2024-25,Jeremy Doku,Manchester City,MF,"MF,FW",1516,MF-1,High attacking involvement midfielders,3.108766529754326,2.2303294815197825
+2024-25,John Stones,Manchester City,DF,DF,548,DF-0,Low attacking involvement defenders,9.959912592564178,0.6317409954251509
+2024-25,Joško Gvardiol,Manchester City,DF,DF,3277,DF-1,Crossing and chance creating defenders,4.514300673783289,0.6950358211020315
+2024-25,Kevin De Bruyne,Manchester City,MF,"MF,FW",1702,MF-1,High attacking involvement midfielders,5.251738311486367,3.61201885799953
+2024-25,Kyle Walker,Manchester City,DF,DF,970,DF-0,Low attacking involvement defenders,4.217072518427131,0.6647392647213355
+2024-25,Manuel Akanji,Manchester City,DF,"DF,MF",2014,DF-0,Low attacking involvement defenders,3.822240275780799,1.4566020963840796
+2024-25,Mateo Kovačić,Manchester City,MF,"MF,DF",2198,MF-0,"Ball winning, low attacking involvement midfielders",3.8193380913244432,0.5369032808554515
+2024-25,Matheus Nunes,Manchester City,DF,"DF,MF",1674,DF-1,Crossing and chance creating defenders,5.132683885353859,2.683728964647517
+2024-25,Nathan Aké,Manchester City,DF,DF,678,DF-0,Low attacking involvement defenders,3.9374284909661164,2.3343342647501846
+2024-25,Nico O'Reilly,Manchester City,DF,DF,528,DF-1,Crossing and chance creating defenders,7.548887094428425,0.8415185737278215
+2024-25,Nicolás González,Manchester City,MF,MF,760,MF-0,"Ball winning, low attacking involvement midfielders",5.065273856942668,1.6986039326658071
+2024-25,Omar Marmoush,Manchester City,MF,"MF,FW",1175,MF-1,High attacking involvement midfielders,5.306304958701604,2.9556224785287473
+2024-25,Phil Foden,Manchester City,MF,"MF,FW",1777,MF-1,High attacking involvement midfielders,2.9190154641081327,3.415086533994423
+2024-25,Rico Lewis,Manchester City,DF,"DF,MF",1893,DF-0,Low attacking involvement defenders,4.393622297937293,0.4807989169733986
+2024-25,Rúben Dias,Manchester City,DF,"DF,MF",2271,DF-0,Low attacking involvement defenders,3.745023993152774,1.5058739054689658
+2024-25,Sávio,Manchester City,MF,"MF,FW",1766,MF-1,High attacking involvement midfielders,3.637226659619118,3.1587012119683853
+2024-25,İlkay Gündoğan,Manchester City,MF,MF,2223,MF-1,High attacking involvement midfielders,4.36785408853647,0.3814754779625522
+2024-25,Alejandro Garnacho,Manchester Utd,MF,MF,2199,MF-1,High attacking involvement midfielders,3.187374809380361,2.962659435084767
+2024-25,Amad Diallo,Manchester Utd,MF,"MF,FW",1901,MF-1,High attacking involvement midfielders,2.554246841472852,3.0554728988745556
+2024-25,Bruno Fernandes,Manchester Utd,MF,MF,3018,MF-1,High attacking involvement midfielders,3.4463896566253625,2.7313592917577165
+2024-25,Casemiro,Manchester Utd,MF,MF,1494,MF-0,"Ball winning, low attacking involvement midfielders",4.005923649486225,1.6807517984438638
+2024-25,Christian Eriksen,Manchester Utd,MF,MF,1061,MF-1,High attacking involvement midfielders,5.663414776421428,0.3276859289018157
+2024-25,Diogo Dalot,Manchester Utd,MF,"MF,DF",2814,MF-0,"Ball winning, low attacking involvement midfielders",2.1853256271739734,3.3277903934899675
+2024-25,Harry Maguire,Manchester Utd,DF,DF,1758,DF-0,Low attacking involvement defenders,4.795999362180647,0.35184711702990246
+2024-25,Joshua Zirkzee,Manchester Utd,FW,"FW,MF",1402,FW-1,Crossing and creating wide forwards,3.1212927454291313,0.611465397532446
+2024-25,Kobbie Mainoo,Manchester Utd,MF,MF,1651,MF-0,"Ball winning, low attacking involvement midfielders",1.92902269322138,3.9432381162655035
+2024-25,Leny Yoro,Manchester Utd,DF,DF,1165,DF-0,Low attacking involvement defenders,2.8516114452983414,2.3393818393900547
+2024-25,Lisandro Martínez,Manchester Utd,DF,DF,1751,DF-1,Crossing and chance creating defenders,3.947312661958373,0.2614687231559114
+2024-25,Manuel Ugarte,Manchester Utd,MF,MF,1785,MF-0,"Ball winning, low attacking involvement midfielders",3.6745549800302126,3.3470457018918798
+2024-25,Mason Mount,Manchester Utd,MF,"MF,FW",622,MF-1,High attacking involvement midfielders,4.7242264436307915,0.9440248147700538
+2024-25,Matthijs de Ligt,Manchester Utd,DF,DF,2123,DF-0,Low attacking involvement defenders,4.14826977125576,0.9547858372330777
+2024-25,Noussair Mazraoui,Manchester Utd,DF,"DF,MF",2838,DF-0,Low attacking involvement defenders,3.751656524738326,0.2506634466941846
+2024-25,Patrick Dorgu,Manchester Utd,MF,MF,842,MF-0,"Ball winning, low attacking involvement midfielders",4.540465032752748,1.9478313757508925
+2024-25,Rasmus Højlund,Manchester Utd,FW,FW,2004,FW-0,Shot taking central forwards,4.070897158914143,0.478453103477376
+2024-25,Victor Lindelöf,Manchester Utd,DF,DF,704,DF-0,Low attacking involvement defenders,3.4504398217388137,2.9768334518004687
+2024-25,Marcus Rashford,Manchester Utd / Aston Villa,MF,MF,1422,MF-1,High attacking involvement midfielders,2.7622973589656117,3.5668390431622075
+2024-25,Alexander Isak,Newcastle,FW,FW,2756,FW-0,Shot taking central forwards,3.5970985246676213,1.9926046405163165
+2024-25,Anthony Gordon,Newcastle,FW,"FW,MF",2434,FW-1,Crossing and creating wide forwards,2.959153319720026,2.4773023010037134
+2024-25,Bruno Guimarães,Newcastle,MF,MF,3271,MF-0,"Ball winning, low attacking involvement midfielders",3.648051233102894,0.42783971387816866
+2024-25,Dan Burn,Newcastle,DF,DF,3330,DF-0,Low attacking involvement defenders,2.064568127806214,2.1467870479722464
+2024-25,Fabian Schär,Newcastle,DF,DF,2934,DF-0,Low attacking involvement defenders,4.540170868453392,0.4655956299260504
+2024-25,Harvey Barnes,Newcastle,FW,"FW,MF",1755,FW-1,Crossing and creating wide forwards,2.6861055191698706,0.7063335076473414
+2024-25,Jacob Murphy,Newcastle,FW,"FW,MF",2360,FW-1,Crossing and creating wide forwards,3.4282784769664496,2.880422448545137
+2024-25,Joe Willock,Newcastle,MF,MF,1086,MF-0,"Ball winning, low attacking involvement midfielders",3.558022979973321,0.6387503801632728
+2024-25,Joelinton,Newcastle,MF,"MF,FW",2393,MF-0,"Ball winning, low attacking involvement midfielders",3.010139531503764,1.0508901402119464
+2024-25,Kieran Trippier,Newcastle,DF,DF,1309,DF-1,Crossing and chance creating defenders,4.4168613208802965,1.7768966718178385
+2024-25,Lewis Hall,Newcastle,DF,DF,2189,DF-1,Crossing and chance creating defenders,3.9456292119861835,1.5814461058623017
+2024-25,Sandro Tonali,Newcastle,MF,MF,2630,MF-0,"Ball winning, low attacking involvement midfielders",2.1376220774970665,1.617356264016514
+2024-25,Sean Longstaff,Newcastle,MF,MF,798,MF-0,"Ball winning, low attacking involvement midfielders",2.5742610356218845,3.956227352022371
+2024-25,Tino Livramento,Newcastle,DF,DF,2840,DF-0,Low attacking involvement defenders,3.4839602301680523,0.9372863214077869
+2024-25,Anthony Elanga,Nottingham,MF,"MF,FW",2501,MF-1,High attacking involvement midfielders,4.704217186099164,2.8282295862596225
+2024-25,Callum Hudson-Odoi,Nottingham,MF,MF,2194,MF-1,High attacking involvement midfielders,2.941353535991043,1.4963169247338364
+2024-25,Chris Wood,Nottingham,FW,FW,2959,FW-0,Shot taking central forwards,3.6383124279113535,2.2570994624369174
+2024-25,Elliot Anderson,Nottingham,MF,MF,2728,MF-0,"Ball winning, low attacking involvement midfielders",2.180017011902614,2.3652115738866653
+2024-25,Ibrahim Sangaré,Nottingham,MF,MF,590,MF-0,"Ball winning, low attacking involvement midfielders",6.142114520365602,1.7627681810981137
+2024-25,Jota Silva,Nottingham,MF,MF,854,MF-1,High attacking involvement midfielders,6.086979468796347,1.1084171953118371
+2024-25,Morato,Nottingham,DF,DF,907,DF-0,Low attacking involvement defenders,3.666949918227531,2.6216510255867753
+2024-25,Morgan Gibbs-White,Nottingham,MF,MF,2803,MF-1,High attacking involvement midfielders,2.0123715601066863,1.963972673555229
+2024-25,Murillo,Nottingham,DF,DF,3188,DF-0,Low attacking involvement defenders,2.2017851383649027,2.4871151683669757
+2024-25,Neco Williams,Nottingham,DF,"DF,MF",2594,DF-1,Crossing and chance creating defenders,3.494378864392827,1.137119989082179
+2024-25,Nicolás Domínguez,Nottingham,MF,MF,1963,MF-0,"Ball winning, low attacking involvement midfielders",2.7649171543994617,3.4920198670483273
+2024-25,Nikola Milenković,Nottingham,DF,DF,3330,DF-0,Low attacking involvement defenders,3.9115726701230864,1.49989583158872
+2024-25,Ola Aina,Nottingham,DF,DF,2995,DF-0,Low attacking involvement defenders,2.211209724659697,1.6290079284560282
+2024-25,Ryan Yates,Nottingham,MF,MF,1915,MF-0,"Ball winning, low attacking involvement midfielders",3.4833387600199015,2.1901619291429024
+2024-25,Álex Moreno,Nottingham,DF,DF,955,DF-0,Low attacking involvement defenders,3.759299798313608,0.35146227505831673
+2024-25,Adam Armstrong,Southampton,FW,"FW,MF",1248,FW-1,Crossing and creating wide forwards,3.693939731554552,0.4423416956989823
+2024-25,Cameron Archer,Southampton,FW,FW,1441,FW-0,Shot taking central forwards,4.028841514544521,0.5153586505988521
+2024-25,Flynn Downes,Southampton,MF,MF,2151,MF-0,"Ball winning, low attacking involvement midfielders",2.7776740095998433,3.6656256470356694
+2024-25,Jack Stephens,Southampton,DF,DF,1389,DF-0,Low attacking involvement defenders,2.4304336981559715,2.620004022284905
+2024-25,James Bree,Southampton,DF,"DF,MF",1075,DF-0,Low attacking involvement defenders,3.6067266464207295,1.1336824158678365
+2024-25,Jan Bednarek,Southampton,DF,DF,2531,DF-0,Low attacking involvement defenders,4.44318546491581,1.9060302379792509
+2024-25,Joe Aribo,Southampton,MF,MF,2013,MF-0,"Ball winning, low attacking involvement midfielders",3.1322411518623796,1.9660054651539016
+2024-25,Kamaldeen Sulemana,Southampton,FW,"FW,MF",1402,FW-1,Crossing and creating wide forwards,4.638183973477665,1.0967437393390531
+2024-25,Kyle Walker-Peters,Southampton,MF,"MF,DF",2918,MF-0,"Ball winning, low attacking involvement midfielders",2.2946657001803668,3.04121404210705
+2024-25,Lesley Ugochukwu,Southampton,MF,MF,1655,MF-0,"Ball winning, low attacking involvement midfielders",3.9261290968984874,3.6725427933222368
+2024-25,Mateus Fernandes,Southampton,MF,MF,2909,MF-0,"Ball winning, low attacking involvement midfielders",1.8590210588978775,1.8255397490162335
+2024-25,Nathan Wood-Gordon,Southampton,DF,DF,773,DF-0,Low attacking involvement defenders,2.7380362868901,2.956984270712279
+2024-25,Paul Onuachu,Southampton,FW,FW,1050,FW-0,Shot taking central forwards,2.7472311404429757,2.914653936366067
+2024-25,Ryan Manning,Southampton,DF,"DF,MF",1462,DF-1,Crossing and chance creating defenders,5.2029231205902,1.5969052013950167
+2024-25,Taylor Harwood-Bellis,Southampton,DF,DF,2825,DF-0,Low attacking involvement defenders,2.2815179664043588,1.9998807831834013
+2024-25,Tyler Dibling,Southampton,MF,"MF,FW",1874,MF-0,"Ball winning, low attacking involvement midfielders",2.690160233849313,1.58928774611367
+2024-25,Welington,Southampton,MF,"MF,DF",482,MF-0,"Ball winning, low attacking involvement midfielders",3.863775575713902,3.422677793118294
+2024-25,William Smallbone,Southampton,MF,MF,690,MF-0,"Ball winning, low attacking involvement midfielders",3.4128828594036302,1.3336217154103935
+2024-25,Yukinari Sugawara,Southampton,MF,"MF,DF",1557,MF-0,"Ball winning, low attacking involvement midfielders",3.09690369271782,1.2028152457888197
+2024-25,Archie Gray,Tottenham,DF,"DF,MF",1751,DF-0,Low attacking involvement defenders,4.439202640929771,2.3983964584089152
+2024-25,Ben Davies,Tottenham,DF,DF,1331,DF-0,Low attacking involvement defenders,2.2901011630109878,2.833347352080608
+2024-25,Brennan Johnson,Tottenham,FW,"FW,MF",2177,FW-0,Shot taking central forwards,2.5493354333479843,0.7773499984663079
+2024-25,Cristian Romero,Tottenham,DF,DF,1416,DF-1,Crossing and chance creating defenders,4.569416363255808,0.49433630842799925
+2024-25,Dejan Kulusevski,Tottenham,MF,"MF,FW",2389,MF-1,High attacking involvement midfielders,2.1942731219906304,2.6486397305683584
+2024-25,Destiny Udogie,Tottenham,DF,DF,1924,DF-1,Crossing and chance creating defenders,4.513929078287958,0.34160222867350143
+2024-25,Djed Spence,Tottenham,DF,DF,1792,DF-1,Crossing and chance creating defenders,2.512001427022242,0.4826381108001292
+2024-25,Dominic Solanke,Tottenham,FW,FW,2201,FW-0,Shot taking central forwards,2.4438901421543537,1.5987161033719897
+2024-25,James Maddison,Tottenham,MF,MF,1809,MF-1,High attacking involvement midfielders,4.354334425970045,3.088766630915214
+2024-25,Kevin Danso,Tottenham,DF,DF,842,DF-0,Low attacking involvement defenders,3.6160972701926437,1.7467203163120382
+2024-25,Lucas Bergvall,Tottenham,MF,MF,1212,MF-0,"Ball winning, low attacking involvement midfielders",2.265876552451713,3.7849931128942953
+2024-25,Mathys Tel,Tottenham,FW,FW,911,FW-1,Crossing and creating wide forwards,2.4488451891030634,1.772421174557854
+2024-25,Micky van de Ven,Tottenham,DF,DF,1015,DF-0,Low attacking involvement defenders,3.680056425329909,0.4311966124119837
+2024-25,Pape Matar Sarr,Tottenham,MF,MF,1913,MF-0,"Ball winning, low attacking involvement midfielders",2.5093525502940994,1.7032304927707433
+2024-25,Pedro Porro,Tottenham,DF,DF,2610,DF-1,Crossing and chance creating defenders,4.603544015362242,3.3416529160377317
+2024-25,Radu Drăgușin,Tottenham,DF,DF,1252,DF-0,Low attacking involvement defenders,2.492629528384357,2.746372954808988
+2024-25,Richarlison,Tottenham,FW,FW,504,FW-0,Shot taking central forwards,3.790512131350272,2.6481621698247735
+2024-25,Rodrigo Bentancur,Tottenham,MF,MF,1645,MF-0,"Ball winning, low attacking involvement midfielders",4.073573444379119,2.9003320178505314
+2024-25,Son Heung-min,Tottenham,FW,"FW,MF",2110,FW-1,Crossing and creating wide forwards,3.4244327665171075,2.3232235839213797
+2024-25,Timo Werner,Tottenham,FW,"FW,MF",516,FW-1,Crossing and creating wide forwards,5.348762684032397,3.137175331899525
+2024-25,Wilson Odobert,Tottenham,FW,"FW,MF",850,FW-1,Crossing and creating wide forwards,4.195485825727063,1.7292826149649745
+2024-25,Yves Bissouma,Tottenham,MF,MF,1408,MF-0,"Ball winning, low attacking involvement midfielders",3.203451707521681,3.188275668247663
+2024-25,Aaron Cresswell,West Ham,DF,DF,824,DF-0,Low attacking involvement defenders,4.529131458576455,0.5220143087461961
+2024-25,Aaron Wan-Bissaka,West Ham,DF,"DF,MF",3154,DF-1,Crossing and chance creating defenders,3.093737806463495,1.2254930019226924
+2024-25,Carlos Soler,West Ham,MF,MF,1409,MF-0,"Ball winning, low attacking involvement midfielders",2.526075488760321,1.8237323483492136
+2024-25,Crysencio Summerville,West Ham,MF,"MF,FW",786,MF-1,High attacking involvement midfielders,3.524755662199599,1.5368849467857713
+2024-25,Edson Álvarez,West Ham,MF,MF,1772,MF-0,"Ball winning, low attacking involvement midfielders",3.0821056885521716,3.8466555263850073
+2024-25,Emerson Palmieri,West Ham,DF,"DF,MF",2113,DF-0,Low attacking involvement defenders,3.182783625547317,0.17791322813419264
+2024-25,Guido Rodríguez,West Ham,MF,MF,1149,MF-0,"Ball winning, low attacking involvement midfielders",2.801930841398496,4.0656620789619495
+2024-25,Jarrod Bowen,West Ham,MF,"MF,FW",2973,MF-1,High attacking involvement midfielders,2.764315895595397,3.2750050089977307
+2024-25,Jean-Clair Todibo,West Ham,DF,DF,1825,DF-0,Low attacking involvement defenders,2.9828077644248907,2.8697586041813947
+2024-25,Konstantinos Mavropanos,West Ham,DF,DF,2045,DF-0,Low attacking involvement defenders,3.2385303771258362,1.348291094309194
+2024-25,Lucas Paquetá,West Ham,MF,"MF,FW",2380,MF-0,"Ball winning, low attacking involvement midfielders",2.854201131475238,2.077190627649833
+2024-25,Max Kilman,West Ham,DF,DF,3348,DF-0,Low attacking involvement defenders,1.8207438004143035,2.975601595392138
+2024-25,Michail Antonio,West Ham,FW,FW,836,FW-1,Crossing and creating wide forwards,3.539801311790385,1.4362016001449356
+2024-25,Mohammed Kudus,West Ham,MF,"MF,FW",2590,MF-1,High attacking involvement midfielders,3.597320252533779,1.7567667614125546
+2024-25,Niclas Füllkrug,West Ham,FW,FW,790,FW-0,Shot taking central forwards,4.181372837069551,0.5511331811403064
+2024-25,Oliver Scarles,West Ham,MF,"MF,DF",665,MF-0,"Ball winning, low attacking involvement midfielders",4.307772458758929,3.3798889131540557
+2024-25,Tomáš Souček,West Ham,MF,MF,2567,MF-0,"Ball winning, low attacking involvement midfielders",3.8053179959422123,0.38296128041394395
+2024-25,Vladimír Coufal,West Ham,DF,"DF,MF",1067,DF-0,Low attacking involvement defenders,4.2318273789716905,0.4417819760494437
+2024-25,James Ward-Prowse,West Ham / Nottingham,MF,MF,1439,MF-0,"Ball winning, low attacking involvement midfielders",3.0296618536647792,1.1973038419718365
+2024-25,André,Wolves,MF,MF,2472,MF-0,"Ball winning, low attacking involvement midfielders",2.8583708132761356,4.1294747190170025
+2024-25,Craig Dawson,Wolves,DF,DF,971,DF-0,Low attacking involvement defenders,2.874278529673617,2.5023456469198853
+2024-25,Emmanuel Agbadou,Wolves,DF,DF,1410,DF-0,Low attacking involvement defenders,1.6755041053144315,2.9912563813649524
+2024-25,Gonçalo Guedes,Wolves,MF,"MF,FW",995,MF-1,High attacking involvement midfielders,2.901781744372973,2.0514187027504067
+2024-25,Hwang Hee-chan,Wolves,MF,"MF,FW",661,MF-0,"Ball winning, low attacking involvement midfielders",6.603362767359027,0.25108455104263516
+2024-25,Jean-Ricner Bellegarde,Wolves,MF,MF,1677,MF-0,"Ball winning, low attacking involvement midfielders",4.064253748821505,0.06468000409673369
+2024-25,João Gomes,Wolves,MF,MF,2974,MF-0,"Ball winning, low attacking involvement midfielders",2.559508677236963,3.3068090636747534
+2024-25,Jørgen Strand Larsen,Wolves,FW,FW,2587,FW-0,Shot taking central forwards,3.1892304060078382,2.3630488880040037
+2024-25,Mario Lemina,Wolves,MF,"MF,DF",1364,MF-0,"Ball winning, low attacking involvement midfielders",3.0650812736849757,2.6230710765691776
+2024-25,Marshall Munetsi,Wolves,MF,"MF,FW",1078,MF-1,High attacking involvement midfielders,3.4826138709442502,0.17451676868410715
+2024-25,Matheus Cunha,Wolves,MF,MF,2597,MF-1,High attacking involvement midfielders,3.9591546325536457,3.68617669620068
+2024-25,Matt Doherty,Wolves,DF,"DF,MF",2109,DF-0,Low attacking involvement defenders,1.886426617814752,1.4746103007975337
+2024-25,Nélson Semedo,Wolves,MF,"MF,DF",2886,MF-0,"Ball winning, low attacking involvement midfielders",1.8475327913188269,3.3422828539212652
+2024-25,Pablo Sarabia,Wolves,MF,MF,814,MF-1,High attacking involvement midfielders,3.0852230449155393,2.7931214328625136
+2024-25,Rayan Aït-Nouri,Wolves,MF,"MF,DF",3109,MF-0,"Ball winning, low attacking involvement midfielders",2.5134822885792096,0.7456366829805772
+2024-25,Rodrigo Gomes,Wolves,MF,MF,810,MF-0,"Ball winning, low attacking involvement midfielders",5.178673672328645,0.659660037960518
+2024-25,Santiago Bueno,Wolves,DF,DF,1687,DF-0,Low attacking involvement defenders,2.9653791937271716,2.752718621605986
+2024-25,Tommy Doyle,Wolves,MF,MF,488,MF-0,"Ball winning, low attacking involvement midfielders",2.396115758646517,2.1548404105302668
+2024-25,Toti Gomes,Wolves,DF,DF,2614,DF-0,Low attacking involvement defenders,2.2397513673121328,2.0934626660686453
+2025-26,Ben White,Arsenal,DF,DF,702,DF-1,Crossing and chance creating defenders,5.337184227621046,1.725763426982243
+2025-26,Bukayo Saka,Arsenal,FW,"FW,MF",2222,FW-1,Crossing and creating wide forwards,5.368523399280323,2.645310615747209
+2025-26,Cristhian Mosquera,Arsenal,DF,DF,994,DF-0,Low attacking involvement defenders,5.1173897400968,0.6295088629652508
+2025-26,Declan Rice,Arsenal,MF,MF,3094,MF-1,High attacking involvement midfielders,3.7130741981972255,0.30363060608439696
+2025-26,Gabriel Magalhães,Arsenal,DF,DF,2751,DF-1,Crossing and chance creating defenders,3.893660377149327,0.31230746263754794
+2025-26,Gabriel Martinelli,Arsenal,FW,"FW,MF",1081,FW-1,Crossing and creating wide forwards,4.062227213216433,1.200079900888368
+2025-26,Jurriën Timber,Arsenal,DF,DF,2454,DF-1,Crossing and chance creating defenders,3.2849397072017057,2.2816676839992525
+2025-26,Kai Havertz,Arsenal,FW,"FW,MF",581,FW-1,Crossing and creating wide forwards,4.919111033585324,0.9015491900834709
+2025-26,Leandro Trossard,Arsenal,FW,"FW,MF",2000,FW-1,Crossing and creating wide forwards,2.2850393201238233,2.861545786259383
+2025-26,Martin Ødegaard,Arsenal,MF,MF,1369,MF-1,High attacking involvement midfielders,4.922378042515384,1.5782265799475192
+2025-26,Martín Zubimendi,Arsenal,MF,MF,2992,MF-0,"Ball winning, low attacking involvement midfielders",3.155216822445479,2.225736526626723
+2025-26,Mikel Merino,Arsenal,MF,"MF,FW",1036,MF-1,High attacking involvement midfielders,4.401585326366724,2.1129340032172177
+2025-26,Myles Lewis-Skelly,Arsenal,MF,"MF,DF",709,MF-0,"Ball winning, low attacking involvement midfielders",4.385826463165233,3.004295262468676
+2025-26,Noni Madueke,Arsenal,FW,"FW,MF",1211,FW-1,Crossing and creating wide forwards,3.1231320547509616,2.730532665108919
+2025-26,Piero Hincapié,Arsenal,DF,DF,1792,DF-1,Crossing and chance creating defenders,4.571036845571779,0.6706116998710385
+2025-26,Riccardo Calafiori,Arsenal,DF,DF,1699,DF-1,Crossing and chance creating defenders,5.201812817100987,1.4105681307875724
+2025-26,Viktor Gyökeres,Arsenal,FW,FW,2224,FW-0,Shot taking central forwards,2.317743180356618,2.6469566816618024
+2025-26,William Saliba,Arsenal,DF,DF,2614,DF-0,Low attacking involvement defenders,2.8302391332664687,1.6927275693731323
+2025-26,Eberechi Eze,Arsenal / Crystal Palace,MF,"MF,FW",1895,MF-1,High attacking involvement midfielders,3.5513147130730944,1.8225186135180893
+2025-26,Amadou Onana,Aston Villa,MF,MF,1758,MF-0,"Ball winning, low attacking involvement midfielders",2.4546568552044934,2.7052890638392495
+2025-26,Boubacar Kamara,Aston Villa,MF,MF,1411,MF-0,"Ball winning, low attacking involvement midfielders",3.7461527098461453,1.7167800899946122
+2025-26,Donyell Malen,Aston Villa,FW,"FW,MF",656,FW-0,Shot taking central forwards,4.655708058260115,1.5573866965827659
+2025-26,Emi Buendía,Aston Villa,MF,MF,1755,MF-0,"Ball winning, low attacking involvement midfielders",5.632972446872389,1.3555386448049456
+2025-26,Ezri Konsa,Aston Villa,DF,DF,3035,DF-0,Low attacking involvement defenders,3.336547437405939,2.3664430632853652
+2025-26,Ian Maatsen,Aston Villa,DF,DF,1605,DF-1,Crossing and chance creating defenders,3.301501281333528,2.2877002944674167
+2025-26,Jadon Sancho,Aston Villa,MF,MF,876,MF-1,High attacking involvement midfielders,4.833624942892418,0.4815607073365742
+2025-26,John McGinn,Aston Villa,MF,MF,2137,MF-1,High attacking involvement midfielders,2.9445585170425144,1.160784577134887
+2025-26,Lamare Bogarde,Aston Villa,MF,"MF,DF",1053,MF-0,"Ball winning, low attacking involvement midfielders",4.0538453679381234,3.3940689972932683
+2025-26,Leon Bailey,Aston Villa,MF,MF,459,MF-0,"Ball winning, low attacking involvement midfielders",3.931335061361088,0.4930219942700558
+2025-26,Lucas Digne,Aston Villa,DF,DF,1852,DF-1,Crossing and chance creating defenders,4.854127028501266,1.8543506165340968
+2025-26,Matty Cash,Aston Villa,DF,DF,3014,DF-0,Low attacking involvement defenders,4.944607694332525,0.3839186749349368
+2025-26,Morgan Rogers,Aston Villa,MF,MF,3280,MF-1,High attacking involvement midfielders,2.0337032036570917,2.5209551505998253
+2025-26,Ollie Watkins,Aston Villa,FW,FW,2839,FW-0,Shot taking central forwards,2.1280962986281406,3.198023207855609
+2025-26,Pau Torres,Aston Villa,DF,DF,1676,DF-0,Low attacking involvement defenders,2.73453368804762,2.7757953251371474
+2025-26,Ross Barkley,Aston Villa,MF,MF,857,MF-1,High attacking involvement midfielders,3.571117765578065,1.7976458934458233
+2025-26,Tyrone Mings,Aston Villa,DF,DF,1324,DF-0,Low attacking involvement defenders,2.8680460290745105,2.1912351682665596
+2025-26,Victor Lindelöf,Aston Villa,DF,"DF,MF",948,DF-0,Low attacking involvement defenders,3.880159505113311,2.473052231299272
+2025-26,Youri Tielemans,Aston Villa,MF,MF,1862,MF-0,"Ball winning, low attacking involvement midfielders",3.4558884994571875,1.2835338979016289
+2025-26,Evann Guessand,Aston Villa / Crystal Palace,MF,MF,918,MF-0,"Ball winning, low attacking involvement midfielders",4.019997079159362,0.194911513085537
+2025-26,Douglas Luiz,Aston Villa / Nottingham,MF,MF,919,MF-0,"Ball winning, low attacking involvement midfielders",3.3979155446489364,1.0093558526746373
+2025-26,Adam Smith,Bournemouth,DF,DF,1077,DF-0,Low attacking involvement defenders,4.0488198843151855,0.7925603119955253
+2025-26,Adrien Truffert,Bournemouth,DF,DF,3379,DF-1,Crossing and chance creating defenders,2.4781601541731018,1.669286881219488
+2025-26,Alex Scott,Bournemouth,MF,MF,2849,MF-0,"Ball winning, low attacking involvement midfielders",2.142153631605368,1.8124339057577572
+2025-26,Amine Adli,Bournemouth,MF,MF,1094,MF-1,High attacking involvement midfielders,3.946608369946572,1.3520623338951512
+2025-26,Bafodé Diakité,Bournemouth,DF,DF,1277,DF-0,Low attacking involvement defenders,3.3514298036698142,2.4836139346395076
+2025-26,David Brooks,Bournemouth,MF,MF,1204,MF-1,High attacking involvement midfielders,5.659587577093128,2.5299923212492343
+2025-26,Eli Junior Kroupi,Bournemouth,MF,"MF,FW",1672,MF-1,High attacking involvement midfielders,6.097283701425341,2.3235658915063757
+2025-26,Evanilson,Bournemouth,FW,FW,2742,FW-0,Shot taking central forwards,2.94876056982734,1.4815312398060954
+2025-26,James Hill,Bournemouth,DF,DF,2106,DF-0,Low attacking involvement defenders,2.6773739417564277,0.9777659486106587
+2025-26,Justin Kluivert,Bournemouth,MF,MF,952,MF-1,High attacking involvement midfielders,3.894287002675518,0.6306322214762323
+2025-26,Lewis Cook,Bournemouth,MF,"MF,DF",874,MF-0,"Ball winning, low attacking involvement midfielders",5.180180577539373,2.9220500851543108
+2025-26,Marcos Senesi,Bournemouth,DF,DF,3288,DF-1,Crossing and chance creating defenders,2.8931635512567357,0.2803370805010763
+2025-26,Marcus Tavernier,Bournemouth,MF,MF,2731,MF-1,High attacking involvement midfielders,1.2054810536095324,3.2564001287677904
+2025-26,Rayan,Bournemouth,MF,MF,1111,MF-1,High attacking involvement midfielders,3.3296803412032614,2.0529562666165897
+2025-26,Ryan Christie,Bournemouth,MF,MF,994,MF-1,High attacking involvement midfielders,3.973739979155948,0.17641585893270806
+2025-26,Tyler Adams,Bournemouth,MF,MF,1772,MF-0,"Ball winning, low attacking involvement midfielders",4.664213056645107,1.9886368550985134
+2025-26,Álex Jiménez,Bournemouth,DF,"DF,MF",2317,DF-0,Low attacking involvement defenders,4.466234730203398,1.3175552091484164
+2025-26,Antoine Semenyo,Bournemouth / Manchester City,MF,MF,3195,MF-1,High attacking involvement midfielders,4.735408583204008,2.4142597415831126
+2025-26,Aaron Hickey,Brentford,DF,"DF,MF",691,DF-0,Low attacking involvement defenders,2.486264412942058,1.208872883888156
+2025-26,Dango Ouattara,Brentford,MF,MF,2276,MF-1,High attacking involvement midfielders,2.799400358760068,2.5901612339579287
+2025-26,Igor Thiago,Brentford,FW,FW,3282,FW-0,Shot taking central forwards,2.6356069896902405,2.8823074263172654
+2025-26,Jordan Henderson,Brentford,MF,MF,1919,MF-0,"Ball winning, low attacking involvement midfielders",3.563166776658025,1.9588254047957934
+2025-26,Keane Lewis-Potter,Brentford,DF,"DF,MF",1972,DF-1,Crossing and chance creating defenders,4.857016678766981,2.1042306045583157
+2025-26,Kevin Schade,Brentford,MF,"MF,FW",2745,MF-1,High attacking involvement midfielders,3.1801767752851613,1.8482349658434498
+2025-26,Kristoffer Ajer,Brentford,DF,DF,1810,DF-0,Low attacking involvement defenders,1.8516790145048674,2.1482755418865986
+2025-26,Mathias Jensen,Brentford,MF,MF,2247,MF-0,"Ball winning, low attacking involvement midfielders",3.092018239865284,0.635293541458978
+2025-26,Michael Kayode,Brentford,DF,DF,3258,DF-1,Crossing and chance creating defenders,2.976601329332802,0.29713403427158314
+2025-26,Mikkel Damsgaard,Brentford,MF,MF,2054,MF-1,High attacking involvement midfielders,3.1098594577169556,1.1959926014536575
+2025-26,Nathan Collins,Brentford,DF,DF,2975,DF-0,Low attacking involvement defenders,2.19492977568142,1.505279739455775
+2025-26,Rico Henry,Brentford,DF,DF,1328,DF-0,Low attacking involvement defenders,3.4301464138300295,1.6548265440046848
+2025-26,Sepp van den Berg,Brentford,DF,DF,2763,DF-0,Low attacking involvement defenders,3.192356943545313,1.5161407108771172
+2025-26,Vitaly Janelt,Brentford,MF,MF,1443,MF-0,"Ball winning, low attacking involvement midfielders",3.9175006303191524,1.6905725974477614
+2025-26,Yehor Yarmoliuk,Brentford,MF,MF,2659,MF-0,"Ball winning, low attacking involvement midfielders",2.0393194010582136,3.7944274433871468
+2025-26,Brajan Gruda,Brighton,MF,MF,719,MF-1,High attacking involvement midfielders,2.271188020902822,2.3705763788608527
+2025-26,Carlos Baleba,Brighton,MF,MF,1652,MF-0,"Ball winning, low attacking involvement midfielders",3.4349102184355287,3.4834523518620113
+2025-26,Danny Welbeck,Brighton,FW,FW,2258,FW-0,Shot taking central forwards,2.7095409507506467,2.277401405657389
+2025-26,Diego Gómez,Brighton,MF,"MF,FW",2120,MF-0,"Ball winning, low attacking involvement midfielders",4.4880656841055755,0.5937253598659229
+2025-26,Ferdi Kadioglu,Brighton,DF,"DF,MF",3133,DF-1,Crossing and chance creating defenders,3.0926898762019994,1.4520868864325318
+2025-26,Georginio Rutter,Brighton,MF,"MF,FW",1786,MF-1,High attacking involvement midfielders,2.866031034954293,1.6200370753597606
+2025-26,Jack Hinshelwood,Brighton,MF,MF,1741,MF-1,High attacking involvement midfielders,3.2109147116758803,1.3804938751900644
+2025-26,James Milner,Brighton,MF,MF,784,MF-0,"Ball winning, low attacking involvement midfielders",2.8762360625343617,2.233912291443397
+2025-26,Jan Paul van Hecke,Brighton,DF,DF,3210,DF-1,Crossing and chance creating defenders,3.0341227631814274,0.6570512161868041
+2025-26,Joël Veltman,Brighton,DF,DF,1058,DF-1,Crossing and chance creating defenders,4.970504017219485,0.2568437893784301
+2025-26,Kaoru Mitoma,Brighton,MF,"MF,FW",1721,MF-1,High attacking involvement midfielders,2.148910366278244,1.8529289004892364
+2025-26,Lewis Dunk,Brighton,DF,DF,2838,DF-0,Low attacking involvement defenders,2.5742460357551216,1.9879438792611173
+2025-26,Mats Wieffer,Brighton,DF,DF,1903,DF-1,Crossing and chance creating defenders,3.4300207130326346,2.571859493199332
+2025-26,Maxim De Cuyper,Brighton,DF,"DF,MF",1414,DF-1,Crossing and chance creating defenders,6.23385198604305,2.864619019533621
+2025-26,Olivier Boscagli,Brighton,DF,DF,802,DF-0,Low attacking involvement defenders,4.229418269130765,1.0262657118012637
+2025-26,Pascal Groß,Brighton,MF,MF,1636,MF-1,High attacking involvement midfielders,4.218852290670743,0.7769913049475647
+2025-26,Yankuba Minteh,Brighton,MF,MF,2391,MF-1,High attacking involvement midfielders,3.1281060073866342,1.1539134621170364
+2025-26,Yasin Ayari,Brighton,MF,MF,1929,MF-0,"Ball winning, low attacking involvement midfielders",2.3793053169038476,1.808180715620364
+2025-26,Armando Broja,Burnley,FW,FW,860,FW-0,Shot taking central forwards,3.602423930910036,0.9116014832073844
+2025-26,Axel Tuanzebe,Burnley,DF,DF,1201,DF-0,Low attacking involvement defenders,5.523606518440115,1.4560398524291385
+2025-26,Bashir Humphreys,Burnley,DF,"DF,MF",1578,DF-0,Low attacking involvement defenders,2.5186143516719346,1.4932002855182107
+2025-26,Florentino Luís,Burnley,MF,MF,2105,MF-0,"Ball winning, low attacking involvement midfielders",3.7208291465672167,3.7198423348502287
+2025-26,Hannibal Mejbri,Burnley,MF,MF,1229,MF-0,"Ball winning, low attacking involvement midfielders",5.976418511910925,0.33496615905874716
+2025-26,Hjalmar Ekdal,Burnley,DF,DF,1539,DF-0,Low attacking involvement defenders,2.9896486036019834,2.5124517710075542
+2025-26,Jacob Bruun Larsen,Burnley,MF,"MF,FW",1030,MF-0,"Ball winning, low attacking involvement midfielders",4.825150875189503,0.3170893336407268
+2025-26,Jaidon Anthony,Burnley,MF,MF,2722,MF-1,High attacking involvement midfielders,2.249726735074578,1.9910264544867582
+2025-26,Joe Worrall,Burnley,DF,DF,500,DF-0,Low attacking involvement defenders,3.6835823932645786,3.203953151241506
+2025-26,Josh Cullen,Burnley,MF,MF,1514,MF-0,"Ball winning, low attacking involvement midfielders",3.5832800162609892,1.4779022100612629
+2025-26,Josh Laurent,Burnley,DF,"DF,MF",1764,DF-0,Low attacking involvement defenders,3.3414654948763047,0.5611642747787582
+2025-26,Kyle Walker,Burnley,DF,"DF,MF",3096,DF-0,Low attacking involvement defenders,2.6194882442508356,2.166380526410808
+2025-26,Lesley Ugochukwu,Burnley,MF,MF,2336,MF-0,"Ball winning, low attacking involvement midfielders",4.0741601002280845,2.550387000520402
+2025-26,Loum Tchaouna,Burnley,MF,"MF,FW",1272,MF-0,"Ball winning, low attacking involvement midfielders",3.3681245595636025,0.1810038977809385
+2025-26,Lucas,Burnley,MF,"MF,DF",1409,MF-0,"Ball winning, low attacking involvement midfielders",3.2969515204087703,2.2572482715971818
+2025-26,Lyle Foster,Burnley,FW,"FW,MF",1371,FW-0,Shot taking central forwards,3.502354732953324,0.6182293656150502
+2025-26,Marcus Edwards,Burnley,MF,"MF,FW",1067,MF-1,High attacking involvement midfielders,2.991465606713445,1.560150419094612
+2025-26,Maxime Estève,Burnley,DF,DF,2932,DF-0,Low attacking involvement defenders,2.785919345350429,3.0324625726739454
+2025-26,Quilindschy Hartman,Burnley,DF,DF,1825,DF-1,Crossing and chance creating defenders,4.688035366182574,0.8118913836936938
+2025-26,Zian Flemming,Burnley,FW,FW,1769,FW-0,Shot taking central forwards,3.169210189894913,2.476389349309659
+2025-26,James Ward-Prowse,Burnley / West Ham,MF,MF,1097,MF-0,"Ball winning, low attacking involvement midfielders",5.130542009302936,0.9849767932583733
+2025-26,Alejandro Garnacho,Chelsea,MF,MF,1268,MF-1,High attacking involvement midfielders,4.13767792276378,2.345873820020624
+2025-26,Andrey Santos,Chelsea,MF,MF,1260,MF-0,"Ball winning, low attacking involvement midfielders",2.8428394643612678,2.8627432545477514
+2025-26,Benoît Badiashile,Chelsea,DF,DF,471,DF-0,Low attacking involvement defenders,3.764874620668868,2.4833140426839364
+2025-26,Cole Palmer,Chelsea,MF,MF,1955,MF-1,High attacking involvement midfielders,4.0290888218542,2.2823617180076328
+2025-26,Enzo Fernández,Chelsea,MF,MF,3115,MF-1,High attacking involvement midfielders,3.0898675626973966,2.871685359938317
+2025-26,Estêvão Willian,Chelsea,MF,MF,848,MF-1,High attacking involvement midfielders,4.954381798532879,2.8264257941865996
+2025-26,Jamie Gittens,Chelsea,MF,MF,495,MF-1,High attacking involvement midfielders,4.047402839661058,0.6976794508181241
+2025-26,Jorrel Hato,Chelsea,DF,DF,1148,DF-0,Low attacking involvement defenders,5.004432185574871,0.7505071894401603
+2025-26,Joshua Acheampong,Chelsea,DF,DF,666,DF-1,Crossing and chance creating defenders,5.420580615546019,0.32950557466707053
+2025-26,João Pedro,Chelsea,FW,"FW,MF",2661,FW-0,Shot taking central forwards,2.568720089122276,1.4606509765092208
+2025-26,Liam Delap,Chelsea,FW,FW,1107,FW-0,Shot taking central forwards,4.3268889172762455,1.2629243579941862
+2025-26,Malo Gusto,Chelsea,DF,"DF,MF",2261,DF-1,Crossing and chance creating defenders,3.716667787477718,2.126757142347677
+2025-26,Marc Cucurella,Chelsea,DF,DF,2707,DF-1,Crossing and chance creating defenders,2.9074536675525877,2.593490402121642
+2025-26,Moisés Caicedo,Chelsea,MF,MF,2795,MF-0,"Ball winning, low attacking involvement midfielders",4.428348012476908,2.3767574201759674
+2025-26,Pedro Neto,Chelsea,MF,"MF,FW",2631,MF-1,High attacking involvement midfielders,3.105036626714045,2.3233150228784107
+2025-26,Reece James,Chelsea,DF,"DF,MF",1963,DF-1,Crossing and chance creating defenders,4.321233886953242,3.0353690662978217
+2025-26,Tosin Adarabioyo,Chelsea,DF,DF,795,DF-0,Low attacking involvement defenders,3.1475569647748958,2.384692843797819
+2025-26,Trevoh Chalobah,Chelsea,DF,DF,2783,DF-0,Low attacking involvement defenders,3.5027181367064366,0.862327324013751
+2025-26,Wesley Fofana,Chelsea,DF,DF,1722,DF-0,Low attacking involvement defenders,4.8452438109250116,0.9384919054224303
+2025-26,Adam Wharton,Crystal Palace,MF,MF,2552,MF-0,"Ball winning, low attacking involvement midfielders",2.945132935013147,1.404927804611524
+2025-26,Chadi Riad,Crystal Palace,DF,DF,552,DF-0,Low attacking involvement defenders,3.7791753164092623,0.5510685543705196
+2025-26,Chris Richards,Crystal Palace,DF,DF,2827,DF-0,Low attacking involvement defenders,1.9185565060328604,2.6948276740608765
+2025-26,Daichi Kamada,Crystal Palace,MF,MF,1902,MF-0,"Ball winning, low attacking involvement midfielders",2.4328970597065736,2.707111704703112
+2025-26,Daniel Muñoz,Crystal Palace,MF,MF,2399,MF-0,"Ball winning, low attacking involvement midfielders",3.231900421603807,0.7342385066565713
+2025-26,Ismaila Sarr,Crystal Palace,MF,MF,2174,MF-1,High attacking involvement midfielders,4.544501599356808,2.07518492460959
+2025-26,Jaydee Canvot,Crystal Palace,DF,DF,1336,DF-0,Low attacking involvement defenders,2.4419080457535336,2.1117953776689276
+2025-26,Jean-Philippe Mateta,Crystal Palace,FW,FW,2218,FW-0,Shot taking central forwards,2.5258857298765545,3.4545129386482554
+2025-26,Jefferson Lerma,Crystal Palace,MF,"MF,DF",1733,MF-0,"Ball winning, low attacking involvement midfielders",2.492627963145771,2.6202496972935423
+2025-26,Justin Devenny,Crystal Palace,MF,"MF,FW",796,MF-0,"Ball winning, low attacking involvement midfielders",3.1042185239006743,1.1725227411980637
+2025-26,Maxence Lacroix,Crystal Palace,DF,DF,3085,DF-0,Low attacking involvement defenders,2.033507039049473,1.3486629458585275
+2025-26,Nathaniel Clyne,Crystal Palace,MF,"MF,DF",594,MF-0,"Ball winning, low attacking involvement midfielders",3.9805885943061092,3.01142513470952
+2025-26,Tyrick Mitchell,Crystal Palace,MF,MF,3251,MF-0,"Ball winning, low attacking involvement midfielders",2.298370533885442,2.8405587898534073
+2025-26,Will Hughes,Crystal Palace,MF,MF,1571,MF-0,"Ball winning, low attacking involvement midfielders",3.6914213329818737,2.525067038751716
+2025-26,Yéremy Pino,Crystal Palace,MF,"MF,FW",2080,MF-1,High attacking involvement midfielders,3.3542432153939106,1.799158318046548
+2025-26,Marc Guéhi,Crystal Palace / Manchester City,DF,DF,3150,DF-1,Crossing and chance creating defenders,3.3811510683440393,1.0509225723183833
+2025-26,Brennan Johnson,Crystal Palace / Tottenham,MF,"MF,FW",1722,MF-0,"Ball winning, low attacking involvement midfielders",4.676881669416144,0.6103602117883877
+2025-26,Beto,Everton,FW,FW,1568,FW-0,Shot taking central forwards,2.327947282671956,3.526992230009612
+2025-26,Carlos Alcaraz,Everton,MF,MF,689,MF-0,"Ball winning, low attacking involvement midfielders",4.276300630595972,0.4542640338684363
+2025-26,Dwight McNeil,Everton,MF,MF,1168,MF-0,"Ball winning, low attacking involvement midfielders",2.8315890037344897,1.4058190000391249
+2025-26,Harrison Armstrong,Everton,MF,MF,529,MF-0,"Ball winning, low attacking involvement midfielders",4.042687249087324,1.9253509625478786
+2025-26,Idrissa Gueye,Everton,MF,MF,2093,MF-0,"Ball winning, low attacking involvement midfielders",2.222731820055036,2.3437574735887496
+2025-26,Iliman Ndiaye,Everton,MF,MF,2778,MF-1,High attacking involvement midfielders,2.970397600029114,0.9484697596174971
+2025-26,Jack Grealish,Everton,MF,MF,1627,MF-1,High attacking involvement midfielders,4.385272518073489,1.057378037967207
+2025-26,Jake O'Brien,Everton,DF,DF,3120,DF-0,Low attacking involvement defenders,2.810347053389284,1.386492154414603
+2025-26,James Garner,Everton,MF,"MF,DF",3413,MF-0,"Ball winning, low attacking involvement midfielders",3.2950077784006755,1.7649493993454861
+2025-26,James Tarkowski,Everton,DF,DF,3330,DF-0,Low attacking involvement defenders,2.964115715694929,0.5070601909998174
+2025-26,Jarrad Branthwaite,Everton,DF,DF,680,DF-0,Low attacking involvement defenders,3.911756100136208,0.8430899625894015
+2025-26,Kiernan Dewsbury-Hall,Everton,MF,MF,2626,MF-1,High attacking involvement midfielders,2.763729764837043,1.5326966811272538
+2025-26,Merlin Röhl,Everton,MF,MF,682,MF-0,"Ball winning, low attacking involvement midfielders",4.4699941084527595,2.1200984478318157
+2025-26,Michael Keane,Everton,DF,DF,2591,DF-0,Low attacking involvement defenders,3.724950376056026,1.394147901468111
+2025-26,Thierno Barry,Everton,FW,FW,1914,FW-0,Shot taking central forwards,2.712871301701664,2.916192034281169
+2025-26,Tim Iroegbunam,Everton,MF,MF,1487,MF-0,"Ball winning, low attacking involvement midfielders",4.66956160239985,3.2692178598122172
+2025-26,Vitaliy Mykolenko,Everton,DF,DF,2958,DF-0,Low attacking involvement defenders,2.549526806824048,1.611549858502212
+2025-26,Alex Iwobi,Fulham,MF,MF,2419,MF-1,High attacking involvement midfielders,3.3673852452350808,0.27529336761090883
+2025-26,Antonee Robinson,Fulham,DF,"DF,MF",1492,DF-1,Crossing and chance creating defenders,4.594382391764558,0.7141506726359994
+2025-26,Calvin Bassey,Fulham,DF,DF,2534,DF-0,Low attacking involvement defenders,2.482554364958526,1.7125299843041164
+2025-26,Emile Smith Rowe,Fulham,MF,MF,1923,MF-0,"Ball winning, low attacking involvement midfielders",3.1155703912624375,0.9400136119645133
+2025-26,Harry Wilson,Fulham,MF,MF,2673,MF-1,High attacking involvement midfielders,3.1911322759230276,2.445626552300721
+2025-26,Issa Diop,Fulham,DF,DF,816,DF-0,Low attacking involvement defenders,5.790100278697155,1.4402938803574807
+2025-26,Joachim Andersen,Fulham,DF,DF,2875,DF-0,Low attacking involvement defenders,1.239948680057747,2.878317390970518
+2025-26,Jorge Cuenca,Fulham,DF,DF,938,DF-0,Low attacking involvement defenders,4.292682390081082,1.911692890985429
+2025-26,Joshua King,Fulham,MF,MF,1308,MF-1,High attacking involvement midfielders,3.501020200420129,0.62802710016385
+2025-26,Kenny Tete,Fulham,DF,DF,1791,DF-1,Crossing and chance creating defenders,3.804681875408787,0.356959477204319
+2025-26,Kevin,Fulham,MF,MF,1041,MF-1,High attacking involvement midfielders,2.800895933965612,0.7650832472917313
+2025-26,Raúl Jiménez,Fulham,FW,FW,2189,FW-0,Shot taking central forwards,3.3462802566977117,0.7718849607591198
+2025-26,Rodrigo Muniz,Fulham,FW,FW,1000,FW-0,Shot taking central forwards,3.976321849155825,0.3418198186273216
+2025-26,Ryan Sessegnon,Fulham,DF,"DF,MF",1823,DF-1,Crossing and chance creating defenders,4.045501908710852,1.6072227480981267
+2025-26,Samuel Chukwueze,Fulham,MF,MF,1079,MF-1,High attacking involvement midfielders,2.9466656759177856,2.8017918958599055
+2025-26,Sander Berge,Fulham,MF,MF,2905,MF-0,"Ball winning, low attacking involvement midfielders",2.6178020333776746,3.502271627532519
+2025-26,Saša Lukić,Fulham,MF,MF,1734,MF-0,"Ball winning, low attacking involvement midfielders",3.94612641928799,1.767024589150211
+2025-26,Timothy Castagne,Fulham,DF,"DF,MF",1845,DF-1,Crossing and chance creating defenders,2.759614482299645,0.696143348817742
+2025-26,Tom Cairney,Fulham,MF,MF,775,MF-0,"Ball winning, low attacking involvement midfielders",3.938021212831019,0.7061301099194126
+2025-26,Oscar Bobb,Fulham / Manchester City,MF,MF,1039,MF-0,"Ball winning, low attacking involvement midfielders",3.0300883396175724,1.2476851361159165
+2025-26,Anton Stach,Leeds United,MF,MF,2370,MF-1,High attacking involvement midfielders,3.4368239818586312,0.9176935693627604
+2025-26,Ao Tanaka,Leeds United,MF,MF,1315,MF-0,"Ball winning, low attacking involvement midfielders",2.7593867129878342,1.4066822169836133
+2025-26,Brenden Aaronson,Leeds United,MF,"MF,FW",2449,MF-1,High attacking involvement midfielders,2.259401327616544,1.48897955055436
+2025-26,Daniel James,Leeds United,FW,"FW,MF",559,FW-1,Crossing and creating wide forwards,5.133930452501508,1.856645842270063
+2025-26,Dominic Calvert-Lewin,Leeds United,FW,FW,2721,FW-0,Shot taking central forwards,2.1075519739436546,3.4663653167048656
+2025-26,Ethan Ampadu,Leeds United,MF,MF,3119,MF-0,"Ball winning, low attacking involvement midfielders",2.196656549678838,3.7739624222624184
+2025-26,Gabriel Gudmundsson,Leeds United,DF,"DF,MF",2631,DF-1,Crossing and chance creating defenders,3.7448214118758294,0.746348248018089
+2025-26,Ilia Gruev,Leeds United,MF,MF,1323,MF-0,"Ball winning, low attacking involvement midfielders",3.0091028836157347,3.0533437634931575
+2025-26,Jaka Bijol,Leeds United,DF,DF,1890,DF-0,Low attacking involvement defenders,2.5104071373443935,1.184065298325324
+2025-26,James Justin,Leeds United,DF,"DF,MF",1901,DF-1,Crossing and chance creating defenders,3.236560866658841,1.8296221973577071
+2025-26,Jayden Bogle,Leeds United,MF,"MF,DF",2793,MF-0,"Ball winning, low attacking involvement midfielders",1.8933977127218724,3.129040522581383
+2025-26,Joe Rodon,Leeds United,DF,DF,2951,DF-0,Low attacking involvement defenders,2.323841783979332,2.1632347191588694
+2025-26,Lukas Nmecha,Leeds United,FW,FW,1083,FW-0,Shot taking central forwards,2.562696401730952,2.0020552853623976
+2025-26,Noah Okafor,Leeds United,FW,"FW,MF",1561,FW-1,Crossing and creating wide forwards,4.225278615953725,0.2714749339312661
+2025-26,Pascal Struijk,Leeds United,DF,DF,2936,DF-0,Low attacking involvement defenders,2.6836698604902245,1.3172237162873972
+2025-26,Sean Longstaff,Leeds United,MF,MF,1011,MF-0,"Ball winning, low attacking involvement midfielders",4.19058953000752,0.12561223189231718
+2025-26,Wilfried Gnonto,Leeds United,FW,FW,537,FW-1,Crossing and creating wide forwards,5.620730367457927,3.2485060844621216
+2025-26,Alexander Isak,Liverpool,FW,FW,699,FW-0,Shot taking central forwards,3.664761124389858,1.7379029112767546
+2025-26,Alexis Mac Allister,Liverpool,MF,MF,2658,MF-0,"Ball winning, low attacking involvement midfielders",2.0140355774880145,1.643255170938133
+2025-26,Andy Robertson,Liverpool,DF,DF,1176,DF-1,Crossing and chance creating defenders,5.723142235238587,1.4972413170347485
+2025-26,Cody Gakpo,Liverpool,MF,"MF,FW",2737,MF-1,High attacking involvement midfielders,4.929416694545284,2.453487544468241
+2025-26,Conor Bradley,Liverpool,DF,DF,929,DF-1,Crossing and chance creating defenders,5.237173477236452,0.643609098045343
+2025-26,Curtis Jones,Liverpool,MF,"MF,DF",1937,MF-0,"Ball winning, low attacking involvement midfielders",2.0545181747844112,1.9655022666679582
+2025-26,Dominik Szoboszlai,Liverpool,MF,"MF,DF",3231,MF-1,High attacking involvement midfielders,3.1213701215052176,1.6329768279116403
+2025-26,Florian Wirtz,Liverpool,MF,MF,2378,MF-1,High attacking involvement midfielders,2.9002617301523363,2.3498959502532477
+2025-26,Hugo Ekitike,Liverpool,FW,FW,1803,FW-0,Shot taking central forwards,3.669775808773013,1.4872879673404458
+2025-26,Ibrahima Konaté,Liverpool,DF,DF,3090,DF-0,Low attacking involvement defenders,2.059021403498389,1.77744140513576
+2025-26,Jeremie Frimpong,Liverpool,DF,"DF,MF",1040,DF-1,Crossing and chance creating defenders,5.550236433192782,2.296450816222917
+2025-26,Joe Gomez,Liverpool,DF,DF,607,DF-1,Crossing and chance creating defenders,7.001951206410714,1.156526286343059
+2025-26,Milos Kerkez,Liverpool,DF,DF,2257,DF-1,Crossing and chance creating defenders,2.9569646385108372,1.3584792691232437
+2025-26,Mohamed Salah,Liverpool,MF,MF,2146,MF-1,High attacking involvement midfielders,4.1099232494181415,3.4447981957809217
+2025-26,Rio Ngumoha,Liverpool,MF,MF,560,MF-1,High attacking involvement midfielders,3.7663781141492434,3.3755408250529486
+2025-26,Ryan Gravenberch,Liverpool,MF,MF,2992,MF-0,"Ball winning, low attacking involvement midfielders",2.4384670582898025,2.2714161685275034
+2025-26,Virgil van Dijk,Liverpool,DF,DF,3420,DF-0,Low attacking involvement defenders,4.946563051912472,0.40757594545006626
+2025-26,Abdukodir Khusanov,Manchester City,DF,DF,1432,DF-0,Low attacking involvement defenders,3.962943990738363,1.1065066632960066
+2025-26,Bernardo Silva,Manchester City,MF,MF,2872,MF-0,"Ball winning, low attacking involvement midfielders",4.336791471866295,0.5078577202906889
+2025-26,Erling Haaland,Manchester City,FW,FW,2953,FW-0,Shot taking central forwards,5.4915522986272,1.9729652233052724
+2025-26,Jeremy Doku,Manchester City,MF,"MF,FW",1784,MF-1,High attacking involvement midfielders,5.191515007852358,2.816367372240931
+2025-26,Joško Gvardiol,Manchester City,DF,DF,1372,DF-1,Crossing and chance creating defenders,5.393256632631229,0.8781707504287963
+2025-26,Matheus Nunes,Manchester City,DF,DF,2862,DF-1,Crossing and chance creating defenders,4.658821788976717,1.2752746824243104
+2025-26,Nathan Aké,Manchester City,DF,DF,695,DF-1,Crossing and chance creating defenders,4.338851048682429,0.6803699249495008
+2025-26,Nico O'Reilly,Manchester City,DF,"DF,MF",2646,DF-1,Crossing and chance creating defenders,6.45847688762992,2.171895145375049
+2025-26,Nicolás González,Manchester City,MF,MF,1569,MF-0,"Ball winning, low attacking involvement midfielders",6.422077536812717,1.8423118175663706
+2025-26,Omar Marmoush,Manchester City,FW,"FW,MF",700,FW-1,Crossing and creating wide forwards,5.75397070338168,1.0735333994990839
+2025-26,Phil Foden,Manchester City,MF,MF,2086,MF-1,High attacking involvement midfielders,3.3824796038980036,3.4150577615827222
+2025-26,Rayan Aït-Nouri,Manchester City,DF,DF,974,DF-1,Crossing and chance creating defenders,5.258132482075009,2.046483851932919
+2025-26,Rayan Cherki,Manchester City,MF,MF,1786,MF-0,"Ball winning, low attacking involvement midfielders",7.267523363345301,0.22589052712588398
+2025-26,Rodri,Manchester City,MF,MF,1511,MF-0,"Ball winning, low attacking involvement midfielders",4.657726370017333,1.193342293307981
+2025-26,Rúben Dias,Manchester City,DF,DF,2141,DF-0,Low attacking involvement defenders,4.824284467870615,0.8570323275103284
+2025-26,Sávio,Manchester City,MF,MF,833,MF-1,High attacking involvement midfielders,3.7966134985909896,2.3119897688582114
+2025-26,Tijjani Reijnders,Manchester City,MF,MF,1631,MF-1,High attacking involvement midfielders,2.8038569046828425,2.7128257246022636
+2025-26,Amad Diallo,Manchester Utd,MF,MF,2341,MF-1,High attacking involvement midfielders,2.7899966269086627,2.3632686406152783
+2025-26,Ayden Heaven,Manchester Utd,DF,DF,924,DF-0,Low attacking involvement defenders,3.820513694438001,1.4724491419678567
+2025-26,Benjamin Šeško,Manchester Utd,FW,FW,1643,FW-0,Shot taking central forwards,4.195078805356747,3.2320264166810198
+2025-26,Bruno Fernandes,Manchester Utd,MF,MF,3063,MF-1,High attacking involvement midfielders,7.3735089312269535,2.5251872287531087
+2025-26,Bryan Mbeumo,Manchester Utd,MF,"MF,FW",2609,MF-1,High attacking involvement midfielders,3.9788989615702874,3.4439642843660865
+2025-26,Casemiro,Manchester Utd,MF,MF,2571,MF-1,High attacking involvement midfielders,4.132671213094983,0.36861893495407827
+2025-26,Diogo Dalot,Manchester Utd,DF,"DF,MF",2614,DF-1,Crossing and chance creating defenders,1.8977755209235525,2.062337405864313
+2025-26,Harry Maguire,Manchester Utd,DF,DF,1653,DF-0,Low attacking involvement defenders,2.3344837265107463,0.9636776094768011
+2025-26,Joshua Zirkzee,Manchester Utd,FW,"FW,MF",626,FW-1,Crossing and creating wide forwards,5.396494668015295,0.4719777819896116
+2025-26,Kobbie Mainoo,Manchester Utd,MF,MF,1662,MF-0,"Ball winning, low attacking involvement midfielders",3.3485102526235337,1.9459183301176157
+2025-26,Leny Yoro,Manchester Utd,DF,DF,1740,DF-0,Low attacking involvement defenders,2.5518870247528724,2.0064234677285695
+2025-26,Lisandro Martínez,Manchester Utd,DF,DF,1233,DF-0,Low attacking involvement defenders,3.82638006403282,1.9027730253087758
+2025-26,Luke Shaw,Manchester Utd,DF,DF,3219,DF-0,Low attacking involvement defenders,2.425019731899641,1.2543944680674732
+2025-26,Manuel Ugarte,Manchester Utd,MF,MF,887,MF-0,"Ball winning, low attacking involvement midfielders",6.21305180251621,2.852452990248672
+2025-26,Mason Mount,Manchester Utd,MF,MF,1017,MF-0,"Ball winning, low attacking involvement midfielders",3.541230534282381,0.06521081420254982
+2025-26,Matheus Cunha,Manchester Utd,MF,"MF,FW",2494,MF-1,High attacking involvement midfielders,3.814438928019041,2.525349814745823
+2025-26,Matthijs de Ligt,Manchester Utd,DF,DF,1170,DF-0,Low attacking involvement defenders,3.077964131471877,1.3488562413553908
+2025-26,Noussair Mazraoui,Manchester Utd,DF,"DF,MF",985,DF-0,Low attacking involvement defenders,4.178291646865753,0.6248936698920229
+2025-26,Patrick Dorgu,Manchester Utd,MF,MF,1449,MF-1,High attacking involvement midfielders,4.576864515295018,1.082243928936939
+2025-26,Anthony Elanga,Newcastle,FW,"FW,MF",1319,FW-1,Crossing and creating wide forwards,4.194266793751216,2.1612047149684255
+2025-26,Anthony Gordon,Newcastle,FW,FW,1795,FW-1,Crossing and creating wide forwards,2.651365582099868,1.3649266414322092
+2025-26,Bruno Guimarães,Newcastle,MF,MF,2453,MF-1,High attacking involvement midfielders,4.24447742173546,1.468923509751333
+2025-26,Dan Burn,Newcastle,DF,DF,2199,DF-0,Low attacking involvement defenders,3.2023429779533945,1.0385199370021825
+2025-26,Fabian Schär,Newcastle,DF,DF,1091,DF-0,Low attacking involvement defenders,3.944002163423524,0.6026435480974861
+2025-26,Harvey Barnes,Newcastle,FW,"FW,MF",1966,FW-0,Shot taking central forwards,3.045909964269111,0.3276154035573242
+2025-26,Jacob Murphy,Newcastle,FW,"FW,MF",1617,FW-1,Crossing and creating wide forwards,3.0476838437346294,2.5873689997079574
+2025-26,Jacob Ramsey,Newcastle,MF,MF,1450,MF-0,"Ball winning, low attacking involvement midfielders",2.1965633496259547,2.0130084436054347
+2025-26,Joe Willock,Newcastle,MF,MF,983,MF-0,"Ball winning, low attacking involvement midfielders",2.8553099472826085,0.794050770853485
+2025-26,Joelinton,Newcastle,MF,MF,1951,MF-0,"Ball winning, low attacking involvement midfielders",3.2542375512847492,1.94777236884019
+2025-26,Kieran Trippier,Newcastle,DF,DF,1586,DF-1,Crossing and chance creating defenders,5.388690465201314,0.5085663335249038
+2025-26,Lewis Hall,Newcastle,DF,DF,2181,DF-1,Crossing and chance creating defenders,2.91156264247195,2.021530556145255
+2025-26,Lewis Miley,Newcastle,MF,"MF,DF",1496,MF-0,"Ball winning, low attacking involvement midfielders",3.627684871540473,1.2954125937133503
+2025-26,Malick Thiaw,Newcastle,DF,DF,2965,DF-1,Crossing and chance creating defenders,5.02251304997061,0.06885461232762236
+2025-26,Nick Woltemade,Newcastle,FW,"FW,MF",1902,FW-0,Shot taking central forwards,3.002443227697875,1.1567645062939027
+2025-26,Sandro Tonali,Newcastle,MF,MF,2534,MF-0,"Ball winning, low attacking involvement midfielders",2.4167727325775545,2.119133372266521
+2025-26,Sven Botman,Newcastle,DF,DF,1835,DF-0,Low attacking involvement defenders,2.211938729849396,0.9346167425914955
+2025-26,Tino Livramento,Newcastle,DF,DF,1328,DF-0,Low attacking involvement defenders,4.48375793015009,0.5375660453723556
+2025-26,William Osula,Newcastle,FW,FW,819,FW-0,Shot taking central forwards,4.717051238008233,2.7879454857875423
+2025-26,Yoane Wissa,Newcastle,FW,FW,531,FW-0,Shot taking central forwards,4.467283777158831,1.264587073484182
+2025-26,Callum Hudson-Odoi,Nottingham,MF,MF,1841,MF-1,High attacking involvement midfielders,2.9990392213277883,1.77397295630765
+2025-26,Chris Wood,Nottingham,FW,FW,901,FW-0,Shot taking central forwards,2.9550454867870735,2.681750675747548
+2025-26,Dan Ndoye,Nottingham,MF,MF,1173,MF-0,"Ball winning, low attacking involvement midfielders",4.0201943661214665,0.6120748080461151
+2025-26,Dilane Bakwa,Nottingham,MF,MF,553,MF-1,High attacking involvement midfielders,4.592311747220551,0.9047607161945423
+2025-26,Elliot Anderson,Nottingham,MF,MF,3331,MF-0,"Ball winning, low attacking involvement midfielders",2.920044509544735,1.4724158099609816
+2025-26,Ibrahim Sangaré,Nottingham,MF,MF,2075,MF-0,"Ball winning, low attacking involvement midfielders",2.101191939107041,3.2444820112957435
+2025-26,Igor Jesus,Nottingham,FW,FW,2298,FW-0,Shot taking central forwards,2.9611174316245523,1.1406249168818134
+2025-26,Jair Cunha,Nottingham,DF,DF,517,DF-0,Low attacking involvement defenders,3.513558952763643,1.8669771531480261
+2025-26,Morato,Nottingham,DF,DF,1345,DF-0,Low attacking involvement defenders,3.378507637056345,1.0809239182370258
+2025-26,Morgan Gibbs-White,Nottingham,MF,MF,3097,MF-1,High attacking involvement midfielders,3.5625557856246717,2.6202731740434526
+2025-26,Murillo,Nottingham,DF,DF,2130,DF-0,Low attacking involvement defenders,1.652988407282709,2.4976691478231356
+2025-26,Neco Williams,Nottingham,DF,DF,3204,DF-1,Crossing and chance creating defenders,3.7812970770244165,2.6504321541637887
+2025-26,Nicolás Domínguez,Nottingham,MF,MF,1175,MF-0,"Ball winning, low attacking involvement midfielders",2.616672623185566,2.3026251392868606
+2025-26,Nicolò Savona,Nottingham,DF,DF,1028,DF-1,Crossing and chance creating defenders,5.63496285953846,0.4657427176379514
+2025-26,Nikola Milenković,Nottingham,DF,DF,3375,DF-0,Low attacking involvement defenders,2.3635471308237057,3.209767280964146
+2025-26,Ola Aina,Nottingham,DF,DF,1588,DF-0,Low attacking involvement defenders,2.552626395878887,1.6696142368269191
+2025-26,Omari Hutchinson,Nottingham,MF,MF,1688,MF-1,High attacking involvement midfielders,3.8418056132494547,1.7260090795967935
+2025-26,Ryan Yates,Nottingham,MF,MF,617,MF-0,"Ball winning, low attacking involvement midfielders",3.9768860297780337,2.159761260864987
+2025-26,Taiwo Awoniyi,Nottingham,FW,FW,494,FW-0,Shot taking central forwards,6.219543776210026,1.6415714413497398
+2025-26,Bertrand Traoré,Sunderland,MF,"MF,FW",632,MF-1,High attacking involvement midfielders,3.6835089934604315,0.4470658019746314
+2025-26,Brian Brobbey,Sunderland,FW,FW,1927,FW-0,Shot taking central forwards,2.9700867111712372,2.4366580221931753
+2025-26,Chemsdine Talbi,Sunderland,MF,"MF,FW",1561,MF-0,"Ball winning, low attacking involvement midfielders",5.270614485201577,0.003186955581278461
+2025-26,Chris Rigg,Sunderland,MF,MF,761,MF-0,"Ball winning, low attacking involvement midfielders",2.6365420343972295,1.2269518614212718
+2025-26,Daniel Ballard,Sunderland,DF,DF,2149,DF-1,Crossing and chance creating defenders,4.278039890098904,0.5699468637091387
+2025-26,Eliezer Mayenda,Sunderland,FW,"FW,MF",759,FW-0,Shot taking central forwards,3.31679668542952,1.8805554210227418
+2025-26,Enzo Le Fée,Sunderland,MF,"MF,FW",2930,MF-0,"Ball winning, low attacking involvement midfielders",2.9017613894599243,0.6795467971802824
+2025-26,Granit Xhaka,Sunderland,MF,MF,2904,MF-0,"Ball winning, low attacking involvement midfielders",2.2298851694121495,2.623806420835585
+2025-26,Habib Diarra,Sunderland,MF,MF,1405,MF-0,"Ball winning, low attacking involvement midfielders",3.5650454923825676,0.8708174851173998
+2025-26,Luke O'Nien,Sunderland,DF,DF,569,DF-0,Low attacking involvement defenders,3.041489344473755,0.6653169149327987
+2025-26,Lutsharel Geertruida,Sunderland,DF,"DF,MF",1693,DF-0,Low attacking involvement defenders,1.5925115632841498,2.2270365699968977
+2025-26,Noah Sadiki,Sunderland,MF,MF,2889,MF-0,"Ball winning, low attacking involvement midfielders",2.5354522085938376,3.4080095133885537
+2025-26,Nordi Mukiele,Sunderland,DF,DF,2784,DF-1,Crossing and chance creating defenders,1.9315374964386491,1.8370550626663855
+2025-26,Omar Alderete,Sunderland,DF,DF,2798,DF-0,Low attacking involvement defenders,2.9719784823179736,1.3879736028887897
+2025-26,Reinildo Mandava,Sunderland,DF,DF,1966,DF-0,Low attacking involvement defenders,3.850766167568801,1.5165182967248074
+2025-26,Simon Adingra,Sunderland,MF,"MF,FW",653,MF-0,"Ball winning, low attacking involvement midfielders",4.802831600730964,1.0153219159027085
+2025-26,Trai Hume,Sunderland,DF,"DF,MF",3036,DF-1,Crossing and chance creating defenders,2.552297829645045,1.0753722080574581
+2025-26,Wilson Isidor,Sunderland,FW,FW,1165,FW-0,Shot taking central forwards,3.277059519280212,3.360332728204283
+2025-26,Archie Gray,Tottenham,MF,"MF,DF",1478,MF-0,"Ball winning, low attacking involvement midfielders",4.004795554830712,1.6470599260429228
+2025-26,Conor Gallagher,Tottenham,MF,MF,1184,MF-0,"Ball winning, low attacking involvement midfielders",2.359579972862496,2.4804135316854574
+2025-26,Cristian Romero,Tottenham,DF,DF,1868,DF-1,Crossing and chance creating defenders,5.098121670680577,0.9375687977317373
+2025-26,Destiny Udogie,Tottenham,DF,"DF,MF",1338,DF-1,Crossing and chance creating defenders,3.7407044119975903,0.5911266239456165
+2025-26,Djed Spence,Tottenham,DF,"DF,MF",2056,DF-1,Crossing and chance creating defenders,3.9478930933721186,0.41610508566512117
+2025-26,Dominic Solanke,Tottenham,FW,FW,1001,FW-0,Shot taking central forwards,3.5478996655275563,1.3743106133398562
+2025-26,João Palhinha,Tottenham,MF,MF,2198,MF-0,"Ball winning, low attacking involvement midfielders",3.9633452170495924,2.340478527521173
+2025-26,Kevin Danso,Tottenham,DF,DF,1494,DF-0,Low attacking involvement defenders,3.5385822593853424,2.045424736846848
+2025-26,Lucas Bergvall,Tottenham,MF,MF,965,MF-0,"Ball winning, low attacking involvement midfielders",3.9397271279007864,1.1335856301399323
+2025-26,Mathys Tel,Tottenham,MF,"MF,FW",1349,MF-1,High attacking involvement midfielders,3.0407955513160365,2.062122393816421
+2025-26,Micky van de Ven,Tottenham,DF,DF,3041,DF-0,Low attacking involvement defenders,3.486186026024083,1.2828960059227419
+2025-26,Mohammed Kudus,Tottenham,MF,"MF,FW",1535,MF-1,High attacking involvement midfielders,4.620173115115983,0.8428027755194396
+2025-26,Pape Matar Sarr,Tottenham,MF,MF,1398,MF-0,"Ball winning, low attacking involvement midfielders",2.8903213706799593,1.1232776104721087
+2025-26,Pedro Porro,Tottenham,DF,DF,2796,DF-1,Crossing and chance creating defenders,4.6397698722641305,2.3522244098871123
+2025-26,Radu Drăgușin,Tottenham,DF,DF,517,DF-0,Low attacking involvement defenders,5.717745433651194,1.865520859783528
+2025-26,Randal Kolo Muani,Tottenham,FW,"FW,MF",1664,FW-1,Crossing and creating wide forwards,4.898464811471956,0.5543543304772047
+2025-26,Richarlison,Tottenham,FW,"FW,MF",1964,FW-0,Shot taking central forwards,2.5592373342522396,1.3377732670950278
+2025-26,Rodrigo Bentancur,Tottenham,MF,MF,1883,MF-0,"Ball winning, low attacking involvement midfielders",3.281027841695302,3.5745064580317365
+2025-26,Wilson Odobert,Tottenham,MF,"MF,FW",985,MF-1,High attacking involvement midfielders,3.6499595272179746,1.6233969818392366
+2025-26,Xavi Simons,Tottenham,MF,"MF,FW",1755,MF-1,High attacking involvement midfielders,3.2031619226671864,0.7781778214068269
+2025-26,Yves Bissouma,Tottenham,MF,MF,603,MF-0,"Ball winning, low attacking involvement midfielders",4.381404118095356,3.2622894560635167
+2025-26,Aaron Wan-Bissaka,West Ham,DF,"DF,MF",2081,DF-0,Low attacking involvement defenders,3.4314283976276045,1.3478218841827423
+2025-26,Axel Disasi,West Ham,DF,DF,1254,DF-0,Low attacking involvement defenders,3.4504994682746792,2.021243803028394
+2025-26,Callum Wilson,West Ham,FW,FW,1251,FW-0,Shot taking central forwards,2.1089807802395266,3.433096642408333
+2025-26,Crysencio Summerville,West Ham,MF,"MF,FW",2470,MF-1,High attacking involvement midfielders,3.3164232295561518,0.358259262816611
+2025-26,El Hadji Malick Diouf,West Ham,DF,"DF,MF",2707,DF-1,Crossing and chance creating defenders,3.5780030306420416,0.4851105499681436
+2025-26,Freddie Potts,West Ham,MF,MF,1171,MF-0,"Ball winning, low attacking involvement midfielders",2.7254060428362115,3.3621489853634934
+2025-26,Jarrod Bowen,West Ham,MF,"MF,FW",3403,MF-1,High attacking involvement midfielders,3.002936374431082,2.1864001764534025
+2025-26,Jean-Clair Todibo,West Ham,DF,DF,1814,DF-0,Low attacking involvement defenders,3.345482312992161,2.6628902291462144
+2025-26,Konstantinos Mavropanos,West Ham,DF,DF,2534,DF-0,Low attacking involvement defenders,3.673902630270402,1.1794765772102087
+2025-26,Kyle Walker-Peters,West Ham,DF,DF,1383,DF-1,Crossing and chance creating defenders,4.35801481849621,0.3838546940299219
+2025-26,Lucas Paquetá,West Ham,MF,"MF,FW",1511,MF-0,"Ball winning, low attacking involvement midfielders",4.291982610384257,0.16891781479550882
+2025-26,Mateus Fernandes,West Ham,MF,MF,3016,MF-0,"Ball winning, low attacking involvement midfielders",1.795851472578245,3.1141343527999856
+2025-26,Max Kilman,West Ham,DF,DF,1561,DF-0,Low attacking involvement defenders,3.264551872614971,2.816689674651729
+2025-26,Oliver Scarles,West Ham,DF,"DF,MF",659,DF-1,Crossing and chance creating defenders,5.462955950044906,0.6457190353277644
+2025-26,Pablo,West Ham,MF,"MF,FW",823,MF-0,"Ball winning, low attacking involvement midfielders",3.938549749378286,1.5359433688480846
+2025-26,Soungoutou Magassa,West Ham,MF,MF,981,MF-0,"Ball winning, low attacking involvement midfielders",3.310944170955144,3.2611464791711504
+2025-26,Tomáš Souček,West Ham,MF,MF,2200,MF-0,"Ball winning, low attacking involvement midfielders",4.343793379988847,0.4804984963052883
+2025-26,Valentín Castellanos,West Ham,FW,FW,1384,FW-0,Shot taking central forwards,3.3364880001190746,2.206369162245025
+2025-26,Adam Armstrong,Wolves,FW,"FW,MF",1140,FW-0,Shot taking central forwards,4.308998797621009,0.8081631309034227
+2025-26,André,Wolves,MF,MF,2762,MF-0,"Ball winning, low attacking involvement midfielders",3.2289256475172587,3.546358375917686
+2025-26,Angel Gomes,Wolves,MF,"MF,FW",461,MF-0,"Ball winning, low attacking involvement midfielders",2.9543289125585854,1.9162525859370803
+2025-26,David Møller Wolfe,Wolves,MF,"MF,DF",1049,MF-0,"Ball winning, low attacking involvement midfielders",4.6871023458183,2.4075511811183405
+2025-26,Emmanuel Agbadou,Wolves,DF,DF,1101,DF-0,Low attacking involvement defenders,3.0159661147355643,1.3061173482663748
+2025-26,Hugo Bueno,Wolves,MF,"MF,DF",2366,MF-0,"Ball winning, low attacking involvement midfielders",3.744326965430241,1.6595803923313883
+2025-26,Hwang Hee-chan,Wolves,FW,"FW,MF",1446,FW-1,Crossing and creating wide forwards,4.570929336470637,0.7915255186878039
+2025-26,Jackson Tchatchoua,Wolves,MF,"MF,DF",1845,MF-0,"Ball winning, low attacking involvement midfielders",3.808574325241256,2.1582687704166186
+2025-26,Jean-Ricner Bellegarde,Wolves,MF,"MF,FW",1248,MF-0,"Ball winning, low attacking involvement midfielders",3.4752705285636014,1.2719210077065175
+2025-26,Jhon Arias,Wolves,FW,"FW,MF",1124,FW-1,Crossing and creating wide forwards,5.053895507290129,1.3806152079575744
+2025-26,João Gomes,Wolves,MF,MF,2829,MF-0,"Ball winning, low attacking involvement midfielders",3.268554089337638,3.360549316599299
+2025-26,Ladislav Krejčí,Wolves,DF,"DF,MF",2356,DF-0,Low attacking involvement defenders,3.626788321746149,0.7009100631370426
+2025-26,Marshall Munetsi,Wolves,MF,"MF,FW",875,MF-0,"Ball winning, low attacking involvement midfielders",3.6834584999739772,0.8996747814217501
+2025-26,Mateus Mane,Wolves,MF,MF,1795,MF-1,High attacking involvement midfielders,3.7777753796497704,1.1918665398932635
+2025-26,Matt Doherty,Wolves,DF,"DF,MF",787,DF-0,Low attacking involvement defenders,4.5919717266814954,1.9354846925591778
+2025-26,Rodrigo Gomes,Wolves,MF,"MF,FW",960,MF-0,"Ball winning, low attacking involvement midfielders",4.530324419707592,0.5231155684422024
+2025-26,Santiago Bueno,Wolves,DF,DF,2553,DF-0,Low attacking involvement defenders,4.614742577484114,0.5598589258837539
+2025-26,Tolu Arokodare,Wolves,FW,FW,1419,FW-0,Shot taking central forwards,2.509627014996825,1.843267541783053
+2025-26,Toti Gomes,Wolves,DF,DF,1424,DF-0,Low attacking involvement defenders,2.291591172584902,2.5477776274032746
+2025-26,Yerson Mosquera,Wolves,DF,DF,2136,DF-1,Crossing and chance creating defenders,4.913058905096853,0.5516722236551717
+2025-26,Jørgen Strand Larsen,Wolves / Crystal Palace,FW,FW,2307,FW-0,Shot taking central forwards,3.624099809250311,1.627299233784297

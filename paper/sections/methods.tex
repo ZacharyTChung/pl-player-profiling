@@ -14,27 +14,26 @@ concedes possession therefore accumulates interceptions, tackles and fouls partl
 exposure rather than through role or ability, and since possession correlates with team
 strength this confound would enter the feature set as a proxy for the quality of a
 player's team. Team possession share survived the withdrawal even though the touch counts
-it is derived from did not, which is what makes a correction possible at all.
+it is derived from did not, which is what makes a correction possible on both samples.
 
 The conventional correction multiplies a defensive rate by the ratio of a reference
 opponent possession to the actual one, which is equivalent to assuming that defensive
 volume is directly proportional to time spent out of possession. That is an empirical
 claim rather than a definition, and it can be tested. Regressing the logarithm of team
-defensive volume per ninety on the logarithm of opponent possession across the
-\PadjTeamSeasons{} team-seasons available gives the elasticity, which is the percentage
-change in defensive volume produced by a one percent change in opponent possession. Direct
-proportionality corresponds to an elasticity of one.
+defensive volume per ninety on the logarithm of opponent possession, over
+\ArcPadjTeamSeasons{} team-seasons on the primary sample and \PadjTeamSeasons{} on the
+reduced one, gives the elasticity, which is the percentage change in defensive volume
+produced by a one percent change in opponent possession. Direct proportionality corresponds
+to an elasticity of one.
 
-The fitted elasticities are \ElasticityInterceptions{} for interceptions,
-\ElasticityTackles{} for tackles won and \ElasticityFouls{} for fouls committed. All
-three are well below one, so defensive volume rises with opponent possession, confirming
-that the confound is real, but far less than proportionately. A side that spends more time
-without the ball does not simply make proportionally more tackles: it also defends deeper,
-concedes territory without contesting it, and its defensive actions saturate. Applying the
-conventional exponent of one would therefore overcorrect by a factor of roughly two to
-three, and we verified that it does: under that exponent the correlation between defensive
-rates and team possession does not fall toward zero but changes sign and grows, so the
-adjustment injects more team dependence than it removes.
+Every fitted elasticity, on either sample, falls below one. Defensive volume does rise with
+opponent possession, so the confound is real, but far less than proportionately. A side that
+spends more time without the ball does not simply make proportionally more tackles: it also
+defends deeper, concedes territory without contesting it, and its defensive actions saturate.
+The conventional exponent therefore overcorrects, and Section~\ref{sec:results:padj} reports
+by how much on each sample and shows that under an exponent of one the correlation between
+defensive rates and team possession does not fall toward zero but changes sign and grows, so
+the adjustment injects more team dependence than it removes.
 
 We therefore adjust with the measured elasticity rather than the assumed one. Each
 defensive count is multiplied by the exposure ratio raised to the power of its own fitted
@@ -42,10 +41,11 @@ elasticity, which leaves a player at a club with league-average possession uncha
 corrects the others by the amount the data says exposure actually matters. The exponent is
 estimated from team totals rather than player rates, because the quantity being corrected
 is a team-level exposure effect and player rates carry position and role variation that
-would swamp it. It is pooled across seasons because twenty clubs give a noisy slope, and
-because the exponent is a nuisance parameter that uses no player-level or cluster-level
-information, so a shared value cannot manufacture the cross-season agreement that
-Section~\ref{sec:results:novel} measures. Attacking statistics are deliberately left
+would swamp it. It is pooled across seasons, and on the primary sample across leagues,
+because a single season of one competition gives a noisy slope, and because the exponent is a
+nuisance parameter that uses no player-level or cluster-level information, so a shared value
+cannot manufacture the cross-season and cross-league agreement that
+Section~\ref{sec:results:replication} measures. Attacking statistics are deliberately left
 unadjusted, since they scale with a team's own possession rather than the opponent's and
 correcting both directions with the same instrument would double count.
 

@@ -53,6 +53,7 @@ help:
 	@echo "  paper       compile paper/main.pdf"
 	@echo "  test        pytest"
 	@echo "  all         everything through the PDF"
+	@echo "  submission  flatten the paper into an arXiv ready tarball"
 	@echo "  clean       remove derived artefacts, keep the scrape cache"
 	@echo "  distclean   also remove the scrape cache (forces a full re-scrape)"
 
@@ -198,6 +199,14 @@ results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables
 tables: results/macros.tex
 
+# --- Stage 6: the submission package ----------------------------------------------
+# arXiv unpacks a flat tarball: it cannot follow paper/figures, which is a symlink, and
+# it cannot resolve main.tex's reach into ../results. This target flattens both, ships
+# only the figures the document includes, and compiles the staged copy from scratch so
+# a failure surfaces here rather than after upload.
+submission: paper/main.pdf
+	$(PY) scripts/make_submission.py
+
 # --- Stage 5: the paper -----------------------------------------------------------
 TEX_SOURCES := paper/main.tex $(wildcard paper/sections/*.tex) paper/references.bib
 
@@ -231,6 +240,8 @@ clean:
 	rm -rf $(STAMPS)
 	rm -f figures/*.pdf figures/*.png
 	rm -f results/metrics/*.json results/tables/*.tex results/macros.tex
+	rm -f results/membership_*.csv
+	rm -rf submission submission.tar.gz
 	rm -f data/processed/*.parquet
 	cd paper && rm -f main.pdf main.aux main.log main.out main.bbl main.blg \
 	  main.fls main.fdb_latexmk main.synctex.gz main.toc

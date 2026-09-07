@@ -84,10 +84,19 @@ make help           # list targets
 make all            # everything through paper/main.pdf, against the committed caches
 make archive-fetch  # refresh the pre-withdrawal mirror from upstream
 make data           # re-scrape the live sample
+make submission     # flatten the paper into an arXiv ready tarball
 make test           # pytest
 make lint           # ruff check and format check
 make clean          # remove derived artefacts, keep the caches
 ```
+
+`make submission` exists because the repository layout is convenient to build from and
+wrong to upload: `paper/figures` is a symlink, which does not survive a tarball, and
+`main.tex` reaches into `../results` for the generated macros and tables, which arXiv will
+not resolve. The target flattens both, ships only the figures the document includes, pins
+the date so the submitted PDF is reproducible, compiles the staged copy from a bare
+directory to prove it stands alone, and writes `SUBMISSION.md` with the title, authors and
+plain-text abstract rendered from the same macros the PDF uses.
 
 `make data` and `make archive-fetch` are deliberately **not** part of `make all`. Both write
 files that are committed, so the pipeline runs against them. Everything downstream of those

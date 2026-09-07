@@ -11,6 +11,12 @@
 \usepackage{amsmath}
 \usepackage{longtable}
 \usepackage[hidelinks]{hyperref}
+% Keep every float inside the subsection that refers to it. Section-level barriers are
+% not enough here: the results section alone runs to a dozen figures, and without the
+% finer barrier LaTeX strands them up to ten pages from the text that cites them.
+\usepackage[section]{placeins}
+\usepackage{etoolbox}
+\pretocmd{\subsection}{\FloatBarrier}{}{}
 
 \bibliographystyle{plainnat}
 \graphicspath{{figures/}}
@@ -27,6 +33,16 @@
 
 \setlength{\parskip}{0pt}
 \setlength{\emergencystretch}{3em}
+
+% This paper is figure dense. With LaTeX's defaults the float queue cannot drain fast
+% enough and figures drift many pages past the text that refers to them.
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
 
 \title{Two Modes, Not Many Types: The Structure of Football Player Roles in
 Season-Aggregate Data}
@@ -50,8 +66,10 @@ Season-Aggregate Data}
 \input{sections/discussion}
 \input{sections/conclusion}
 
+\clearpage
 \bibliography{references}
 
+\clearpage
 \appendix
 \input{sections/appendix}
 

@@ -151,6 +151,7 @@ make archive structure         # the primary sample and the null calibration
 uv run pytest                  # tests
 uv run ruff check . && uv run ruff format --check .
 make all                       # full pipeline through the compiled PDF
+make submission                # flatten the paper into an arXiv ready tarball
 make clean                     # remove derived artefacts (keeps the HTML cache)
 ```
 
@@ -182,6 +183,11 @@ primary numbers are regenerated rather than assumed. Figures and metrics JSON ar
 byte-identical across runs, so the pipeline is deterministic; the PDF differs only in its
 embedded creation date. The paper compiles with zero undefined references. Tests pass and
 ruff reports no findings.
+
+`make submission` stages a flat copy, compiles it from a bare directory, and refuses to
+finish on an undefined reference, an undefined citation or a duplicate label, so a packaging
+mistake surfaces locally rather than after upload. The unpacked tarball compiles to a
+byte-identical PDF.
 
 The archive itself is reproducible from a stated URL. `src/archive_fetch.py` downloads each
 upstream `.rds`, converts it and records a SHA-256 per file in
