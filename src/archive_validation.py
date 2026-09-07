@@ -64,6 +64,7 @@ import shap
 from lightgbm import LGBMClassifier
 from matplotlib.colors import ListedColormap
 from scipy import stats
+from scipy.optimize import linear_sum_assignment
 from sklearn.decomposition import PCA
 from sklearn.dummy import DummyClassifier
 from sklearn.linear_model import LogisticRegression
@@ -379,6 +380,31 @@ def _transfer(fit_source: dict, fit_target: dict) -> float:
     return _r(adjusted_rand_score(fit_target["labels"], imported))
 
 
+def _align_to_pooled(fit: dict, reference: np.ndarray) -> dict:
+    """Renumber a scope's clusters to agree with the pooled partition on the same rows.
+
+    KMeans numbers its clusters by whichever centre it happened to initialise first, so
+    two identical solutions can differ entirely in their labels. Every partition-level
+    index used here is invariant to that, but a same-cluster share is not, and neither is
+    a cluster size read next to another scope's. The optimal assignment is taken over the
+    contingency table and applied to both the labels and the centres.
+    """
+    counts = np.zeros((K, K))
+    for a in range(K):
+        for b in range(K):
+            counts[a, b] = np.sum((fit["labels"] == a) & (reference == b))
+    rows, cols = linear_sum_assignment(-counts)
+    mapping = dict(zip(rows, cols, strict=True))
+    centres = np.empty_like(fit["centres"])
+    for old, new in mapping.items():
+        centres[new] = fit["centres"][old]
+    return {
+        **fit,
+        "labels": np.array([mapping[int(v)] for v in fit["labels"]]),
+        "centres": centres,
+    }
+
+
 def replication(
     eligible: pd.DataFrame,
     z_global: pd.DataFrame,
@@ -400,7 +426,9 @@ def replication(
         report: dict = {}
         for key in keys:
             mask = (eligible[field] == key).to_numpy()
-            fit = _fit_scope(raw[mask], f"archive|{field}|{key}")
+            fit = _align_to_pooled(
+                _fit_scope(raw[mask], f"archive|{field}|{key}"), pooled_labels[mask]
+            )
             fit["mask"] = mask
             fits[key] = fit
             report[str(key)] = {
@@ -431,6 +459,7 @@ def replication(
     wide = holder.pivot(index="player", columns="season", values="label")
 
     pairwise: dict = {}
+    shares: list[float] = []
     season_matrix = np.full((len(seasons), len(seasons)), np.nan)
     for i, a in enumerate(seasons):
         season_matrix[i, i] = 1.0
@@ -439,13 +468,24 @@ def replication(
                 continue
             both = wide[[a, b]].dropna()
             value = _r(adjusted_rand_score(both[a].to_numpy(), both[b].to_numpy()))
+            share = float((both[a] == both[b]).mean())
+            # Every season's ids were matched to the pooled partition above, so a share
+            # below one half means the alignment failed rather than that players moved.
+            # Failing here is the point: a silent flip would report 0.07 for 0.93.
+            if share <= 0.5:
+                raise ValueError(
+                    f"same-cluster share for {a} against {b} is {share:.4f}, at or below "
+                    "one half. Cluster ids are meant to be aligned to the pooled partition, "
+                    "so this is a labelling failure, not player movement."
+                )
+            shares.append(share)
             pairwise[f"{a} vs {b}"] = {
                 "n_shared_players": int(len(both)),
                 "adjusted_rand_index": value,
                 "normalized_mutual_info": _r(
                     normalized_mutual_info_score(both[a].to_numpy(), both[b].to_numpy())
                 ),
-                "same_cluster_share": _r(float((both[a] == both[b]).mean())),
+                "same_cluster_share": _r(share),
             }
             season_matrix[i, j] = season_matrix[j, i] = value
 
@@ -470,7 +510,15 @@ def replication(
             "one season's labels against another's on the players present in both, which "
             "mixes replication of the solution with real change in those players. The "
             "transfer index imports one scope's centroids into another scope's players and "
-            "scores against that scope's own fit, which isolates replication of the solution."
+            "scores against that scope's own fit, which isolates replication of the solution. "
+            "Cluster ids from every independent fit are renumbered by optimal assignment "
+            "against the pooled partition, so a cluster id means the same thing in every "
+            "scope and the cluster sizes and same-cluster shares can be read across rows. "
+            "That renumbering changes no adjusted Rand or mutual information value, both of "
+            "which are invariant to it. same_cluster_share is the fraction of the players "
+            "present in both seasons who land in the same aligned cluster in both, which is "
+            "the player-level reading of the pairwise index; a value at or below one half "
+            "would mean the alignment had failed and raises rather than being reported."
         ),
         "pooled": {
             "n": int(len(z_global)),
@@ -489,6 +537,8 @@ def replication(
             "season_pairwise_ari_mean": _r(float(np.nanmean(off_season))),
             "season_pairwise_ari_min": _r(float(np.nanmin(off_season))),
             "season_pairwise_ari_max": _r(float(np.nanmax(off_season))),
+            "season_pairwise_same_cluster_share_mean": _r(float(np.mean(shares))),
+            "season_pairwise_same_cluster_share_min": _r(float(np.min(shares))),
             "season_vs_pooled_ari_min": _r(min(v["ari_vs_pooled"] for v in season_report.values())),
             "league_vs_pooled_ari_min": _r(min(v["ari_vs_pooled"] for v in league_report.values())),
             "league_transfer_ari_mean": _r(float(np.nanmean(off_league))),
@@ -946,8 +996,9 @@ def figure_cluster_vs_position(validation: dict) -> None:
         elinewidth=0.8,
         capsize=2.5,
     )
-    for i, value in enumerate(values):
-        ax.text(i, value + 0.035, f"{value:.3f}", ha="center", fontsize=P.BASE_FONT_PT - 2)
+    for i, (value, scope) in enumerate(zip(values, scopes, strict=True)):
+        top = payload["scopes"][scope]["bootstrap"]["ari_max"]
+        ax.text(i, top + 0.035, f"{value:.3f}", ha="center", fontsize=P.BASE_FONT_PT - 2)
     ax.set_xticks(range(len(scopes)), [s.replace("All outfield", "All") for s in scopes])
     ax.set_ylim(0.0, 1.12)
     P.style_axis(
@@ -1316,9 +1367,15 @@ def main() -> None:
     summary = replication_payload["summary"]
     print(
         f"  season pairwise ARI {summary['season_pairwise_ari_min']:.3f} to "
-        f"{summary['season_pairwise_ari_max']:.3f}, league transfer ARI mean "
-        f"{summary['league_transfer_ari_mean']:.3f}, worst axis correlation "
-        f"{summary['axis_correlation_min']:.3f}"
+        f"{summary['season_pairwise_ari_max']:.3f}, same aligned cluster for "
+        f"{summary['season_pairwise_same_cluster_share_mean']:.1%} of shared players "
+        f"(worst pair {summary['season_pairwise_same_cluster_share_min']:.1%})"
+    )
+    print(
+        f"  league transfer ARI mean {summary['league_transfer_ari_mean']:.3f}, "
+        f"season fits against pooled at worst {summary['season_vs_pooled_ari_min']:.3f}, "
+        f"league fits at worst {summary['league_vs_pooled_ari_min']:.3f}, worst axis "
+        f"correlation {summary['axis_correlation_min']:.3f}"
     )
 
     print("\n3. supervised validation")

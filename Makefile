@@ -66,6 +66,14 @@ data: | $(STAMPS)
 	$(PY) -m src.ingest
 	@touch $(STAMPS)/data
 
+# Fetch the pre-withdrawal mirror the primary sample is built on. Deliberately not part
+# of `all`: the converted parquet files are committed, so `all` runs against them. Rerun
+# this only to refresh from upstream, and expect the manifest digests to change if the
+# mirror has been rescraped since.
+archive-fetch: | $(STAMPS)
+	$(PY) -m src.archive_fetch
+	@touch $(STAMPS)/archive-fetch
+
 # --- Stage 2: preprocessing -------------------------------------------------------
 $(STAMPS)/preprocess: src/preprocess.py $(CONFIG) $(RAW_MANIFESTS) | $(STAMPS)
 	$(PY) -m src.preprocess
@@ -147,11 +155,44 @@ $(STAMPS)/novel: src/novel.py $(CONFIG) $(PLOTTING) $(STAMPS)/cluster $(STAMPS)/
 	@touch $@
 novel: $(STAMPS)/novel
 
+# --- Stage 3b: the primary sample -------------------------------------------------
+# Everything above this line runs on the reduced live sample, which the paper reports as
+# the robustness case. The chain below is the primary analysis.
+ARCHIVE_RAW := $(wildcard data/raw/archive/*.parquet)
+
+$(STAMPS)/archive: src/archive.py $(CONFIG) $(ARCHIVE_RAW) src/preprocess.py | $(STAMPS)
+	$(PY) -m src.archive
+	@touch $@
+archive: $(STAMPS)/archive
+
+$(STAMPS)/structure: src/structure.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive
+	$(PY) -m src.structure
+	@touch $@
+structure: $(STAMPS)/structure
+
+$(STAMPS)/archive_profiles: src/archive_profiles.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive
+	$(PY) -m src.archive_profiles
+	@touch $@
+archive-profiles: $(STAMPS)/archive_profiles
+
+$(STAMPS)/archive_keepers: src/archive_keepers.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive
+	$(PY) -m src.archive_keepers
+	@touch $@
+archive-keepers: $(STAMPS)/archive_keepers
+
+$(STAMPS)/archive_validation: src/archive_validation.py $(CONFIG) $(PLOTTING) \
+                              $(STAMPS)/archive_profiles
+	$(PY) -m src.archive_validation
+	@touch $@
+archive-validation: $(STAMPS)/archive_validation
+
 # --- Stage 4: tables and macros ---------------------------------------------------
 ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/profiles $(STAMPS)/supervised $(STAMPS)/keepers \
                    $(STAMPS)/teams $(STAMPS)/novel $(STAMPS)/sensitivity \
-                   $(STAMPS)/threed $(STAMPS)/symmetric $(STAMPS)/age
+                   $(STAMPS)/threed $(STAMPS)/symmetric $(STAMPS)/age \
+                   $(STAMPS)/archive $(STAMPS)/structure $(STAMPS)/archive_profiles \
+                   $(STAMPS)/archive_keepers $(STAMPS)/archive_validation
 
 results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables

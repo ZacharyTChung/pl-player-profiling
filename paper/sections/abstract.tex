@@ -1,17 +1,19 @@
-In January 2026 the largest free source of advanced football statistics removed every
-metric derived from its commercial provider, retroactively and without replacement.
-Expected goals, passing volume, carrying, chance creation and the entire advanced
-goalkeeping table ceased to be publicly available. We measure what player role structure
-survives that withdrawal. Merging the statistics that remain with an independent expected
-goals source yields \NFeatures{} features for \NEligiblePrimary{} Premier League outfield
-players, on which we run dimensionality reduction, clustering under a selection rule fixed
-in advance, bootstrap stability, supervised validation, and a replication on a second
-season. Three results hold. Correlations reverse sign across position groups for
-\NPairsSignFlip{} of \NPairsTotal{} feature pairs, so pooled correlation analysis describes
-no real population. The data supports one binary division, attacking against defensive
-involvement, which cuts across listed positions at an adjusted Rand index of only
-\ARIvsPosition{} while a supervised model reaches \LGBMAccuracy{} accuracy on the same
-features. That global division survives shrinkage toward the position mean at
-\ShrinkARIGlobal{}, whereas the divisions within defender and forward groups fall to
-\ShrinkARIDF{} and \ShrinkARIFW{} and are substantially descriptions of sampling noise.
-Public football data now supports coarser role analysis than it did a year ago.
+Studies of football player roles routinely report a set of discovered archetypes, but a
+partitioning algorithm returns a partition whether or not the data contain groups, so the
+usual evidence cannot distinguish a real taxonomy from a cut through a continuum. We test
+existence directly on \ArcRows{} player seasons from \ArcNSeasons{} seasons of the big five
+European leagues, described by \ArcFeatures{} statistics recovered from an archive of the
+data as it stood before its withdrawal from public access in January 2026. Cluster quality is
+calibrated against \StrSimulations{} simulated datasets matched on size, dimension and
+covariance but built to contain no groups. A two-mode division is real: the observed
+silhouette exceeds every simulation in every scope, by \StrZAll{} standard deviations over
+all outfield players, and Hartigan's dip test rejects unimodality on the leading component at
+\StrDipPAll{}. Finer structure is not, since beyond two modes the observed quality converges
+on the null and density based clustering labels every point noise within each position group.
+The modes are not positions relabelled, agreeing with position group at an adjusted Rand
+index of \ArcARIvsPosition{}: \ArcSplitDF{} percent of defenders fall one side and
+\ArcSplitFW{} percent of forwards the other, while midfielders divide almost evenly. A
+classifier reaches \SupGBMAcc{} percent accuracy on the same features yet only
+\SupPoleShare{} percent of its errors avoid midfield. The division transfers across leagues
+at a mean adjusted Rand index of \RepTransferMean{}. Football role space has two poles and a
+populated middle, and finer taxonomies are artefacts of the method used to find them.

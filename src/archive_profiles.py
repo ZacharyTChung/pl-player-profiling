@@ -103,8 +103,10 @@ ISOLATION_TREES = 300
 #: quadratic in the number of players. See the module docstring.
 BOOTSTRAP_SAMPLE = 2500
 
-#: Outliers labelled directly on the scatter. Labelling all fifteen overlaps.
-N_SCATTER_LABELS = 5
+#: Outliers labelled directly on the scatter. The reported table names all fifteen with
+#: their season, so only the most extreme few are labelled in the cloud; five of them
+#: produced leader lines that crossed each other and ran through neighbouring labels.
+N_SCATTER_LABELS = 3
 
 ARCHETYPE_ORDER = ["DF-0", "DF-1", "MF-0", "MF-1", "FW-0", "FW-1"]
 
@@ -1340,11 +1342,19 @@ def figure_archetype_profiles(records: list[dict]) -> None:
 def _stacked_offsets(
     ax: plt.Axes, xs: np.ndarray, ys: np.ndarray, *, x_window: float, gap: float
 ) -> list[tuple[float, float]]:
-    """Pick a vertical offset per label so that nearby labels do not overlap."""
+    """Pick a vertical offset per label so that nearby labels do not overlap.
+
+    Everything is measured in typographic points, including ``x_window`` and ``gap``, so
+    that the chosen offsets are directly usable as ``offset points`` and the collision test
+    does not silently change meaning with the figure dpi.
+    """
     ax.figure.canvas.draw()
-    points = ax.transData.transform(np.column_stack([xs, ys]))
-    candidates = [4.0, -16.0, 20.0, -32.0, 36.0, -48.0, 52.0, -64.0]
-    offsets = [(4.0, 3.0)] * len(xs)
+    scale = ax.figure.dpi / 72.0
+    points = ax.transData.transform(np.column_stack([xs, ys])) / scale
+    # Upward offsets first: the extreme outliers sit on the upper right shoulder of the
+    # cloud, so the empty space is above them and pushing labels down runs them into it.
+    candidates = [8.0, 20.0, 32.0, -18.0, -30.0, 44.0, -42.0, 56.0]
+    offsets = [(5.0, 8.0)] * len(xs)
     placed: list[tuple[float, float]] = []
     for index in np.argsort(-points[:, 1]):
         px, py = points[index]
@@ -1357,7 +1367,7 @@ def _stacked_offsets(
                 chosen = candidate
                 break
         placed.append((px, py + chosen))
-        offsets[index] = (4.0, chosen)
+        offsets[index] = (5.0, chosen)
     return offsets
 
 
@@ -1406,7 +1416,7 @@ def figure_outliers(table: pd.DataFrame, report: dict) -> None:
     xs = head["mahalanobis"].to_numpy()
     ys = head["isolation_score"].to_numpy()
     for (dx, dy), x, y, name in zip(
-        _stacked_offsets(scatter, xs, ys, x_window=150.0, gap=16.0),
+        _stacked_offsets(scatter, xs, ys, x_window=96.0, gap=11.0),
         xs,
         ys,
         [f"{row.player} {int(row.season)}" for row in head.itertuples()],

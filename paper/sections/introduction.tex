@@ -30,7 +30,7 @@ depend on proprietary feeds. What can be established from freely available seaso
 aggregates, and with what confidence, has received much less scrutiny, and the answer
 turns out to be both narrower and firmer than the taxonomy genre suggests.
 
-Four findings are worth stating in advance.
+Five findings are worth stating in advance.
 
 First, the structure is real. Against \StrSimulations{} simulated datasets matched to the
 observed data in size, dimension and covariance but drawn from a single Gaussian, the
@@ -48,10 +48,26 @@ which is permitted to conclude that nothing is clustered, assigns \StrNoiseAll{}
 outfield pool to noise and every position group entirely to noise.
 
 Third, the two modes divide players by attacking against defensive involvement, and they
-do not recover the positions the data already records. This holds across all
-\ArcNLeagues{} leagues and all \ArcNSeasons{} seasons.
+do not recover the positions the data already records. Agreement with listed position group
+is \ArcARIvsPosition{} on the adjusted Rand index, far above chance and far below recovery,
+and the shape of the disagreement is the point: \ArcSplitDF{} percent of defenders fall on
+one side and \ArcSplitFW{} percent of forwards on the other, while midfielders divide almost
+evenly between them. A supervised model reaches \SupGBMAcc{} percent accuracy on the same
+features and yet routes all but \SupPoleShare{} percent of its errors through midfield, which
+is the same geometry recovered by machinery that shares nothing with the clustering. This is
+not a claim about one league or one season: refitted independently, every one of
+\ArcNLeagues{} competitions and \ArcNSeasons{} seasons returns the same partition, and
+centroids fitted in one league assign another league's players at a mean adjusted Rand index
+of \RepTransferMean{}.
 
-Fourth, the result is robust to the feature set. A separate live sample, collected after
+Fourth, two modes is not one dimension. The leading principal component carries
+\ArcPCOne{} percent of the variance, which is far more than any other single direction, but
+\ArcPCNinety{} components are needed to reach ninety percent of it. The space has one
+dominant axis along which the density is bimodal, and a long tail of smaller axes carrying
+variation that is real, interpretable and continuous. A two-mode description is a statement
+about where players are concentrated, not a claim that role reduces to a single number.
+
+Fifth, the result is robust to the feature set. A separate live sample, collected after
 the largest free source of football statistics withdrew its advanced metrics in January
 2026, retains only about half the features. The same analysis on that sample returns the
 same answer, which is reported in Section~\ref{sec:results:reduced} as a robustness check

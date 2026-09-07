@@ -1,0 +1,238 @@
+{
+  "source": "worldfootballR_data, a third party mirror of FBref advanced season tables",
+  "source_url": "https://github.com/JaseZiv/worldfootballR_data/raw/master/data/fb_big5_advanced_season_stats",
+  "why": "FBref withdrew its Opta-derived columns in January 2026. The mirror's snapshot predates the withdrawal and is the only public route to the full feature set.",
+  "retrieved": "2026-09-07",
+  "tables": {
+    "standard": {
+      "upstream_file": "big5_player_standard.rds",
+      "sha256": "098a6a94f8ed0f9bc18dc572e30b91d3f813b155380f2f5df40bc2bdab919623",
+      "rows": 38008,
+      "columns": 34,
+      "seasons": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "shooting": {
+      "upstream_file": "big5_player_shooting.rds",
+      "sha256": "0692e7b938b087a1eb4734e646339994a6cd89fb51aa10d28049d1b1ff76a26f",
+      "rows": 37984,
+      "columns": 27,
+      "seasons": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "passing": {
+      "upstream_file": "big5_player_passing.rds",
+      "sha256": "e0d071a7038bf411a99a33d27ce0a0db989688a231b61ed10d027a6c93544652",
+      "rows": 16139,
+      "columns": 34,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "passing_types": {
+      "upstream_file": "big5_player_passing_types.rds",
+      "sha256": "766b98dbdee8a35ba0195ad069ba6c3c4864b4b0cf3687ebdbc75d4a54b1f1ad",
+      "rows": 16139,
+      "columns": 36,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "gca": {
+      "upstream_file": "big5_player_gca.rds",
+      "sha256": "33e0fdd81148a3f429b1b88b3edec0cb1d7f01f43d692d593e77ca78e8c65f01",
+      "rows": 16139,
+      "columns": 26,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "defense": {
+      "upstream_file": "big5_player_defense.rds",
+      "sha256": "c22c3bc50ee339b17cf25cfc99325bb0b29a7e7d1c356cb3c2ac2df3b9f3b90e",
+      "rows": 16139,
+      "columns": 33,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "possession": {
+      "upstream_file": "big5_player_possession.rds",
+      "sha256": "9d6c5b26bb7e4124f462f97a4e5d0c3d5c7a69ddb85ee5f75933acb77f6714ce",
+      "rows": 16139,
+      "columns": 36,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "misc": {
+      "upstream_file": "big5_player_misc.rds",
+      "sha256": "76455f0e367058e953524bce8cb71c02b3700d8a07b9c75f21147013de7e887a",
+      "rows": 37984,
+      "columns": 26,
+      "seasons": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "playing_time": {
+      "upstream_file": "big5_player_playing_time.rds",
+      "sha256": "abce0bd274a5637f6d6d8fc1af8da30ab13cba763b8bae4d171eaa3507731eaa",
+      "rows": 42652,
+      "columns": 31,
+      "seasons": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "keepers": {
+      "upstream_file": "big5_player_keepers.rds",
+      "sha256": "038e1f1f4d425ed38bcb2cf8b23b44756be129e04fd0e68b8d969262e767dd4d",
+      "rows": 2888,
+      "columns": 28,
+      "seasons": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "keepers_adv": {
+      "upstream_file": "big5_player_keepers_adv.rds",
+      "sha256": "4ddfa1d37b5480054a9c2e5dea2677a2a571e28cb771d38b550925444a301e10",
+      "rows": 1179,
+      "columns": 35,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "team_standard": {
+      "upstream_file": "big5_team_standard.rds",
+      "sha256": "b508948b846306278892c40c94ca1378c4758e1dd7b6647d7afbfd3be5c16a16",
+      "rows": 2744,
+      "columns": 38,
+      "seasons": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "team_possession": {
+      "upstream_file": "big5_team_possession.rds",
+      "sha256": "ac47f6943e52acbc1ad54e02c4a556aed30cb6d24c539afb2c670071933a16dc",
+      "rows": 1176,
+      "columns": 34,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    }
+  }
+}

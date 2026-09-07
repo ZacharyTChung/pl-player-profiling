@@ -11,8 +11,8 @@ threshold and \ArcKeepers{} are goalkeepers.
 
 These tables originate from FBref, which published advanced statistics derived from a
 commercial event-data provider. They are obtained here from a public mirror maintained by
-the worldfootballR project rather than from the site directly, and that choice needs
-stating plainly rather than burying. On 20 January 2026 the site's operator removed every
+the worldfootballR project \citep{zivkovic2026worldfootballr} rather than from the site
+directly, and that choice needs stating plainly rather than burying. On 20 January 2026 the site's operator removed every
 statistic derived from that provider, retroactively and across completed seasons, after the
 licence was terminated. The mirror predates the removal. It is therefore a secondary source
 in the strict sense, and a reader should weigh it accordingly: it was scraped by a third
@@ -28,6 +28,12 @@ hides this, because the affected columns are complete in the five retained seaso
 per-season rate exposes it immediately. The pipeline raises rather than imputing whenever a
 feature exceeds half missing within any retained season, so the exclusion is enforced by a
 check rather than by a comment.
+
+Retrieval is part of the pipeline. The module \texttt{src/archive\_fetch.py} downloads each
+upstream file from the stated repository, converts it, and records a SHA-256 digest per file
+in a manifest alongside row and column counts, so that a run can be identified after the fact
+and an upstream change is detectable rather than silent. The mirror rewrites its files in
+place on each scrape and publishes no tags, so the digests are the only available pin.
 
 \subsection{Feature set}
 

@@ -20,10 +20,24 @@
 \newcommand{\AgeTrendRhoDF}{0.209}
 \newcommand{\AgeTrendRhoFW}{0.155}
 \newcommand{\AgeTrendRhoMF}{-0.029}
+\newcommand{\ArcARIvsPosition}{0.293}
+\newcommand{\ArcARIvsPositionFull}{0.262}
+\newcommand{\ArcBootAll}{0.988}
+\newcommand{\ArcBootDF}{0.989}
+\newcommand{\ArcBootFW}{0.958}
+\newcommand{\ArcBootMF}{0.975}
 \newcommand{\ArcElastBlocks}{0.439}
 \newcommand{\ArcElastClearances}{0.958}
+\newcommand{\ArcElastCorrBlocks}{0.579}
+\newcommand{\ArcElastCorrClearances}{0.572}
+\newcommand{\ArcElastCorrFouls}{0.447}
+\newcommand{\ArcElastCorrInterceptions}{0.164}
+\newcommand{\ArcElastCorrTackles}{0.225}
+\newcommand{\ArcElastCount}{5}
 \newcommand{\ArcElastFouls}{0.443}
 \newcommand{\ArcElastInterceptions}{0.353}
+\newcommand{\ArcElastMax}{0.958}
+\newcommand{\ArcElastMin}{0.172}
 \newcommand{\ArcElastTackles}{0.172}
 \newcommand{\ArcEligible}{9,263}
 \newcommand{\ArcFeatures}{33}
@@ -44,14 +58,60 @@
 \newcommand{\ArcKeeperSilFull}{0.207}
 \newcommand{\ArcKeeperSilTech}{0.189}
 \newcommand{\ArcKeepers}{1,035}
+\newcommand{\ArcLeagueARI}{0.883}
+\newcommand{\ArcModeAttDF}{271}
+\newcommand{\ArcModeAttFW}{1,701}
+\newcommand{\ArcModeAttMF}{1,920}
+\newcommand{\ArcModeAttShare}{49.3}
+\newcommand{\ArcModeDefDF}{3,522}
+\newcommand{\ArcModeDefFW}{3}
+\newcommand{\ArcModeDefMF}{1,846}
+\newcommand{\ArcModeDefShare}{34.4}
 \newcommand{\ArcNDF}{3,793}
+\newcommand{\ArcNDFOne}{1,699}
+\newcommand{\ArcNDFZero}{2,094}
 \newcommand{\ArcNFW}{1,704}
+\newcommand{\ArcNFWOne}{463}
+\newcommand{\ArcNFWZero}{1,241}
 \newcommand{\ArcNLeagues}{5}
 \newcommand{\ArcNMF}{3,766}
+\newcommand{\ArcNMFOne}{1,827}
+\newcommand{\ArcNMFZero}{1,939}
+\newcommand{\ArcNMIvsPosition}{0.338}
 \newcommand{\ArcNSeasons}{5}
+\newcommand{\ArcNameDFOne}{Wide attacking defenders}
+\newcommand{\ArcNameDFZero}{Deep central defenders}
+\newcommand{\ArcNameFWOne}{Creating and carrying forwards}
+\newcommand{\ArcNameFWZero}{Low involvement centre forwards}
+\newcommand{\ArcNameMFOne}{Advanced attacking midfielders}
+\newcommand{\ArcNameMFZero}{Deep ball winning midfielders}
+\newcommand{\ArcOutAgreement}{80.5}
+\newcommand{\ArcOutCompound}{11}
+\newcommand{\ArcOutDistinct}{12}
+\newcommand{\ArcOutN}{15}
+\newcommand{\ArcOutNames}{Neymar, Lionel Messi, Šime Vrsaljko}
+\newcommand{\ArcOutShortMinutes}{9}
+\newcommand{\ArcOutTop}{Neymar}
+\newcommand{\ArcPCKaiser}{5}
+\newcommand{\ArcPCNinety}{14}
+\newcommand{\ArcPCOne}{39.9}
+\newcommand{\ArcPCThree}{64.2}
+\newcommand{\ArcPadjTeamSeasons}{490}
+\newcommand{\ArcPurityVsPosition}{58.8}
 \newcommand{\ArcRows}{13,822}
+\newcommand{\ArcSeasonARIMax}{0.844}
+\newcommand{\ArcSeasonARIMean}{0.834}
+\newcommand{\ArcSeasonARIMin}{0.814}
 \newcommand{\ArcSeasonFirst}{2018}
 \newcommand{\ArcSeasonLast}{2022}
+\newcommand{\ArcSeasonRefitARI}{0.942}
+\newcommand{\ArcSilhouetteAll}{0.268}
+\newcommand{\ArcSplitDF}{92.9}
+\newcommand{\ArcSplitFW}{99.8}
+\newcommand{\ArcSplitMF}{51.0}
+\newcommand{\ArcSwitchRate}{7.8}
+\newcommand{\ArcTracked}{3,479}
+\newcommand{\ArcTrackedTwo}{2,327}
 \newcommand{\BaselineAccuracy}{0.494}
 \newcommand{\BaselineMacroF}{0.221}
 \newcommand{\BetaAssists}{1.72}
@@ -128,6 +188,7 @@
 \newcommand{\KeeperEtaSavePct}{0.25}
 \newcommand{\KeeperEtaTeamPoints}{0.72}
 \newcommand{\KeeperFeatureCount}{6}
+\newcommand{\KeeperFeatureCountArchive}{13}
 \newcommand{\KeeperKPrimary}{2}
 \newcommand{\KeeperKRepl}{4}
 \newcommand{\KeeperMinClusterRepl}{3}
@@ -248,6 +309,17 @@
 \newcommand{\PurityTSNE}{0.692}
 \newcommand{\PurityUMAP}{0.699}
 \newcommand{\PurityVsPosition}{0.579}
+\newcommand{\RepAxisCorrMin}{0.9983}
+\newcommand{\RepLeaguePooledMin}{0.932}
+\newcommand{\RepN}{9,263}
+\newcommand{\RepPairMax}{0.753}
+\newcommand{\RepPairMean}{0.693}
+\newcommand{\RepPairMin}{0.570}
+\newcommand{\RepSeasonPooledMin}{0.916}
+\newcommand{\RepShareMean}{91.6}
+\newcommand{\RepShareMin}{87.8}
+\newcommand{\RepTransferMean}{0.944}
+\newcommand{\RepTransferMin}{0.893}
 \newcommand{\SeasonPrimary}{2024-25}
 \newcommand{\SeasonReplication}{2025-26}
 \newcommand{\SensARIHigh}{0.947}
@@ -256,6 +328,9 @@
 \newcommand{\SensAgreeLow}{0.967}
 \newcommand{\SensSilhouetteHigh}{0.302}
 \newcommand{\SensSilhouetteLow}{0.286}
+\newcommand{\ShapArcTopOne}{Touches def third}
+\newcommand{\ShapArcTopThree}{Ball recoveries}
+\newcommand{\ShapArcTopTwo}{Clearances (adj)}
 \newcommand{\ShrinkARIDF}{0.453}
 \newcommand{\ShrinkARIFW}{0.626}
 \newcommand{\ShrinkARIGlobal}{0.945}
@@ -302,6 +377,27 @@
 \newcommand{\StrZDF}{24.2}
 \newcommand{\StrZFW}{13.2}
 \newcommand{\StrZMF}{15.0}
+\newcommand{\SupBaseline}{40.9}
+\newcommand{\SupDFF}{0.977}
+\newcommand{\SupDFRecall}{97.8}
+\newcommand{\SupDFasFW}{0}
+\newcommand{\SupDFasMF}{83}
+\newcommand{\SupFWF}{0.865}
+\newcommand{\SupFWRecall}{83.9}
+\newcommand{\SupFWasDF}{8}
+\newcommand{\SupFWasMF}{267}
+\newcommand{\SupGBMAcc}{93.4}
+\newcommand{\SupGBMF}{0.921}
+\newcommand{\SupLogitAcc}{93.1}
+\newcommand{\SupLogitF}{0.918}
+\newcommand{\SupMFF}{0.921}
+\newcommand{\SupMFRecall}{93.3}
+\newcommand{\SupMFasDF}{82}
+\newcommand{\SupMFasFW}{171}
+\newcommand{\SupMiddleErrors}{603}
+\newcommand{\SupN}{9,263}
+\newcommand{\SupPoleErrors}{8}
+\newcommand{\SupPoleShare}{1.31}
 \newcommand{\SymARI}{0.872}
 \newcommand{\SymCorrAdjusted}{-0.610}
 \newcommand{\SymCorrBaseline}{-0.861}

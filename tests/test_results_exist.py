@@ -192,3 +192,91 @@ def test_pool_counts_exceed_eligible_counts() -> None:
         pool = int(macros[f"N{group}Pool"].replace(",", ""))
         eligible = int(macros[f"N{group}Primary"].replace(",", ""))
         assert pool >= eligible, f"{group}: pool {pool} is smaller than eligible {eligible}"
+
+
+def _int(macros: dict[str, str], name: str) -> int:
+    return int(macros[name].replace(",", ""))
+
+
+def test_archive_contingency_sums_to_the_eligible_total() -> None:
+    """The mode-by-position table quoted in the text must account for every player.
+
+    The paper reads the contingency cells out loud, so a reader can add them up. They have
+    to reach the eligible total, or one of the two numbers is being drawn from a different
+    filter than the other.
+    """
+    macros = _macro_values()
+    cells = [f"ArcMode{m}{g}" for m in ("Def", "Att") for g in ("DF", "MF", "FW")]
+    if any(c not in macros for c in cells) or "ArcEligible" not in macros:
+        pytest.skip("archive contingency macros not generated yet")
+    total = sum(_int(macros, c) for c in cells)
+    assert total == _int(macros, "ArcEligible"), (
+        f"contingency cells sum to {total} but the eligible total is {macros['ArcEligible']}"
+    )
+
+
+def test_archive_pole_purity_matches_the_contingency() -> None:
+    """The purity percentages must be recomputable from the counts beside them.
+
+    The argument turns on defenders and forwards sitting at opposite poles while midfielders
+    divide evenly, and both halves of that claim are quoted as percentages derived from the
+    cells. If the two drift apart the sentence stops being checkable.
+    """
+    macros = _macro_values()
+    if "ArcSplitDF" not in macros:
+        pytest.skip("archive split macros not generated yet")
+    for group in ("DF", "MF", "FW"):
+        low = _int(macros, f"ArcModeDef{group}")
+        high = _int(macros, f"ArcModeAtt{group}")
+        expected = 100.0 * max(low, high) / (low + high)
+        quoted = float(macros[f"ArcSplit{group}"])
+        assert abs(expected - quoted) < 0.05, (
+            f"{group}: cells give {expected:.1f} percent but the paper quotes {quoted}"
+        )
+    # The poles must actually be poles, and the middle must actually be a middle.
+    assert float(macros["ArcSplitMF"]) < float(macros["ArcSplitDF"]), (
+        "midfielders are more one-sided than defenders, which contradicts the argument"
+    )
+    assert float(macros["ArcSplitMF"]) < float(macros["ArcSplitFW"]), (
+        "midfielders are more one-sided than forwards, which contradicts the argument"
+    )
+
+
+def test_supervised_errors_are_partitioned_correctly() -> None:
+    """The pole and middle error counts must cover the off-diagonal exactly once.
+
+    The claim that errors route through midfield is stated as a share, so the denominator
+    has to be every misclassification and each cell has to be counted on one side only.
+    """
+    macros = _macro_values()
+    needed = ["SupPoleErrors", "SupMiddleErrors", "SupPoleShare"]
+    if any(n not in macros for n in needed):
+        pytest.skip("supervised macros not generated yet")
+    poles = _int(macros, "SupPoleErrors")
+    middle = _int(macros, "SupMiddleErrors")
+    assert poles == _int(macros, "SupDFasFW") + _int(macros, "SupFWasDF")
+    assert middle == sum(
+        _int(macros, n) for n in ("SupMFasDF", "SupMFasFW", "SupDFasMF", "SupFWasMF")
+    )
+    expected = 100.0 * poles / (poles + middle)
+    assert abs(expected - float(macros["SupPoleShare"])) < 0.01, (
+        f"pole share should be {expected:.2f} but the paper quotes {macros['SupPoleShare']}"
+    )
+
+
+def test_archive_elasticities_are_below_unity() -> None:
+    """The possession-adjustment claim is that every fitted exponent is sub-proportional.
+
+    The paper says so in the abstract, the results and the conclusion. If a refit ever
+    produced an elasticity at or above one, those three sentences would all be wrong at
+    once, so the claim is checked rather than trusted.
+    """
+    macros = _macro_values()
+    names = [f"ArcElast{s}" for s in ("Tackles", "Interceptions", "Blocks", "Clearances", "Fouls")]
+    if any(n not in macros for n in names):
+        pytest.skip("archive elasticity macros not generated yet")
+    values = {n: float(macros[n]) for n in names}
+    over = {n: v for n, v in values.items() if v >= 1.0}
+    assert not over, f"elasticities at or above one contradict the paper's claim: {over}"
+    assert float(macros["ArcElastMin"]) == min(values.values())
+    assert float(macros["ArcElastMax"]) == max(values.values())

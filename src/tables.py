@@ -396,8 +396,8 @@ def table_summary_by_position(summary: dict | None) -> None:
         r"\begin{table}[t]",
         r"\centering",
         r"\small",
-        r"\caption{Headline per-90 statistics by position group in the primary season, "
-        r"reported as mean with standard deviation in parentheses.}",
+        r"\caption{Headline per-90 statistics by position group in the earlier of the two "
+        r"reduced-sample seasons, reported as mean with standard deviation in parentheses.}",
         r"\label{tab:summary}",
         r"\begin{tabular}{lrrr}",
         r"\toprule",
@@ -468,8 +468,8 @@ def table_cluster_membership() -> None:
         # Fixed-width wrapping columns: archetype names run to several words and would
         # otherwise push the table well past the text block.
         r"\begin{longtable}{p{3.4cm}p{2.5cm}p{1.0cm}p{5.0cm}r}",
-        r"\caption{Cluster membership for every eligible outfield player in the primary "
-        r"season.}\\",
+        r"\caption{Cluster membership for every eligible outfield player in the earlier of the two "
+        r"reduced-sample seasons.}\\",
         r"\label{tab:membership}\\",
         r"\toprule",
         r"Player & Club & Listed & Archetype & Distance \\",
@@ -542,8 +542,8 @@ def table_minutes_sensitivity(pre: dict | None, sens: dict | None) -> None:
         r"\begin{table}[t]",
         r"\centering",
         r"\small",
-        r"\caption{Sensitivity of the analysis to the minutes threshold in the primary "
-        r"season. Agreement is the adjusted Rand index against the partition at the "
+        r"\caption{Sensitivity of the analysis to the minutes threshold in the earlier of the two "
+        r"reduced-sample seasons. Agreement is the adjusted Rand index against the partition at the "
         r"threshold actually used, computed on the players common to both pools.}",
         r"\label{tab:sensitivity}",
         r"\begin{tabular}{rrrrrr}",
@@ -1026,6 +1026,8 @@ def build_macros() -> Macros:
     )
     if rates:
         m.add("ArcKeeperCoverageMin", min(rates), places=3)
+    if isinstance(cov, dict) and cov:
+        m.add("KeeperFeatureCountArchive", len(cov))
     m.add("ArcKeeperK", dig(karc, "k"))
     m.add("ArcKeeperSil", dig(karc, "silhouette"), places=3)
     m.add("ArcKeeperBootARI", dig(karc, "bootstrap_ari_mean"), places=3)
@@ -1044,6 +1046,167 @@ def build_macros() -> Macros:
             tag = ["Zero", "One"][idx] if idx < 2 else str(idx)
             m.add_raw(f"ArcKeeperName{tag}", tex_escape(entry.get("name", "")))
             m.add(f"ArcKeeperN{tag}", entry.get("n_players") or entry.get("n"))
+
+    # Archetypes on the primary sample
+    aa = load_results("archive_archetypes")
+    _tag = {
+        "DF-0": "DFZero",
+        "DF-1": "DFOne",
+        "MF-0": "MFZero",
+        "MF-1": "MFOne",
+        "FW-0": "FWZero",
+        "FW-1": "FWOne",
+    }
+    for entry in dig(aa, "archetypes") or []:
+        tag = _tag.get(str(entry.get("label")))
+        if not tag:
+            continue
+        m.add_raw(f"ArcName{tag}", tex_escape(entry.get("name", "")))
+        m.add(f"ArcN{tag}", entry.get("n_players"))
+
+    ast = load("archive_archetype_stability")
+    cs = dig(ast, "consecutive_seasons") or {}
+    m.add("ArcTracked", cs.get("n_tracked_players"))
+    m.add("ArcTrackedTwo", cs.get("players_with_two_or_more_seasons"))
+    m.add_pct("ArcSwitchRate", cs.get("mean_switch_rate_within_group"), places=1)
+    pairs = cs.get("pairs") or []
+    aris = [p.get("adjusted_rand_index") for p in pairs if isinstance(p, dict)]
+    aris = [a for a in aris if a is not None]
+    if aris:
+        m.add("ArcSeasonARIMin", min(aris), places=3)
+        m.add("ArcSeasonARIMax", max(aris), places=3)
+        m.add("ArcSeasonARIMean", sum(aris) / len(aris), places=3)
+    m.add("ArcLeagueARI", dig(ast, "league_refits", "overall_mean_adjusted_rand_index"), places=3)
+    m.add(
+        "ArcSeasonRefitARI", dig(ast, "season_refits", "overall_mean_adjusted_rand_index"), places=3
+    )
+    for grp in ("DF", "MF", "FW"):
+        boot = dig(ast, "bootstrap_resampling", grp) or {}
+        val = boot.get("ari_mean") if isinstance(boot, dict) else None
+        m.add(f"ArcBoot{grp}", val, places=3)
+
+    # Possession elasticities on the primary sample
+    det = dig(arch, "elasticity_detail") or {}
+    _elast_tag = {
+        "tackles": "Tackles",
+        "interceptions": "Interceptions",
+        "blocks": "Blocks",
+        "clearances": "Clearances",
+        "fouls_committed": "Fouls",
+    }
+    seasons_seen = set()
+    for key, tag in _elast_tag.items():
+        entry = det.get(key) or {}
+        m.add(f"ArcElastCorr{tag}", entry.get("log_log_correlation"), places=3)
+        if entry.get("n_team_seasons"):
+            seasons_seen.add(int(entry["n_team_seasons"]))
+    if len(seasons_seen) == 1:
+        m.add("ArcPadjTeamSeasons", seasons_seen.pop())
+    vals = [v for v in (dig(arch, "elasticities") or {}).values() if v is not None]
+    if vals:
+        m.add("ArcElastCount", len(vals))
+        m.add("ArcElastMax", max(vals), places=3)
+        m.add("ArcElastMin", min(vals), places=3)
+
+    # Do the two modes simply recover listed position?
+    acv = load("archive_cluster_validation")
+    m.add("ArcARIvsPosition", dig(acv, "answer", "adjusted_rand_index_vs_position_group"), places=3)
+    m.add(
+        "ArcNMIvsPosition", dig(acv, "answer", "normalized_mutual_info_vs_position_group"), places=3
+    )
+    m.add_pct("ArcPurityVsPosition", dig(acv, "answer", "cluster_purity_vs_position_group"))
+    m.add(
+        "ArcARIvsPositionFull", dig(acv, "answer", "adjusted_rand_index_vs_position_full"), places=3
+    )
+    m.add("ArcSilhouetteAll", dig(acv, "scopes", "All outfield", "silhouette_at_k"), places=3)
+    m.add("ArcBootAll", dig(acv, "scopes", "All outfield", "bootstrap", "ari_mean"), places=3)
+    cont = dig(acv, "scopes", "All outfield", "vs_position", "position_group", "contingency") or {}
+    # Mode 0 is the defensive pole, mode 1 the attacking pole; the midfield straddles them.
+    for mode, tag in (("0", "Def"), ("1", "Att")):
+        cell = cont.get(mode) or {}
+        total = sum(cell.values()) or None
+        for grp in ("DF", "MF", "FW"):
+            m.add(f"ArcMode{tag}{grp}", cell.get(grp))
+        if total:
+            m.add_pct(f"ArcMode{tag}Share", cell.get("MF", 0) / total)
+    if cont.get("0") and cont.get("1"):
+        for grp in ("DF", "MF", "FW"):
+            lo, hi = cont["0"].get(grp, 0), cont["1"].get(grp, 0)
+            if lo + hi:
+                m.add_pct(f"ArcSplit{grp}", max(lo, hi) / (lo + hi))
+
+    # Replication of the two-mode solution across seasons and leagues
+    rep = load("archive_replication")
+    m.add("RepN", dig(rep, "n_players_seasons"))
+    m.add("RepSeasonPooledMin", dig(rep, "summary", "season_vs_pooled_ari_min"), places=3)
+    m.add("RepLeaguePooledMin", dig(rep, "summary", "league_vs_pooled_ari_min"), places=3)
+    m.add("RepAxisCorrMin", dig(rep, "summary", "axis_correlation_min"), places=4)
+    m.add("RepTransferMean", dig(rep, "summary", "league_transfer_ari_mean"), places=3)
+    m.add("RepTransferMin", dig(rep, "summary", "league_transfer_ari_min"), places=3)
+    m.add("RepPairMean", dig(rep, "summary", "season_pairwise_ari_mean"), places=3)
+    m.add("RepPairMin", dig(rep, "summary", "season_pairwise_ari_min"), places=3)
+    m.add("RepPairMax", dig(rep, "summary", "season_pairwise_ari_max"), places=3)
+    m.add_pct("RepShareMean", dig(rep, "summary", "season_pairwise_same_cluster_share_mean"))
+    m.add_pct("RepShareMin", dig(rep, "summary", "season_pairwise_same_cluster_share_min"))
+
+    # Supervised lens on the archive sample
+    sup = load("archive_supervised")
+    m.add("SupN", dig(sup, "n_players"))
+    m.add_pct("SupBaseline", dig(sup, "models", "majority_baseline", "accuracy"))
+    for tag, key in (("Logit", "logistic_regression"), ("GBM", "lightgbm")):
+        m.add_pct(f"Sup{tag}Acc", dig(sup, "models", key, "accuracy"))
+        m.add(f"Sup{tag}F", dig(sup, "models", key, "macro_f1"), places=3)
+    for grp in ("DF", "MF", "FW"):
+        m.add(f"Sup{grp}F", dig(sup, "models", "lightgbm", "per_class", grp, "f1"), places=3)
+        m.add_pct(f"Sup{grp}Recall", dig(sup, "models", "lightgbm", "per_class", grp, "recall"))
+    counts = dig(sup, "models", "lightgbm", "confusion_matrix", "counts") or []
+    labels = dig(sup, "models", "lightgbm", "confusion_matrix", "labels") or []
+    if counts and labels:
+        i = {lab: n for n, lab in enumerate(labels)}
+        # The poles of the space almost never trade places; the middle trades with both.
+        m.add("SupDFasFW", counts[i["DF"]][i["FW"]])
+        m.add("SupFWasDF", counts[i["FW"]][i["DF"]])
+        m.add("SupMFasDF", counts[i["MF"]][i["DF"]])
+        m.add("SupMFasFW", counts[i["MF"]][i["FW"]])
+        m.add("SupFWasMF", counts[i["FW"]][i["MF"]])
+        m.add("SupDFasMF", counts[i["DF"]][i["MF"]])
+        poles = counts[i["DF"]][i["FW"]] + counts[i["FW"]][i["DF"]]
+        middle = (
+            counts[i["MF"]][i["DF"]]
+            + counts[i["MF"]][i["FW"]]
+            + counts[i["DF"]][i["MF"]]
+            + counts[i["FW"]][i["MF"]]
+        )
+        m.add("SupPoleErrors", poles)
+        m.add("SupMiddleErrors", middle)
+        m.add_pct("SupPoleShare", poles / (poles + middle) if poles + middle else None, places=2)
+    top = dig(sup, "shap", "overall_ranking") or []
+    for n, entry in enumerate(top[:3]):
+        m.add_raw(f"ShapArcTop{['One', 'Two', 'Three'][n]}", tex_escape(entry.get("label", "")))
+
+    # Players the two-mode description fits worst
+    aout = load("archive_outliers")
+    m.add("ArcOutN", dig(aout, "n_reported"))
+    m.add_pct("ArcOutAgreement", dig(aout, "detector_agreement"))
+    players = dig(aout, "players") or []
+    if players:
+        m.add("ArcOutCompound", sum(1 for e in players if "," in str(e.get("position_full", ""))))
+        m.add("ArcOutShortMinutes", sum(1 for e in players if (e.get("minutes") or 0) < 900))
+        m.add("ArcOutDistinct", len({e.get("player") for e in players}))
+        m.add_raw("ArcOutTop", tex_escape(players[0].get("player", "")))
+        seen: list[str] = []
+        for e in players:
+            name = str(e.get("player", ""))
+            if name and name not in seen:
+                seen.append(name)
+        m.add_raw("ArcOutNames", tex_escape(", ".join(seen[:3])))
+
+    # How many dimensions the archive role space has
+    apca = load("archive_pca")
+    m.add_pct("ArcPCOne", dig(apca, "pc1_share"))
+    m.add_pct("ArcPCThree", dig(apca, "pc1_to_pc3_share"))
+    m.add("ArcPCNinety", dig(apca, "n_components_for_90pct"))
+    m.add("ArcPCKaiser", dig(apca, "n_components_above_kaiser"))
 
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))

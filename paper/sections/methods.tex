@@ -104,7 +104,7 @@ agreed, and which did not, is reported alongside the choice.
 Selecting a number of clusters presupposes that clusters are there to be counted. That
 presupposition is the weak point of the whole genre, because a partitioning algorithm
 returns a partition whatever it is given, and the internal criteria used to choose $k$ are
-computed on the partition rather than against any alternative. A silhouette of 0.27 sounds
+computed on the partition rather than against any alternative. A silhouette of \StrObsAll{} sounds
 like evidence until one asks what silhouette structureless data of the same shape would
 have produced.
 
@@ -118,7 +118,8 @@ falls inside that distribution, the partition at that $k$ is indistinguishable f
 imposed on a continuum, and no claim is made from it.
 
 Three further instruments guard against the null calibration itself being misleading.
-Hartigan's dip test is applied to the leading principal components and asks directly
+Hartigan's dip test \citep{hartigan1985dip} is applied to the leading principal
+components and asks directly
 whether a distribution is unimodal, which is a claim about the data rather than about any
 clustering of it. A Gaussian mixture model's Bayesian information criterion is computed
 across the same range of component counts, because unlike the silhouette it carries no
@@ -142,9 +143,23 @@ resamples in which the two were assigned together. Clusters whose members co-ass
 0.6 on average are reported as unstable, and they are described as such in the results
 rather than being renamed or merged to make the account tidier.
 
+Replication is tested separately and more stringently than resampling, because a resample
+reuses the same players. Each season and each league is standardised inside itself and
+clustered from scratch, borrowing no centre, no scale and no starting point from the pooled
+fit, and each independent partition is compared against the pooled one. Cluster labels are
+arbitrary per fit, so labels are aligned to the pooled partition by matching on the
+contingency table before any label-dependent quantity is computed, and an assertion fails the
+run if an aligned agreement drops to chance. Three comparisons are reported and they answer
+different questions: an independent fit scored against the pooled partition on the same rows,
+one season's labels scored against another's on the players present in both, which mixes
+replication with real change in those players, and one scope's centroids imported into
+another scope's players and scored against that scope's own fit, which isolates replication.
+We also correlate each scope's centroid-difference vector with the pooled one, to check that
+the scopes recover the same axis and not merely a similarly sized partition.
+
 The relationship between the discovered clusters and the listed positions is quantified
 by normalised mutual information and by the adjusted Rand index, computed against both
-the four-way position group and the full position string. Players whose cluster
+the position group and the full position string. Players whose cluster
 assignment disagrees with their listed group, and players whose Gaussian mixture
 posterior is split across components, are extracted as candidate hybrids.
 
@@ -168,10 +183,21 @@ distance-based and a partition-based notion of unusualness can be compared.
 Unsupervised structure is easy to over-interpret, so we ask a supervised model what
 separates the listed positions. Logistic regression and gradient boosting are trained to
 predict the position group from the feature set under five-fold stratified cross
-validation, and we report accuracy, macro F1 and the confusion matrix. The purpose is
-interpretability rather than accuracy: SHAP values \citep{lundberg2017unified} on the
-boosted model identify which statistics actually distinguish each position in this
-feature set. Players the classifier places in the wrong group are cross referenced
+validation, and we report accuracy, macro F1 and the confusion matrix, every number computed
+from out-of-fold predictions. A majority-class baseline runs through the identical folds, so
+the reported lift is over the trivial model rather than over zero. Two properties of the
+confusion matrix are read as evidence about geometry rather than about accuracy: whether the
+two extreme classes are confused with each other, and whether the errors concentrate in the
+class that lies between them. An ordered space with two poles produces few errors of the
+first kind and many of the second, while three genuine categories would not.
+
+The purpose is interpretability rather than accuracy: SHAP values
+\citep{lundberg2017unified} on the boosted model identify which statistics actually
+distinguish each position in this feature set. The model is fitted on every row and the
+attributions are computed on a stratified sub-sample, which is stated with the result. We
+also record, for each feature and class, the rank correlation between the feature's value and
+the attribution it makes, which separates a class identified by what its members do from one
+identified by what they do not. Players the classifier places in the wrong group are cross referenced
 against the candidate hybrids from the clustering, since agreement between two methods
 that fail in the same place is more informative than either alone.
 
@@ -184,14 +210,26 @@ explanatory power is mostly noise.
 
 \subsection{Goalkeepers}
 
-The goalkeeper analysis is severely constrained by the withdrawal described in
-Section~\ref{sec:data:withdrawal}, which removed post-shot expected goals, sweeper
-actions, distribution and cross handling. Only shot stopping and workload survive, so we
-build two composites rather than the five that the surviving column headers appear to
-promise. In place of post-shot expected goals we regress saves on shots on target faced
-and use the residual as a shot stopping index. That index adjusts for the volume of work
-a goalkeeper receives but not for its difficulty, which makes it a substantially weaker
-instrument, and it is reported as such.
+Goalkeepers share almost no features with outfield players, so they are analysed with a
+separate pipeline on the \KeeperFeatureCountArchive{} canonical goalkeeper features, under
+the same eligibility threshold, the same standardisation and the same selection rule. Saves
+above expectation are computed as post-shot expected goals minus goals allowed, which
+conditions on the difficulty of the shots faced rather than only on their number.
+
+One methodological choice needs stating in advance because the result turns on it. The
+goalkeeper feature block mixes quantities describing what a goalkeeper does with quantities
+describing what his defence permits him to face, and a partition fitted on both will separate
+teams rather than goalkeepers. We therefore fit twice, once on the full block and once on
+technique alone with the exposure variables excluded, and report for each partition how much
+variance membership explains in situational quantities against technical ones. The comparison
+is declared here rather than chosen after seeing which fit looked better.
+
+On the reduced sample the same analysis is not possible, because post-shot expected goals,
+sweeper actions, distribution and cross handling are all absent there. Only shot stopping and
+workload survive, so that version builds two composites instead of five and substitutes the
+residual from a regression of saves on shots on target faced for post-shot expected goals.
+That substitute adjusts for the volume of work a goalkeeper receives but not for its
+difficulty, and it is reported as the weaker instrument it is.
 
 \subsection{Team signatures}
 

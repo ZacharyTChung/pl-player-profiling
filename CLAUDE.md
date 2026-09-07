@@ -2,25 +2,45 @@
 
 ## Project goal
 
-Reproducible sports-analytics study. Working title:
+Reproducible sports-analytics study. Title:
 
-**"Role Discovery Under Data Scarcity: Unsupervised Player Profiling in the Premier League
-After the Withdrawal of Public Advanced Football Statistics"**
+**"Two Modes, Not Many Types: The Structure of Football Player Roles in Season-Aggregate Data"**
 Authors: Zachary Chung, Christian Chung.
 
-Discover player archetypes from per-90 statistics using dimensionality reduction and clustering,
-instead of accepting listed positions. Validate with cluster stability, a supervised lens and a
-cross-season replication. Extend to goalkeepers and team stylistic signatures.
+The question is not which archetypes exist but **whether archetypes exist at all**. Every
+partitioning method returns a partition, so the standard evidence for a published role taxonomy
+(a selection criterion, a bootstrap, an interpretable centroid) is satisfied just as well by data
+containing no groups. The paper tests existence directly by calibrating cluster quality against
+simulated data matched on size, dimension and covariance but built to be clusterless.
 
-The paper is framed around a constraint that became real during this project: on 20 January 2026
-Sports Reference removed every Opta-derived advanced statistic from FBref. The research question is
-therefore not only which archetypes exist, but **which archetypes remain recoverable from public
-football data after that withdrawal**. Output is a compiled LaTeX paper in which every number comes
-from generated macros.
+**The finding:** two modes are real and finer taxonomies are not. The observed silhouette at k=2
+exceeds every one of 25 clusterless simulations in every scope (z from 13 to 24) and the dip test
+rejects unimodality on the leading component for the pool, defenders and midfielders. Beyond k=2
+the observed curve converges on the null, HDBSCAN labels every point noise within each position
+group, and mixture BIC never settles. The two modes are not listed positions relabelled: they
+agree with position group at ARI 0.293, with the poles near pure (92.9% of defenders one side,
+99.8% of forwards the other) and midfield splitting 51/49. A classifier reaches 93.4% accuracy on
+the same features yet routes all but 1.31% of its errors through midfield, which is the same
+geometry from independent machinery. The division reproduces in all 5 seasons and all 5 leagues,
+transferring across leagues at mean ARI 0.944.
 
-## The data situation (read this before touching features)
+## The two samples (read this before touching features)
 
-Verified directly from our own pull, both seasons:
+**Primary: the pre-withdrawal archive.** 13,822 player-seasons, 5 seasons (2018-2022, labelled by
+end year), all 5 major European leagues, 33 features, 9,263 eligible outfield players and 1,035
+goalkeepers. Sourced from the worldfootballR public mirror of FBref, which predates the January
+2026 withdrawal. `src/archive_fetch.py` downloads it from a stated URL and records a SHA-256 per
+file; `src/archive.py` loads, audits and standardises it. The season ending 2023 is excluded
+because its carrying block is empty in the mirror, enforced by `assert_season_coverage` rather
+than by a comment.
+
+**Secondary: the live reduced sample.** On 20 January 2026 Sports Reference removed every
+Opta-derived statistic from FBref, retroactively. The live pull for 2024-25 and 2025-26 therefore
+yields 18 features for 366 Premier League players, after merging Understat as an independent xG
+source. This is now the paper's **robustness case**, not its foundation: the main result holding
+on both a 33-feature and an 18-feature description is worth more than it holding on either alone.
+
+Verified from our own live pull, both seasons:
 
 | FBref table | Columns | All-null | Usable |
 |---|---|---|---|
@@ -33,18 +53,8 @@ Verified directly from our own pull, both seasons:
 | `standard`, `shooting`, `keeper`, `misc`, `playing_time` | | 0 | all |
 
 FBref still serves the full schema, so the tables look intact until you check for values. Never
-select a feature from FBref's published column list without confirming it is non-null in both
-seasons. `src/features.py` only contains columns that passed that check.
-
-**Gone:** xG, npxG, xAG, SCA, GCA, all touches, carries, take-ons and progressive counts, all
-passing volume, PSxG, sweeper actions, launch rate, pass length, aerial duels, ball recoveries.
-
-**Repair:** Understat is merged in as an independent xG source and restores npxG, xA, key passes,
-xGChain and xGBuildup, all fully populated. The combined outfield feature set is 18 features.
-
-**Goalkeepers:** `keeper_core` as originally specified is not recoverable. Only the basic keeper
-table survived, so the goalkeeper analysis is limited to shot stopping and workload. The five
-composite axes collapse to roughly two. This is reported honestly rather than worked around.
+select a live feature from FBref's published column list without confirming it is non-null in both
+seasons. This trap does not apply to the archive, which is complete.
 
 ## Ground rules (non-negotiable)
 
@@ -68,7 +78,13 @@ composite axes collapse to roughly two. This is reported honestly rather than wo
 
 ```
 config.py            seasons, thresholds, feature-independent constants, seed, k-selection rule
-src/ingest.py        FBref pull (FBrefFull subclass, see below)
+src/ingest.py        live FBref pull (FBrefFull subclass, see below)
+src/archive_fetch.py download the pre-withdrawal mirror, hash it, write the manifest
+src/archive.py       load and audit the archive, standardise, write the primary sample
+src/structure.py     the null calibration: does the clustering find groups that exist?
+src/archive_profiles.py    archetypes, stability and outliers on the primary sample
+src/archive_keepers.py     goalkeepers on the full keeper block
+src/archive_validation.py  replication across seasons and leagues, supervised, PCA
 src/preprocess.py    merge, filter, per-90, position parsing, imputation
 src/features.py      feature sets per position group and for keepers
 src/descriptive.py   summary stats, correlations, distributions
@@ -82,6 +98,7 @@ src/novel.py         similarity search, cross-season validation, EB shrinkage
 src/tables.py        writes LaTeX tables and macros from results/
 src/plotting.py      shared matplotlib style, palettes, export helpers
 data/raw/            untouched pulls, one parquet per stat table per season + manifest.json
+data/raw/archive/    the mirror as parquet, plus rds/ and a hashed manifest.json
 data/raw/html/       soccerdata HTML cache (gitignored, regenerable)
 data/processed/      merged, per-90 normalised, filtered
 results/metrics/     json files with every computed number
@@ -128,7 +145,9 @@ parser. Two things had to be discovered empirically against live FBref pages:
 
 ```bash
 uv sync --extra dev            # create/refresh the environment
-uv run python -m src.ingest    # Phase 1, FBref pull (slow, cached)
+uv run python -m src.ingest    # live FBref pull, slow and cached
+make archive-fetch             # refresh the pre-withdrawal mirror from upstream
+make archive structure         # the primary sample and the null calibration
 uv run pytest                  # tests
 uv run ruff check . && uv run ruff format --check .
 make all                       # full pipeline through the compiled PDF
@@ -152,14 +171,23 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
 - [x] Phase 11: figures and tables
 - [x] Phase 13: paper
 - [x] Phase 14: verification and handoff
+- [x] Rebuild on the archive: primary sample, null calibration, replication, new thesis
 
 ## Verification record
 
-`make clean && make all` completes from a clean tree against the committed scrape cache.
-All 36 figure PNGs are byte-identical to the previous run and all 27 metrics JSON files
-are unchanged, so the pipeline is deterministic. The PDF differs only in its embedded
-creation date. The paper compiles with zero undefined references and zero overfull boxes.
-48 tests pass and ruff reports no findings.
+`make clean && make all` completes from a clean tree against the committed caches, and now
+covers the archive chain as well: `archive`, `structure`, `archive_profiles`,
+`archive_keepers` and `archive_validation` all gate `results/macros.tex`, so the paper's
+primary numbers are regenerated rather than assumed. Figures and metrics JSON are
+byte-identical across runs, so the pipeline is deterministic; the PDF differs only in its
+embedded creation date. The paper compiles with zero undefined references. Tests pass and
+ruff reports no findings.
+
+The archive itself is reproducible from a stated URL. `src/archive_fetch.py` downloads each
+upstream `.rds`, converts it and records a SHA-256 per file in
+`data/raw/archive/manifest.json`. Re-running it reproduces the committed parquet files
+exactly, verified by shape and column comparison. The mirror rewrites files in place and
+publishes no tags, so the digests are the only available pin.
 
 ## Multi-league replication
 
@@ -170,9 +198,10 @@ because it scrapes.
 
 ## Analyses deliberately skipped or forced out by the data
 
-- **Goalkeeper composites** (Phase 8 as specified): sweeping, distribution, cross handling and
-  aerial claims all depended on `keeper_adv`, which is empty. Reduced to shot stopping and workload.
-- **Possession and passing features** across every phase: unavailable, see the data situation above.
+- **Goalkeeper composites** and **possession and passing features**: unavailable on the live
+  reduced sample, for the reasons in the two-samples section. Both are **restored on the archive**,
+  which is why the archive is the primary sample. The reduced-sample versions are retained in the
+  appendix as the robustness case rather than deleted.
 
 - **Role drift within a season** (Phase 10 option 3): originally dropped as rate-limit
   hostile, now completed for one club. Match reports turned out to survive the withdrawal

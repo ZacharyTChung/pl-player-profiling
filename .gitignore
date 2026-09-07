@@ -5,6 +5,11 @@ __pycache__/
 .ruff_cache/
 # Raw scrape cache is large and regenerable, but keep the manifests.
 data/raw/html/
+# Upstream .rds downloads. The converted parquet is committed and the manifest records
+# a SHA-256 per file, so `make archive-fetch` restores these from the stated URL.
+data/raw/archive/rds/
+# Make stamps are local build state.
+.stamps/
 !data/raw/**/manifest.json
 paper/*.aux
 paper/*.log
