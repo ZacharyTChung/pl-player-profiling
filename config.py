@@ -111,7 +111,7 @@ PCA_VARIANCE_TARGET = 0.90
 BOOTSTRAP_N = 200
 GAP_STATISTIC_B = 50
 
-# Consensus k-selection rule, declared in advance (see PLAN.md / paper methods).
+# Consensus k-selection rule, declared in advance (see the paper methods; declared in PLAN.md before any fitting).
 # Choose the SMALLEST k whose silhouette is within SILHOUETTE_TOLERANCE of the best
 # observed silhouette AND which ranks in the top TOP_N_RANK on at least MIN_CRITERIA of
 # {silhouette, Calinski-Harabasz, gap}. Davies-Bouldin (lower is better) breaks ties.

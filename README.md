@@ -222,8 +222,18 @@ sentence-initial "And", bullet lists and a list of filler phrases anywhere in `p
 
 ## Licence and data
 
-The archive is retrieved from the worldfootballR public data mirror, with per-file SHA-256
-digests recorded in `data/raw/archive/manifest.json`. Live data is retrieved from FBref and
-Understat through `soccerdata`, which caches to disk and rate limits requests. No raw request
-loop is written against either site. The cached HTML under `data/raw/html` is gitignored and
-regenerable.
+**Code** in this repository is MIT licensed, see `LICENSE`. That covers everything under
+`src/`, `scripts/`, `tests/`, `config.py` and the Makefile, and it covers the paper's LaTeX
+sources and generated figures.
+
+**Data is a different matter and is not ours to license.** The statistics originate with
+FBref, which sourced them from a commercial provider whose licence has since been terminated.
+The archive here is retrieved from the worldfootballR public data mirror, with per-file
+SHA-256 digests recorded in `data/raw/archive/manifest.json`, and the derived parquet files
+are committed so the analysis is reproducible without a re-scrape. They are redistributed for
+that purpose and no rights over them are claimed or granted. Anyone reusing the data should
+satisfy themselves about its terms independently.
+
+Live data is retrieved from FBref and Understat through `soccerdata`, which caches to disk and
+rate limits at seven seconds per request. No raw request loop is written against either site.
+The cached HTML under `data/raw/html` is gitignored and regenerable.

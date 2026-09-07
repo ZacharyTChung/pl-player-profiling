@@ -26,3 +26,6 @@ latest_logs/
 # Assembled submission package, regenerable with `make submission`.
 submission/
 submission.tar.gz
+
+# macOS finder metadata.
+.DS_Store

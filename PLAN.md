@@ -1,5 +1,12 @@
 # Plan: Premier League Player Profiling with Unsupervised Learning
 
+> **Historical document.** This is the original build plan, written before any data was
+> pulled. It describes a project whose central question changed: the paper it planned was
+> about which archetypes exist, and the paper that resulted is about whether archetypes exist
+> at all. It is kept because the k-selection rule it declares was fixed here, in advance of
+> any fitting, which is what makes that rule a pre-registration rather than a post-hoc
+> choice. For the project as it stands, read `README.md`.
+
 ## Context
 
 Build a complete, reproducible sports-analytics research project from an empty directory to a
