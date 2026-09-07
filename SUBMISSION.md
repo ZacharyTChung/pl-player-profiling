@@ -26,9 +26,32 @@ Studies of football player roles routinely report a set of discovered archetypes
 
 ## Categories
 
-Primary: stat.AP (Applications). The contribution is a claim about football data.
+Primary: stat.AP (Applications). The paper contributes a finding, evidenced entirely
+within one domain's data, and proposes no method. arXiv's stat.AP remit covers the social
+sciences, which is where sports analytics sits.
+
 Cross-list: cs.LG (Machine Learning) and stat.ML, which is where the cluster validity
-argument will find its other audience.
+argument finds its other audience. cs.LG is defensible as primary instead, since its scope
+explicitly admits applications of machine learning methods, and it reaches far more
+readers. The trade is audience shape rather than correctness: stat.AP is smaller but is
+read by the people who publish the role taxonomies this paper argues against.
+
+Do not list stat.ME. Its scope names Model Selection and Multivariate Methods, so choosing
+the number of clusters looks like a fit, but stat.ME is for papers that contribute
+methodology and this one applies an existing check. The null calibration is the gap
+statistic's reference-distribution idea, which the paper cites rather than claims.
+
+## Optional classification fields
+
+Both are optional on the submission form and both are worth filling in, because they are
+what indexers and subject bibliographies key on.
+
+MSC class: 62H30, 62P25
+  62H30 is classification and discrimination, cluster analysis. 62P25 is applications of
+  statistics to the social sciences.
+
+ACM class: I.5.3
+  Pattern Recognition, Clustering.
 
 ## What only you can do
 
@@ -67,4 +90,4 @@ appears:
 
 ## Date of this package
 
-September 6, 2026
+September 7, 2026
