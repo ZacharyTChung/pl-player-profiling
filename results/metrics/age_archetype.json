@@ -1,0 +1,223 @@
+{
+  "by_position_group": {
+    "DF": {
+      "contingency": {
+        "21 and under": {
+          "Crossing and chance creating defenders": 8,
+          "Low attacking involvement defenders": 11
+        },
+        "22 to 24": {
+          "Crossing and chance creating defenders": 12,
+          "Low attacking involvement defenders": 24
+        },
+        "25 to 27": {
+          "Crossing and chance creating defenders": 12,
+          "Low attacking involvement defenders": 29
+        },
+        "28 to 30": {
+          "Crossing and chance creating defenders": 3,
+          "Low attacking involvement defenders": 12
+        },
+        "31 and over": {
+          "Crossing and chance creating defenders": 3,
+          "Low attacking involvement defenders": 22
+        }
+      },
+      "association": {
+        "testable": true,
+        "chi2": 6.0741,
+        "dof": 4,
+        "p_value": 0.1937,
+        "cramers_v": 0.2113,
+        "n": 136,
+        "cells_with_expected_below_five": 1,
+        "approximation_reliable": false
+      },
+      "mean_age_by_archetype": {
+        "Crossing and chance creating defenders": 24.61,
+        "Low attacking involvement defenders": 26.26
+      },
+      "median_age_by_archetype": {
+        "Crossing and chance creating defenders": 24.0,
+        "Low attacking involvement defenders": 26.0
+      },
+      "n_by_archetype": {
+        "Low attacking involvement defenders": 98,
+        "Crossing and chance creating defenders": 38
+      },
+      "age_trend": {
+        "indicator_is": "Low attacking involvement defenders",
+        "spearman_rho": 0.2089,
+        "p_value": 0.0147,
+        "note": "Positive means the indicated archetype becomes more common with age. This is a test against a monotonic alternative, unlike the chi-square above, which spends its degrees of freedom on any departure from independence."
+      },
+      "kruskal_age_difference": {
+        "statistic": 5.8911,
+        "p_value": 0.0152,
+        "mean_difference_years": -1.65
+      }
+    },
+    "FW": {
+      "contingency": {
+        "21 and under": {
+          "Crossing and creating wide forwards": 4,
+          "Shot taking central forwards": 3
+        },
+        "22 to 24": {
+          "Crossing and creating wide forwards": 6,
+          "Shot taking central forwards": 8
+        },
+        "25 to 27": {
+          "Crossing and creating wide forwards": 3,
+          "Shot taking central forwards": 12
+        },
+        "28 to 30": {
+          "Crossing and creating wide forwards": 4,
+          "Shot taking central forwards": 2
+        },
+        "31 and over": {
+          "Crossing and creating wide forwards": 2,
+          "Shot taking central forwards": 5
+        }
+      },
+      "association": {
+        "testable": true,
+        "chi2": 5.5935,
+        "dof": 4,
+        "p_value": 0.2316,
+        "cramers_v": 0.3379,
+        "n": 49,
+        "cells_with_expected_below_five": 6,
+        "approximation_reliable": false
+      },
+      "mean_age_by_archetype": {
+        "Crossing and creating wide forwards": 24.84,
+        "Shot taking central forwards": 26.27
+      },
+      "median_age_by_archetype": {
+        "Crossing and creating wide forwards": 23.0,
+        "Shot taking central forwards": 25.5
+      },
+      "n_by_archetype": {
+        "Shot taking central forwards": 30,
+        "Crossing and creating wide forwards": 19
+      },
+      "age_trend": {
+        "indicator_is": "Shot taking central forwards",
+        "spearman_rho": 0.1547,
+        "p_value": 0.2885,
+        "note": "Positive means the indicated archetype becomes more common with age. This is a test against a monotonic alternative, unlike the chi-square above, which spends its degrees of freedom on any departure from independence."
+      },
+      "kruskal_age_difference": {
+        "statistic": 1.1491,
+        "p_value": 0.2837,
+        "mean_difference_years": -1.42
+      }
+    },
+    "MF": {
+      "contingency": {
+        "21 and under": {
+          "Ball winning, low attacking involvement midfielders": 20,
+          "High attacking involvement midfielders": 10
+        },
+        "22 to 24": {
+          "Ball winning, low attacking involvement midfielders": 26,
+          "High attacking involvement midfielders": 31
+        },
+        "25 to 27": {
+          "Ball winning, low attacking involvement midfielders": 28,
+          "High attacking involvement midfielders": 23
+        },
+        "28 to 30": {
+          "Ball winning, low attacking involvement midfielders": 18,
+          "High attacking involvement midfielders": 11
+        },
+        "31 and over": {
+          "Ball winning, low attacking involvement midfielders": 8,
+          "High attacking involvement midfielders": 6
+        }
+      },
+      "association": {
+        "testable": true,
+        "chi2": 4.2903,
+        "dof": 4,
+        "p_value": 0.3681,
+        "cramers_v": 0.154,
+        "n": 181,
+        "cells_with_expected_below_five": 0,
+        "approximation_reliable": true
+      },
+      "mean_age_by_archetype": {
+        "Ball winning, low attacking involvement midfielders": 25.06,
+        "High attacking involvement midfielders": 24.94
+      },
+      "median_age_by_archetype": {
+        "Ball winning, low attacking involvement midfielders": 25.0,
+        "High attacking involvement midfielders": 24.0
+      },
+      "n_by_archetype": {
+        "Ball winning, low attacking involvement midfielders": 100,
+        "High attacking involvement midfielders": 81
+      },
+      "age_trend": {
+        "indicator_is": "High attacking involvement midfielders",
+        "spearman_rho": -0.0289,
+        "p_value": 0.699,
+        "note": "Positive means the indicated archetype becomes more common with age. This is a test against a monotonic alternative, unlike the chi-square above, which spends its degrees of freedom on any departure from independence."
+      },
+      "kruskal_age_difference": {
+        "statistic": 0.1507,
+        "p_value": 0.6979,
+        "mean_difference_years": 0.12
+      }
+    }
+  },
+  "global_cluster": {
+    "contingency": {
+      "21 and under": {
+        "0": 40,
+        "1": 16
+      },
+      "22 to 24": {
+        "0": 64,
+        "1": 43
+      },
+      "25 to 27": {
+        "0": 71,
+        "1": 36
+      },
+      "28 to 30": {
+        "0": 34,
+        "1": 16
+      },
+      "31 and over": {
+        "0": 34,
+        "1": 12
+      }
+    },
+    "association": {
+      "testable": true,
+      "chi2": 3.9364,
+      "dof": 4,
+      "p_value": 0.4147,
+      "cramers_v": 0.1037,
+      "n": 366,
+      "cells_with_expected_below_five": 0,
+      "approximation_reliable": true
+    },
+    "mean_age_by_cluster": {
+      "0": 25.5,
+      "1": 25.19
+    }
+  },
+  "age_bands": [
+    "21 and under",
+    "22 to 24",
+    "25 to 27",
+    "28 to 30",
+    "31 and over"
+  ],
+  "n_players": 366,
+  "multiple_testing_note": "Four tests are reported, one per position group and one global. No correction is applied, so a single p-value near the conventional threshold should be read as suggestive rather than decisive.",
+  "season": "2024-25"
+}

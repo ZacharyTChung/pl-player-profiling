@@ -678,6 +678,39 @@ Figures~\ref{fig:shrinkage} and \ref{fig:shrinkageminutes} show the effect.
   \label{fig:novelpanel}
 \end{figure}
 
+\subsubsection{Age and archetype}
+\label{sec:results:age}
+The two archetypes within a position group differ mainly in attacking involvement, and
+involvement is plausibly something a career passes through rather than a fixed trait, so
+the association with age is worth testing. It is tested within position group, because
+archetypes are nested inside positions and a pooled table would largely recover the fact
+that forwards and defenders have different age profiles.
+
+Only defenders show a relationship. The crossing and chance creating defenders average
+\AgeGapDF{} years younger than the low involvement group, a difference that the rank test
+places at \AgeKruskalPDF{}, and the share of the crossing archetype falls monotonically
+from the youngest band to the oldest. Midfielders show nothing at all, with a gap of
+\AgeGapMF{} years at \AgeKruskalPMF{}, and the global partition is unrelated to age at
+\AgeGlobalP{}. Forwards point the same way as defenders but cannot support the claim,
+since six of the ten cells in their table have expected counts below five.
+
+The defender result also illustrates a point about test choice that is easy to get wrong.
+A chi-square on the banded table returns \AgeChiPDF{} and would ordinarily be read as no
+association. That test spends its degrees of freedom on any departure from independence,
+while the pattern here is monotonic, and a rank correlation against age recovers it at
+\AgeTrendRhoDF{} with a p-value of \AgeTrendPDF{}. The banded test is not wrong, it is
+underpowered against the alternative that actually holds, and reporting only the chi-square
+would have converted a real finding into a null one. Figure~\ref{fig:age} shows the shares.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{age_archetype.pdf}
+  \caption{Share of each age band taken by each archetype, within position group. The
+  defender panel falls monotonically with age, which a chi-square on bands does not detect
+  and a rank correlation does.}
+  \label{fig:age}
+\end{figure}
+
 \begin{figure}[t]
   \centering
   \begin{subfigure}[t]{0.48\textwidth}

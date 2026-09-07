@@ -170,6 +170,6 @@ creation date. The paper compiles with zero undefined references and zero overfu
 - **Role drift within a season** (Phase 10 option 3): would need `read_player_match_stats` across
   many matches. Feasible in principle since 1.8.8-era match stat types include passing, defense and
   possession, but it is rate-limit hostile and was dropped in favour of doing three analyses well.
-- **Age and archetype** (Phase 10 option 5): not selected for this study.
+- **Age and archetype** (Phase 10 option 5): originally not selected, now completed. Only defenders show an association, and the crossing archetype is 1.65 years younger.
 
 Both are recorded in the paper as future work.

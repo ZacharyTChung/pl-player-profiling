@@ -27,7 +27,7 @@ RAW_MANIFESTS  := $(wildcard data/raw/*/manifest.json)
 PROCESSED      := $(wildcard data/processed/*.parquet)
 
 .PHONY: all data preprocess descriptive reduce cluster profiles supervised keepers \
-        teams novel sensitivity threed symmetric tables paper test lint format clean distclean help
+        teams novel sensitivity threed symmetric age tables paper test lint format clean distclean help
 
 all: paper
 
@@ -46,6 +46,7 @@ help:
 	@echo "  sensitivity minutes threshold sensitivity"
 	@echo "  threed      three dimensional views of the player and club spaces"
 	@echo "  symmetric   symmetric possession adjustment counterfactual"
+	@echo "  age         age against archetype"
 	@echo "  tables      LaTeX tables and results/macros.tex"
 	@echo "  paper       compile paper/main.pdf"
 	@echo "  test        pytest"
@@ -105,6 +106,11 @@ $(STAMPS)/teams: src/teams.py $(CONFIG) $(PLOTTING) $(STAMPS)/profiles $(STAMPS)
 	@touch $@
 teams: $(STAMPS)/teams
 
+$(STAMPS)/age: src/age.py $(CONFIG) $(PLOTTING) $(STAMPS)/profiles
+	$(PY) -m src.age
+	@touch $@
+age: $(STAMPS)/age
+
 $(STAMPS)/symmetric: src/symmetric.py $(CONFIG) $(PLOTTING) $(STAMPS)/preprocess src/cluster.py
 	$(PY) -m src.symmetric
 	@touch $@
@@ -113,7 +119,7 @@ symmetric: $(STAMPS)/symmetric
 $(STAMPS)/threed: src/threed.py $(CONFIG) $(PLOTTING) $(STAMPS)/profiles $(STAMPS)/teams
 	$(PY) -m src.threed
 	@touch $@
-threed: $(STAMPS)/threed $(STAMPS)/symmetric
+threed: $(STAMPS)/threed $(STAMPS)/symmetric $(STAMPS)/age
 
 $(STAMPS)/sensitivity: src/sensitivity.py $(CONFIG) $(PLOTTING) $(STAMPS)/preprocess src/cluster.py
 	$(PY) -m src.sensitivity
@@ -129,7 +135,7 @@ novel: $(STAMPS)/novel
 ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/profiles $(STAMPS)/supervised $(STAMPS)/keepers \
                    $(STAMPS)/teams $(STAMPS)/novel $(STAMPS)/sensitivity \
-                   $(STAMPS)/threed $(STAMPS)/symmetric
+                   $(STAMPS)/threed $(STAMPS)/symmetric $(STAMPS)/age
 
 results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables

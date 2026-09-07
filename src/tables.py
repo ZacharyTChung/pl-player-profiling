@@ -888,6 +888,21 @@ def build_macros() -> Macros:
     m.add("SymSilhouetteBase", dig(sym, "baseline", "silhouette"), places=3)
     m.add("SymSilhouetteAdj", dig(sym, "symmetric_counterfactual", "silhouette"), places=3)
 
+    # Age and archetype
+    ages = load("age_archetype")
+    for grp in ("DF", "MF", "FW"):
+        block = dig(ages, "by_position_group", grp) or {}
+        m.add(f"AgeTrendRho{grp}", dig(block, "age_trend", "spearman_rho"), places=3)
+        m.add(f"AgeTrendP{grp}", dig(block, "age_trend", "p_value"), places=3)
+        m.add(
+            f"AgeGap{grp}",
+            dig(block, "kruskal_age_difference", "mean_difference_years"),
+            places=2,
+        )
+        m.add(f"AgeKruskalP{grp}", dig(block, "kruskal_age_difference", "p_value"), places=3)
+        m.add(f"AgeChiP{grp}", dig(block, "association", "p_value"), places=3)
+    m.add("AgeGlobalP", dig(ages, "global_cluster", "association", "p_value"), places=3)
+
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))
     m.add("NPairsTotal", dig(div, primary, "n_pairs"))

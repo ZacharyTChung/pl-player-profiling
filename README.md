@@ -75,6 +75,7 @@ limited, and the raw parquet files are committed, so the pipeline runs against t
 | `sensitivity` | 2 min | Refits selection and stability at three thresholds |
 | `threed` | 30 s | Four three dimensional scenes, two viewpoints each |
 | `symmetric` | 2 min | Symmetric possession adjustment counterfactual |
+| `age` | 10 s | Age against archetype |
 | `tables` | 10 s | |
 | `paper` | 40 s | Three LaTeX passes plus bibtex |
 
@@ -89,6 +90,7 @@ src/*.py           one module per analysis phase
 src/sensitivity.py minutes threshold sensitivity
 src/threed.py      three dimensional views
 src/symmetric.py   symmetric possession adjustment counterfactual
+src/age.py         age against archetype
 src/tables.py      generates results/macros.tex and results/tables/*.tex
 data/raw/          untouched pulls, one parquet per table per season
 results/metrics/   every computed number as JSON
@@ -150,7 +152,12 @@ dashes, sentence-initial "And", bullet lists and a list of filler phrases anywhe
 9. **The minutes threshold barely matters.** Two clusters at 270, 450 and 900 minutes,
    silhouette between 0.286 and 0.302, and the partition agrees with the one used at ARI
    0.967 and 0.986.
-10. **The third component is duels and discipline, and it does not predict league
+10. **Only defenders age out of an attacking role.** Crossing and chance creating
+    defenders are 1.65 years younger than low-involvement defenders (rank test p=0.015),
+    and their share falls monotonically across age bands. Midfielders show nothing.
+    A chi-square on the bands returns p=0.19 and would have called this a null; it is
+    underpowered against a monotonic alternative.
+11. **The third component is duels and discipline, and it does not predict league
     position.** Club centroids correlate with final position at -0.861 on PC1 and -0.695 on
     PC2 but only 0.209 on PC3. Separately, the two archetype centroids in each position
     group have a cosine of exactly -1, so six archetypes describe three axes.
