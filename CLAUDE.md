@@ -14,8 +14,10 @@ containing no groups. The paper tests existence directly by calibrating cluster 
 simulated data matched on size, dimension and covariance but built to be clusterless.
 
 **The finding:** two modes are real and finer taxonomies are not. The observed silhouette at k=2
-exceeds every one of 25 clusterless simulations in every scope (z from 13 to 24) and the dip test
-rejects unimodality on the leading component for the pool, defenders and midfielders. Beyond k=2
+exceeds every simulation under three clusterless nulls (Gaussian, marginal-preserving copula,
+uniform box) in every scope, with a minimum margin of z=8.0 against the hardest, and the dip
+statistic clears the hardest null by 13.7 on the pool. Clusterless data return bootstrap ARI of
+at least 0.911 (observed 0.962), so bootstrap stability is uninformative about existence. Beyond k=2
 the observed curve converges on the null, HDBSCAN labels every point noise within each position
 group, and mixture BIC never settles. The two modes are not listed positions relabelled: they
 agree with position group at ARI 0.293, with the poles near pure (92.9% of defenders one side,
@@ -85,6 +87,8 @@ src/structure.py     the null calibration: does the clustering find groups that 
 src/archive_profiles.py    archetypes, stability and outliers on the primary sample
 src/archive_keepers.py     goalkeepers on the full keeper block
 src/archive_validation.py  replication across seasons and leagues, supervised, PCA
+src/elasticity.py    bootstrap intervals, per-league refits and functional form for the elasticities
+src/ablation.py      leave-one-family-out and keep-one-only on the primary sample
 src/preprocess.py    merge, filter, per-90, position parsing, imputation
 src/features.py      feature sets per position group and for keepers
 src/descriptive.py   summary stats, correlations, distributions
@@ -173,6 +177,7 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
 - [x] Phase 13: paper
 - [x] Phase 14: verification and handoff
 - [x] Rebuild on the archive: primary sample, null calibration, replication, new thesis
+- [x] Harden for submission: three nulls, null-data bootstrap, elasticity intervals, feature-family ablation, clusterability literature
 
 ## Verification record
 
@@ -198,8 +203,10 @@ publishes no tags, so the digests are the only available pin.
 ## Multi-league replication
 
 `src/leagues.py` repeats the pipeline on the other four big-five leagues for the primary
-season. The declared rule returns k=2 in all five, and every defensive elasticity in every
-league falls below one. Raw tables cache under `data/raw/leagues/`. Outside `make all`
+season. The declared rule returns k=2 in all five. On the live sample every defensive
+elasticity in every league fell below one; the archive bootstrap (`src/elasticity.py`)
+shows that claim does not hold for clearances, whose interval reaches one and whose refits
+in three leagues sit above it, so the paper's wording is per statistic. Raw tables cache under `data/raw/leagues/`. Outside `make all`
 because it scrapes.
 
 ## Analyses deliberately skipped or forced out by the data

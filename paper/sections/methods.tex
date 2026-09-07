@@ -49,6 +49,14 @@ Section~\ref{sec:results:replication} measures. Attacking statistics are deliber
 unadjusted, since they scale with a team's own possession rather than the opponent's and
 correcting both directions with the same instrument would double count.
 
+The elasticities are estimates and are reported with their uncertainty. Team-seasons are
+resampled with replacement two thousand times and every elasticity is refitted on each
+resample, giving a percentile interval and a bootstrap probability that the true elasticity
+is at least one, which is the value the conventional correction assumes. Each elasticity is
+also refitted within every league and every season separately, so the paper can say whether
+a pooled value transports rather than hedging that it might not, and the constant
+elasticity form is checked against a model with a quadratic term in log possession.
+
 \subsection{Dimensionality reduction}
 
 Principal component analysis is fitted to the standardised feature set, both globally and
@@ -117,11 +125,34 @@ profile is then read against the distribution of simulated ones. Where the obser
 falls inside that distribution, the partition at that $k$ is indistinguishable from one
 imposed on a continuum, and no claim is made from it.
 
+A single Gaussian is the easiest reference to beat, because real per-ninety rates are
+skewed and bounded below and skew alone raises the silhouette a partition can reach. Two
+further nulls therefore run through the identical procedure. The first is a Gaussian copula
+that preserves every feature's empirical marginal distribution and the observed rank
+correlation while destroying higher-order joint structure: each column is transformed to
+normal scores, a multivariate normal is drawn on the correlation of those scores, and each
+simulated column is mapped back through the observed column's empirical quantile function.
+It carries the real skew and the real correlations. The second is the reference
+distribution of the gap statistic \citep{tibshirani2001estimating}, uniform within the
+bounding box of the data after rotation to its principal axes, which assumes no
+distributional shape at all. For every scope the paper reports the observed silhouette
+against all three, and treats the hardest of the three as the calibration that counts.
+
+The same simulations answer a question the paper would otherwise be asserting. A bootstrap
+stability check is the second standard piece of evidence for a published taxonomy, and it is
+claimed here that a partition imposed on clusterless data passes it. Rather than assert
+that, the bootstrap adjusted Rand index is computed on the simulated datasets by exactly the
+procedure applied to the real data, so the observed stability can be read against what
+stability structureless data produces.
+
 Three further instruments guard against the null calibration itself being misleading.
 Hartigan's dip test \citep{hartigan1985dip} is applied to the leading principal
 components and asks directly
 whether a distribution is unimodal, which is a claim about the data rather than about any
-clustering of it. A Gaussian mixture model's Bayesian information criterion is computed
+clustering of it. At the sample sizes here the test rejects unimodality for departures too small
+to matter, so the dip statistic itself is reported as the effect size and is placed against
+the distribution of dip statistics computed on the simulated nulls, in the same way as the
+silhouette. A Gaussian mixture model's Bayesian information criterion is computed
 across the same range of component counts, because unlike the silhouette it carries no
 built-in preference for few components. HDBSCAN \citep{campello2013density} is fitted at
 several minimum cluster sizes, because it is permitted to answer that there are no clusters
@@ -162,6 +193,20 @@ by normalised mutual information and by the adjusted Rand index, computed agains
 the position group and the full position string. Players whose cluster
 assignment disagrees with their listed group, and players whose Gaussian mixture
 posterior is split across components, are extracted as candidate hybrids.
+
+\subsection{Robustness to the feature set}
+
+A two-mode result on \ArcFeatures{} features could in principle be carried by one block
+of them. The features are grouped into six families, shooting, chance creation, ball
+progression, pitch territory, defending and passing accuracy, with the grouping stated in
+the analysis code so that it can be audited and asserted to cover every feature exactly
+once. Each family is then removed in turn and the pre-declared selection rule and the
+Gaussian null calibration are rerun on what remains, in every scope. The converse is run as
+well, each family alone, which shows which families carry the two-mode structure by
+themselves. For every ablation the paper records the number of clusters the rule selects,
+the standard score of the observed silhouette against the null, and the adjusted Rand index
+between the ablated partition and the full one on the same players, so that a surviving
+k of two can be distinguished from the same two modes surviving.
 
 \subsection{Archetype profiling}
 

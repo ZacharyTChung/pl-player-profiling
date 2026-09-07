@@ -30,14 +30,36 @@ depend on proprietary feeds. What can be established from freely available seaso
 aggregates, and with what confidence, has received much less scrutiny, and the answer
 turns out to be both narrower and firmer than the taxonomy genre suggests.
 
+The question of whether data contain clusters at all, as distinct from how many, has its own
+literature, and this paper sits inside it. \citet{ackerman2009clusterability} surveyed
+formal notions of clusterability and found them pairwise inconsistent, so that the same data
+can be well clustered under one definition and not under another.
+\citet{adolfsson2019cluster} compared the practical tests and recommended those built on
+Hartigan's dip statistic applied to a low dimensional projection, which is one of the
+instruments used here. \citet{hennig2015true} argued that there is no true clustering
+independent of the purpose the clustering is meant to serve, and that the honest question is
+whether a partition has the properties the analyst needs rather than whether it is correct.
+The role taxonomy genre has proceeded as though this literature did not exist. It reports
+partitions without asking whether the data are clusterable, and it validates them with
+criteria that, as Section~\ref{sec:results:structure} shows, a clusterless continuum
+satisfies equally well. The contribution here is not a new clusterability test but the
+application of existing ones to a field that has skipped them, and the finding that they
+return a real but far coarser structure than the field has been reporting.
+
 Five findings are worth stating in advance.
 
-First, the structure is real. Against \StrSimulations{} simulated datasets matched to the
-observed data in size, dimension and covariance but drawn from a single Gaussian, the
-observed silhouette at two clusters exceeds every simulation in every scope, with standard
-scores from \StrZFW{} to \StrZDF{}. Hartigan's dip test rejects unimodality on the leading
-principal component for the outfield pool at $p\,\StrDipPAll{}$. Football role data is not
-a featureless cloud.
+First, the structure is real, and it survives the hardest null available. Against three
+clusterless references, a Gaussian matched on covariance, a copula that keeps every real
+marginal and correlation, and the gap statistic's uniform box, each simulated
+\StrSimulations{} times, the observed silhouette at two clusters exceeds every simulation
+under every null in every scope. Against the hardest of the three the margin runs from
+\StrMinZFW{} standard deviations for forwards to \StrMinZAll{} for the outfield pool.
+Hartigan's dip statistic on the leading component clears the hardest null by
+\StrDipMinZAll{} on the pool. Football role data is not a featureless cloud. A
+bootstrap, by contrast, cannot show this: clusterless data return a resampling adjusted
+Rand index of at least \StrBootNullMinSingle{}, against an observed \StrBootObsMin{}, so
+the stability check the taxonomy genre leans on is close to uninformative about whether
+groups exist.
 
 Second, the structure is two modes and nothing finer. The selection rule returns two
 clusters globally and within every position group, on the full \ArcFeatures{} feature set

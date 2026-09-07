@@ -380,6 +380,72 @@ def table_archive_feature_dictionary() -> None:
     _write_table("archive_feature_dictionary", body)
 
 
+def table_ablation(ab: dict | None) -> None:
+    """Standard scores against the clusterless null under every feature-family ablation."""
+    if not ab:
+        return
+    scopes = [("All outfield", "All"), ("DF", "DF"), ("MF", "MF"), ("FW", "FW")]
+    families = list((ab.get("families") or {}).keys())
+    if not families:
+        return
+
+    def cell(scope: str, mode: str, fam: str) -> str:
+        entry = dig(ab, "scopes", scope, mode, fam) or {}
+        z = dig(entry, "null_at_k", "z_against_null")
+        k = entry.get("chosen_k")
+        if z is None:
+            return "--"
+        mark = "" if k == 2 else r"$^{\dagger}$"
+        return f"{float(z):.1f}{mark}"
+
+    head = " & ".join(tag for _, tag in scopes)
+    rows = []
+    rows.append(r"\multicolumn{5}{l}{\emph{Full feature set}} \\")
+    full = " & ".join(
+        f"{float(dig(ab, 'scopes', scope, 'full', 'null_at_k', 'z_against_null')):.1f}"
+        for scope, _ in scopes
+    )
+    rows.append(f"all {dig(ab, 'n_features_full')} features & {full} \\\\")
+    rows.append(r"\midrule")
+    rows.append(r"\multicolumn{5}{l}{\emph{Leave one family out}} \\")
+    for fam in families:
+        rows.append(
+            f"without {tex_escape(fam)} & "
+            + " & ".join(cell(scope, "leave_one_out", fam) for scope, _ in scopes)
+            + " \\\\"
+        )
+    rows.append(r"\midrule")
+    rows.append(r"\multicolumn{5}{l}{\emph{One family alone}} \\")
+    for fam in families:
+        rows.append(
+            f"{tex_escape(fam)} only & "
+            + " & ".join(cell(scope, "keep_one_only", fam) for scope, _ in scopes)
+            + " \\\\"
+        )
+
+    body = "\n".join(
+        [
+            r"\begin{table}[t]",
+            r"\centering",
+            r"\small",
+            r"\caption{Standard score of the observed two-cluster silhouette against the "
+            r"clusterless Gaussian null, by scope, under every feature-family ablation. A "
+            r"dagger marks a cell where the pre-declared rule chose a number of clusters other "
+            r"than two.}",
+            r"\label{tab:ablation}",
+            r"\begin{tabular}{lrrrr}",
+            r"\toprule",
+            f"Feature set & {head} \\\\",
+            r"\midrule",
+            *rows,
+            r"\bottomrule",
+            r"\end{tabular}",
+            r"\end{table}",
+        ]
+    )
+    _write_table("ablation", body)
+
+
 def table_umap_grid(grid: dict | None) -> None:
     if not grid:
         return
@@ -1178,6 +1244,177 @@ def build_macros() -> Macros:
         m.add("ArcElastMax", max(vals), places=3)
         m.add("ArcElastMin", min(vals), places=3)
 
+    # Uncertainty on the possession elasticities. The paper's claim changed on seeing these:
+    # four intervals exclude one and clearances does not, so the wording is per statistic.
+    el = load("elasticity")
+    _el_tag = {
+        "tackles": "Tackles",
+        "interceptions": "Interceptions",
+        "blocks": "Blocks",
+        "clearances": "Clearances",
+        "fouls_committed": "Fouls",
+    }
+    m.add("ElastNBootstrap", dig(el, "n_bootstrap"))
+    for key, tag in _el_tag.items():
+        pooled = dig(el, "pooled", key) or {}
+        m.add(f"ElastCI{tag}Low", pooled.get("ci_low"), places=3)
+        m.add(f"ElastCI{tag}High", pooled.get("ci_high"), places=3)
+        m.add(f"ElastSE{tag}", pooled.get("bootstrap_se"), places=3)
+        m.add_pvalue(f"ElastPOne{tag}", pooled.get("p_value_at_least_one"))
+        m.add_pct(f"ElastShareOne{tag}", pooled.get("share_at_or_above_one"))
+        het = dig(el, "heterogeneity", "league", key) or {}
+        m.add(f"ElastLeagueMin{tag}", het.get("min"), places=3)
+        m.add(f"ElastLeagueMax{tag}", het.get("max"), places=3)
+        m.add_raw(f"ElastLeagueMinName{tag}", tex_escape(het.get("scope_of_min", "")))
+        m.add_raw(f"ElastLeagueMaxName{tag}", tex_escape(het.get("scope_of_max", "")))
+        m.add(f"ElastLeaguesAboveOne{tag}", het.get("n_estimates_at_or_above_one"))
+        ff = dig(el, "functional_form", key) or {}
+        m.add(f"ElastQuadDeltaR{tag}", ff.get("adjusted_r2_change"), places=3)
+        m.add(f"ElastAtLow{tag}", ff.get("elasticity_at_low_possession"), places=2)
+        m.add(f"ElastAtHigh{tag}", ff.get("elasticity_at_high_possession"), places=2)
+    summ = dig(el, "summary") or {}
+    m.add("NElastExcludeOne", len(summ.get("intervals_excluding_one") or []))
+    m.add("NElastQuadMatters", len(summ.get("quadratic_term_matters") or []))
+    ff_any = dig(el, "functional_form", "fouls_committed") or {}
+    m.add("ElastPossLow", ff_any.get("opponent_possession_low"), places=1)
+    m.add("ElastPossHigh", ff_any.get("opponent_possession_high"), places=1)
+
+    # Feature-family ablation on the primary sample.
+    ab = load("ablation")
+    m.add("AblSimulations", dig(ab, "n_simulations"))
+    m.add("AblFamilies", len(dig(ab, "families") or {}))
+    absum = dig(ab, "summary") or {}
+    weakest = absum.get("weakest_leave_one_out_any_scope") or {}
+    m.add_raw("AblWeakScope", tex_escape(weakest.get("scope", "")))
+    m.add_raw("AblWeakFamily", tex_escape(weakest.get("family", "")))
+    m.add("AblWeakZ", weakest.get("z"), places=2)
+    m.add("AblWeakK", weakest.get("chosen_k"))
+    m.add("AblWeakARI", weakest.get("ari_vs_full_at_k"), places=3)
+    least = absum.get("least_similar_leave_one_out_any_scope") or {}
+    m.add_raw("AblLeastScope", tex_escape(least.get("scope", "")))
+    m.add_raw("AblLeastFamily", tex_escape(least.get("family", "")))
+    m.add("AblLeastARI", least.get("ari_vs_full_at_k"), places=3)
+    m.add("AblLeastZ", least.get("z"), places=2)
+    every = absum.get("families_carrying_alone_in_every_scope") or []
+    m.add("AblNCarryEvery", len(every))
+    m.add_raw("AblCarryEvery", tex_escape(", ".join(every)))
+    none = absum.get("families_carrying_alone_in_no_scope") or []
+    m.add("AblNCarryNone", len(none))
+    m.add_raw("AblCarryNone", tex_escape(", ".join(none) if none else "none"))
+    m.add_raw(
+        "AblSurvivesAll",
+        "every" if absum.get("k_survives_every_leave_one_out_in_every_scope") else "not every",
+    )
+    for scope, tag in (("All outfield", "All"), ("DF", "DF"), ("MF", "MF"), ("FW", "FW")):
+        sc = dig(ab, "scopes", scope) or {}
+        m.add(f"AblFullZ{tag}", dig(sc, "full", "null_at_k", "z_against_null"), places=2)
+        ss = sc.get("summary") or {}
+        wk = ss.get("weakest_leave_one_out") or {}
+        m.add(f"AblWeakZ{tag}", wk.get("z"), places=2)
+        m.add_raw(f"AblWeakFamily{tag}", tex_escape(wk.get("family", "")))
+        m.add(f"AblNCarry{tag}", len(ss.get("families_carrying_alone") or []))
+        nc = ss.get("families_not_carrying_alone") or []
+        m.add_raw(f"AblNotCarry{tag}", tex_escape(", ".join(nc) if nc else "none"))
+
+    # Which single families reproduce the paper's own partition, not merely some partition.
+    _ab_scopes = (("All outfield", "All"), ("DF", "DF"), ("MF", "MF"), ("FW", "FW"))
+    territory, leave_aris = [], []
+    for scope, tag in _ab_scopes:
+        ss = dig(ab, "scopes", scope, "summary") or {}
+        ko = ss.get("keep_one_only_ari_vs_full") or {}
+        lo = ss.get("leave_one_out_ari_vs_full") or {}
+        leave_aris.extend(v for v in lo.values() if v is not None)
+        for fam in ("shooting", "creation", "progression", "territory", "defending", "passing"):
+            m.add(f"AblKeepARI{fam.capitalize()}{tag}", ko.get(fam), places=3)
+            m.add(
+                f"AblKeepZ{fam.capitalize()}{tag}",
+                dig(ab, "scopes", scope, "keep_one_only", fam, "null_at_k", "z_against_null"),
+                places=2,
+            )
+        if ko.get("territory") is not None:
+            territory.append(ko["territory"])
+    if territory:
+        m.add("AblTerritoryARIMin", min(territory), places=3)
+        m.add("AblTerritoryARIMax", max(territory), places=3)
+    if leave_aris:
+        m.add("AblLeaveARIMin", min(leave_aris), places=3)
+        m.add("AblLeaveARIMax", max(leave_aris), places=3)
+    cells = 0
+    beats = 0
+    for scope, _ in _ab_scopes:
+        sc = dig(ab, "scopes", scope) or {}
+        for mode in ("leave_one_out", "keep_one_only"):
+            for entry in (sc.get(mode) or {}).values():
+                cells += 1
+                beats += bool(dig(entry, "null_at_k", "exceeds_every_simulation"))
+        cells += 1
+        beats += bool(dig(sc, "full", "null_at_k", "exceeds_every_simulation"))
+    m.add("AblCells", cells)
+    m.add("AblCellsBeatNull", beats)
+
+    # Three nulls, the null-data bootstrap and the dip effect size. The paper cites the
+    # hardest null everywhere, so those are the numbers the reader can check.
+    st = load("structure")
+    stsum = dig(st, "summary") or {}
+    m.add("StrNulls", len(dig(st, "nulls") or {}))
+    _sc = (("All outfield", "All"), ("DF", "DF"), ("MF", "MF"), ("FW", "FW"))
+    _nulltag = {
+        "gaussian": "Gauss",
+        "gaussian_copula": "Copula",
+        "uniform_principal_box": "Uniform",
+    }
+    _nullname = {
+        "gaussian": "Gaussian",
+        "gaussian_copula": "Gaussian copula",
+        "uniform_principal_box": "uniform",
+    }
+    for scope, tag in _sc:
+        k2 = dig(stsum, "k2_against_three_nulls", scope) or {}
+        for null, nt in _nulltag.items():
+            m.add(f"StrZ{nt}{tag}", dig(k2, "z_by_null", null), places=2)
+        m.add(f"StrMinZ{tag}", k2.get("min_z"), places=2)
+        m.add_raw(f"StrHardest{tag}", _nullname.get(k2.get("hardest_null", ""), ""))
+        dp = dig(stsum, "dip_pc1_against_three_nulls", scope) or {}
+        m.add(f"StrDipObs{tag}", dp.get("observed_dip"), places=4)
+        m.add(f"StrDipMinZ{tag}", dp.get("min_z"), places=2)
+        m.add_raw(f"StrDipHardest{tag}", _nullname.get(dp.get("hardest_null", ""), ""))
+        for null, nt in _nulltag.items():
+            m.add(f"StrDipZ{nt}{tag}", dig(dp, "z_by_null", null), places=2)
+        nb = dig(st, "scopes", scope, "null_bootstrap") or {}
+        m.add(f"StrBootObs{tag}", dig(nb, "observed", "ari_mean"), places=3)
+        for null, nt in _nulltag.items():
+            m.add(f"StrBootNull{nt}{tag}", dig(nb, "by_null", null, "ari_mean"), places=3)
+    m.add("StrMinZOverall", stsum.get("k2_min_z_over_scopes_and_nulls"), places=2)
+    m.add_raw(
+        "StrBeatsEverywhere",
+        "every"
+        if stsum.get("k2_exceeds_every_simulation_under_every_null_everywhere")
+        else "not every",
+    )
+    bs = stsum.get("bootstrap") or {}
+    m.add("StrBootScreen", bs.get("stability_screen_ari"), places=1)
+    m.add("StrBootObsMin", bs.get("observed_ari_min_over_scopes"), places=3)
+    m.add("StrBootObsMax", bs.get("observed_ari_max_over_scopes"), places=3)
+    m.add("StrBootNullMin", bs.get("null_ari_min_over_scopes_and_nulls"), places=3)
+    m.add("StrBootNullMax", bs.get("null_ari_max_over_scopes_and_nulls"), places=3)
+    m.add("StrBootNullMinSingle", bs.get("null_ari_min_single_dataset"), places=3)
+    m.add("StrBootGapMin", bs.get("observed_minus_null_min"), places=3)
+    m.add("StrBootGapMax", bs.get("observed_minus_null_max"), places=3)
+    m.add_raw(
+        "StrBootNullPassesScreen",
+        "every" if bs.get("null_passes_stability_screen_everywhere") else "not every",
+    )
+    m.add(
+        "StrBootDatasets",
+        dig(st, "scopes", "All outfield", "null_bootstrap", "n_datasets_per_null"),
+    )
+    m.add("StrBootResamples", dig(st, "scopes", "All outfield", "null_bootstrap", "n_bootstrap"))
+    dips = [dig(stsum, "dip_pc1_against_three_nulls", sc, "min_z") for sc, _ in _sc]
+    dips = [v for v in dips if v is not None]
+    if dips:
+        m.add("StrDipMinZOverall", min(dips), places=2)
+        m.add("StrDipMinZOverallPositive", min(v for v in dips if v > 0), places=2)
+
     # Do the two modes simply recover listed position?
     acv = load("archive_cluster_validation")
     m.add("ArcARIvsPosition", dig(acv, "answer", "adjusted_rand_index_vs_position_group"), places=3)
@@ -1308,6 +1545,7 @@ def main() -> None:
     table_data_availability(load("keeper_data_availability"))
     table_feature_dictionary()
     table_archive_feature_dictionary()
+    table_ablation(load("ablation"))
     table_umap_grid(load("umap_grid"))
     table_divergence(load("correlation_divergence"))
     table_summary_by_position(load("descriptive_summary"))

@@ -187,13 +187,25 @@ $(STAMPS)/archive_validation: src/archive_validation.py $(CONFIG) $(PLOTTING) \
 	@touch $@
 archive-validation: $(STAMPS)/archive_validation
 
+$(STAMPS)/elasticity: src/elasticity.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive
+	$(PY) -m src.elasticity
+	@touch $@
+elasticity: $(STAMPS)/elasticity
+
+$(STAMPS)/ablation: src/ablation.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive \
+                    src/structure.py src/cluster.py
+	$(PY) -m src.ablation
+	@touch $@
+ablation: $(STAMPS)/ablation
+
 # --- Stage 4: tables and macros ---------------------------------------------------
 ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/profiles $(STAMPS)/supervised $(STAMPS)/keepers \
                    $(STAMPS)/teams $(STAMPS)/novel $(STAMPS)/sensitivity \
                    $(STAMPS)/threed $(STAMPS)/symmetric $(STAMPS)/age \
                    $(STAMPS)/archive $(STAMPS)/structure $(STAMPS)/archive_profiles \
-                   $(STAMPS)/archive_keepers $(STAMPS)/archive_validation
+                   $(STAMPS)/archive_keepers $(STAMPS)/archive_validation \
+                   $(STAMPS)/elasticity $(STAMPS)/ablation
 
 results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables

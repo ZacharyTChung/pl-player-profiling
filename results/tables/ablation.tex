@@ -1,0 +1,30 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Standard score of the observed two-cluster silhouette against the clusterless Gaussian null, by scope, under every feature-family ablation. A dagger marks a cell where the pre-declared rule chose a number of clusters other than two.}
+\label{tab:ablation}
+\begin{tabular}{lrrrr}
+\toprule
+Feature set & All & DF & MF & FW \\
+\midrule
+\multicolumn{5}{l}{\emph{Full feature set}} \\
+all 33 features & 18.0 & 24.2 & 15.0 & 13.2 \\
+\midrule
+\multicolumn{5}{l}{\emph{Leave one family out}} \\
+without shooting & 17.7 & 21.3 & 12.3 & 18.0 \\
+without creation & 21.2 & 21.1 & 14.5 & 15.1 \\
+without progression & 19.0 & 19.7 & 13.2 & 19.8 \\
+without territory & 21.6 & 22.6 & 16.0 & 15.6 \\
+without defending & 19.7 & 29.1 & 16.0 & 17.2 \\
+without passing & 19.1 & 17.5 & 10.2 & 20.1 \\
+\midrule
+\multicolumn{5}{l}{\emph{One family alone}} \\
+shooting only & 29.3 & 19.8 & 16.1 & 2.9 \\
+creation only & 12.8 & 22.6 & 11.7 & 18.4 \\
+progression only & 8.3 & 15.6 & 9.0 & 12.9 \\
+territory only & 11.4 & 26.6 & 16.2 & 20.2 \\
+defending only & 19.0 & 6.9 & 10.7 & 8.5 \\
+passing only & 6.6 & 11.4 & 5.3 & 1.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

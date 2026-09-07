@@ -7,10 +7,13 @@ neither cleanly, and that the useful description sits between the two: an ordere
 one dominant axis, density concentrated at two ends, and a populated middle that no
 partition divides well.
 
-Two modes are real. Against \StrSimulations{} datasets matched to the observed data on size,
-dimension and covariance but built to contain no groups, the two-mode partition is better
-separated than every simulation in every scope, and the leading component fails a test of
-unimodality outside the forward group. Nothing finer survives the same test. Beyond two modes
+Two modes are real. Against three clusterless references, the softest a matched Gaussian
+and the hardest a copula that keeps every real marginal and correlation, each simulated
+\StrSimulations{} times, the two-mode partition is better separated than every simulation
+under every null in every scope, by no fewer than \StrMinZOverall{} standard deviations
+against the hardest, and the leading component fails a test of unimodality outside the
+forward group by a dip statistic that clears the hardest null by \StrDipMinZAll{} on the
+pool. Nothing finer survives the same test. Beyond two modes
 the observed separation converges on what a clusterless continuum produces, density based
 clustering assigns every player to noise within each position group, and the mixture
 criterion prefers ever more components without settling, which is the signature of a
@@ -36,8 +39,10 @@ solution failing.
 
 Three secondary results are worth carrying forward. Possession adjustment of defensive counts
 is conventionally applied as though a team with twice the ball concedes half the defensive
-opportunities, and the elasticities measured here run from \ArcElastTackles{} to
-\ArcElastClearances{}, so the conventional correction overcorrects every statistic it touches.
+opportunities. The elasticities measured here run from \ArcElastTackles{} to
+\ArcElastClearances{}, and with bootstrap intervals the conventional exponent is rejected
+for \NElastExcludeOne{} of the five statistics and not for clearances, which is the one
+statistic where a purely reactive exposure story should hold and where it does.
 The adjustment is also one sided: attacking output does not scale with possession the way the
 symmetric argument would require, and applying the correction in both directions makes the
 description worse. Goalkeeping, analysed separately, divides along what a goalkeeper is asked
@@ -49,7 +54,9 @@ role taxonomies are typically supported by a selection criterion, a stability ch
 plausible reading of the resulting profiles, and every one of those is satisfied here by
 partitions this paper shows to be artefacts. A silhouette maximum, a high bootstrap adjusted
 Rand index and an interpretable centroid are all obtainable from data containing no groups
-whatsoever, because the algorithm supplies the groups. The calibration against matched
+whatsoever, because the algorithm supplies the groups, and this paper measured it: on
+clusterless data the bootstrap adjusted Rand index never fell below
+\StrBootNullMinSingle{}. The calibration against matched
 clusterless data is cheap, it needs no assumption the analysis does not already make, and it
 is the step that separates the two-mode result reported here from the finer taxonomy that the
 same pipeline would otherwise have produced with equal confidence.

@@ -267,19 +267,94 @@ def test_supervised_errors_are_partitioned_correctly() -> None:
     )
 
 
-def test_archive_elasticities_are_below_unity() -> None:
-    """The possession-adjustment claim is that every fitted exponent is sub-proportional.
+def test_elasticity_claim_matches_the_intervals() -> None:
+    """The paper says four elasticities are below one and clearances is not distinguishable.
 
-    The paper says so in the abstract, the results and the conclusion. If a refit ever
-    produced an elasticity at or above one, those three sentences would all be wrong at
-    once, so the claim is checked rather than trusted.
+    An earlier revision claimed all five were below one on point estimates alone, and the
+    bootstrap showed the clearances interval reaching one. The claim now made is per
+    statistic and interval based, so the test checks exactly that and nothing weaker.
     """
     macros = _macro_values()
-    names = [f"ArcElast{s}" for s in ("Tackles", "Interceptions", "Blocks", "Clearances", "Fouls")]
-    if any(n not in macros for n in names):
-        pytest.skip("archive elasticity macros not generated yet")
-    values = {n: float(macros[n]) for n in names}
-    over = {n: v for n, v in values.items() if v >= 1.0}
-    assert not over, f"elasticities at or above one contradict the paper's claim: {over}"
-    assert float(macros["ArcElastMin"]) == min(values.values())
-    assert float(macros["ArcElastMax"]) == max(values.values())
+    tags = ("Tackles", "Interceptions", "Blocks", "Clearances", "Fouls")
+    needed = [f"ElastCI{t}High" for t in tags] + ["NElastExcludeOne"]
+    if any(n not in macros for n in needed):
+        pytest.skip("elasticity interval macros not generated yet")
+    excludes = {t for t in tags if float(macros[f"ElastCI{t}High"]) < 1.0}
+    assert len(excludes) == _int(macros, "NElastExcludeOne"), (
+        f"paper counts {macros['NElastExcludeOne']} intervals excluding one, "
+        f"macros show {sorted(excludes)}"
+    )
+    assert "Clearances" not in excludes, (
+        "the clearances interval now excludes one; the paper's wording is stale"
+    )
+    assert excludes == {"Tackles", "Interceptions", "Blocks", "Fouls"}, (
+        f"the four named statistics no longer match the intervals: {sorted(excludes)}"
+    )
+    # The point estimates the paper quotes must sit inside the intervals it quotes.
+    for t in tags:
+        est = float(macros[f"ArcElast{t}"])
+        lo, hi = float(macros[f"ElastCI{t}Low"]), float(macros[f"ElastCI{t}High"])
+        assert lo <= est <= hi, f"{t}: estimate {est} outside its interval [{lo}, {hi}]"
+
+
+def test_ablation_claims_match_the_cells() -> None:
+    """The ablation section makes three countable claims; each is checked, not trusted.
+
+    The paper says k=2 survives every leave-one-out in every scope, that a stated number of
+    the tested feature sets beat every simulation, and that territory alone reproduces the
+    full partition everywhere. A refit that changed any of those would silently falsify the
+    prose unless the macros are re-derived and compared here.
+    """
+    macros = _macro_values()
+    needed = ["AblCells", "AblCellsBeatNull", "AblSurvivesAll", "AblTerritoryARIMin"]
+    if any(n not in macros for n in needed):
+        pytest.skip("ablation macros not generated yet")
+    cells = _int(macros, "AblCells")
+    beats = _int(macros, "AblCellsBeatNull")
+    # Four scopes, each with a full set, six leave-one-outs and six keep-one-onlys.
+    assert cells == 4 * 13, f"expected 52 ablation cells, macros report {cells}"
+    assert beats <= cells
+    assert macros["AblSurvivesAll"] == "every", (
+        "the paper says k=2 survives every leave-one-out; the macro disagrees"
+    )
+    assert float(macros["AblTerritoryARIMin"]) > 0.5, (
+        "territory alone no longer reproduces the full partition; the prose is stale"
+    )
+    # The two named failures must still be the failures the text describes.
+    assert float(macros["AblKeepZPassingFW"]) < 3.0
+    assert float(macros["AblKeepZShootingFW"]) < 3.0
+    assert float(macros["AblKeepARIShootingDF"]) < 0.1, (
+        "shooting alone in defenders now reproduces the paper's split; the prose is stale"
+    )
+
+
+def test_structure_claims_match_the_three_nulls() -> None:
+    """The abstract's two hardest claims are checked against the macros that back them.
+
+    The paper says the two-cluster silhouette beats every simulation under every null in
+    every scope, and that clusterless data pass a bootstrap stability screen. Both are
+    stated as facts about the simulations, so both are checked here rather than trusted.
+    """
+    macros = _macro_values()
+    needed = ["StrBeatsEverywhere", "StrMinZOverall", "StrBootNullMinSingle", "StrBootScreen"]
+    if any(n not in macros for n in needed):
+        pytest.skip("three-null structure macros not generated yet")
+    assert macros["StrBeatsEverywhere"] == "every", (
+        "the observed silhouette no longer beats every null everywhere; the abstract is stale"
+    )
+    assert float(macros["StrMinZOverall"]) > 3.0, (
+        f"the smallest margin against the hardest null is {macros['StrMinZOverall']}, "
+        "too small for the paper's wording"
+    )
+    # The overall minimum must be the minimum of the per-scope minima the text also quotes.
+    per_scope = [float(macros[f"StrMinZ{t}"]) for t in ("All", "DF", "MF", "FW")]
+    assert abs(min(per_scope) - float(macros["StrMinZOverall"])) < 0.005
+    # The bootstrap claim: clusterless data pass the screen the genre uses.
+    assert float(macros["StrBootNullMinSingle"]) >= float(macros["StrBootScreen"]), (
+        "clusterless data now fail the stability screen; the paper's bootstrap claim is stale"
+    )
+    assert float(macros["StrBootObsMin"]) >= float(macros["StrBootNullMinSingle"])
+    # The forward dip is reported as failing against the uniform box; keep the sign honest.
+    assert float(macros["StrDipMinZFW"]) < 0, (
+        "the forward dip now clears every null; the text says it does not"
+    )

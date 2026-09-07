@@ -46,9 +46,13 @@ high bootstrap adjusted Rand index is evidence of algorithmic stability and not 
 structure. Interpretability is the weakest of the three, because a cut through any continuous
 distribution produces two centroids that differ along the direction of the cut, and a domain
 expert can narrate that difference whether or not it corresponds to a real boundary. The
-diagnostic evidence here makes the concern concrete rather than hypothetical: on data drawn
-from a single Gaussian matched to the real covariance, the same pipeline returns a silhouette
-maximum, a stable bootstrap and two nameable centroids.
+diagnostic evidence here makes the concern concrete rather than hypothetical, and measured.
+On data built to contain no groups, the same pipeline returns a silhouette maximum at two
+clusters, two nameable centroids, and a bootstrap adjusted Rand index of at least
+\StrBootNullMinSingle{} on every clusterless dataset in every scope, against
+\StrBootObsMin{} on the real data. The difference is as small as \StrBootGapMin{}. A
+stability check that passes a continuum at \StrBootNullMinSingle{} is not a test of
+existence, and every published taxonomy that rested on one rested on nothing.
 
 Calibration against matched clusterless data fixes this at low cost. It requires no
 assumption the analysis does not already make, since the simulated data are drawn using the
@@ -81,13 +85,14 @@ The possession adjustment result is independent of the clustering and probably t
 directly reusable finding here. Defensive counts are conventionally adjusted as though
 opportunity scales inversely with possession, so that a team with twice the ball concedes
 half the defensive events. The elasticities measured from the data run from
-\ArcElastTackles{} for tackles to \ArcElastClearances{} for clearances, all below one and
-most far below it, so the conventional correction overcorrects every statistic it touches and
-does so unequally across statistics. A correction applied at unit elasticity converts a
-defensive-count comparison between a possession-dominant club and a counter-attacking one
-from biased in one direction to biased in the other.
-
-The adjustment is also genuinely one sided, which is worth stating because the symmetry
+\ArcElastTackles{} for tackles to \ArcElastClearances{} for clearances. For four of the
+five the bootstrap interval excludes one, so the conventional correction overcorrects them,
+and does so unequally. For clearances it does not: the interval reaches one, and the
+conventional exponent is, for that one statistic, not distinguishably wrong. A correction
+applied at unit elasticity to the other four converts a defensive-count comparison between a
+possession-dominant club and a counter-attacking one from biased in one direction to biased
+in the other, and the exponents are moreover averages over a possession range across which
+three of them measurably bend. The adjustment is also genuinely one sided, which is worth stating because the symmetry
 argument is superficially compelling. If defensive opportunity falls with possession then
 attacking opportunity should rise with it, and correcting only one side looks arbitrary. The
 counterfactual reported in Section~\ref{sec:results:symmetric} tests this and rejects it:

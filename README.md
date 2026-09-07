@@ -9,12 +9,16 @@ usual evidence cannot distinguish a real taxonomy from a cut through a continuum
 repository tests the existence question directly, on 13,822 player-seasons covering five
 seasons of the big five European leagues described by 33 statistics.
 
-**The result: two modes are real and finer taxonomies are not.** Calibrated against 25
-simulated datasets matched on size, dimension and covariance but built to contain no groups
-at all, the observed silhouette at k=2 exceeds every simulation in every scope, with standard
-scores from 13.2 to 24.2, and Hartigan's dip test rejects unimodality on the leading component
-at p < 0.0001. Beyond two modes the observed curve converges on the clusterless null, HDBSCAN
-labels every point noise within each position group, and mixture BIC never settles.
+**The result: two modes are real and finer taxonomies are not.** Cluster quality is
+calibrated against three clusterless references, a Gaussian matched on covariance, a copula
+that keeps every real marginal and correlation, and the gap statistic's uniform box, each
+simulated 25 times. The observed silhouette at k=2 exceeds every simulation under every null
+in every scope; against the hardest (the copula, everywhere) the margin runs from z=8.0 for
+forwards to 13.9 for the outfield pool, and the dip statistic on the leading component clears
+the hardest null by 13.7. Beyond two modes the observed curve converges on the null, HDBSCAN
+labels every point noise within each position group, and mixture BIC never settles. A
+bootstrap cannot tell the two apart: clusterless data return a resampling ARI of at least
+0.911 against an observed 0.962.
 
 ## Why the null calibration is the point
 
@@ -163,11 +167,15 @@ sentence-initial "And", bullet lists and a list of filler phrases anywhere in `p
 
 ## Findings
 
-1. **The structure is real.** Against 25 clusterless simulations matched on size, dimension
-   and covariance, the observed silhouette at k=2 exceeds every simulation in every scope,
-   with standard scores from 13.2 to 24.2. The dip test rejects unimodality on the leading
-   component at p < 0.0001 for the pool, defenders and midfielders. Football role data is not
-   a featureless cloud.
+1. **The structure is real, against the hardest null available.** Three clusterless
+   references, a Gaussian matched on covariance, a copula keeping every real marginal and
+   correlation, and the gap statistic's uniform box, each simulated 25 times. The observed
+   k=2 silhouette exceeds every simulation under every null in every scope; against the
+   hardest (the copula, everywhere) the margin runs from z=8.0 for forwards to 13.9 for the
+   pool. The dip statistic on PC1 clears the hardest null by 13.7 on the pool. **A bootstrap
+   cannot show this**: clusterless data return a resampling ARI of at least 0.911 against
+   an observed 0.962, so the stability check the genre relies on is uninformative about
+   whether groups exist.
 2. **The structure is two modes and nothing finer.** Beyond k=2 the observed silhouette
    converges on the clusterless null, so the third and subsequent clusters a taxonomy would
    name are indistinguishable from what a partitioning algorithm extracts from structureless
@@ -191,11 +199,15 @@ sentence-initial "And", bullet lists and a list of filler phrases anywhere in `p
    between seasons while the transfer index stays flat, so that decay measures players
    changing rather than the solution failing: 91.6 percent of players present in two seasons
    land in the same mode in both.
-7. **The conventional possession adjustment overcorrects.** Defensive counts are usually
-   adjusted as though opportunity scales inversely with possession. Fitted over 490
-   team-seasons the elasticities are 0.17 for tackles, 0.35 for interceptions, 0.44 for
-   blocks, 0.44 for fouls and 0.96 for clearances, all below one. Applying an exponent of 1
-   does not remove the confound, it flips its sign and enlarges it.
+7. **The conventional possession adjustment overcorrects four of five defensive
+   statistics, and the fifth is the one you'd guess.** Defensive counts are usually adjusted
+   as though opportunity scales inversely with possession. Fitted over 490 team-seasons with
+   2,000 bootstrap resamples, the elasticities are 0.17 for tackles, 0.35 for interceptions,
+   0.44 for blocks and 0.44 for fouls, each with an interval that excludes one. Clearances,
+   the most purely reactive action in the set, come out at 0.96 with an interval reaching
+   1.09, so proportionality cannot be rejected there. Three of the four sub-proportional
+   responses also bend, flattening toward zero for sides that see least of the ball, and the
+   blocks exponent does not transport between leagues.
 8. **The correction is genuinely one sided.** Attacking output responds to a team's own
    possession super-proportionally: shots 1.09, npxG 1.48, goals 1.63, assists 1.72, xGChain
    2.12, xGBuildup 2.44. Increasing returns to possession are a fact about football, so
@@ -216,7 +228,16 @@ sentence-initial "And", bullet lists and a list of filler phrases anywhere in `p
 11. **Correlations reverse sign across positions.** 88 of 153 feature pairs change sign
     between defenders, midfielders and forwards, and all ten of the most divergent pairs do.
     Pooled correlation analysis of football data should be considered unsafe by default.
-12. **Outliers are the players the listing system also declines to place.** 11 of the 15
+12. **The modes survive removing any feature family, and only territory carries them
+    alone.** Dropping any of six families (shooting, creation, progression, territory,
+    defending, passing) in any scope leaves k=2 standing, 51 of 52 tested feature sets beat
+    every clusterless simulation, and the survivors agree with the full partition at ARI
+    0.70 to 0.99. Judged by "beats the null" most families also work alone, but that is
+    generous: shooting alone splits defenders at z=19.8 into finishers versus everyone else
+    (ARI 0.000 against the paper's modes). Only pitch territory reproduces the actual modes
+    by itself everywhere (ARI 0.73 to 0.86). The two modes are where a player touches the
+    ball.
+13. **Outliers are the players the listing system also declines to place.** 11 of the 15
     strongest outliers carry a compound listed position, against a much smaller share in the
     pool.
 

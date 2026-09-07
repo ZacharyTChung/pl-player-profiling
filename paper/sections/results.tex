@@ -18,18 +18,59 @@ against \StrNullDF{} for defenders, \StrObsMF{} against \StrNullMF{} for midfiel
 \StrObsFW{} against \StrNullFW{} for forwards, with standard scores from \StrZFW{} to
 \StrZDF{} and no simulation reaching the observed value in any scope.
 
+A Gaussian is the softest reference available, and the numbers above are the ones a
+sceptic should discount. Two harder nulls run through the same procedure. The copula null
+keeps every feature's real marginal distribution, skew and bounds included, and the real
+rank correlations, so it removes the objection that skew alone produced the separation. The
+uniform reference of the gap statistic keeps only the data's principal bounding box. The
+copula is the hardest of the three in every scope, and the observed partition clears it
+everywhere: by \StrZCopulaAll{} standard deviations on the outfield pool, \StrZCopulaDF{}
+for defenders, \StrZCopulaMF{} for midfielders and \StrZCopulaFW{} for forwards, against
+\StrZUniformAll{}, \StrZUniformDF{}, \StrZUniformMF{} and \StrZUniformFW{} for the
+uniform. The observed silhouette at two clusters exceeds \StrBeatsEverywhere{} simulation
+under \StrBeatsEverywhere{} null in \StrBeatsEverywhere{} scope. The smallest margin
+anywhere, over all four scopes and all three nulls, is \StrMinZOverall{} standard
+deviations, for forwards against the copula. Those are the paper's numbers; the Gaussian
+ones are reported because they are what the genre would report.
+
 Beyond two clusters the two curves converge. By around six clusters the observed silhouette
 is inside the simulated band in every position group, which is the central negative result
 of this paper stated precisely: the third, fourth and subsequent clusters that a taxonomy
 would name are not distinguishable from what a partitioning algorithm extracts from
 structureless data.
 
-Three further instruments agree. Hartigan's dip test rejects unimodality on the leading
-principal component at $p\,\StrDipPAll{}$ for the outfield pool, $p\,\StrDipPDF{}$ for
-defenders and $p\,\StrDipPMF{}$ for midfielders, so the dominant axis is genuinely
-two-moded rather than merely wide. Forwards are the exception, returning
-$p=\StrDipPFW{}$, which says the forward split is real by the silhouette calibration but
-that its leading axis is not detectably bimodal, and both halves of that are reported.
+The second standard piece of evidence for a published taxonomy is a bootstrap, and the
+same simulations show what it is worth. The bootstrap adjusted Rand index of the
+two-cluster partition, computed on \StrBootDatasets{} clusterless datasets from each null
+in each scope by exactly the procedure applied to the real data, runs from
+\StrBootNullMin{} to \StrBootNullMax{} across scopes and nulls, and no single clusterless
+dataset anywhere falls below \StrBootNullMinSingle{}. The observed data run from
+\StrBootObsMin{} to \StrBootObsMax{}. The gap between the real data and data built to
+contain no groups is as small as \StrBootGapMin{} and never larger than \StrBootGapMax{},
+and a stability screen at \StrBootScreen{}, which is a demanding one by the genre's
+standards, is passed by \StrBootNullPassesScreen{} clusterless dataset in
+\StrBootNullPassesScreen{} scope. A resampling stability check does not distinguish real
+structure from a partitioned continuum. It measures whether an algorithm is deterministic
+on similar inputs, which k-means is, and it is reported in this paper only because
+readers will expect it.
+
+Three further instruments agree, with one exception that is reported as such.
+Hartigan's dip test rejects unimodality on the leading principal component at
+$p\,\StrDipPAll{}$ for the outfield pool, $p\,\StrDipPDF{}$ for defenders and
+$p\,\StrDipPMF{}$ for midfielders, but at these sample sizes a p-value rejects for
+departures too small to matter, so the dip statistic is the quantity to read and it is read
+against the nulls. The observed dip on the pool is \StrDipObsAll{}, which sits
+\StrDipMinZAll{} null standard deviations above the hardest of the three references, the
+uniform box, and \StrDipZCopulaAll{} above the copula. Defenders clear the hardest null by
+\StrDipMinZDF{} and midfielders by \StrDipMinZMF{}. The dominant axis is genuinely
+two-moded rather than merely wide. Forwards are the exception in both readings: the test
+returns $p=\StrDipPFW{}$, and the observed dip of \StrDipObsFW{} sits \StrDipMinZFW{}
+standard deviations against the uniform reference, which is to say below it. A forward's
+leading axis is less bimodal than a flat box. The forward split is real by the silhouette
+calibration, clearing the hardest null by \StrMinZFW{}, and its leading axis is not
+bimodal by the dip, and both halves of that are reported because together they say what
+the forward split is: a cut through a continuum of involvement that the null cannot
+produce, not two kinds of forward.
 Density-based clustering assigns \StrNoiseAll{} of the outfield pool to noise and every
 position group entirely to noise, which is what a density method does when handed a
 continuum with a density gradient rather than separated groups. The Gaussian mixture
@@ -44,10 +85,12 @@ data contains a real division into two modes. It does not contain a taxonomy.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\textwidth]{structure_null.pdf}
-  \caption{Observed cluster quality against data constructed to contain no clusters. The
-  shaded band is two standard deviations of \StrSimulations{} simulations matched to the
-  observed data in size, dimension and covariance. The observed curve separates clearly at
-  two clusters and rejoins the null band as the number of clusters grows.}
+  \caption{Observed cluster quality against three kinds of data built to contain no
+  clusters. Each null is simulated \StrSimulations{} times and drawn as its mean with a
+  band of two standard deviations: the Gaussian matched on covariance, the copula that
+  keeps every real marginal and correlation, and the uniform reference of the gap
+  statistic. The observed curve separates from all three at two clusters and rejoins the
+  bands as the number of clusters grows.}
   \label{fig:structurenull}
 \end{figure}
 
@@ -280,6 +323,63 @@ genuine role change and not the churn an unstable partition would produce.
   \label{fig:archive_replication}
 \end{figure}
 
+\subsection{Which features carry the modes}
+\label{sec:results:ablation}
+
+A result on \ArcFeatures{} features could be carried by one block of them, and a reviewer
+who suspected that the modes were the expected goals block wearing a costume, or the
+defensive counts, would be right to ask. The features fall into \AblFamilies{} families,
+shooting, chance creation, ball progression, pitch territory, defending and passing accuracy,
+and each was removed in turn and each was tried alone, with the pre-declared selection rule
+and the Gaussian null calibration rerun every time in every scope.
+Table~\ref{tab:ablation} and Figure~\ref{fig:ablation} give every cell.
+
+Removing any one family removes nothing that matters. The rule returns two clusters in
+\AblSurvivesAll{} leave-one-out in every scope, and of the \AblCells{} feature sets tested
+across the four scopes, \AblCellsBeatNull{} exceed every one of the \AblSimulations{}
+clusterless simulations. The weakest case is \AblWeakScope{} without \AblWeakFamily{},
+where the observed silhouette still sits \AblWeakZ{} null standard deviations above the
+clusterless mean. The survivors are the same two modes rather than two different ones: the
+adjusted Rand index between each ablated partition and the full one, on the same players,
+runs from \AblLeaveARIMin{} to \AblLeaveARIMax{}, with the least similar case being
+\AblLeastScope{} without \AblLeastFamily{} at \AblLeastARI{}. Forwards are the group where
+that family matters most, which is consistent with the forward split being a division by
+involvement in build-up rather than by scoring.
+
+The converse is more instructive than the headline. Judged by whether a single family
+produces a two-cluster solution that beats the null, most families carry structure alone:
+\AblCarryEvery{} do so in every scope, and every family does so in at least one. That
+criterion is generous, and the adjusted Rand index against the full partition shows why.
+Shooting alone in defenders separates from the null at \AblKeepZShootingDF{} standard
+deviations and agrees with the paper's partition at \AblKeepARIShootingDF{}: it finds two
+groups, and they are the finishers against everyone else, not the deep against the wide.
+Passing accuracy alone reaches the null threshold in three scopes while agreeing with the
+full partition at no better than a third. Only territory reproduces the paper's own modes by
+itself in every scope, at an adjusted Rand index from \AblTerritoryARIMin{} to
+\AblTerritoryARIMax{}, and defending does so in the pool at
+\AblKeepARIDefendingAll{}. The two modes are where a player touches the ball, and every
+other family either sharpens that division or, alone, cuts a different one.
+
+The two failures are forwards. Shooting alone in forwards clears the null by only
+\AblKeepZShootingFW{} standard deviations, and passing accuracy alone reaches
+\AblKeepZPassingFW{} and does not exceed every simulation. A forward's shot volume and pass
+completion do not, on their own, divide forwards into anything the null cannot produce,
+which is a further reason to read the forward split as a cut through a continuum of
+involvement rather than as two kinds of forward.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{ablation.pdf}
+  \caption{Standard score of the observed two-cluster silhouette against the clusterless
+  null under every feature-family ablation, one panel per scope. Circles remove one family,
+  triangles keep one family alone, and the vertical line is the full feature set. The
+  adjusted Rand index against the full partition, which distinguishes the same two modes
+  from a different pair, is in Table~\ref{tab:ablation} and the text.}
+  \label{fig:ablation}
+\end{figure}
+
+\input{../results/tables/ablation.tex}
+
 \subsection{Position seen through the two modes}
 \label{sec:results:supervised}
 
@@ -400,16 +500,28 @@ opportunity to record them. Team defensive volume does rise as opponent possessi
 the confound is real, and the conventional correction assumes the relationship is
 proportional: a side with twice the ball is taken to concede half the defensive events.
 
-It is much weaker than that. Fitted on the primary sample, over \ArcPadjTeamSeasons{}
-team-seasons, all \ArcElastCount{} elasticities fall below one and most fall far below it:
-\ArcElastTackles{} for tackles, \ArcElastInterceptions{} for interceptions,
-\ArcElastBlocks{} for blocks, \ArcElastFouls{} for fouls committed and
-\ArcElastClearances{} for clearances. Clearances are the one statistic that approaches
-proportionality, which is what one would expect of the most purely reactive action in the
-set, and tackles are furthest from it, which is what one would expect of the most
-volitional. The spread from \ArcElastMin{} to \ArcElastMax{} is itself the point: a single
-exponent applied to every defensive statistic is wrong even in the cases where some
-correction is warranted.
+It is much weaker than that for four of the five statistics, and it is not distinguishable
+from proportional for the fifth. Fitted on the primary sample over \ArcPadjTeamSeasons{}
+team-seasons, with \ElastNBootstrap{} bootstrap resamples of those team-seasons giving
+each estimate an interval, the elasticities are \ArcElastTackles{} for tackles
+(\ElastCITacklesLow{} to \ElastCITacklesHigh{}), \ArcElastInterceptions{} for
+interceptions (\ElastCIInterceptionsLow{} to \ElastCIInterceptionsHigh{}),
+\ArcElastBlocks{} for blocks (\ElastCIBlocksLow{} to \ElastCIBlocksHigh{}) and
+\ArcElastFouls{} for fouls committed (\ElastCIFoulsLow{} to \ElastCIFoulsHigh{}). All
+four intervals exclude one, and no bootstrap resample of any of them reached it. Clearances
+are different: the estimate is \ArcElastClearances{}, the interval runs from
+\ElastCIClearancesLow{} to \ElastCIClearancesHigh{}, \ElastShareOneClearances{} percent
+of resamples land at or above one, and the bootstrap probability that the true elasticity
+is at least one is \ElastPOneClearances{}. For clearances the conventional exponent cannot
+be rejected, and the paper does not claim otherwise.
+
+That pattern fits the football. A clearance is the most purely reactive action in the set,
+made when the ball arrives rather than sought, so it is the statistic for which the exposure
+story should hold best, and it is the one where proportionality survives. A tackle is the
+most volitional, and it is furthest from proportional. The spread from \ArcElastMin{} to
+\ArcElastMax{} is itself the point: a single exponent applied to every defensive statistic
+is wrong for four of them, and the one it is right for is the one a reader would have
+guessed.
 
 The reduced sample supplies the check the primary sample cannot, because it retains the
 team-level possession series needed to measure what is left after correcting. Across its
@@ -433,7 +545,39 @@ Two qualifications belong with this. The residual-dependence check runs on one l
 whose possession shares are relatively compressed, so the exact residuals should not be
 transported to a competition with a wider spread without refitting. The elasticities
 themselves are fitted across \ArcNLeagues{} leagues and \ArcNSeasons{} seasons and are less
-exposed to that objection. More importantly, adjusting the
+exposed to that objection. Refitting within each league tests that directly, and the answer is
+mixed. For tackles, interceptions, fouls and clearances every league's interval overlaps the
+pooled one. Blocks do not transport: the league estimates run from \ElastLeagueMinBlocks{}
+in \ElastLeagueMinNameBlocks{} to \ElastLeagueMaxBlocks{} in \ElastLeagueMaxNameBlocks{},
+and the intervals for both of those leagues miss the pooled interval entirely, so a pooled
+exponent for blocks is the wrong exponent in at least two of the five competitions. Clearances
+are also the statistic where leagues disagree most in absolute terms, with estimates from
+\ElastLeagueMinClearances{} to \ElastLeagueMaxClearances{} and \ElastLeaguesAboveOneClearances{}
+of the five league point estimates at or above one, which is a second reason not to claim
+sub-proportionality for them.
+
+The constant elasticity form is itself an assumption, and for \NElastQuadMatters{} of the
+five statistics it fails. Adding a quadratic term in log opponent possession improves the
+fit for tackles, blocks and fouls, with a coefficient whose interval excludes zero in each
+case, and in each the response flattens toward zero for the sides that see least of the
+ball. Fouls committed bend most: the implied elasticity is \ElastAtLowFouls{} at
+\ElastPossLow{} percent opponent possession and \ElastAtHighFouls{} at \ElastPossHigh{}
+percent, with the adjusted coefficient of determination rising by \ElastQuadDeltaRFouls{}.
+The exponents reported above are therefore averages over the possession range rather than
+constants, and the correction they define is coarser than it looks. Clearances and
+interceptions show no evidence of curvature. Figure~\ref{fig:elasticity_uncertainty}
+gathers the pooled estimates, their intervals and the league refits.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{elasticity_uncertainty.pdf}
+  \caption{The five defensive possession elasticities with bootstrap intervals from
+  \ElastNBootstrap{} resamples of \ArcPadjTeamSeasons{} team-seasons, against the
+  conventional value of one, with each league's own refit shown as a smaller marker. Four
+  intervals exclude one; the interval for clearances does not, and three league refits for
+  clearances sit above one.}
+  \label{fig:elasticity_uncertainty}
+\end{figure} One further qualification matters more than any of these. Adjusting the
 defensive counts does not make the feature set as a whole team-neutral, because the
 attacking statistics still scale with a team's own share of the ball. What follows should
 be read as having removed one identifiable confound, not all of them.
@@ -456,8 +600,9 @@ The two sides of the ball do not behave alike. Fitted the same way, against a te
 possession rather than the opponent's, the attacking elasticities are \BetaShots{} for
 shots, \BetaNPXG{} for non-penalty expected goals, \BetaGoals{} for non-penalty goals,
 \BetaAssists{} for assists, \BetaXGChain{} for xGChain and \BetaXGBuildup{} for
-xGBuildup. Every one of them except crossing, at \BetaCrosses{}, exceeds one, while every
-defensive elasticity falls well below it. Figure~\ref{fig:elasticities} shows the two
+xGBuildup. Every one of them except crossing, at \BetaCrosses{}, exceeds one, while four of
+the five defensive elasticities fall well below it and the fifth, clearances, cannot be
+distinguished from it. Figure~\ref{fig:elasticities} shows the two
 families either side of the proportional line.
 
 That asymmetry is not a curiosity, it is the whole argument. For defending, opponent
