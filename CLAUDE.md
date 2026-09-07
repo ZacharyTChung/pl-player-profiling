@@ -167,9 +167,11 @@ creation date. The paper compiles with zero undefined references and zero overfu
   aerial claims all depended on `keeper_adv`, which is empty. Reduced to shot stopping and workload.
 - **Possession and passing features** across every phase: unavailable, see the data situation above.
 
-- **Role drift within a season** (Phase 10 option 3): would need `read_player_match_stats` across
-  many matches. Feasible in principle since 1.8.8-era match stat types include passing, defense and
-  possession, but it is rate-limit hostile and was dropped in favour of doing three analyses well.
+- **Role drift within a season** (Phase 10 option 3): originally dropped as rate-limit
+  hostile, now completed for one club. Match reports turned out to survive the withdrawal
+  better than the season tables: the withdrawn columns are absent from the match schema
+  rather than present and empty, and all but two of the remaining columns are populated.
+  See `src/drift.py`.
 - **Age and archetype** (Phase 10 option 5): originally not selected, now completed. Only defenders show an association, and the crossing archetype is 1.65 years younger.
 
 Both are recorded in the paper as future work.

@@ -76,6 +76,7 @@ limited, and the raw parquet files are committed, so the pipeline runs against t
 | `threed` | 30 s | Four three dimensional scenes, two viewpoints each |
 | `symmetric` | 2 min | Symmetric possession adjustment counterfactual |
 | `age` | 10 s | Age against archetype |
+| `drift` | 5 min | Role drift, scrapes 38 match reports (outside `make all`) |
 | `tables` | 10 s | |
 | `paper` | 40 s | Three LaTeX passes plus bibtex |
 
@@ -91,6 +92,7 @@ src/sensitivity.py minutes threshold sensitivity
 src/threed.py      three dimensional views
 src/symmetric.py   symmetric possession adjustment counterfactual
 src/age.py         age against archetype
+src/drift.py       role drift within a season, one club
 src/tables.py      generates results/macros.tex and results/tables/*.tex
 data/raw/          untouched pulls, one parquet per table per season
 results/metrics/   every computed number as JSON
@@ -157,7 +159,13 @@ dashes, sentence-initial "And", bullet lists and a list of filler phrases anywhe
     and their share falls monotonically across age bands. Midfielders show nothing.
     A chi-square on the bands returns p=0.19 and would have called this a null; it is
     underpowered against a monotonic alternative.
-11. **The third component is duels and discipline, and it does not predict league
+11. **Match tables survived the withdrawal better than season tables.** At season level
+    the affected tables kept their headers and lost their values; at match level the
+    columns were dropped from the schema outright, and 21 of 23 remaining columns are
+    populated. Role drift is therefore measurable: on one club, 5 of 26 players (19%)
+    change cluster during the season, so season aggregation holds for four fifths of
+    players and averages over two roles for the rest.
+12. **The third component is duels and discipline, and it does not predict league
     position.** Club centroids correlate with final position at -0.861 on PC1 and -0.695 on
     PC2 but only 0.209 on PC3. Separately, the two archetype centroids in each position
     group have a cosine of exactly -1, so six archetypes describe three axes.

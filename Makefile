@@ -27,7 +27,7 @@ RAW_MANIFESTS  := $(wildcard data/raw/*/manifest.json)
 PROCESSED      := $(wildcard data/processed/*.parquet)
 
 .PHONY: all data preprocess descriptive reduce cluster profiles supervised keepers \
-        teams novel sensitivity threed symmetric age tables paper test lint format clean distclean help
+        teams novel sensitivity threed symmetric age drift tables paper test lint format clean distclean help
 
 all: paper
 
@@ -47,6 +47,7 @@ help:
 	@echo "  threed      three dimensional views of the player and club spaces"
 	@echo "  symmetric   symmetric possession adjustment counterfactual"
 	@echo "  age         age against archetype"
+	@echo "  drift       role drift within a season, one club, scrapes match reports"
 	@echo "  tables      LaTeX tables and results/macros.tex"
 	@echo "  paper       compile paper/main.pdf"
 	@echo "  test        pytest"
@@ -105,6 +106,13 @@ $(STAMPS)/teams: src/teams.py $(CONFIG) $(PLOTTING) $(STAMPS)/profiles $(STAMPS)
 	$(PY) -m src.teams
 	@touch $@
 teams: $(STAMPS)/teams
+
+# Not part of `all`: this target scrapes 38 match reports at seven seconds each. The
+# assembled frame is cached under data/processed, so the analysis reruns without it.
+$(STAMPS)/drift: src/drift.py $(CONFIG) $(PLOTTING) $(STAMPS)/cluster src/cluster.py
+	$(PY) -m src.drift
+	@touch $@
+drift: $(STAMPS)/drift
 
 $(STAMPS)/age: src/age.py $(CONFIG) $(PLOTTING) $(STAMPS)/profiles
 	$(PY) -m src.age

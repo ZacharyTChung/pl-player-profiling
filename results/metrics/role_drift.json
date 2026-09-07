@@ -1,0 +1,187 @@
+{
+  "season": "2024-25",
+  "team": "Tottenham",
+  "team_as_named_in_match_reports": "Tottenham Hotspur",
+  "window_matches": 6,
+  "min_window_minutes": 180,
+  "match_features": [
+    "shots",
+    "shots_on_target",
+    "assists",
+    "crosses",
+    "interceptions",
+    "tackles_won",
+    "fouls_committed",
+    "fouls_drawn",
+    "offsides",
+    "cards_yellow"
+  ],
+  "n_matches_scraped": 38,
+  "n_players_with_windows": 26,
+  "reduced_space": {
+    "k": 2,
+    "adjusted_rand_index_vs_main_partition": 0.9028,
+    "n_compared": 366,
+    "caveat": "The match level feature set omits the Understat expected goals block, which has no match equivalent, so drift is measured in a coarser space than the main analysis. The adjusted Rand index above says how much of the main partition that coarser space reproduces."
+  },
+  "n_players_switching": 5,
+  "share_of_players_switching": 0.192,
+  "per_player": [
+    {
+      "player": "Pedro Porro",
+      "n_windows": 28,
+      "switches": 6,
+      "share_cluster_one": 0.786
+    },
+    {
+      "player": "Dejan Kulusevski",
+      "n_windows": 27,
+      "switches": 4,
+      "share_cluster_one": 0.074
+    },
+    {
+      "player": "Pape Matar Sarr",
+      "n_windows": 28,
+      "switches": 3,
+      "share_cluster_one": 0.786
+    },
+    {
+      "player": "Brennan Johnson",
+      "n_windows": 28,
+      "switches": 2,
+      "share_cluster_one": 0.036
+    },
+    {
+      "player": "Wilson Odobert",
+      "n_windows": 11,
+      "switches": 2,
+      "share_cluster_one": 0.909
+    },
+    {
+      "player": "James Maddison",
+      "n_windows": 26,
+      "switches": 0,
+      "share_cluster_one": 0.0
+    },
+    {
+      "player": "Son Heung-min",
+      "n_windows": 25,
+      "switches": 0,
+      "share_cluster_one": 0.0
+    },
+    {
+      "player": "Dominic Solanke",
+      "n_windows": 22,
+      "switches": 0,
+      "share_cluster_one": 0.0
+    },
+    {
+      "player": "Yves Bissouma",
+      "n_windows": 22,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Rodrigo Bentancur",
+      "n_windows": 21,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Archie Gray",
+      "n_windows": 20,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Destiny Udogie",
+      "n_windows": 20,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Djed Spence",
+      "n_windows": 20,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Guglielmo Vicario",
+      "n_windows": 19,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Lucas Bergvall",
+      "n_windows": 15,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Cristian Romero",
+      "n_windows": 13,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Ben Davies",
+      "n_windows": 12,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Radu Dr\u0103gu\u0219in",
+      "n_windows": 11,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Mathys Tel",
+      "n_windows": 8,
+      "switches": 0,
+      "share_cluster_one": 0.0
+    },
+    {
+      "player": "Micky van de Ven",
+      "n_windows": 8,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Richarlison",
+      "n_windows": 7,
+      "switches": 0,
+      "share_cluster_one": 0.0
+    },
+    {
+      "player": "Kevin Danso",
+      "n_windows": 5,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Timo Werner",
+      "n_windows": 5,
+      "switches": 0,
+      "share_cluster_one": 0.0
+    },
+    {
+      "player": "Mikey Moore",
+      "n_windows": 4,
+      "switches": 0,
+      "share_cluster_one": 0.0
+    },
+    {
+      "player": "Fraser Forster",
+      "n_windows": 2,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    },
+    {
+      "player": "Anton\u00edn Kinsk\u00fd",
+      "n_windows": 1,
+      "switches": 0,
+      "share_cluster_one": 1.0
+    }
+  ]
+}

@@ -903,6 +903,21 @@ def build_macros() -> Macros:
         m.add(f"AgeChiP{grp}", dig(block, "association", "p_value"), places=3)
     m.add("AgeGlobalP", dig(ages, "global_cluster", "association", "p_value"), places=3)
 
+    # Role drift
+    drift = load("role_drift")
+    m.add_raw("DriftTeam", tex_escape(dig(drift, "team") or ""))
+    m.add("DriftMatches", dig(drift, "n_matches_scraped"))
+    m.add("DriftPlayers", dig(drift, "n_players_with_windows"))
+    m.add("DriftWindow", dig(drift, "window_matches"))
+    m.add("DriftFeatures", len(dig(drift, "match_features") or []))
+    m.add("DriftSwitchers", dig(drift, "n_players_switching"))
+    m.add_pct("DriftSwitchShare", dig(drift, "share_of_players_switching"), places=0)
+    m.add(
+        "DriftReducedARI",
+        dig(drift, "reduced_space", "adjusted_rand_index_vs_main_partition"),
+        places=3,
+    )
+
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))
     m.add("NPairsTotal", dig(div, primary, "n_pairs"))

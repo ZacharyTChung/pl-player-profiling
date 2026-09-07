@@ -678,6 +678,47 @@ Figures~\ref{fig:shrinkage} and \ref{fig:shrinkageminutes} show the effect.
   \label{fig:novelpanel}
 \end{figure}
 
+\subsubsection{Role drift within a season}
+\label{sec:results:drift}
+Every result so far treats a season as one observation per player, which assumes a
+player's profile is homogeneous across it. Match reports make that assumption testable,
+and because the withdrawal removed the affected columns from the match schema rather than
+emptying them, what remains there is fully populated. A full season is 380 reports at seven
+seconds each, so the scrape is restricted to one club, \DriftTeam{}, chosen because its
+eligible players span all six archetypes and therefore give drift the widest range to move
+across. \DriftMatches{} matches were retrieved and \DriftPlayers{} players accumulated at
+least one complete rolling window of \DriftWindow{} matches.
+
+The match feature set has \DriftFeatures{} of the eighteen features used elsewhere, since
+the Understat expected goals block has no match equivalent. Rather than assume that the
+coarser space is a fair stand-in, we refit the season clustering using only those
+\DriftFeatures{} features and compare it to the partition reported throughout. The two
+agree at an adjusted Rand index of \DriftReducedARI{}, so the reduced space reproduces
+almost all of the main division and drift measured within it is interpretable.
+
+Most players do not drift. \DriftSwitchers{} of \DriftPlayers{}, or \DriftSwitchShare{}
+percent, change cluster at least once during the season, and the remainder occupy a single
+cluster throughout. The players who stay put are the ones whose roles are least ambiguous,
+holding midfielders on one side and the recognised attackers on the other, while the movers
+are predominantly full backs and wide players whose attacking involvement varies with the
+fixture. Figure~\ref{fig:drift} shows the trajectories.
+
+The finding cuts both ways and should be read that way. For four fifths of players a season
+aggregate describes a single role and the homogeneity assumption holds. For the remaining
+fifth it averages over two, which means their season-level archetype is a summary of
+something that changed rather than a description of something stable. That is a limitation
+of season aggregates in general rather than of this feature set in particular, and it is one
+that only match level data can expose.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{role_drift.pdf}
+  \caption{Rolling cluster assignment across the season for the \DriftTeam{} players who
+  change cluster at least once, on a \DriftWindow{} match window. Players not shown occupied
+  one cluster for the whole season.}
+  \label{fig:drift}
+\end{figure}
+
 \subsubsection{Age and archetype}
 \label{sec:results:age}
 The two archetypes within a position group differ mainly in attacking involvement, and

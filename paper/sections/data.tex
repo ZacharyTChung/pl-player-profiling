@@ -48,6 +48,16 @@ expected assisted goals, shot and goal creating actions, every touch and carry a
 take-on count, all passing volume and progression, and, for goalkeepers, post-shot
 expected goals, sweeper actions, distribution length and cross handling.
 
+The withdrawal was not applied uniformly across the site, and the difference is worth
+recording because it changes what a replication should expect. At season level the affected
+tables kept their full column headers and lost their values, which is the trap described
+above. At match level the same statistics were removed from the schema outright: the match
+summary table simply does not offer an expected goals column any more, rather than offering
+an empty one. Of the columns it does offer, all but two are populated. A consequence is
+that match reports remain a usable source for the statistics that survived, which
+Section~\ref{sec:results:drift} exploits to test whether a season aggregate describes one
+role or an average of several.
+
 \subsection{Restoring shot quality}
 
 Because a role discovery study with no measure of chance quality would be badly

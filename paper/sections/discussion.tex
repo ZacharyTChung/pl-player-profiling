@@ -65,7 +65,10 @@ team-neutral overall: the attacking statistics still scale with a team's own sha
 ball, and the first principal component remains strongly related to team strength.
 Correcting both directions would require an instrument this data cannot supply, so the
 residual confound is acknowledged rather than solved. Per-90 rates remain noisy above the minutes threshold, which is why the
-shrinkage analysis matters and why its within-group verdict should be believed. Merging a
+shrinkage analysis matters and why its within-group verdict should be believed. Season
+aggregation also assumes a player's role is constant across the season, which
+Section~\ref{sec:results:drift} shows holds for about four fifths of the players it could
+check and fails for the rest. Merging a
 second expected goals provider introduces a model whose assumptions differ from the one
 that produced the original values, and although we never mix the two sources for the same
 quantity, the creation block and the shooting block now come from different modelling
@@ -91,10 +94,9 @@ between statistics is averaging over sign reversals.
 
 The obvious extension is data. Event and tracking data would restore everything the
 withdrawal removed and more, at the cost of the reproducibility that a public source
-provides. Within public data, match level statistics remain available in a reduced form and
-would support the role drift analysis that was scoped out of this study, tracking whether a
-player's profile moves between archetypes across a season rather than assuming a season is
-homogeneous. Extending to other leagues would test whether the two-cluster result is a
+provides. Within public data, the role drift analysis of Section~\ref{sec:results:drift} covers one
+club and would be worth extending to the league, which is a matter of scraping time rather
+than method: at seven seconds a report a full season is a few hours. Extending to other leagues would test whether the two-cluster result is a
 property of the reduced feature set or of the Premier League specifically, and we expect the
 former. Symmetric adjustment of the attacking statistics was tested and deliberately not adopted,
 for the reasons given in Section~\ref{sec:results:symmetric}. A reader who disagrees with
