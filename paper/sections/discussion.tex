@@ -73,7 +73,10 @@ second expected goals provider introduces a model whose assumptions differ from 
 that produced the original values, and although we never mix the two sources for the same
 quantity, the creation block and the shooting block now come from different modelling
 traditions. Roughly three percent of records failed to match across the two sources and
-carry missing values for the Understat block. The study covers one league and two seasons.
+carry missing values for the Understat block. The main analysis covers one league across two seasons, and
+Section~\ref{sec:results:leagues} extends the central result to the other four of the big
+five for one season, which addresses the competition but not the era: everything here is
+recent European football.
 Finally, the clusters are descriptive and carry no causal content: an archetype label
 records how a player's season looked, not why, and certainly not how he would perform in a
 different team.
@@ -96,9 +99,9 @@ The obvious extension is data. Event and tracking data would restore everything 
 withdrawal removed and more, at the cost of the reproducibility that a public source
 provides. Within public data, the role drift analysis of Section~\ref{sec:results:drift} covers one
 club and would be worth extending to the league, which is a matter of scraping time rather
-than method: at seven seconds a report a full season is a few hours. Extending to other leagues would test whether the two-cluster result is a
-property of the reduced feature set or of the Premier League specifically, and we expect the
-former. Symmetric adjustment of the attacking statistics was tested and deliberately not adopted,
+than method: at seven seconds a report a full season is a few hours. Extending beyond the big five, to competitions with different possession profiles and
+weaker coverage, would test whether the elasticities and the two cluster result hold where
+the league is less concentrated than the five tested here. Symmetric adjustment of the attacking statistics was tested and deliberately not adopted,
 for the reasons given in Section~\ref{sec:results:symmetric}. A reader who disagrees with
 that judgement would find the next step in modelling attacking exposure properly, since a
 player's opportunity depends on where his team uses the ball and not only on how much of it

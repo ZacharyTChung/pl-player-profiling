@@ -77,6 +77,7 @@ limited, and the raw parquet files are committed, so the pipeline runs against t
 | `symmetric` | 2 min | Symmetric possession adjustment counterfactual |
 | `age` | 10 s | Age against archetype |
 | `drift` | 5 min | Role drift, scrapes 38 match reports (outside `make all`) |
+| `leagues` | 20 min | Repeats the pipeline across the big five, scrapes 4 leagues (outside `make all`) |
 | `tables` | 10 s | |
 | `paper` | 40 s | Three LaTeX passes plus bibtex |
 
@@ -93,6 +94,7 @@ src/threed.py      three dimensional views
 src/symmetric.py   symmetric possession adjustment counterfactual
 src/age.py         age against archetype
 src/drift.py       role drift within a season, one club
+src/leagues.py     the same pipeline across the big five
 src/tables.py      generates results/macros.tex and results/tables/*.tex
 data/raw/          untouched pulls, one parquet per table per season
 results/metrics/   every computed number as JSON
@@ -115,6 +117,11 @@ dashes, sentence-initial "And", bullet lists and a list of filler phrases anywhe
 
 ## Findings
 
+0. **Two clusters is a property of the data, not of England.** The pre-declared rule
+   returns k=2 in all five big-five leagues, with silhouette 0.255 to 0.286, bootstrap ARI
+   0.907 to 0.946, and agreement with listed positions never above 0.270. All 15 defensive
+   possession elasticities, fitted independently per league, fall between 0.081 and 0.692,
+   so the conventional adjustment overcorrects across the big five and not just here.
 1. **The withdrawal is a trap, not just a loss.** Tables resolve correctly and return
    nothing. Feature selection must be made against observed values.
 2. **Possession elasticities are asymmetric, which is why the correction is one sided.**

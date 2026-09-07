@@ -918,6 +918,40 @@ def build_macros() -> Macros:
         places=3,
     )
 
+    # Multi-league replication
+    lg = load("league_comparison")
+    rows = dig(lg, "leagues") or []
+    short = {
+        "ENG-Premier League": "Eng",
+        "ESP-La Liga": "Esp",
+        "GER-Bundesliga": "Ger",
+        "ITA-Serie A": "Ita",
+        "FRA-Ligue 1": "Fra",
+    }
+    for row in rows:
+        tag = short.get(row.get("league"), "")
+        if not tag:
+            continue
+        m.add(f"LgK{tag}", row.get("chosen_k"))
+        m.add(f"LgSil{tag}", row.get("silhouette"), places=3)
+        m.add(f"LgBootARI{tag}", row.get("bootstrap_ari_mean"), places=3)
+        m.add(f"LgARIPos{tag}", row.get("ari_vs_position_group"), places=3)
+        m.add(f"LgN{tag}", row.get("n_eligible"))
+    m.add("NLeagues", len(rows))
+    if rows:
+        m.add("LgSilMin", min(r["silhouette"] for r in rows), places=3)
+        m.add("LgSilMax", max(r["silhouette"] for r in rows), places=3)
+        m.add("LgBootARIMin", min(r["bootstrap_ari_mean"] for r in rows), places=3)
+        m.add("LgBootARIMax", max(r["bootstrap_ari_mean"] for r in rows), places=3)
+        m.add("LgARIPosMin", min(r["ari_vs_position_group"] for r in rows), places=3)
+        m.add("LgARIPosMax", max(r["ari_vs_position_group"] for r in rows), places=3)
+    prep = dig(lg, "preparation") or {}
+    els = [v for info in prep.values() for v in (info.get("elasticities") or {}).values()]
+    if els:
+        m.add("LgElastMin", min(els), places=3)
+        m.add("LgElastMax", max(els), places=3)
+        m.add("LgElastCount", len(els) + len(config.PADJ_COUNTS))
+
     # Additional descriptive counts
     m.add("NPairsSignFlip", dig(div, primary, "n_pairs_sign_flip"))
     m.add("NPairsTotal", dig(div, primary, "n_pairs"))

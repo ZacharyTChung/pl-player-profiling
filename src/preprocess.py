@@ -11,6 +11,7 @@ import json
 import re
 import unicodedata
 from difflib import get_close_matches
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -66,8 +67,13 @@ def normalize_team(value: str) -> str:
 # --------------------------------------------------------------------------------------
 
 
-def load_fbref_canonical(season: str) -> pd.DataFrame:
-    """Assemble one row per (team, player) with the canonical FBref columns."""
+def load_fbref_canonical(season: str, root: Path | None = None) -> pd.DataFrame:
+    """Assemble one row per (team, player) with the canonical FBref columns.
+
+    ``root`` defaults to the primary league's raw directory. It exists so the multi-league
+    comparison can reuse this loader unchanged rather than duplicating it.
+    """
+    root = config.DATA_RAW if root is None else root
     by_table: dict[str, list[tuple[str, str]]] = {}
     for canon, (table, raw) in F.FBREF_SOURCES.items():
         by_table.setdefault(table, []).append((canon, raw))
@@ -80,7 +86,7 @@ def load_fbref_canonical(season: str) -> pd.DataFrame:
     merged: pd.DataFrame | None = None
     for table in ordered:
         pairs = by_table[table]
-        path = config.DATA_RAW / season / f"players_{table}.parquet"
+        path = root / season / f"players_{table}.parquet"
         df = pd.read_parquet(path)
         keep = {raw: canon for canon, raw in pairs if raw in df.columns}
         missing = [raw for canon, raw in pairs if raw not in df.columns]
@@ -103,8 +109,9 @@ def load_fbref_canonical(season: str) -> pd.DataFrame:
     return merged
 
 
-def load_understat(season: str) -> pd.DataFrame:
-    df = pd.read_parquet(config.DATA_RAW / season / "understat_players.parquet")
+def load_understat(season: str, root: Path | None = None) -> pd.DataFrame:
+    root = config.DATA_RAW if root is None else root
+    df = pd.read_parquet(root / season / "understat_players.parquet")
     keep = {raw: canon for canon, raw in F.UNDERSTAT_SOURCES.items()}
     out = df[["team", "player", *keep]].rename(columns=keep)
     out["_team_key"] = out["team"].map(normalize_team)
@@ -112,13 +119,14 @@ def load_understat(season: str) -> pd.DataFrame:
     return out.drop(columns=["team", "player"])
 
 
-def load_team_possession(season: str) -> pd.DataFrame:
+def load_team_possession(season: str, root: Path | None = None) -> pd.DataFrame:
     """Team possession share, needed to adjust defensive counts for exposure.
 
     Possession survived the January 2026 withdrawal even though the touch counts it is
     derived from did not, which is what makes the adjustment possible at all.
     """
-    df = pd.read_parquet(config.DATA_RAW / season / "teams_standard.parquet")
+    root = config.DATA_RAW if root is None else root
+    df = pd.read_parquet(root / season / "teams_standard.parquet")
     if "Poss" not in df.columns:
         raise KeyError(f"{season}: teams_standard has no Poss column")
     out = df[["team", "Poss"]].rename(columns={"Poss": "team_possession"})

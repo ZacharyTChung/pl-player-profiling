@@ -161,6 +161,13 @@ are unchanged, so the pipeline is deterministic. The PDF differs only in its emb
 creation date. The paper compiles with zero undefined references and zero overfull boxes.
 48 tests pass and ruff reports no findings.
 
+## Multi-league replication
+
+`src/leagues.py` repeats the pipeline on the other four big-five leagues for the primary
+season. The declared rule returns k=2 in all five, and every defensive elasticity in every
+league falls below one. Raw tables cache under `data/raw/leagues/`. Outside `make all`
+because it scrapes.
+
 ## Analyses deliberately skipped or forced out by the data
 
 - **Goalkeeper composites** (Phase 8 as specified): sweeping, distribution, cross handling and

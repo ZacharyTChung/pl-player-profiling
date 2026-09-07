@@ -1,0 +1,136 @@
+{
+  "season": "2024-25",
+  "question": "Is the two cluster result a property of the reduced feature set or of the Premier League?",
+  "leagues": [
+    {
+      "league": "ENG-Premier League",
+      "n_eligible": 366,
+      "chosen_k": 2,
+      "rule_branch": "primary",
+      "silhouette": 0.2861,
+      "bootstrap_ari_mean": 0.92,
+      "bootstrap_ari_sd": 0.0704,
+      "ari_vs_position_group": 0.227,
+      "position_group_counts": {
+        "MF": 181,
+        "DF": 136,
+        "FW": 49
+      }
+    },
+    {
+      "league": "ESP-La Liga",
+      "n_eligible": 399,
+      "chosen_k": 2,
+      "rule_branch": "primary",
+      "silhouette": 0.2653,
+      "bootstrap_ari_mean": 0.9071,
+      "bootstrap_ari_sd": 0.0652,
+      "ari_vs_position_group": 0.2379,
+      "position_group_counts": {
+        "MF": 185,
+        "DF": 152,
+        "FW": 62
+      }
+    },
+    {
+      "league": "GER-Bundesliga",
+      "n_eligible": 322,
+      "chosen_k": 2,
+      "rule_branch": "primary",
+      "silhouette": 0.2635,
+      "bootstrap_ari_mean": 0.9207,
+      "bootstrap_ari_sd": 0.0908,
+      "ari_vs_position_group": 0.2317,
+      "position_group_counts": {
+        "MF": 160,
+        "DF": 109,
+        "FW": 53
+      }
+    },
+    {
+      "league": "ITA-Serie A",
+      "n_eligible": 395,
+      "chosen_k": 2,
+      "rule_branch": "primary",
+      "silhouette": 0.2554,
+      "bootstrap_ari_mean": 0.9457,
+      "bootstrap_ari_sd": 0.0559,
+      "ari_vs_position_group": 0.1898,
+      "position_group_counts": {
+        "MF": 206,
+        "DF": 128,
+        "FW": 61
+      }
+    },
+    {
+      "league": "FRA-Ligue 1",
+      "n_eligible": 340,
+      "chosen_k": 2,
+      "rule_branch": "primary",
+      "silhouette": 0.2689,
+      "bootstrap_ari_mean": 0.9439,
+      "bootstrap_ari_sd": 0.0539,
+      "ari_vs_position_group": 0.2703,
+      "position_group_counts": {
+        "MF": 156,
+        "DF": 130,
+        "FW": 54
+      }
+    }
+  ],
+  "preparation": {
+    "ESP-La Liga": {
+      "n_aliased_clubs": 19,
+      "understat_match_rate": 0.8869,
+      "n_outfield": 543,
+      "n_eligible": 399,
+      "elasticities": {
+        "interceptions": 0.322,
+        "tackles_won": 0.2554,
+        "fouls_committed": 0.6923
+      }
+    },
+    "GER-Bundesliga": {
+      "n_aliased_clubs": 17,
+      "understat_match_rate": 0.9106,
+      "n_outfield": 443,
+      "n_eligible": 322,
+      "elasticities": {
+        "interceptions": 0.5081,
+        "tackles_won": 0.2478,
+        "fouls_committed": 0.4691
+      }
+    },
+    "ITA-Serie A": {
+      "n_aliased_clubs": 20,
+      "understat_match_rate": 0.929,
+      "n_outfield": 552,
+      "n_eligible": 395,
+      "elasticities": {
+        "interceptions": 0.6286,
+        "tackles_won": 0.2784,
+        "fouls_committed": 0.4747
+      }
+    },
+    "FRA-Ligue 1": {
+      "n_aliased_clubs": 18,
+      "understat_match_rate": 0.9042,
+      "n_outfield": 507,
+      "n_eligible": 340,
+      "elasticities": {
+        "interceptions": 0.2416,
+        "tackles_won": 0.0809,
+        "fouls_committed": 0.2026
+      }
+    }
+  },
+  "k_by_league": {
+    "ENG-Premier League": 2,
+    "ESP-La Liga": 2,
+    "GER-Bundesliga": 2,
+    "ITA-Serie A": 2,
+    "FRA-Ligue 1": 2
+  },
+  "k_is_unanimous": true,
+  "verdict": "The selection rule returns the same number of clusters in every big five league, so the result follows from what the data can still measure rather than from English football."
+}
