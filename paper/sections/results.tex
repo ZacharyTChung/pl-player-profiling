@@ -5,9 +5,10 @@
 \label{sec:results:structure}
 
 The first question is not how many clusters there are but whether there are any, and it is
-answered against the null described in Section~\ref{sec:methods:null}: \StrSimulations{}
-synthetic datasets matched to the observed feature matrix in size, dimension and covariance
-but drawn from a single Gaussian and therefore containing no groups whatsoever.
+answered against the three nulls of Section~\ref{sec:methods:null}, beginning with the
+softest: \StrSimulations{} synthetic datasets matched to the observed feature matrix in
+size, dimension and covariance but drawn from a single Gaussian and therefore containing
+no groups whatsoever.
 
 The answer is that real structure exists, and that it is confined to a single division.
 Figure~\ref{fig:structurenull} shows the comparison. At two clusters the observed
@@ -62,8 +63,7 @@ departures too small to matter, so the dip statistic is the quantity to read and
 against the nulls. The observed dip on the pool is \StrDipObsAll{}, which sits
 \StrDipMinZAll{} null standard deviations above the hardest of the three references, the
 uniform box, and \StrDipZCopulaAll{} above the copula. Defenders clear the hardest null by
-\StrDipMinZDF{} and midfielders by \StrDipMinZMF{}. The dominant axis is genuinely
-two-moded rather than merely wide. Forwards are the exception in both readings: the test
+\StrDipMinZDF{} and midfielders by \StrDipMinZMF{}. The dominant axis is two-moded, not merely wide. Forwards are the exception in both readings: the test
 returns $p=\StrDipPFW{}$, and the observed dip of \StrDipObsFW{} sits \StrDipMinZFW{}
 standard deviations against the uniform reference, which is to say below it. A forward's
 leading axis is less bimodal than a flat box. The forward split is real by the silhouette
@@ -73,11 +73,10 @@ the forward split is: a cut through a continuum of involvement that the null can
 produce, not two kinds of forward.
 Density-based clustering assigns \StrNoiseAll{} of the outfield pool to noise and every
 position group entirely to noise, which is what a density method does when handed a
-continuum with a density gradient rather than separated groups. The Gaussian mixture
+continuum with a density gradient instead of separated groups. The Gaussian mixture
 criterion declines monotonically to the top of the candidate range in every scope, which is
 the signature of a model absorbing extra components into a smooth density rather than
-identifying real ones, and it is reported for completeness rather than treated as
-selecting a number.
+identifying real ones, and it is reported for completeness, not treated as selecting a number.
 
 Taken together the instruments support one claim and refuse a stronger one. Football role
 data contains a real division into two modes. It does not contain a taxonomy.
@@ -120,17 +119,16 @@ non-penalty expected goals and touches in the opposition box. A deep midfielder 
 the ball forward and a striker who receives it in the box sit at opposite ends of the
 second component while sharing similar territory on neither.
 
-That pair explains why two modes coexist with a genuinely multidimensional space. The first
+That pair explains why two modes coexist with a multidimensional space. The first
 component is bimodal and drives the partition. The components behind it carry real and
-interpretable variation that is continuous rather than clustered, which is precisely the
-variation a finer taxonomy would have to divide and, as
+interpretable variation that is continuous, not clustered, which is the variation a finer taxonomy would have to divide and, as
 Section~\ref{sec:results:structure} showed, cannot.
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_pca.pdf}
   \caption{Principal components of the \ArcFeatures{} archive features over
-  \ArcEligible{} player seasons. The scree panel shows one dominant component and a long
+  \ArcEligible{} player-seasons. The scree panel shows one dominant component and a long
   tail rather than a sharp elbow, and the loading panels show that the leading component
   orders players by pitch territory while the second orders them by ball progression.}
   \label{fig:archive_pca}
@@ -139,11 +137,10 @@ Section~\ref{sec:results:structure} showed, cannot.
 \subsection{What the two modes are}
 \label{sec:results:archetypes}
 
-Two modes within each of three position groups gives six descriptions, and with
+Two modes within each of three position groups give six descriptions, and with
 \ArcFeatures{} features they can be characterised far more sharply than a reduced feature
 set allows. Names were assigned only after inspecting centroid profiles and member players,
-and the justifications quoted here are generated from the computed centroids rather than
-composed for the paper. Figure~\ref{fig:arcprofiles} shows the deviation profiles and
+and the justifications quoted here are generated from the computed centroids, not composed for the paper. Figure~\ref{fig:arcprofiles} shows the deviation profiles and
 Figure~\ref{fig:arcradar} the radar comparisons.
 
 Among defenders the division is between \ArcNDFZero{} \ArcNameDFZero{} and \ArcNDFOne{}
@@ -169,14 +166,13 @@ Among forwards the division separates \ArcNFWZero{} \ArcNameFWZero{} from \ArcNF
 slightly higher in the first group. What separates them is carrying and creation: the second
 group record nearly three times the progressive carries, almost three times the passes into
 the box, twice the take-ons and substantially more shot creating actions, while shooting
-slightly less. Forward is not one role, but the axis that splits it is involvement in
-build-up rather than goal threat.
+slightly less. Forward is not one role, but the axis that splits it is involvement in build-up, not goal threat.
 
 One structural property constrains how far these six can be read as independent. Features
 are standardised within position group before a two-way split, so the two centroids in a
 group are exactly anti-parallel and the larger cluster necessarily carries the smaller
 deviations. Each pair is therefore the two ends of one axis, and the six archetypes describe
-three axes rather than six independently shaped profiles.
+three axes, not six independently shaped profiles.
 
 \subsection{The modes are not the positions}
 \label{sec:results:notposition}
@@ -226,7 +222,7 @@ and partly arbitrary partition of it. Figure~\ref{fig:archive_cluster_vs_positio
 \subsection{Do the modes describe stable roles?}
 \label{sec:results:archestability}
 
-A partition that changed every season would describe a season rather than a role. Tracking
+A partition that changed every season would describe a season, not a role. Tracking
 \ArcTracked{} players across the sample, of whom \ArcTrackedTwo{} appear in two or more
 seasons, membership changes in \ArcSwitchRate{} percent of consecutive season pairs against
 a within-group chance baseline near half. The adjusted Rand index between consecutive
@@ -282,8 +278,8 @@ the pooled fit.
 
 Every scope recovers the pooled partition. The weakest season agrees with the pool at an
 adjusted Rand index of \RepSeasonPooledMin{} and the weakest league at
-\RepLeaguePooledMin{}, on \RepN{} player seasons in total. The separating axis is the same
-object each time rather than merely a similarly sized one: the correlation between each
+\RepLeaguePooledMin{}, on \RepN{} player-seasons in total. The separating axis is the same
+object each time and not merely a similarly sized one: the correlation between each
 scope's own discriminant direction and the pooled direction never falls below
 \RepAxisCorrMin{}. Bundesliga, the league with the lowest agreement, is also the smallest
 sample here, and its axis correlation is indistinguishable from the rest.
@@ -300,8 +296,7 @@ The season-against-season comparison on players present in both seasons is lower
 of \RepPairMean{} with a range from \RepPairMin{} to \RepPairMax{}, and the pattern in
 Figure~\ref{fig:archive_replication} explains why. Agreement decays monotonically with the
 gap between seasons, so adjacent seasons agree most and the seasons furthest apart agree
-least, while the transfer index over the same pairs stays flat. That decay is players changing role over four years rather than a weakness of the
-partition, and the player-level view confirms it: across the same pairs \RepShareMean{}
+least, while the transfer index over the same pairs stays flat. That decay is players changing role over four years, not a weakness of the partition, and the player-level view confirms it: across the same pairs \RepShareMean{}
 percent of players present in both seasons are assigned to the same mode in both, falling
 no lower than \RepShareMin{} percent on the pair furthest apart in time. Roughly one
 player in twelve moves between modes over a four-year span, which is a plausible rate of
@@ -322,7 +317,7 @@ genuine role change and not the churn an unstable partition would produce.
 
 Everything above is a claim about the structure of the data. The archive also carries what
 happened: wins, draws and losses for every one of the \OutN{} team-seasons, so the two modes
-can be tested against real results rather than only against listed positions. Each club
+can be tested against real results and not only against listed positions. Each club
 season is summarised by the minutes-weighted share of its outfield minutes played by the
 attacking mode, by the minutes-weighted mean position of its players along the axis between
 the two centroids, and by its share in each of the six archetypes, with eligible players
@@ -351,20 +346,26 @@ exposure adjustment. Ridge regression of points per match on possession alone, o
 composition alone and on both, with the penalty chosen inside the training folds, gives out
 of sample coefficients of determination of \OutRSqPossSeason{}, \OutRSqCompSeason{} and
 \OutRSqBothSeason{} when one season is held out at a time, and \OutRSqPossLeague{},
-\OutRSqCompLeague{} and \OutRSqBothLeague{} when one league is. The modes add
+\OutRSqCompLeague{} and \OutRSqBothLeague{} when one league is. The strictest holdout leaves one club out
+at a time, so that no held-out team-season shares a club with the training data and a
+model cannot score by remembering which clubs are good; there the three figures are
+\OutRSqPossClub{}, \OutRSqCompClub{} and \OutRSqBothClub{}. The modes add
 \OutIncSeason{} (\OutIncSeasonLow{} to \OutIncSeasonHigh{}) to what possession explains
 under the first holdout and \OutIncLeague{} (\OutIncLeagueLow{} to \OutIncLeagueHigh{})
-under the second, and for goal difference \OutIncGDSeason{} and \OutIncGDLeague{}. The
-composition on its own predicts slightly worse than possession on its own, which is worth
-saying plainly: the modes are not a substitute for dominance, they are information about
+under the second and \OutIncClub{} (\OutIncClubLow{} to \OutIncClubHigh{}) under the
+club holdout, and for goal difference \OutIncGDSeason{}, \OutIncGDLeague{} and
+\OutIncGDClub{}. The
+composition on its own predicts slightly worse than possession on its own, which should
+be said plainly: the modes are not a substitute for dominance, they are information about
 how it is produced that dominance does not contain.
 
 Where the information lives is the sharpest result in this section. Possession plus the two
 two-mode measures alone reach \OutRSqPossTwoModeSeason{}, an increment of
 \OutIncTwoModeSeason{} over possession that is the whole of the gain. Adding the six
 archetype shares on top adds \OutIncArcheSeason{} (\OutIncArcheSeasonLow{} to
-\OutIncArcheSeasonHigh{}), an interval that contains zero, and the archetypes without the
-two-mode measures reach only \OutRSqPossArcheSeason{}. Real results, then, say what the
+\OutIncArcheSeasonHigh{}), an interval that contains zero, and \OutIncArcheClub{} (\OutIncArcheClubLow{} to
+\OutIncArcheClubHigh{}) under the club holdout; the archetypes without the two-mode
+measures reach only \OutRSqPossArcheSeason{}. Real results, then, say what the
 null calibration said: two modes carry information and a finer taxonomy carries none that
 the two modes did not already carry.
 
@@ -385,8 +386,8 @@ the share against points and the out of sample comparison.
   \caption{The two modes against real results over \OutN{} team-seasons. Left, the
   minutes-weighted share of outfield minutes in the attacking mode against points per match,
   one marker shape per league. Right, out of sample coefficient of determination for points
-  per match from possession alone, the composition alone and both, under leave-one-season-out
-  and leave-one-league-out holdouts.}
+  per match from possession alone, the composition alone and both, under leave-one-season-out,
+  leave-one-league-out and leave-one-club-out holdouts.}
   \label{fig:outcomes}
 \end{figure}
 
@@ -408,12 +409,11 @@ Removing any one family removes nothing that matters. The rule returns two clust
 across the four scopes, \AblCellsBeatNull{} exceed every one of the \AblSimulations{}
 clusterless simulations. The weakest case is \AblWeakScope{} without \AblWeakFamily{},
 where the observed silhouette still sits \AblWeakZ{} null standard deviations above the
-clusterless mean. The survivors are the same two modes rather than two different ones: the
+clusterless mean. The survivors are the same two modes, not two different ones: the
 adjusted Rand index between each ablated partition and the full one, on the same players,
 runs from \AblLeaveARIMin{} to \AblLeaveARIMax{}, with the least similar case being
 \AblLeastScope{} without \AblLeastFamily{} at \AblLeastARI{}. Forwards are the group where
-that family matters most, which is consistent with the forward split being a division by
-involvement in build-up rather than by scoring.
+that family matters most, which is consistent with the forward split being a division by involvement in build-up, not by scoring.
 
 The converse is more instructive than the headline. Judged by whether a single family
 produces a two-cluster solution that beats the null, most families carry structure alone:
@@ -434,7 +434,7 @@ The two failures are forwards. Shooting alone in forwards clears the null by onl
 \AblKeepZPassingFW{} and does not exceed every simulation. A forward's shot volume and pass
 completion do not, on their own, divide forwards into anything the null cannot produce,
 which is a further reason to read the forward split as a cut through a continuum of
-involvement rather than as two kinds of forward.
+involvement, not as two kinds of forward.
 
 \begin{figure}[!htbp]
   \centering
@@ -466,7 +466,7 @@ is linearly separable and there is little interaction structure left for the tre
 A taxonomy of many discrete types would be expected to leave more.
 
 The errors are where the argument is. Defenders and forwards are almost never mistaken for
-one another: of \SupN{} player seasons the model assigns \SupDFasFW{} defenders to the
+one another: of \SupN{} player-seasons the model assigns \SupDFasFW{} defenders to the
 forward class and \SupFWasDF{} forwards to the defender class. Every other confusion runs
 through midfield, which is involved in \SupMiddleErrors{} errors against the
 \SupPoleErrors{} that link the two poles directly, so only \SupPoleShare{} percent of all
@@ -478,8 +478,7 @@ structure of three distinct categories, which would scatter errors more evenly a
 off-diagonal. Figure~\ref{fig:archive_confusion} shows both confusion matrices.
 
 The feature attributions agree. The three strongest features overall are
-\ShapArcTopOne{}, \ShapArcTopTwo{} and \ShapArcTopThree{}, all of which are territorial
-rather than technical, and touches in the defensive third alone carries more attribution
+\ShapArcTopOne{}, \ShapArcTopTwo{} and \ShapArcTopThree{}, all of which are territorial, not technical, and touches in the defensive third alone carries more attribution
 than any other feature for all three classes. Position, as the data record it, is mostly a
 statement about where a player stands. Figure~\ref{fig:archive_shap} shows the attribution of every feature for every explained player. Figure~\ref{fig:archive_shap_by_class} splits the
 attribution by class and shows that the three are separated by different things, defenders
@@ -499,7 +498,7 @@ category with a signature of its own.
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{archive_confusion.pdf}
-  \caption{Out of fold confusion for both classifiers on \SupN{} player seasons. The corners
+  \caption{Out of fold confusion for both classifiers on \SupN{} player-seasons. The corners
   linking defenders and forwards are close to empty and every substantial error passes
   through midfield, which is what an ordered space with two poles produces.}
   \label{fig:archive_confusion}
@@ -535,19 +534,19 @@ position group, and the two detectors agree on \ArcOutAgreement{} percent of the
 they flag.
 
 The \ArcOutN{} strongest outliers are \ArcOutDistinct{} distinct players, headed by
-\ArcOutTop{}. Two features of the list are worth reporting. The first is that
+\ArcOutTop{}. Two features of the list stand out. The first is that
 \ArcOutCompound{} of the \ArcOutN{} carry a compound listed position such as midfielder and
 forward together, against a much smaller share in the pool, so the players the partition
 handles worst are the ones the listing system also declines to place. The second is that the
 detector is not simply finding stars: it also finds attacking full backs whose output
 profile resembles a winger's, which is the same boundary the defender split describes at
-Section~\ref{sec:results:archetypes} and a genuine tactical category rather than an artefact.
+Section~\ref{sec:results:archetypes} and a genuine tactical category, not an artefact.
 
-One caveat belongs with the list rather than after it. \ArcOutShortMinutes{} of the
+One caveat belongs with the list, not after it. \ArcOutShortMinutes{} of the
 \ArcOutN{} played under nine hundred minutes in the season concerned, so their per ninety
 rates carry more sampling noise than a full season's would, and extreme rates are easier to
 reach on a small denominator. The eligibility threshold removes the worst of this and does
-not remove all of it, and an outlier list is exactly the place where the residual matters
+not remove all of it, and an outlier list is the place where the residual matters
 most. The list should therefore be read as evidence about the kind of player the two-mode
 description struggles with, and not as a ranking in which the fifteenth entry means what the
 first does. Figure~\ref{fig:archive_outliers} shows both detectors and the fifteen.
@@ -566,7 +565,8 @@ first does. Figure~\ref{fig:archive_outliers} shows both detectors and the fifte
 
 Before any structure is estimated, the defensive counts have to be separated from the
 opportunity to record them. Team defensive volume does rise as opponent possession rises, so
-the confound is real, and the conventional correction assumes the relationship is
+the confound is real, and the conventional correction, in the proportional form that has
+succeeded the original of \citet{knutson2014possession}, assumes the relationship is
 proportional: a side with twice the ball is taken to concede half the defensive events.
 
 It is much weaker than that for four of the five statistics, and it is not distinguishable
@@ -646,7 +646,9 @@ gathers the pooled estimates, their intervals and the league refits.
   intervals exclude one; the interval for clearances does not, and three league refits for
   clearances sit above one.}
   \label{fig:elasticity_uncertainty}
-\end{figure} One further qualification matters more than any of these. Adjusting the
+\end{figure}
+
+One further qualification matters more than any of these. Adjusting the
 defensive counts does not make the feature set as a whole team-neutral, because the
 attacking statistics still scale with a team's own share of the ball. What follows should
 be read as having removed one identifiable confound, not all of them.
@@ -658,8 +660,7 @@ be read as having removed one identifiable confound, not all of them.
 
 Correcting only the defensive statistics invites an obvious objection. Attacking output
 also depends on possession, so the feature set is still team dependent and the correction
-looks like half a correction. The objection is worth testing rather than answering by
-assertion, and the test produces the sharpest methodological result in the paper.
+looks like half a correction. The objection deserves a test, not an assertion, and the test produces the sharpest methodological result in the paper.
 
 This test runs on the reduced sample, which is the only one of the two carrying an
 independent expected-goals source with involvement measures, and its conclusion is about the
@@ -676,10 +677,9 @@ families either side of the proportional line.
 
 That asymmetry is not a curiosity, it is the whole argument. For defending, opponent
 possession is an exposure denominator in the plain sense that a tackle cannot occur while
-your own side holds the ball, and the sub-proportional response says exposure is exactly
-what it measures. For attacking, an elasticity above one says the opposite: ten percent
+your own side holds the ball, and the sub-proportional response says exposure is what it measures. For attacking, an elasticity above one says the opposite: ten percent
 more of the ball buys appreciably more than ten percent more output. Returns to possession
-are increasing. That is a statement about football rather than about measurement, so
+are increasing. That is a statement about football, not about measurement, so
 dividing it out would remove signal along with any bias. The two Understat involvement
 measures make the point most starkly, since both exceed two: a side that keeps the ball
 does not merely have more possessions, its players are involved in more of each.
@@ -690,7 +690,7 @@ block as well moves the correlation between club centroids and final league posi
 part of the team relationship rather than nothing at all. It does not remove all of it, the
 partition moves at an adjusted Rand index of \SymARI{} against the one reported here, and
 the silhouette drifts from \SymSilhouetteBase{} to \SymSilhouetteAdj{}. The choice is
-therefore a judgement rather than a fact, and it is recorded as one: we treat possession
+therefore a judgement, not a fact, and it is recorded as one: we treat possession
 driven productivity as something a role profile should reflect, not something to divide
 away, and a reader who takes the opposite view has the numbers to see what that would cost.
 
@@ -714,7 +714,7 @@ pass length, at a worst per-column coverage of \ArcKeeperCoverageMin{}. Post-sho
 goals minus goals allowed is the proper measure of saves above expectation, because it
 conditions on the difficulty of the shots faced rather than only their number.
 
-The first attempt at a partition reproduces a trap worth reporting. Clustering on all
+The first attempt at a partition walks into a trap, and the trap is itself a finding. Clustering on all
 available features returns \ArcKeeperK{} clusters at a silhouette of \ArcKeeperSilFull{},
 and the partition looks interpretable until it is asked what it is made of. Membership
 explains a mean of \ArcKeeperEtaFullSituation{} of the variance in situational quantities,
@@ -748,7 +748,7 @@ high line and ask their goalkeeper to cover behind it. Sweeping is a tactical co
 tracks line height rather than an exposure count, and adjusting it for possession would
 remove the signal the partition is built on, so it is left unadjusted.
 
-That is a substantive finding rather than a taxonomy, and it echoes the outfield result: the
+That is a substantive finding, not a taxonomy, and it echoes the outfield result: the
 data supports one binary distinction plus continuous variation, not a set of types.
 Figures~\ref{fig:arckeeperstop} and \ref{fig:arckeeperpanel} show the shot stopping
 ranking, the partition and the two profiles.

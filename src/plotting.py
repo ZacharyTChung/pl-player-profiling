@@ -31,7 +31,8 @@ import config
 # Palette
 # --------------------------------------------------------------------------------------
 
-SURFACE = "#FCFCFB"
+#: Pure white. An off-white surface prints as a visible grey box behind every figure.
+SURFACE = "#FFFFFF"
 INK_PRIMARY = "#0B0B0B"
 INK_SECONDARY = "#52514E"
 INK_MUTED = "#8A8A85"

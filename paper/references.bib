@@ -77,9 +77,10 @@
 @inproceedings{decroos2019player,
   author    = {Decroos, Tom and Davis, Jesse},
   title     = {Player Vectors: Characterizing Soccer Players' Playing Style from Match Event Streams},
-  booktitle = {Machine Learning and Knowledge Discovery in Databases ({ECML PKDD} 2019)},
+  booktitle = {Machine Learning and Knowledge Discovery in Databases: {ECML PKDD} 2019},
+  series    = {Lecture Notes in Computer Science},
   pages     = {569--584},
-  year      = {2019},
+  year      = {2020},
   publisher = {Springer},
   doi       = {10.1007/978-3-030-46133-1_34},
   url       = {https://doi.org/10.1007/978-3-030-46133-1_34}
@@ -274,7 +275,7 @@
   title        = {{FBref.com}: Football Statistics and History},
   year         = {2026},
   howpublished = {\url{https://fbref.com/en/}},
-  note         = {Advanced statistics on {FBref} (passing, shot-creation, possession, etc.) are sourced from {StatsBomb}}
+  note         = {Advanced statistics were licensed from a commercial event-data provider, {StatsBomb} until 2022 and {Opta} thereafter; the provider-derived columns were withdrawn on 20 January 2026}
 }
 
 % verified: WebFetch of https://github.com/probberechts/soccerdata (README:
@@ -282,12 +283,12 @@
 % https://pypi.org/project/soccerdata/ and its release-history page
 % confirming author Pieter Robberechts, current version 1.9.1, and its
 % release date (24 Jul 2026).
-@software{robberechts2026soccerdata,
-  author  = {Robberechts, Pieter},
-  title   = {soccerdata: A Collection of Scrapers for Gathering Soccer Data},
-  year    = {2026},
-  version = {1.9.1},
-  url     = {https://github.com/probberechts/soccerdata}
+@misc{robberechts2026soccerdata,
+  author       = {Robberechts, Pieter},
+  title        = {soccerdata: A Collection of Scrapers for Gathering Soccer Data},
+  year         = {2026},
+  howpublished = {Python package, version 1.9.1},
+  url          = {https://github.com/probberechts/soccerdata}
 }
 
 @article{hartigan1985dip,
@@ -339,4 +340,165 @@
   pages     = {1--8},
   year      = {2009},
   url       = {https://proceedings.mlr.press/v5/ackerman09a.html}
+}
+
+@article{vonluxburg2010stability,
+  author  = {von Luxburg, Ulrike},
+  title   = {Clustering stability: An overview},
+  journal = {Foundations and Trends in Machine Learning},
+  year    = {2010},
+  volume  = {2},
+  number  = {3},
+  pages   = {235--274},
+  doi     = {10.1561/2200000008}
+}
+
+@inproceedings{benhur2002stability,
+  author    = {Ben-Hur, Asa and Elisseeff, Andr{\'e} and Guyon, Isabelle},
+  title     = {A stability based method for discovering structure in clustered data},
+  booktitle = {Pacific Symposium on Biocomputing},
+  volume    = {7},
+  pages     = {6--17},
+  year      = {2002},
+  url       = {https://psb.stanford.edu/psb-online/proceedings/psb02/benhur.pdf}
+}
+
+@article{milligan1985examination,
+  author  = {Milligan, Glenn W. and Cooper, Martha C.},
+  title   = {An examination of procedures for determining the number of clusters in a data set},
+  journal = {Psychometrika},
+  year    = {1985},
+  volume  = {50},
+  number  = {2},
+  pages   = {159--179},
+  doi     = {10.1007/BF02294245}
+}
+
+@misc{knutson2014possession,
+  author       = {Knutson, Ted},
+  title        = {Introducing Possession-Adjusted Player Stats},
+  year         = {2014},
+  month        = jun,
+  howpublished = {StatsBomb},
+  note         = {Published 23 June 2014},
+  url          = {https://blogarchive.statsbomb.com/articles/soccer/introducing-possession-adjusted-player-stats/}
+}
+
+@article{akhanli2023clustering,
+  author  = {Akhanli, Serhat Emre and Hennig, Christian},
+  title   = {Clustering of football players based on performance data and aggregated clustering validity indexes},
+  journal = {Journal of Quantitative Analysis in Sports},
+  year    = {2023},
+  volume  = {19},
+  number  = {2},
+  pages   = {103--123},
+  doi     = {10.1515/jqas-2022-0037}
+}
+
+@article{akhanli2020comparing,
+  author  = {Akhanli, Serhat Emre and Hennig, Christian},
+  title   = {Comparing clusterings and numbers of clusters by aggregation of calibrated clustering validity indexes},
+  journal = {Statistics and Computing},
+  year    = {2020},
+  volume  = {30},
+  number  = {5},
+  pages   = {1523--1544},
+  doi     = {10.1007/s11222-020-09958-2}
+}
+
+@article{fernandez2024reporting,
+  author  = {Fern{\'a}ndez, Daniel and Casals, Mart{\'\i} and Oliver, Mart{\'\i} and Plensa, Montse and Manisera, Marica},
+  title   = {Reporting of clustering techniques in sports sciences: a scoping review},
+  journal = {Electronic Journal of Applied Statistical Analysis},
+  year    = {2024},
+  volume  = {17},
+  number  = {3},
+  pages   = {653--675},
+  doi     = {10.1285/i20705948v17n3p653}
+}
+
+@incollection{elfoukahi2026unveiling,
+  author    = {El Foukahi, Soumaya and El Handri, Kaoutar and El Ghmary, Mohamed and Echoukairi, Hassan},
+  title     = {Unveiling Midfielder Roles in Elite Football: A Data-Driven Clustering Approach},
+  booktitle = {Artificial Intelligence and Mathematics},
+  series    = {Springer Proceedings in Mathematics \& Statistics},
+  publisher = {Springer},
+  year      = {2026},
+  pages     = {465--477},
+  doi       = {10.1007/978-3-032-18042-1_37}
+}
+
+@article{plakias2023identifying,
+  author  = {Plakias, Spyridon and Moustakidis, Serafeim and Kokkotis, Christos and Papalexi, Marina and Tsatalas, Themistoklis and Giakas, Giannis and Tsaopoulos, Dimitrios},
+  title   = {Identifying Soccer Players' Playing Styles: A Systematic Review},
+  journal = {Journal of Functional Morphology and Kinesiology},
+  year    = {2023},
+  volume  = {8},
+  number  = {3},
+  pages   = {104},
+  doi     = {10.3390/jfmk8030104}
+}
+
+@article{gu2025playing,
+  author  = {Gu, Linda and Wang, Wenlong and Plakias, Spyridon and Zhang, Shaoliang},
+  title   = {Playing style identification in team sports: A systematic review from statistical dimensionality reduction to unsupervised machine learning},
+  journal = {International Journal of Sports Science \& Coaching},
+  year    = {2025},
+  volume  = {20},
+  number  = {6},
+  pages   = {2742--2761},
+  doi     = {10.1177/17479541251372586}
+}
+
+@article{eugster2012performance,
+  author  = {Eugster, Manuel J. A.},
+  title   = {Performance Profiles based on Archetypal Athletes},
+  journal = {International Journal of Performance Analysis in Sport},
+  year    = {2012},
+  volume  = {12},
+  number  = {1},
+  pages   = {166--187},
+  doi     = {10.1080/24748668.2012.11868592}
+}
+
+@misc{seri2024partial,
+  author        = {Seri, Emiliano and Rocci, Roberto and Murphy, Thomas Brendan},
+  title         = {Partial membership models for soft clustering of multivariate football player performance data},
+  year          = {2024},
+  eprint        = {2409.01874},
+  archivePrefix = {arXiv},
+  primaryClass  = {stat.ME},
+  url           = {https://arxiv.org/abs/2409.01874}
+}
+
+@inproceedings{kalman2020nba,
+  author    = {Kalman, Samuel and Bosch, Jonathan},
+  title     = {{NBA} Lineup Analysis on Clustered Player Tendencies: A New Approach to the Positions of Basketball and Modeling Lineup Efficiency of Soft Lineup Aggregates},
+  booktitle = {MIT Sloan Sports Analytics Conference},
+  year      = {2020},
+  url       = {https://www.sloansportsconference.com/research-papers/nba-lineup-analysis-on-clustered-player-tendencies-a-new-approach-to-the-positions-of-basketball-modeling-lineup-efficiency}
+}
+
+@inproceedings{alagappan2012from,
+  author    = {Alagappan, Muthu},
+  title     = {From 5 to 13: Redefining the Positions in Basketball},
+  booktitle = {MIT Sloan Sports Analytics Conference},
+  year      = {2012},
+  url       = {https://www.sloansportsconference.com/research-papers/from-5-to-13-redefining-the-positions-in-basketball}
+}
+
+@inproceedings{ke2017lightgbm,
+  author    = {Ke, Guolin and Meng, Qi and Finley, Thomas and Wang, Taifeng and Chen, Wei and Ma, Weidong and Ye, Qiwei and Liu, Tie-Yan},
+  title     = {{LightGBM}: A Highly Efficient Gradient Boosting Decision Tree},
+  booktitle = {Advances in Neural Information Processing Systems 30 (NeurIPS 2017)},
+  year      = {2017},
+  url       = {https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html}
+}
+
+@misc{understat2026,
+  author       = {{Understat}},
+  title        = {Understat: Expected Goals Statistics},
+  year         = {2026},
+  howpublished = {\url{https://understat.com}},
+  note         = {Player and team expected goals for the seasons ending 2025 and 2026, retrieved 2026}
 }

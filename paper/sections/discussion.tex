@@ -10,7 +10,7 @@ concentrated density joined by a populated middle, that the axis running between
 dominant direction in the space, and that no division finer than that one is distinguishable
 from what a partitioning algorithm produces on data containing no divisions.
 
-The axis itself is territorial rather than technical. Its strongest loadings are touches by
+The axis itself is territorial, not technical. Its strongest loadings are touches by
 pitch third and progressive receptions, not passing accuracy or duel success, and the same
 ordering appears in the supervised attributions, where \ShapArcTopOne{} carries more weight
 than any technical statistic for all three position groups. Football's own vocabulary for
@@ -20,7 +20,7 @@ player was than what he did there. Any role structure recovered from it will be 
 statement about territory, and reading it as a statement about ability is the most common way
 to misuse this kind of analysis.
 
-Within position groups the two-way splits are ordered rather than categorical, which the
+Within position groups the two-way splits are ordered, not categorical, which the
 construction makes unavoidable: standardising within group before a two-way split forces the
 centroids to be mirror images, so each split reports a single direction of variation and its
 two ends. The three are not equally supported and the paper does not claim they are. The
@@ -46,13 +46,13 @@ high bootstrap adjusted Rand index is evidence of algorithmic stability and not 
 structure. Interpretability is the weakest of the three, because a cut through any continuous
 distribution produces two centroids that differ along the direction of the cut, and a domain
 expert can narrate that difference whether or not it corresponds to a real boundary. The
-diagnostic evidence here makes the concern concrete rather than hypothetical, and measured.
+evidence here makes the concern concrete and measured rather than hypothetical.
 On data built to contain no groups, the same pipeline returns a silhouette maximum at two
 clusters, two nameable centroids, and a bootstrap adjusted Rand index of at least
 \StrBootNullMinSingle{} on every clusterless dataset in every scope, against
 \StrBootObsMin{} on the real data. The difference is as small as \StrBootGapMin{}. A
 stability check that passes a continuum at \StrBootNullMinSingle{} is not a test of
-existence, and every published taxonomy that rested on one rested on nothing.
+existence, and a taxonomy that rests on one rests on evidence a continuum satisfies equally well.
 
 Calibration against matched clusterless data fixes this at low cost. It requires no
 assumption the analysis does not already make, since the simulated data are drawn using the
@@ -73,7 +73,7 @@ holding midfielders sit with the defenders and attacking midfielders sit with th
 That the supervised model makes its errors in the same place is corroboration from machinery
 that shares nothing with the clustering. A classifier that reaches \SupGBMAcc{} percent
 accuracy while sending all but \SupPoleShare{} percent of its errors through midfield is
-describing an ordered space, since a genuinely three-category problem would scatter errors
+describing an ordered space, since a three-category problem would scatter errors
 more evenly across the off-diagonal. The practical reading is that listed position is a
 reasonable but coarse summary at the extremes and close to arbitrary in the middle, which is
 what anyone who has watched a modern midfield would expect and which the data now supports
@@ -82,9 +82,10 @@ quantitatively.
 \subsection{What the modes predict}
 
 A description of role structure that never touched a result would be open to the objection
-that it describes the statistics rather than the sport. The test against real outcomes closes
+that it describes the statistics and not the sport. The test against real outcomes closes
 that gap in two directions at once. The two-mode composition of a club carries information
-about its points that possession does not, out of sample and under two different holdouts, so
+about its points that possession does not, out of sample and under three different holdouts,
+by season, by league and by club, so
 the axis the partition cuts is an axis along which football is actually decided. The six
 archetypes carry no information about points that the two modes did not already carry, so the
 finer taxonomy fails against results exactly as it failed against the clusterless null. Those
@@ -111,8 +112,8 @@ conventional exponent is, for that one statistic, not distinguishably wrong. A c
 applied at unit elasticity to the other four converts a defensive-count comparison between a
 possession-dominant club and a counter-attacking one from biased in one direction to biased
 in the other, and the exponents are moreover averages over a possession range across which
-three of them measurably bend. The adjustment is also genuinely one sided, which is worth stating because the symmetry
-argument is superficially compelling. If defensive opportunity falls with possession then
+three of them measurably bend. The adjustment is also one sided, and that needs stating because the symmetry argument
+is superficially compelling. If defensive opportunity falls with possession then
 attacking opportunity should rise with it, and correcting only one side looks arbitrary. The
 counterfactual reported in Section~\ref{sec:results:symmetric} tests this and rejects it:
 applying the correction in both directions makes the description worse. Attacking output does
@@ -146,12 +147,21 @@ The confound that possession adjustment does not remove is team strength. Correc
 defensive counts removes the exposure effect from those five features, but the attacking
 statistics still scale with a team's own share of the ball, and the leading component remains
 related to team quality. Correcting both directions would require an instrument this data
-cannot supply, so the residual is acknowledged rather than solved. Per ninety rates remain
+cannot supply, so the residual is acknowledged, not solved. The unit of analysis is the player-season, and player-seasons are nested: the same player
+appears in up to \ArcNSeasons{} rows, the same club in up to \ArcNSeasons{} team-seasons,
+and clubs within leagues. The pooled fits and the bootstrap treat rows as exchangeable,
+which they are not, so the pooled intervals are narrower than a fully nested analysis
+would give. The paper's defence against this is design, not adjustment: every
+central claim is also made on independent refits by season and by league, and the test
+against results holds out whole seasons, whole leagues and, in
+Section~\ref{sec:results:outcomes}, whole clubs, so that no held-out unit shares a player
+or a club with the training data. Where a pooled interval is quoted, the independent
+refits are the check on it. Per ninety rates remain
 noisy above the eligibility threshold, which is why the outlier list of
 Section~\ref{sec:results:outliers} carries a minutes caveat and why rankings computed on
 partial seasons should be shrunk before they are read.
 
-The archive is a mirror rather than the source, and although its coverage was verified
+The archive is a mirror, not the source, and although its coverage was verified
 against the surviving public tables where those overlap, it cannot be re-derived from the
 live site. One season was excluded outright because a whole feature block was absent from it.
 Season aggregation also assumes a player's role is constant across a season, which the drift
@@ -183,7 +193,7 @@ the modes are a property of football or a property of the measurement, which req
 dataset where a finer taxonomy is known to be present.
 
 Within public data, three directions follow. The role drift analysis covers one club and
-would be worth extending, which is a matter of scraping time rather than method. Extending
+would be worth extending, which is a matter of scraping time, not method. Extending
 beyond the big five, to competitions with different possession profiles, would test whether
 the elasticities and the two-mode result hold where the league is less concentrated. Modelling
 attacking exposure properly, rather than through a single elasticity, would let the symmetric

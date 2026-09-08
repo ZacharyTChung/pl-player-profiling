@@ -142,7 +142,15 @@ INCREMENTS = {
     "both_over_possession_and_two_mode": ("both", "possession_and_two_mode"),
     "both_over_composition": ("both", "composition"),
 }
-HOLDOUTS = {"season": "leave-one-season-out", "league": "leave-one-league-out"}
+# The club holdout is the strict one: no held-out team-season shares a club with the
+# training data, so a model cannot score by remembering which clubs are good.
+HOLDOUTS = {
+    "season": "leave-one-season-out",
+    "league": "leave-one-league-out",
+    "team": "leave-one-club-out",
+}
+#: The unit each holdout leaves out, as the figure and the verdict name it.
+HOLDOUT_UNIT = {"season": "season", "league": "league", "team": "club"}
 
 #: Short league names for the figure, keyed by the archive's competition label.
 SHORT = {
@@ -716,7 +724,7 @@ def _r2_draws(y: np.ndarray, fitted: np.ndarray, idx: np.ndarray) -> np.ndarray:
 
 
 def out_of_sample(frame: pd.DataFrame, target: str) -> dict:
-    """Ridge under both holdouts for every model, scored on the held-out predictions.
+    """Ridge under every holdout for every model, scored on the held-out predictions.
 
     Out-of-sample R squared pools the held-out predictions over all folds and scores them
     against the target's overall mean, so a model that only learns each fold's level
@@ -742,7 +750,10 @@ def out_of_sample(frame: pd.DataFrame, target: str) -> dict:
                 pipe = _ridge().fit(x[~test], y[~test])
                 fitted[test] = pipe.predict(x[test])
                 alphas[str(level)] = _r(pipe["ridge"].alpha_, 6)
-                by_fold[str(level)] = _r(_r2(y[test], fitted[test]))
+                # A fold with one row has no variance to score against; the pooled
+                # out-of-sample figure still includes its prediction.
+                if test.sum() >= 2:
+                    by_fold[str(level)] = _r(_r2(y[test], fitted[test]))
             held_out[model] = fitted
             lo, hi = _interval(_r2_draws(y, fitted, idx))
             block["models"][model] = {
@@ -962,7 +973,7 @@ def extremes(frame: pd.DataFrame, n: int = 5) -> dict:
 def figure_outcomes(frame: pd.DataFrame, ridge: dict, pooled: dict) -> None:
     """Share against points by league, and out-of-sample R squared by model and holdout."""
     fig, (left, right) = plt.subplots(
-        1, 2, figsize=(P.WIDTH_FULL, 3.1), gridspec_kw={"width_ratios": [1.3, 1.0]}
+        1, 2, figsize=(P.WIDTH_FULL, 3.1), gridspec_kw={"width_ratios": [1.05, 1.0]}
     )
     colour = P.CATEGORICAL[0]
     for i, league in enumerate(A.LEAGUES):
@@ -1001,39 +1012,45 @@ def figure_outcomes(frame: pd.DataFrame, ridge: dict, pooled: dict) -> None:
     )
 
     holdouts = list(HOLDOUTS)
-    width = 0.36
+    width = 0.78 / len(holdouts)
+    offset = (len(holdouts) - 1) / 2
     positions = np.arange(len(HEADLINE_MODELS))
-    colours = P.categorical(2)
-    hatches = ["", "///"]
+    colours = P.categorical(len(holdouts))
+    hatches = ["", "///", "..."]
     for j, holdout in enumerate(holdouts):
         values = [
             ridge["points_per_match"][holdout]["models"][m]["r2_out_of_sample"]
             for m in HEADLINE_MODELS
         ]
         bars = right.bar(
-            positions + (j - 0.5) * width,
+            positions + (j - offset) * width,
             values,
             width * 0.94,
             color=colours[j],
-            hatch=hatches[j],
+            hatch=hatches[j % len(hatches)],
             edgecolor=P.SURFACE,
             linewidth=0.6,
-            label=f"Hold out one {holdout}",
+            label=f"Hold out one {HOLDOUT_UNIT[holdout]}",
             zorder=3,
         )
+        # Three bars per model leave no room for a horizontal label, so the values
+        # stand upright above their bars.
         for bar, value in zip(bars, values, strict=True):
             right.annotate(
                 f"{value:.2f}",
                 (bar.get_x() + bar.get_width() / 2, max(value, 0.0)),
                 textcoords="offset points",
-                xytext=(0, 2),
+                xytext=(0, 3),
                 ha="center",
-                fontsize=P.BASE_FONT_PT - 2,
+                va="bottom",
+                rotation=90,
+                fontsize=P.BASE_FONT_PT - 3,
                 color=P.INK_SECONDARY,
             )
     right.axhline(0, color=P.INK_SECONDARY, linewidth=0.6)
     right.set_xticks(positions)
     right.set_xticklabels([MODEL_LABELS[m] for m in HEADLINE_MODELS])
+    right.set_xlim(-0.6, len(HEADLINE_MODELS) - 0.4)
     low = min(
         ridge["points_per_match"][h]["models"][m]["r2_out_of_sample"]
         for h in holdouts
@@ -1042,8 +1059,14 @@ def figure_outcomes(frame: pd.DataFrame, ridge: dict, pooled: dict) -> None:
     right.set_ylim(min(0.0, low - 0.05), 1.0)
     P.style_axis(right, "", "Out-of-sample R squared", "Ridge, points per match")
     right.grid(False, axis="x")
+    right.tick_params(axis="x", labelsize=P.BASE_FONT_PT - 1)
     right.legend(
-        loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=1, fontsize=P.BASE_FONT_PT - 2
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.2),
+        ncol=len(holdouts),
+        fontsize=P.BASE_FONT_PT - 2,
+        handletextpad=0.4,
+        columnspacing=0.8,
     )
 
     P.save_figure(fig, "outcomes")
@@ -1063,11 +1086,12 @@ def _verdict(corr: dict, ridge: dict) -> str:
         f"{pooled['n']} team-seasons."
     ]
     adds = []
+    count = {2: "two", 3: "three", 4: "four"}.get(len(HOLDOUTS), str(len(HOLDOUTS)))
     for holdout in HOLDOUTS:
         models = points[holdout]["models"]
         inc = points[holdout]["increments"]["both_over_possession"]
         pieces.append(
-            f"Holding out one {holdout} at a time, possession alone predicts points out of "
+            f"Holding out one {HOLDOUT_UNIT[holdout]} at a time, possession alone predicts points out of "
             f"sample at R squared {models['possession']['r2_out_of_sample']:.2f}, the "
             f"composition alone at {models['composition']['r2_out_of_sample']:.2f}, and both "
             f"together at {models['both']['r2_out_of_sample']:.2f}, an increment of "
@@ -1077,7 +1101,7 @@ def _verdict(corr: dict, ridge: dict) -> str:
     if all(adds):
         pieces.append(
             "The two-mode composition therefore carries information about real results "
-            "beyond possession under both holdouts."
+            f"beyond possession under all {count} holdouts."
         )
     elif not any(adds):
         pieces.append(
@@ -1087,7 +1111,7 @@ def _verdict(corr: dict, ridge: dict) -> str:
         )
     else:
         pieces.append(
-            "The increment beyond possession clears zero under one holdout and not the other, "
+            "The increment beyond possession clears zero under some holdouts and not others, "
             "so the composition's information beyond possession is not robust to how the "
             "sample is split."
         )
@@ -1098,12 +1122,12 @@ def _verdict(corr: dict, ridge: dict) -> str:
     if all(f["interval_excludes_zero"] and f["delta_r2"] > 0 for f in finer):
         pieces.append(
             "The six archetype shares add further information beyond possession and the "
-            f"two-mode measures, {spelled} under the two holdouts."
+            f"two-mode measures, {spelled} under the {count} holdouts."
         )
     else:
         pieces.append(
             "The six archetype shares add nothing beyond possession and the two-mode "
-            f"measures, {spelled} under the two holdouts, so the finer taxonomy carries no "
+            f"measures, {spelled} under the {count} holdouts, so the finer taxonomy carries no "
             "information about results that the two modes do not."
         )
     return " ".join(pieces)

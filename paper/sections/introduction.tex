@@ -3,9 +3,10 @@
 
 Public football data now describes every player in a major league by dozens of per-90
 measures, and a standard genre of analysis has grown around it: cluster the players, name
-the clusters, and present the result as a taxonomy of roles. Published examples routinely
-report eight or twelve archetypes with labels such as deep-lying playmaker or inverted
-full back. The genre rests on an inference that is rarely examined. A partitioning
+the clusters, and present the result as a taxonomy of roles. Published examples report
+four archetypes within a single position group \citep{elfoukahi2026unveiling}, and in
+basketball nine \citep{kalman2020nba} or thirteen \citep{alagappan2012from} across the
+whole sport, with labels such as deep-lying progressor or advanced playmaker. The genre rests on an inference that is rarely examined. A partitioning
 algorithm always returns a partition. Run $k$-means on a single multivariate Gaussian,
 which by construction contains no groups at all, and it will hand back tidy clusters with
 a respectable silhouette. That a method produced clusters is therefore not evidence that
@@ -20,33 +21,7 @@ actions and passing accuracy by distance. On that sample we run dimensionality r
 clustering under a selection rule fixed before any fitting, and, crucially, a calibration
 against simulated data built to contain no clusters whatsoever.
 
-Prior work on football roles has generally required data that is not public. Bialkowski et
-al. \citep{bialkowski2014large} recovered formations and positional roles from tracking
-coordinates. Decroos and Davis \citep{decroos2019player} learned player vectors from event
-streams, Pappalardo et al. \citep{pappalardo2019playerank} built a performance rating from
-event data across several leagues, and Aalbers and Van Haaren
-\citep{aalbers2019distinguishing} distinguished playing styles from match events. All
-depend on proprietary feeds. What can be established from freely available season
-aggregates, and with what confidence, has received much less scrutiny, and the answer
-turns out to be both narrower and firmer than the taxonomy genre suggests.
-
-The question of whether data contain clusters at all, as distinct from how many, has its own
-literature, and this paper sits inside it. \citet{ackerman2009clusterability} surveyed
-formal notions of clusterability and found them pairwise inconsistent, so that the same data
-can be well clustered under one definition and not under another.
-\citet{adolfsson2019cluster} compared the practical tests and recommended those built on
-Hartigan's dip statistic applied to a low dimensional projection, which is one of the
-instruments used here. \citet{hennig2015true} argued that there is no true clustering
-independent of the purpose the clustering is meant to serve, and that the honest question is
-whether a partition has the properties the analyst needs rather than whether it is correct.
-The role taxonomy genre has proceeded as though this literature did not exist. It reports
-partitions without asking whether the data are clusterable, and it validates them with
-criteria that, as Section~\ref{sec:results:structure} shows, a clusterless continuum
-satisfies equally well. The contribution here is not a new clusterability test but the
-application of existing ones to a field that has skipped them, and the finding that they
-return a real but far coarser structure than the field has been reporting.
-
-Six findings are worth stating in advance.
+Six findings are stated in advance.
 
 First, the structure is real, and it survives the hardest null available. Against three
 clusterless references, a Gaussian matched on covariance, a copula that keeps every real
@@ -92,17 +67,25 @@ about where players are concentrated, not a claim that role reduces to a single 
 Fifth, the result is robust to the feature set. A separate live sample, collected after
 the largest free source of football statistics withdrew its advanced metrics in January
 2026, retains only about half the features. The same analysis on that sample returns the
-same answer, which is reported in Section~\ref{sec:results:reduced} as a robustness check
-rather than as a limitation.
+same answer, which is reported in Section~\ref{sec:results:reduced} as a robustness check, not as a limitation.
 
 Sixth, the modes predict what happened. Over \OutN{} team-seasons with real results, a
 club's minutes-weighted composition on the two-mode axis predicts points per match beyond
-team possession, out of sample under both a season holdout and a league holdout, raising
+team possession, out of sample under season, league and club holdouts, raising
 the coefficient of determination from \OutRSqPossSeason{} to \OutRSqBothSeason{}. The six
 archetypes add nothing beyond the two modes. Real results say what the null calibration
 said.
 
 The practical implication is not that role analysis is impossible. It is that the correct
 output of role analysis on this kind of data is a position along an axis rather than
-membership of a type, and that a published taxonomy of eight or twelve archetypes is
-reporting structure its data cannot support.
+membership of a type, and that a published taxonomy of a dozen archetypes is reporting
+structure its data cannot support.
+
+The paper proceeds as follows. Section~\ref{sec:related} places the work in the cluster
+validity literature it draws on and the football literature it responds to.
+Section~\ref{sec:data} describes the two samples and what each can support.
+Section~\ref{sec:methods} gives every procedure, and states the calibration formally.
+Section~\ref{sec:results} reports the results on the primary sample first and the reduced
+sample second. Section~\ref{sec:discussion} says what the two modes mean, why finer
+taxonomies keep being published, and what the results do not show, and
+Section~\ref{sec:conclusion} closes.

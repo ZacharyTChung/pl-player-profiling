@@ -17,7 +17,7 @@ pool. Nothing finer survives the same test. Beyond two modes
 the observed separation converges on what a clusterless continuum produces, density based
 clustering assigns every player to noise within each position group, and the mixture
 criterion prefers ever more components without settling, which is the signature of a
-distribution being approximated rather than a set of groups being found.
+distribution being approximated, not a set of groups being found.
 
 The two modes are not the listed positions under another name. They agree with position group
 at an adjusted Rand index of \ArcARIvsPosition{}, which is far above chance and far below
@@ -34,8 +34,7 @@ The result is not local. It reproduces in every one of \ArcNSeasons{} seasons an
 the pooled axis above \RepAxisCorrMin{} everywhere. Centroids fitted in one league assign
 another league's players at a mean adjusted Rand index of \RepTransferMean{}. Where season
 against season agreement is lower, it decays with the gap between seasons while the transfer
-index over the same pairs stays flat, so the decay measures players changing rather than the
-solution failing.
+index over the same pairs stays flat, so the decay measures players changing, not the solution failing.
 
 The result also survives the test a description of statistics can fail and a description of
 football cannot. Over \OutN{} team-seasons with real results, the two-mode composition of a
@@ -43,7 +42,7 @@ club predicts its points beyond possession out of sample, while the six archetyp
 nothing beyond the two modes. The structure the null calibration found is the structure
 that results respond to, and the structure it rejected is the structure results ignore.
 
-Three secondary results are worth carrying forward. Possession adjustment of defensive counts
+Three secondary results stand on their own. Possession adjustment of defensive counts
 is conventionally applied as though a team with twice the ball concedes half the defensive
 opportunities. The elasticities measured here run from \ArcElastTackles{} to
 \ArcElastClearances{}, and with bootstrap intervals the conventional exponent is rejected
@@ -55,7 +54,7 @@ description worse. Goalkeeping, analysed separately, divides along what a goalke
 to do rather than how well he does it, with the situational axis carrying an effect size of
 \ArcKeeperEtaFullSituation{} against \ArcKeeperEtaFullTechnique{} for technique.
 
-What follows for practice is a caution about method rather than about football. Published
+What follows for practice is a caution about method, not about football. Published
 role taxonomies are typically supported by a selection criterion, a stability check and a
 plausible reading of the resulting profiles, and every one of those is satisfied here by
 partitions this paper shows to be artefacts. A silhouette maximum, a high bootstrap adjusted

@@ -247,7 +247,8 @@ sentence-initial "And", bullet lists and a list of filler phrases anywhere in `p
     reconstructed wins, draws and losses (audited against the schedule, including the Ligue 1
     season abandoned in March 2020), a club's minutes-weighted composition on the two-mode axis
     predicts points per match beyond possession, out of sample, raising R² from 0.566 to 0.664
-    under a season holdout (+0.099 [+0.067, +0.131]) and the same under a league holdout. The
+    under a season holdout (+0.099 [+0.067, +0.131]), the same under a league holdout, and
+    +0.102 [+0.071, +0.135] when every team-season of a club is held out together. The
     six archetypes add nothing beyond the two modes (+0.005 [−0.006, +0.015]). The full-feature
     keeper partition tracks points at ρ = 0.71 (a league table in disguise); the technique
     partition at 0.09 (unrelated), which is the property a description of goalkeeping should

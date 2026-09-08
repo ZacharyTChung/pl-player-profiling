@@ -180,6 +180,8 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
 - [x] Rebuild on the archive: primary sample, null calibration, replication, new thesis
 - [x] Harden for submission: three nulls, null-data bootstrap, elasticity intervals, feature-family ablation, clusterability literature
 - [x] Validate against real results: composition predicts points beyond possession out of sample; archetypes add nothing beyond the two modes; figures enlarged, every figure cited, TOC, microtype
+- [x] Answer the methods reviewer: related work section, the calibration stated formally, a leave-one-club-out holdout, the nesting of player-seasons acknowledged, possession adjustment attributed to its source
+- [x] Literature and polish pass: every reference verified against its publisher, the closest prior work (Akhanli and Hennig) and the taxonomy genre cited concretely, data and software sources cited, figures on a pure white surface
 
 ## Verification record
 

@@ -170,7 +170,7 @@ Section~\ref{sec:methods}, and Figures~\ref{fig:radarsingledf} to \ref{fig:radar
 give the corresponding radars on the reduced sample. Within each position group the two
 profiles are mirror images by construction, since the features are standardised within group
 before clustering. The two sets are drawn on different feature counts, so their axes are not
-directly comparable, and the comparison worth making is of shape rather than of extent.
+directly comparable, and the useful comparison is of shape, not extent.
 
 \begin{figure}[!h]
   \centering
@@ -374,9 +374,9 @@ produces a finding the planar analysis could not. Club centroids correlate with 
 league position at \ThreeDTeamPCOne{} on the first component and \ThreeDTeamPCTwo{} on the
 second, but only \ThreeDTeamPCThree{} on the third. Shooting volume and wide creation both
 track league position; the physical dimension of duels, fouls and cards essentially does
-not. A club does not finish higher by fouling more or less, which is unsurprising stated
-plainly and is worth stating because the duelling axis is a full component of player
-variation that carries almost no information about team success.
+not. A club does not finish higher by fouling more or less. That is unsurprising once stated,
+and it needs stating because the duelling axis is a full component of player variation
+that carries almost no information about team success.
 Figure~\ref{fig:threedteams} shows the clubs, labelled at the extremes of the table.
 
 Finally, the three-dimensional view settles a structural question raised in
@@ -491,7 +491,7 @@ regression at an enrichment of \EnrichmentLogit{} over independence, and
 enrichment is modest because the hybrid flag is itself broad, covering \NHybridPlayers{}
 of \NEligiblePrimary{} players, so this is corroboration rather than a strong result.
 
-The finishing above role regression illustrates a hazard worth recording. Predicting
+The finishing above role regression illustrates a hazard. Predicting
 non-penalty expected goals per ninety from non-shooting behaviour returns a cross
 validated coefficient of determination of \FinishingRSq{}. An earlier specification that
 also included xGChain returned \FinishingRSqLeaky{}, which looks far better and is in fact
@@ -499,7 +499,7 @@ circular: Understat credits xGChain for possessions the player finished himself,
 difference between xGChain and xGBuildup contains the target and correlates with it at
 \FinishingLeakCorr{}. The apparently strong model was reconstructing the outcome rather
 than predicting it. Even at the honest value, roughly half the variance is unexplained, so
-the residual leaderboard in Figure~\ref{fig:finishing}  is presented as an illustration and
+the residual leaderboard in Figure~\ref{fig:finishing} is presented as an illustration and
 not as a measurement of finishing ability. Figure~\ref{fig:outliers} shows the two outlier detectors against each other.
 
 \begin{figure}[!t]
@@ -692,7 +692,7 @@ that only match level data can expose.
 \label{sec:results:age}
 The two archetypes within a position group differ mainly in attacking involvement, and
 involvement is plausibly something a career passes through rather than a fixed trait, so
-the association with age is worth testing. It is tested within position group, because
+the association with age is a natural test. It is tested within position group, because
 archetypes are nested inside positions and a pooled table would largely recover the fact
 that forwards and defenders have different age profiles.
 

@@ -16,10 +16,11 @@ strength this confound would enter the feature set as a proxy for the quality of
 player's team. Team possession share survived the withdrawal even though the touch counts
 it is derived from did not, which is what makes a correction possible on both samples.
 
-The conventional correction multiplies a defensive rate by the ratio of a reference
-opponent possession to the actual one, which is equivalent to assuming that defensive
-volume is directly proportional to time spent out of possession. That is an empirical
-claim rather than a definition, and it can be tested. Regressing the logarithm of team
+Possession adjustment of defensive counts was introduced by \citet{knutson2014possession},
+whose original form scaled tackles and interceptions by a sigmoid in team possession. The
+form in common use since, and the one tested here, multiplies a defensive rate by the
+ratio of a reference opponent possession to the actual one, which is equivalent to
+assuming that defensive volume is directly proportional to time spent out of possession. That is an empirical claim, not a definition, and it can be tested. Regressing the logarithm of team
 defensive volume per ninety on the logarithm of opponent possession, over
 \ArcPadjTeamSeasons{} team-seasons on the primary sample and \PadjTeamSeasons{} on the
 reduced one, gives the elasticity, which is the percentage change in defensive volume
@@ -35,7 +36,7 @@ by how much on each sample and shows that under an exponent of one the correlati
 defensive rates and team possession does not fall toward zero but changes sign and grows, so
 the adjustment injects more team dependence than it removes.
 
-We therefore adjust with the measured elasticity rather than the assumed one. Each
+We therefore adjust with the measured elasticity instead of the assumed one. Each
 defensive count is multiplied by the exposure ratio raised to the power of its own fitted
 elasticity, which leaves a player at a club with league-average possession unchanged and
 corrects the others by the amount the data says exposure actually matters. The exponent is
@@ -84,6 +85,7 @@ neighbour position purity score at $k=10$ that reports the share of a player's t
 nearest neighbours that share his listed position group.
 
 \subsection{Clustering}
+\label{sec:methods:selection}
 
 Clusters are estimated with $k$-means as the primary method, with a Gaussian mixture
 model whose Bayesian information criterion is reported across the same range of
@@ -148,8 +150,7 @@ stability structureless data produces.
 Three further instruments guard against the null calibration itself being misleading.
 Hartigan's dip test \citep{hartigan1985dip} is applied to the leading principal
 components and asks directly
-whether a distribution is unimodal, which is a claim about the data rather than about any
-clustering of it. At the sample sizes here the test rejects unimodality for departures too small
+whether a distribution is unimodal, which is a claim about the data, not about any clustering of it. At the sample sizes here the test rejects unimodality for departures too small
 to matter, so the dip statistic itself is reported as the effect size and is placed against
 the distribution of dip statistics computed on the simulated nulls, in the same way as the
 silhouette. A Gaussian mixture model's Bayesian information criterion is computed
@@ -162,6 +163,62 @@ Agreement among instruments that fail in different ways is the standard of evide
 throughout the results. A continuum and a set of discrete types are different claims about
 the same data, and the paper takes care not to report the second when only the first is
 supported.
+
+\subsection{The calibration, stated formally}
+\label{sec:methods:formal}
+
+Let $X \in \mathbb{R}^{n \times d}$ be the standardised feature matrix for a scope, with
+$n$ player-seasons and $d = \ArcFeatures{}$ features, and let $\pi_k(X)$ be the partition
+returned by $k$-means with $k$ clusters, run with a fixed seed and multiple restarts. Let
+$s_k(X)$ be the mean silhouette of $\pi_k(X)$, computed on a fixed subsample of at most
+four thousand rows when $n$ exceeds that, since the silhouette is quadratic in $n$. The
+number of clusters reported, $k^\ast = 2$, is not chosen by inspecting $s_k(X)$; it is
+returned by the selection rule declared in advance in Section~\ref{sec:methods:selection},
+and the calibration then asks a single question about it.
+
+Three generators produce clusterless data matched to $X$. The Gaussian generator draws
+$n$ rows from $\mathcal{N}(\hat\mu, \hat\Sigma)$ with the empirical mean and covariance.
+The copula generator transforms each column of $X$ to normal scores by rank, estimates the
+correlation $\hat R$ of those scores, draws $n$ rows from $\mathcal{N}(0, \hat R)$, and maps
+each simulated column back through the empirical quantile function of the corresponding
+observed column, so that every marginal distribution of $X$ is reproduced exactly and only
+the joint structure beyond rank correlation is destroyed. The uniform generator rotates $X$
+to its principal axes, draws $n$ rows uniformly within the resulting bounding box, and
+rotates back, which is the reference distribution of \citet{tibshirani2001estimating}.
+For each generator $g$ and each of $B = \StrSimulations{}$ draws $X^{(g,b)}$, the
+identical pipeline computes $s_{k^\ast}(X^{(g,b)})$, giving a null sample of size $B$ per
+generator.
+
+The reported statistic is the standard score
+\[
+  z_g \;=\; \frac{s_{k^\ast}(X) - \bar s_g}{\hat\sigma_g},
+\]
+where $\bar s_g$ and $\hat\sigma_g$ are the mean and standard deviation of the null
+sample under generator $g$. With $B$ draws the null standard deviation is itself an
+estimate, so $z_g$ is reported as a description of the margin, not as a test statistic with a known distribution. The claim the paper makes is the distribution-free
+one: that $s_{k^\ast}(X)$ exceeds every one of the $B$ null values under every generator,
+which under the null of exchangeability between the observed and simulated statistics
+has Monte Carlo probability at most $1/(B+1)$ per generator and scope. The paper's
+headline is a conjunction over three generators and four scopes, not a disjunction, so it is conservative with respect to multiplicity: it can only be weakened
+by adding a generator or a scope, never strengthened.
+
+The same generators supply two further calibrations. The dip statistic of
+\citet{hartigan1985dip} on the leading principal component of each $X^{(g,b)}$ gives a
+null sample against which the observed dip is placed in the same way, which matters
+because at these $n$ the dip test's p-value rejects unimodality for departures too small
+to be of interest. The bootstrap adjusted Rand index of $\pi_{k^\ast}$ is computed on a
+subset of the simulated datasets by exactly the resampling procedure applied to $X$, so
+that the stability the genre reports for real data can be read against the stability a
+clusterless continuum produces.
+
+One assumption should be stated because the analysis makes it silently otherwise. The
+rows of $X$ are player-seasons, and the same player appears in up to \ArcNSeasons{} of
+them, so rows are not independent. The generators match the marginal and pairwise
+structure of $X$ but not this nesting, and the bootstrap resamples rows as if
+exchangeable. The replication of Section~\ref{sec:results:replication}, which refits
+every season and every league independently, is the analysis that does not share this
+assumption, and it is the reason the paper does not rest the two-mode claim on any single
+pooled fit.
 
 \subsection{Stability and validation against listed positions}
 
@@ -222,8 +279,9 @@ league position follow.
 
 Each team-season is then summarised by its minutes-weighted composition on the two-mode
 partition and on the six archetypes, using the eligible players, and the composition is
-correlated with results and used to predict them. Prediction is out of sample under two
-holdouts, one season at a time and one league at a time, by ridge regression with the
+correlated with results and used to predict them. Prediction is out of sample under three holdouts, one season at a time, one league at a
+time and one club at a time, the last being the strict one since no held-out team-season
+then shares a club with the training data, by ridge regression with the
 penalty chosen by cross-validation inside the training folds, comparing possession alone,
 the composition alone and both. The increment of the last over the first is the quantity of
 interest, because composition and dominance are confounded and only the increment says
@@ -249,8 +307,8 @@ distance-based and a partition-based notion of unusualness can be compared.
 \subsection{Supervised validation}
 
 Unsupervised structure is easy to over-interpret, so we ask a supervised model what
-separates the listed positions. Logistic regression and gradient boosting are trained to
-predict the position group from the feature set under five-fold stratified cross
+separates the listed positions. Logistic regression and gradient boosting, the latter with
+LightGBM \citep{ke2017lightgbm}, are trained to predict the position group from the feature set under five-fold stratified cross
 validation, and we report accuracy, macro F1 and the confusion matrix, every number computed
 from out-of-fold predictions. A majority-class baseline runs through the identical folds, so
 the reported lift is over the trivial model rather than over zero. Two properties of the
@@ -259,7 +317,7 @@ two extreme classes are confused with each other, and whether the errors concent
 class that lies between them. An ordered space with two poles produces few errors of the
 first kind and many of the second, while three genuine categories would not.
 
-The purpose is interpretability rather than accuracy: SHAP values
+The purpose is interpretability, not accuracy: SHAP values
 \citep{lundberg2017unified} on the boosted model identify which statistics actually
 distinguish each position in this feature set. The model is fitted on every row and the
 attributions are computed on a stratified sub-sample, which is stated with the result. We
@@ -281,8 +339,9 @@ explanatory power is mostly noise.
 Goalkeepers share almost no features with outfield players, so they are analysed with a
 separate pipeline on the \KeeperFeatureCountArchive{} canonical goalkeeper features, under
 the same eligibility threshold, the same standardisation and the same selection rule. Saves
-above expectation are computed as post-shot expected goals minus goals allowed, which
-conditions on the difficulty of the shots faced rather than only on their number.
+above expectation are computed as post-shot expected goals \citep{vatvani2022upgrading}
+minus goals allowed, which conditions on the difficulty of the shots faced rather than only
+on their number.
 
 One methodological choice needs stating in advance because the result turns on it. The
 goalkeeper feature block mixes quantities describing what a goalkeeper does with quantities
@@ -290,7 +349,7 @@ describing what his defence permits him to face, and a partition fitted on both 
 teams rather than goalkeepers. We therefore fit twice, once on the full block and once on
 technique alone with the exposure variables excluded, and report for each partition how much
 variance membership explains in situational quantities against technical ones. The comparison
-is declared here rather than chosen after seeing which fit looked better.
+is declared here, not chosen after seeing which fit looked better.
 
 On the reduced sample the same analysis is not possible, because post-shot expected goals,
 sweeper actions, distribution and cross handling are all absent there. Only shot stopping and
@@ -319,8 +378,7 @@ computes the adjusted Rand index between the two seasons for players present in 
 which distinguishes archetypes that describe stable playing roles from artefacts of a
 single season.
 
-Per-90 rates computed over partial seasons are noisy, and that noise is largest exactly
-where the minutes are fewest. We therefore apply empirical Bayes shrinkage toward the
+Per-90 rates computed over partial seasons are noisy, and that noise is largest where the minutes are fewest. We therefore apply empirical Bayes shrinkage toward the
 position group mean, with the degree of shrinkage determined by minutes played
 \citep{efron1977steins}, refit the clustering on the shrunken features, and report how
 many assignments change. A partition that dissolves under shrinkage was substantially a

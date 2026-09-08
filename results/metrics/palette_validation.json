@@ -1,6 +1,6 @@
 {
   "tool": "dataviz validate_palette.js",
-  "surface": "#FCFCFB",
+  "surface": "#FFFFFF",
   "mode": "light",
   "pairs": "all",
   "categorical": [

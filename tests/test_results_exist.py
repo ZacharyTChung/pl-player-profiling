@@ -30,8 +30,11 @@ _UPPERCASE_BUILTINS = {
     "AA",
     "S",
     "P",
+    # Capitalised Greek letters in the formal statement of the calibration.
+    "Sigma",
     # Package commands that happen to be capitalised.
     "FloatBarrier",
+    "PassOptionsToPackage",
     "AtBeginDocument",
 }
 
@@ -374,6 +377,7 @@ def test_outcome_claims_match_the_increments() -> None:
         pytest.skip("outcome macros not generated yet")
     assert float(macros["OutIncSeasonLow"]) > 0, "season-holdout increment interval reaches zero"
     assert float(macros["OutIncLeagueLow"]) > 0, "league-holdout increment interval reaches zero"
+    assert float(macros["OutIncClubLow"]) > 0, "club-holdout increment interval reaches zero"
     assert float(macros["OutIncArcheSeasonLow"]) <= 0 <= float(macros["OutIncArcheSeasonHigh"]), (
         "the archetype increment now excludes zero; the paper says it adds nothing"
     )

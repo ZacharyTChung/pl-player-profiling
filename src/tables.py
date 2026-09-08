@@ -1499,7 +1499,7 @@ def build_macros() -> Macros:
         m.add_raw("OutRhoLeagueMinName", tex_escape(lo_l))
         m.add_raw("OutRhoLeagueMaxName", tex_escape(hi_l))
     for tgt, tt in (("points_per_match", ""), ("goal_difference_per_match", "GD")):
-        for scheme, st in (("season", "Season"), ("league", "League")):
+        for scheme, st in (("season", "Season"), ("league", "League"), ("team", "Club")):
             models = dig(oc, "ridge", tgt, scheme, "models") or {}
             for name, mt in (
                 ("possession", "Poss"),

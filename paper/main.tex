@@ -1,4 +1,6 @@
 \documentclass[11pt]{article}
+% Let long URLs in the bibliography break at hyphens instead of running into the margin.
+\PassOptionsToPackage{hyphens}{url}
 
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
@@ -9,6 +11,7 @@
 \usepackage{subcaption}
 \usepackage{natbib}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{longtable}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
@@ -48,7 +51,7 @@
 \title{Two Modes, Not Many Types: The Structure of Football Player Roles in
 Season-Aggregate Data}
 
-\author{Zachary Chung \and Christian Chung}
+\author{Zachary Chung\thanks{Corresponding author: zacharytylerchung@gmail.com} \and Christian Chung}
 
 \date{\today}
 
@@ -65,6 +68,7 @@ Season-Aggregate Data}
 \clearpage
 
 \input{sections/introduction}
+\input{sections/related}
 \input{sections/data}
 \input{sections/methods}
 \input{sections/results}
