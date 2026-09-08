@@ -172,7 +172,7 @@
 \newcommand{\ArcNameDFOne}{Wide attacking defenders}
 \newcommand{\ArcNameDFZero}{Deep central defenders}
 \newcommand{\ArcNameFWOne}{Creating and carrying forwards}
-\newcommand{\ArcNameFWZero}{Low involvement centre forwards}
+\newcommand{\ArcNameFWZero}{Finishing centre forwards}
 \newcommand{\ArcNameMFOne}{Advanced attacking midfielders}
 \newcommand{\ArcNameMFZero}{Deep ball winning midfielders}
 \newcommand{\ArcOutAgreement}{80.5}
@@ -268,6 +268,8 @@
 \newcommand{\ElastCIFoulsLow}{0.359}
 \newcommand{\ElastCIInterceptionsHigh}{0.540}
 \newcommand{\ElastCIInterceptionsLow}{0.171}
+\newcommand{\ElastCISweeperHigh}{-0.358}
+\newcommand{\ElastCISweeperLow}{-0.899}
 \newcommand{\ElastCITacklesHigh}{0.235}
 \newcommand{\ElastCITacklesLow}{0.109}
 \newcommand{\ElastLeagueMaxBlocks}{0.615}
@@ -318,6 +320,8 @@
 \newcommand{\ElastShareOneFouls}{0.0}
 \newcommand{\ElastShareOneInterceptions}{0.0}
 \newcommand{\ElastShareOneTackles}{0.0}
+\newcommand{\ElastSweeper}{-0.631}
+\newcommand{\ElastSweeperTeamSeasons}{490}
 \newcommand{\ElasticityFouls}{0.283}
 \newcommand{\ElasticityInterceptions}{0.525}
 \newcommand{\ElasticityTackles}{0.432}
@@ -439,6 +443,120 @@
 \newcommand{\NPosteriorSplit}{4}
 \newcommand{\NStyleGroups}{3}
 \newcommand{\NTeams}{20}
+\newcommand{\OutBottomOne}{Mainz 05 2022}
+\newcommand{\OutBottomThree}{Reims 2022}
+\newcommand{\OutBottomTwo}{Parma 2019}
+\newcommand{\OutCoverageMedian}{96.9}
+\newcommand{\OutCoverageMin}{89.5}
+\newcommand{\OutGFFallback}{27}
+\newcommand{\OutGFOnPitch}{463}
+\newcommand{\OutIncArcheGDLeague}{-0.004}
+\newcommand{\OutIncArcheGDLeagueHigh}{0.004}
+\newcommand{\OutIncArcheGDLeagueLow}{-0.011}
+\newcommand{\OutIncArcheGDSeason}{0.002}
+\newcommand{\OutIncArcheGDSeasonHigh}{0.009}
+\newcommand{\OutIncArcheGDSeasonLow}{-0.006}
+\newcommand{\OutIncArcheLeague}{-0.001}
+\newcommand{\OutIncArcheLeagueHigh}{0.009}
+\newcommand{\OutIncArcheLeagueLow}{-0.012}
+\newcommand{\OutIncArcheOnlyGDLeague}{0.004}
+\newcommand{\OutIncArcheOnlyGDLeagueHigh}{0.018}
+\newcommand{\OutIncArcheOnlyGDLeagueLow}{-0.010}
+\newcommand{\OutIncArcheOnlyGDSeason}{0.009}
+\newcommand{\OutIncArcheOnlyGDSeasonHigh}{0.023}
+\newcommand{\OutIncArcheOnlyGDSeasonLow}{-0.005}
+\newcommand{\OutIncArcheOnlyLeague}{0.008}
+\newcommand{\OutIncArcheOnlyLeagueHigh}{0.023}
+\newcommand{\OutIncArcheOnlyLeagueLow}{-0.008}
+\newcommand{\OutIncArcheOnlySeason}{0.014}
+\newcommand{\OutIncArcheOnlySeasonHigh}{0.029}
+\newcommand{\OutIncArcheOnlySeasonLow}{-0.002}
+\newcommand{\OutIncArcheSeason}{0.005}
+\newcommand{\OutIncArcheSeasonHigh}{0.015}
+\newcommand{\OutIncArcheSeasonLow}{-0.006}
+\newcommand{\OutIncGDLeague}{0.116}
+\newcommand{\OutIncGDLeagueHigh}{0.150}
+\newcommand{\OutIncGDLeagueLow}{0.082}
+\newcommand{\OutIncGDSeason}{0.114}
+\newcommand{\OutIncGDSeasonHigh}{0.147}
+\newcommand{\OutIncGDSeasonLow}{0.081}
+\newcommand{\OutIncLeague}{0.098}
+\newcommand{\OutIncLeagueHigh}{0.132}
+\newcommand{\OutIncLeagueLow}{0.066}
+\newcommand{\OutIncSeason}{0.099}
+\newcommand{\OutIncSeasonHigh}{0.131}
+\newcommand{\OutIncSeasonLow}{0.067}
+\newcommand{\OutIncTwoModeGDLeague}{0.120}
+\newcommand{\OutIncTwoModeGDLeagueHigh}{0.154}
+\newcommand{\OutIncTwoModeGDLeagueLow}{0.086}
+\newcommand{\OutIncTwoModeGDSeason}{0.112}
+\newcommand{\OutIncTwoModeGDSeasonHigh}{0.145}
+\newcommand{\OutIncTwoModeGDSeasonLow}{0.079}
+\newcommand{\OutIncTwoModeLeague}{0.100}
+\newcommand{\OutIncTwoModeLeagueHigh}{0.132}
+\newcommand{\OutIncTwoModeLeagueLow}{0.068}
+\newcommand{\OutIncTwoModeSeason}{0.094}
+\newcommand{\OutIncTwoModeSeasonHigh}{0.125}
+\newcommand{\OutIncTwoModeSeasonLow}{0.062}
+\newcommand{\OutKeepFull}{0.713}
+\newcommand{\OutKeepFullHigh}{0.753}
+\newcommand{\OutKeepFullLow}{0.667}
+\newcommand{\OutKeepStop}{0.337}
+\newcommand{\OutKeepStopHigh}{0.416}
+\newcommand{\OutKeepStopLow}{0.249}
+\newcommand{\OutKeepTech}{0.087}
+\newcommand{\OutKeepTechHigh}{0.174}
+\newcommand{\OutKeepTechLow}{0.002}
+\newcommand{\OutKeepTechP}{0.0542}
+\newcommand{\OutN}{490}
+\newcommand{\OutOffSchedule}{4}
+\newcommand{\OutRSqArcheGDLeague}{0.342}
+\newcommand{\OutRSqArcheGDSeason}{0.354}
+\newcommand{\OutRSqArcheLeague}{0.344}
+\newcommand{\OutRSqArcheSeason}{0.354}
+\newcommand{\OutRSqBothGDLeague}{0.697}
+\newcommand{\OutRSqBothGDSeason}{0.703}
+\newcommand{\OutRSqBothLeague}{0.656}
+\newcommand{\OutRSqBothSeason}{0.664}
+\newcommand{\OutRSqCompGDLeague}{0.566}
+\newcommand{\OutRSqCompGDSeason}{0.578}
+\newcommand{\OutRSqCompLeague}{0.534}
+\newcommand{\OutRSqCompSeason}{0.545}
+\newcommand{\OutRSqPossArcheGDLeague}{0.585}
+\newcommand{\OutRSqPossArcheGDSeason}{0.599}
+\newcommand{\OutRSqPossArcheLeague}{0.565}
+\newcommand{\OutRSqPossArcheSeason}{0.579}
+\newcommand{\OutRSqPossGDLeague}{0.581}
+\newcommand{\OutRSqPossGDSeason}{0.590}
+\newcommand{\OutRSqPossLeague}{0.557}
+\newcommand{\OutRSqPossSeason}{0.566}
+\newcommand{\OutRSqPossTwoModeGDLeague}{0.700}
+\newcommand{\OutRSqPossTwoModeGDSeason}{0.702}
+\newcommand{\OutRSqPossTwoModeLeague}{0.657}
+\newcommand{\OutRSqPossTwoModeSeason}{0.660}
+\newcommand{\OutRSqTwoModeGDLeague}{0.540}
+\newcommand{\OutRSqTwoModeGDSeason}{0.539}
+\newcommand{\OutRSqTwoModeLeague}{0.495}
+\newcommand{\OutRSqTwoModeSeason}{0.493}
+\newcommand{\OutRhoAxis}{0.655}
+\newcommand{\OutRhoAxisGD}{0.668}
+\newcommand{\OutRhoAxisGDHigh}{0.723}
+\newcommand{\OutRhoAxisGDLow}{0.607}
+\newcommand{\OutRhoAxisHigh}{0.708}
+\newcommand{\OutRhoAxisLow}{0.594}
+\newcommand{\OutRhoLeagueMax}{0.61}
+\newcommand{\OutRhoLeagueMaxName}{Premier League}
+\newcommand{\OutRhoLeagueMin}{0.19}
+\newcommand{\OutRhoLeagueMinName}{La Liga}
+\newcommand{\OutRhoShare}{0.430}
+\newcommand{\OutRhoShareGD}{0.442}
+\newcommand{\OutRhoShareGDHigh}{0.513}
+\newcommand{\OutRhoShareGDLow}{0.361}
+\newcommand{\OutRhoShareHigh}{0.502}
+\newcommand{\OutRhoShareLow}{0.348}
+\newcommand{\OutTopOne}{Bayern Munich 2019}
+\newcommand{\OutTopThree}{Fiorentina 2022}
+\newcommand{\OutTopTwo}{Hoffenheim 2019}
 \newcommand{\OverlapLGBM}{0.556}
 \newcommand{\OverlapLogit}{0.623}
 \newcommand{\PCANinetyComponents}{9}

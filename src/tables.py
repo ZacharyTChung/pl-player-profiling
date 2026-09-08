@@ -446,6 +446,50 @@ def table_ablation(ab: dict | None) -> None:
     _write_table("ablation", body)
 
 
+def table_outcomes_extremes(oc: dict | None) -> None:
+    """The team-seasons at the two ends of the attacking-mode share, against real results."""
+    if not oc:
+        return
+    rows = []
+    for side, title in (
+        ("highest_attacking_share", "Highest attacking-mode share"),
+        ("lowest_attacking_share", "Lowest attacking-mode share"),
+    ):
+        entries = dig(oc, "extremes", side) or []
+        if not entries:
+            continue
+        rows.append(r"\multicolumn{6}{l}{\emph{" + title + r"}} \\")
+        for e in entries:
+            pos = e.get("league_position", e.get("position", ""))
+            rows.append(
+                f"{tex_escape(e.get('team', ''))} & {tex_escape(e.get('league', ''))} & "
+                f"{e.get('season', '')} & {float(e.get('attacking_share', 0)):.3f} & "
+                f"{float(e.get('points_per_match', 0)):.2f} & {pos} \\\\"
+            )
+    if not rows:
+        return
+    body = "\n".join(
+        [
+            r"\begin{table}[t]",
+            r"\centering",
+            r"\small",
+            r"\caption{The five team-seasons with the highest and the five with the lowest "
+            r"minutes-weighted share of outfield minutes in the attacking mode, with their real "
+            r"points per match and final league position.}",
+            r"\label{tab:outcomes}",
+            r"\begin{tabular}{llrrrr}",
+            r"\toprule",
+            r"Club & League & Season & Share & Points per match & Position \\",
+            r"\midrule",
+            *rows,
+            r"\bottomrule",
+            r"\end{tabular}",
+            r"\end{table}",
+        ]
+    )
+    _write_table("outcomes_extremes", body)
+
+
 def table_umap_grid(grid: dict | None) -> None:
     if not grid:
         return
@@ -1272,6 +1316,11 @@ def build_macros() -> Macros:
         m.add(f"ElastQuadDeltaR{tag}", ff.get("adjusted_r2_change"), places=3)
         m.add(f"ElastAtLow{tag}", ff.get("elasticity_at_low_possession"), places=2)
         m.add(f"ElastAtHigh{tag}", ff.get("elasticity_at_high_possession"), places=2)
+    sw = dig(el, "sweeper") or {}
+    m.add("ElastSweeper", sw.get("elasticity_to_opponent_possession"), places=3)
+    m.add("ElastCISweeperLow", sw.get("ci_low"), places=3)
+    m.add("ElastCISweeperHigh", sw.get("ci_high"), places=3)
+    m.add("ElastSweeperTeamSeasons", sw.get("n_team_seasons"))
     summ = dig(el, "summary") or {}
     m.add("NElastExcludeOne", len(summ.get("intervals_excluding_one") or []))
     m.add("NElastQuadMatters", len(summ.get("quadratic_term_matters") or []))
@@ -1414,6 +1463,91 @@ def build_macros() -> Macros:
     if dips:
         m.add("StrDipMinZOverall", min(dips), places=2)
         m.add("StrDipMinZOverallPositive", min(v for v in dips if v > 0), places=2)
+
+    # The only test against real results: composition on the two-mode axis against points.
+    oc = load("outcomes")
+    m.add("OutN", dig(oc, "composition", "n_team_seasons"))
+    m.add_pct("OutCoverageMin", dig(oc, "composition", "coverage_min"))
+    m.add_pct("OutCoverageMedian", dig(oc, "composition", "coverage_median"))
+    m.add("OutGFOnPitch", dig(oc, "outcomes_audit", "n_goals_for_from_on_pitch"))
+    m.add("OutGFFallback", dig(oc, "outcomes_audit", "n_goals_for_from_player_total"))
+    m.add("OutOffSchedule", len(dig(oc, "outcomes_audit", "credited_results_off_schedule") or []))
+    for meas, tag in (("attacking_share", "Share"), ("axis_mean", "Axis")):
+        for tgt, tt in (("points_per_match", ""), ("goal_difference_per_match", "GD")):
+            c = dig(oc, "correlations", "pooled", meas, tgt) or {}
+            m.add(f"OutRho{tag}{tt}", c.get("rho"), places=3)
+            m.add(f"OutRho{tag}{tt}Low", c.get("ci_low"), places=3)
+            m.add(f"OutRho{tag}{tt}High", c.get("ci_high"), places=3)
+    # Within-league spread of the share correlation, whatever the nesting order.
+    by_league = dig(oc, "correlations", "by_league") or {}
+    rhos = {}
+    for k1, v1 in by_league.items():
+        c = dig(v1, "attacking_share", "points_per_match", "rho")
+        if c is None:
+            c = dig(v1, "points_per_match", "rho") if k1 == "attacking_share" else None
+        if c is not None:
+            rhos[k1] = c
+    if not rhos and "attacking_share" in by_league:
+        for lg, v in by_league["attacking_share"].items():
+            c = dig(v, "points_per_match", "rho")
+            if c is not None:
+                rhos[lg] = c
+    if rhos:
+        lo_l, hi_l = min(rhos, key=rhos.get), max(rhos, key=rhos.get)
+        m.add("OutRhoLeagueMin", rhos[lo_l], places=2)
+        m.add("OutRhoLeagueMax", rhos[hi_l], places=2)
+        m.add_raw("OutRhoLeagueMinName", tex_escape(lo_l))
+        m.add_raw("OutRhoLeagueMaxName", tex_escape(hi_l))
+    for tgt, tt in (("points_per_match", ""), ("goal_difference_per_match", "GD")):
+        for scheme, st in (("season", "Season"), ("league", "League")):
+            models = dig(oc, "ridge", tgt, scheme, "models") or {}
+            for name, mt in (
+                ("possession", "Poss"),
+                ("composition", "Comp"),
+                ("both", "Both"),
+                ("two_mode", "TwoMode"),
+                ("archetypes", "Arche"),
+                ("possession_and_two_mode", "PossTwoMode"),
+                ("possession_and_archetypes", "PossArche"),
+            ):
+                m.add(f"OutRSq{mt}{tt}{st}", dig(models, name, "r2_out_of_sample"), places=3)
+            incs = dig(oc, "ridge", tgt, scheme, "increments") or {}
+            for name, it in (
+                ("both_over_possession", "Inc"),
+                ("possession_and_two_mode_over_possession", "IncTwoMode"),
+                ("both_over_possession_and_two_mode", "IncArche"),
+                ("possession_and_archetypes_over_possession", "IncArcheOnly"),
+            ):
+                e = incs.get(name) or {}
+                m.add(f"Out{it}{tt}{st}", e.get("delta_r2"), places=3)
+                m.add(f"Out{it}{tt}{st}Low", e.get("ci_low"), places=3)
+                m.add(f"Out{it}{tt}{st}High", e.get("ci_high"), places=3)
+    for name, kt in (
+        ("cluster_full_share", "Full"),
+        ("cluster_technique_share", "Tech"),
+        ("shot_stopping", "Stop"),
+    ):
+        c = dig(oc, "keepers", "tests", name, "points_per_match") or {}
+        if not c:
+            # The shot stopping test may live under a differently named key.
+            for kk, vv in (dig(oc, "keepers", "tests") or {}).items():
+                if kt == "Stop" and ("psxg" in kk.lower() or "stop" in kk.lower()):
+                    c = dig(vv, "points_per_match") or {}
+        m.add(f"OutKeep{kt}", c.get("rho"), places=3)
+        m.add(f"OutKeep{kt}Low", c.get("ci_low"), places=3)
+        m.add(f"OutKeep{kt}High", c.get("ci_high"), places=3)
+    m.add_pvalue(
+        "OutKeepTechP",
+        dig(oc, "keepers", "tests", "cluster_technique_share", "points_per_match", "p_value"),
+    )
+    for side, st in (("highest_attacking_share", "Top"), ("lowest_attacking_share", "Bottom")):
+        rows = dig(oc, "extremes", side) or []
+        for i, e in enumerate(rows[:3]):
+            m.add_raw(
+                f"Out{st}{['One', 'Two', 'Three'][i]}",
+                tex_escape(f"{e.get('team')} {e.get('season')}"),
+            )
+    table_outcomes_extremes(oc)
 
     # Do the two modes simply recover listed position?
     acv = load("archive_cluster_validation")

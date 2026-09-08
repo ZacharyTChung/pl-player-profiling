@@ -100,7 +100,7 @@ first three components together account for \PCCumThree{} of the variance.
 Figure~\ref{fig:pcabiplot} shows the loadings biplot. Figure~\ref{fig:keepercorr} gives
 the correlation structure of the surviving goalkeeper features and
 Figure~\ref{fig:keepercompositedistributions} the distribution of the two goalkeeper
-composites.
+composites. Figure~\ref{fig:arckeepersupplementary} gives the same two views for the archive goalkeeper block, whose composites the main text uses.
 
 \begin{figure}[!h]
   \centering
@@ -112,14 +112,13 @@ composites.
 
 \begin{figure}[!h]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{pca_scree.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{pca_scree.pdf}
     \caption{Scree and cumulative variance.}
     \label{fig:pcascree}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{pca_biplot.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{pca_biplot.pdf}
     \caption{Loadings biplot.}
     \label{fig:pcabiplot}
   \end{subfigure}
@@ -129,14 +128,13 @@ composites.
 
 \begin{figure}[!h]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_corr_heatmap.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{keeper_corr_heatmap.pdf}
     \caption{Surviving goalkeeper features.}
     \label{fig:keepercorr}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_composite_distributions.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{keeper_composite_distributions.pdf}
     \caption{Goalkeeper composite distributions.}
     \label{fig:keepercompositedistributions}
   \end{subfigure}
@@ -146,14 +144,13 @@ composites.
 
 \begin{figure}[!h]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{archive_keeper_corr.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{archive_keeper_corr.pdf}
     \caption{Correlation structure of the archive goalkeeper features.}
     \label{fig:arckeepercorr}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{archive_keeper_composites.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{archive_keeper_composites.pdf}
     \caption{Distribution of the archive goalkeeper composites.}
     \label{fig:arckeepercomposites}
   \end{subfigure}
@@ -245,7 +242,7 @@ deviation of \BootARISDDF{}, and for forwards to \BootARIFW{} with a standard de
 recovered is no better than chance. Forwards number only \NFWPrimary{} players above the
 minutes threshold, so this is partly a sample size problem, but it is a real limit on what
 can be claimed. The consensus co-assignment structure is shown in
-Figure~\ref{fig:consensus}.
+Figure~\ref{fig:consensus}. Figure~\ref{fig:clusterscatter} shows the selected partition in the principal component space.
 
 The relationship between discovered clusters and listed positions is weak. The global
 partition scores an adjusted Rand index of \ARIvsPosition{} against the position
@@ -267,14 +264,13 @@ counterpart at his own listed position.
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{consensus_matrix.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{consensus_matrix.pdf}
     \caption{Bootstrap co-assignment.}
     \label{fig:consensus}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{cluster_vs_position.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{cluster_vs_position.pdf}
     \caption{Clusters against listed positions.}
     \label{fig:clustervsposition}
   \end{subfigure}
@@ -503,19 +499,18 @@ circular: Understat credits xGChain for possessions the player finished himself,
 difference between xGChain and xGBuildup contains the target and correlates with it at
 \FinishingLeakCorr{}. The apparently strong model was reconstructing the outcome rather
 than predicting it. Even at the honest value, roughly half the variance is unexplained, so
-the residual leaderboard in Figure~\ref{fig:finishing} is presented as an illustration and
-not as a measurement of finishing ability.
+the residual leaderboard in Figure~\ref{fig:finishing}  is presented as an illustration and
+not as a measurement of finishing ability. Figure~\ref{fig:outliers} shows the two outlier detectors against each other.
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{confusion_matrix.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{confusion_matrix.pdf}
     \caption{Confusion between listed positions.}
     \label{fig:confusion}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{shap_by_class.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{shap_by_class.pdf}
     \caption{Feature importance per position.}
     \label{fig:shapbyclass}
   \end{subfigure}
@@ -545,14 +540,13 @@ defenders sit toward the midfield region.
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{team_dendrogram.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{team_dendrogram.pdf}
     \caption{Style families.}
     \label{fig:dendrogram}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{team_composition.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{team_composition.pdf}
     \caption{Archetype composition by club.}
     \label{fig:composition}
   \end{subfigure}
@@ -639,14 +633,13 @@ Figures~\ref{fig:shrinkage} and \ref{fig:shrinkageminutes} show the effect.
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{similarity_heatmap.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{similarity_heatmap.pdf}
     \caption{Nearest neighbour similarity.}
     \label{fig:similarity}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{cross_season_transitions.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{cross_season_transitions.pdf}
     \caption{Between-season transitions.}
     \label{fig:crossseason}
   \end{subfigure}
@@ -730,14 +723,13 @@ would have converted a real finding into a null one. Figure~\ref{fig:age} shows 
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{shrinkage_effect.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{shrinkage_effect.pdf}
     \caption{Effect of shrinkage on assignments.}
     \label{fig:shrinkage}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{shrinkage_by_minutes.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{shrinkage_by_minutes.pdf}
     \caption{Assignment changes by minutes played.}
     \label{fig:shrinkageminutes}
   \end{subfigure}
@@ -748,14 +740,13 @@ would have converted a real finding into a null one. Figure~\ref{fig:age} shows 
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{outliers_scatter.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{outliers_scatter.pdf}
     \caption{Outliers within position group.}
     \label{fig:outliers}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{finishing_above_role.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{finishing_above_role.pdf}
     \caption{Residuals from the role model.}
     \label{fig:finishing}
   \end{subfigure}
@@ -766,7 +757,7 @@ would have converted a real finding into a null one. Figure~\ref{fig:age} shows 
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=0.85\textwidth]{shap_beeswarm.pdf}
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{shap_beeswarm.pdf}
   \caption{Global SHAP values for the gradient boosted position classifier. Shooting
   volume and interceptions carry most of the signal, so a player's position is now
   identified largely by the actions he does not perform.}
@@ -785,7 +776,7 @@ Section~\ref{sec:data:reduced}.
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=\textwidth]{archetype_profiles.pdf}
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{archetype_profiles.pdf}
   \caption{Centroid deviation of each archetype from its position group mean, reduced
   sample.}
   \label{fig:redarchetypeprofiles}
@@ -793,34 +784,28 @@ Section~\ref{sec:data:reduced}.
 
 \begin{figure}[!h]
   \centering
-  \begin{subfigure}[t]{0.32\textwidth}
-    \includegraphics[width=\textwidth]{radar_panel_DF.pdf}
-    \caption{Defenders.}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\textwidth}
-    \includegraphics[width=\textwidth]{radar_panel_MF.pdf}
-    \caption{Midfielders.}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\textwidth}
-    \includegraphics[width=\textwidth]{radar_panel_FW.pdf}
-    \caption{Forwards.}
-  \end{subfigure}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.27\textheight,keepaspectratio]{radar_panel_DF.pdf}
+    \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.27\textheight,keepaspectratio]{radar_panel_MF.pdf}
+    \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.27\textheight,keepaspectratio]{radar_panel_FW.pdf}
+    \end{subfigure}
   \caption{Archetype radars on the reduced sample.}
   \label{fig:redradarpanels}
 \end{figure}
 
 \begin{figure}[!h]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_clusters_pca.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{keeper_clusters_pca.pdf}
     \caption{Goalkeeper clusters in principal component space.}
     \label{fig:redkeeperclusters}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_composites.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{keeper_composites.pdf}
     \caption{The two surviving composite axes.}
     \label{fig:redkeepercomposites}
   \end{subfigure}
@@ -830,14 +815,13 @@ Section~\ref{sec:data:reduced}.
 
 \begin{figure}[!h]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_savepct_vs_workload.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{keeper_savepct_vs_workload.pdf}
     \caption{Save percentage against workload.}
     \label{fig:redkeeperworkload}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{keeper_saves_vs_sota.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{keeper_saves_vs_sota.pdf}
     \caption{Saves against shots on target.}
     \label{fig:redkeepersota}
   \end{subfigure}

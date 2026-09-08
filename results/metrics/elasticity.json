@@ -1090,6 +1090,22 @@
       ]
     }
   },
+  "sweeper": {
+    "question": "Do sweeper actions fall with a team's own possession, as tackles do?",
+    "n_team_seasons": 490,
+    "elasticity_to_opponent_possession": -0.6307,
+    "ci_low": -0.8989,
+    "ci_high": -0.3585,
+    "log_log_correlation": -0.1895,
+    "interval_excludes_zero": true,
+    "sign": "negative",
+    "busiest_sweeping_team_seasons": [
+      "Bochum 2022 (44.5 percent possession)",
+      "Liverpool 2022 (63.3 percent possession)",
+      "Burnley 2022 (39.8 percent possession)"
+    ],
+    "reading": "Sweeper actions rise with a team's own possession rather than falling with it, so they are a tactical count that tracks line height, not an exposure count, and adjusting them for possession would remove the signal rather than a bias."
+  },
   "summary": {
     "all_pooled_below_one": true,
     "intervals_excluding_one": [

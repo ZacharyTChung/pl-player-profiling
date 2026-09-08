@@ -10,6 +10,7 @@
 \usepackage{natbib}
 \usepackage{amsmath}
 \usepackage{longtable}
+\usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 % Keep every float inside the subsection that refers to it. Section-level barriers are
 % not enough here: the results section alone runs to a dozen figures, and without the
@@ -58,6 +59,10 @@ Season-Aggregate Data}
 \begin{abstract}
 \input{sections/abstract}
 \end{abstract}
+
+\clearpage
+{\setcounter{tocdepth}{1}\tableofcontents}
+\clearpage
 
 \input{sections/introduction}
 \input{sections/data}

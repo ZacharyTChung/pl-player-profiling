@@ -89,6 +89,7 @@ src/archive_keepers.py     goalkeepers on the full keeper block
 src/archive_validation.py  replication across seasons and leagues, supervised, PCA
 src/elasticity.py    bootstrap intervals, per-league refits and functional form for the elasticities
 src/ablation.py      leave-one-family-out and keep-one-only on the primary sample
+src/outcomes.py      composition on the two-mode axis against real results, out of sample
 src/preprocess.py    merge, filter, per-90, position parsing, imputation
 src/features.py      feature sets per position group and for keepers
 src/descriptive.py   summary stats, correlations, distributions
@@ -178,6 +179,7 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
 - [x] Phase 14: verification and handoff
 - [x] Rebuild on the archive: primary sample, null calibration, replication, new thesis
 - [x] Harden for submission: three nulls, null-data bootstrap, elasticity intervals, feature-family ablation, clusterability literature
+- [x] Validate against real results: composition predicts points beyond possession out of sample; archetypes add nothing beyond the two modes; figures enlarged, every figure cited, TOC, microtype
 
 ## Verification record
 

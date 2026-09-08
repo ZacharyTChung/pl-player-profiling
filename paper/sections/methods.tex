@@ -208,6 +208,29 @@ the standard score of the observed silhouette against the null, and the adjusted
 between the ablated partition and the full one on the same players, so that a surviving
 k of two can be distinguished from the same two modes surviving.
 
+\subsection{Validation against results}
+
+The structure the paper reports is tested against what happened. The archive's team tables
+carry goals and expected goals but not results, so wins, draws and losses are recovered by
+summing the goalkeeper table, which credits every match to the goalkeeper who played it, and
+the recovery is audited: each league-season is checked for the right number of clubs, every
+club's credited matches are checked against the schedule with the exceptions listed, goals
+for are taken from goals scored while each goalkeeper was on the pitch and accepted only
+where the same rows reproduce the goalkeeper table's goals against to within one, and two
+published season records are asserted. Points per match, goal difference per match and
+league position follow.
+
+Each team-season is then summarised by its minutes-weighted composition on the two-mode
+partition and on the six archetypes, using the eligible players, and the composition is
+correlated with results and used to predict them. Prediction is out of sample under two
+holdouts, one season at a time and one league at a time, by ridge regression with the
+penalty chosen by cross-validation inside the training folds, comparing possession alone,
+the composition alone and both. The increment of the last over the first is the quantity of
+interest, because composition and dominance are confounded and only the increment says
+whether the modes carry information about results that dominance does not. The goalkeeper
+partitions are tested the same way, against the prediction that a partition sorting keepers
+by their teams will track points and a partition describing goalkeeping will not.
+
 \subsection{Archetype profiling}
 
 For every retained cluster we compute the centroid profile as a standardised deviation

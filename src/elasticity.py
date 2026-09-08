@@ -398,6 +398,60 @@ def figure_uncertainty(pooled: dict, leagues: dict) -> None:
     P.save_figure(fig, "elasticity_uncertainty")
 
 
+def sweeper_exposure() -> dict:
+    """Are goalkeeper sweeper actions an exposure count like tackles, or a tactical one?
+
+    The paper possession adjusts every outfield defensive count on the argument that a
+    tackle cannot happen while your own side has the ball. A sweeper action is also a
+    count, so the same question has to be asked of it rather than assumed either way.
+    The fit is the one used for the outfield counts: log team sweeper actions per ninety
+    on log opponent possession, one row per team-season, with the same bootstrap.
+    """
+    adv = pd.read_parquet(A.RAW / "keepers_adv.parquet")
+    base = pd.read_parquet(A.RAW / "keepers.parquet")
+    keys = ["Season_End_Year", "Squad", "Player"]
+    d = adv.merge(base[[*keys, "Min_Playing"]], on=keys, how="left")
+    d = d[d["Season_End_Year"].isin(A.SEASONS)]
+    team = d.groupby(["Season_End_Year", "Squad"], as_index=False).agg(
+        actions=("#OPA_Sweeper", "sum"), minutes=("Min_Playing", "sum")
+    )
+    team = team.merge(A.team_possession(), on=["Season_End_Year", "Squad"], how="inner")
+    team["rate"] = team["actions"] / (team["minutes"] / 90.0)
+    team["opp"] = 100.0 - team["team_possession"]
+    sub = team[(team["rate"] > 0) & (team["opp"] > 0)].dropna(subset=["rate", "opp"])
+    x, y = np.log(sub["opp"].to_numpy()), np.log(sub["rate"].to_numpy())
+    alpha = float(np.polyfit(x, y, 1)[0])
+    rng = np.random.default_rng(config.RANDOM_STATE)
+    draws = np.empty(N_BOOTSTRAP)
+    for i in range(N_BOOTSTRAP):
+        idx = rng.integers(0, len(x), len(x))
+        draws[i] = np.polyfit(x[idx], y[idx], 1)[0]
+    lo_q, hi_q = 100.0 * (1.0 - CONFIDENCE) / 2.0, 100.0 * (1.0 + CONFIDENCE) / 2.0
+    lo, hi = np.percentile(draws, [lo_q, hi_q])
+    busiest = sub.sort_values("rate", ascending=False).head(3)
+    return {
+        "question": "Do sweeper actions fall with a team's own possession, as tackles do?",
+        "n_team_seasons": int(len(sub)),
+        "elasticity_to_opponent_possession": round(alpha, 4),
+        "ci_low": round(float(lo), 4),
+        "ci_high": round(float(hi), 4),
+        "log_log_correlation": round(float(np.corrcoef(x, y)[0, 1]), 4),
+        "interval_excludes_zero": bool(hi < 0 or lo > 0),
+        "sign": "negative" if alpha < 0 else "positive",
+        "busiest_sweeping_team_seasons": [
+            f"{r.Squad} {int(r.Season_End_Year)} ({r.team_possession:.1f} percent possession)"
+            for r in busiest.itertuples()
+        ],
+        "reading": (
+            "Sweeper actions rise with a team's own possession rather than falling with it, "
+            "so they are a tactical count that tracks line height, not an exposure count, "
+            "and adjusting them for possession would remove the signal rather than a bias."
+            if alpha < 0
+            else "Sweeper actions fall with a team's own possession like the outfield counts."
+        ),
+    }
+
+
 def main() -> None:
     P.use_style()
     frame = team_seasons()
@@ -452,6 +506,7 @@ def main() -> None:
         "by_season": seasons,
         "heterogeneity": {"league": league_spread, "season": season_spread},
         "functional_form": form,
+        "sweeper": sweeper_exposure(),
         "summary": {
             "all_pooled_below_one": all(
                 pooled[c]["elasticity"] < UNIT_ELASTICITY for c in A.DEFENSIVE_COUNTS

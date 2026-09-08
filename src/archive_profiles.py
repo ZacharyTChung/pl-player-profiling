@@ -268,7 +268,7 @@ ARCHETYPE_NAMES = {
     "DF-1": "Wide attacking defenders",
     "MF-0": "Deep ball winning midfielders",
     "MF-1": "Advanced attacking midfielders",
-    "FW-0": "Low involvement centre forwards",
+    "FW-0": "Finishing centre forwards",
     "FW-1": "Creating and carrying forwards",
 }
 

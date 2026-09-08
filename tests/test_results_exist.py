@@ -358,3 +358,26 @@ def test_structure_claims_match_the_three_nulls() -> None:
     assert float(macros["StrDipMinZFW"]) < 0, (
         "the forward dip now clears every null; the text says it does not"
     )
+
+
+def test_outcome_claims_match_the_increments() -> None:
+    """The paper's claims about real results are checked against the macros that back them.
+
+    Three claims: the modes add predictive information beyond possession under both
+    holdouts, the archetypes add nothing beyond the two modes, and the full-feature keeper
+    partition tracks points while the technique partition does not. Each is a statement
+    about an interval, so each is checked as one.
+    """
+    macros = _macro_values()
+    needed = ["OutIncSeasonLow", "OutIncLeagueLow", "OutIncArcheSeasonLow", "OutKeepFull"]
+    if any(n not in macros for n in needed):
+        pytest.skip("outcome macros not generated yet")
+    assert float(macros["OutIncSeasonLow"]) > 0, "season-holdout increment interval reaches zero"
+    assert float(macros["OutIncLeagueLow"]) > 0, "league-holdout increment interval reaches zero"
+    assert float(macros["OutIncArcheSeasonLow"]) <= 0 <= float(macros["OutIncArcheSeasonHigh"]), (
+        "the archetype increment now excludes zero; the paper says it adds nothing"
+    )
+    assert float(macros["OutRSqBothSeason"]) > float(macros["OutRSqPossSeason"])
+    assert (
+        float(macros["OutKeepFull"]) > float(macros["OutKeepStop"]) > float(macros["OutKeepTech"])
+    ), "the keeper ordering full > shot stopping > technique no longer holds"

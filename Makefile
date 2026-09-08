@@ -198,6 +198,14 @@ $(STAMPS)/ablation: src/ablation.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive \
 	@touch $@
 ablation: $(STAMPS)/ablation
 
+# The only test against real results: team-season composition on the two-mode axis
+# against points and goal difference, out of sample, with possession as the baseline.
+$(STAMPS)/outcomes: src/outcomes.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive_profiles \
+                    $(STAMPS)/archive_validation $(STAMPS)/archive_keepers
+	$(PY) -m src.outcomes
+	@touch $@
+outcomes: $(STAMPS)/outcomes
+
 # --- Stage 4: tables and macros ---------------------------------------------------
 ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/profiles $(STAMPS)/supervised $(STAMPS)/keepers \
@@ -205,7 +213,7 @@ ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/threed $(STAMPS)/symmetric $(STAMPS)/age \
                    $(STAMPS)/archive $(STAMPS)/structure $(STAMPS)/archive_profiles \
                    $(STAMPS)/archive_keepers $(STAMPS)/archive_validation \
-                   $(STAMPS)/elasticity $(STAMPS)/ablation
+                   $(STAMPS)/elasticity $(STAMPS)/ablation $(STAMPS)/outcomes
 
 results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables

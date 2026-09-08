@@ -108,7 +108,7 @@ single direction and confirms that one axis dominates. It is nowhere near the wh
 The first three components together reach only \ArcPCThree{} percent, \ArcPCKaiser{} components
 exceed the Kaiser criterion, and \ArcPCNinety{} are required to reach ninety percent of the
 variance. The role space therefore has one dominant axis and a long tail of smaller ones,
-which is a different object from a line.
+which is a different object from a line. Figure~\ref{fig:archive_pca} shows the scree and the loadings.
 
 The content of the leading components is readable and matches the football. The first
 separates players by where on the pitch they touch the ball, loading positively on
@@ -209,7 +209,7 @@ Section~\ref{sec:results:supervised} shows the same geometry from the supervised
 the classifier confuses midfielders with both poles and almost never confuses the poles with
 each other. Two methods with no shared machinery agree that the space is an ordered
 continuum whose density is concentrated at two ends, and that listed position is a coarse
-and partly arbitrary partition of it.
+and partly arbitrary partition of it. Figure~\ref{fig:archive_cluster_vs_position} shows the contingency and the agreement indices.
 
 \begin{figure}[!htbp]
   \centering
@@ -244,14 +244,13 @@ defender split is the strongest: the largest centroid separations, the lowest ch
 highest agreement across leagues, and a dip test that rejects unimodality on the defender
 axis. The midfield split is well supported with a more populated boundary. The forward split
 is the weakest, and should be read with more caution than the other two: its dip test does
-not reject unimodality, the division is uneven, the low involvement group has no positive
-signature of its own, and one league's refit falls well below the others. Silhouette does
+not reject unimodality, the division is uneven, the finishing group has no positive signature of its own, and one league's refit falls well below the others. Silhouette does
 separate it from the clusterless null, so there is real structure, but it reads more like a
 cut through a continuum of forward involvement than like two modes.
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=\textwidth]{archive_archetype_profiles.pdf}
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{archive_archetype_profiles.pdf}
   \caption{Centroid deviation of each archetype from its position group mean across the
   full feature set. Within a group the two profiles are mirror images by construction.}
   \label{fig:arcprofiles}
@@ -259,20 +258,15 @@ cut through a continuum of forward involvement than like two modes.
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.32\textwidth}
-    \includegraphics[width=\textwidth]{archive_radar_panel_DF.pdf}
-    \caption{Defenders.}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\textwidth}
-    \includegraphics[width=\textwidth]{archive_radar_panel_MF.pdf}
-    \caption{Midfielders.}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\textwidth}
-    \includegraphics[width=\textwidth]{archive_radar_panel_FW.pdf}
-    \caption{Forwards.}
-  \end{subfigure}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.27\textheight,keepaspectratio]{archive_radar_panel_DF.pdf}
+    \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.27\textheight,keepaspectratio]{archive_radar_panel_MF.pdf}
+    \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.27\textheight,keepaspectratio]{archive_radar_panel_FW.pdf}
+    \end{subfigure}
   \caption{Archetype radars on fixed axes within each position group.}
   \label{fig:arcradar}
 \end{figure}
@@ -322,6 +316,81 @@ genuine role change and not the churn an unstable partition would produce.
   decline. Bottom, each season and each league scored against the pooled partition.}
   \label{fig:archive_replication}
 \end{figure}
+
+\subsection{Do the modes predict results?}
+\label{sec:results:outcomes}
+
+Everything above is a claim about the structure of the data. The archive also carries what
+happened: wins, draws and losses for every one of the \OutN{} team-seasons, so the two modes
+can be tested against real results rather than only against listed positions. Each club
+season is summarised by the minutes-weighted share of its outfield minutes played by the
+attacking mode, by the minutes-weighted mean position of its players along the axis between
+the two centroids, and by its share in each of the six archetypes, with eligible players
+covering a median \OutCoverageMedian{} percent of each club's outfield minutes and never
+less than \OutCoverageMin{}. Results are recovered from the match-by-match keeper record,
+which credits every match to the goalkeeper who played it, and audited against the
+schedule: \OutOffSchedule{} team-seasons close short of it, all for documented reasons, the
+largest being the Ligue 1 season abandoned in March 2020.
+
+The share alone correlates with points per match at a Spearman rank correlation of
+\OutRhoShare{} (\OutRhoShareLow{} to \OutRhoShareHigh{}), and with goal difference per
+match at \OutRhoShareGD{}. The continuous axis position is stronger, at \OutRhoAxis{}
+(\OutRhoAxisLow{} to \OutRhoAxisHigh{}) against points, which is what a continuum should
+show: where a club's players sit along the axis carries more than which side of the cut
+they fall on. Within leagues the share correlation runs from \OutRhoLeagueMin{} in
+\OutRhoLeagueMinName{} to \OutRhoLeagueMax{} in \OutRhoLeagueMaxName{}, and every season
+lies inside that range. Table~\ref{tab:outcomes} lists the ten team-seasons at the extremes
+of the share so that a reader can check them against memory, and they are the sides one
+would name: the champions of Germany, Spain and England at the top, and a Sheffield United
+season that finished last near the bottom.
+
+A correlation between attacking composition and points is partly circular, because good
+teams have good attackers, so the test that matters is whether the modes carry anything
+beyond team possession, the simplest summary of dominance and one already in the paper's
+exposure adjustment. Ridge regression of points per match on possession alone, on the
+composition alone and on both, with the penalty chosen inside the training folds, gives out
+of sample coefficients of determination of \OutRSqPossSeason{}, \OutRSqCompSeason{} and
+\OutRSqBothSeason{} when one season is held out at a time, and \OutRSqPossLeague{},
+\OutRSqCompLeague{} and \OutRSqBothLeague{} when one league is. The modes add
+\OutIncSeason{} (\OutIncSeasonLow{} to \OutIncSeasonHigh{}) to what possession explains
+under the first holdout and \OutIncLeague{} (\OutIncLeagueLow{} to \OutIncLeagueHigh{})
+under the second, and for goal difference \OutIncGDSeason{} and \OutIncGDLeague{}. The
+composition on its own predicts slightly worse than possession on its own, which is worth
+saying plainly: the modes are not a substitute for dominance, they are information about
+how it is produced that dominance does not contain.
+
+Where the information lives is the sharpest result in this section. Possession plus the two
+two-mode measures alone reach \OutRSqPossTwoModeSeason{}, an increment of
+\OutIncTwoModeSeason{} over possession that is the whole of the gain. Adding the six
+archetype shares on top adds \OutIncArcheSeason{} (\OutIncArcheSeasonLow{} to
+\OutIncArcheSeasonHigh{}), an interval that contains zero, and the archetypes without the
+two-mode measures reach only \OutRSqPossArcheSeason{}. Real results, then, say what the
+null calibration said: two modes carry information and a finer taxonomy carries none that
+the two modes did not already carry.
+
+The goalkeeper claim can be tested the same way. The share of a club's goalkeeper minutes
+falling in the full-feature partition's second cluster correlates with points per match at
+\OutKeepFull{} (\OutKeepFullLow{} to \OutKeepFullHigh{}), which is what a partition that
+sorts keepers by the team in front of them must do. The technique partition's share
+correlates at \OutKeepTech{} (\OutKeepTechLow{} to \OutKeepTechHigh{}), an interval that
+barely clears zero, so the line keeper against sweeper claimer division is unrelated to how
+good the team is, which is the property a description of goalkeeping rather than of
+goalkeepers' teams should have. Shot stopping itself, post-shot expected goals minus goals
+allowed per ninety, sits between the two at \OutKeepStop{}. Figure~\ref{fig:outcomes} shows
+the share against points and the out of sample comparison.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{outcomes.pdf}
+  \caption{The two modes against real results over \OutN{} team-seasons. Left, the
+  minutes-weighted share of outfield minutes in the attacking mode against points per match,
+  one marker shape per league. Right, out of sample coefficient of determination for points
+  per match from possession alone, the composition alone and both, under leave-one-season-out
+  and leave-one-league-out holdouts.}
+  \label{fig:outcomes}
+\end{figure}
+
+\input{../results/tables/outcomes_extremes.tex}
 
 \subsection{Which features carry the modes}
 \label{sec:results:ablation}
@@ -406,13 +475,13 @@ misclassifications skip the middle. Midfielders are recovered at \SupMFRecall{} 
 \SupFWF{} and \SupDFF{} respectively. This is the confusion structure of an ordered line
 whose ends are far apart and whose middle overlaps both, and it is not the confusion
 structure of three distinct categories, which would scatter errors more evenly across the
-off-diagonal.
+off-diagonal. Figure~\ref{fig:archive_confusion} shows both confusion matrices.
 
 The feature attributions agree. The three strongest features overall are
 \ShapArcTopOne{}, \ShapArcTopTwo{} and \ShapArcTopThree{}, all of which are territorial
 rather than technical, and touches in the defensive third alone carries more attribution
 than any other feature for all three classes. Position, as the data record it, is mostly a
-statement about where a player stands. Figure~\ref{fig:archive_shap_by_class} splits the
+statement about where a player stands. Figure~\ref{fig:archive_shap} shows the attribution of every feature for every explained player. Figure~\ref{fig:archive_shap_by_class} splits the
 attribution by class and shows that the three are separated by different things, defenders
 mostly by defensive volume and crossing and forwards mostly by where they receive the ball.
 
@@ -438,7 +507,7 @@ category with a signature of its own.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{archive_shap_beeswarm.pdf}
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{archive_shap_beeswarm.pdf}
   \caption{SHAP values for the gradient boosted model, showing for each player the
   contribution of each feature toward the position group the player is actually listed at.
   Territorial features dominate technical ones throughout.}
@@ -481,7 +550,7 @@ reach on a small denominator. The eligibility threshold removes the worst of thi
 not remove all of it, and an outlier list is exactly the place where the residual matters
 most. The list should therefore be read as evidence about the kind of player the two-mode
 description struggles with, and not as a ranking in which the fifteenth entry means what the
-first does.
+first does. Figure~\ref{fig:archive_outliers} shows both detectors and the fifteen.
 
 \begin{figure}[!htbp]
   \centering
@@ -669,12 +738,20 @@ sweeping together. Distribution style barely separates the clusters at all, and 
 does shot stopping ability. Both are real and measurable, and both are continua lying
 across the off-line division rather than dimensions of it. A goalkeeper who sweeps is not
 thereby a better or worse shot stopper, and how far he kicks the ball is close to
-independent of both.
+independent of both. One check belongs here because the paper applies it to every outfield defensive count.
+Sweeper actions are counts, and could be exposure driven in the way tackles are. They are
+not: fitted exactly as the outfield elasticities were, over \ElastSweeperTeamSeasons{}
+team-seasons, sweeper actions per ninety rise rather than fall with a team's own
+possession, with an elasticity to opponent possession of \ElastSweeper{}
+(\ElastCISweeperLow{} to \ElastCISweeperHigh{}), because sides that keep the ball defend a
+high line and ask their goalkeeper to cover behind it. Sweeping is a tactical count that
+tracks line height rather than an exposure count, and adjusting it for possession would
+remove the signal the partition is built on, so it is left unadjusted.
 
 That is a substantive finding rather than a taxonomy, and it echoes the outfield result: the
 data supports one binary distinction plus continuous variation, not a set of types.
-Figures~\ref{fig:arckeeperstop} and \ref{fig:arckeeperclusters} show the shot stopping
-ranking and the partition.
+Figures~\ref{fig:arckeeperstop} and \ref{fig:arckeeperpanel} show the shot stopping
+ranking, the partition and the two profiles.
 
 \begin{figure}[!t]
   \centering
@@ -686,14 +763,13 @@ ranking and the partition.
 
 \begin{figure}[!t]
   \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{archive_keeper_clusters.pdf}
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{archive_keeper_clusters.pdf}
     \caption{The technique partition.}
     \label{fig:arckeeperclusters}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{archive_keeper_radar.pdf}
+  \end{subfigure}\par\medskip
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{archive_keeper_radar.pdf}
     \caption{Composite profiles.}
     \label{fig:arckeeperradar}
   \end{subfigure}

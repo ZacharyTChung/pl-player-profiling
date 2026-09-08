@@ -46,7 +46,7 @@ satisfies equally well. The contribution here is not a new clusterability test b
 application of existing ones to a field that has skipped them, and the finding that they
 return a real but far coarser structure than the field has been reporting.
 
-Five findings are worth stating in advance.
+Six findings are worth stating in advance.
 
 First, the structure is real, and it survives the hardest null available. Against three
 clusterless references, a Gaussian matched on covariance, a copula that keeps every real
@@ -94,6 +94,13 @@ the largest free source of football statistics withdrew its advanced metrics in 
 2026, retains only about half the features. The same analysis on that sample returns the
 same answer, which is reported in Section~\ref{sec:results:reduced} as a robustness check
 rather than as a limitation.
+
+Sixth, the modes predict what happened. Over \OutN{} team-seasons with real results, a
+club's minutes-weighted composition on the two-mode axis predicts points per match beyond
+team possession, out of sample under both a season holdout and a league holdout, raising
+the coefficient of determination from \OutRSqPossSeason{} to \OutRSqBothSeason{}. The six
+archetypes add nothing beyond the two modes. Real results say what the null calibration
+said.
 
 The practical implication is not that role analysis is impossible. It is that the correct
 output of role analysis on this kind of data is a position along an axis rather than
