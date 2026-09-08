@@ -114,8 +114,10 @@ def write_metadata(stage: Path, date: str) -> None:
     main = read(PAPER / "main.tex")
     title = re.search(r"\\title\{(.+?)\}\n", main, re.S)
     title_text = " ".join(title.group(1).split()) if title else "(no title found)"
-    authors = re.search(r"\\author\{(.+?)\}", main)
-    author_text = (authors.group(1).replace(r"\and", "|") if authors else "").strip()
+    authors = re.search(r"\\author\{(.+?)\}\n", main, re.S)
+    # Drop the corresponding-author footnote; the form wants names only.
+    author_text = re.sub(r"\\thanks\{[^}]*\}", "", authors.group(1)) if authors else ""
+    author_text = author_text.replace(r"\and", "|").strip()
     author_text = ", ".join(part.strip() for part in author_text.split("|") if part.strip())
 
     abstract = render_abstract(

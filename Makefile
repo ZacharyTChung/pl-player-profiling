@@ -27,7 +27,7 @@ RAW_MANIFESTS  := $(wildcard data/raw/*/manifest.json)
 PROCESSED      := $(wildcard data/processed/*.parquet)
 
 .PHONY: all data preprocess descriptive reduce cluster profiles supervised keepers \
-        teams novel sensitivity threed symmetric age drift leagues tables paper test lint format clean distclean help
+        teams novel sensitivity threed symmetric age drift leagues tables paper test lint format clean distclean help submission
 
 all: paper
 
