@@ -125,9 +125,6 @@ def figure_sensitivity(results: dict[int, dict], season: str) -> None:
         ax.set_xticks(thresholds)
         ax.margins(y=0.25)
 
-    fig.suptitle(
-        f"Effect of the minutes threshold, {season}", fontsize=P.BASE_FONT_PT, fontweight="bold"
-    )
     P.save_figure(fig, "minutes_sensitivity")
 
 

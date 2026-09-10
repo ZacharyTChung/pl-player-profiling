@@ -112,15 +112,15 @@ RC = {
     "axes.facecolor": SURFACE,
     "axes.edgecolor": INK_SECONDARY,
     "axes.labelcolor": INK_PRIMARY,
-    "axes.titlecolor": INK_PRIMARY,
+    "axes.titlecolor": INK_SECONDARY,
     "axes.linewidth": 0.6,
     "axes.spines.top": False,
     "axes.spines.right": False,
     "axes.grid": True,
     "axes.axisbelow": True,
-    "axes.titlesize": BASE_FONT_PT,
+    "axes.titlesize": BASE_FONT_PT - 1,
     "axes.labelsize": BASE_FONT_PT,
-    "axes.titleweight": "bold",
+    "axes.titleweight": "regular",
     "grid.color": GRID,
     "grid.linewidth": 0.5,
     "grid.alpha": 1.0,
@@ -156,10 +156,15 @@ def use_style() -> None:
 # Helpers
 # --------------------------------------------------------------------------------------
 
-#: Text-width and full-page widths in inches for a 11pt article at default margins.
-WIDTH_COLUMN = 4.8
+#: The paper is single column with one inch margins on letter, so the text block is
+#: exactly 6.5 inches. Every figure is authored at that width and included at
+#: \textwidth, which is the only way to keep type size identical from figure to figure:
+#: a figure drawn wider and then scaled down arrives with smaller labels than its
+#: neighbour. The three names are kept because callers use them to say what a figure is
+#: for, but they resolve to the same width.
 WIDTH_FULL = 6.5
-WIDTH_WIDE = 7.2
+WIDTH_COLUMN = WIDTH_FULL
+WIDTH_WIDE = WIDTH_FULL
 
 
 def categorical(n: int) -> list[str]:
@@ -182,14 +187,64 @@ def markers(n: int) -> list[str]:
 
 
 def style_axis(ax: plt.Axes, xlabel: str = "", ylabel: str = "", title: str = "") -> plt.Axes:
+    """Label an axis.
+
+    ``title`` is a panel header, not a chart title. A figure's title is its caption, so
+    the banner a chart library wants to draw above the axes is not drawn anywhere in this
+    paper; what survives here is the short line that says which panel of a composite the
+    reader is looking at, set small, unbolded and flush left so it reads as a label.
+    """
     if xlabel:
         ax.set_xlabel(xlabel)
     if ylabel:
         ax.set_ylabel(ylabel)
     if title:
-        ax.set_title(title, loc="left")
+        ax.set_title(title, loc="left", pad=4.0)
     ax.grid(True, which="major", axis="both")
     return ax
+
+
+def panel_label(ax: plt.Axes, letter: str, *, dx: float = -26.0, dy: float = 6.0) -> None:
+    """Mark a panel with its bold letter, offset in points from its top left corner.
+
+    Composite figures are referred to as Figure 1a, 1b and so on in the text, so the letter
+    has to be on the panel rather than only in the caption. The offset is in points rather
+    than in axes fractions because a panel header is set flush left at the same corner, and
+    an axes-fraction offset that clears it on a wide panel collides with it on a narrow one.
+    """
+    ax.annotate(
+        letter,
+        xy=(0.0, 1.0),
+        xycoords="axes fraction",
+        xytext=(dx, dy),
+        textcoords="offset points",
+        fontsize=BASE_FONT_PT + 1,
+        fontweight="bold",
+        color=INK_PRIMARY,
+        va="bottom",
+        ha="left",
+        annotation_clip=False,
+    )
+
+
+def panel_labels(axes, letters: str = "abcdefghijkl", **kwargs) -> None:
+    """Label a sequence of panels a, b, c in the order given."""
+    for ax, letter in zip(np.atleast_1d(axes).ravel(), letters, strict=False):
+        panel_label(ax, letter, **kwargs)
+
+
+def whiten_3d(ax) -> None:
+    """Remove the grey panes a 3D axis draws by default.
+
+    Matplotlib fills the three background panes with a light grey, which prints as the
+    grey box the rest of the style exists to avoid.
+    """
+    for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
+        axis.set_pane_color((1.0, 1.0, 1.0, 1.0))
+        axis.pane.set_edgecolor(GRID)
+        axis.pane.set_linewidth(0.5)
+        axis._axinfo["grid"]["color"] = GRID
+        axis._axinfo["grid"]["linewidth"] = 0.5
 
 
 def annotate_points(

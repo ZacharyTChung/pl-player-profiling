@@ -258,12 +258,6 @@ def figure_leagues(rows: list[dict]) -> None:
         ax.grid(False, axis="y")
         ax.set_xlim(0, max(frame[key]) * 1.28)
 
-    ks = ", ".join(f"{SHORT.get(r['league'], r['league'])} k={r['chosen_k']}" for r in rows)
-    fig.suptitle(
-        f"The same pipeline across the big five, {config.SEASON_PRIMARY}.  {ks}",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
     P.save_figure(fig, "league_comparison")
 
 

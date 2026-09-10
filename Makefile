@@ -27,7 +27,8 @@ RAW_MANIFESTS  := $(wildcard data/raw/*/manifest.json)
 PROCESSED      := $(wildcard data/processed/*.parquet)
 
 .PHONY: all data preprocess descriptive reduce cluster profiles supervised keepers \
-        teams novel sensitivity threed symmetric age drift leagues tables paper test lint format clean distclean help submission
+        teams novel sensitivity threed symmetric age drift leagues paper-figures tables \
+        paper test lint format clean distclean help submission
 
 all: paper
 
@@ -49,6 +50,7 @@ help:
 	@echo "  age         age against archetype"
 	@echo "  drift       role drift within a season, one club, scrapes match reports"
 	@echo "  leagues     repeat the pipeline across the big five, scrapes four leagues"
+	@echo "  paper-figures composite main-text figures"
 	@echo "  tables      LaTeX tables and results/macros.tex"
 	@echo "  paper       compile paper/main.pdf"
 	@echo "  test        pytest"
@@ -206,6 +208,14 @@ $(STAMPS)/outcomes: src/outcomes.py $(CONFIG) $(PLOTTING) $(STAMPS)/archive_prof
 	@touch $@
 outcomes: $(STAMPS)/outcomes
 
+# Composite figures for the main text. Reads the metrics the archive chain wrote and
+# refits only the pooled two-cluster solution, so it is cheap and must run last.
+$(STAMPS)/paper_figures: src/paper_figures.py $(CONFIG) $(PLOTTING) \
+                         $(STAMPS)/archive_profiles $(STAMPS)/archive_validation
+	$(PY) -m src.paper_figures
+	@touch $@
+paper-figures: $(STAMPS)/paper_figures
+
 # --- Stage 4: tables and macros ---------------------------------------------------
 ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/profiles $(STAMPS)/supervised $(STAMPS)/keepers \
@@ -213,7 +223,8 @@ ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/threed $(STAMPS)/symmetric $(STAMPS)/age \
                    $(STAMPS)/archive $(STAMPS)/structure $(STAMPS)/archive_profiles \
                    $(STAMPS)/archive_keepers $(STAMPS)/archive_validation \
-                   $(STAMPS)/elasticity $(STAMPS)/ablation $(STAMPS)/outcomes
+                   $(STAMPS)/elasticity $(STAMPS)/ablation $(STAMPS)/outcomes \
+                   $(STAMPS)/paper_figures
 
 results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables

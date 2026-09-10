@@ -473,14 +473,6 @@ def figure_embedding_comparison(panels: list[dict], groups: np.ndarray, season: 
 
     handles, labels_ = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels_, loc="outside lower center", ncol=3, markerscale=1.8)
-    fig.suptitle(
-        f"Two-dimensional embeddings of the same 18 features, {season}\n"
-        f"T trustworthiness, C continuity, purity at k={NEIGHBOURS}",
-        fontsize=plotting.BASE_FONT_PT,
-        fontweight="bold",
-        x=0.01,
-        ha="left",
-    )
     plotting.save_figure(fig, "embedding_comparison")
 
 

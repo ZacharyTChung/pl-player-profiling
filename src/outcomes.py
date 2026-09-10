@@ -1069,6 +1069,7 @@ def figure_outcomes(frame: pd.DataFrame, ridge: dict, pooled: dict) -> None:
         columnspacing=0.8,
     )
 
+    P.panel_labels([left, right])
     P.save_figure(fig, "outcomes")
 
 

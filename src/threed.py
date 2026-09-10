@@ -36,7 +36,9 @@ from src import plotting as P
 #: Two azimuths far enough apart to expose occlusion, at a shared elevation.
 VIEWS = ((22, -60), (22, 25))
 
-PANE = (0.99, 0.99, 0.985, 1.0)
+#: Pure white. Matplotlib fills a 3D pane with light grey by default, which prints as
+#: the grey box behind the plot that the rest of the style exists to avoid.
+PANE = (1.0, 1.0, 1.0, 1.0)
 
 #: How many clubs at each end of the table get a direct label.
 LABEL_EXTREMES = 5
@@ -153,12 +155,6 @@ def figure_positions(season: str) -> dict:
         bbox_to_anchor=(0.5, 0.005),
         fontsize=P.BASE_FONT_PT - 1,
     )
-    fig.suptitle(
-        f"Outfield players in three principal components, {season}",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-        y=0.975,
-    )
     fig.subplots_adjust(left=0.0, right=1.0, top=0.90, bottom=0.09, wspace=0.02)
     P.save_figure(fig, "pca3d_positions")
 
@@ -224,12 +220,6 @@ def figure_clusters(season: str) -> dict:
         frameon=False,
         bbox_to_anchor=(0.5, 0.005),
         fontsize=P.BASE_FONT_PT - 1,
-    )
-    fig.suptitle(
-        f"The global partition in three components, crosses mark centroids, {season}",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-        y=0.975,
     )
     fig.subplots_adjust(left=0.0, right=1.0, top=0.90, bottom=0.09, wspace=0.02)
     P.save_figure(fig, "pca3d_clusters")
@@ -314,13 +304,6 @@ def figure_teams(season: str) -> dict:
         _prepare_axis(ax, pca, f"view {azim:+.0f} degrees")
         ax.set_zlim(zfloor, pts[:, 2].max() + 0.15 * np.ptp(pts[:, 2]))
 
-    fig.suptitle(
-        f"Clubs as minutes-weighted centroids, darker finished higher, {season}.\n"
-        f"Only the top and bottom {LABEL_EXTREMES} are labelled",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-        y=0.975,
-    )
     fig.subplots_adjust(left=0.0, right=1.0, top=0.90, bottom=0.01, wspace=0.02)
     P.save_figure(fig, "pca3d_teams")
 
@@ -406,12 +389,6 @@ def figure_archetype_axes(season: str) -> dict:
         for setter in (ax.set_xlim, ax.set_ylim, ax.set_zlim):
             setter(-lim, lim)
 
-    fig.suptitle(
-        "Archetype centroid directions: each position group is one axis, not two",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-        y=0.975,
-    )
     fig.subplots_adjust(left=0.0, right=1.0, top=0.90, bottom=0.01, wspace=0.02)
     P.save_figure(fig, "pca3d_archetype_axes")
 

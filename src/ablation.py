@@ -426,6 +426,15 @@ def summarise(results: dict) -> dict:
 # --------------------------------------------------------------------------------------
 
 
+#: Panel headers. The metrics keys are written for a reader of the JSON.
+SCOPE_SHORT = {
+    "All outfield": "pool",
+    "DF": "defenders",
+    "MF": "midfielders",
+    "FW": "forwards",
+}
+
+
 def figure_ablation(results: dict) -> None:
     """One panel per scope: the z of the K silhouette with each family removed and alone.
 
@@ -443,9 +452,9 @@ def figure_ablation(results: dict) -> None:
         ("keep_one_only", 1 + len(families), "^", P.CATEGORICAL[1], "keep one family only"),
     )
 
-    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_FULL, 5.0), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_FULL, 3.7), sharex=True, sharey=True)
     axes = axes.ravel()
-    for i, (ax, scope) in enumerate(zip(axes, scopes, strict=True)):
+    for ax, scope in zip(axes, scopes, strict=True):
         entry = results["scopes"][scope]
         full_z = _z(entry["full"])
         ax.axvline(0.0, color=P.INK_MUTED, linewidth=0.8, zorder=1, label="null mean")
@@ -468,18 +477,17 @@ def figure_ablation(results: dict) -> None:
             P.annotate_points(
                 ax, zs, ys, [f"k={r['chosen_k']}" if r["chosen_k"] != K else None for r in records]
             )
-        xlabel = f"z of the k={K} silhouette against the Gaussian null" if i >= 2 else ""
-        P.style_axis(ax, xlabel, "", scope)
+        P.style_axis(ax, "", "", SCOPE_SHORT.get(scope, scope))
 
+    # Only the bottom row is labelled, and the label is short: the full sentence is wider
+    # than half the text block and runs off the panel. The caption carries the rest.
+    for ax in axes[2:]:
+        ax.set_xlabel(f"standard score at k={K}")
     axes[0].set_yticks(y)
     axes[0].set_yticklabels(rows)
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="outside lower center", ncol=4, frameon=False)
-    fig.suptitle(
-        "Two-mode separation with each feature family removed, or kept alone",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
+    P.panel_labels(axes, letters="efgh")
     P.save_figure(fig, "ablation")
 
 

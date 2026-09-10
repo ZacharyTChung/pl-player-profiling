@@ -1031,11 +1031,6 @@ def figure_cluster_vs_position(validation: dict) -> None:
     ax.grid(False, axis="x")
     ax.legend(loc="upper right", ncol=1)
 
-    fig.suptitle(
-        "The two clusters overlap listed positions without recovering them",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
     P.save_figure(fig, "archive_cluster_vs_position")
 
 
@@ -1045,7 +1040,7 @@ def figure_replication(payload: dict) -> None:
     leagues = payload["leagues"]
     short = {lg: lg.replace("Premier League", "Premier") for lg in leagues}
 
-    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_WIDE, 5.4))
+    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_FULL, 3.5))
 
     season_matrix = np.array(payload["season_pairwise_matrix"]["values"], dtype=float)
     _heatmap(
@@ -1104,11 +1099,7 @@ def figure_replication(payload: dict) -> None:
         P.style_axis(ax, ylabel="Adjusted Rand", title=title)
         ax.grid(False, axis="x")
 
-    fig.suptitle(
-        "The two-cluster solution reproduces in every season and every league",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
+    P.panel_labels(axes)
     P.save_figure(fig, "archive_replication")
 
 
@@ -1324,12 +1315,6 @@ def figure_pca(result: dict, features: list[str]) -> None:
     bar.set_label("Loading", fontsize=P.BASE_FONT_PT - 1)
     bar.outline.set_visible(False)
 
-    fig.suptitle(
-        f"One dominant axis and a long tail: PC1 carries {ratio[0] * 100:.1f} percent "
-        f"of the variance in 33 features",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
     P.save_figure(fig, "archive_pca")
 
 

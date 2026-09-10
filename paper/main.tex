@@ -9,20 +9,23 @@
 \usepackage{graphicx}
 \usepackage{siunitx}
 \usepackage{subcaption}
-\usepackage{natbib}
+% Numeric citations, compressed. A run of three references prints as [1-3] rather than
+% as three author-year parentheticals, which is what keeps a citation-dense paragraph
+% readable at this length.
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{longtable}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 % Keep every float inside the subsection that refers to it. Section-level barriers are
-% not enough here: the results section alone runs to a dozen figures, and without the
-% finer barrier LaTeX strands them up to ten pages from the text that cites them.
+% not enough here: the results section alone runs to half a dozen page-sized figures,
+% and without the finer barrier LaTeX strands them pages from the text that cites them.
 \usepackage[section]{placeins}
 \usepackage{etoolbox}
 \pretocmd{\subsection}{\FloatBarrier}{}{}
 
-\bibliographystyle{plainnat}
+\bibliographystyle{unsrtnat}
 \graphicspath{{figures/}}
 
 \sisetup{
@@ -63,24 +66,28 @@ Season-Aggregate Data}
 \input{sections/abstract}
 \end{abstract}
 
-\clearpage
-{\setcounter{tocdepth}{1}\tableofcontents}
-\clearpage
-
 \input{sections/introduction}
-\input{sections/related}
-\input{sections/data}
 \input{sections/methods}
 \input{sections/results}
 \input{sections/discussion}
-\input{sections/conclusion}
 \input{sections/backmatter}
 
 \clearpage
 \bibliography{references}
 
 \clearpage
+% Everything past the references is supporting material. Figures and tables restart at
+% S1 so a reference in the main text can never be confused with one down here.
 \appendix
-\input{sections/appendix}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{section}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thesection}{S\arabic{section}}
+\begin{center}
+  \Large\bfseries Supplementary Information
+\end{center}
+\input{sections/supplementary}
 
 \end{document}

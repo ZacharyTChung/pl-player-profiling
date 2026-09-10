@@ -201,7 +201,6 @@ def figure_age(frame: pd.DataFrame, results: dict) -> None:
             labelspacing=0.35,
         )
 
-    fig.suptitle("Archetype share within each age band", fontsize=P.BASE_FONT_PT, fontweight="bold")
     P.save_figure(fig, "age_archetype")
 
 

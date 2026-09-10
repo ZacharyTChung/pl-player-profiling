@@ -1,91 +1,95 @@
 \section{Introduction}
 \label{sec:intro}
 
-Public football data now describes every player in a major league by dozens of per-90
-measures, and a standard genre of analysis has grown around it: cluster the players, name
-the clusters, and present the result as a taxonomy of roles. Published examples report
-four archetypes within a single position group \citep{elfoukahi2026unveiling}, and in
-basketball nine \citep{kalman2020nba} or thirteen \citep{alagappan2012from} across the
-whole sport, with labels such as deep-lying progressor or advanced playmaker. The genre rests on an inference that is rarely examined. A partitioning
-algorithm always returns a partition. Run $k$-means on a single multivariate Gaussian,
-which by construction contains no groups at all, and it will hand back tidy clusters with
-a respectable silhouette. That a method produced clusters is therefore not evidence that
-clusters exist.
+Public football data now describes every player in a major league by dozens of per-match
+measures, and a standard genre of analysis has grown around it. Take the measures, group the
+players by how similar their measures are, name the groups, and present the result as a
+taxonomy of roles. Published examples report four archetypes within a single position group,
+and in basketball nine or thirteen across the whole sport, with labels such as deep-lying
+progressor or advanced playmaker \citep{elfoukahi2026unveiling, kalman2020nba,
+alagappan2012from}. The appeal is obvious. A taxonomy turns a table of numbers into a
+vocabulary a coach or a recruiter can use.
 
-This paper asks how much group structure football role data actually contains, and answers
-it against an explicit null. We assemble \ArcRows{} player-seasons covering
-\ArcNSeasons{} seasons from \ArcSeasonFirst{} to \ArcSeasonLast{} across the
-\ArcNLeagues{} major European leagues, with \ArcFeatures{} per-90 features spanning
-shooting, chance creation, ball progression, touches by pitch zone, take-ons, defensive
-actions and passing accuracy by distance. On that sample we run dimensionality reduction,
-clustering under a selection rule fixed before any fitting, and, crucially, a calibration
-against simulated data built to contain no clusters whatsoever.
+The grouping step is done by a clustering algorithm, and it is worth being explicit about what
+one does, because the whole argument of this paper turns on it. A clustering algorithm is
+handed a set of points, here one point per player with one coordinate per statistic, and a
+number of groups to find. It then divides the points into that many groups so as to make each
+group as internally similar as possible. Nothing in that procedure asks whether the points
+were grouped to begin with. Handed a single cloud of points with no groups in it, a clustering
+algorithm still divides the cloud, and the division it returns will still look tidy by the
+measures normally used to judge one. Running the standard method on a single multivariate
+Gaussian, which by construction contains no groups at all, returns two clean clusters with a
+respectable separation score. Getting clusters out of a clustering algorithm is
+therefore not evidence that clusters were there to begin with.
 
-Six findings are stated in advance.
+The football literature has not tested that inference, mostly because it has been busy with a
+harder data problem. The most detailed work on roles uses proprietary feeds: formations and
+positional roles recovered from tracking coordinates, player vectors and performance ratings
+learned from event streams, and playing styles distinguished from match events
+\citep{bialkowski2014large, decroos2019player, pappalardo2019playerank,
+aalbers2019distinguishing}. Where public season aggregates are used instead, the standard
+output is a taxonomy, whether from $k$-means on a dozen indicators or from partial membership
+models on a season of counts \citep{elfoukahi2026unveiling, seri2024partial}. Two systematic
+reviews catalogue the genre for players and for teams, the first synthesising twenty-six
+styles from twelve studies and finding no shared framework behind them
+\citep{plakias2023identifying, gu2025playing}. A review of 278 sports science articles that
+used clustering found that 55 percent did not state the criterion by which the number of
+clusters was chosen, which puts the omission in context \citep{fernandez2024reporting}. The
+question of existence has not been answered badly so much as not asked.
 
-First, the structure is real, and it survives the hardest null available. Against three
-clusterless references, a Gaussian matched on covariance, a copula that keeps every real
-marginal and correlation, and the gap statistic's uniform box, each simulated
-\StrSimulations{} times, the observed silhouette at two clusters exceeds every simulation
-under every null in every scope. Against the hardest of the three the margin runs from
-\StrMinZFW{} standard deviations for forwards to \StrMinZAll{} for the outfield pool.
-Hartigan's dip statistic on the leading component clears the hardest null by
-\StrDipMinZAll{} on the pool. Football role data is not a featureless cloud. A
-bootstrap, by contrast, cannot show this: clusterless data return a resampling adjusted
-Rand index of at least \StrBootNullMinSingle{}, against an observed \StrBootObsMin{}, so
-the stability check the taxonomy genre leans on is close to uninformative about whether
-groups exist.
+Outside sport it has been asked for forty years, and the tools already exist. Choosing the
+number of clusters has been studied systematically since thirty stopping rules were compared
+on data with known structure, and the silhouette and the gap statistic descend from that
+programme \citep{milligan1985examination, rousseeuw1987silhouettes, tibshirani2001estimating}.
+The gap statistic is the direct ancestor of what this paper does, since it compares the
+observed clustering against the same quantity computed on reference data drawn uniformly over
+the principal box. A second tradition validates a partition by its stability under resampling,
+and the theory reached a conclusion the applied literature has largely not absorbed: for
+algorithms such as $k$-means, stability is governed by the geometry of the objective rather
+than by the presence of clusters, so a partition can be perfectly stable on data with no
+groups in it \citep{benhur2002stability, vonluxburg2010stability}. A third asks whether data
+are clusterable at all, finds the formal notions of it mutually inconsistent, and recommends
+tests built on Hartigan's dip statistic applied to a low dimensional projection
+\citep{ackerman2009clusterability, adolfsson2019cluster, hartigan1985dip}. Underlying all
+three is the position that there is no true clustering independent of the purpose a clustering
+is meant to serve \citep{hennig2015true}.
 
-Second, the structure is two modes and nothing finer. The selection rule returns two
-clusters globally and within every position group, on the full \ArcFeatures{} feature set
-and on \ArcEligible{} eligible players. Beyond two clusters the observed silhouette
-converges on the clusterless null, so the additional clusters that a taxonomy would report
-are indistinguishable from what structureless data produces. Density-based clustering,
-which is permitted to conclude that nothing is clustered, assigns \StrNoiseAll{} of the
-outfield pool to noise and every position group entirely to noise.
+The closest methodological relative of this paper is the aggregated validity index of Akhanli
+and Hennig, which calibrates several criteria against their distribution over random
+partitions of the same data and, applied to a season of player statistics from eight European
+leagues, returned a coarse partition into five ordered groups \citep{akhanli2020comparing,
+akhanli2023clustering}. That coarse partition runs along the same territorial axis reported
+here. The difference is what the calibration is against. Comparing against random partitions
+of the observed points asks how good a clustering is relative to other clusterings of the same
+data, which is the right question for choosing among methods. Comparing against clusterless
+data matched to the observed sample asks whether any clustering of these points is better than
+a clustering of points with no structure in them, which is the question of existence. The two
+are complementary, and the first does not answer the second. A different tradition sidesteps
+the question by describing athletes as mixtures rather than as members, either as convex
+combinations of a few extreme profiles or as partial members of several clusters at once
+\citep{eugster2012performance, seri2024partial}. Both are natural descriptions of a continuum
+and both presuppose one, since neither asks whether the data would have supported discrete
+groups instead.
 
-Third, the two modes divide players by attacking against defensive involvement, and they
-do not recover the positions the data already records. Agreement with listed position group
-is \ArcARIvsPosition{} on the adjusted Rand index, far above chance and far below recovery,
-and the shape of the disagreement is the point: \ArcSplitDF{} percent of defenders fall on
-one side and \ArcSplitFW{} percent of forwards on the other, while midfielders divide almost
-evenly between them. A supervised model reaches \SupGBMAcc{} percent accuracy on the same
-features and yet routes all but \SupPoleShare{} percent of its errors through midfield, which
-is the same geometry recovered by machinery that shares nothing with the clustering. This is
-not a claim about one league or one season: refitted independently, every one of
-\ArcNLeagues{} competitions and \ArcNSeasons{} seasons returns the same partition, and
-centroids fitted in one league assign another league's players at a mean adjusted Rand index
-of \RepTransferMean{}.
+This paper supplies the missing test. We assemble \ArcRows{} player-seasons covering
+\ArcNSeasons{} seasons across the \ArcNLeagues{} major European leagues, with \ArcFeatures{}
+per-90 features spanning shooting, chance creation, ball progression, territory, take-ons and
+defensive work. On that sample we run the standard pipeline, a selection rule fixed before any
+fitting followed by $k$-means, and then calibrate what it returns against simulated data built
+to contain no clusters at all. Three such references are used rather than one, ranging from a
+Gaussian matched on covariance to a copula that keeps every real marginal distribution and
+correlation, so that a reader can see which reference the claim survives. The same simulations
+are used to measure what a resampling stability check is worth, which turns an assertion about
+the genre's second standard piece of evidence into a number.
 
-Fourth, two modes is not one dimension. The leading principal component carries
-\ArcPCOne{} percent of the variance, which is far more than any other single direction, but
-\ArcPCNinety{} components are needed to reach ninety percent of it. The space has one
-dominant axis along which the density is bimodal, and a long tail of smaller axes carrying
-variation that is real, interpretable and continuous. A two-mode description is a statement
-about where players are concentrated, not a claim that role reduces to a single number.
-
-Fifth, the result is robust to the feature set. A separate live sample, collected after
-the largest free source of football statistics withdrew its advanced metrics in January
-2026, retains only about half the features. The same analysis on that sample returns the
-same answer, which is reported in Section~\ref{sec:results:reduced} as a robustness check, not as a limitation.
-
-Sixth, the modes predict what happened. Over \OutN{} team-seasons with real results, a
-club's minutes-weighted composition on the two-mode axis predicts points per match beyond
-team possession, out of sample under season, league and club holdouts, raising
-the coefficient of determination from \OutRSqPossSeason{} to \OutRSqBothSeason{}. The six
-archetypes add nothing beyond the two modes. Real results say what the null calibration
-said.
-
-The practical implication is not that role analysis is impossible. It is that the correct
-output of role analysis on this kind of data is a position along an axis rather than
-membership of a type, and that a published taxonomy of a dozen archetypes is reporting
-structure its data cannot support.
-
-The paper proceeds as follows. Section~\ref{sec:related} places the work in the cluster
-validity literature it draws on and the football literature it responds to.
-Section~\ref{sec:data} describes the two samples and what each can support.
-Section~\ref{sec:methods} gives every procedure, and states the calibration formally.
-Section~\ref{sec:results} reports the results on the primary sample first and the reduced
-sample second. Section~\ref{sec:discussion} says what the two modes mean, why finer
-taxonomies keep being published, and what the results do not show, and
-Section~\ref{sec:conclusion} closes.
+Our expectation, and what we find, is that the data support a real division but a far coarser
+one than the field reports. A single split survives calibration in every scope, separating
+players by defensive against attacking involvement, while every finer division is
+indistinguishable from what structureless data produces. That split is not the listed
+positions renamed, since defenders and forwards fall at opposite poles while midfielders
+divide almost evenly between them; it reproduces when each season and each league is fitted
+independently; and a club's composition along it predicts league points beyond possession out
+of sample, while the finer archetypes predict nothing further. The practical implication is
+not that role analysis is impossible. It is that the correct output of role analysis on this
+kind of data is a position along an axis rather than membership of a type, and that a
+published taxonomy of a dozen archetypes is reporting structure its data cannot support.

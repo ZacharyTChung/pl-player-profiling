@@ -279,11 +279,6 @@ def figure_team_panels(season: str) -> None:
     # The key sits directly under the title, where no panel competes with it. A key
     # placed at the foot would overlap the bottom row, since twenty clubs fill the grid.
     fig.legend(handles=handles, loc="outside lower center", ncol=3, frameon=False)
-    fig.suptitle(
-        f"Each club's outfield players in the shared embedding, {season}",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
     P.save_figure(fig, "team_panels")
 
 

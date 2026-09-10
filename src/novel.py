@@ -794,14 +794,6 @@ def figure_cross_season_transitions(payload: dict) -> None:
 
     for ax in axes[len(scopes) :]:
         ax.set_visible(False)
-    fig.suptitle(
-        "Archetype membership across seasons, players eligible in both\n"
-        "cell shows count and row percentage; 2025-26 ids matched to 2024-25 centroids",
-        x=0.01,
-        ha="left",
-        fontsize=plotting.BASE_FONT_PT,
-        fontweight="bold",
-    )
     plotting.save_figure(fig, "cross_season_transitions")
 
 
@@ -1165,20 +1157,15 @@ def figure_shrinkage_effect(season: str, eligible: pd.DataFrame, shrunken: pd.Da
         spare.set_visible(True)
         spare.axis("off")
         spare.legend(handles=handles, loc="center", frameon=False, title="position group")
-    tail = (
-        f"\n{off_scale} of {2 * len(F.OUTFIELD_CORE) * len(eligible)} plotted values sit "
-        "outside the shared axes"
-        if off_scale
-        else ""
-    )
-    fig.suptitle(
-        f"Empirical Bayes shrinkage pulls every player towards his group mean, {season}\n"
-        f"dashed line is no shrinkage; a flat cloud is a feature judged to be all noise{tail}",
-        x=0.01,
-        ha="left",
-        fontsize=plotting.BASE_FONT_PT,
-        fontweight="bold",
-    )
+    if off_scale:
+        fig.text(
+            0.0,
+            -0.01,
+            f"{off_scale} of {2 * len(F.OUTFIELD_CORE) * len(eligible)} plotted values sit "
+            "outside the shared axes",
+            fontsize=plotting.BASE_FONT_PT - 2,
+            color=plotting.INK_MUTED,
+        )
     plotting.save_figure(fig, "shrinkage_effect")
 
 
@@ -1252,13 +1239,6 @@ def figure_shrinkage_by_minutes(season: str, comparison: dict) -> None:
     )
     ax.legend(loc="upper right", title="clustering scope")
 
-    fig.suptitle(
-        f"Reliability and cluster movement against minutes played, {season}",
-        x=0.01,
-        ha="left",
-        fontsize=plotting.BASE_FONT_PT,
-        fontweight="bold",
-    )
     plotting.save_figure(fig, "shrinkage_by_minutes")
 
 

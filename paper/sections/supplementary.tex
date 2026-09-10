@@ -1,0 +1,898 @@
+\section{Feature dictionaries and data availability}
+\label{sec:si:features}
+
+The two samples are described by different feature sets drawn from different pulls, so each has
+its own dictionary. Table~\ref{tab:archivefeatures} lists the \ArcFeatures{} features of the
+primary sample with the FBref table each column was read from, and Table~\ref{tab:features}
+lists the \NFeatures{} features of the reduced sample, which combines what survived the
+withdrawal with an independent expected goals source. In both, counting statistics are
+expressed per ninety minutes played and rate features are used as published rather than divided
+a second time.
+
+Every feature in the reduced set was confirmed to hold non-null values in both of its seasons
+before being admitted, which is the check that distinguishes a live column from one whose values
+were withdrawn. Table~\ref{tab:availability} reports that audit. The primary set is audited
+differently, by per-column and per-season coverage on load, because its failure mode is a block
+missing from one season rather than a column emptied across all of them.
+
+\input{../results/tables/archive_feature_dictionary.tex}
+
+\input{../results/tables/feature_dictionary.tex}
+
+\input{../results/tables/data_availability.tex}
+
+\section{Possession elasticities}
+\label{sec:si:elasticity}
+
+Before any structure is estimated, the defensive counts have to be separated from the
+opportunity to record them. Team defensive volume does rise as opponent possession rises, so the
+confound is real, and the conventional correction, in the proportional form that has succeeded
+the original of \citet{knutson2014possession}, assumes the relationship is proportional: a side
+with twice the ball is taken to concede half the defensive events.
+
+It is much weaker than that for four of the five statistics, and it is not distinguishable from
+proportional for the fifth. Fitted on the primary sample over \ArcPadjTeamSeasons{}
+team-seasons, with \ElastNBootstrap{} bootstrap resamples giving each estimate an interval, the
+elasticities are \ArcElastTackles{} for tackles (\ElastCITacklesLow{} to \ElastCITacklesHigh{}),
+\ArcElastInterceptions{} for interceptions (\ElastCIInterceptionsLow{} to
+\ElastCIInterceptionsHigh{}), \ArcElastBlocks{} for blocks (\ElastCIBlocksLow{} to
+\ElastCIBlocksHigh{}) and \ArcElastFouls{} for fouls committed (\ElastCIFoulsLow{} to
+\ElastCIFoulsHigh{}). All four intervals exclude one, and no bootstrap resample of any of them
+reached it. Clearances are different: the estimate is \ArcElastClearances{}, the interval runs
+from \ElastCIClearancesLow{} to \ElastCIClearancesHigh{}, \ElastShareOneClearances{} percent of
+resamples land at or above one, and the bootstrap probability that the true elasticity is at
+least one is \ElastPOneClearances{}. For clearances the conventional exponent cannot be
+rejected, and the paper does not claim otherwise.
+
+That pattern fits the football. A clearance is the most purely reactive action in the set, made
+when the ball arrives rather than sought, so it is the statistic for which the exposure story
+should hold best, and it is the one where proportionality survives. A tackle is the most
+volitional, and it is furthest from proportional. The spread from \ArcElastMin{} to
+\ArcElastMax{} is itself the point: a single exponent applied to every defensive statistic is
+wrong for four of them.
+
+The reduced sample supplies the check the primary sample cannot, because it retains the
+team-level possession series needed to measure what is left after correcting. Across its
+\PadjTeamSeasons{} team-seasons, team possession ranges from \PadjPossessionMin{} to
+\PadjPossessionMax{} percent, and its fitted elasticities agree with the primary sample in
+falling well below one, at \ElasticityInterceptions{} for interceptions,
+\ElasticityTackles{} for tackles won and \ElasticityFouls{} for fouls committed.
+Table~\ref{tab:padj} shows what each choice of exponent leaves behind. The three raw
+correlations with team possession are \PadjCorrRawInterceptions{}, \PadjCorrRawTackles{} and
+\PadjCorrRawFouls{}, all negative, since a player whose team keeps the ball records fewer
+defensive actions. Applying the conventional exponent overshoots every one of them, giving
+\PadjCorrUnitInterceptions{}, \PadjCorrUnitTackles{} and \PadjCorrUnitFouls{}, reversing sign
+in all three cases and, for fouls committed, ending further from zero than where it started.
+The correction passes through the confound and out the other side. Adjusting with the measured
+elasticity instead leaves \PadjCorrAdjInterceptions{}, \PadjCorrAdjTackles{} and
+\PadjCorrAdjFouls{}, three to four times closer to zero than the conventional exponent achieves.
+
+Two qualifications belong with this. The residual-dependence check runs on one league, whose
+possession shares are relatively compressed, so the exact residuals should not be transported to
+a competition with a wider spread without refitting. Refitting the elasticities within each
+league tests transport directly, and the answer is mixed. For tackles, interceptions, fouls and
+clearances every league's interval overlaps the pooled one. Blocks do not transport: the league
+estimates run from \ElastLeagueMinBlocks{} in \ElastLeagueMinNameBlocks{} to
+\ElastLeagueMaxBlocks{} in \ElastLeagueMaxNameBlocks{}, and the intervals for both of those
+leagues miss the pooled interval entirely. Clearances are also the statistic where leagues
+disagree most, with \ElastLeaguesAboveOneClearances{} of the five league point estimates at or
+above one, which is a second reason not to claim sub-proportionality for them.
+
+The constant elasticity form is itself an assumption, and for \NElastQuadMatters{} of the five
+statistics it fails. Adding a quadratic term in log opponent possession improves the fit for
+tackles, blocks and fouls, with a coefficient whose interval excludes zero in each case, and in
+each the response flattens toward zero for the sides that see least of the ball. Fouls committed
+bend most: the implied elasticity is \ElastAtLowFouls{} at \ElastPossLow{} percent opponent
+possession and \ElastAtHighFouls{} at \ElastPossHigh{} percent. The exponents are therefore
+averages over the possession range rather than constants. Figure~\ref{fig:sielasticity}
+gathers the pooled estimates, their intervals and the league refits, and places both families
+of statistic either side of the proportional line.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{elasticity_uncertainty.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{possession_elasticities.pdf}
+  \caption{Possession elasticities. Top, the five defensive elasticities with bootstrap
+  intervals from \ElastNBootstrap{} resamples of \ArcPadjTeamSeasons{} team-seasons, against the
+  conventional value of one, with each league's own refit shown as a smaller marker. Bottom,
+  both families of statistic on the reduced sample: defensive volume responds to opponent
+  possession less than proportionately, while attacking output responds to a team's own
+  possession more than proportionately.}
+  \label{fig:sielasticity}
+\end{figure}
+
+\input{../results/tables/possession_adjustment.tex}
+
+\subsection{Why the correction is one sided}
+\label{sec:si:symmetric}
+
+Correcting only the defensive statistics invites an obvious objection. Attacking output also
+depends on possession, so the feature set is still team dependent and the correction looks like
+half a correction. The objection deserves a test rather than an assertion. The test runs on the
+reduced sample, which is the only one of the two carrying an independent expected-goals source
+with involvement measures, and its conclusion concerns the shape of the two relationships rather
+than their exact magnitudes.
+
+The two sides of the ball do not behave alike. Fitted the same way, against a team's own
+possession rather than the opponent's, the attacking elasticities are \BetaShots{} for shots,
+\BetaNPXG{} for non-penalty expected goals, \BetaGoals{} for non-penalty goals, \BetaAssists{}
+for assists, \BetaXGChain{} for xGChain and \BetaXGBuildup{} for xGBuildup. Every one except
+crossing, at \BetaCrosses{}, exceeds one, while four of the five defensive elasticities fall
+well below it and the fifth cannot be distinguished from it.
+
+That asymmetry is the whole argument. For defending, opponent possession is an exposure
+denominator in the plain sense that a tackle cannot occur while your own side holds the ball,
+and the sub-proportional response says exposure is what it measures. For attacking, an
+elasticity above one says the opposite: ten percent more of the ball buys appreciably more than
+ten percent more output. Returns to possession are increasing, which is a statement about
+football rather than about measurement, so dividing it out would remove signal along with any
+bias. The two involvement measures make the point most starkly, since both exceed two.
+
+The counterfactual was nonetheless computed. Applying the fitted exponents to the attacking
+block as well moves the correlation between club centroids and final league position from
+\SymCorrBaseline{} to \SymCorrAdjusted{}, so a symmetric correction does remove a real part of
+the team relationship rather than nothing at all. It does not remove all of it, the partition
+moves at an adjusted Rand index of \SymARI{} against the one reported here, and the silhouette
+drifts from \SymSilhouetteBase{} to \SymSilhouetteAdj{}. The choice is a judgement rather than a
+fact, and it is recorded as one: we treat possession driven productivity as something a role
+profile should reflect, and a reader who takes the opposite view has the numbers to see what
+that would cost.
+
+\section{Minutes threshold sensitivity}
+\label{sec:si:sensitivity}
+
+Both samples exclude outfield players below \MinMinutes{} minutes. That threshold balances two
+errors, since a low threshold admits players whose per-90 rates are dominated by sampling noise
+while a high threshold discards genuine squad roles such as the impact substitute.
+Table~\ref{tab:sensitivity} repeats the entire selection and stability procedure at 270,
+\MinMinutes{} and 900 minutes, treating each threshold as an independent pool in which
+imputation and standardisation are recomputed and the declared rule is reapplied from scratch.
+
+The threshold matters very little. The rule selects two clusters at every threshold, the
+silhouette moves only from \SensSilhouetteLow{} to \SensSilhouetteHigh{}, and bootstrap
+stability is between \SensARILow{} and \SensARIHigh{} throughout. The partition itself barely
+moves: measured on the players common to both pools, the adjusted Rand index against the
+partition at the threshold actually used is \SensAgreeLow{} at 270 minutes and \SensAgreeHigh{}
+at 900. Figure~\ref{fig:sisensitivity} plots the same quantities.
+
+\input{../results/tables/minutes_sensitivity.tex}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{minutes_sensitivity.pdf}
+  \caption{Eligible sample, silhouette and bootstrap stability across the candidate minutes
+  thresholds. The dashed line marks the threshold used in the main analysis.}
+  \label{fig:sisensitivity}
+\end{figure}
+
+\section{Selection criteria and embedding choices}
+\label{sec:si:selection}
+
+Table~\ref{tab:kselection} gives the silhouette coefficient, Davies-Bouldin index,
+Calinski-Harabasz index and gap statistic for every candidate number of clusters on the reduced
+sample, for the global analysis and within each position group, with the row the declared rule
+selects marked in each scope. The corresponding evidence for the primary sample is
+Figure~\ref{fig:structurenull}, which carries more information than a criteria table would,
+because the question the primary sample answers is not which candidate scores best but whether
+any of them beats what a continuum produces.
+
+Table~\ref{tab:umapgrid} reports trustworthiness for all twelve configurations of the neighbour
+count and minimum distance, on the reduced sample, which is the only one for which a manifold
+embedding is reported. Selection was by trustworthiness alone, decided before any embedding was
+inspected visually, which matters because a manifold method will produce a visually appealing
+picture at almost any setting.
+
+\input{../results/tables/k_selection.tex}
+
+\input{../results/tables/umap_grid.tex}
+
+\section{Fuller views of the main-text figures}
+\label{sec:si:profiles}
+
+Figure~\ref{fig:sigeometry} gives the three panels of Figure~\ref{fig:geometry} at full size and
+with the detail a six-panel composite cannot carry: the principal component loadings across all
+five leading components rather than the first two, the mode against position contingency
+normalised by row as well as by column, and the confusion matrices for both classifiers rather
+than only the boosted one. Figure~\ref{fig:siprofiles} gives the centroid deviation of each archetype from its position
+group mean across the entire feature set, rather than only the ten features with the largest
+separation shown in Figure~\ref{fig:modes}. Figure~\ref{fig:siradars} gives the same centroids
+as radars on fixed axes within each position group. Within a group the two profiles are mirror
+images by construction, since the features are standardised within group before clustering, so
+the useful reading is of shape rather than of extent.
+
+Figure~\ref{fig:sishap} gives the full feature attribution for the position classifier. The
+direction of each attribution adds a detail that magnitude alone hides. Ranking the correlation
+between a feature's value and the attribution it makes to a class separates a class identified
+by what its members do from one identified by what they do not, and the three classes differ on
+exactly that. \ShapPresenceDF{} of the five strongest features for defenders are positively
+signed, so defenders are recognised by the presence of what they do. Forwards and midfielders
+are recognised as much by the absence of defensive volume as by the presence of attacking
+output, with only \ShapPresenceFW{} and \ShapPresenceMF{} of their five positive respectively.
+A class defined largely by negations is a class occupying one end of a scale rather than a
+category with a signature of its own. Figure~\ref{fig:sishapclass} splits the same attribution
+by class.
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{archive_pca.pdf}
+  \caption{Principal components of the \ArcFeatures{} archive features over \ArcEligible{}
+  player-seasons, with the scree curve and the loadings of the leading components at full size. Figure~\ref{fig:sicontingency} gives the
+  contingency and Figure~\ref{fig:siconfusion} the confusion matrices.}
+  \label{fig:sigeometry}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{archive_cluster_vs_position.pdf}
+  \caption{The pooled two-mode partition against listed position, with the heat maps normalised
+  by row so that each gives the position composition of one mode. The main text reads the same
+  table by column, which is where the \ArcSplitDF{} and \ArcSplitFW{} percent figures come
+  from.}
+  \label{fig:sicontingency}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{archive_confusion.pdf}
+  \caption{Out-of-fold confusion for both position classifiers on \SupN{} player-seasons. The
+  near equality of the linear and the boosted model is itself evidence that little interaction
+  structure remains for the trees to find.}
+  \label{fig:siconfusion}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth,height=0.86\textheight,keepaspectratio]{archive_archetype_profiles.pdf}
+  \caption{Centroid deviation of each archetype from its position group mean across the full
+  \ArcFeatures{} feature set, primary sample. Within a group the two profiles are mirror images
+  by construction.}
+  \label{fig:siprofiles}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{archive_radar_panel_DF.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{archive_radar_panel_MF.pdf}
+  \caption{Archetype radars on fixed axes, primary sample. Top, defenders. Bottom,
+  midfielders. Forwards are in Figure~\ref{fig:siradarsfw}.}
+  \label{fig:siradars}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{archive_radar_panel_FW.pdf}
+  \caption{Archetype radars for forwards on the primary sample, on the same fixed axes as
+  Figure~\ref{fig:siradars}.}
+  \label{fig:siradarsfw}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{archive_shap_beeswarm.pdf}
+  \caption{SHAP values for the gradient boosted position classifier on the primary sample,
+  showing for each player the contribution of each feature toward the position group the player
+  is actually listed at. Territorial features dominate technical ones throughout.}
+  \label{fig:sishap}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{archive_shap_by_class.pdf}
+  \caption{Mean absolute attribution per feature, split by position group, primary sample.
+  Touches in the defensive third dominate for all three, and the profile of what matters differs
+  sharply between them: defenders are separated largely by defensive volume and crossing,
+  forwards by where they receive the ball. The panel shows magnitude only, and the direction
+  each feature pushes is reported in the text.}
+  \label{fig:sishapclass}
+\end{figure}
+
+\section{Players the description fits worst}
+\label{sec:si:outliers}
+
+A two-mode description of a continuum will fit some players badly, and which players those are
+is a test of whether the description is measuring football or noise. Isolation forests and
+Mahalanobis distance under a shrinkage covariance were fitted separately within each position
+group, and the two detectors agree on \ArcOutAgreement{} percent of the players they flag.
+
+The \ArcOutN{} strongest outliers are \ArcOutDistinct{} distinct players, headed by
+\ArcOutTop{}. Two features of the list stand out. \ArcOutCompound{} of the \ArcOutN{} carry a
+compound listed position such as midfielder and forward together, against a much smaller share
+in the pool, so the players the partition handles worst are the ones the listing system also
+declines to place. The detector is also not simply finding stars: it finds attacking full backs
+whose output profile resembles a winger's, which is the same boundary the defender split
+describes and a genuine tactical category rather than an artefact.
+
+One caveat belongs with the list rather than after it. \ArcOutShortMinutes{} of the \ArcOutN{}
+played under nine hundred minutes in the season concerned, so their per-90 rates carry more
+sampling noise than a full season's would, and extreme rates are easier to reach on a small
+denominator. The list should be read as evidence about the kind of player the two-mode
+description struggles with, not as a ranking in which the fifteenth entry means what the first
+does. Figure~\ref{fig:sioutliers} shows both detectors against each other.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{archive_outliers.pdf}
+  \caption{Isolation forest score against Mahalanobis distance within position group, primary
+  sample. The two detectors are computed independently and rank the same players highly, and the
+  flagged points are dominated by players carrying compound listed positions.}
+  \label{fig:sioutliers}
+\end{figure}
+
+\section{Statistics that change meaning by position}
+\label{sec:si:divergence}
+
+Correlations were computed within each position group and compared across groups, and the ten
+pairs whose correlation varies most between groups are reported in Table~\ref{tab:divergence}
+and shown in Figure~\ref{fig:sidivergence}. The largest spread between position groups reaches
+\CorrSpreadMax{}, against a median spread across all pairs of \CorrSpreadMedian{}.
+
+Every one of the ten most divergent pairs changes sign between position groups. The relationship
+between shots on target and crosses is positive for midfielders and negative for forwards, which
+is to say that a midfielder who crosses often is generally a more active attacker while a
+forward who crosses often is generally not the player getting on the end of chances. The
+relationship between key passes and tackles won is positive for defenders and negative for
+midfielders, distinguishing the full back whose defensive work and creative output rise together
+from the midfield division of labour between a destroyer and a creator.
+
+The practical implication is that a single pooled correlation matrix, of the kind that appears
+routinely in public football analysis, averages over these sign reversals and reports a number
+that describes no actual population of players. It also supplies the justification for the
+position stratified analysis used throughout this paper, since a global embedding fitted across
+all outfield players is fitted across relationships that point in opposite directions. The full
+correlation matrix the comparison is drawn from is Figure~\ref{fig:siheatmap}.
+
+\input{../results/tables/correlation_divergence.tex}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{corr_divergence_top10.pdf}
+  \caption{The ten feature pairs whose within-group correlation differs most across position
+  groups, in the earlier of the two reduced-sample seasons. Every pair changes sign between at
+  least two groups.}
+  \label{fig:sidivergence}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{corr_heatmap_all.pdf}
+  \caption{The full hierarchically clustered Spearman correlation matrix over the reduced
+  outfield feature set, from which the comparison in Figure~\ref{fig:sidivergence} is drawn.}
+  \label{fig:siheatmap}
+\end{figure}
+
+\section{Analyses on the reduced sample}
+\label{sec:si:reduced}
+
+The analyses collected here run on the reduced sample described in
+Section~\ref{sec:methods:data}: the seasons ending 2025 and 2026, pulled live after the
+withdrawal, with roughly half the features of the primary sample.
+
+One point about scope needs stating plainly, because it applies to every figure in this section.
+Where a figure here shows Premier League players only, that is not a sampling choice made for
+convenience. It is the coverage of the live post-withdrawal pull that this robustness case is
+built on, and the reduced sample exists to test whether the main result survives a much poorer
+description of the same game rather than to characterise European football. The paper's claims
+rest on the primary sample, which covers all \ArcNLeagues{} leagues and all \ArcNSeasons{}
+seasons, and every one of them is refitted independently in each league and each season in
+Section~\ref{sec:results:replication}. Section~\ref{sec:si:leagues} below additionally repeats
+the reduced-sample pipeline across all five leagues, so the reduced sample's own generality is
+tested rather than assumed. The within-season drift analysis of Section~\ref{sec:si:drift} is
+narrower still, covering one club, and the reason is stated there.
+
+\subsection{Cluster selection and stability}
+\label{sec:si:clustering}
+
+Applying the declared rule to the four selection criteria gives $k=\KGlobal{}$ globally and
+within each position group, matching the primary sample. Across \BootstrapN{} bootstrap
+resamples the mean adjusted Rand index against the reference partition is \BootARIGlobal{}
+globally and \BootARIMF{} for midfielders, both describing a partition that reappears almost
+unchanged under resampling. For defenders the mean falls to \BootARIDF{} with a standard
+deviation of \BootARISDDF{}, and for forwards to \BootARIFW{} with a standard deviation of
+\BootARISDFW{}. The minimum adjusted Rand index observed across forward resamples is
+\BootARIMinFW{}, which is to say that in the least favourable resample the partition recovered
+is no better than chance. Forwards number only \NFWPrimary{} players above the minutes threshold
+here, so this is partly a sample size problem, and it is a real limit on what the reduced sample
+can claim. The global partition scores an adjusted Rand index of \ARIvsPosition{} against the
+position group with a cluster purity of \PurityVsPosition{}, so the clusters are not a
+rediscovery of the positions the source already records. Figure~\ref{fig:sikselection} gives
+the criterion curves, Figure~\ref{fig:siconsensus} the co-assignment structure and
+Figure~\ref{fig:siclustervalidation} the correspondence with position.
+
+\subsection{Descriptive structure and embeddings}
+\label{sec:si:descriptive}
+
+After filtering, \NEligiblePrimary{} outfield players are eligible in the earlier of the two
+reduced-sample seasons, comprising \NDFPrimary{} defenders, \NMFPrimary{} midfielders and
+\NFWPrimary{} forwards. Summary statistics by position group appear in Table~\ref{tab:summary}.
+The feature set is strongly non-normal: all \NFeaturesRejectNormal{} of the \NFeatures{}
+features reject the Shapiro-Wilk null at the five percent level, mean absolute skewness is
+\SkewMeanAbs{}, and Mardia's test rejects multivariate normality decisively on both components.
+Principal component analysis requires no distributional assumption to be computed, so this does
+not invalidate the decomposition, but the components should be read as directions of variance
+rather than as latent factors, and it justifies the use of Spearman rather than Pearson
+correlation throughout.
+
+Principal component analysis, UMAP and t-SNE were fitted to the same standardised features. The
+selected UMAP configuration used \UMAPBestNeighbors{} neighbours at a minimum distance of
+\UMAPBestMinDist{}. Trustworthiness is \TrustPCA{} for the linear projection, \TrustUMAP{} for
+UMAP and \TrustTSNE{} for t-SNE, while continuity is close to identical across the three.
+Nearest neighbour position purity at ten neighbours is \PurityPCA{} for the linear projection
+and \PurityUMAP{} for UMAP, so roughly two thirds to three quarters of a player's closest
+statistical neighbours share his listed position group. That figure is informative in both
+directions: it confirms the surviving features carry real positional signal, and it establishes
+that a substantial minority of every player's nearest neighbours are listed at a different
+position, which is the space in which data-driven roles can differ from listed ones. All three
+embeddings display a continuous gradient from defenders through midfielders to forwards rather
+than separated groups, and that gradient is the honest description of the geometry.
+Figure~\ref{fig:sidescriptive} shows the distributions and the three embeddings and
+Figure~\ref{fig:siredpca} the principal component structure, while
+Figures~\ref{fig:siredarchetypes} to \ref{fig:siredradarsfw} give the archetypes this sample
+returns.
+
+\input{../results/tables/summary_by_position.tex}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{distributions_by_position.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{embedding_comparison.pdf}
+  \caption{Reduced sample. Top, distributions of four representative per-90 statistics across
+  position groups, where separation is clear for shot volume and defensive actions and much
+  weaker for creation. Bottom, two-dimensional embeddings of the same feature set coloured by
+  listed position group; the defender to forward gradient is continuous in all three, and
+  t-SNE is shown for visual contrast only and is never used for clustering.}
+  \label{fig:sidescriptive}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{archetype_profiles.pdf}
+  \caption{Centroid deviation of each archetype from its position group mean, reduced sample.}
+  \label{fig:siredarchetypes}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{radar_panel_DF.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{radar_panel_MF.pdf}
+  \caption{Archetype radars on the reduced sample. Top, defenders. Bottom, midfielders. The two
+  sets of radars in this document are drawn on different feature counts, so their axes are not
+  directly comparable and the useful comparison is of shape rather than extent.}
+  \label{fig:siredradars}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{radar_panel_FW.pdf}
+  \caption{Archetype radars for forwards on the reduced sample, on the same axes as
+  Figure~\ref{fig:siredradars}.}
+  \label{fig:siredradarsfw}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{pca_scree.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{pca_biplot.pdf}
+  \caption{Principal component structure of the reduced outfield feature set.
+  \PCNinetyComponents{} components are required to reach ninety percent of the variance, so the
+  feature set is not close to low rank, and the first three components together account for
+  \PCCumThree{}. Top, scree and cumulative variance. Bottom, the loadings biplot.}
+  \label{fig:siredpca}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{k_selection_curves.pdf}
+  \caption{Cluster selection criteria across candidate cluster counts, reduced sample. The
+  consensus rule was fixed before fitting and selects the same value in every scope.}
+  \label{fig:sikselection}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{consensus_matrix.pdf}
+  \caption{Bootstrap co-assignment structure on the reduced sample, one panel per scope, with
+  players ordered by cluster.}
+  \label{fig:siconsensus}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{cluster_vs_position.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{cluster_scatter_pca.pdf}
+  \caption{Reduced sample. Top, the selected partition against listed positions. Bottom, the
+  same partition shown in the principal component space.}
+  \label{fig:siclustervalidation}
+\end{figure}
+
+\subsection{The same pipeline across the big five}
+\label{sec:si:leagues}
+
+Repeating the reduced-sample pipeline unchanged on Spain, Germany, Italy and France for the
+earlier of the two seasons returns the same answer everywhere. The declared rule selects
+\LgKEng{} clusters in all \NLeagues{} leagues. The silhouette at that choice spans \LgSilMin{}
+to \LgSilMax{} across the five, bootstrap stability spans \LgBootARIMin{} to \LgBootARIMax{},
+and agreement with listed position groups spans \LgARIPosMin{} to \LgARIPosMax{}. Each of
+those three ranges is narrow, and the third is uniformly weak: in no league does the partition
+recover the positions the source already records. The elasticity result generalises as well,
+since all \LgElastCount{} defensive elasticities fitted independently inside each league lie
+between \LgElastMin{} and \LgElastMax{}, every one below the value of one that the conventional
+possession adjustment assumes. Figure~\ref{fig:sileagues} shows the comparison.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{league_comparison.pdf}
+  \caption{The reduced-sample pipeline applied unchanged to each of the big five leagues, with
+  England, the competition the reduced sample is otherwise drawn from, in the accent colour. The
+  silhouette at the selected number of clusters, bootstrap stability and agreement with listed positions are all close across
+  competitions, and the declared rule selects the same number of clusters in every one.}
+  \label{fig:sileagues}
+\end{figure}
+
+\subsection{What a supervised model sees}
+\label{sec:si:supervisedreduced}
+
+Predicting the listed position group from the same \NFeatures{} features, gradient boosting
+reaches an accuracy of \LGBMAccuracy{} and a macro F1 of \LGBMMacroF{}, and logistic regression
+reaches \LogitAccuracy{} and \LogitMacroF{}, against a majority class baseline of
+\BaselineAccuracy{}. The features clearly do carry position, so the weak agreement between
+clusters and positions reflects the clustering finding a different and equally real axis rather
+than an empty feature set.
+
+The attribution carries a finding that follows directly from the withdrawal. With possession and
+passing volume gone, positions are identified largely by absence: defenders by low shooting and
+low key passes, forwards by low interceptions, and midfielders by an intermediate profile on
+both. A classifier of this kind trained before January 2026 would have identified a defender by
+what he did with the ball, and it now identifies him by what he does not do. Players the
+classifier places in the wrong group overlap with the players the clustering flagged as hybrids,
+at \OverlapLGBM{} for gradient boosting against an enrichment of \EnrichmentLGBM{} over
+independence, which is corroboration rather than a strong result because the hybrid flag is
+itself broad.
+
+The finishing above role regression illustrates a hazard worth recording. Predicting non-penalty
+expected goals per ninety from non-shooting behaviour returns a cross validated coefficient of
+determination of \FinishingRSq{}. An earlier specification that also included xGChain returned
+\FinishingRSqLeaky{}, which looks far better and is in fact circular, since Understat credits
+xGChain for possessions the player finished himself, so the difference between xGChain and
+xGBuildup contains the target and correlates with it at \FinishingLeakCorr{}. Even at the honest
+value roughly half the variance is unexplained, so the residual leaderboard of
+Figure~\ref{fig:sifinishing} is an illustration rather than a measurement of finishing ability.
+Figure~\ref{fig:sisupervised} shows the confusion and the per-class importance, and
+Figure~\ref{fig:sishapreduced} the full attribution.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{confusion_matrix.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{shap_by_class.pdf}
+  \caption{Supervised validation of the surviving feature set, reduced sample. Top, confusion
+  between listed positions. Bottom, mean feature importance per position.}
+  \label{fig:sisupervised}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{shap_beeswarm.pdf}
+  \caption{Global SHAP values for the gradient boosted position classifier on the reduced
+  sample. Shooting volume and interceptions carry most of the signal, so a player's position is
+  identified largely by the actions he does not perform.}
+  \label{fig:sishapreduced}
+\end{figure}
+
+\subsection{The third dimension and team signatures}
+\label{sec:si:threed}
+
+Two components are a convenient way to draw the space and a poor way to describe it. On the
+reduced sample the first two carry shooting volume and wide creation and together account for
+\ThreeDVarTwo{} of the variance, while the third carries duels and discipline, loading on fouls
+committed, cards and tackles won, and is orthogonal to both of the others, so a planar
+projection does not compress it, it deletes it. Retaining it raises captured variance to
+\ThreeDVarThree{}. Adding the dimension does not change the headline geometry, since the
+defender to forward gradient remains continuous rather than resolving into islands.
+
+The third dimension does change the club picture. Club centroids correlate with final league
+position at \ThreeDTeamPCOne{} on the first component and \ThreeDTeamPCTwo{} on the second, but
+only \ThreeDTeamPCThree{} on the third. Shooting volume and wide creation both track league
+position; the physical dimension of duels, fouls and cards essentially does not. A club does not
+finish higher by fouling more or less, which needs stating because the duelling axis is a full
+component of player variation carrying almost no information about team success. The
+three-dimensional view also settles a structural question by measurement rather than assertion:
+drawing each archetype centroid as a direction from the origin, the two centroids within a
+position group have a cosine of \CosineDF{} for defenders, \CosineMF{} for midfielders and
+\CosineFW{} for forwards. They are exactly anti-parallel, which is forced by standardising
+within group before a two-way split, so six archetypes occupy three lines through the origin.
+
+Aggregating players into clubs produces the one result in the reduced sample that is both strong
+and stable. The minutes-weighted position of a club's outfield players on the first principal
+component correlates with final league position at a Spearman coefficient of \TeamPCOneRho{} in
+the earlier season and \TeamPCOneRhoRepl{} in the replication season, close to an exact
+reproduction. Since the first component is essentially attacking involvement, this says that
+clubs whose players collectively shoot and create more finish higher, which is unsurprising in
+itself; the near identical coefficient across two independent seasons shows the team level
+summary is measuring something stable even where the player level partitions are not.
+Hierarchical clustering on archetype composition groups the \NTeams{} clubs into
+\NStyleGroups{} style families. Figures~\ref{fig:sithreed} and \ref{fig:siaxes} show the
+three-dimensional views, Figure~\ref{fig:siteams} the club signatures, and
+Figure~\ref{fig:siteampanels} each club's players against the rest of the league in the shared
+embedding, on axes shared across all twenty panels.
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{pca3d_positions.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{pca3d_clusters.pdf}
+  \caption{The reduced-sample outfield space in three principal components, each drawn from two
+  viewpoints so that structure can be told apart from the accident of a single projection. Top,
+  players by listed position group, with grey points on the floor supplying a depth cue. Bottom,
+  the selected global partition with centroids marked by crosses.}
+  \label{fig:sithreed}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{pca3d_archetype_axes.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{pca3d_teams.pdf}
+  \caption{Top, archetype centroid directions drawn as unit vectors, so the figure shows
+  orientation rather than magnitude; each position group forms a single line through the origin,
+  so six archetypes describe three axes. Bottom, clubs as minutes-weighted centroids in three
+  components, shaded by final league position with darker shading for a higher finish.}
+  \label{fig:siaxes}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{team_dendrogram.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{team_composition.pdf}
+  \caption{Club signatures on the reduced sample. Top, style families from hierarchical
+  clustering on archetype composition. Bottom, archetype composition by club, ordered by final
+  league position.}
+  \label{fig:siteams}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{team_panels.pdf}
+  \caption{Each club's outfield players highlighted in the shared embedding, with the rest of
+  the league in grey. Axes are shared across all twenty panels, so clubs can be compared
+  directly, and they differ visibly in how far their defenders sit toward the midfield region.}
+  \label{fig:siteampanels}
+\end{figure}
+
+\subsection{Similarity, replication and sampling noise}
+\label{sec:si:novel}
+
+Nearest neighbour search within position group recovers football sense for players whose roles
+are defined by the surviving statistics, and fails informatively for those whose roles are not.
+Full backs return full backs and penalty box forwards return penalty box forwards. The
+instructive failures are the midfielders: a holding midfielder's nearest neighbours are creative
+attacking midfielders, because with no tackles by pitch third, no blocks, no clearances, no
+pressures and no passing volume, the only things left that distinguish him are his set piece
+deliveries and key passes. The metric finds the players who share that signature and misses the
+entire defensive half of his job, which Figure~\ref{fig:sinovel} makes visible.
+
+\NCommonPlayers{} players are eligible in both reduced-sample seasons. The declared rule
+independently selects the same number of clusters in every scope in both seasons, so the
+structure replicates, while membership replicates only partly: the adjusted Rand index between
+seasons is \CrossSeasonARIGlobal{} globally, falling to \CrossSeasonARIDF{} for defenders,
+\CrossSeasonARIMF{} for midfielders and \CrossSeasonARIFW{} for forwards, with the transitions
+in Figure~\ref{fig:sitransitions}.
+
+Empirical Bayes shrinkage toward the position group mean, with the degree of shrinkage set by
+minutes played, gives the sharpest test of whether the partitions describe playing roles or
+sampling noise. The global partition survives: only \ShrinkChangedGlobal{} of
+\NEligiblePrimary{} players change cluster, the adjusted Rand index between the original and
+shrunken partitions is \ShrinkARIGlobal{}, and the rate at which players move falls
+monotonically with minutes played, exactly as the noise account predicts. The within group
+partitions fare worse and not equally. For defenders the index falls to \ShrinkARIDF{}, a
+partition largely dissolved by removing sampling noise, while midfielders retain
+\ShrinkARIMF{} and forwards \ShrinkARIFW{}. Figure~\ref{fig:sishrinkageminutes} shows the
+change rate against minutes and Figure~\ref{fig:sishrinkage} the effect on every feature.
+
+Read alongside the bootstrap and replication results, the three tests do not deliver a single
+uniform verdict on the reduced sample, and reporting them as though they did would overstate the
+case. Defenders fail all three there, forwards fail two of the three, and midfielders pass all
+three. The conclusion that survives every test on the reduced sample is narrower than a single
+summary sentence would suggest: the global division between attacking and defensive involvement
+is a real property of players, the midfield split is trustworthy, and the defender split should
+not be used to characterise an individual on that feature set. The primary sample, with twice
+the features and six times the players, supports all three splits, which is the clearest single
+illustration of what the richer description buys.
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{similarity_heatmap.pdf}
+  \caption{Nearest neighbour similarity structure within position group, reduced sample.}
+  \label{fig:sinovel}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{cross_season_transitions.pdf}
+  \caption{Between-season cluster transitions on the reduced sample, for the
+  \NCommonPlayers{} players eligible in both seasons.}
+  \label{fig:sitransitions}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{shrinkage_by_minutes.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{outliers_scatter.pdf}
+  \caption{Reduced sample. Top, reliability and cluster change rate against minutes played,
+  which falls monotonically as the noise account predicts. Bottom, the two outlier detectors
+  against each other within position group.}
+  \label{fig:sishrinkageminutes}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{shrinkage_effect.pdf}
+  \caption{The effect of empirical Bayes shrinkage on every feature of the reduced sample, with
+  the shrunken value against the observed one, one panel per feature.}
+  \label{fig:sishrinkage}
+\end{figure}
+
+\subsection{Role drift within a season}
+\label{sec:si:drift}
+
+Every result elsewhere treats a season as one observation per player, which assumes a player's
+profile is homogeneous across it. Match reports make that assumption testable, and because the
+withdrawal removed the affected columns from the match schema rather than emptying them, what
+remains there is fully populated. A full season is 380 reports at seven seconds each, so the
+scrape is restricted to one club, \DriftTeam{}, chosen because its eligible players span all six
+archetypes and therefore give drift the widest range to move across. \DriftMatches{} matches
+were retrieved and \DriftPlayers{} players accumulated at least one complete rolling window of
+\DriftWindow{} matches. This is an illustration of a limitation rather than an estimate of its
+size, and it should be read as one.
+
+The match feature set has \DriftFeatures{} of the eighteen features used elsewhere, since the
+Understat expected goals block has no match equivalent. Rather than assume the coarser space is
+a fair stand-in, we refit the season clustering using only those features and compare it to the
+partition reported throughout; the two agree at an adjusted Rand index of \DriftReducedARI{}, so
+drift measured within the reduced space is interpretable.
+
+Most players do not drift. \DriftSwitchers{} of \DriftPlayers{}, or \DriftSwitchShare{} percent,
+change cluster at least once during the season, and the remainder occupy a single cluster
+throughout. The players who stay put are the ones whose roles are least ambiguous, holding
+midfielders on one side and the recognised attackers on the other, while the movers are
+predominantly full backs and wide players whose attacking involvement varies with the fixture.
+For four fifths of players a season aggregate describes a single role and the homogeneity
+assumption holds; for the remaining fifth it averages over two.
+Figure~\ref{fig:sidrift} shows the trajectories.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{role_drift.pdf}
+  \caption{Rolling cluster assignment across the season for the \DriftTeam{} players who change
+  cluster at least once, on a \DriftWindow{} match window. Players not shown occupied one cluster
+  for the whole season.}
+  \label{fig:sidrift}
+\end{figure}
+
+\subsection{Age and archetype}
+\label{sec:si:age}
+
+The two archetypes within a position group differ mainly in attacking involvement, and
+involvement is plausibly something a career passes through rather than a fixed trait, so the
+association with age is a natural test. It is tested within position group, because archetypes
+are nested inside positions and a pooled table would largely recover the fact that forwards and
+defenders have different age profiles.
+
+Only defenders show a relationship. The crossing and chance creating defenders average
+\AgeGapDF{} years younger than the low involvement group, a difference the rank test places at
+\AgeKruskalPDF{}, and the share of the crossing archetype falls monotonically from the youngest
+band to the oldest. Midfielders show nothing at all, with a gap of \AgeGapMF{} years at
+\AgeKruskalPMF{}, and the global partition is unrelated to age at \AgeGlobalP{}. Forwards point
+the same way as defenders but cannot support the claim, since six of the ten cells in their
+table have expected counts below five.
+
+The defender result also illustrates a point about test choice that is easy to get wrong. A
+chi-square on the banded table returns \AgeChiPDF{} and would ordinarily be read as no
+association. That test spends its degrees of freedom on any departure from independence, while
+the pattern here is monotonic, and a rank correlation against age recovers it at
+\AgeTrendRhoDF{} with a p-value of \AgeTrendPDF{}. The banded test is not wrong, it is
+underpowered against the alternative that actually holds, and reporting only the chi-square
+would have converted a real finding into a null one. Figure~\ref{fig:siage} shows the shares.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{age_archetype.pdf}
+  \caption{Share of each age band taken by each archetype within position group, reduced sample.
+  The defender panel falls monotonically with age, which a chi-square on bands does not detect
+  and a rank correlation does.}
+  \label{fig:siage}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{finishing_above_role.pdf}
+  \caption{Residuals from the role model on the reduced sample, which should be read as an
+  illustration rather than as a measurement of finishing ability, for the reasons given in the
+  text.}
+  \label{fig:sifinishing}
+\end{figure}
+
+\subsection{Goalkeepers on the reduced sample}
+\label{sec:si:keepersreduced}
+
+Post-shot expected goals, sweeper actions, distribution and cross handling are all absent from
+the reduced sample, so only shot stopping and workload survive. That version builds two
+composites instead of five and substitutes the residual from a regression of saves on shots on
+target faced for post-shot expected goals. The substitute adjusts for the volume of work a
+goalkeeper receives but not for its difficulty, and it is reported as the weaker instrument it
+is. For the primary sample, Figure~\ref{fig:sikeepersfull} gives the shot stopping ranking,
+Figure~\ref{fig:sikeepercorr} the correlation structure of the goalkeeper block and
+Figure~\ref{fig:sikeepercomposites} the composites that block supports. For the reduced sample,
+Figure~\ref{fig:sikeepersreduced} gives the clusters and the two surviving composites,
+Figures~\ref{fig:sikeeperstopping} and \ref{fig:sikeepersextra} the shot stopping views that
+remain, and Figure~\ref{fig:sikeeperdist} the correlation structure and composite
+distributions.
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{archive_keeper_shot_stopping.pdf}
+  \caption{Saves above expectation on the primary sample, as post-shot expected goals minus
+  goals allowed, which conditions on the difficulty of the shots faced rather than only their
+  volume. \textbf{a}, the distribution over keeper-seasons. \textbf{b}, the best and worst
+  keeper-seasons in the sample.}
+  \label{fig:sikeepersfull}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{archive_keeper_corr.pdf}
+  \caption{Correlation structure of the \KeeperFeatureCountArchive{} goalkeeper features on the
+  primary sample, which is what allows the composite axes the reduced sample cannot build.}
+  \label{fig:sikeepercorr}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{archive_keeper_composites.pdf}
+  \caption{Distribution of the goalkeeper composite axes on the primary sample.}
+  \label{fig:sikeepercomposites}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{keeper_clusters_pca.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{keeper_composites.pdf}
+  \caption{Goalkeepers on the reduced sample. Top, clusters in principal component space. Bottom,
+  the two surviving composite axes.}
+  \label{fig:sikeepersreduced}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{keeper_saves_vs_sota.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{keeper_savepct_vs_workload.pdf}
+  \caption{Shot stopping on the reduced sample. Top, saves against shots on target faced.
+  Bottom, save percentage against workload. With expected goals on target withdrawn these are
+  the only shot stopping views the reduced sample supports, and neither separates difficulty
+  from quantity.}
+  \label{fig:sikeeperstopping}
+\end{figure}
+
+\begin{figure}[!p]
+  \centering
+  \includegraphics[width=\textwidth]{keeper_shot_stopping_ranking.pdf}
+  \caption{The shot stopping ranking that the two surviving reduced-sample composites support.}
+  \label{fig:sikeepersextra}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{keeper_corr_heatmap.pdf}\par\bigskip
+  \includegraphics[width=\textwidth]{keeper_composite_distributions.pdf}
+  \caption{Reduced-sample goalkeeper features. Top, the correlation structure of what survived
+  the withdrawal, which is what constrains the number of composites that can be built. Bottom,
+  the distribution of the two composites.}
+  \label{fig:sikeeperdist}
+\end{figure}
+
+\section{Cluster membership}
+\label{sec:si:membership}
+
+Every player's archetype assignment is published as CSV in the accompanying repository rather
+than reproduced here, for both samples. The file \texttt{results/membership\_primary.csv}
+carries the \ArcEligible{} eligible player-seasons of the primary sample with club, league,
+season, listed position, minutes and assigned archetype, and
+\texttt{results/membership\_reduced.csv} carries the reduced sample with the same fields plus
+each player's distance from his cluster centroid. Both are regenerated by the pipeline, so they
+cannot drift from the numbers reported above.

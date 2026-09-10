@@ -71,6 +71,14 @@ seasons. This trap does not apply to the archive, which is complete.
 - **Respect FBref.** All access goes through `soccerdata`, which caches to disk and rate-limits at
   7 s/request. Never write a raw-request loop against fbref.com. Raw HTML is cached before any
   transformation so the scrape never runs twice.
+- **Figure conventions.** Every figure is authored at exactly 6.5 inches wide, the text block
+  width, and included at `\textwidth`, so type size is identical from figure to figure. No
+  figure carries a title: the caption is the title. Panels of a main-text composite carry a
+  bold letter drawn by `plotting.panel_label` and a short unbolded header, and the caption
+  spells out what each letter shows; supplementary figures use the caption alone. No figure is
+  ever included at a width that scales it, since a scaled figure arrives with smaller labels
+  than its neighbour: a float holds one tall image or two short ones. The main text holds six composite figures and everything else
+  is Supplementary Information. Surfaces are pure white, including 3D panes.
 - **Paper writing style.** Plain, direct academic prose. No em dashes or en dashes anywhere in the
   paper; use commas, colons or separate sentences. No sentences starting with "And". No bullet
   points in the paper body. Sentences may run long. Banned filler: "delve", "leverage",
@@ -100,6 +108,7 @@ src/supervised.py    position prediction, feature importance, SHAP
 src/keepers.py       goalkeeper-only pipeline
 src/teams.py         team stylistic signatures, 20-panel small multiples
 src/novel.py         similarity search, cross-season validation, EB shrinkage
+src/paper_figures.py composite main-text figures assembled from the metrics files
 src/tables.py        writes LaTeX tables and macros from results/
 src/plotting.py      shared matplotlib style, palettes, export helpers
 data/raw/            untouched pulls, one parquet per stat table per season + manifest.json
@@ -111,6 +120,8 @@ results/tables/      .tex table fragments
 results/macros.tex   \newcommand for every number cited in the paper
 figures/             pdf + png, vector where possible
 paper/               main.tex, sections/, references.bib, figures -> ../figures
+                     sections: abstract, introduction, methods, results, discussion,
+                     backmatter, supplementary
 tests/               preprocess, features, and figure/macro existence checks
 ```
 
@@ -182,6 +193,11 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
 - [x] Validate against real results: composition predicts points beyond possession out of sample; archetypes add nothing beyond the two modes; figures enlarged, every figure cited, TOC, microtype
 - [x] Answer the methods reviewer: related work section, the calibration stated formally, a leave-one-club-out holdout, the nesting of player-seasons acknowledged, possession adjustment attributed to its source
 - [x] Literature and polish pass: every reference verified against its publisher, the closest prior work (Akhanli and Hennig) and the taxonomy genre cited concretely, data and software sources cited, figures on a pure white surface
+- [x] Co-author revision: cut the main text roughly in half, folded related work into the
+      introduction and data into the methods, merged discussion with conclusion, moved the
+      table of contents and everything after the references into Supplementary Information,
+      switched to numeric citations grouped at sentence end, and reduced the main text to six
+      composite figures with lettered panels
 
 ## Verification record
 

@@ -8,41 +8,41 @@
       "DF": {
         "n_features": 18,
         "explained_variance_ratio": [
-          0.24429244409032547,
-          0.1811724276991583,
-          0.1078387448153802,
-          0.09392464656420516,
-          0.07426742725526168,
-          0.050045837730317046,
-          0.04884894201789393,
-          0.04464026148598113,
-          0.03898571745844545,
-          0.02901083869293038,
-          0.024854675549562354,
-          0.02046889504992835,
-          0.014964762727672208,
-          0.01032922941958557,
-          0.007387715015195372,
-          0.0043935190929069255,
-          0.0035863066971281114,
-          0.0009876086381223547
+          0.24429244409032558,
+          0.18117242769915828,
+          0.10783874481538018,
+          0.09392464656420514,
+          0.07426742725526173,
+          0.05004583773031704,
+          0.04884894201789386,
+          0.044640261485981145,
+          0.038985717458445576,
+          0.029010838692930398,
+          0.02485467554956236,
+          0.020468895049928364,
+          0.014964762727672193,
+          0.010329229419585568,
+          0.007387715015195371,
+          0.004393519092906916,
+          0.003586306697128113,
+          0.000987608638122356
         ],
         "cumulative_explained_variance": [
-          0.24429244409032547,
-          0.4254648717894838,
-          0.5333036166048639,
-          0.6272282631690691,
-          0.7014956904243308,
-          0.7515415281546478,
+          0.24429244409032558,
+          0.4254648717894839,
+          0.533303616604864,
+          0.6272282631690692,
+          0.7014956904243309,
+          0.7515415281546479,
           0.8003904701725417,
           0.8450307316585228,
-          0.8840164491169683,
-          0.9130272878098987,
-          0.9378819633594611,
-          0.9583508584093894,
-          0.9733156211370616,
-          0.9836448505566472,
-          0.9910325655718426,
+          0.8840164491169684,
+          0.9130272878098988,
+          0.9378819633594612,
+          0.9583508584093895,
+          0.9733156211370617,
+          0.9836448505566473,
+          0.9910325655718427,
           0.9954260846647496,
           0.9990123913618777,
           1.0
@@ -51,43 +51,43 @@
         "variance_target": 0.9,
         "components": {
           "PC1": {
-            "explained_variance_ratio": 0.24429244409032547,
-            "cumulative": 0.24429244409032547,
+            "explained_variance_ratio": 0.24429244409032558,
+            "cumulative": 0.24429244409032558,
             "loadings": {
-              "np_xg_p90": 0.13444721695590567,
-              "xa_p90": 0.393736879791806,
-              "key_passes_p90": 0.4020743562045707,
-              "xg_chain_p90": 0.2830708692273433,
-              "xg_buildup_p90": 0.18687496072984625,
-              "shots_p90": 0.29708005829311007,
-              "shots_on_target_p90": 0.1810765832084978,
-              "goals_non_penalty_p90": 0.08210525200113584,
-              "assists_p90": 0.37096238617926486,
+              "np_xg_p90": 0.1344472169559059,
+              "xa_p90": 0.39373687979180627,
+              "key_passes_p90": 0.40207435620457094,
+              "xg_chain_p90": 0.2830708692273437,
+              "xg_buildup_p90": 0.18687496072984655,
+              "shots_p90": 0.29708005829311046,
+              "shots_on_target_p90": 0.1810765832084982,
+              "goals_non_penalty_p90": 0.08210525200113614,
+              "assists_p90": 0.370962386179265,
               "crosses_p90": 0.3357851686166319,
-              "interceptions_padj_p90": 0.1246999284229128,
-              "tackles_won_padj_p90": 0.2548375295784603,
-              "fouls_committed_padj_p90": 0.13630365931998073,
-              "fouls_drawn_p90": 0.15761175548281842,
-              "offsides_p90": 0.20545828467080532,
-              "cards_yellow_p90": 0.031231271134475946,
-              "shot_accuracy_pct": -0.05998710190197106,
-              "goals_per_shot": -0.036460698728148874
+              "interceptions_padj_p90": 0.1246999284229129,
+              "tackles_won_padj_p90": 0.25483752957846034,
+              "fouls_committed_padj_p90": 0.1363036593199809,
+              "fouls_drawn_p90": 0.15761175548281847,
+              "offsides_p90": 0.2054582846708055,
+              "cards_yellow_p90": 0.03123127113447604,
+              "shot_accuracy_pct": -0.05998710190197096,
+              "goals_per_shot": -0.03646069872814877
             },
             "top_positive": [
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": 0.4020743562045707
+                "loading": 0.40207435620457094
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": 0.393736879791806
+                "loading": 0.39373687979180627
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.37096238617926486
+                "loading": 0.370962386179265
               },
               {
                 "feature": "crosses_p90",
@@ -97,233 +97,233 @@
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": 0.29708005829311007
+                "loading": 0.29708005829311046
               }
             ],
             "top_negative": [
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.05998710190197106
+                "loading": -0.05998710190197096
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.036460698728148874
+                "loading": -0.03646069872814877
               }
             ]
           },
           "PC2": {
-            "explained_variance_ratio": 0.1811724276991583,
-            "cumulative": 0.4254648717894838,
+            "explained_variance_ratio": 0.18117242769915828,
+            "cumulative": 0.4254648717894839,
             "loadings": {
-              "np_xg_p90": 0.42936852481875276,
-              "xa_p90": -0.12156962340081323,
-              "key_passes_p90": -0.1490803504408325,
-              "xg_chain_p90": 0.05962028826743893,
-              "xg_buildup_p90": 0.06404002806937842,
-              "shots_p90": 0.24359045769884774,
-              "shots_on_target_p90": 0.43148970558058286,
-              "goals_non_penalty_p90": 0.44940519676553436,
-              "assists_p90": -0.09040470786271906,
-              "crosses_p90": -0.20592122237818486,
-              "interceptions_padj_p90": 0.010885392249160845,
-              "tackles_won_padj_p90": -0.09994674569987448,
-              "fouls_committed_padj_p90": -0.050142908930608736,
-              "fouls_drawn_p90": -0.07393762904401746,
-              "offsides_p90": 0.061505050168045416,
-              "cards_yellow_p90": 0.004878650013386378,
-              "shot_accuracy_pct": 0.33454446022866513,
-              "goals_per_shot": 0.3729691359283997
+              "np_xg_p90": 0.4293685248187527,
+              "xa_p90": -0.12156962340081356,
+              "key_passes_p90": -0.14908035044083268,
+              "xg_chain_p90": 0.059620288267438606,
+              "xg_buildup_p90": 0.06404002806937821,
+              "shots_p90": 0.24359045769884755,
+              "shots_on_target_p90": 0.43148970558058297,
+              "goals_non_penalty_p90": 0.44940519676553464,
+              "assists_p90": -0.09040470786271937,
+              "crosses_p90": -0.20592122237818514,
+              "interceptions_padj_p90": 0.010885392249160766,
+              "tackles_won_padj_p90": -0.09994674569987469,
+              "fouls_committed_padj_p90": -0.05014290893060892,
+              "fouls_drawn_p90": -0.0739376290440176,
+              "offsides_p90": 0.061505050168045285,
+              "cards_yellow_p90": 0.004878650013386306,
+              "shot_accuracy_pct": 0.3345444602286655,
+              "goals_per_shot": 0.37296913592840003
             },
             "top_positive": [
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": 0.44940519676553436
+                "loading": 0.44940519676553464
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.43148970558058286
+                "loading": 0.43148970558058297
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.42936852481875276
+                "loading": 0.4293685248187527
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.3729691359283997
+                "loading": 0.37296913592840003
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.33454446022866513
+                "loading": 0.3345444602286655
               }
             ],
             "top_negative": [
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.20592122237818486
+                "loading": -0.20592122237818514
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": -0.1490803504408325
+                "loading": -0.14908035044083268
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.12156962340081323
+                "loading": -0.12156962340081356
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": -0.09994674569987448
+                "loading": -0.09994674569987469
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": -0.09040470786271906
+                "loading": -0.09040470786271937
               }
             ]
           },
           "PC3": {
-            "explained_variance_ratio": 0.1078387448153802,
-            "cumulative": 0.5333036166048639,
+            "explained_variance_ratio": 0.10783874481538018,
+            "cumulative": 0.533303616604864,
             "loadings": {
-              "np_xg_p90": 0.06023024769283265,
-              "xa_p90": 0.03336885142667554,
-              "key_passes_p90": 0.0003815837279799032,
-              "xg_chain_p90": 0.46912079930672507,
-              "xg_buildup_p90": 0.5141142446928848,
-              "shots_p90": 0.10392171532160445,
-              "shots_on_target_p90": -0.06711725955397092,
-              "goals_non_penalty_p90": -0.13006378358091056,
-              "assists_p90": -0.06558828852636257,
-              "crosses_p90": -0.09836826582028185,
-              "interceptions_padj_p90": -0.2418227621943208,
-              "tackles_won_padj_p90": -0.3193831718950191,
-              "fouls_committed_padj_p90": -0.40318529221668614,
-              "fouls_drawn_p90": -0.1257836330306287,
-              "offsides_p90": -0.09514284264137207,
-              "cards_yellow_p90": -0.2788160996059726,
-              "shot_accuracy_pct": -0.14778182098817824,
-              "goals_per_shot": -0.13106459625908168
+              "np_xg_p90": 0.06023024769283321,
+              "xa_p90": 0.03336885142667473,
+              "key_passes_p90": 0.0003815837279791042,
+              "xg_chain_p90": 0.46912079930672557,
+              "xg_buildup_p90": 0.5141142446928854,
+              "shots_p90": 0.10392171532160505,
+              "shots_on_target_p90": -0.06711725955397044,
+              "goals_non_penalty_p90": -0.13006378358091122,
+              "assists_p90": -0.06558828852636293,
+              "crosses_p90": -0.09836826582028241,
+              "interceptions_padj_p90": -0.24182276219431967,
+              "tackles_won_padj_p90": -0.3193831718950183,
+              "fouls_committed_padj_p90": -0.4031852922166848,
+              "fouls_drawn_p90": -0.12578363303062917,
+              "offsides_p90": -0.09514284264137185,
+              "cards_yellow_p90": -0.27881609960597153,
+              "shot_accuracy_pct": -0.14778182098817838,
+              "goals_per_shot": -0.13106459625908273
             },
             "top_positive": [
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.5141142446928848
+                "loading": 0.5141142446928854
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.46912079930672507
+                "loading": 0.46912079930672557
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": 0.10392171532160445
+                "loading": 0.10392171532160505
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.06023024769283265
+                "loading": 0.06023024769283321
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": 0.03336885142667554
+                "loading": 0.03336885142667473
               }
             ],
             "top_negative": [
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": -0.40318529221668614
+                "loading": -0.4031852922166848
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": -0.3193831718950191
+                "loading": -0.3193831718950183
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": -0.2788160996059726
+                "loading": -0.27881609960597153
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.2418227621943208
+                "loading": -0.24182276219431967
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.14778182098817824
+                "loading": -0.14778182098817838
               }
             ]
           },
           "PC4": {
-            "explained_variance_ratio": 0.09392464656420516,
-            "cumulative": 0.6272282631690691,
+            "explained_variance_ratio": 0.09392464656420514,
+            "cumulative": 0.6272282631690692,
             "loadings": {
-              "np_xg_p90": 0.139232811887167,
-              "xa_p90": -0.23262369126252452,
-              "key_passes_p90": -0.2188938297202046,
-              "xg_chain_p90": 0.2539382261077493,
-              "xg_buildup_p90": 0.31146745602062326,
-              "shots_p90": 0.09616542729009218,
-              "shots_on_target_p90": 0.02798257641533133,
-              "goals_non_penalty_p90": -0.18253093064697518,
-              "assists_p90": -0.0937588762364168,
-              "crosses_p90": -0.3041781189203387,
-              "interceptions_padj_p90": 0.15316641510942036,
-              "tackles_won_padj_p90": 0.14963148282685718,
-              "fouls_committed_padj_p90": 0.43168773711564634,
-              "fouls_drawn_p90": 0.05588688345184294,
-              "offsides_p90": -0.04288068482672472,
-              "cards_yellow_p90": 0.5001441814599448,
-              "shot_accuracy_pct": -0.13132738416015763,
+              "np_xg_p90": 0.13923281188716718,
+              "xa_p90": -0.23262369126252497,
+              "key_passes_p90": -0.21889382972020463,
+              "xg_chain_p90": 0.2539382261077478,
+              "xg_buildup_p90": 0.31146745602062137,
+              "shots_p90": 0.09616542729009221,
+              "shots_on_target_p90": 0.027982576415331605,
+              "goals_non_penalty_p90": -0.1825309306469746,
+              "assists_p90": -0.09375887623641649,
+              "crosses_p90": -0.3041781189203382,
+              "interceptions_padj_p90": 0.15316641510942114,
+              "tackles_won_padj_p90": 0.14963148282685823,
+              "fouls_committed_padj_p90": 0.43168773711564784,
+              "fouls_drawn_p90": 0.05588688345184354,
+              "offsides_p90": -0.042880684826724226,
+              "cards_yellow_p90": 0.5001441814599457,
+              "shot_accuracy_pct": -0.13132738416015766,
               "goals_per_shot": -0.2605166224951421
             },
             "top_positive": [
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.5001441814599448
+                "loading": 0.5001441814599457
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.43168773711564634
+                "loading": 0.43168773711564784
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.31146745602062326
+                "loading": 0.31146745602062137
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.2539382261077493
+                "loading": 0.2539382261077478
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.15316641510942036
+                "loading": 0.15316641510942114
               }
             ],
             "top_negative": [
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.3041781189203387
+                "loading": -0.3041781189203382
               },
               {
                 "feature": "goals_per_shot",
@@ -333,63 +333,63 @@
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.23262369126252452
+                "loading": -0.23262369126252497
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": -0.2188938297202046
+                "loading": -0.21889382972020463
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": -0.18253093064697518
+                "loading": -0.1825309306469746
               }
             ]
           },
           "PC5": {
-            "explained_variance_ratio": 0.07426742725526168,
-            "cumulative": 0.7014956904243308,
+            "explained_variance_ratio": 0.07426742725526173,
+            "cumulative": 0.7014956904243309,
             "loadings": {
-              "np_xg_p90": -0.22060762396370448,
-              "xa_p90": 0.06850001358481042,
-              "key_passes_p90": 0.07356893565817192,
-              "xg_chain_p90": 0.19668130257461452,
+              "np_xg_p90": -0.2206076239637044,
+              "xa_p90": 0.06850001358481021,
+              "key_passes_p90": 0.07356893565817171,
+              "xg_chain_p90": 0.19668130257461425,
               "xg_buildup_p90": 0.1953620238545441,
-              "shots_p90": -0.33572615042322246,
-              "shots_on_target_p90": -0.06699214803268756,
-              "goals_non_penalty_p90": 0.06793903129483321,
-              "assists_p90": 0.04255192336332382,
-              "crosses_p90": -0.02166963825505824,
-              "interceptions_padj_p90": -0.4507541469129255,
-              "tackles_won_padj_p90": 0.015234479283592865,
-              "fouls_committed_padj_p90": 0.168292873321438,
-              "fouls_drawn_p90": 0.478472106045093,
-              "offsides_p90": -0.19701144724979833,
-              "cards_yellow_p90": 0.16215988897290357,
-              "shot_accuracy_pct": 0.3420995467886438,
-              "goals_per_shot": 0.31220338875379894
+              "shots_p90": -0.3357261504232217,
+              "shots_on_target_p90": -0.06699214803268758,
+              "goals_non_penalty_p90": 0.06793903129483336,
+              "assists_p90": 0.0425519233633238,
+              "crosses_p90": -0.02166963825505849,
+              "interceptions_padj_p90": -0.45075414691292676,
+              "tackles_won_padj_p90": 0.015234479283591909,
+              "fouls_committed_padj_p90": 0.16829287332143808,
+              "fouls_drawn_p90": 0.4784721060450938,
+              "offsides_p90": -0.19701144724979852,
+              "cards_yellow_p90": 0.16215988897290376,
+              "shot_accuracy_pct": 0.3420995467886426,
+              "goals_per_shot": 0.31220338875379844
             },
             "top_positive": [
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": 0.478472106045093
+                "loading": 0.4784721060450938
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.3420995467886438
+                "loading": 0.3420995467886426
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.31220338875379894
+                "loading": 0.31220338875379844
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.19668130257461452
+                "loading": 0.19668130257461425
               },
               {
                 "feature": "xg_buildup_p90",
@@ -401,27 +401,27 @@
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.4507541469129255
+                "loading": -0.45075414691292676
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": -0.33572615042322246
+                "loading": -0.3357261504232217
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": -0.22060762396370448
+                "loading": -0.2206076239637044
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.19701144724979833
+                "loading": -0.19701144724979852
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": -0.06699214803268756
+                "loading": -0.06699214803268758
               }
             ]
           }
@@ -442,86 +442,86 @@
       "MF": {
         "n_features": 18,
         "explained_variance_ratio": [
-          0.3977294250367314,
-          0.12420504601714778,
-          0.10241987668579641,
-          0.07818596771266437,
-          0.05207466728209316,
-          0.04665926590366042,
-          0.04286900091958783,
-          0.03160897848139225,
-          0.029419826536299893,
-          0.024770369608938296,
-          0.02240229943790936,
-          0.01572567944769961,
-          0.010990658715300455,
-          0.007889896896345212,
-          0.006136118555119893,
-          0.003886619326768748,
-          0.0019087199744140665,
-          0.001117583462130756
+          0.39772942503673153,
+          0.12420504601714773,
+          0.10241987668579669,
+          0.0781859677126643,
+          0.052074667282093076,
+          0.0466592659036604,
+          0.04286900091958784,
+          0.03160897848139232,
+          0.029419826536299855,
+          0.0247703696089383,
+          0.022402299437909372,
+          0.01572567944769958,
+          0.010990658715300437,
+          0.007889896896345195,
+          0.006136118555119882,
+          0.003886619326768736,
+          0.0019087199744140624,
+          0.0011175834621307492
         ],
         "cumulative_explained_variance": [
-          0.3977294250367314,
+          0.39772942503673153,
           0.5219344710538792,
-          0.6243543477396757,
-          0.7025403154523401,
+          0.6243543477396759,
+          0.7025403154523402,
           0.7546149827344333,
           0.8012742486380937,
           0.8441432495576815,
-          0.8757522280390737,
+          0.8757522280390738,
           0.9051720545753736,
           0.9299424241843119,
           0.9523447236222213,
-          0.968070403069921,
-          0.9790610617852215,
-          0.9869509586815667,
-          0.9930870772366865,
-          0.9969736965634552,
-          0.9988824165378694,
-          1.0000000000000002
+          0.9680704030699209,
+          0.9790610617852213,
+          0.9869509586815666,
+          0.9930870772366864,
+          0.9969736965634551,
+          0.9988824165378692,
+          1.0
         ],
         "n_components_for_90pct": 9,
         "variance_target": 0.9,
         "components": {
           "PC1": {
-            "explained_variance_ratio": 0.3977294250367314,
-            "cumulative": 0.3977294250367314,
+            "explained_variance_ratio": 0.39772942503673153,
+            "cumulative": 0.39772942503673153,
             "loadings": {
-              "np_xg_p90": 0.30972928770115793,
+              "np_xg_p90": 0.30972928770115804,
               "xa_p90": 0.2941993373806939,
               "key_passes_p90": 0.27887831982115485,
               "xg_chain_p90": 0.2769840427556996,
-              "xg_buildup_p90": 0.014580954762768607,
-              "shots_p90": 0.3092568975100432,
-              "shots_on_target_p90": 0.3248172111446667,
+              "xg_buildup_p90": 0.014580954762768593,
+              "shots_p90": 0.30925689751004326,
+              "shots_on_target_p90": 0.3248172111446668,
               "goals_non_penalty_p90": 0.2942639949831605,
               "assists_p90": 0.2299245630294381,
-              "crosses_p90": 0.21679001164951214,
-              "interceptions_padj_p90": -0.2478185828381344,
+              "crosses_p90": 0.21679001164951212,
+              "interceptions_padj_p90": -0.24781858283813443,
               "tackles_won_padj_p90": -0.18003391545232156,
               "fouls_committed_padj_p90": -0.13891907388444413,
-              "fouls_drawn_p90": 0.05650180840017462,
+              "fouls_drawn_p90": 0.05650180840017463,
               "offsides_p90": 0.2044464967596435,
               "cards_yellow_p90": -0.17611138749065172,
-              "shot_accuracy_pct": 0.2096382176754433,
-              "goals_per_shot": 0.20525369077747121
+              "shot_accuracy_pct": 0.20963821767544336,
+              "goals_per_shot": 0.20525369077747124
             },
             "top_positive": [
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.3248172111446667
+                "loading": 0.3248172111446668
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.30972928770115793
+                "loading": 0.30972928770115804
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": 0.3092568975100432
+                "loading": 0.30925689751004326
               },
               {
                 "feature": "goals_non_penalty_p90",
@@ -538,7 +538,7 @@
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.2478185828381344
+                "loading": -0.24781858283813443
               },
               {
                 "feature": "tackles_won_padj_p90",
@@ -558,277 +558,277 @@
             ]
           },
           "PC2": {
-            "explained_variance_ratio": 0.12420504601714778,
+            "explained_variance_ratio": 0.12420504601714773,
             "cumulative": 0.5219344710538792,
             "loadings": {
-              "np_xg_p90": -0.25905833072822393,
-              "xa_p90": 0.29840148299047164,
-              "key_passes_p90": 0.3393095320850552,
-              "xg_chain_p90": 0.08456862273306791,
-              "xg_buildup_p90": 0.2095862891644083,
-              "shots_p90": -0.13579844173942104,
-              "shots_on_target_p90": -0.20554628990960777,
-              "goals_non_penalty_p90": -0.3119002490932041,
-              "assists_p90": 0.2899056477255419,
-              "crosses_p90": 0.348599865065974,
-              "interceptions_padj_p90": -0.050044454450599046,
-              "tackles_won_padj_p90": -0.06017499852664261,
-              "fouls_committed_padj_p90": -0.29213878006818217,
-              "fouls_drawn_p90": -0.09695507211157917,
-              "offsides_p90": -0.24624557255138976,
-              "cards_yellow_p90": -0.14792986554062182,
-              "shot_accuracy_pct": -0.20946144311623635,
-              "goals_per_shot": -0.29467210450551024
+              "np_xg_p90": -0.2590583307282237,
+              "xa_p90": 0.29840148299047153,
+              "key_passes_p90": 0.3393095320850547,
+              "xg_chain_p90": 0.0845686227330686,
+              "xg_buildup_p90": 0.20958628916440844,
+              "shots_p90": -0.13579844173942054,
+              "shots_on_target_p90": -0.20554628990960744,
+              "goals_non_penalty_p90": -0.3119002490932039,
+              "assists_p90": 0.2899056477255418,
+              "crosses_p90": 0.3485998650659738,
+              "interceptions_padj_p90": -0.05004445445059879,
+              "tackles_won_padj_p90": -0.06017499852664255,
+              "fouls_committed_padj_p90": -0.2921387800681818,
+              "fouls_drawn_p90": -0.09695507211157915,
+              "offsides_p90": -0.24624557255138968,
+              "cards_yellow_p90": -0.14792986554062157,
+              "shot_accuracy_pct": -0.2094614431162366,
+              "goals_per_shot": -0.29467210450551035
             },
             "top_positive": [
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": 0.348599865065974
+                "loading": 0.3485998650659738
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": 0.3393095320850552
+                "loading": 0.3393095320850547
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": 0.29840148299047164
+                "loading": 0.29840148299047153
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.2899056477255419
+                "loading": 0.2899056477255418
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.2095862891644083
+                "loading": 0.20958628916440844
               }
             ],
             "top_negative": [
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": -0.3119002490932041
+                "loading": -0.3119002490932039
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.29467210450551024
+                "loading": -0.29467210450551035
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": -0.29213878006818217
+                "loading": -0.2921387800681818
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": -0.25905833072822393
+                "loading": -0.2590583307282237
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.24624557255138976
+                "loading": -0.24624557255138968
               }
             ]
           },
           "PC3": {
-            "explained_variance_ratio": 0.10241987668579641,
-            "cumulative": 0.6243543477396757,
+            "explained_variance_ratio": 0.10241987668579669,
+            "cumulative": 0.6243543477396759,
             "loadings": {
-              "np_xg_p90": 0.07753902646084844,
-              "xa_p90": 0.09545782914436692,
-              "key_passes_p90": 0.12724904833043332,
-              "xg_chain_p90": 0.40705904619775657,
-              "xg_buildup_p90": 0.5617327271703015,
-              "shots_p90": 0.1100778716999402,
-              "shots_on_target_p90": 0.05688539604429428,
-              "goals_non_penalty_p90": 0.06709665969806237,
-              "assists_p90": 0.05516822750701401,
-              "crosses_p90": -0.10689383603154444,
-              "interceptions_padj_p90": 0.3026295783942557,
-              "tackles_won_padj_p90": 0.20272615806900604,
-              "fouls_committed_padj_p90": 0.37946796425556095,
-              "fouls_drawn_p90": 0.1709545517793825,
-              "offsides_p90": -0.18452034737105666,
-              "cards_yellow_p90": 0.32859511749569187,
-              "shot_accuracy_pct": -0.06427677081994587,
-              "goals_per_shot": -0.032551805396209624
+              "np_xg_p90": 0.07753902646084875,
+              "xa_p90": 0.0954578291443666,
+              "key_passes_p90": 0.127249048330433,
+              "xg_chain_p90": 0.4070590461977562,
+              "xg_buildup_p90": 0.5617327271703,
+              "shots_p90": 0.11007787169994075,
+              "shots_on_target_p90": 0.05688539604429467,
+              "goals_non_penalty_p90": 0.06709665969806236,
+              "assists_p90": 0.055168227507013834,
+              "crosses_p90": -0.10689383603154451,
+              "interceptions_padj_p90": 0.3026295783942554,
+              "tackles_won_padj_p90": 0.20272615806900612,
+              "fouls_committed_padj_p90": 0.37946796425556123,
+              "fouls_drawn_p90": 0.1709545517793829,
+              "offsides_p90": -0.18452034737105658,
+              "cards_yellow_p90": 0.32859511749569204,
+              "shot_accuracy_pct": -0.06427677081994615,
+              "goals_per_shot": -0.0325518053962098
             },
             "top_positive": [
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.5617327271703015
+                "loading": 0.5617327271703
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.40705904619775657
+                "loading": 0.4070590461977562
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.37946796425556095
+                "loading": 0.37946796425556123
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.32859511749569187
+                "loading": 0.32859511749569204
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.3026295783942557
+                "loading": 0.3026295783942554
               }
             ],
             "top_negative": [
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.18452034737105666
+                "loading": -0.18452034737105658
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.10689383603154444
+                "loading": -0.10689383603154451
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.06427677081994587
+                "loading": -0.06427677081994615
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.032551805396209624
+                "loading": -0.0325518053962098
               }
             ]
           },
           "PC4": {
-            "explained_variance_ratio": 0.07818596771266437,
-            "cumulative": 0.7025403154523401,
+            "explained_variance_ratio": 0.0781859677126643,
+            "cumulative": 0.7025403154523402,
             "loadings": {
-              "np_xg_p90": 0.027139951555404,
-              "xa_p90": 0.11914352900057787,
-              "key_passes_p90": 0.10562670496809527,
-              "xg_chain_p90": -0.16594038554192914,
-              "xg_buildup_p90": -0.36016997243238946,
-              "shots_p90": 0.1714104018304007,
-              "shots_on_target_p90": 0.04209264219174125,
-              "goals_non_penalty_p90": -0.15777229051472894,
-              "assists_p90": 0.1416720327272037,
-              "crosses_p90": 0.13673032176520228,
-              "interceptions_padj_p90": -0.16195115900720672,
-              "tackles_won_padj_p90": 0.04952927671696689,
-              "fouls_committed_padj_p90": 0.3052556188985058,
-              "fouls_drawn_p90": 0.5187686862305477,
-              "offsides_p90": 0.24898336596332662,
-              "cards_yellow_p90": 0.282868647009928,
-              "shot_accuracy_pct": -0.22387017888533056,
-              "goals_per_shot": -0.3724681845807007
+              "np_xg_p90": 0.02713995155540393,
+              "xa_p90": 0.11914352900057755,
+              "key_passes_p90": 0.10562670496809522,
+              "xg_chain_p90": -0.16594038554192944,
+              "xg_buildup_p90": -0.36016997243238996,
+              "shots_p90": 0.1714104018304003,
+              "shots_on_target_p90": 0.04209264219174084,
+              "goals_non_penalty_p90": -0.15777229051472838,
+              "assists_p90": 0.14167203272720355,
+              "crosses_p90": 0.1367303217652024,
+              "interceptions_padj_p90": -0.1619511590072067,
+              "tackles_won_padj_p90": 0.04952927671696621,
+              "fouls_committed_padj_p90": 0.30525561889850467,
+              "fouls_drawn_p90": 0.518768686230548,
+              "offsides_p90": 0.24898336596332757,
+              "cards_yellow_p90": 0.28286864700992786,
+              "shot_accuracy_pct": -0.2238701788853311,
+              "goals_per_shot": -0.37246818458070075
             },
             "top_positive": [
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": 0.5187686862305477
+                "loading": 0.518768686230548
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.3052556188985058
+                "loading": 0.30525561889850467
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.282868647009928
+                "loading": 0.28286864700992786
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": 0.24898336596332662
+                "loading": 0.24898336596332757
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": 0.1714104018304007
+                "loading": 0.1714104018304003
               }
             ],
             "top_negative": [
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.3724681845807007
+                "loading": -0.37246818458070075
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": -0.36016997243238946
+                "loading": -0.36016997243238996
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.22387017888533056
+                "loading": -0.2238701788853311
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": -0.16594038554192914
+                "loading": -0.16594038554192944
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.16195115900720672
+                "loading": -0.1619511590072067
               }
             ]
           },
           "PC5": {
-            "explained_variance_ratio": 0.05207466728209316,
+            "explained_variance_ratio": 0.052074667282093076,
             "cumulative": 0.7546149827344333,
             "loadings": {
-              "np_xg_p90": -0.07125208305057701,
-              "xa_p90": 0.16487096042543423,
-              "key_passes_p90": 0.10493006433489825,
-              "xg_chain_p90": -0.12253017160930225,
-              "xg_buildup_p90": -0.18803546037013444,
-              "shots_p90": -0.1424881563849398,
-              "shots_on_target_p90": -0.018149127869110607,
-              "goals_non_penalty_p90": 0.018455704506470532,
-              "assists_p90": 0.2804725166124113,
+              "np_xg_p90": -0.07125208305057829,
+              "xa_p90": 0.16487096042543437,
+              "key_passes_p90": 0.10493006433489889,
+              "xg_chain_p90": -0.12253017160930263,
+              "xg_buildup_p90": -0.18803546037013416,
+              "shots_p90": -0.14248815638494103,
+              "shots_on_target_p90": -0.018149127869111846,
+              "goals_non_penalty_p90": 0.018455704506470515,
+              "assists_p90": 0.2804725166124116,
               "crosses_p90": 0.17795534040775873,
-              "interceptions_padj_p90": 0.08869741398965163,
-              "tackles_won_padj_p90": 0.6914886380819103,
-              "fouls_committed_padj_p90": 0.2693993648880519,
-              "fouls_drawn_p90": -0.30324161808855793,
-              "offsides_p90": 0.12365184100713592,
-              "cards_yellow_p90": -0.062006898386583756,
-              "shot_accuracy_pct": 0.3034318946377064,
-              "goals_per_shot": 0.11529433861974991
+              "interceptions_padj_p90": 0.08869741398965027,
+              "tackles_won_padj_p90": 0.6914886380819099,
+              "fouls_committed_padj_p90": 0.2693993648880525,
+              "fouls_drawn_p90": -0.30324161808855465,
+              "offsides_p90": 0.12365184100713487,
+              "cards_yellow_p90": -0.062006898386583804,
+              "shot_accuracy_pct": 0.30343189463770753,
+              "goals_per_shot": 0.11529433861975183
             },
             "top_positive": [
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": 0.6914886380819103
+                "loading": 0.6914886380819099
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.3034318946377064
+                "loading": 0.30343189463770753
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.2804725166124113
+                "loading": 0.2804725166124116
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.2693993648880519
+                "loading": 0.2693993648880525
               },
               {
                 "feature": "crosses_p90",
@@ -840,27 +840,27 @@
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": -0.30324161808855793
+                "loading": -0.30324161808855465
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": -0.18803546037013444
+                "loading": -0.18803546037013416
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": -0.1424881563849398
+                "loading": -0.14248815638494103
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": -0.12253017160930225
+                "loading": -0.12253017160930263
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": -0.07125208305057701
+                "loading": -0.07125208305057829
               }
             ]
           }
@@ -881,41 +881,41 @@
       "FW": {
         "n_features": 18,
         "explained_variance_ratio": [
-          0.29904939131289043,
-          0.190264203406944,
-          0.1277340177425372,
-          0.07891633259042938,
+          0.29904939131289027,
+          0.19026420340694397,
+          0.12773401774253704,
+          0.07891633259042959,
           0.06797261807148536,
-          0.05796592248806911,
-          0.04017948251055485,
-          0.030883658469428688,
+          0.057965922488069144,
+          0.04017948251055477,
+          0.030883658469428647,
           0.02345469940341761,
-          0.02180661069972592,
-          0.020758735232468826,
-          0.015611619865981327,
-          0.009810761263939097,
-          0.006183854722830903,
-          0.005026902983302275,
-          0.002269367668549069,
-          0.0016424172566996747,
-          0.00046940431074652224
+          0.021806610699725986,
+          0.020758735232468885,
+          0.015611619865981348,
+          0.009810761263939111,
+          0.006183854722830913,
+          0.00502690298330226,
+          0.0022693676685490768,
+          0.0016424172566996684,
+          0.00046940431074652176
         ],
         "cumulative_explained_variance": [
-          0.29904939131289043,
-          0.48931359471983443,
-          0.6170476124623716,
-          0.695963945052801,
-          0.7639365631242864,
-          0.8219024856123555,
-          0.8620819681229103,
-          0.8929656265923389,
-          0.9164203259957565,
+          0.29904939131289027,
+          0.48931359471983427,
+          0.6170476124623713,
+          0.6959639450528009,
+          0.7639365631242863,
+          0.8219024856123553,
+          0.8620819681229102,
+          0.8929656265923388,
+          0.9164203259957564,
           0.9382269366954824,
           0.9589856719279513,
           0.9745972917939326,
           0.9844080530578717,
           0.9905919077807026,
-          0.9956188107640049,
+          0.9956188107640048,
           0.997888178432554,
           0.9995305956892536,
           1.0000000000000002
@@ -924,33 +924,33 @@
         "variance_target": 0.9,
         "components": {
           "PC1": {
-            "explained_variance_ratio": 0.29904939131289043,
-            "cumulative": 0.29904939131289043,
+            "explained_variance_ratio": 0.29904939131289027,
+            "cumulative": 0.29904939131289027,
             "loadings": {
-              "np_xg_p90": -0.20321326443655954,
+              "np_xg_p90": -0.20321326443655907,
               "xa_p90": 0.31748508409078036,
-              "key_passes_p90": 0.3046943001606688,
-              "xg_chain_p90": 0.11664578217630203,
-              "xg_buildup_p90": 0.2698636179455002,
-              "shots_p90": -0.21214340302906634,
-              "shots_on_target_p90": -0.30872643895831353,
-              "goals_non_penalty_p90": -0.3107650266313169,
-              "assists_p90": 0.29837201852816286,
-              "crosses_p90": 0.3504186802235601,
-              "interceptions_padj_p90": 0.12579253280723485,
-              "tackles_won_padj_p90": 0.10544969679963898,
-              "fouls_committed_padj_p90": -0.17337646597512305,
-              "fouls_drawn_p90": -0.08355077143803165,
-              "offsides_p90": -0.12631355923595441,
-              "cards_yellow_p90": -0.14301030899056336,
-              "shot_accuracy_pct": -0.2530818804532464,
-              "goals_per_shot": -0.2558993528774002
+              "key_passes_p90": 0.30469430016066873,
+              "xg_chain_p90": 0.11664578217630285,
+              "xg_buildup_p90": 0.26986361794550034,
+              "shots_p90": -0.212143403029066,
+              "shots_on_target_p90": -0.30872643895831325,
+              "goals_non_penalty_p90": -0.31076502663131667,
+              "assists_p90": 0.298372018528163,
+              "crosses_p90": 0.35041868022356,
+              "interceptions_padj_p90": 0.125792532807235,
+              "tackles_won_padj_p90": 0.10544969679963907,
+              "fouls_committed_padj_p90": -0.17337646597512302,
+              "fouls_drawn_p90": -0.08355077143803151,
+              "offsides_p90": -0.12631355923595447,
+              "cards_yellow_p90": -0.14301030899056327,
+              "shot_accuracy_pct": -0.2530818804532463,
+              "goals_per_shot": -0.2558993528774
             },
             "top_positive": [
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": 0.3504186802235601
+                "loading": 0.35041868022356
               },
               {
                 "feature": "xa_p90",
@@ -960,153 +960,153 @@
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": 0.3046943001606688
+                "loading": 0.30469430016066873
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.29837201852816286
+                "loading": 0.298372018528163
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.2698636179455002
+                "loading": 0.26986361794550034
               }
             ],
             "top_negative": [
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": -0.3107650266313169
+                "loading": -0.31076502663131667
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": -0.30872643895831353
+                "loading": -0.30872643895831325
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.2558993528774002
+                "loading": -0.2558993528774
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.2530818804532464
+                "loading": -0.2530818804532463
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": -0.21214340302906634
+                "loading": -0.212143403029066
               }
             ]
           },
           "PC2": {
-            "explained_variance_ratio": 0.190264203406944,
-            "cumulative": 0.48931359471983443,
+            "explained_variance_ratio": 0.19026420340694397,
+            "cumulative": 0.48931359471983427,
             "loadings": {
-              "np_xg_p90": 0.2876891207778739,
-              "xa_p90": 0.2245105921117449,
-              "key_passes_p90": 0.2520613517457283,
-              "xg_chain_p90": 0.4263398422199022,
-              "xg_buildup_p90": 0.2899181277918034,
-              "shots_p90": 0.33242252334202066,
-              "shots_on_target_p90": 0.29739714288511643,
-              "goals_non_penalty_p90": 0.2683431269855479,
-              "assists_p90": 0.2298404838082638,
-              "crosses_p90": 0.07110814178097007,
-              "interceptions_padj_p90": 0.17301252861371663,
-              "tackles_won_padj_p90": 0.22984807645750033,
-              "fouls_committed_padj_p90": 0.03983151783823562,
-              "fouls_drawn_p90": 0.2314949811690485,
-              "offsides_p90": -0.08746655047372211,
-              "cards_yellow_p90": 0.11039827863695201,
-              "shot_accuracy_pct": 0.13461773236517868,
-              "goals_per_shot": 0.18093079330441503
+              "np_xg_p90": 0.2876891207778741,
+              "xa_p90": 0.2245105921117445,
+              "key_passes_p90": 0.2520613517457277,
+              "xg_chain_p90": 0.4263398422199018,
+              "xg_buildup_p90": 0.2899181277918029,
+              "shots_p90": 0.33242252334202027,
+              "shots_on_target_p90": 0.2973971428851162,
+              "goals_non_penalty_p90": 0.2683431269855477,
+              "assists_p90": 0.22984048380826327,
+              "crosses_p90": 0.0711081417809696,
+              "interceptions_padj_p90": 0.17301252861371647,
+              "tackles_won_padj_p90": 0.22984807645749988,
+              "fouls_committed_padj_p90": 0.039831517838235624,
+              "fouls_drawn_p90": 0.23149498116904815,
+              "offsides_p90": -0.08746655047372189,
+              "cards_yellow_p90": 0.11039827863695202,
+              "shot_accuracy_pct": 0.1346177323651787,
+              "goals_per_shot": 0.180930793304415
             },
             "top_positive": [
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.4263398422199022
+                "loading": 0.4263398422199018
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": 0.33242252334202066
+                "loading": 0.33242252334202027
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.29739714288511643
+                "loading": 0.2973971428851162
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.2899181277918034
+                "loading": 0.2899181277918029
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.2876891207778739
+                "loading": 0.2876891207778741
               }
             ],
             "top_negative": [
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.08746655047372211
+                "loading": -0.08746655047372189
               }
             ]
           },
           "PC3": {
-            "explained_variance_ratio": 0.1277340177425372,
-            "cumulative": 0.6170476124623716,
+            "explained_variance_ratio": 0.12773401774253704,
+            "cumulative": 0.6170476124623713,
             "loadings": {
-              "np_xg_p90": -0.0523423338049825,
-              "xa_p90": -0.1764921882741079,
-              "key_passes_p90": -0.09897101133709627,
-              "xg_chain_p90": -0.04954874631978394,
-              "xg_buildup_p90": 0.13884184573125136,
-              "shots_p90": 0.10041511496891808,
-              "shots_on_target_p90": -0.12147831587551526,
-              "goals_non_penalty_p90": -0.14117250113952529,
-              "assists_p90": -0.12296741526882157,
-              "crosses_p90": -0.057261512607053804,
-              "interceptions_padj_p90": 0.23750357665376934,
-              "tackles_won_padj_p90": 0.3596964797931447,
-              "fouls_committed_padj_p90": 0.4575170837318339,
-              "fouls_drawn_p90": 0.2249019964899775,
-              "offsides_p90": 0.16450406332256423,
-              "cards_yellow_p90": 0.456167927881041,
+              "np_xg_p90": -0.052342333804981676,
+              "xa_p90": -0.17649218827410837,
+              "key_passes_p90": -0.0989710113370964,
+              "xg_chain_p90": -0.04954874631978313,
+              "xg_buildup_p90": 0.13884184573125177,
+              "shots_p90": 0.10041511496891786,
+              "shots_on_target_p90": -0.12147831587551558,
+              "goals_non_penalty_p90": -0.14117250113952567,
+              "assists_p90": -0.12296741526882193,
+              "crosses_p90": -0.0572615126070545,
+              "interceptions_padj_p90": 0.23750357665377037,
+              "tackles_won_padj_p90": 0.3596964797931445,
+              "fouls_committed_padj_p90": 0.45751708373183386,
+              "fouls_drawn_p90": 0.2249019964899768,
+              "offsides_p90": 0.16450406332256431,
+              "cards_yellow_p90": 0.45616792788104066,
               "shot_accuracy_pct": -0.3238546976148192,
-              "goals_per_shot": -0.29272640051466803
+              "goals_per_shot": -0.29272640051466847
             },
             "top_positive": [
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.4575170837318339
+                "loading": 0.45751708373183386
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.456167927881041
+                "loading": 0.45616792788104066
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": 0.3596964797931447
+                "loading": 0.3596964797931445
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.23750357665376934
+                "loading": 0.23750357665377037
               },
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": 0.2249019964899775
+                "loading": 0.2249019964899768
               }
             ],
             "top_negative": [
@@ -1118,131 +1118,131 @@
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.29272640051466803
+                "loading": -0.29272640051466847
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.1764921882741079
+                "loading": -0.17649218827410837
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": -0.14117250113952529
+                "loading": -0.14117250113952567
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": -0.12296741526882157
+                "loading": -0.12296741526882193
               }
             ]
           },
           "PC4": {
-            "explained_variance_ratio": 0.07891633259042938,
-            "cumulative": 0.695963945052801,
+            "explained_variance_ratio": 0.07891633259042959,
+            "cumulative": 0.6959639450528009,
             "loadings": {
-              "np_xg_p90": 0.17199701030161613,
-              "xa_p90": -0.25310382734228765,
-              "key_passes_p90": -0.2911817296693652,
-              "xg_chain_p90": 0.219299458001744,
-              "xg_buildup_p90": 0.19768081910371205,
-              "shots_p90": -0.1940061308787742,
-              "shots_on_target_p90": -0.1261756329009426,
-              "goals_non_penalty_p90": -0.022043534171345372,
-              "assists_p90": -0.2301320746169121,
-              "crosses_p90": -0.18980442045283974,
-              "interceptions_padj_p90": 0.5384029360341303,
-              "tackles_won_padj_p90": 0.23006471826299368,
-              "fouls_committed_padj_p90": -0.2507892105679523,
-              "fouls_drawn_p90": -0.2865581499774378,
-              "offsides_p90": -0.27327667580624226,
-              "cards_yellow_p90": -0.1290556662736841,
-              "shot_accuracy_pct": 0.061566119789243604,
-              "goals_per_shot": 0.09177938359366529
+              "np_xg_p90": 0.17199701030161382,
+              "xa_p90": -0.2531038273422877,
+              "key_passes_p90": -0.29118172966936495,
+              "xg_chain_p90": 0.2192994580017432,
+              "xg_buildup_p90": 0.19768081910371293,
+              "shots_p90": -0.19400613087877583,
+              "shots_on_target_p90": -0.12617563290094275,
+              "goals_non_penalty_p90": -0.02204353417134442,
+              "assists_p90": -0.23013207461691212,
+              "crosses_p90": -0.18980442045283957,
+              "interceptions_padj_p90": 0.538402936034131,
+              "tackles_won_padj_p90": 0.2300647182629944,
+              "fouls_committed_padj_p90": -0.25078921056795267,
+              "fouls_drawn_p90": -0.28655814997743934,
+              "offsides_p90": -0.2732766758062411,
+              "cards_yellow_p90": -0.1290556662736834,
+              "shot_accuracy_pct": 0.06156611978924595,
+              "goals_per_shot": 0.09177938359366737
             },
             "top_positive": [
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.5384029360341303
+                "loading": 0.538402936034131
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": 0.23006471826299368
+                "loading": 0.2300647182629944
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.219299458001744
+                "loading": 0.2192994580017432
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.19768081910371205
+                "loading": 0.19768081910371293
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.17199701030161613
+                "loading": 0.17199701030161382
               }
             ],
             "top_negative": [
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": -0.2911817296693652
+                "loading": -0.29118172966936495
               },
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": -0.2865581499774378
+                "loading": -0.28655814997743934
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.27327667580624226
+                "loading": -0.2732766758062411
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.25310382734228765
+                "loading": -0.2531038273422877
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": -0.2507892105679523
+                "loading": -0.25078921056795267
               }
             ]
           },
           "PC5": {
             "explained_variance_ratio": 0.06797261807148536,
-            "cumulative": 0.7639365631242864,
+            "cumulative": 0.7639365631242863,
             "loadings": {
-              "np_xg_p90": 0.20207900616408112,
-              "xa_p90": 0.12597939003138126,
-              "key_passes_p90": 0.10018366629333453,
+              "np_xg_p90": 0.2020790061640817,
+              "xa_p90": 0.12597939003138076,
+              "key_passes_p90": 0.10018366629333525,
               "xg_chain_p90": 0.2771969747535151,
-              "xg_buildup_p90": 0.12308201677432257,
-              "shots_p90": -0.2430861900362861,
-              "shots_on_target_p90": -0.10805398116192477,
-              "goals_non_penalty_p90": -0.1343982118534558,
-              "assists_p90": 0.12974055971222928,
-              "crosses_p90": -0.22507396511843908,
-              "interceptions_padj_p90": 0.04805536905551612,
-              "tackles_won_padj_p90": -0.23614086672929682,
-              "fouls_committed_padj_p90": 0.22166336901920072,
-              "fouls_drawn_p90": -0.40402790838736535,
-              "offsides_p90": 0.5937763073061624,
-              "cards_yellow_p90": 0.1632326799942908,
-              "shot_accuracy_pct": 0.17939185322044732,
-              "goals_per_shot": 0.05574172597256864
+              "xg_buildup_p90": 0.12308201677432185,
+              "shots_p90": -0.2430861900362853,
+              "shots_on_target_p90": -0.10805398116192479,
+              "goals_non_penalty_p90": -0.13439821185345674,
+              "assists_p90": 0.1297405597122296,
+              "crosses_p90": -0.2250739651184396,
+              "interceptions_padj_p90": 0.04805536905551559,
+              "tackles_won_padj_p90": -0.23614086672929763,
+              "fouls_committed_padj_p90": 0.22166336901920108,
+              "fouls_drawn_p90": -0.40402790838736485,
+              "offsides_p90": 0.5937763073061616,
+              "cards_yellow_p90": 0.16323267999428992,
+              "shot_accuracy_pct": 0.17939185322044696,
+              "goals_per_shot": 0.05574172597256809
             },
             "top_positive": [
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": 0.5937763073061624
+                "loading": 0.5937763073061616
               },
               {
                 "feature": "xg_chain_p90",
@@ -1252,44 +1252,44 @@
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.22166336901920072
+                "loading": 0.22166336901920108
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.20207900616408112
+                "loading": 0.2020790061640817
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.17939185322044732
+                "loading": 0.17939185322044696
               }
             ],
             "top_negative": [
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": -0.40402790838736535
+                "loading": -0.40402790838736485
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": -0.2430861900362861
+                "loading": -0.2430861900362853
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": -0.23614086672929682
+                "loading": -0.23614086672929763
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.22507396511843908
+                "loading": -0.2250739651184396
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": -0.1343982118534558
+                "loading": -0.13439821185345674
               }
             ]
           }
@@ -1319,91 +1319,91 @@
       "DF": {
         "n_features": 18,
         "explained_variance_ratio": [
-          0.2481716901173807,
-          0.18173212281428883,
-          0.09985010134905807,
-          0.09856104204288704,
-          0.07499269437016888,
-          0.05729880725420257,
-          0.05168549777178281,
-          0.04119667801892751,
-          0.031505922916315834,
-          0.03068276087879468,
-          0.022827617576560887,
-          0.019829528549831353,
-          0.017013975940202344,
-          0.009386558888792078,
-          0.007285980883789501,
-          0.0054871459488487215,
-          0.0016573687086080685,
-          0.0008345059695601653
+          0.24817169011738113,
+          0.1817321228142886,
+          0.0998501013490579,
+          0.0985610420428869,
+          0.07499269437016878,
+          0.05729880725420259,
+          0.05168549777178286,
+          0.04119667801892759,
+          0.03150592291631587,
+          0.03068276087879464,
+          0.022827617576560905,
+          0.01982952854983138,
+          0.017013975940202347,
+          0.009386558888792057,
+          0.0072859808837895,
+          0.00548714594884872,
+          0.001657368708608066,
+          0.0008345059695601658
         ],
         "cumulative_explained_variance": [
-          0.2481716901173807,
-          0.4299038129316695,
+          0.24817169011738113,
+          0.42990381293166974,
           0.5297539142807276,
-          0.6283149563236147,
-          0.7033076506937835,
-          0.7606064579479861,
-          0.8122919557197689,
-          0.8534886337386964,
-          0.8849945566550123,
-          0.9156773175338069,
-          0.9385049351103678,
-          0.9583344636601991,
-          0.9753484396004015,
-          0.9847349984891935,
-          0.9920209793729831,
-          0.9975081253218318,
-          0.9991654940304399,
-          1.0
+          0.6283149563236146,
+          0.7033076506937833,
+          0.7606064579479859,
+          0.8122919557197688,
+          0.8534886337386963,
+          0.8849945566550121,
+          0.9156773175338068,
+          0.9385049351103677,
+          0.958334463660199,
+          0.9753484396004014,
+          0.9847349984891934,
+          0.992020979372983,
+          0.9975081253218316,
+          0.9991654940304397,
+          0.9999999999999999
         ],
         "n_components_for_90pct": 10,
         "variance_target": 0.9,
         "components": {
           "PC1": {
-            "explained_variance_ratio": 0.2481716901173807,
-            "cumulative": 0.2481716901173807,
+            "explained_variance_ratio": 0.24817169011738113,
+            "cumulative": 0.24817169011738113,
             "loadings": {
-              "np_xg_p90": 0.2148212851273019,
-              "xa_p90": 0.3892323226346629,
-              "key_passes_p90": 0.3684245701263786,
+              "np_xg_p90": 0.21482128512730145,
+              "xa_p90": 0.38923232263466323,
+              "key_passes_p90": 0.36842457012637925,
               "xg_chain_p90": 0.2873713732925647,
-              "xg_buildup_p90": 0.18227975885339498,
-              "shots_p90": 0.2872587573617687,
-              "shots_on_target_p90": 0.3027814735212388,
-              "goals_non_penalty_p90": 0.21162083117669042,
-              "assists_p90": 0.27548897540453315,
-              "crosses_p90": 0.2979633530104003,
-              "interceptions_padj_p90": 0.003120139473671704,
-              "tackles_won_padj_p90": 0.20565801506620934,
-              "fouls_committed_padj_p90": 0.13640090000300234,
-              "fouls_drawn_p90": 0.19167427773095555,
-              "offsides_p90": 0.17791961860703495,
-              "cards_yellow_p90": 0.017909214763598986,
-              "shot_accuracy_pct": 0.17238062520050706,
-              "goals_per_shot": 0.0883787799250158
+              "xg_buildup_p90": 0.18227975885339504,
+              "shots_p90": 0.28725875736176837,
+              "shots_on_target_p90": 0.3027814735212386,
+              "goals_non_penalty_p90": 0.2116208311766903,
+              "assists_p90": 0.27548897540453354,
+              "crosses_p90": 0.2979633530104009,
+              "interceptions_padj_p90": 0.0031201394736718566,
+              "tackles_won_padj_p90": 0.2056580150662096,
+              "fouls_committed_padj_p90": 0.13640090000300253,
+              "fouls_drawn_p90": 0.19167427773095563,
+              "offsides_p90": 0.17791961860703517,
+              "cards_yellow_p90": 0.017909214763599125,
+              "shot_accuracy_pct": 0.17238062520050715,
+              "goals_per_shot": 0.0883787799250159
             },
             "top_positive": [
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": 0.3892323226346629
+                "loading": 0.38923232263466323
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": 0.3684245701263786
+                "loading": 0.36842457012637925
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.3027814735212388
+                "loading": 0.3027814735212386
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": 0.2979633530104003
+                "loading": 0.2979633530104009
               },
               {
                 "feature": "xg_chain_p90",
@@ -1414,75 +1414,75 @@
             "top_negative": []
           },
           "PC2": {
-            "explained_variance_ratio": 0.18173212281428883,
-            "cumulative": 0.4299038129316695,
+            "explained_variance_ratio": 0.1817321228142886,
+            "cumulative": 0.42990381293166974,
             "loadings": {
-              "np_xg_p90": 0.36466930950478976,
-              "xa_p90": -0.17046967446109074,
-              "key_passes_p90": -0.19992781676149973,
-              "xg_chain_p90": -0.1318121305143884,
-              "xg_buildup_p90": -0.14112059229569454,
-              "shots_p90": 0.1942941922330306,
-              "shots_on_target_p90": 0.34219840762529136,
-              "goals_non_penalty_p90": 0.38507568023826577,
-              "assists_p90": -0.15701110194816656,
-              "crosses_p90": -0.21898971892880958,
+              "np_xg_p90": 0.3646693095047901,
+              "xa_p90": -0.17046967446109085,
+              "key_passes_p90": -0.19992781676149954,
+              "xg_chain_p90": -0.13181213051438806,
+              "xg_buildup_p90": -0.14112059229569432,
+              "shots_p90": 0.194294192233031,
+              "shots_on_target_p90": 0.3421984076252918,
+              "goals_non_penalty_p90": 0.38507568023826605,
+              "assists_p90": -0.1570111019481664,
+              "crosses_p90": -0.2189897189288095,
               "interceptions_padj_p90": -0.11546191703565699,
-              "tackles_won_padj_p90": -0.22808980021202913,
+              "tackles_won_padj_p90": -0.22808980021202915,
               "fouls_committed_padj_p90": -0.17541947382878273,
-              "fouls_drawn_p90": -0.12016453970435148,
-              "offsides_p90": -0.0030655914086741764,
-              "cards_yellow_p90": -0.19501615619099022,
-              "shot_accuracy_pct": 0.3627042691948111,
-              "goals_per_shot": 0.3237136729181779
+              "fouls_drawn_p90": -0.12016453970435138,
+              "offsides_p90": -0.0030655914086740494,
+              "cards_yellow_p90": -0.19501615619099033,
+              "shot_accuracy_pct": 0.3627042691948115,
+              "goals_per_shot": 0.3237136729181781
             },
             "top_positive": [
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": 0.38507568023826577
+                "loading": 0.38507568023826605
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.36466930950478976
+                "loading": 0.3646693095047901
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.3627042691948111
+                "loading": 0.3627042691948115
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.34219840762529136
+                "loading": 0.3421984076252918
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.3237136729181779
+                "loading": 0.3237136729181781
               }
             ],
             "top_negative": [
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": -0.22808980021202913
+                "loading": -0.22808980021202915
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.21898971892880958
+                "loading": -0.2189897189288095
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": -0.19992781676149973
+                "loading": -0.19992781676149954
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": -0.19501615619099022
+                "loading": -0.19501615619099033
               },
               {
                 "feature": "fouls_committed_padj_p90",
@@ -1492,209 +1492,209 @@
             ]
           },
           "PC3": {
-            "explained_variance_ratio": 0.09985010134905807,
+            "explained_variance_ratio": 0.0998501013490579,
             "cumulative": 0.5297539142807276,
             "loadings": {
-              "np_xg_p90": 0.06446417217022711,
-              "xa_p90": -0.14926966792161653,
-              "key_passes_p90": -0.21235589251736486,
-              "xg_chain_p90": 0.08452016080581641,
-              "xg_buildup_p90": 0.12816115927656702,
-              "shots_p90": 0.03226111990014633,
-              "shots_on_target_p90": 0.02582704860133864,
-              "goals_non_penalty_p90": 0.18966750448116676,
-              "assists_p90": -0.0013557306129776052,
-              "crosses_p90": -0.23004845375204416,
-              "interceptions_padj_p90": 0.3792768787479698,
-              "tackles_won_padj_p90": 0.20846282085616738,
-              "fouls_committed_padj_p90": 0.5068032339521108,
-              "fouls_drawn_p90": -0.0345098513489736,
-              "offsides_p90": -0.2874674887883777,
-              "cards_yellow_p90": 0.5010713806205522,
-              "shot_accuracy_pct": 0.0337516661273001,
-              "goals_per_shot": 0.1846506347841339
+              "np_xg_p90": 0.06446417217022904,
+              "xa_p90": -0.14926966792161644,
+              "key_passes_p90": -0.21235589251736717,
+              "xg_chain_p90": 0.08452016080583453,
+              "xg_buildup_p90": 0.12816115927658864,
+              "shots_p90": 0.03226111990014142,
+              "shots_on_target_p90": 0.025827048601335115,
+              "goals_non_penalty_p90": 0.18966750448116662,
+              "assists_p90": -0.0013557306129732168,
+              "crosses_p90": -0.23004845375205266,
+              "interceptions_padj_p90": 0.3792768787479712,
+              "tackles_won_padj_p90": 0.2084628208561602,
+              "fouls_committed_padj_p90": 0.5068032339521039,
+              "fouls_drawn_p90": -0.03450985134898218,
+              "offsides_p90": -0.28746748878838213,
+              "cards_yellow_p90": 0.5010713806205442,
+              "shot_accuracy_pct": 0.033751666127299206,
+              "goals_per_shot": 0.18465063478413532
             },
             "top_positive": [
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.5068032339521108
+                "loading": 0.5068032339521039
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.5010713806205522
+                "loading": 0.5010713806205442
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.3792768787479698
+                "loading": 0.3792768787479712
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": 0.20846282085616738
+                "loading": 0.2084628208561602
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": 0.18966750448116676
+                "loading": 0.18966750448116662
               }
             ],
             "top_negative": [
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.2874674887883777
+                "loading": -0.28746748878838213
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.23004845375204416
+                "loading": -0.23004845375205266
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": -0.21235589251736486
+                "loading": -0.21235589251736717
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.14926966792161653
+                "loading": -0.14926966792161644
               },
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": -0.0345098513489736
+                "loading": -0.03450985134898218
               }
             ]
           },
           "PC4": {
-            "explained_variance_ratio": 0.09856104204288704,
-            "cumulative": 0.6283149563236147,
+            "explained_variance_ratio": 0.0985610420428869,
+            "cumulative": 0.6283149563236146,
             "loadings": {
-              "np_xg_p90": 0.06464157387965141,
-              "xa_p90": 0.005027164560432999,
-              "key_passes_p90": -0.06668635380701046,
-              "xg_chain_p90": 0.5336210232959121,
-              "xg_buildup_p90": 0.6174645590610328,
-              "shots_p90": -0.12138487275191005,
-              "shots_on_target_p90": -0.09979945534112239,
-              "goals_non_penalty_p90": -0.003979184270818983,
-              "assists_p90": 0.12635431558411783,
-              "crosses_p90": -0.2580762243811949,
-              "interceptions_padj_p90": 0.043196064285832114,
-              "tackles_won_padj_p90": -0.20792126076894135,
-              "fouls_committed_padj_p90": -0.1934388716951111,
-              "fouls_drawn_p90": -0.24465630105001707,
-              "offsides_p90": -0.13288069536683889,
-              "cards_yellow_p90": -0.23589897221156178,
-              "shot_accuracy_pct": -0.04301570834047472,
-              "goals_per_shot": 0.022979002223046
+              "np_xg_p90": 0.06464157387964915,
+              "xa_p90": 0.005027164560438231,
+              "key_passes_p90": -0.0666863538070031,
+              "xg_chain_p90": 0.5336210232959091,
+              "xg_buildup_p90": 0.6174645590610282,
+              "shots_p90": -0.1213848727519114,
+              "shots_on_target_p90": -0.09979945534112312,
+              "goals_non_penalty_p90": -0.003979184270825469,
+              "assists_p90": 0.12635431558411797,
+              "crosses_p90": -0.2580762243811868,
+              "interceptions_padj_p90": 0.04319606428581904,
+              "tackles_won_padj_p90": -0.2079212607689484,
+              "fouls_committed_padj_p90": -0.19343887169512827,
+              "fouls_drawn_p90": -0.244656301050016,
+              "offsides_p90": -0.13288069536682903,
+              "cards_yellow_p90": -0.2358989722115789,
+              "shot_accuracy_pct": -0.04301570834047578,
+              "goals_per_shot": 0.022979002223039443
             },
             "top_positive": [
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.6174645590610328
+                "loading": 0.6174645590610282
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.5336210232959121
+                "loading": 0.5336210232959091
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.12635431558411783
+                "loading": 0.12635431558411797
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": 0.06464157387965141
+                "loading": 0.06464157387964915
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.043196064285832114
+                "loading": 0.04319606428581904
               }
             ],
             "top_negative": [
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.2580762243811949
+                "loading": -0.2580762243811868
               },
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": -0.24465630105001707
+                "loading": -0.244656301050016
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": -0.23589897221156178
+                "loading": -0.2358989722115789
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": -0.20792126076894135
+                "loading": -0.2079212607689484
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": -0.1934388716951111
+                "loading": -0.19343887169512827
               }
             ]
           },
           "PC5": {
-            "explained_variance_ratio": 0.07499269437016888,
-            "cumulative": 0.7033076506937835,
+            "explained_variance_ratio": 0.07499269437016878,
+            "cumulative": 0.7033076506937833,
             "loadings": {
-              "np_xg_p90": -0.3102792825405975,
-              "xa_p90": 0.019386153244853446,
-              "key_passes_p90": 0.12391430616858533,
-              "xg_chain_p90": 0.021571659365386783,
-              "xg_buildup_p90": 0.02453202971745775,
+              "np_xg_p90": -0.3102792825405979,
+              "xa_p90": 0.019386153244853294,
+              "key_passes_p90": 0.12391430616858554,
+              "xg_chain_p90": 0.021571659365386485,
+              "xg_buildup_p90": 0.0245320297174573,
               "shots_p90": -0.5322284946860915,
-              "shots_on_target_p90": -0.2350435789735887,
-              "goals_non_penalty_p90": 0.2211164047935151,
-              "assists_p90": -0.033493159260509615,
-              "crosses_p90": 0.16447146685556646,
-              "interceptions_padj_p90": -0.06035986664282151,
-              "tackles_won_padj_p90": 0.08241094222341831,
-              "fouls_committed_padj_p90": -0.025663694233818802,
-              "fouls_drawn_p90": -0.03125516373698497,
-              "offsides_p90": 0.19206652978441344,
-              "cards_yellow_p90": 0.03576878751444414,
-              "shot_accuracy_pct": 0.2661482891116681,
-              "goals_per_shot": 0.5918420399863236
+              "shots_on_target_p90": -0.23504357897358868,
+              "goals_non_penalty_p90": 0.22111640479351485,
+              "assists_p90": -0.03349315926050955,
+              "crosses_p90": 0.16447146685556632,
+              "interceptions_padj_p90": -0.060359866642821454,
+              "tackles_won_padj_p90": 0.08241094222341766,
+              "fouls_committed_padj_p90": -0.025663694233819517,
+              "fouls_drawn_p90": -0.031255163736985635,
+              "offsides_p90": 0.1920665297844134,
+              "cards_yellow_p90": 0.03576878751444346,
+              "shot_accuracy_pct": 0.26614828911166843,
+              "goals_per_shot": 0.5918420399863233
             },
             "top_positive": [
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.5918420399863236
+                "loading": 0.5918420399863233
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.2661482891116681
+                "loading": 0.26614828911166843
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": 0.2211164047935151
+                "loading": 0.22111640479351485
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": 0.19206652978441344
+                "loading": 0.1920665297844134
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": 0.16447146685556646
+                "loading": 0.16447146685556632
               }
             ],
             "top_negative": [
@@ -1706,22 +1706,22 @@
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": -0.3102792825405975
+                "loading": -0.3102792825405979
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": -0.2350435789735887
+                "loading": -0.23504357897358868
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.06035986664282151
+                "loading": -0.060359866642821454
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": -0.033493159260509615
+                "loading": -0.03349315926050955
               }
             ]
           }
@@ -1743,43 +1743,43 @@
         "n_features": 18,
         "explained_variance_ratio": [
           0.32136330591235074,
-          0.14512192393737483,
-          0.10669129611641863,
-          0.07785534045415787,
-          0.059856143662193176,
-          0.05129350749427925,
-          0.04269551737134247,
-          0.04074973351029811,
-          0.03479728546455702,
-          0.029882360543159778,
-          0.026240534271213502,
-          0.0206004373115255,
-          0.017713836574912357,
-          0.012001091001782439,
-          0.006086111966610025,
-          0.004153347400839517,
-          0.001745308663884898,
-          0.0011529183431000217
+          0.14512192393737472,
+          0.10669129611641844,
+          0.07785534045415796,
+          0.05985614366219315,
+          0.05129350749427934,
+          0.04269551737134249,
+          0.040749733510298106,
+          0.03479728546455711,
+          0.029882360543159882,
+          0.026240534271213572,
+          0.02060043731152549,
+          0.01771383657491232,
+          0.012001091001782448,
+          0.006086111966610042,
+          0.004153347400839522,
+          0.0017453086638849,
+          0.0011529183431000303
         ],
         "cumulative_explained_variance": [
           0.32136330591235074,
-          0.46648522984972557,
-          0.5731765259661442,
-          0.6510318664203021,
-          0.7108880100824952,
-          0.7621815175767745,
-          0.804877034948117,
-          0.8456267684584151,
-          0.8804240539229722,
-          0.9103064144661319,
-          0.9365469487373455,
-          0.957147386048871,
-          0.9748612226237833,
-          0.9868623136255658,
-          0.9929484255921758,
-          0.9971017729930153,
-          0.9988470816569002,
-          1.0000000000000002
+          0.46648522984972546,
+          0.5731765259661439,
+          0.6510318664203019,
+          0.710888010082495,
+          0.7621815175767743,
+          0.8048770349481168,
+          0.8456267684584149,
+          0.880424053922972,
+          0.9103064144661318,
+          0.9365469487373453,
+          0.9571473860488708,
+          0.9748612226237832,
+          0.9868623136255656,
+          0.9929484255921757,
+          0.9971017729930152,
+          0.9988470816569001,
+          1.0
         ],
         "n_components_for_90pct": 10,
         "variance_target": 0.9,
@@ -1790,33 +1790,33 @@
             "loadings": {
               "np_xg_p90": 0.3337980284407786,
               "xa_p90": 0.29208497191385285,
-              "key_passes_p90": 0.27248634413360256,
+              "key_passes_p90": 0.2724863441336027,
               "xg_chain_p90": 0.29284286358001604,
-              "xg_buildup_p90": 0.050491671394271916,
-              "shots_p90": 0.340884992716858,
-              "shots_on_target_p90": 0.35663064078021084,
+              "xg_buildup_p90": 0.05049167139427193,
+              "shots_p90": 0.34088499271685807,
+              "shots_on_target_p90": 0.3566306407802109,
               "goals_non_penalty_p90": 0.2850372623083097,
-              "assists_p90": 0.17965857921103273,
-              "crosses_p90": 0.17047336194151522,
-              "interceptions_padj_p90": -0.24855959407852976,
-              "tackles_won_padj_p90": -0.2405529985817573,
-              "fouls_committed_padj_p90": -0.11263216077518941,
-              "fouls_drawn_p90": 0.05922969425952861,
+              "assists_p90": 0.17965857921103282,
+              "crosses_p90": 0.1704733619415153,
+              "interceptions_padj_p90": -0.24855959407852984,
+              "tackles_won_padj_p90": -0.24055299858175738,
+              "fouls_committed_padj_p90": -0.11263216077518946,
+              "fouls_drawn_p90": 0.05922969425952864,
               "offsides_p90": 0.19915846065453402,
-              "cards_yellow_p90": -0.12647998601402458,
-              "shot_accuracy_pct": 0.18555215603440248,
-              "goals_per_shot": 0.16971983242836441
+              "cards_yellow_p90": -0.12647998601402463,
+              "shot_accuracy_pct": 0.18555215603440253,
+              "goals_per_shot": 0.1697198324283645
             },
             "top_positive": [
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.35663064078021084
+                "loading": 0.3566306407802109
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": 0.340884992716858
+                "loading": 0.34088499271685807
               },
               {
                 "feature": "np_xg_p90",
@@ -1838,80 +1838,80 @@
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.24855959407852976
+                "loading": -0.24855959407852984
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": -0.2405529985817573
+                "loading": -0.24055299858175738
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": -0.12647998601402458
+                "loading": -0.12647998601402463
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": -0.11263216077518941
+                "loading": -0.11263216077518946
               }
             ]
           },
           "PC2": {
-            "explained_variance_ratio": 0.14512192393737483,
-            "cumulative": 0.46648522984972557,
+            "explained_variance_ratio": 0.14512192393737472,
+            "cumulative": 0.46648522984972546,
             "loadings": {
-              "np_xg_p90": 0.176492516031633,
-              "xa_p90": -0.3257922621969098,
-              "key_passes_p90": -0.36198447159989355,
-              "xg_chain_p90": -0.12868027994701367,
-              "xg_buildup_p90": -0.20037982154698483,
-              "shots_p90": 0.11289814035319375,
-              "shots_on_target_p90": 0.22921113327271964,
-              "goals_non_penalty_p90": 0.32694888840796077,
-              "assists_p90": -0.26689607514234653,
+              "np_xg_p90": 0.17649251603163296,
+              "xa_p90": -0.3257922621969097,
+              "key_passes_p90": -0.3619844715998931,
+              "xg_chain_p90": -0.12868027994701323,
+              "xg_buildup_p90": -0.2003798215469843,
+              "shots_p90": 0.11289814035319387,
+              "shots_on_target_p90": 0.22921113327271941,
+              "goals_non_penalty_p90": 0.32694888840796066,
+              "assists_p90": -0.26689607514234664,
               "crosses_p90": -0.33113779659741965,
-              "interceptions_padj_p90": -0.021858482297642295,
-              "tackles_won_padj_p90": 0.08338998340333552,
-              "fouls_committed_padj_p90": 0.26884431151521043,
-              "fouls_drawn_p90": 0.11274361864468908,
-              "offsides_p90": 0.08983901624198663,
-              "cards_yellow_p90": 0.13418765190051282,
-              "shot_accuracy_pct": 0.2628153314318425,
-              "goals_per_shot": 0.3665132206430035
+              "interceptions_padj_p90": -0.021858482297642187,
+              "tackles_won_padj_p90": 0.08338998340333563,
+              "fouls_committed_padj_p90": 0.2688443115152105,
+              "fouls_drawn_p90": 0.11274361864468894,
+              "offsides_p90": 0.08983901624198656,
+              "cards_yellow_p90": 0.13418765190051293,
+              "shot_accuracy_pct": 0.26281533143184205,
+              "goals_per_shot": 0.3665132206430031
             },
             "top_positive": [
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.3665132206430035
+                "loading": 0.3665132206430031
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": 0.32694888840796077
+                "loading": 0.32694888840796066
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.26884431151521043
+                "loading": 0.2688443115152105
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.2628153314318425
+                "loading": 0.26281533143184205
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.22921113327271964
+                "loading": 0.22921113327271941
               }
             ],
             "top_negative": [
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": -0.36198447159989355
+                "loading": -0.3619844715998931
               },
               {
                 "feature": "crosses_p90",
@@ -1921,246 +1921,246 @@
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.3257922621969098
+                "loading": -0.3257922621969097
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": -0.26689607514234653
+                "loading": -0.26689607514234664
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": -0.20037982154698483
+                "loading": -0.2003798215469843
               }
             ]
           },
           "PC3": {
-            "explained_variance_ratio": 0.10669129611641863,
-            "cumulative": 0.5731765259661442,
+            "explained_variance_ratio": 0.10669129611641844,
+            "cumulative": 0.5731765259661439,
             "loadings": {
-              "np_xg_p90": 0.09081206230476355,
-              "xa_p90": 0.11862440149716451,
-              "key_passes_p90": 0.13945675051110276,
-              "xg_chain_p90": 0.4155802616566096,
-              "xg_buildup_p90": 0.5439611046338477,
-              "shots_p90": 0.05407813177628328,
-              "shots_on_target_p90": 0.01688688572974775,
-              "goals_non_penalty_p90": 0.042191480126134794,
-              "assists_p90": -0.04048688874824798,
-              "crosses_p90": -0.1887078471586066,
-              "interceptions_padj_p90": 0.2828716999516148,
-              "tackles_won_padj_p90": 0.29849952499335286,
-              "fouls_committed_padj_p90": 0.2784249529317797,
-              "fouls_drawn_p90": 0.2182809488528611,
-              "offsides_p90": -0.2449781571661173,
-              "cards_yellow_p90": 0.29620327446043804,
-              "shot_accuracy_pct": -0.05593263230016376,
-              "goals_per_shot": 0.04720696436567563
+              "np_xg_p90": 0.09081206230476298,
+              "xa_p90": 0.11862440149716497,
+              "key_passes_p90": 0.1394567505111032,
+              "xg_chain_p90": 0.41558026165660916,
+              "xg_buildup_p90": 0.543961104633847,
+              "shots_p90": 0.05407813177628248,
+              "shots_on_target_p90": 0.016886885729747714,
+              "goals_non_penalty_p90": 0.042191480126134745,
+              "assists_p90": -0.0404868887482473,
+              "crosses_p90": -0.18870784715860567,
+              "interceptions_padj_p90": 0.28287169995161515,
+              "tackles_won_padj_p90": 0.298499524993353,
+              "fouls_committed_padj_p90": 0.2784249529317796,
+              "fouls_drawn_p90": 0.21828094885286192,
+              "offsides_p90": -0.24497815716611768,
+              "cards_yellow_p90": 0.29620327446043815,
+              "shot_accuracy_pct": -0.05593263230016283,
+              "goals_per_shot": 0.04720696436567613
             },
             "top_positive": [
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.5439611046338477
+                "loading": 0.543961104633847
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.4155802616566096
+                "loading": 0.41558026165660916
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": 0.29849952499335286
+                "loading": 0.298499524993353
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.29620327446043804
+                "loading": 0.29620327446043815
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.2828716999516148
+                "loading": 0.28287169995161515
               }
             ],
             "top_negative": [
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.2449781571661173
+                "loading": -0.24497815716611768
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.1887078471586066
+                "loading": -0.18870784715860567
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.05593263230016376
+                "loading": -0.05593263230016283
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": -0.04048688874824798
+                "loading": -0.0404868887482473
               }
             ]
           },
           "PC4": {
-            "explained_variance_ratio": 0.07785534045415787,
-            "cumulative": 0.6510318664203021,
+            "explained_variance_ratio": 0.07785534045415796,
+            "cumulative": 0.6510318664203019,
             "loadings": {
-              "np_xg_p90": -0.011369786513692106,
-              "xa_p90": 0.09895160613732372,
-              "key_passes_p90": 0.08490142116462657,
-              "xg_chain_p90": -0.15663737433899275,
-              "xg_buildup_p90": -0.3282504391404715,
-              "shots_p90": 0.13223841267060846,
-              "shots_on_target_p90": 0.030968397628042793,
-              "goals_non_penalty_p90": -0.1611265334996935,
-              "assists_p90": 0.2532945144162657,
-              "crosses_p90": 0.14755464291933473,
-              "interceptions_padj_p90": -0.18904268875368305,
-              "tackles_won_padj_p90": 0.1433657494430419,
-              "fouls_committed_padj_p90": 0.39773920698748366,
-              "fouls_drawn_p90": 0.5142696031966766,
-              "offsides_p90": 0.20416174781986937,
-              "cards_yellow_p90": 0.3494364978381295,
-              "shot_accuracy_pct": -0.08898146845852416,
-              "goals_per_shot": -0.26378588035691247
+              "np_xg_p90": -0.011369786513690828,
+              "xa_p90": 0.09895160613732323,
+              "key_passes_p90": 0.08490142116462562,
+              "xg_chain_p90": -0.15663737433899244,
+              "xg_buildup_p90": -0.32825043914047136,
+              "shots_p90": 0.1322384126706094,
+              "shots_on_target_p90": 0.030968397628042727,
+              "goals_non_penalty_p90": -0.16112653349969353,
+              "assists_p90": 0.25329451441626577,
+              "crosses_p90": 0.147554642919334,
+              "interceptions_padj_p90": -0.1890426887536837,
+              "tackles_won_padj_p90": 0.1433657494430421,
+              "fouls_committed_padj_p90": 0.39773920698748416,
+              "fouls_drawn_p90": 0.5142696031966747,
+              "offsides_p90": 0.20416174781987134,
+              "cards_yellow_p90": 0.34943649783812936,
+              "shot_accuracy_pct": -0.08898146845852652,
+              "goals_per_shot": -0.26378588035691364
             },
             "top_positive": [
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": 0.5142696031966766
+                "loading": 0.5142696031966747
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.39773920698748366
+                "loading": 0.39773920698748416
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.3494364978381295
+                "loading": 0.34943649783812936
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.2532945144162657
+                "loading": 0.25329451441626577
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": 0.20416174781986937
+                "loading": 0.20416174781987134
               }
             ],
             "top_negative": [
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": -0.3282504391404715
+                "loading": -0.32825043914047136
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.26378588035691247
+                "loading": -0.26378588035691364
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.18904268875368305
+                "loading": -0.1890426887536837
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": -0.1611265334996935
+                "loading": -0.16112653349969353
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": -0.15663737433899275
+                "loading": -0.15663737433899244
               }
             ]
           },
           "PC5": {
-            "explained_variance_ratio": 0.059856143662193176,
-            "cumulative": 0.7108880100824952,
+            "explained_variance_ratio": 0.05985614366219315,
+            "cumulative": 0.710888010082495,
             "loadings": {
-              "np_xg_p90": -0.26239948217406395,
-              "xa_p90": 0.19055759722159185,
-              "key_passes_p90": 0.16803607762268072,
-              "xg_chain_p90": -0.2154288372481092,
-              "xg_buildup_p90": -0.12425852095144127,
-              "shots_p90": -0.23839683229736996,
-              "shots_on_target_p90": -0.026252176245414365,
-              "goals_non_penalty_p90": 0.1449966585012036,
-              "assists_p90": 0.23865076650845088,
-              "crosses_p90": 0.3227410638139474,
-              "interceptions_padj_p90": 0.2574166768456562,
-              "tackles_won_padj_p90": 0.17218600401998524,
-              "fouls_committed_padj_p90": -0.014345657206138679,
-              "fouls_drawn_p90": 0.14058386202568493,
-              "offsides_p90": -0.2612036145144672,
-              "cards_yellow_p90": 0.005154108121384071,
-              "shot_accuracy_pct": 0.4356546576197474,
-              "goals_per_shot": 0.43721428057934103
+              "np_xg_p90": -0.26239948217406406,
+              "xa_p90": 0.19055759722159132,
+              "key_passes_p90": 0.1680360776226804,
+              "xg_chain_p90": -0.21542883724811046,
+              "xg_buildup_p90": -0.12425852095144298,
+              "shots_p90": -0.23839683229737002,
+              "shots_on_target_p90": -0.026252176245414302,
+              "goals_non_penalty_p90": 0.14499665850120314,
+              "assists_p90": 0.23865076650845146,
+              "crosses_p90": 0.322741063813948,
+              "interceptions_padj_p90": 0.2574166768456546,
+              "tackles_won_padj_p90": 0.17218600401998474,
+              "fouls_committed_padj_p90": -0.014345657206137452,
+              "fouls_drawn_p90": 0.14058386202568626,
+              "offsides_p90": -0.26120361451446567,
+              "cards_yellow_p90": 0.005154108121384767,
+              "shot_accuracy_pct": 0.4356546576197473,
+              "goals_per_shot": 0.4372142805793405
             },
             "top_positive": [
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.43721428057934103
+                "loading": 0.4372142805793405
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.4356546576197474
+                "loading": 0.4356546576197473
               },
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": 0.3227410638139474
+                "loading": 0.322741063813948
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.2574166768456562
+                "loading": 0.2574166768456546
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.23865076650845088
+                "loading": 0.23865076650845146
               }
             ],
             "top_negative": [
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": -0.26239948217406395
+                "loading": -0.26239948217406406
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.2612036145144672
+                "loading": -0.26120361451446567
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": -0.23839683229736996
+                "loading": -0.23839683229737002
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": -0.2154288372481092
+                "loading": -0.21542883724811046
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": -0.12425852095144127
+                "loading": -0.12425852095144298
               }
             ]
           }
@@ -2181,76 +2181,76 @@
       "FW": {
         "n_features": 18,
         "explained_variance_ratio": [
-          0.29970622418454157,
-          0.22113744250922618,
-          0.0967727117782694,
-          0.07773197353058976,
+          0.2997062241845415,
+          0.22113744250922593,
+          0.09677271177826949,
+          0.07773197353058998,
           0.06481882543438552,
-          0.04768874763351804,
-          0.04444729025992303,
-          0.03623989822525152,
-          0.03069155796536584,
-          0.020934602707296787,
-          0.01987422832031976,
-          0.014396496284255107,
-          0.008480963820866163,
-          0.007593849607054148,
-          0.0041423378760329374,
-          0.0028272582913490673,
-          0.0019619977341404256,
-          0.0005535938376147449
+          0.047688747633518,
+          0.04444729025992299,
+          0.03623989822525149,
+          0.030691557965365872,
+          0.020934602707296773,
+          0.019874228320319688,
+          0.014396496284255126,
+          0.008480963820866185,
+          0.007593849607054156,
+          0.004142337876032937,
+          0.0028272582913490686,
+          0.0019619977341404286,
+          0.0005535938376147459
         ],
         "cumulative_explained_variance": [
-          0.29970622418454157,
-          0.5208436666937677,
-          0.6176163784720371,
-          0.6953483520026269,
-          0.7601671774370125,
-          0.8078559250705305,
-          0.8523032153304535,
-          0.888543113555705,
-          0.9192346715210709,
-          0.9401692742283676,
-          0.9600435025486873,
-          0.9744399988329424,
-          0.9829209626538086,
-          0.9905148122608627,
-          0.9946571501368956,
-          0.9974844084282447,
-          0.9994464061623851,
-          0.9999999999999999
+          0.2997062241845415,
+          0.5208436666937675,
+          0.617616378472037,
+          0.695348352002627,
+          0.7601671774370126,
+          0.8078559250705306,
+          0.8523032153304536,
+          0.8885431135557051,
+          0.919234671521071,
+          0.9401692742283677,
+          0.9600435025486874,
+          0.9744399988329425,
+          0.9829209626538087,
+          0.9905148122608628,
+          0.9946571501368957,
+          0.9974844084282448,
+          0.9994464061623852,
+          1.0
         ],
         "n_components_for_90pct": 9,
         "variance_target": 0.9,
         "components": {
           "PC1": {
-            "explained_variance_ratio": 0.29970622418454157,
-            "cumulative": 0.29970622418454157,
+            "explained_variance_ratio": 0.2997062241845415,
+            "cumulative": 0.2997062241845415,
             "loadings": {
               "np_xg_p90": 0.3681829119485208,
-              "xa_p90": -0.14315857371955265,
-              "key_passes_p90": -0.18487393703624838,
-              "xg_chain_p90": 0.23820697731267174,
-              "xg_buildup_p90": -0.02272327103243881,
-              "shots_p90": 0.24432608766650576,
-              "shots_on_target_p90": 0.3666509869671346,
-              "goals_non_penalty_p90": 0.3687306467328314,
-              "assists_p90": -0.03594609570445753,
-              "crosses_p90": -0.283469442967868,
-              "interceptions_padj_p90": -0.17444138955999147,
-              "tackles_won_padj_p90": -0.2414934455291006,
-              "fouls_committed_padj_p90": 0.06549709126667581,
-              "fouls_drawn_p90": -0.12811700655830457,
-              "offsides_p90": 0.14559865711044953,
-              "cards_yellow_p90": -0.021000567842999675,
-              "shot_accuracy_pct": 0.3253598793144006,
-              "goals_per_shot": 0.32221173088153393
+              "xa_p90": -0.1431585737195522,
+              "key_passes_p90": -0.18487393703624824,
+              "xg_chain_p90": 0.23820697731267182,
+              "xg_buildup_p90": -0.02272327103243868,
+              "shots_p90": 0.2443260876665058,
+              "shots_on_target_p90": 0.3666509869671345,
+              "goals_non_penalty_p90": 0.3687306467328313,
+              "assists_p90": -0.03594609570445729,
+              "crosses_p90": -0.28346944296786786,
+              "interceptions_padj_p90": -0.17444138955999136,
+              "tackles_won_padj_p90": -0.24149344552910043,
+              "fouls_committed_padj_p90": 0.06549709126667576,
+              "fouls_drawn_p90": -0.1281170065583045,
+              "offsides_p90": 0.14559865711044948,
+              "cards_yellow_p90": -0.021000567842999647,
+              "shot_accuracy_pct": 0.3253598793144004,
+              "goals_per_shot": 0.32221173088153376
             },
             "top_positive": [
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": 0.3687306467328314
+                "loading": 0.3687306467328313
               },
               {
                 "feature": "np_xg_p90",
@@ -2260,324 +2260,324 @@
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": 0.3666509869671346
+                "loading": 0.3666509869671345
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.3253598793144006
+                "loading": 0.3253598793144004
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.32221173088153393
+                "loading": 0.32221173088153376
               }
             ],
             "top_negative": [
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.283469442967868
+                "loading": -0.28346944296786786
               },
               {
                 "feature": "tackles_won_padj_p90",
                 "label": "Tackles won (adj)",
-                "loading": -0.2414934455291006
+                "loading": -0.24149344552910043
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": -0.18487393703624838
+                "loading": -0.18487393703624824
               },
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": -0.17444138955999147
+                "loading": -0.17444138955999136
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.14315857371955265
+                "loading": -0.1431585737195522
               }
             ]
           },
           "PC2": {
-            "explained_variance_ratio": 0.22113744250922618,
-            "cumulative": 0.5208436666937677,
+            "explained_variance_ratio": 0.22113744250922593,
+            "cumulative": 0.5208436666937675,
             "loadings": {
-              "np_xg_p90": 0.1780701459460028,
-              "xa_p90": 0.4107699762266185,
-              "key_passes_p90": 0.39504555555748844,
-              "xg_chain_p90": 0.37900353244224244,
-              "xg_buildup_p90": 0.36110618058741345,
-              "shots_p90": 0.25677801713300324,
-              "shots_on_target_p90": 0.14950627696960267,
-              "goals_non_penalty_p90": 0.10544911404220568,
-              "assists_p90": 0.3636140599050964,
-              "crosses_p90": 0.178850239427331,
-              "interceptions_padj_p90": 0.14145173971651123,
-              "tackles_won_padj_p90": 0.13922704005019595,
-              "fouls_committed_padj_p90": -0.09884428891460834,
-              "fouls_drawn_p90": 0.19953186834902553,
-              "offsides_p90": -0.0036782525767624324,
-              "cards_yellow_p90": 0.1256620233671635,
-              "shot_accuracy_pct": -0.02292803087762494,
-              "goals_per_shot": -0.02326866319624792
+              "np_xg_p90": 0.17807014594600235,
+              "xa_p90": 0.41076997622661865,
+              "key_passes_p90": 0.39504555555748855,
+              "xg_chain_p90": 0.3790035324422424,
+              "xg_buildup_p90": 0.3611061805874134,
+              "shots_p90": 0.25677801713300286,
+              "shots_on_target_p90": 0.1495062769696026,
+              "goals_non_penalty_p90": 0.10544911404220544,
+              "assists_p90": 0.36361405990509593,
+              "crosses_p90": 0.17885023942733128,
+              "interceptions_padj_p90": 0.1414517397165115,
+              "tackles_won_padj_p90": 0.139227040050196,
+              "fouls_committed_padj_p90": -0.09884428891460839,
+              "fouls_drawn_p90": 0.1995318683490256,
+              "offsides_p90": -0.003678252576762623,
+              "cards_yellow_p90": 0.12566202336716342,
+              "shot_accuracy_pct": -0.022928030877624878,
+              "goals_per_shot": -0.023268663196247923
             },
             "top_positive": [
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": 0.4107699762266185
+                "loading": 0.41076997622661865
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": 0.39504555555748844
+                "loading": 0.39504555555748855
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": 0.37900353244224244
+                "loading": 0.3790035324422424
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.3636140599050964
+                "loading": 0.36361405990509593
               },
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": 0.36110618058741345
+                "loading": 0.3611061805874134
               }
             ],
             "top_negative": [
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": -0.09884428891460834
+                "loading": -0.09884428891460839
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.02326866319624792
+                "loading": -0.023268663196247923
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.02292803087762494
+                "loading": -0.022928030877624878
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": -0.0036782525767624324
+                "loading": -0.003678252576762623
               }
             ]
           },
           "PC3": {
-            "explained_variance_ratio": 0.0967727117782694,
-            "cumulative": 0.6176163784720371,
+            "explained_variance_ratio": 0.09677271177826949,
+            "cumulative": 0.617616378472037,
             "loadings": {
-              "np_xg_p90": 0.06894938803563419,
-              "xa_p90": -0.08289735585532076,
-              "key_passes_p90": -0.06645655826377085,
-              "xg_chain_p90": 0.01398875869495987,
-              "xg_buildup_p90": -0.027319928312486908,
-              "shots_p90": 0.011295184700807976,
-              "shots_on_target_p90": -0.12173735760207316,
-              "goals_non_penalty_p90": -0.08229805070690056,
-              "assists_p90": 0.14180579398358398,
-              "crosses_p90": -0.33840068253370836,
-              "interceptions_padj_p90": 0.08444471208367992,
-              "tackles_won_padj_p90": 0.11824512447171404,
-              "fouls_committed_padj_p90": 0.5388297917208067,
-              "fouls_drawn_p90": 0.1843152565371413,
-              "offsides_p90": 0.37241833542675296,
-              "cards_yellow_p90": 0.5497022755724972,
-              "shot_accuracy_pct": -0.1895463696947555,
-              "goals_per_shot": -0.06672871097184226
+              "np_xg_p90": 0.06894938803563469,
+              "xa_p90": -0.0828973558553215,
+              "key_passes_p90": -0.06645655826377128,
+              "xg_chain_p90": 0.013988758694960187,
+              "xg_buildup_p90": -0.02731992831248658,
+              "shots_p90": 0.01129518470080837,
+              "shots_on_target_p90": -0.1217373576020736,
+              "goals_non_penalty_p90": -0.08229805070690069,
+              "assists_p90": 0.141805793983585,
+              "crosses_p90": -0.33840068253370903,
+              "interceptions_padj_p90": 0.0844447120836785,
+              "tackles_won_padj_p90": 0.11824512447171426,
+              "fouls_committed_padj_p90": 0.5388297917208063,
+              "fouls_drawn_p90": 0.18431525653714068,
+              "offsides_p90": 0.37241833542675307,
+              "cards_yellow_p90": 0.549702275572498,
+              "shot_accuracy_pct": -0.18954636969475672,
+              "goals_per_shot": -0.06672871097184326
             },
             "top_positive": [
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": 0.5497022755724972
+                "loading": 0.549702275572498
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.5388297917208067
+                "loading": 0.5388297917208063
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": 0.37241833542675296
+                "loading": 0.37241833542675307
               },
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": 0.1843152565371413
+                "loading": 0.18431525653714068
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.14180579398358398
+                "loading": 0.141805793983585
               }
             ],
             "top_negative": [
               {
                 "feature": "crosses_p90",
                 "label": "Crosses",
-                "loading": -0.33840068253370836
+                "loading": -0.33840068253370903
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": -0.1895463696947555
+                "loading": -0.18954636969475672
               },
               {
                 "feature": "shots_on_target_p90",
                 "label": "Shots on target",
-                "loading": -0.12173735760207316
+                "loading": -0.1217373576020736
               },
               {
                 "feature": "xa_p90",
                 "label": "xA",
-                "loading": -0.08289735585532076
+                "loading": -0.0828973558553215
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": -0.08229805070690056
+                "loading": -0.08229805070690069
               }
             ]
           },
           "PC4": {
-            "explained_variance_ratio": 0.07773197353058976,
-            "cumulative": 0.6953483520026269,
+            "explained_variance_ratio": 0.07773197353058998,
+            "cumulative": 0.695348352002627,
             "loadings": {
-              "np_xg_p90": -0.13385794082133012,
-              "xa_p90": 0.16643413872656926,
-              "key_passes_p90": 0.17316829607452344,
-              "xg_chain_p90": -0.1136991231689657,
-              "xg_buildup_p90": -0.08206858397483181,
-              "shots_p90": -0.2471119925422298,
-              "shots_on_target_p90": 0.035961364643711274,
-              "goals_non_penalty_p90": 0.2177422766305011,
-              "assists_p90": -0.22418312676444108,
-              "crosses_p90": 0.07376245417073954,
-              "interceptions_padj_p90": 0.5531661633202593,
-              "tackles_won_padj_p90": 0.10473553036738693,
-              "fouls_committed_padj_p90": 0.3277652913218473,
-              "fouls_drawn_p90": 0.17727924777417806,
-              "offsides_p90": -0.001849557659812672,
-              "cards_yellow_p90": -0.12795260395078986,
-              "shot_accuracy_pct": 0.2771131541158663,
-              "goals_per_shot": 0.4362065500775609
+              "np_xg_p90": -0.13385794082132968,
+              "xa_p90": 0.16643413872656868,
+              "key_passes_p90": 0.1731682960745232,
+              "xg_chain_p90": -0.11369912316896537,
+              "xg_buildup_p90": -0.08206858397483201,
+              "shots_p90": -0.2471119925422301,
+              "shots_on_target_p90": 0.035961364643710504,
+              "goals_non_penalty_p90": 0.2177422766305014,
+              "assists_p90": -0.22418312676444083,
+              "crosses_p90": 0.0737624541707386,
+              "interceptions_padj_p90": 0.5531661633202599,
+              "tackles_won_padj_p90": 0.10473553036738802,
+              "fouls_committed_padj_p90": 0.3277652913218491,
+              "fouls_drawn_p90": 0.17727924777417825,
+              "offsides_p90": -0.0018495576598126918,
+              "cards_yellow_p90": -0.1279526039507885,
+              "shot_accuracy_pct": 0.2771131541158656,
+              "goals_per_shot": 0.4362065500775612
             },
             "top_positive": [
               {
                 "feature": "interceptions_padj_p90",
                 "label": "Interceptions (adj)",
-                "loading": 0.5531661633202593
+                "loading": 0.5531661633202599
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": 0.4362065500775609
+                "loading": 0.4362065500775612
               },
               {
                 "feature": "fouls_committed_padj_p90",
                 "label": "Fouls committed (adj)",
-                "loading": 0.3277652913218473
+                "loading": 0.3277652913218491
               },
               {
                 "feature": "shot_accuracy_pct",
                 "label": "Shot accuracy %",
-                "loading": 0.2771131541158663
+                "loading": 0.2771131541158656
               },
               {
                 "feature": "goals_non_penalty_p90",
                 "label": "NP goals",
-                "loading": 0.2177422766305011
+                "loading": 0.2177422766305014
               }
             ],
             "top_negative": [
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": -0.2471119925422298
+                "loading": -0.2471119925422301
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": -0.22418312676444108
+                "loading": -0.22418312676444083
               },
               {
                 "feature": "np_xg_p90",
                 "label": "npxG",
-                "loading": -0.13385794082133012
+                "loading": -0.13385794082132968
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": -0.12795260395078986
+                "loading": -0.1279526039507885
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": -0.1136991231689657
+                "loading": -0.11369912316896537
               }
             ]
           },
           "PC5": {
             "explained_variance_ratio": 0.06481882543438552,
-            "cumulative": 0.7601671774370125,
+            "cumulative": 0.7601671774370126,
             "loadings": {
-              "np_xg_p90": -0.020717711278412845,
-              "xa_p90": 0.12260206003951826,
-              "key_passes_p90": 0.12356644545403131,
-              "xg_chain_p90": -0.18827483372609263,
-              "xg_buildup_p90": -0.3655529765863652,
-              "shots_p90": 0.14217551592993663,
-              "shots_on_target_p90": 0.03695091977508153,
-              "goals_non_penalty_p90": -0.056382460191119,
-              "assists_p90": 0.15029122631618702,
-              "crosses_p90": 0.06545573685427365,
-              "interceptions_padj_p90": -0.07386897600392425,
+              "np_xg_p90": -0.020717711278413087,
+              "xa_p90": 0.12260206003951833,
+              "key_passes_p90": 0.12356644545403157,
+              "xg_chain_p90": -0.18827483372609238,
+              "xg_buildup_p90": -0.3655529765863648,
+              "shots_p90": 0.14217551592993594,
+              "shots_on_target_p90": 0.036950919775081574,
+              "goals_non_penalty_p90": -0.05638246019111919,
+              "assists_p90": 0.1502912263161865,
+              "crosses_p90": 0.06545573685427408,
+              "interceptions_padj_p90": -0.07386897600392266,
               "tackles_won_padj_p90": -0.39787740608026173,
-              "fouls_committed_padj_p90": -0.0764225564506435,
-              "fouls_drawn_p90": 0.5095520440407075,
-              "offsides_p90": 0.46542161944616944,
-              "cards_yellow_p90": -0.30665192417102755,
-              "shot_accuracy_pct": -0.005925422509877289,
-              "goals_per_shot": -0.09289656435136259
+              "fouls_committed_padj_p90": -0.07642255645064307,
+              "fouls_drawn_p90": 0.5095520440407066,
+              "offsides_p90": 0.46542161944617116,
+              "cards_yellow_p90": -0.30665192417102777,
+              "shot_accuracy_pct": -0.005925422509876693,
+              "goals_per_shot": -0.09289656435136208
             },
             "top_positive": [
               {
                 "feature": "fouls_drawn_p90",
                 "label": "Fouls drawn",
-                "loading": 0.5095520440407075
+                "loading": 0.5095520440407066
               },
               {
                 "feature": "offsides_p90",
                 "label": "Offsides",
-                "loading": 0.46542161944616944
+                "loading": 0.46542161944617116
               },
               {
                 "feature": "assists_p90",
                 "label": "Assists",
-                "loading": 0.15029122631618702
+                "loading": 0.1502912263161865
               },
               {
                 "feature": "shots_p90",
                 "label": "Shots",
-                "loading": 0.14217551592993663
+                "loading": 0.14217551592993594
               },
               {
                 "feature": "key_passes_p90",
                 "label": "Key passes",
-                "loading": 0.12356644545403131
+                "loading": 0.12356644545403157
               }
             ],
             "top_negative": [
@@ -2589,22 +2589,22 @@
               {
                 "feature": "xg_buildup_p90",
                 "label": "xGBuildup",
-                "loading": -0.3655529765863652
+                "loading": -0.3655529765863648
               },
               {
                 "feature": "cards_yellow_p90",
                 "label": "Yellow cards",
-                "loading": -0.30665192417102755
+                "loading": -0.30665192417102777
               },
               {
                 "feature": "xg_chain_p90",
                 "label": "xGChain",
-                "loading": -0.18827483372609263
+                "loading": -0.18827483372609238
               },
               {
                 "feature": "goals_per_shot",
                 "label": "Goals per shot",
-                "loading": -0.09289656435136259
+                "loading": -0.09289656435136208
               }
             ]
           }

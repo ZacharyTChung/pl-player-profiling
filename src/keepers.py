@@ -1031,13 +1031,6 @@ def figure_saves_vs_sota(by_season: dict[str, pd.DataFrame], fits: dict[str, dic
                 [np.column_stack([frame["gk_shots_on_target_against"], frame["gk_saves"]]), line]
             ),
         )
-    fig.suptitle(
-        "Saves against shot volume. Residual is the shot-stopping index, unadjusted for shot quality",
-        fontsize=plotting.BASE_FONT_PT - 1,
-        color=plotting.INK_SECONDARY,
-        x=0.01,
-        ha="left",
-    )
     plotting.save_figure(fig, "keeper_saves_vs_sota")
 
 
@@ -1165,13 +1158,6 @@ def figure_clusters_pca(by_season: dict[str, pd.DataFrame], cluster_info: dict[s
                 colors=[*key_colour, *([plotting.INK_SECONDARY] * len(marker_x))],
                 all_points=np.column_stack([marker_x, marker_y]),
             )
-        fig.suptitle(
-            "Goalkeeper PCA, cluster means ringed. Silhouette bands, not separated groups",
-            fontsize=plotting.BASE_FONT_PT - 1,
-            color=plotting.INK_SECONDARY,
-            x=0.01,
-            ha="left",
-        )
     else:
         # More than four clusters, so identity is carried by small multiples rather than
         # by a fifth hue, per the palette rule in plotting.py.
@@ -1228,13 +1214,6 @@ def figure_composites(by_season: dict[str, pd.DataFrame]) -> None:
             title=season,
         )
         _place_labels(fig, ax, frame["gk_workload"], frame["gk_shot_stopping"], labels)
-    fig.suptitle(
-        "The only two composite axes the surviving data supports",
-        fontsize=plotting.BASE_FONT_PT - 1,
-        color=plotting.INK_SECONDARY,
-        x=0.01,
-        ha="left",
-    )
     plotting.save_figure(fig, "keeper_composites")
 
 
@@ -1271,13 +1250,6 @@ def figure_shot_stopping_ranking(by_season: dict[str, pd.DataFrame]) -> None:
         plotting.style_axis(
             ax, xlabel="Saves above volume expectation", title=f"{season} (n={len(frame)})"
         )
-    fig.suptitle(
-        "Shot-stopping index. Volume adjusted only, not shot-quality adjusted",
-        fontsize=plotting.BASE_FONT_PT - 1,
-        color=plotting.INK_SECONDARY,
-        x=0.01,
-        ha="left",
-    )
     plotting.save_figure(fig, "keeper_shot_stopping_ranking")
 
 

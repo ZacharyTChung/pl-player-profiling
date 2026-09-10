@@ -18,11 +18,11 @@ Zachary Chung, Christian Chung
 
 ## Abstract
 
-Studies of football player roles routinely report a set of discovered archetypes, but a partitioning algorithm returns a partition whether or not the data contain groups, so the usual evidence cannot tell a real taxonomy from a cut through a continuum. We test existence directly on 13,822 player-seasons from 5 seasons of the big five European leagues, described by 33 statistics from a pre-withdrawal archive, calibrating cluster quality against three clusterless nulls: a matched Gaussian, a copula that keeps every real marginal and correlation, and the gap statistic's uniform reference. A two-mode division is real: the observed silhouette exceeds every simulation under every null in every scope, by at least 8.01 standard deviations against the hardest. Finer structure is not: beyond two modes the observed quality converges on the null and density based clustering labels every point noise within each position group. A bootstrap cannot see the difference, since clusterless data resample at an adjusted Rand index of at least 0.911. The modes are not positions relabelled: 92.9 percent of defenders fall one side and 99.8 percent of forwards the other while midfielders divide almost evenly, and a classifier at 93.4 percent accuracy routes all but 1.31 percent of its errors through midfield. The division transfers across leagues at a mean adjusted Rand index of 0.944. Against real results over 490 team-seasons, the two-mode composition predicts points beyond possession out of sample, raising the coefficient of determination from 0.566 to 0.664, while the six archetypes add nothing beyond the two modes. Football role space has two poles and a populated middle, and finer taxonomies are artefacts of the method used to find them.
+Football analysts describe players with dozens of per-match statistics and then sort them into role archetypes such as the ball-playing centre back or the deep-lying playmaker. Whether such types exist has never been tested, because the evidence normally offered for them is produced just as readily by data containing no groups at all: a clustering algorithm returns groups whatever it is given, so a selection criterion, a resampling check and an interpretable average profile are satisfied by a smooth continuum. We test existence directly on 13,822 player-seasons from 5 seasons of the big five European leagues, described by 33 statistics, by calibrating cluster quality against simulated data matched to the observed sample in size, dimension and correlation but built to contain no clusters. One division survives, and it is a coarse one. Players separate into a defensive and an attacking mode of involvement, and that separation exceeds every simulation under all three clusterless references in every scope, by at least 8.01 standard deviations against the hardest. Nothing finer survives: beyond two modes the observed separation is indistinguishable from what structureless data produces. The usual stability evidence cannot make this distinction, since clusterless data resample at an adjusted Rand index of at least 0.911. The two modes are not the listed positions renamed, agreeing with them at 0.293, with defenders and forwards at opposite poles and midfielders divided almost evenly between the two. The division reproduces in every season and every league, and a club's composition along it predicts league points beyond possession out of sample. Football role space has two poles and a populated middle, and finer taxonomies are artefacts of the method used to find them.
 
 ## Comments field
 
-93 pages, 68 figures. Code and data: https://github.com/ZacharyTChung/pl-player-profiling
+86 pages, 64 figures. Code and data: https://github.com/ZacharyTChung/pl-player-profiling
 
 ## Categories
 
@@ -90,4 +90,4 @@ appears:
 
 ## Date of this package
 
-September 7, 2026
+September 8, 2026

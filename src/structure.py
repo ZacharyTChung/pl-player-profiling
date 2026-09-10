@@ -443,16 +443,42 @@ def density_report(x: np.ndarray) -> dict:
     return out
 
 
+#: Short scope names. The metrics keys are written for a reader of the JSON; a panel has
+#: room for three characters.
+SCOPE_SHORT = {
+    "All outfield": "pool",
+    "DF": "defenders",
+    "MF": "midfielders",
+    "FW": "forwards",
+}
+
+
 def figure_structure(results: dict) -> None:
-    """Observed silhouette against all three null bands, one panel per scope.
+    """The paper's first figure: does the data contain groups, and how many.
+
+    Six panels carrying one argument. The top row is the observed silhouette against all
+    three clusterless nulls, one panel per scope, which is where the two-mode claim is
+    made and where every finer division is refused. The bottom row is the two checks a
+    reader would otherwise have to take on trust: what a bootstrap says about data known
+    to contain no groups, and how large the margin at two clusters actually is.
 
     The bands share one grey, since three ribbons a few thousandths tall overlap and a
     fourth hue is not available; each null's mean carries its own dash pattern and the
     legend keys those, so the nulls are told apart by line style.
     """
-    scopes = [s for s in results["scopes"]]
-    fig, axes = plt.subplots(1, len(scopes), figsize=(P.WIDTH_FULL, 2.7), sharey=True)
-    axes = np.atleast_1d(axes)
+    scopes = list(results["scopes"])
+    fig = plt.figure(figsize=(P.WIDTH_FULL, 5.4))
+    # A dedicated middle row holds the legend for the top four panels. Anchoring a figure
+    # legend into the gap between two gridspec rows fights constrained layout and leaves an
+    # inch of white space; an invisible axis of its own does not.
+    grid = fig.add_gridspec(3, 4, height_ratios=[1.0, 0.10, 1.0])
+    axes = [fig.add_subplot(grid[0, i]) for i in range(len(scopes))]
+    for ax in axes[1:]:
+        ax.sharey(axes[0])
+    ax_legend = fig.add_subplot(grid[1, :])
+    ax_legend.axis("off")
+    ax_boot = fig.add_subplot(grid[2, :2])
+    ax_z = fig.add_subplot(grid[2, 2:])
 
     for ax, scope in zip(axes, scopes, strict=True):
         entry = results["scopes"][scope]
@@ -488,17 +514,113 @@ def figure_structure(results: dict) -> None:
             markersize=4,
             label="observed",
         )
-        P.style_axis(ax, "Number of clusters", "Silhouette" if scope == scopes[0] else "", scope)
+        P.style_axis(
+            ax,
+            "clusters",
+            "silhouette" if scope == scopes[0] else "",
+            SCOPE_SHORT.get(scope, scope),
+        )
         ax.set_xticks(ks[::2])
+        if scope != scopes[0]:
+            ax.tick_params(labelleft=False)
+
+    _panel_bootstrap(ax_boot, results, scopes)
+    _panel_margins(ax_z, results, scopes)
 
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="outside lower center", ncol=5, frameon=False)
-    fig.suptitle(
-        "Observed cluster quality against data built to contain no clusters",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
+    ax_legend.legend(handles, labels, loc="center", ncol=5, frameon=False)
+    P.panel_labels(axes + [ax_boot, ax_z])
     P.save_figure(fig, "structure_null")
+
+
+def _panel_bootstrap(ax, results: dict, scopes: list[str]) -> None:
+    """What a bootstrap sees: observed stability against stability on clusterless data.
+
+    This is the panel that makes the paper's negative methodological claim visible. The
+    genre reports a bootstrap adjusted Rand index as evidence that a taxonomy is real,
+    and the null datasets return one just as high.
+    """
+    y = np.arange(len(scopes))
+    for offset, (null, marker) in zip(
+        (0.22, 0.0, -0.22), zip(NULL_KEYS, ("o", "s", "^"), strict=True), strict=True
+    ):
+        entry_vals = [
+            results["scopes"][scope]["null_bootstrap"]["by_null"][null] for scope in scopes
+        ]
+        ax.errorbar(
+            [v["ari_mean"] for v in entry_vals],
+            y + offset,
+            xerr=[
+                [v["ari_mean"] - v["ari_min"] for v in entry_vals],
+                [v["ari_max"] - v["ari_mean"] for v in entry_vals],
+            ],
+            fmt=marker,
+            markersize=3.6,
+            color=P.INK_SECONDARY,
+            ecolor=P.CONTEXT_GREY,
+            elinewidth=1.4,
+            capsize=0,
+            linestyle="none",
+            label=NULL_LABELS[null],
+        )
+    observed = [
+        results["scopes"][scope]["null_bootstrap"]["observed"]["ari_mean"] for scope in scopes
+    ]
+    ax.scatter(observed, y, s=46, marker="D", color=P.CATEGORICAL[1], zorder=5, label="observed")
+    # The screen a published taxonomy would cite as evidence of a stable partition. Every
+    # clusterless dataset clears it too, which is the point of the panel.
+    ax.axvline(STABLE_ARI, color=P.INK_PRIMARY, linewidth=0.9, linestyle=(0, (4, 3)))
+    ax.text(
+        STABLE_ARI + 0.005,
+        -0.5,
+        "stability screen",
+        fontsize=P.BASE_FONT_PT - 2,
+        color=P.INK_SECONDARY,
+        rotation=90,
+        va="top",
+    )
+    ax.set_yticks(y)
+    ax.set_yticklabels([SCOPE_SHORT.get(s, s) for s in scopes])
+    ax.set_ylim(-0.6, len(scopes) - 0.4)
+    ax.invert_yaxis()
+    P.style_axis(ax, "bootstrap adjusted Rand index", "", "stability cannot tell them apart")
+    ax.grid(False, axis="y")
+    ax.set_xlim(0.77, 1.01)
+    ax.legend(loc="lower left", ncol=1, fontsize=P.BASE_FONT_PT - 2, handletextpad=0.3)
+
+
+def _panel_margins(ax, results: dict, scopes: list[str]) -> None:
+    """How far the observed two-cluster separation sits above each null, in null sd."""
+    y = np.arange(len(scopes))
+    height = 0.24
+    shades = ["#B8D3EC", "#4189C4", "#144A78"]
+    for i, (null, shade) in enumerate(zip(NULL_KEYS, shades, strict=True)):
+        zs = [
+            results["scopes"][scope]["k2_z_by_null"][null]
+            if "k2_z_by_null" in results["scopes"][scope]
+            else results["scopes"][scope][NULL_KEYS[null]]["by_k"][str(K_REPORTED)][
+                "z_against_null"
+            ]
+            for scope in scopes
+        ]
+        ax.barh(
+            y + (1 - i) * height,
+            zs,
+            height=height * 0.92,
+            color=shade,
+            edgecolor=P.SURFACE,
+            linewidth=0.4,
+            label=NULL_LABELS[null],
+        )
+    ax.set_yticks(y)
+    ax.set_yticklabels([SCOPE_SHORT.get(s, s) for s in scopes])
+    ax.set_ylim(-0.6, len(scopes) - 0.4)
+    ax.invert_yaxis()
+    P.style_axis(ax, "standard scores above the null", "", "the margin at two clusters")
+    ax.grid(False, axis="y")
+    # Room on the right for the legend, so it never sits on top of a bar.
+    ax.set_xlim(0, ax.get_xlim()[1] * 1.42)
+    ax.legend(loc="lower right", ncol=1, fontsize=P.BASE_FONT_PT - 2, handletextpad=0.3)
 
 
 def summarise(results: dict) -> dict:

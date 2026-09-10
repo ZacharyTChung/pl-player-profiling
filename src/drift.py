@@ -243,11 +243,6 @@ def figure_drift(assigned: pd.DataFrame, movers: pd.DataFrame) -> None:
         ax.grid(True, axis="x")
         ax.grid(False, axis="y")
     axes[-1].set_xlabel(f"Match number, rolling window of {WINDOW}")
-    fig.suptitle(
-        f"Players whose rolling profile changes cluster, {DRIFT_TEAM}",
-        fontsize=P.BASE_FONT_PT,
-        fontweight="bold",
-    )
     P.save_figure(fig, "role_drift")
 
 

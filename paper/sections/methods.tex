@@ -1,395 +1,264 @@
 \section{Methods}
 \label{sec:methods}
 
-Every procedure below is seeded from a single constant, and every hyperparameter is
-declared in one configuration file that the analysis code reads. Nothing is tuned after
-seeing a result. All computation uses scikit-learn \citep{pedregosa2011scikit} unless
-stated otherwise.
+Every procedure below is seeded from a single constant, every hyperparameter is declared in
+one configuration file that the analysis code reads, and nothing is tuned after seeing a
+result. Computation uses scikit-learn unless stated otherwise \citep{pedregosa2011scikit}.
 
-\subsection{Possession adjustment}
+\subsection{Data}
+\label{sec:methods:data}
+
+The analysis uses season-aggregate player statistics for the \ArcNLeagues{} major European
+leagues, covering \ArcNSeasons{} seasons from \ArcSeasonFirst{} to \ArcSeasonLast{}, where a
+season is labelled by the calendar year in which it ends. The sample contains \ArcRows{}
+player-seasons, of which \ArcEligible{} are outfield players above the minutes threshold of
+\MinMinutes{} and \ArcKeepers{} are goalkeepers.
+
+The tables originate from FBref, which published advanced statistics derived from a commercial
+event-data provider \citep{fbref2026}. They are obtained here from a public mirror maintained
+by the worldfootballR project rather than from the site directly, and that choice needs stating
+plainly \citep{zivkovic2026worldfootballr}. On 20 January 2026 the site's operator removed
+every statistic derived from that provider, retroactively and across completed seasons, after
+the licence was terminated. The mirror predates the removal. It is therefore a secondary source
+in the strict sense: it was scraped by a third party, we did not observe the scrape, and it
+cannot be re-derived from the primary source because the primary source no longer holds the
+data. What we can do, and do, is audit it. Row counts, per-column coverage and per-season
+coverage are checked on load, and the checks are part of the pipeline rather than a one-off
+inspection. Retrieval is part of the pipeline as well, recording a SHA-256 digest per file
+alongside row and column counts, so that an upstream change is detectable rather than silent.
+One season is excluded on those grounds, because the site restructured its ball-carrying
+columns for the season ending 2023 and the mirror did not follow the renames, leaving every
+carrying column empty for that season while neighbouring columns are intact. The pipeline
+raises rather than imputing whenever a feature exceeds half missing within any retained season,
+so the exclusion is enforced by a check and not by a comment.
+
+The outfield feature set contains \ArcFeatures{} features, listed in full with their source
+table in Table~\ref{tab:archivefeatures}. It spans six families: shot volume and quality
+including non-penalty expected goals \citep{eggels2016explaining, rathke2017examination};
+chance creation; ball progression; touches across the five pitch zones; take-ons; and
+defensive work together with passing accuracy by distance. Counting statistics are divided by
+nineties played, and quantities published as rates are used as published. Minutes and
+appearances are retained as context and never enter the feature set, because squad usage
+describes a player's opportunity rather than the role he performs within it. Several features
+are undefined for some players by construction rather than by data loss, since a player who
+attempted no take-ons has no take-on success rate; after the minutes filter these affect at
+most eight percent of players in any single feature, and are median-imputed within position
+group and flagged.
+
+A second sample is collected directly from the live site for the seasons ending 2025 and 2026,
+after the withdrawal, with expected goals taken from Understat as an independent source
+\citep{robberechts2026soccerdata, understat2026}. It retains \NFeatures{} features, roughly
+half the primary set, and it is used only as a robustness case, because a result that holds on
+both a rich and an impoverished description of the same game is worth more than one that holds
+on either alone. That sample also carries a warning that applies beyond this study: the
+affected tables are still served with complete column headers and one row per player, and only
+the values are gone, so a feature set assembled from the published schema resolves correctly
+and yields an empty matrix. Feature selection against observed values instead of documentation
+is now a necessary step with this source. Section~\ref{sec:si:reduced} reports the audit and
+the analyses that sample supports.
+
+Season aggregates discard context, and that bounds every claim below. A tackle count does not
+say where on the pitch the tackles happened, and an expected goals total does not distinguish
+six poor chances from two good ones. The sample is recent European club football, so nothing
+here should be read as a claim about the game in other eras or at other levels, and the
+clusters are descriptive: a cluster label records how a player's season looked, not why.
+
+\subsection{Adjusting defensive counts for possession}
 \label{sec:methods:padj}
 
-Defensive actions can only occur while the opponent has the ball. A player in a side that
-concedes possession therefore accumulates interceptions, tackles and fouls partly through
-exposure rather than through role or ability, and since possession correlates with team
-strength this confound would enter the feature set as a proxy for the quality of a
-player's team. Team possession share survived the withdrawal even though the touch counts
-it is derived from did not, which is what makes a correction possible on both samples.
+Defensive actions can only occur while the opponent has the ball, so a player in a side that
+concedes possession accumulates interceptions, tackles and fouls partly through exposure rather
+than through role, and since possession tracks team strength this confound would enter the
+feature set as a proxy for the quality of a player's team. The correction introduced by
+\citet{knutson2014possession}, in the proportional form in common use since, multiplies a
+defensive rate by the ratio of a reference opponent possession to the actual one, which assumes
+defensive volume is directly proportional to time spent out of possession. That is an empirical
+claim rather than a definition. Regressing the logarithm of team defensive volume per ninety on
+the logarithm of opponent possession over \ArcPadjTeamSeasons{} team-seasons gives the
+elasticity, the percentage change in defensive volume produced by a one percent change in
+opponent possession, for which direct proportionality corresponds to a value of one.
 
-Possession adjustment of defensive counts was introduced by \citet{knutson2014possession},
-whose original form scaled tackles and interceptions by a sigmoid in team possession. The
-form in common use since, and the one tested here, multiplies a defensive rate by the
-ratio of a reference opponent possession to the actual one, which is equivalent to
-assuming that defensive volume is directly proportional to time spent out of possession. That is an empirical claim, not a definition, and it can be tested. Regressing the logarithm of team
-defensive volume per ninety on the logarithm of opponent possession, over
-\ArcPadjTeamSeasons{} team-seasons on the primary sample and \PadjTeamSeasons{} on the
-reduced one, gives the elasticity, which is the percentage change in defensive volume
-produced by a one percent change in opponent possession. Direct proportionality corresponds
-to an elasticity of one.
+We adjust with the measured elasticity instead of the assumed one, raising the exposure ratio
+to the power of each statistic's own fitted value. The exponent is estimated from team totals
+rather than player rates, because the quantity being corrected is a team-level exposure effect,
+and it is pooled across seasons and leagues, because it is a nuisance parameter that uses no
+player-level information and so cannot manufacture the cross-season and cross-league agreement
+reported later. Elasticities are reported with bootstrap intervals from \ElastNBootstrap{}
+resamples of the team-seasons, refitted within every league and every season separately, and
+checked against a model with a quadratic term in log possession. Attacking statistics are
+deliberately left unadjusted, since they scale with a team's own possession rather than the
+opponent's; Section~\ref{sec:si:elasticity} reports the elasticities in full and tests that
+asymmetry rather than asserting it.
 
-Every fitted elasticity, on either sample, falls below one. Defensive volume does rise with
-opponent possession, so the confound is real, but far less than proportionately. A side that
-spends more time without the ball does not simply make proportionally more tackles: it also
-defends deeper, concedes territory without contesting it, and its defensive actions saturate.
-The conventional exponent therefore overcorrects, and Section~\ref{sec:results:padj} reports
-by how much on each sample and shows that under an exponent of one the correlation between
-defensive rates and team possession does not fall toward zero but changes sign and grows, so
-the adjustment injects more team dependence than it removes.
-
-We therefore adjust with the measured elasticity instead of the assumed one. Each
-defensive count is multiplied by the exposure ratio raised to the power of its own fitted
-elasticity, which leaves a player at a club with league-average possession unchanged and
-corrects the others by the amount the data says exposure actually matters. The exponent is
-estimated from team totals rather than player rates, because the quantity being corrected
-is a team-level exposure effect and player rates carry position and role variation that
-would swamp it. It is pooled across seasons, and on the primary sample across leagues,
-because a single season of one competition gives a noisy slope, and because the exponent is a
-nuisance parameter that uses no player-level or cluster-level information, so a shared value
-cannot manufacture the cross-season and cross-league agreement that
-Section~\ref{sec:results:replication} measures. Attacking statistics are deliberately left
-unadjusted, since they scale with a team's own possession rather than the opponent's and
-correcting both directions with the same instrument would double count.
-
-The elasticities are estimates and are reported with their uncertainty. Team-seasons are
-resampled with replacement two thousand times and every elasticity is refitted on each
-resample, giving a percentile interval and a bootstrap probability that the true elasticity
-is at least one, which is the value the conventional correction assumes. Each elasticity is
-also refitted within every league and every season separately, so the paper can say whether
-a pooled value transports rather than hedging that it might not, and the constant
-elasticity form is checked against a model with a quadratic term in log possession.
-
-\subsection{Dimensionality reduction}
-
-Principal component analysis is fitted to the standardised feature set, both globally and
-separately within each position group. The global embedding is dominated by the axis that
-separates defenders from forwards, which is the least interesting distinction available
-because it is already recorded in the listed position, so the role profiling that follows
-uses the position stratified fits.
-
-Uniform manifold approximation and projection \citep{mcinnes2018umap} is fitted over a
-grid of twelve configurations, with the number of neighbours in
-\{10, 15, 30, 50\} crossed with a minimum distance in \{0.0, 0.1, 0.5\}. Configurations
-are ranked by trustworthiness, which measures the degree to which points that are close
-in the embedding were also close in the original space, and the full grid is reported in
-Appendix~\ref{sec:appendix:umap}. Selection by an explicit criterion matters here because
-a manifold method will produce a visually appealing picture at almost any setting.
-
-t-distributed stochastic neighbour embedding \citep{vandermaaten2008visualizing} is
-computed at a perplexity of 30 for visual contrast only. It is never used as an input to
-clustering, because its objective preserves local neighbourhoods at the expense of the
-global geometry that a distance based clustering algorithm depends upon.
-
-The three embeddings are compared on trustworthiness, on continuity, which is
-trustworthiness computed with the roles of the two spaces exchanged, and on a nearest
-neighbour position purity score at $k=10$ that reports the share of a player's ten
-nearest neighbours that share his listed position group.
-
-\subsection{Clustering}
+\subsection{Clustering and the selection rule}
 \label{sec:methods:selection}
 
-Clusters are estimated with $k$-means as the primary method, with a Gaussian mixture
-model whose Bayesian information criterion is reported across the same range of
-component counts, and with HDBSCAN \citep{campello2013density}, for which we report the
-fraction of players assigned to noise. Each is fitted both to the standardised features
-and to the principal component space retaining ninety percent of variance, and each
-reported result states which space produced it. Clustering is performed globally and
-within each of the three outfield position groups.
+Clusters are estimated with $k$-means as the primary method, with a Gaussian mixture model
+whose Bayesian information criterion is reported across the same range of component counts, and
+with HDBSCAN, for which we report the fraction of players assigned to noise
+\citep{campello2013density}. Clustering is performed globally and within each of the three
+outfield position groups, which are treated separately because correlations between features
+reverse sign across groups, so a single pooled geometry averages over relationships that point
+in opposite directions.
 
-The number of clusters is selected by a rule fixed in advance of any fitting, which
-matters because four criteria applied after the fact can be made to justify almost any
-choice. Over $k$ from 2 to 12 we compute the silhouette coefficient
-\citep{rousseeuw1987silhouettes}, the Davies-Bouldin index, the Calinski-Harabasz index,
-and the gap statistic \citep{tibshirani2001estimating}. The gap statistic has no
-implementation in the library we use, so it is implemented here against the original
-description, comparing the within-cluster dispersion to its expectation under fifty
-reference datasets drawn uniformly over the bounding box of the data in the fitted space.
-The rule selects the smallest $k$ whose silhouette lies within 0.02 of the best silhouette
-observed and which ranks in the top three on at least two of the silhouette,
-Calinski-Harabasz and gap criteria, with Davies-Bouldin breaking ties. Which criteria
-agreed, and which did not, is reported alongside the choice.
+The number of clusters is selected by a rule fixed in advance of any fitting, which matters
+because four criteria applied after the fact can be made to justify almost any choice. Over $k$
+from 2 to 12 we compute the silhouette coefficient, the Davies-Bouldin index, the
+Calinski-Harabasz index and the gap statistic \citep{rousseeuw1987silhouettes,
+tibshirani2001estimating}. The rule selects the smallest $k$ whose silhouette lies within 0.02
+of the best silhouette observed and which ranks in the top three on at least two of the
+silhouette, Calinski-Harabasz and gap criteria, with Davies-Bouldin breaking ties. Which
+criteria agreed, and which did not, is reported alongside the choice.
 
 \subsection{Testing whether clusters exist at all}
 \label{sec:methods:null}
 
-Selecting a number of clusters presupposes that clusters are there to be counted. That
-presupposition is the weak point of the whole genre, because a partitioning algorithm
-returns a partition whatever it is given, and the internal criteria used to choose $k$ are
-computed on the partition rather than against any alternative. A silhouette of \StrObsAll{} sounds
-like evidence until one asks what silhouette structureless data of the same shape would
+Selecting a number of clusters presupposes that clusters are there to be counted, and that
+presupposition is the weak point of the genre. The internal criteria used to choose $k$ are
+computed on the partition rather than against any alternative, so a silhouette of \StrObsAll{}
+sounds like evidence until one asks what silhouette structureless data of the same shape would
 have produced.
 
-We therefore calibrate against an explicit null. For each scope we draw
-\StrSimulations{} synthetic datasets from a multivariate normal with the empirical mean
-and covariance of the observed feature matrix, matching the real data in sample size,
-dimension and correlation structure while containing, by construction, no group structure
-at all. The identical $k$-selection procedure is run on each. The observed silhouette
-profile is then read against the distribution of simulated ones. Where the observed value
-falls inside that distribution, the partition at that $k$ is indistinguishable from one
-imposed on a continuum, and no claim is made from it.
+Let $X \in \mathbb{R}^{n \times d}$ be the standardised feature matrix for a scope, with $n$
+player-seasons and $d = \ArcFeatures{}$ features, and let $\pi_k(X)$ be the partition returned
+by $k$-means with $k$ clusters under a fixed seed and multiple restarts. Let $s_k(X)$ be the
+mean silhouette of $\pi_k(X)$, computed on a fixed subsample of at most four thousand rows when
+$n$ exceeds that, since the silhouette is quadratic in $n$. The number of clusters reported,
+$k^\ast = 2$, is not chosen by inspecting $s_k(X)$. It is returned by the selection rule
+declared above, and the calibration then asks a single question about it.
 
-A single Gaussian is the easiest reference to beat, because real per-ninety rates are
-skewed and bounded below and skew alone raises the silhouette a partition can reach. Two
-further nulls therefore run through the identical procedure. The first is a Gaussian copula
-that preserves every feature's empirical marginal distribution and the observed rank
-correlation while destroying higher-order joint structure: each column is transformed to
-normal scores, a multivariate normal is drawn on the correlation of those scores, and each
-simulated column is mapped back through the observed column's empirical quantile function.
-It carries the real skew and the real correlations. The second is the reference
-distribution of the gap statistic \citep{tibshirani2001estimating}, uniform within the
-bounding box of the data after rotation to its principal axes, which assumes no
-distributional shape at all. For every scope the paper reports the observed silhouette
-against all three, and treats the hardest of the three as the calibration that counts.
-
-The same simulations answer a question the paper would otherwise be asserting. A bootstrap
-stability check is the second standard piece of evidence for a published taxonomy, and it is
-claimed here that a partition imposed on clusterless data passes it. Rather than assert
-that, the bootstrap adjusted Rand index is computed on the simulated datasets by exactly the
-procedure applied to the real data, so the observed stability can be read against what
-stability structureless data produces.
-
-Three further instruments guard against the null calibration itself being misleading.
-Hartigan's dip test \citep{hartigan1985dip} is applied to the leading principal
-components and asks directly
-whether a distribution is unimodal, which is a claim about the data, not about any clustering of it. At the sample sizes here the test rejects unimodality for departures too small
-to matter, so the dip statistic itself is reported as the effect size and is placed against
-the distribution of dip statistics computed on the simulated nulls, in the same way as the
-silhouette. A Gaussian mixture model's Bayesian information criterion is computed
-across the same range of component counts, because unlike the silhouette it carries no
-built-in preference for few components. HDBSCAN \citep{campello2013density} is fitted at
-several minimum cluster sizes, because it is permitted to answer that there are no clusters
-and does so by assigning points to noise rather than by forcing them into groups.
-
-Agreement among instruments that fail in different ways is the standard of evidence used
-throughout the results. A continuum and a set of discrete types are different claims about
-the same data, and the paper takes care not to report the second when only the first is
-supported.
-
-\subsection{The calibration, stated formally}
-\label{sec:methods:formal}
-
-Let $X \in \mathbb{R}^{n \times d}$ be the standardised feature matrix for a scope, with
-$n$ player-seasons and $d = \ArcFeatures{}$ features, and let $\pi_k(X)$ be the partition
-returned by $k$-means with $k$ clusters, run with a fixed seed and multiple restarts. Let
-$s_k(X)$ be the mean silhouette of $\pi_k(X)$, computed on a fixed subsample of at most
-four thousand rows when $n$ exceeds that, since the silhouette is quadratic in $n$. The
-number of clusters reported, $k^\ast = 2$, is not chosen by inspecting $s_k(X)$; it is
-returned by the selection rule declared in advance in Section~\ref{sec:methods:selection},
-and the calibration then asks a single question about it.
-
-Three generators produce clusterless data matched to $X$. The Gaussian generator draws
-$n$ rows from $\mathcal{N}(\hat\mu, \hat\Sigma)$ with the empirical mean and covariance.
+Three generators produce clusterless data matched to $X$. The Gaussian generator draws $n$ rows
+from $\mathcal{N}(\hat\mu, \hat\Sigma)$ with the empirical mean and covariance, matching the
+data in size, dimension and correlation while containing no group structure by construction.
 The copula generator transforms each column of $X$ to normal scores by rank, estimates the
 correlation $\hat R$ of those scores, draws $n$ rows from $\mathcal{N}(0, \hat R)$, and maps
 each simulated column back through the empirical quantile function of the corresponding
-observed column, so that every marginal distribution of $X$ is reproduced exactly and only
-the joint structure beyond rank correlation is destroyed. The uniform generator rotates $X$
-to its principal axes, draws $n$ rows uniformly within the resulting bounding box, and
-rotates back, which is the reference distribution of \citet{tibshirani2001estimating}.
-For each generator $g$ and each of $B = \StrSimulations{}$ draws $X^{(g,b)}$, the
-identical pipeline computes $s_{k^\ast}(X^{(g,b)})$, giving a null sample of size $B$ per
-generator.
+observed column, so that every marginal distribution of $X$ is reproduced exactly, skew and
+bounds included, and only the joint structure beyond rank correlation is destroyed. The uniform
+generator rotates $X$ to its principal axes, draws $n$ rows uniformly within the resulting
+bounding box, and rotates back, which is the reference distribution of
+\citet{tibshirani2001estimating}. A single Gaussian is the easiest of the three to beat,
+because skew alone raises the silhouette a partition can reach, so the paper treats whichever
+is hardest in a given scope as the calibration that counts.
 
-The reported statistic is the standard score
+For each generator $g$ and each of $B = \StrSimulations{}$ draws $X^{(g,b)}$, the identical
+pipeline computes $s_{k^\ast}(X^{(g,b)})$, giving a null sample of size $B$ per generator. The
+reported statistic is the standard score
 \[
   z_g \;=\; \frac{s_{k^\ast}(X) - \bar s_g}{\hat\sigma_g},
 \]
-where $\bar s_g$ and $\hat\sigma_g$ are the mean and standard deviation of the null
-sample under generator $g$. With $B$ draws the null standard deviation is itself an
-estimate, so $z_g$ is reported as a description of the margin, not as a test statistic with a known distribution. The claim the paper makes is the distribution-free
-one: that $s_{k^\ast}(X)$ exceeds every one of the $B$ null values under every generator,
-which under the null of exchangeability between the observed and simulated statistics
-has Monte Carlo probability at most $1/(B+1)$ per generator and scope. The paper's
-headline is a conjunction over three generators and four scopes, not a disjunction, so it is conservative with respect to multiplicity: it can only be weakened
-by adding a generator or a scope, never strengthened.
+where $\bar s_g$ and $\hat\sigma_g$ are the mean and standard deviation of that null sample.
+With $B$ draws the null standard deviation is itself an estimate, so $z_g$ describes the margin
+rather than serving as a test statistic with a known distribution. The claim the paper makes is
+the distribution-free one, that $s_{k^\ast}(X)$ exceeds every one of the $B$ null values under
+every generator, which under the null of exchangeability between the observed and simulated
+statistics has Monte Carlo probability at most $1/(B+1)$ per generator and scope. The headline
+is a conjunction over three generators and four scopes rather than a disjunction, so it is
+conservative with respect to multiplicity: it can only be weakened by adding a generator or a
+scope, never strengthened.
 
-The same generators supply two further calibrations. The dip statistic of
-\citet{hartigan1985dip} on the leading principal component of each $X^{(g,b)}$ gives a
-null sample against which the observed dip is placed in the same way, which matters
-because at these $n$ the dip test's p-value rejects unimodality for departures too small
-to be of interest. The bootstrap adjusted Rand index of $\pi_{k^\ast}$ is computed on a
-subset of the simulated datasets by exactly the resampling procedure applied to $X$, so
-that the stability the genre reports for real data can be read against the stability a
-clusterless continuum produces.
+The same generators supply two further calibrations. Hartigan's dip statistic on the leading
+principal component of each $X^{(g,b)}$ gives a null sample against which the observed dip is
+placed in the same way, which matters because at these sample sizes the dip test's p-value
+rejects unimodality for departures too small to be of interest \citep{hartigan1985dip}. The
+bootstrap adjusted Rand index of $\pi_{k^\ast}$ is computed on the simulated datasets by exactly
+the resampling procedure applied to $X$ \citep{hubert1985comparing}, so that the stability the
+genre reports for real data can be read against the stability a clusterless continuum produces.
+Rather than assert that a partition imposed on structureless data passes a bootstrap, the paper
+measures it.
 
-One assumption should be stated because the analysis makes it silently otherwise. The
-rows of $X$ are player-seasons, and the same player appears in up to \ArcNSeasons{} of
-them, so rows are not independent. The generators match the marginal and pairwise
-structure of $X$ but not this nesting, and the bootstrap resamples rows as if
-exchangeable. The replication of Section~\ref{sec:results:replication}, which refits
-every season and every league independently, is the analysis that does not share this
+One assumption should be stated because the analysis makes it silently otherwise. The rows of
+$X$ are player-seasons, and the same player appears in up to \ArcNSeasons{} of them, so rows
+are not independent. The generators match the marginal and pairwise structure of $X$ but not
+this nesting, and the bootstrap resamples rows as if exchangeable. The replication analysis
+below, which refits every season and every league independently, does not share this
 assumption, and it is the reason the paper does not rest the two-mode claim on any single
 pooled fit.
 
-\subsection{Stability and validation against listed positions}
+\subsection{Stability, replication and the listed positions}
 
-A partition can be produced from any dataset, so the question that matters is whether it
-survives resampling. We draw two hundred bootstrap resamples, refit the clustering on
-each, and compute the adjusted Rand index \citep{hubert1985comparing} between each
-bootstrap partition and the reference partition on the players common to both. We also
-accumulate a consensus matrix recording, for every pair of players, the fraction of
-resamples in which the two were assigned together. Clusters whose members co-assign below
-0.6 on average are reported as unstable, and they are described as such in the results
-rather than being renamed or merged to make the account tidier.
+We draw two hundred bootstrap resamples, refit the clustering on each, and compute the adjusted
+Rand index between each bootstrap partition and the reference partition on the players common
+to both, accumulating a consensus matrix of pairwise co-assignment alongside it. Replication is
+tested separately and more stringently, because a resample reuses the same players. Each season
+and each league is standardised inside itself and clustered from scratch, borrowing no centre,
+no scale and no starting point from the pooled fit. Cluster labels are arbitrary per fit, so
+labels are aligned to the pooled partition on the contingency table before any label-dependent
+quantity is computed, and an assertion fails the run if an aligned agreement drops to chance.
+Three comparisons are reported because they answer different questions: an independent fit
+scored against the pooled partition on the same rows; one season's labels scored against
+another's on the players present in both, which mixes replication with real change in those
+players; and one scope's centroids imported into another scope's players and scored against
+that scope's own fit, which isolates replication. Each scope's centroid-difference vector is
+also correlated with the pooled one, to check that the scopes recover the same axis rather than
+a similarly sized partition. Agreement with the listed positions is quantified by normalised
+mutual information and by the adjusted Rand index, against both the position group and the full
+position string.
 
-Replication is tested separately and more stringently than resampling, because a resample
-reuses the same players. Each season and each league is standardised inside itself and
-clustered from scratch, borrowing no centre, no scale and no starting point from the pooled
-fit, and each independent partition is compared against the pooled one. Cluster labels are
-arbitrary per fit, so labels are aligned to the pooled partition by matching on the
-contingency table before any label-dependent quantity is computed, and an assertion fails the
-run if an aligned agreement drops to chance. Three comparisons are reported and they answer
-different questions: an independent fit scored against the pooled partition on the same rows,
-one season's labels scored against another's on the players present in both, which mixes
-replication with real change in those players, and one scope's centroids imported into
-another scope's players and scored against that scope's own fit, which isolates replication.
-We also correlate each scope's centroid-difference vector with the pooled one, to check that
-the scopes recover the same axis and not merely a similarly sized partition.
-
-The relationship between the discovered clusters and the listed positions is quantified
-by normalised mutual information and by the adjusted Rand index, computed against both
-the position group and the full position string. Players whose cluster
-assignment disagrees with their listed group, and players whose Gaussian mixture
-posterior is split across components, are extracted as candidate hybrids.
-
-\subsection{Robustness to the feature set}
-
-A two-mode result on \ArcFeatures{} features could in principle be carried by one block
-of them. The features are grouped into six families, shooting, chance creation, ball
-progression, pitch territory, defending and passing accuracy, with the grouping stated in
-the analysis code so that it can be audited and asserted to cover every feature exactly
-once. Each family is then removed in turn and the pre-declared selection rule and the
-Gaussian null calibration are rerun on what remains, in every scope. The converse is run as
-well, each family alone, which shows which families carry the two-mode structure by
-themselves. For every ablation the paper records the number of clusters the rule selects,
-the standard score of the observed silhouette against the null, and the adjusted Rand index
-between the ablated partition and the full one on the same players, so that a surviving
-k of two can be distinguished from the same two modes surviving.
+A two-mode result on \ArcFeatures{} features could in principle be carried by one block of
+them, so the features are grouped into six families, with the grouping stated in the analysis
+code and asserted to cover every feature exactly once. Each family is removed in turn and each
+is tried alone, with the selection rule and the null calibration rerun on what remains in every
+scope. For every ablation we record the number of clusters selected, the standard score against
+the null, and the adjusted Rand index between the ablated partition and the full one, so that a
+surviving $k$ of two can be distinguished from the same two modes surviving.
 
 \subsection{Validation against results}
 
-The structure the paper reports is tested against what happened. The archive's team tables
-carry goals and expected goals but not results, so wins, draws and losses are recovered by
-summing the goalkeeper table, which credits every match to the goalkeeper who played it, and
-the recovery is audited: each league-season is checked for the right number of clubs, every
-club's credited matches are checked against the schedule with the exceptions listed, goals
-for are taken from goals scored while each goalkeeper was on the pitch and accepted only
-where the same rows reproduce the goalkeeper table's goals against to within one, and two
-published season records are asserted. Points per match, goal difference per match and
-league position follow.
+The structure is tested against what happened. The archive's team tables carry goals but not
+results, so wins, draws and losses are recovered by summing the goalkeeper table, which credits
+every match to the goalkeeper who played it, and the recovery is audited against the schedule
+with the exceptions listed. Each team-season is summarised by its minutes-weighted composition
+on the two-mode partition and on the six archetypes, and by the minutes-weighted mean position
+of its players along the axis between the two centroids. Prediction is out of sample under
+three holdouts, one season at a time, one league at a time and one club at a time, the last
+being the strict one since no held-out team-season then shares a club with the training data,
+by ridge regression with the penalty chosen by cross-validation inside the training folds,
+comparing possession alone, the composition alone and both. The increment of the last over the
+first is the quantity of interest, because composition and dominance are confounded and only
+the increment says whether the modes carry information about results that dominance does not.
 
-Each team-season is then summarised by its minutes-weighted composition on the two-mode
-partition and on the six archetypes, using the eligible players, and the composition is
-correlated with results and used to predict them. Prediction is out of sample under three holdouts, one season at a time, one league at a
-time and one club at a time, the last being the strict one since no held-out team-season
-then shares a club with the training data, by ridge regression with the
-penalty chosen by cross-validation inside the training folds, comparing possession alone,
-the composition alone and both. The increment of the last over the first is the quantity of
-interest, because composition and dominance are confounded and only the increment says
-whether the modes carry information about results that dominance does not. The goalkeeper
-partitions are tested the same way, against the prediction that a partition sorting keepers
-by their teams will track points and a partition describing goalkeeping will not.
+\subsection{Profiling, supervised validation and goalkeepers}
 
-\subsection{Archetype profiling}
+For every retained cluster we compute the centroid profile as a standardised deviation from the
+mean of its position group, take the eight features with the largest absolute deviation as the
+distinguishing features, and list the players closest to the centroid and near the boundary.
+Archetype names are assigned only after inspecting these profiles and the players they contain,
+and each name carries a justification citing the distinguishing features and the example
+players. The names are hypotheses about what a statistical profile represents, not
+observations. Outliers are identified within position group with an isolation forest alongside
+a Mahalanobis distance, so that a partition-based and a distance-based notion of unusualness
+can be compared \citep{liu2008isolation}.
 
-For every retained cluster we compute the centroid profile as a standardised deviation
-from the mean of its position group, take the eight features with the largest absolute
-deviation as the distinguishing features, and list the ten players closest to the
-centroid and three players near the boundary. Archetype names are assigned only after
-inspecting these profiles and the players they contain, and each name is accompanied by a
-justification that cites the distinguishing features and the example players. The names
-are hypotheses about what the statistical profile represents, not observations, and they
-carry no authority beyond the profile that produced them.
+Unsupervised structure is easy to over-interpret, so we also ask a supervised model what
+separates the listed positions. Logistic regression and gradient boosting are trained to
+predict the position group from the same features under five-fold stratified cross-validation
+against a majority-class baseline running through identical folds \citep{ke2017lightgbm}, and
+SHAP values on the boosted model identify which statistics do the separating
+\citep{lundberg2017unified}. Two properties of the confusion matrix are read as evidence about
+geometry rather than about accuracy: whether the two extreme classes are confused with each
+other, and whether the errors concentrate in the class that lies between them. An ordered space
+with two poles produces few errors of the first kind and many of the second, while three
+genuine categories would not.
 
-Outliers are identified within position group with an isolation forest
-\citep{liu2008isolation}, reported alongside a Mahalanobis distance so that a
-distance-based and a partition-based notion of unusualness can be compared.
-
-\subsection{Supervised validation}
-
-Unsupervised structure is easy to over-interpret, so we ask a supervised model what
-separates the listed positions. Logistic regression and gradient boosting, the latter with
-LightGBM \citep{ke2017lightgbm}, are trained to predict the position group from the feature set under five-fold stratified cross
-validation, and we report accuracy, macro F1 and the confusion matrix, every number computed
-from out-of-fold predictions. A majority-class baseline runs through the identical folds, so
-the reported lift is over the trivial model rather than over zero. Two properties of the
-confusion matrix are read as evidence about geometry rather than about accuracy: whether the
-two extreme classes are confused with each other, and whether the errors concentrate in the
-class that lies between them. An ordered space with two poles produces few errors of the
-first kind and many of the second, while three genuine categories would not.
-
-The purpose is interpretability, not accuracy: SHAP values
-\citep{lundberg2017unified} on the boosted model identify which statistics actually
-distinguish each position in this feature set. The model is fitted on every row and the
-attributions are computed on a stratified sub-sample, which is stated with the result. We
-also record, for each feature and class, the rank correlation between the feature's value and
-the attribution it makes, which separates a class identified by what its members do from one
-identified by what they do not. Players the classifier places in the wrong group are cross referenced
-against the candidate hybrids from the clustering, since agreement between two methods
-that fail in the same place is more informative than either alone.
-
-A secondary ridge regression predicts non-penalty expected goals per ninety from the
-non-shooting features only, so that the fitted value represents the shot volume a
-player's role would ordinarily generate and the residual represents the part not
-explained by role. We report the cross validated coefficient of determination and treat
-the residual ranking with heavy caution, because a residual from a model with modest
-explanatory power is mostly noise.
-
-\subsection{Goalkeepers}
-
-Goalkeepers share almost no features with outfield players, so they are analysed with a
-separate pipeline on the \KeeperFeatureCountArchive{} canonical goalkeeper features, under
-the same eligibility threshold, the same standardisation and the same selection rule. Saves
-above expectation are computed as post-shot expected goals \citep{vatvani2022upgrading}
-minus goals allowed, which conditions on the difficulty of the shots faced rather than only
-on their number.
-
-One methodological choice needs stating in advance because the result turns on it. The
-goalkeeper feature block mixes quantities describing what a goalkeeper does with quantities
-describing what his defence permits him to face, and a partition fitted on both will separate
-teams rather than goalkeepers. We therefore fit twice, once on the full block and once on
-technique alone with the exposure variables excluded, and report for each partition how much
-variance membership explains in situational quantities against technical ones. The comparison
-is declared here, not chosen after seeing which fit looked better.
-
-On the reduced sample the same analysis is not possible, because post-shot expected goals,
-sweeper actions, distribution and cross handling are all absent there. Only shot stopping and
-workload survive, so that version builds two composites instead of five and substitutes the
-residual from a regression of saves on shots on target faced for post-shot expected goals.
-That substitute adjusts for the volume of work a goalkeeper receives but not for its
-difficulty, and it is reported as the weaker instrument it is.
-
-\subsection{Team signatures}
-
-Each club is summarised in two ways: as a minutes-weighted centroid of its outfield
-players in the shared principal component space, and as the share of its outfield minutes
-played by each archetype. Clubs are then clustered hierarchically on archetype
-composition and compared against final league position.
-
-\subsection{Additional analyses}
-
-Three further analyses address specific threats to the interpretation.
-
-Player similarity is computed as cosine similarity within position group, and the nearest
-neighbours of a set of well known players are reported so that a reader with football
-knowledge can judge whether the geometry corresponds to anything real.
-
-Cross-season replication refits the entire pipeline on the replication season and
-computes the adjusted Rand index between the two seasons for players present in both,
-which distinguishes archetypes that describe stable playing roles from artefacts of a
-single season.
-
-Per-90 rates computed over partial seasons are noisy, and that noise is largest where the minutes are fewest. We therefore apply empirical Bayes shrinkage toward the
-position group mean, with the degree of shrinkage determined by minutes played
-\citep{efron1977steins}, refit the clustering on the shrunken features, and report how
-many assignments change. A partition that dissolves under shrinkage was substantially a
-description of sampling noise.
+Goalkeepers share almost no features with outfield players and are analysed with a separate
+pipeline on the \KeeperFeatureCountArchive{} canonical goalkeeper features, under the same
+threshold, standardisation and selection rule. Saves above expectation are computed as
+post-shot expected goals minus goals allowed, which conditions on the difficulty of the shots
+faced rather than only on their number \citep{vatvani2022upgrading}. One choice needs stating
+in advance because the result turns on it. The goalkeeper feature block mixes quantities
+describing what a goalkeeper does with quantities describing what his defence permits him to
+face, and a partition fitted on both will separate teams rather than goalkeepers. We therefore
+fit twice, once on the full block and once on technique alone with the exposure variables
+excluded, and report for each partition how much variance membership explains in situational
+quantities against technical ones.
 
 \subsection{Reproducibility}
 
-The analysis runs from a single command against pinned dependencies and a fixed seed.
-Every figure and every number in this paper is generated by code in the accompanying
-repository and read into the document from generated definitions at build time, so no
-value in the text was transcribed by hand. The code, the retrieval step that fetches the
-archive from its stated upstream with a recorded digest per file, the cluster assignments
-for both samples, and the sources of this document are at
+The analysis runs from a single command against pinned dependencies and a fixed seed. Every
+figure and every number in this paper is generated by code in the accompanying repository and
+read into the document from generated definitions at build time, so no value in the text was
+transcribed by hand. The code, the retrieval step that fetches the archive from its stated
+upstream with a recorded digest per file, the cluster assignments for both samples, and the
+sources of this document are at
 \url{https://github.com/ZacharyTChung/pl-player-profiling}.

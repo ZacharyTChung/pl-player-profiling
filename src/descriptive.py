@@ -409,13 +409,6 @@ def figure_distributions(df: pd.DataFrame, season: str) -> None:
         ax.set_title(label(metric), loc="left")
         ax.set_xlabel("per 90 minutes")
 
-    fig.suptitle(
-        f"Distribution by position group, {season} (white tick marks the median)",
-        fontsize=plotting.BASE_FONT_PT,
-        fontweight="bold",
-        x=0.01,
-        ha="left",
-    )
     plotting.save_figure(fig, "distributions_by_position")
 
 

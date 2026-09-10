@@ -921,7 +921,7 @@ def figure_shot_stopping(eligible: pd.DataFrame) -> None:
         ax,
         xlabel="PSxG minus goals allowed (goals per season)",
         ylabel="keeper-seasons",
-        title="a  Saves above expectation",
+        title="Saves above expectation",
     )
 
     ax = axes[1]
@@ -961,14 +961,9 @@ def figure_shot_stopping(eligible: pd.DataFrame) -> None:
     plotting.style_axis(
         ax,
         xlabel="PSxG minus goals allowed (goals)",
-        title=f"b  Best and worst {N_RANKED}, {archive.SEASONS[0]} to {archive.SEASONS[-1]}",
+        title=f"Best and worst {N_RANKED}, {archive.SEASONS[0]} to {archive.SEASONS[-1]}",
     )
-    fig.suptitle(
-        "Shot stopping adjusted for shot quality, which the post-withdrawal data cannot measure",
-        fontsize=plotting.BASE_FONT_PT,
-        x=0.01,
-        ha="left",
-    )
+    plotting.panel_labels(axes)
     plotting.save_figure(fig, "archive_keeper_shot_stopping")
 
 
@@ -976,8 +971,8 @@ def figure_clusters(eligible: pd.DataFrame, fits: dict[str, dict], validation: d
     """The two partitions in their own principal component planes, side by side."""
     fig, axes = plt.subplots(1, 2, figsize=(plotting.WIDTH_FULL, 3.5))
     titles = {
-        "full": "a  All twelve keeper features",
-        "technique": "b  Technique composites only",
+        "full": "all twelve keeper features",
+        "technique": "technique composites only",
     }
     for ax, (space, fit) in zip(axes, fits.items(), strict=True):
         projected = fit["projected"]
@@ -1030,12 +1025,7 @@ def figure_clusters(eligible: pd.DataFrame, fits: dict[str, dict], validation: d
             color=plotting.INK_SECONDARY,
         )
         plotting.legend_below(ax, ncol=2)
-    fig.suptitle(
-        "Removing the exposure block turns a team strength partition into a technique one",
-        fontsize=plotting.BASE_FONT_PT,
-        x=0.01,
-        ha="left",
-    )
+    plotting.panel_labels(axes)
     plotting.save_figure(fig, "archive_keeper_clusters")
 
 
@@ -1121,7 +1111,7 @@ def figure_radar(eligible: pd.DataFrame, fit: dict, archetypes: dict) -> None:
     load = np.abs(np.array([centroids[c] for c in range(k)])).sum(axis=0)
     quiet = float(360.0 * (int(np.argmin(load + np.roll(load, -1))) + 0.5) / n)
 
-    fig = plt.figure(figsize=(plotting.WIDTH_COLUMN, 4.6))
+    fig = plt.figure(figsize=(plotting.WIDTH_COLUMN, 3.8))
     fig.set_layout_engine("none")
     ax = fig.add_axes((0.22, 0.185, 0.56, 0.615), projection="polar")
     ax.set_theta_offset(np.pi / 2.0)
@@ -1168,25 +1158,7 @@ def figure_radar(eligible: pd.DataFrame, fit: dict, archetypes: dict) -> None:
     fig.legend(
         loc="lower center", bbox_to_anchor=(0.5, 0.005), ncol=1, fontsize=plotting.BASE_FONT_PT - 2
     )
-    fig.text(
-        0.5,
-        0.985,
-        "Goalkeeper cluster centroids on the five composite axes",
-        ha="center",
-        va="top",
-        fontsize=plotting.BASE_FONT_PT + 1,
-        fontweight="bold",
-    )
-    fig.text(
-        0.5,
-        0.945,
-        "standard deviations from the eligible pool mean, dashed ring is that mean\n"
-        "distribution is signed so that higher means shorter passing",
-        ha="center",
-        va="top",
-        fontsize=plotting.BASE_FONT_PT - 2,
-        color=plotting.INK_SECONDARY,
-    )
+    plotting.panel_labels(fig.axes, letters="cd")
     plotting.save_figure(fig, "archive_keeper_radar")
 
 

@@ -585,11 +585,6 @@ def figure_k_selection(selection: dict[str, dict], season: str) -> None:
         ax.set_xticks(config.K_RANGE[::2])
     handles, labels_ = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels_, loc="outside lower center", ncol=4)
-    fig.suptitle(
-        f"Cluster count selection, {season}, standardised feature space\n"
-        "the ring marks the k chosen by the declared consensus rule",
-        fontsize=10,
-    )
     plotting.save_figure(fig, "k_selection_curves")
 
 
@@ -627,7 +622,6 @@ def figure_consensus(stability: dict[str, dict], labels: dict[str, np.ndarray]) 
         ax.grid(False)
     bar = fig.colorbar(image, ax=axes.tolist(), fraction=0.03, pad=0.02)
     bar.set_label("fraction of bootstrap resamples in the same cluster")
-    fig.suptitle(f"Consensus co-assignment, {config.BOOTSTRAP_N} bootstrap resamples", fontsize=10)
     plotting.save_figure(fig, "consensus_matrix")
 
 
@@ -685,11 +679,6 @@ def figure_cluster_vs_position(frame: pd.DataFrame, labels: np.ndarray, stats: d
     axes[0].set_ylabel("data-driven cluster")
     for ax in axes:
         ax.set_xlabel("listed position")
-    fig.suptitle(
-        "Do the clusters recover the listed positions?\n"
-        "cells give player counts, shading is the share of the cluster",
-        fontsize=10,
-    )
     plotting.save_figure(fig, "cluster_vs_position")
 
 
@@ -750,7 +739,6 @@ def figure_cluster_scatter(
         axes[0].set_ylabel(ylab)
         for ax in axes:
             ax.set_xlabel(xlab)
-    fig.suptitle("Outfield players in the 90 percent variance PCA space", fontsize=10)
     plotting.save_figure(fig, "cluster_scatter_pca")
 
 

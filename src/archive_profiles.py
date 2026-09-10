@@ -50,7 +50,7 @@ Outputs
 -------
 ``results/archive_archetypes.json``, ``results/metrics/archive_archetype_profiles.json``,
 ``results/metrics/archive_archetype_stability.json``,
-``results/metrics/archive_outliers.json`` and the figures ``archive_radar_{group}``,
+``results/metrics/archive_outliers.json`` and the figures
 ``archive_radar_panel_{group}``, ``archive_archetype_profiles`` and ``archive_outliers``.
 """
 
@@ -1194,57 +1194,6 @@ def _quiet_angle(records: list[dict], group: str) -> float:
     return float(360.0 * (int(np.argmin(pairs)) + 0.5) / n)
 
 
-def figure_radar(group: str, records: list[dict]) -> None:
-    """Both archetypes of one position group overlaid on the group's ten fixed axes."""
-    limit = _radar_limit(records, group)
-    colors = plotting.categorical(len(records))
-    marks = plotting.markers(len(records))
-
-    # Constrained layout does not reserve room for polar tick labels, which sit outside
-    # the axes box, so the axes rectangle is placed by hand and the layout engine is off.
-    fig = plt.figure(figsize=(plotting.WIDTH_COLUMN, 4.6))
-    fig.set_layout_engine("none")
-    ax = fig.add_axes((0.185, 0.155, 0.63, 0.64), projection="polar")
-    angles = _radar_setup(ax, group, limit, label_angle=_quiet_angle(records, group))
-    for record, color, mark in zip(records, colors, marks, strict=True):
-        values = _radar_values(record, group)
-        ax.plot(
-            angles,
-            values,
-            color=color,
-            lw=1.6,
-            marker=mark,
-            markersize=3.4,
-            label=f"{record['label']} {record['name']} (n={record['n_players']:,})",
-        )
-        ax.fill(angles, values, color=color, alpha=0.12)
-    fig.legend(
-        loc="lower center",
-        bbox_to_anchor=(0.5, 0.005),
-        ncol=1,
-        fontsize=plotting.BASE_FONT_PT - 1,
-    )
-    fig.text(
-        0.5,
-        0.985,
-        f"{group} archetype centroids, archive feature set",
-        ha="center",
-        va="top",
-        fontsize=plotting.BASE_FONT_PT + 1,
-        fontweight="bold",
-    )
-    fig.text(
-        0.5,
-        0.945,
-        "standard deviations from the position group mean\ndashed ring is that mean",
-        ha="center",
-        va="top",
-        fontsize=plotting.BASE_FONT_PT - 1,
-        color=plotting.INK_SECONDARY,
-    )
-    plotting.save_figure(fig, f"archive_radar_{group}")
-
-
 def figure_radar_panel(group: str, records: list[dict]) -> None:
     """Small multiples, one panel per archetype, the other drawn in grey for context."""
     limit = _radar_limit(records, group)
@@ -1278,17 +1227,8 @@ def figure_radar_panel(group: str, records: list[dict]) -> None:
             ha="center",
             va="top",
             fontsize=plotting.BASE_FONT_PT - 1,
-            fontweight="bold",
+            color=plotting.INK_SECONDARY,
         )
-    fig.text(
-        0.5,
-        0.985,
-        f"{group} archetypes on the fixed radar axes, the other archetype shown in grey",
-        ha="center",
-        va="top",
-        fontsize=plotting.BASE_FONT_PT + 1,
-        fontweight="bold",
-    )
     plotting.save_figure(fig, f"archive_radar_panel_{group}")
 
 
@@ -1473,11 +1413,6 @@ def figure_outliers(table: pd.DataFrame, report: dict) -> None:
         xlabel="Mahalanobis distance",
         title="ranked on the mean of the two\nwithin-group percentiles",
     )
-    fig.suptitle(
-        f"Outlying profiles within position group, {len(table):,} player-seasons, "
-        "colour is the listed position group",
-        fontsize=plotting.BASE_FONT_PT + 1,
-    )
     plotting.save_figure(fig, "archive_outliers")
 
 
@@ -1581,7 +1516,6 @@ def main() -> None:
     print("  drawing figures")
     for group in config.OUTFIELD_GROUPS:
         group_records = [records[f"{group}-{c}"] for c in range(K)]
-        figure_radar(group, group_records)
         figure_radar_panel(group, group_records)
     figure_archetype_profiles(ordered)
     figure_outliers(outliers, outlier_json)

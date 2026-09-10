@@ -1,200 +1,165 @@
-\section{Discussion}
+\section{Discussion and conclusion}
 \label{sec:discussion}
-
-\subsection{What two modes mean, and what they do not}
 
 The result is easy to overstate in either direction. It does not say that football has two
 kinds of player, and it does not say that role is a single number. It says that the
-distribution of players over the \ArcFeatures{} measured statistics has two regions of
-concentrated density joined by a populated middle, that the axis running between them is the
-dominant direction in the space, and that no division finer than that one is distinguishable
-from what a partitioning algorithm produces on data containing no divisions.
+distribution of players over \ArcFeatures{} measured statistics has two regions of concentrated
+density joined by a populated middle, that the axis running between them is the dominant
+direction in the space, and that no division finer than that one is distinguishable from what a
+partitioning algorithm produces on data containing no divisions. That is a description a
+mixture representation expresses well and a taxonomy does not, which is why the archetypal and
+partial membership approaches to athlete description are better matched to this data than the
+genre that dominates it \citep{eugster2012performance, seri2024partial}.
 
-The axis itself is territorial, not technical. Its strongest loadings are touches by
+The axis itself is territorial rather than technical. Its strongest loadings are touches by
 pitch third and progressive receptions, not passing accuracy or duel success, and the same
 ordering appears in the supervised attributions, where \ShapArcTopOne{} carries more weight
-than any technical statistic for all three position groups. Football's own vocabulary for
-role mixes territory with technique freely, describing a player as a ball playing centre back
-or a pressing forward, but the season aggregate record is far better at recording where a
-player was than what he did there. Any role structure recovered from it will be mostly a
-statement about territory, and reading it as a statement about ability is the most common way
-to misuse this kind of analysis.
-
-Within position groups the two-way splits are ordered, not categorical, which the
-construction makes unavoidable: standardising within group before a two-way split forces the
-centroids to be mirror images, so each split reports a single direction of variation and its
-two ends. The three are not equally supported and the paper does not claim they are. The
-defender split is strongest on every measure applied to it. The midfield split is well
-supported with a more populated boundary. The forward split is the weakest and should be
-read with the most caution: its dip test does not reject unimodality at \StrDipPFW{}, so
-although its silhouette separates from the clusterless null, what it separates is plausibly a
-cut through a continuum of forward involvement rather than two modes.
+than any technical statistic for all three position groups. Football's own vocabulary for role
+mixes territory with technique freely, describing a player as a ball-playing centre back or a
+pressing forward, but the season aggregate record is far better at recording where a player was
+than what he did there. Any role structure recovered from it will be mostly a statement about
+territory, and reading it as a statement about ability is the most common way to misuse this
+kind of analysis. That the discovered division cuts across the listed positions rather than
+reproducing them is consistent with what tracking and event data show about modern roles, where
+positional assignment is fluid within a match and formations are recovered as distributions
+rather than as slots \citep{bialkowski2014large, decroos2019player}.
 
 \subsection{Why finer taxonomies keep being published}
 
 The methodological point generalises past football. A published role taxonomy is typically
-supported by three things: a selection criterion that picks the reported number of clusters,
-a stability check that shows the partition survives resampling, and centroid profiles that
-read sensibly against domain knowledge. Every one of those is satisfied here by partitions
-this paper shows to be artefacts.
+supported by three things: a selection criterion that picks the reported number of clusters, a
+stability check that shows the partition survives resampling, and centroid profiles that read
+sensibly against domain knowledge. Every one of those is satisfied here by partitions this
+paper shows to be artefacts.
 
-The reason is that none of the three tests existence. A selection criterion compares
-candidate partitions against each other and is never offered the option of returning none. A
-bootstrap measures whether an algorithm applied twice to similar data behaves similarly,
-which a deterministic procedure on a smooth unimodal distribution does very reliably, so a
-high bootstrap adjusted Rand index is evidence of algorithmic stability and not of group
-structure. Interpretability is the weakest of the three, because a cut through any continuous
-distribution produces two centroids that differ along the direction of the cut, and a domain
-expert can narrate that difference whether or not it corresponds to a real boundary. The
-evidence here makes the concern concrete and measured rather than hypothetical.
-On data built to contain no groups, the same pipeline returns a silhouette maximum at two
-clusters, two nameable centroids, and a bootstrap adjusted Rand index of at least
-\StrBootNullMinSingle{} on every clusterless dataset in every scope, against
-\StrBootObsMin{} on the real data. The difference is as small as \StrBootGapMin{}. A
-stability check that passes a continuum at \StrBootNullMinSingle{} is not a test of
-existence, and a taxonomy that rests on one rests on evidence a continuum satisfies equally well.
+None of the three tests existence. A selection criterion compares candidate partitions against
+each other and is never offered the option of returning none, which is the limitation the
+stopping-rule literature has documented since it began \citep{milligan1985examination,
+rousseeuw1987silhouettes}. A bootstrap measures whether an algorithm applied twice to similar
+data behaves similarly, which a deterministic procedure on a smooth unimodal distribution does
+very reliably, exactly as the theory of stability-based validation predicts
+\citep{benhur2002stability, vonluxburg2010stability}. Interpretability is the weakest of the
+three, because a cut through any continuous distribution produces two centroids that differ
+along the direction of the cut, and a domain expert can narrate that difference whether or not
+it corresponds to a real boundary. The evidence here makes the concern measured rather than
+hypothetical: on data built to contain no groups, the same pipeline returns a silhouette
+maximum at two clusters, two nameable centroids, and a bootstrap adjusted Rand index of at
+least \StrBootNullMinSingle{} on every clusterless dataset in every scope, against
+\StrBootObsMin{} on the real data, a difference as small as \StrBootGapMin{}. A stability check
+that passes a continuum at \StrBootNullMinSingle{} is not a test of existence, and a taxonomy
+that rests on one rests on evidence a continuum satisfies equally well. Given that 55 percent
+of sports science clustering studies do not state how the number of clusters was chosen at all,
+the gap between the applied genre and the validity literature is wide
+\citep{fernandez2024reporting}.
 
-Calibration against matched clusterless data fixes this at low cost. It requires no
-assumption the analysis does not already make, since the simulated data are drawn using the
-observed mean and covariance, it costs a few dozen refits, and it is the single step that
-separates the two-mode result reported here from the six-way taxonomy the same pipeline would
-have produced with the same apparent confidence. Hartigan's dip test and a density based
-method permitted to answer that nothing is clustered are useful supplements, and the
-agreement of all three is what makes the negative half of the result credible.
+Calibration against matched clusterless data closes it at low cost. It requires no assumption
+the analysis does not already make, since the simulated data are drawn using the observed mean
+and covariance; it costs a few dozen refits; and it is the single step that separates the
+two-mode result reported here from the six-way taxonomy the same pipeline would have produced
+with the same apparent confidence. The gap statistic already does a version of this against a
+uniform reference \citep{tibshirani2001estimating}, and what this paper adds is not a new
+statistic but harder references and a reporting convention, that the observed value be placed
+against all of them so a reader can see which the claim survives. Hartigan's dip test and a
+density-based method permitted to answer that nothing is clustered are useful supplements
+\citep{hartigan1985dip, adolfsson2019cluster, campello2013density}, and the agreement of all
+three is what makes the negative half of the result credible. The position is the one Hennig
+argues for, that a partition should be judged by whether it has the properties the analyst
+needs rather than by whether it is correct \citep{hennig2015true}; the property asked for here
+is that a partition be distinguishable from one imposed on a continuum.
 
-\subsection{Listed positions and data-driven roles}
+The comparison with the closest prior work is instructive. Akhanli and Hennig's aggregated
+validity index, applied to a season of player statistics from eight European leagues, returned
+a coarse partition into five ordered groups running along the same territorial axis found here
+\citep{akhanli2020comparing, akhanli2023clustering}. Two independent calibrations, one against
+random partitions of the observed data and one against clusterless data matched to it, agree
+that the recoverable structure in season aggregates is coarse and ordered. The taxonomies of a
+dozen named types that the applied genre reports are not what either calibration supports
+\citep{elfoukahi2026unveiling, plakias2023identifying, alagappan2012from, kalman2020nba}.
 
-The clusters do not recover listed positions, and where they disagree is the interesting
-part. The division places nearly every defender on one side and nearly every forward on the
-other while cutting the midfield close to in half, so it leaves the two extreme groups intact
-and divides the group that sits between them. The players it reassigns are recognisable:
-holding midfielders sit with the defenders and attacking midfielders sit with the forwards.
+\subsection{What the modes mean in practice}
 
-That the supervised model makes its errors in the same place is corroboration from machinery
-that shares nothing with the clustering. A classifier that reaches \SupGBMAcc{} percent
-accuracy while sending all but \SupPoleShare{} percent of its errors through midfield is
-describing an ordered space, since a three-category problem would scatter errors
-more evenly across the off-diagonal. The practical reading is that listed position is a
-reasonable but coarse summary at the extremes and close to arbitrary in the middle, which is
-what anyone who has watched a modern midfield would expect and which the data now supports
-quantitatively.
+The two modes are not the listed positions renamed, and where they disagree is the
+interesting part. The division leaves the two extreme groups intact and cuts the group between
+them close to in half, and the players it reassigns are recognisable: holding midfielders sit
+with the defenders and attacking midfielders with the forwards. That the supervised model makes
+its errors in the same place is corroboration from machinery sharing nothing with the
+clustering. The practical reading is that listed position is a reasonable but coarse summary
+at the extremes and close to arbitrary in the middle, which is what anyone who has watched a
+modern midfield would expect and which the data now support quantitatively.
 
-\subsection{What the modes predict}
-
-A description of role structure that never touched a result would be open to the objection
-that it describes the statistics and not the sport. The test against real outcomes closes
-that gap in two directions at once. The two-mode composition of a club carries information
-about its points that possession does not, out of sample and under three different holdouts,
-by season, by league and by club, so
-the axis the partition cuts is an axis along which football is actually decided. The six
-archetypes carry no information about points that the two modes did not already carry, so the
-finer taxonomy fails against results exactly as it failed against the clusterless null. Those
-are independent tests, one internal and one external, and they agree.
-
+The test against real outcomes closes the gap between describing the statistics and describing
+the sport, and it closes it in two directions at once. The two-mode composition of a club
+carries information about its points that possession does not, out of sample under three
+different holdouts, so the axis the partition cuts is one along which football is actually
+decided. The six archetypes carry no information about points that the two modes did not
+already carry, so the finer taxonomy fails against results exactly as it failed against the
+clusterless null. Those are independent tests, one internal and one external, and they agree.
 Two cautions belong with that. The composition alone predicts slightly worse than possession
-alone, so the modes are not a substitute for a measure of dominance; they are a statement
-about how dominance is produced, and the increment is the right thing to cite. The within
-league correlation also varies, from \OutRhoLeagueMin{} in \OutRhoLeagueMinName{} to
-\OutRhoLeagueMax{} in \OutRhoLeagueMaxName{}, which is a reminder that the same composition
-buys different amounts in different competitions and that a pooled coefficient is a pooled
-coefficient.
+alone, so the increment is the right thing to cite. The within-league correlation also varies,
+from \OutRhoLeagueMin{} in \OutRhoLeagueMinName{} to \OutRhoLeagueMax{} in
+\OutRhoLeagueMaxName{}, a reminder that the same composition buys different amounts in
+different competitions.
 
-\subsection{Possession adjustment and its asymmetry}
+For recruitment the honest use of this work is narrow and real. The involvement axis is stable
+enough to support questions about squad composition, such as whether a club's minutes are
+concentrated at one end of the distribution. What the work does not support is a scouting
+taxonomy, since a shortlist built by matching a target's archetype label matches a label the
+data do not establish, and a similarity search over the continuous profile is the better
+instrument for the same question because it does not force a boundary that is not there. For
+anyone doing quantitative football analysis the two directly transferable items are the
+possession elasticities, which apply to any defensive count comparison and correct a convention
+that has stood since it was proposed without being measured \citep{knutson2014possession}, and
+the null calibration, which costs little and should be run before any archetype claim is made.
 
-The possession adjustment result is independent of the clustering and probably the most
-directly reusable finding here. Defensive counts are conventionally adjusted as though
-opportunity scales inversely with possession, so that a team with twice the ball concedes
-half the defensive events. The elasticities measured from the data run from
-\ArcElastTackles{} for tackles to \ArcElastClearances{} for clearances. For four of the
-five the bootstrap interval excludes one, so the conventional correction overcorrects them,
-and does so unequally. For clearances it does not: the interval reaches one, and the
-conventional exponent is, for that one statistic, not distinguishably wrong. A correction
-applied at unit elasticity to the other four converts a defensive-count comparison between a
-possession-dominant club and a counter-attacking one from biased in one direction to biased
-in the other, and the exponents are moreover averages over a possession range across which
-three of them measurably bend. The adjustment is also one sided, and that needs stating because the symmetry argument
-is superficially compelling. If defensive opportunity falls with possession then
-attacking opportunity should rise with it, and correcting only one side looks arbitrary. The
-counterfactual reported in Section~\ref{sec:results:symmetric} tests this and rejects it:
-applying the correction in both directions makes the description worse. Attacking output does
-not scale with team possession the way the symmetric account requires, because a player's
-attacking opportunity depends on where his team uses the ball rather than only on how much of
-it it has, and a single elasticity cannot represent that.
+The goalkeeper analysis carries its own caution. The division that emerges runs along what a
+goalkeeper is asked to do rather than how well he does it, and a partition of goalkeepers built
+from the full public feature block is mostly a partition of the teams in front of them, with a
+situational effect size of \ArcKeeperEtaFullSituation{} against \ArcKeeperEtaFullTechnique{}
+for technique. Anyone building goalkeeper archetypes from public data will produce labels that
+describe a role assignment made by a coach rather than a property of the goalkeeper, and it is
+easy to present the former as the latter. Conditioning on shot difficulty through post-shot
+expected goals rather than on shot volume is the minimum requirement for saying anything about
+shot stopping at all \citep{vatvani2022upgrading}.
 
-\subsection{Goalkeepers}
-
-Goalkeepers are analysed separately because they share almost no features with outfielders,
-and the archive restores the full block that makes the analysis possible at all. The division
-that emerges runs along what a goalkeeper is asked to do rather than how well he does it. The
-situational axis carries an effect size of \ArcKeeperEtaFullSituation{} against
-\ArcKeeperEtaFullTechnique{} for technique, so a partition of goalkeepers built from these
-statistics is mostly a partition of the teams in front of them and of the sweeping duties
-those teams impose. This is a caution for anyone building goalkeeper archetypes from public
-data, since the resulting labels will describe a role assignment made by a coach rather than a
-property of the goalkeeper, and it is easy to present the former as the latter.
-
-\subsection{Limitations}
+\subsection{Limitations and future work}
 
 Season aggregates discard context. A tackle count does not say where the tackles happened, an
-expected goals total does not distinguish six poor chances from two good ones, and a touch
-map summarised into three thirds is a coarse instrument for a question about territory that
-turns out to be territorial. Everything here is therefore a claim about what season aggregate
-data can support, not about what football contains, and the two should not be conflated: it
-remains entirely possible that finer roles exist and that this description cannot see them.
-Event and tracking data would be the way to find out.
+expected goals total does not distinguish six poor chances from two good ones, and a touch map
+summarised into three thirds is a coarse instrument for a question that turns out to be
+territorial. Everything here is a claim about what season aggregate data can support, not about
+what football contains, and the two should not be conflated: it remains entirely possible that
+finer roles exist and that this description cannot see them. Event and tracking data would be
+the way to find out \citep{pappalardo2019playerank, aalbers2019distinguishing}.
 
 The confound that possession adjustment does not remove is team strength. Correcting the
-defensive counts removes the exposure effect from those five features, but the attacking
-statistics still scale with a team's own share of the ball, and the leading component remains
-related to team quality. Correcting both directions would require an instrument this data
-cannot supply, so the residual is acknowledged, not solved. The unit of analysis is the player-season, and player-seasons are nested: the same player
-appears in up to \ArcNSeasons{} rows, the same club in up to \ArcNSeasons{} team-seasons,
-and clubs within leagues. The pooled fits and the bootstrap treat rows as exchangeable,
-which they are not, so the pooled intervals are narrower than a fully nested analysis
-would give. The paper's defence against this is design, not adjustment: every
-central claim is also made on independent refits by season and by league, and the test
-against results holds out whole seasons, whole leagues and, in
-Section~\ref{sec:results:outcomes}, whole clubs, so that no held-out unit shares a player
-or a club with the training data. Where a pooled interval is quoted, the independent
-refits are the check on it. Per ninety rates remain
-noisy above the eligibility threshold, which is why the outlier list of
-Section~\ref{sec:results:outliers} carries a minutes caveat and why rankings computed on
-partial seasons should be shrunk before they are read.
+defensive counts removes the exposure effect from those five features, but attacking statistics
+still scale with a team's own share of the ball, so the leading component remains related to
+team quality. The unit of analysis is the player-season, and player-seasons are nested, with the
+same player appearing in up to \ArcNSeasons{} rows and clubs nested within leagues. The pooled
+fits and the bootstrap treat rows as exchangeable, which they are not, so pooled intervals are
+narrower than a fully nested analysis would give. The defence against this is design rather
+than adjustment: every central claim is also made on independent refits by season and by
+league, and the test against results holds out whole seasons, whole leagues and whole clubs.
+The archive is a mirror rather than the source, and although its coverage was audited it cannot
+be re-derived from the live site, and one season was excluded outright because a whole feature
+block was absent from it. Season aggregation also assumes a player's role is constant across a
+season, which the drift analysis of Section~\ref{sec:si:reduced} shows holds for most players
+and fails for a minority.
 
-The archive is a mirror, not the source, and although its coverage was verified
-against the surviving public tables where those overlap, it cannot be re-derived from the
-live site. One season was excluded outright because a whole feature block was absent from it.
-Season aggregation also assumes a player's role is constant across a season, which the drift
-analysis shows holds for most players and fails for a minority. Finally, the two-mode result
-covers recent European football at the top level, and the five competitions tested resemble
-one another more than they resemble the rest of the sport.
+Three directions follow. Event and tracking data would restore the spatial detail that season
+aggregates discard and would test the two-mode claim against a description rich enough to
+reveal finer structure if it exists. The most interesting version of that test is the one this
+paper cannot run, whether the modes are a property of football or a property of the
+measurement, which requires a dataset in which a finer taxonomy is known to be present.
+Extending beyond the big five, to competitions with different possession profiles, would test
+whether the elasticities and the two-mode result hold where the league is less concentrated.
 
-\subsection{Applications}
-
-For recruitment the honest use of this work is narrow and real. The involvement axis is
-stable enough to support questions about squad composition, such as whether a club's minutes
-are concentrated at one end of the distribution, and the club level signatures make that
-legible. What the work does not support is a scouting taxonomy: a shortlist built by matching
-a target's archetype label will be matching a label that the data does not establish, and the
-similarity search over the continuous profile is the better instrument for the same question
-because it does not force a boundary that is not there.
-
-For anyone doing quantitative football analysis the two transferable items are the possession
-elasticities, which can be applied directly to any defensive count comparison, and the null
-calibration, which costs little and should be run before any archetype claim is made.
-
-\subsection{Future work}
-
-The obvious extension is data. Event and tracking data would restore the spatial detail that
-season aggregates discard and would test the two-mode claim against a description rich enough
-to reveal finer structure if it exists, at the cost of the reproducibility a public source
-provides. The most interesting version of that test is the one this paper cannot run: whether
-the modes are a property of football or a property of the measurement, which requires a
-dataset where a finer taxonomy is known to be present.
-
-Within public data, three directions follow. The role drift analysis covers one club and
-would be worth extending, which is a matter of scraping time, not method. Extending
-beyond the big five, to competitions with different possession profiles, would test whether
-the elasticities and the two-mode result hold where the league is less concentrated. Modelling
-attacking exposure properly, rather than through a single elasticity, would let the symmetric
-adjustment be revisited on a footing the current test cannot provide.
+The question this paper set out to answer is whether football player roles, as season aggregate
+statistics describe them, form types or a continuum. They form neither cleanly. The useful
+description sits between the two: an ordered space with one dominant axis, density concentrated
+at two ends, and a populated middle that no partition divides well. Two modes are real, they
+reproduce in every season and every competition, they predict what happened on the pitch, and
+nothing finer than them survives a test that structureless data would fail. What follows for
+practice is a caution about method rather than about football. A silhouette maximum, a high
+bootstrap adjusted Rand index and an interpretable centroid are all obtainable from data
+containing no groups whatsoever, because the algorithm supplies the groups.
