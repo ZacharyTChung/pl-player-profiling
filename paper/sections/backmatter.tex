@@ -1,17 +1,20 @@
+\ifreview\else
 \section*{Author contributions}
 
 C.C. conceived the research question. Z.C. designed the study, carried out the analysis,
 and wrote the paper. Both authors approved the final version.
+\fi
 
 \section*{Data and code availability}
 
 The analysis code, the retrieval step that fetches the archive from its stated upstream and
 records a digest per file, the cluster assignments for both samples and the sources of this
-document are available at \url{https://github.com/ZacharyTChung/pl-player-profiling}. The
+document are available at \repourl{}. The
 primary sample is the public worldfootballR mirror of FBref described in
 Section~\ref{sec:methods:data}, and the reduced sample was retrieved from FBref and Understat as
 described there.
 
+\ifreview\else
 \section*{Acknowledgements}
 
 The statistics analysed here originate with FBref and were retrieved from the public
@@ -19,3 +22,4 @@ mirror maintained by the worldfootballR project \citep{zivkovic2026worldfootball
 analysis code and the manuscript were developed with the assistance of an AI coding
 assistant, Claude, under the direction of the authors, who take full responsibility for the
 content.
+\fi

@@ -1,21 +1,17 @@
-Football analysts describe players with dozens of per-match statistics and then sort them
-into role archetypes such as the ball-playing centre back or the deep-lying playmaker. Whether
-such types exist has never been tested, because the evidence normally offered for them is
-produced just as readily by data containing no groups at all: a clustering algorithm returns
-groups whatever it is given, so a selection criterion, a resampling check and an interpretable
-average profile are satisfied by a smooth continuum. We test existence directly on \ArcRows{}
-player-seasons from \ArcNSeasons{} seasons of the big five European leagues, described by
-\ArcFeatures{} statistics, by calibrating cluster quality against simulated data matched to
-the observed sample in size, dimension and correlation but built to contain no clusters. One
-division survives, and it is a coarse one. Players separate into a defensive and an attacking
-mode of involvement, and that separation exceeds every simulation under all three clusterless
-references in every scope, by at least \StrMinZOverall{} standard deviations against the
-hardest. Nothing finer survives: beyond two modes the observed separation is
-indistinguishable from what structureless data produces. The usual stability evidence cannot
-make this distinction, since clusterless data resample at an adjusted Rand index of at least
-\StrBootNullMinSingle{}. The two modes are not the listed positions renamed, agreeing with
-them at \ArcARIvsPosition{}, with defenders and forwards at opposite poles and midfielders
-divided almost evenly between the two. The division reproduces in every season and every
-league, and a club's composition along it predicts league points beyond possession out of
-sample. Football role space has two poles and a populated middle, and finer taxonomies are
-artefacts of the method used to find them.
+Football analysts sort players into role archetypes such as the ball-playing centre back or
+the deep-lying playmaker. Whether such types exist has never been tested, because a clustering
+algorithm returns groups whatever it is given, so the usual evidence for a taxonomy is satisfied
+just as well by a smooth continuum. We test existence directly on \ArcRows{} player-seasons from
+\ArcNSeasons{} seasons of the big five European leagues, described by \ArcFeatures{} statistics,
+by calibrating cluster quality against simulated data matched to the sample in size, dimension
+and correlation but built to contain no clusters. One division survives, and it is coarse:
+players separate into a defensive and an attacking mode of involvement, exceeding every
+simulation under all three clusterless references in every scope, by at least
+\StrMinZOverall{} standard deviations against the hardest. Nothing finer survives, and the usual
+stability evidence cannot make the distinction, since clusterless data resample at an adjusted
+Rand index of at least \StrBootNullMinSingle{}. The two modes are not the listed positions
+renamed, agreeing with them at \ArcARIvsPosition{}, and they reproduce when each season and each
+league is fitted independently. A club's composition along the axis predicts league points beyond
+possession out of sample, while the finer archetypes predict nothing further. Football role space
+has two poles and a populated middle, and finer taxonomies are artefacts of the method used to
+find them.

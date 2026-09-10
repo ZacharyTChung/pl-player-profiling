@@ -29,3 +29,6 @@ submission.tar.gz
 
 # macOS finder metadata.
 .DS_Store
+
+# Build output of `make review`: the double-spaced anonymous manuscript, regenerable.
+paper/review/

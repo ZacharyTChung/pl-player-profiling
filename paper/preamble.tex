@@ -9,10 +9,14 @@
 \usepackage{graphicx}
 \usepackage{siunitx}
 \usepackage{subcaption}
-% Numeric citations, compressed. A run of three references prints as [1-3] rather than
+% Citation style, and the one thing to change when the target venue changes. Numeric and
+% compressed is the default, because a run of three references prints as [1-3] rather than
 % as three author-year parentheticals, which is what keeps a citation-dense paragraph
-% readable at this length.
+% readable at this length. JQAS asks for Harvard author-date instead: comment the first
+% line and the \bibliographystyle below, and uncomment their partners. Both compile; every
+% citation in the sources is a natbib \citep or \citet, which works either way.
 \usepackage[numbers,sort&compress]{natbib}
+%\usepackage{natbib}                       % Harvard author-date
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{longtable}
@@ -28,6 +32,7 @@
 \usepackage{etoolbox}
 
 \bibliographystyle{unsrtnat}
+%\bibliographystyle{plainnat}              % Harvard author-date
 \graphicspath{{figures/}}
 
 \sisetup{
@@ -50,9 +55,36 @@
 \renewcommand{\textfraction}{0.07}
 \renewcommand{\floatpagefraction}{0.75}
 
+% --- Submission mode -----------------------------------------------------------------
+% Compile with `latexmk -pdf -usepretex='\def\reviewmode{}' main.tex`, or `make review`,
+% to get the manuscript most journals in this area ask for at submission: double spaced,
+% line numbered, and with the authors and the repository URL removed so the review can be
+% blind. Without the flag the same source gives the typeset article.
+\newif\ifreview
+\ifdefined\reviewmode\reviewtrue\fi
+
+\ifreview
+  \usepackage{setspace}
+  \doublespacing
+  \usepackage{lineno}
+  \linenumbers
+\fi
+
+% The repository identifies the authors, so under review it is withheld rather than
+% removed: a reviewer should still know the work is reproducible.
+\ifreview
+  \newcommand{\repourl}{[repository URL withheld for blind review]}
+\else
+  \newcommand{\repourl}{\url{https://github.com/ZacharyTChung/pl-player-profiling}}
+\fi
+
 \title{Two Modes, Not Many Types: The Structure of Football Player Roles in
 Season-Aggregate Data}
 
-\author{Zachary Chung\thanks{Corresponding author: zacharytylerchung@gmail.com} \and Christian Chung}
-
-\date{\today}
+\ifreview
+  \author{}
+  \date{}
+\else
+  \author{Zachary Chung\thanks{Corresponding author: zacharytylerchung@gmail.com} \and Christian Chung}
+  \date{\today}
+\fi

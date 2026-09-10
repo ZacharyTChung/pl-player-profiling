@@ -210,6 +210,33 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
       procedural half of the methods into the supplement's extended methods, cut the results
       and discussion again, shrank the six main figures so none owns a page, and relaxed the
       float barrier. Article 21 pages including references, supplement 62.
+- [x] Journal readiness: abstract to roughly 200 words, keywords added, a `make review` target
+      producing the double-spaced line-numbered de-identified manuscript, the repository URL
+      routed through a macro that withholds it under blind review, and the citation style made a
+      documented one-line switch between numeric and Harvard author-date.
+
+## Target venue
+
+The format is aimed at **JSDSS**, the Journal of Statistics and Data Science in Sports, with
+**JQAS** as the fallback. JSDSS is the better fit for one specific reason: its three stated
+principles are diamond open access, broad sports-data scope and reproducibility, it follows the
+JASA reproducibility guide, and it gives a designation to work that meets those standards. This
+repository is built to that standard already. It states no word limit, so the paper does not have
+to be mutilated to fit. One thing to know before submitting: JSDSS wants **accepted** manuscripts
+typeset as a Quarto Manuscript with the figure and table code inline, rendered to LaTeX. Initial
+submission is a PDF, so the LaTeX sources here are fine to submit and the conversion is an
+acceptance-time job, not a now job.
+
+JQAS is the fallback and its requirements are already met or one switch away: abstract of about
+200 words (ours renders at 225), three to six keywords not repeating the title (in `main.tex`),
+numbered sentence-case headings, 8.5 by 11 with one inch margins at 11pt, and de-identified
+double-spaced submission, which is what `make review` produces. JQAS asks for Harvard author-date
+citations rather than the numeric style the co-author asked for; `paper/preamble.tex` carries both
+as a commented pair and the author-date version has been compiled and checked.
+
+Journal of Sports Sciences is the wrong venue: roughly a 5,000 word ceiling against our 8,700, and
+a sports-science readership for a paper whose contribution is that a standard validation practice
+does not test what it is taken to test.
 
 ## Verification record
 

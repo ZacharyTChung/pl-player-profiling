@@ -28,7 +28,7 @@ PROCESSED      := $(wildcard data/processed/*.parquet)
 
 .PHONY: all data preprocess descriptive reduce cluster profiles supervised keepers \
         teams novel sensitivity threed symmetric age drift leagues paper-figures tables \
-        paper test lint format clean distclean help submission
+        paper review test lint format clean distclean help submission
 
 all: paper
 
@@ -52,7 +52,8 @@ help:
 	@echo "  leagues     repeat the pipeline across the big five, scrapes four leagues"
 	@echo "  paper-figures composite main-text figures"
 	@echo "  tables      LaTeX tables and results/macros.tex"
-	@echo "  paper       compile paper/main.pdf"
+	@echo "  paper       compile paper/main.pdf and paper/supplementary.pdf"
+	@echo "  review      double-spaced, de-identified manuscript for submission"
 	@echo "  test        pytest"
 	@echo "  all         everything through the PDF"
 	@echo "  submission  flatten the paper into an arXiv ready tarball"
@@ -267,6 +268,18 @@ paper/main.pdf: $(TEX_SOURCES) results/macros.tex
 	  paper/supplementary.log | tail -1
 paper: paper/main.pdf
 
+# The manuscript most journals in this area want at submission: double spaced, line
+# numbered and de-identified. Built into paper/review/ so it never overwrites the
+# typeset article, and from the same sources so the two cannot drift apart.
+review: paper/main.pdf
+	@mkdir -p paper/review
+	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error \
+	  -outdir=review -usepretex='\def\reviewmode{}' main.tex
+	@echo "review manuscript at paper/review/main.pdf"
+	@grep -o "Output written on .*main.pdf ([0-9]* pages" paper/review/main.log \
+	  | tail -1
+
+
 # --- Quality ----------------------------------------------------------------------
 test:
 	uv run pytest -q
@@ -287,7 +300,7 @@ clean:
 	rm -f results/membership_*.csv
 	rm -rf submission submission.tar.gz
 	rm -f data/processed/*.parquet
-	cd paper && rm -f main.pdf supplementary.pdf
+	cd paper && rm -f main.pdf supplementary.pdf && rm -rf review
 	cd paper && rm -f *.aux *.log *.out *.bbl *.blg *.fls *.fdb_latexmk \
 	  *.synctex.gz *.toc
 	@echo "clean done. The scrape cache under data/raw is kept."
