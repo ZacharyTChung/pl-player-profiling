@@ -30,7 +30,8 @@ confound is real, and the conventional correction, in the proportional form that
 the original of \citet{knutson2014possession}, assumes the relationship is proportional: a side
 with twice the ball is taken to concede half the defensive events.
 
-It is much weaker than that for four of the five statistics, and it is not distinguishable from
+It is much weaker than that for \NElastExcludeOne{} of the five statistics, and it is not
+distinguishable from
 proportional for the fifth. Fitted on the primary sample over \ArcPadjTeamSeasons{}
 team-seasons, with \ElastNBootstrap{} bootstrap resamples giving each estimate an interval, the
 elasticities are \ArcElastTackles{} for tackles (\ElastCITacklesLow{} to \ElastCITacklesHigh{}),
@@ -117,7 +118,8 @@ The two sides of the ball do not behave alike. Fitted the same way, against a te
 possession rather than the opponent's, the attacking elasticities are \BetaShots{} for shots,
 \BetaNPXG{} for non-penalty expected goals, \BetaGoals{} for non-penalty goals, \BetaAssists{}
 for assists, \BetaXGChain{} for xGChain and \BetaXGBuildup{} for xGBuildup. Every one except
-crossing, at \BetaCrosses{}, exceeds one, while four of the five defensive elasticities fall
+crossing, at \BetaCrosses{}, exceeds one, while \NElastExcludeOne{} of the five defensive
+elasticities fall
 well below it and the fifth cannot be distinguished from it.
 
 That asymmetry is the whole argument. For defending, opponent possession is an exposure
