@@ -1040,7 +1040,7 @@ def figure_replication(payload: dict) -> None:
     leagues = payload["leagues"]
     short = {lg: lg.replace("Premier League", "Premier") for lg in leagues}
 
-    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_FULL, 3.5))
+    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_FULL, 3.1))
 
     season_matrix = np.array(payload["season_pairwise_matrix"]["values"], dtype=float)
     _heatmap(

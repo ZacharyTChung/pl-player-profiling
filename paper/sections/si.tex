@@ -138,6 +138,18 @@ fact, and it is recorded as one: we treat possession driven productivity as some
 profile should reflect, and a reader who takes the opposite view has the numbers to see what
 that would cost.
 
+\section{Feature-family ablation in full}
+\label{sec:si:ablation}
+
+Table~\ref{tab:ablation} gives every cell of the leave-one-family-out and keep-one-family-only
+ablation summarised in Section~\ref{M-sec:results:replication}: for each feature set and each
+scope, the number of clusters the declared rule selects, the standard score of the observed
+two-cluster silhouette against the clusterless null, and the adjusted Rand index between the
+ablated partition and the full one on the same players. The last of those is what distinguishes
+a surviving count of two clusters from the same two modes surviving.
+
+\input{../results/tables/ablation.tex}
+
 \section{Minutes threshold sensitivity}
 \label{sec:si:sensitivity}
 
@@ -172,7 +184,7 @@ Table~\ref{tab:kselection} gives the silhouette coefficient, Davies-Bouldin inde
 Calinski-Harabasz index and gap statistic for every candidate number of clusters on the reduced
 sample, for the global analysis and within each position group, with the row the declared rule
 selects marked in each scope. The corresponding evidence for the primary sample is
-Figure~\ref{fig:structurenull}, which carries more information than a criteria table would,
+Figure~\ref{M-fig:structurenull}, which carries more information than a criteria table would,
 because the question the primary sample answers is not which candidate scores best but whether
 any of them beats what a continuum produces.
 
@@ -189,13 +201,13 @@ picture at almost any setting.
 \section{Fuller views of the main-text figures}
 \label{sec:si:profiles}
 
-Figure~\ref{fig:sigeometry} gives the three panels of Figure~\ref{fig:geometry} at full size and
+Figure~\ref{fig:sigeometry} gives the three panels of Figure~\ref{M-fig:geometry} at full size and
 with the detail a six-panel composite cannot carry: the principal component loadings across all
 five leading components rather than the first two, the mode against position contingency
 normalised by row as well as by column, and the confusion matrices for both classifiers rather
 than only the boosted one. Figure~\ref{fig:siprofiles} gives the centroid deviation of each archetype from its position
 group mean across the entire feature set, rather than only the ten features with the largest
-separation shown in Figure~\ref{fig:modes}. Figure~\ref{fig:siradars} gives the same centroids
+separation shown in Figure~\ref{M-fig:modes}. Figure~\ref{fig:siradars} gives the same centroids
 as radars on fixed axes within each position group. Within a group the two profiles are mirror
 images by construction, since the features are standardised within group before clustering, so
 the useful reading is of shape rather than of extent.
@@ -364,7 +376,7 @@ correlation matrix the comparison is drawn from is Figure~\ref{fig:siheatmap}.
 \label{sec:si:reduced}
 
 The analyses collected here run on the reduced sample described in
-Section~\ref{sec:methods:data}: the seasons ending 2025 and 2026, pulled live after the
+Section~\ref{M-sec:methods:data}: the seasons ending 2025 and 2026, pulled live after the
 withdrawal, with roughly half the features of the primary sample.
 
 One point about scope needs stating plainly, because it applies to every figure in this section.
@@ -374,7 +386,7 @@ built on, and the reduced sample exists to test whether the main result survives
 description of the same game rather than to characterise European football. The paper's claims
 rest on the primary sample, which covers all \ArcNLeagues{} leagues and all \ArcNSeasons{}
 seasons, and every one of them is refitted independently in each league and each season in
-Section~\ref{sec:results:replication}. Section~\ref{sec:si:leagues} below additionally repeats
+Section~\ref{M-sec:results:replication}. Section~\ref{sec:si:leagues} below additionally repeats
 the reduced-sample pipeline across all five leagues, so the reduced sample's own generality is
 tested rather than assumed. The within-season drift analysis of Section~\ref{sec:si:drift} is
 narrower still, covering one club, and the reason is stated there.

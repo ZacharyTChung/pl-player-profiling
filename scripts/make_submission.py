@@ -58,26 +58,32 @@ def build(stage: Path) -> None:
         **dict(__import__("os").environ),
         "PATH": f"{env_path}:{__import__('os').environ['PATH']}",
     }
-    result = subprocess.run(
-        ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", "main.tex"],
-        cwd=stage,
-        env=env,
-        capture_output=True,
-        text=True,
-    )
-    log = (stage / "main.log").read_text(encoding="utf8", errors="ignore")
-    if result.returncode != 0:
-        sys.stderr.write(result.stdout[-3000:])
-        raise SystemExit("the staged submission does not compile")
-    for pattern, message in (
-        (r"LaTeX Warning: Citation .* undefined", "undefined citation"),
-        (r"LaTeX Warning: Reference .* undefined", "undefined reference"),
-        (r"multiply-defined", "multiply defined label"),
-    ):
-        if re.search(pattern, log):
-            raise SystemExit(f"the staged submission has an {message}")
-    pages = re.findall(r"Output written on main\.pdf \((\d+) pages", log)
-    print(f"  staged copy compiles cleanly: {pages[-1] if pages else '?'} pages")
+    # The article and the supplement reference each other through xr, so each needs the
+    # other's .aux file and the pair is compiled twice in sequence.
+    for _ in range(2):
+        for name in ("supplementary.tex", "main.tex"):
+            result = subprocess.run(
+                ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", name],
+                cwd=stage,
+                env=env,
+                capture_output=True,
+                text=True,
+            )
+            if result.returncode != 0:
+                sys.stderr.write(result.stdout[-3000:])
+                raise SystemExit(f"the staged submission does not compile: {name}")
+
+    for stem in ("main", "supplementary"):
+        log = (stage / f"{stem}.log").read_text(encoding="utf8", errors="ignore")
+        for pattern, message in (
+            (r"LaTeX Warning: Citation .* undefined", "undefined citation"),
+            (r"LaTeX Warning: Reference .* undefined", "undefined reference"),
+            (r"multiply-defined", "multiply defined label"),
+        ):
+            if re.search(pattern, log):
+                raise SystemExit(f"the staged {stem} has an {message}")
+        pages = re.findall(rf"Output written on {stem}\.pdf \((\d+) pages", log)
+        print(f"  staged {stem} compiles cleanly: {pages[-1] if pages else '?'} pages")
 
 
 def render_abstract(macros: str, abstract: str) -> str:
@@ -251,18 +257,21 @@ def main() -> None:
     for src in sections:
         (STAGE / "sections" / src.name).write_text(rewrite_section(read(src)), encoding="utf8")
 
-    (STAGE / "main.tex").write_text(rewrite_main(read(PAPER / "main.tex"), date), encoding="utf8")
+    for driver in ("main.tex", "supplementary.tex", "preamble.tex"):
+        (STAGE / driver).write_text(rewrite_main(read(PAPER / driver), date), encoding="utf8")
     shutil.copy2(PAPER / "references.bib", STAGE / "references.bib")
     shutil.copy2(RESULTS / "macros.tex", STAGE / "macros.tex")
 
     # arXiv runs bibtex, but shipping the .bbl removes a class of failure entirely.
-    bbl = PAPER / "main.bbl"
-    if not bbl.exists():
-        raise SystemExit("paper/main.bbl is missing; run `make paper` first")
-    shutil.copy2(bbl, STAGE / "main.bbl")
+    for stem in ("main", "supplementary"):
+        bbl = PAPER / f"{stem}.bbl"
+        if not bbl.exists():
+            raise SystemExit(f"paper/{stem}.bbl is missing; run `make paper` first")
+        shutil.copy2(bbl, STAGE / f"{stem}.bbl")
 
     used_tables = set()
-    for src in [STAGE / "main.tex", *sorted((STAGE / "sections").glob("*.tex"))]:
+    drivers = [STAGE / "main.tex", STAGE / "supplementary.tex"]
+    for src in [*drivers, *sorted((STAGE / "sections").glob("*.tex"))]:
         used_tables.update(re.findall(r"\\input\{tables/([^}]+)\}", read(src)))
     for name in sorted(used_tables):
         shutil.copy2(RESULTS / "tables" / name, STAGE / "tables" / name)

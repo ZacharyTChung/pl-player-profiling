@@ -239,8 +239,13 @@ submission: paper/main.pdf
 	$(PY) scripts/make_submission.py
 
 # --- Stage 5: the paper -----------------------------------------------------------
-TEX_SOURCES := paper/main.tex $(wildcard paper/sections/*.tex) paper/references.bib
+TEX_SOURCES := paper/main.tex paper/supplementary.tex paper/preamble.tex \
+               $(wildcard paper/sections/*.tex) paper/references.bib
 
+# The article and the supplement are separate documents that reference each other
+# through xr, so each has to see the other's .aux file. Compiling the pair twice in
+# sequence is what resolves that: the first pass writes both .aux files, the second
+# reads them.
 paper/main.pdf: $(TEX_SOURCES) results/macros.tex
 	@command -v latexmk >/dev/null 2>&1 || { \
 	  echo "latexmk not found. Install a TeX distribution, either"; \
@@ -249,9 +254,17 @@ paper/main.pdf: $(TEX_SOURCES) results/macros.tex
 	  exit 1; }
 	@.claude/hooks/check_prose.sh
 	$(PY) -m pytest tests/test_results_exist.py -q
-	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+	cd paper && for pass in 1 2; do \
+	  latexmk -pdf -interaction=nonstopmode -halt-on-error supplementary.tex || exit 1; \
+	  latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex || exit 1; \
+	done
 	@echo "--- build warnings ---"
-	@grep -E "(Undefined|Overfull|Underfull|LaTeX Warning)" paper/main.log || echo "none"
+	@grep -hE "(Undefined|Overfull|LaTeX Warning)" paper/main.log \
+	  paper/supplementary.log || echo "none"
+	@echo "--- lengths ---"
+	@grep -o "Output written on main.pdf ([0-9]* pages" paper/main.log | tail -1
+	@grep -o "Output written on supplementary.pdf ([0-9]* pages" \
+	  paper/supplementary.log | tail -1
 paper: paper/main.pdf
 
 # --- Quality ----------------------------------------------------------------------
@@ -274,8 +287,9 @@ clean:
 	rm -f results/membership_*.csv
 	rm -rf submission submission.tar.gz
 	rm -f data/processed/*.parquet
-	cd paper && rm -f main.pdf main.aux main.log main.out main.bbl main.blg \
-	  main.fls main.fdb_latexmk main.synctex.gz main.toc
+	cd paper && rm -f main.pdf supplementary.pdf
+	cd paper && rm -f *.aux *.log *.out *.bbl *.blg *.fls *.fdb_latexmk \
+	  *.synctex.gz *.toc
 	@echo "clean done. The scrape cache under data/raw is kept."
 
 distclean: clean

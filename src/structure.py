@@ -467,7 +467,7 @@ def figure_structure(results: dict) -> None:
     legend keys those, so the nulls are told apart by line style.
     """
     scopes = list(results["scopes"])
-    fig = plt.figure(figsize=(P.WIDTH_FULL, 5.4))
+    fig = plt.figure(figsize=(P.WIDTH_FULL, 4.5))
     # A dedicated middle row holds the legend for the top four panels. Anchoring a figure
     # legend into the gap between two gridspec rows fights constrained layout and leaves an
     # inch of white space; an invisible axis of its own does not.

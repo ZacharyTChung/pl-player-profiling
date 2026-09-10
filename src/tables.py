@@ -365,7 +365,7 @@ def table_archive_feature_dictionary() -> None:
             r"\caption{The primary feature set, with the FBref table each column was read "
             r"from. Counting statistics are per ninety minutes played; the seven rate "
             r"features are used as published. Five defensive counts are possession "
-            r"adjusted, as described in Section~\ref{sec:methods:padj}.}",
+            r"adjusted, with the elasticities in Section~\ref{sec:si:elasticity}.}",
             r"\label{tab:archivefeatures}",
             r"\begin{tabular}{llp{7.0cm}}",
             r"\toprule",

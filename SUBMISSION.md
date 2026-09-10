@@ -10,11 +10,11 @@ directory as a check, so it does not depend on anything in this repository.
 
 ## Title
 
-Two Modes, Not Many Types: The Structure of Football Player Roles in Season-Aggregate Data
+(no title found)
 
 ## Authors
 
-Zachary Chung, Christian Chung
+
 
 ## Abstract
 
@@ -22,7 +22,7 @@ Football analysts describe players with dozens of per-match statistics and then 
 
 ## Comments field
 
-86 pages, 64 figures. Code and data: https://github.com/ZacharyTChung/pl-player-profiling
+21 pages, 64 figures. Code and data: https://github.com/ZacharyTChung/pl-player-profiling
 
 ## Categories
 
@@ -90,4 +90,4 @@ appears:
 
 ## Date of this package
 
-September 8, 2026
+September 10, 2026

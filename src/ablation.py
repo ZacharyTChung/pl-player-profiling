@@ -452,7 +452,7 @@ def figure_ablation(results: dict) -> None:
         ("keep_one_only", 1 + len(families), "^", P.CATEGORICAL[1], "keep one family only"),
     )
 
-    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_FULL, 3.7), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 2, figsize=(P.WIDTH_FULL, 3.3), sharex=True, sharey=True)
     axes = axes.ravel()
     for ax, scope in zip(axes, scopes, strict=True):
         entry = results["scopes"][scope]

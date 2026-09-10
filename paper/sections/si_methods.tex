@@ -1,0 +1,161 @@
+\section{Extended methods}
+\label{sec:si:methods}
+
+This section states in full the procedures the article summarises. Nothing here is a different
+analysis from the one reported there; it is the detail a reader would need in order to reproduce
+it without reading the code.
+
+\subsection{The three clusterless generators}
+\label{sec:si:generators}
+
+Let $X \in \mathbb{R}^{n \times d}$ be the standardised feature matrix for a scope, with $n$
+player-seasons and $d = \ArcFeatures{}$ features. Let $s_k(X)$ be the mean silhouette of the
+partition $k$-means returns at $k$ clusters, computed on a fixed subsample of at most four
+thousand rows when $n$ exceeds that, since the silhouette is quadratic in $n$.
+
+The Gaussian generator draws $n$ rows from $\mathcal{N}(\hat\mu, \hat\Sigma)$ with the empirical
+mean and covariance of $X$. It matches the data in size, dimension and covariance and in nothing
+else: every marginal is symmetric and unbounded where the real per-90 rates are skewed and
+bounded below, and skew alone lifts the silhouette a partition can reach against this reference,
+which is why the copula generator stands beside it.
+
+The copula generator transforms each column of $X$ to normal scores by rank, estimates the
+correlation $\hat R$ of those scores, draws $n$ rows from $\mathcal{N}(0, \hat R)$, and maps each
+simulated column back through the empirical quantile function of the corresponding observed
+column. Every marginal distribution of $X$ is therefore reproduced exactly, including skew,
+bounds, ties and any bimodality a single feature carries on its own, and the pairwise rank
+correlation is preserved up to sampling noise. What it destroys is joint structure beyond
+pairwise rank correlation, which is where two groups differing in several features at once would
+live. It tests whether the joint structure carries anything beyond the marginals, not whether
+the marginals are unimodal.
+
+The uniform generator rotates $X$ to its principal axes, draws $n$ rows uniformly within the
+resulting bounding box, and rotates back. This is the reference distribution of
+\citet{tibshirani2001estimating}. It assumes no distributional form at all. Every principal axis
+is filled evenly over its full observed range, so a bounded or heavy-tailed axis ranges over
+several times its standard deviation and the minor axes carry more spread than in the data,
+making the reference more isotropic than the sample it is matched to. That lowers its silhouette
+at two clusters, so for the silhouette it is a soft reference; its leading component is flat
+rather than peaked, which gives it the largest dip of the three, so for the dip statistic it is
+the hard one. Which generator is hardest in each scope is recorded in the metrics file as a
+result rather than assumed.
+
+\subsection{Stability, replication and agreement with position}
+
+We draw two hundred bootstrap resamples, refit the clustering on each, and compute the adjusted
+Rand index between each bootstrap partition and the reference partition on the players common to
+both \citep{hubert1985comparing}, accumulating a consensus matrix that records, for every pair of
+players, the fraction of resamples in which the two were assigned together. Clusters whose
+members co-assign below 0.6 on average are reported as unstable and described as such rather
+than being renamed or merged to make the account tidier.
+
+Replication is tested separately and more stringently, because a resample reuses the same
+players. Each season and each league is standardised inside itself and clustered from scratch,
+borrowing no centre, no scale and no starting point from the pooled fit. Cluster labels are
+arbitrary per fit, so labels are aligned to the pooled partition on the contingency table before
+any label-dependent quantity is computed, and an assertion fails the run if an aligned agreement
+drops to chance. Three comparisons are reported because they answer different questions: an
+independent fit scored against the pooled partition on the same rows; one season's labels scored
+against another's on the players present in both, which mixes replication with real change in
+those players; and one scope's centroids imported into another scope's players and scored against
+that scope's own fit, which isolates replication. Each scope's centroid-difference vector is also
+correlated with the pooled one, to check that the scopes recover the same axis rather than merely
+a similarly sized partition.
+
+Agreement with the listed positions is quantified by normalised mutual information and by the
+adjusted Rand index, against both the position group and the full position string. Players whose
+cluster assignment disagrees with their listed group, and players whose Gaussian mixture
+posterior is split across components, are extracted as candidate hybrids.
+
+\subsection{Feature-family ablation}
+
+A two-mode result on \ArcFeatures{} features could in principle be carried by one block of them.
+The features are grouped into six families, shooting, chance creation, ball progression, pitch
+territory, defending and passing accuracy, with the grouping stated in the analysis code so that
+it can be audited and asserted to cover every feature exactly once. Each family is removed in
+turn and the pre-declared selection rule and the Gaussian null calibration are rerun on what
+remains, in every scope. The converse is run as well, each family alone, which shows which
+families carry the two-mode structure by themselves. For every ablation the paper records the
+number of clusters the rule selects, the standard score of the observed silhouette against the
+null, and the adjusted Rand index between the ablated partition and the full one on the same
+players, so that a surviving $k$ of two can be distinguished from the same two modes surviving.
+
+\subsection{Recovering and predicting results}
+
+The archive's team tables carry goals and expected goals but not results, so wins, draws and
+losses are recovered by summing the goalkeeper table, which credits every match to the
+goalkeeper who played it. The recovery is audited: each league-season is checked for the right
+number of clubs, every club's credited matches are checked against the schedule with the
+exceptions listed, goals for are taken from goals scored while each goalkeeper was on the pitch
+and accepted only where the same rows reproduce the goalkeeper table's goals against to within
+one, and two published season records are asserted. Points per match, goal difference per match
+and league position follow.
+
+Each team-season is then summarised by its minutes-weighted composition on the two-mode partition
+and on the six archetypes, using the eligible players, and by the minutes-weighted mean position
+of its players along the axis between the two centroids. Prediction is out of sample under three
+holdouts, one season at a time, one league at a time and one club at a time, the last being the
+strict one since no held-out team-season then shares a club with the training data, by ridge
+regression with the penalty chosen by cross-validation inside the training folds, comparing
+possession alone, the composition alone and both. The goalkeeper partitions are tested the same
+way, against the prediction that a partition sorting keepers by their teams will track points
+and a partition describing goalkeeping will not.
+
+\subsection{Archetype profiling and outliers}
+
+For every retained cluster we compute the centroid profile as a standardised deviation from the
+mean of its position group, take the eight features with the largest absolute deviation as the
+distinguishing features, and list the ten players closest to the centroid and three players near
+the boundary. Archetype names are assigned only after inspecting these profiles and the players
+they contain, and each name is accompanied by a justification that cites the distinguishing
+features and the example players. The names are hypotheses about what the statistical profile
+represents, not observations, and they carry no authority beyond the profile that produced them.
+Outliers are identified within position group with an isolation forest \citep{liu2008isolation},
+reported alongside a Mahalanobis distance so that a distance-based and a partition-based notion
+of unusualness can be compared.
+
+\subsection{Supervised validation}
+
+Logistic regression and gradient boosting, the latter with LightGBM \citep{ke2017lightgbm}, are
+trained to predict the position group from the feature set under five-fold stratified cross
+validation, and we report accuracy, macro F1 and the confusion matrix, every number computed
+from out-of-fold predictions. A majority-class baseline runs through the identical folds, so the
+reported lift is over the trivial model rather than over zero. SHAP values
+\citep{lundberg2017unified} on the boosted model identify which statistics distinguish each
+position; the model is fitted on every row and the attributions are computed on a stratified
+sub-sample, which is stated with the result. We also record, for each feature and class, the rank
+correlation between the feature's value and the attribution it makes, which separates a class
+identified by what its members do from one identified by what they do not. Players the classifier
+places in the wrong group are cross-referenced against the candidate hybrids from the clustering,
+since agreement between two methods that fail in the same place is more informative than either
+alone.
+
+A secondary ridge regression predicts non-penalty expected goals per ninety from the non-shooting
+features only, so that the fitted value represents the shot volume a player's role would
+ordinarily generate and the residual represents the part not explained by role. We report the
+cross validated coefficient of determination and treat the residual ranking with heavy caution,
+because a residual from a model with modest explanatory power is mostly noise.
+
+\subsection{Dimensionality reduction and the remaining analyses}
+
+Principal component analysis is fitted to the standardised feature set, both globally and
+separately within each position group. Uniform manifold approximation and projection
+\citep{mcinnes2018umap} is fitted over a grid of twelve configurations, with the number of
+neighbours in \{10, 15, 30, 50\} crossed with a minimum distance in \{0.0, 0.1, 0.5\}, and
+configurations are ranked by trustworthiness, which measures the degree to which points close in
+the embedding were also close in the original space. Selection by an explicit criterion matters
+here because a manifold method will produce a visually appealing picture at almost any setting.
+t-distributed stochastic neighbour embedding \citep{vandermaaten2008visualizing} is computed at a
+perplexity of 30 for visual contrast only, and is never used as an input to clustering, because
+its objective preserves local neighbourhoods at the expense of the global geometry a
+distance-based clustering algorithm depends upon.
+
+Each club is summarised in two ways, as a minutes-weighted centroid of its outfield players in
+the shared principal component space and as the share of its outfield minutes played by each
+archetype, and clubs are then clustered hierarchically on archetype composition and compared
+against final league position. Player similarity is computed as cosine similarity within position
+group. Per-90 rates computed over partial seasons are noisy, and that noise is largest where the
+minutes are fewest, so we apply empirical Bayes shrinkage toward the position group mean with the
+degree of shrinkage determined by minutes played \citep{efron1977steins}, refit the clustering on
+the shrunken features, and report how many assignments change; a partition that dissolves under
+shrinkage was substantially a description of sampling noise.

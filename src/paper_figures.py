@@ -211,7 +211,7 @@ def figure_geometry() -> None:
     supervised = _metrics("archive_supervised")
     z_global, projection = _pooled_axis()
 
-    fig, axes = plt.subplots(2, 3, figsize=(P.WIDTH_FULL, 5.4))
+    fig, axes = plt.subplots(2, 3, figsize=(P.WIDTH_FULL, 4.5))
     _panel_scree(axes[0, 0], pca)
     _panel_loadings(axes[0, 1], pca, "PC1", "PC1: territory")
     _panel_loadings(axes[0, 2], pca, "PC2", "PC2: progression")
@@ -228,7 +228,7 @@ def figure_modes() -> None:
     with open(config.RESULTS / "archive_archetypes.json") as fh:
         names = {entry["label"]: entry["name"] for entry in json.load(fh)["archetypes"]}
 
-    fig, axes = plt.subplots(1, len(CLASS_ORDER), figsize=(P.WIDTH_FULL, 4.4), sharex=True)
+    fig, axes = plt.subplots(1, len(CLASS_ORDER), figsize=(P.WIDTH_FULL, 3.8), sharex=True)
     for ax, group in zip(np.atleast_1d(axes), CLASS_ORDER, strict=True):
         keys = [f"{group}-{c}" for c in range(K)]
         centroids = [profiles["centroids"][k] for k in keys]

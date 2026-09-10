@@ -969,7 +969,7 @@ def figure_shot_stopping(eligible: pd.DataFrame) -> None:
 
 def figure_clusters(eligible: pd.DataFrame, fits: dict[str, dict], validation: dict) -> None:
     """The two partitions in their own principal component planes, side by side."""
-    fig, axes = plt.subplots(1, 2, figsize=(plotting.WIDTH_FULL, 3.5))
+    fig, axes = plt.subplots(1, 2, figsize=(plotting.WIDTH_FULL, 3.1))
     titles = {
         "full": "all twelve keeper features",
         "technique": "technique composites only",
@@ -1111,7 +1111,7 @@ def figure_radar(eligible: pd.DataFrame, fit: dict, archetypes: dict) -> None:
     load = np.abs(np.array([centroids[c] for c in range(k)])).sum(axis=0)
     quiet = float(360.0 * (int(np.argmin(load + np.roll(load, -1))) + 0.5) / n)
 
-    fig = plt.figure(figsize=(plotting.WIDTH_COLUMN, 3.8))
+    fig = plt.figure(figsize=(plotting.WIDTH_COLUMN, 3.0))
     fig.set_layout_engine("none")
     ax = fig.add_axes((0.22, 0.185, 0.56, 0.615), projection="polar")
     ax.set_theta_offset(np.pi / 2.0)

@@ -1,0 +1,58 @@
+% Shared preamble for the article and its supplement, so the two documents cannot drift
+% apart in font, palette, float behaviour or number formatting.
+\PassOptionsToPackage{hyphens}{url}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{subcaption}
+% Numeric citations, compressed. A run of three references prints as [1-3] rather than
+% as three author-year parentheticals, which is what keeps a citation-dense paragraph
+% readable at this length.
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+% Cross-document references. The article and the supplement each point at the other, so
+% both are compiled twice in sequence and each reads the other's .aux file.
+\usepackage{xr-hyper}
+% Keep every float inside the section that refers to it. A barrier at subsection level
+% was tried and is too strong at this length: it gives every figure a page of its own,
+% because a figure declared near the end of a subsection cannot flow into the next one.
+\usepackage[section]{placeins}
+\usepackage{etoolbox}
+
+\bibliographystyle{unsrtnat}
+\graphicspath{{figures/}}
+
+\sisetup{
+  detect-all,
+  group-separator = {,},
+  round-mode = places,
+  round-precision = 3,
+}
+
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{3em}
+
+% Both documents are figure dense. With LaTeX's defaults the float queue cannot drain
+% fast enough and figures drift many pages past the text that refers to them.
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+
+\title{Two Modes, Not Many Types: The Structure of Football Player Roles in
+Season-Aggregate Data}
+
+\author{Zachary Chung\thanks{Corresponding author: zacharytylerchung@gmail.com} \and Christian Chung}
+
+\date{\today}

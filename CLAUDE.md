@@ -71,6 +71,11 @@ seasons. This trap does not apply to the archive, which is complete.
 - **Respect FBref.** All access goes through `soccerdata`, which caches to disk and rate-limits at
   7 s/request. Never write a raw-request loop against fbref.com. Raw HTML is cached before any
   transformation so the scrape never runs twice.
+- **Length.** The article is a separate document from its supplement and stays under
+  roughly twenty pages of body plus references. Procedure a reader does not need in order
+  to follow the argument goes to the supplement's extended methods rather than into the
+  article. Float barriers are set at section level, not subsection: the finer barrier gives
+  every figure a page of its own and costs four or five pages.
 - **Figure conventions.** Every figure is authored at exactly 6.5 inches wide, the text block
   width, and included at `\textwidth`, so type size is identical from figure to figure. No
   figure carries a title: the caption is the title. Panels of a main-text composite carry a
@@ -119,9 +124,12 @@ results/metrics/     json files with every computed number
 results/tables/      .tex table fragments
 results/macros.tex   \newcommand for every number cited in the paper
 figures/             pdf + png, vector where possible
-paper/               main.tex, sections/, references.bib, figures -> ../figures
-                     sections: abstract, introduction, methods, results, discussion,
-                     backmatter, supplementary
+paper/               two documents sharing preamble.tex, references.bib and figures:
+                     main.tex     the article, sections abstract, introduction, methods,
+                                  results, discussion, backmatter
+                     supplementary.tex  the supplement, sections si_methods and si
+                     They cross-reference each other through xr, so `make paper` compiles
+                     the pair twice in sequence and each reads the other's .aux file.
 tests/               preprocess, features, and figure/macro existence checks
 ```
 
@@ -198,6 +206,10 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
       table of contents and everything after the references into Supplementary Information,
       switched to numeric citations grouped at sentence end, and reduced the main text to six
       composite figures with lettered panels
+- [x] Second length pass: split the article from its supplement into two PDFs, moved the
+      procedural half of the methods into the supplement's extended methods, cut the results
+      and discussion again, shrank the six main figures so none owns a page, and relaxed the
+      float barrier. Article 21 pages including references, supplement 62.
 
 ## Verification record
 
