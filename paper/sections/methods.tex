@@ -10,10 +10,10 @@ Section~\ref{S-sec:si:methods} of the supplement.
 \subsection{Sample}
 \label{sec:methods:data}
 
-The analysis uses season-aggregate player statistics for the \ArcNLeagues{} major European
-leagues over \ArcNSeasons{} seasons from \ArcSeasonFirst{} to \ArcSeasonLast{}, labelled by the
+The analysis uses season-aggregate player statistics for the \ArcNLeaguesWord{} major European
+leagues over \ArcNSeasonsWord{} seasons from \ArcSeasonFirst{} to \ArcSeasonLast{}, labelled by the
 calendar year in which each season ends. It contains \ArcRows{} player-seasons, of which
-\ArcEligible{} are outfield players above the minutes threshold of \MinMinutes{} and
+\ArcEligible{} are outfield players above the eligibility threshold of \MinMinutes{} minutes and
 \ArcKeepers{} are goalkeepers.
 
 The tables originate from FBref, which published advanced statistics derived from a commercial
@@ -131,7 +131,7 @@ than assert that a partition imposed on structureless data passes a bootstrap, t
 measures it.
 
 One assumption should be stated because the analysis makes it silently otherwise. The rows of
-$X$ are player-seasons and the same player appears in up to \ArcNSeasons{} of them, so rows are
+$X$ are player-seasons and the same player appears in up to \ArcNSeasonsWord{} of them, so rows are
 not independent. The generators match the marginal and pairwise structure of $X$ but not this
 nesting, and the bootstrap resamples rows as if exchangeable. The replication below, which
 refits every season and every league independently, does not share this assumption, and it is

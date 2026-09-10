@@ -159,6 +159,40 @@ class Macros:
             return
         self._defs[name] = str(int(value))
 
+    #: Spelled-out forms for the counts that appear mid-sentence. A numeral reads wrong
+    #: there: "the 5 major European leagues" wants "five".
+    WORDS = [
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty",
+    ]
+
+    def add_word(self, name: str, value: Any) -> None:
+        """Write a small count as an English word, falling back to the numeral."""
+        if value is None:
+            self._skipped.append(name)
+            return
+        n = int(value)
+        self._defs[name] = self.WORDS[n] if 0 <= n < len(self.WORDS) else num(n, 0)
+
     def add_pvalue(self, name: str, value: Any, floor: float = 1e-4) -> None:
         """Report a p-value, but never as a bare zero.
 
@@ -1159,6 +1193,8 @@ def build_macros() -> Macros:
     m.add("ArcFeatures", dig(arch, "n_features"))
     m.add("ArcNSeasons", len(dig(arch, "seasons") or []))
     m.add("ArcNLeagues", len(dig(arch, "leagues") or []))
+    m.add_word("ArcNSeasonsWord", len(dig(arch, "seasons") or []))
+    m.add_word("ArcNLeaguesWord", len(dig(arch, "leagues") or []))
     seasons = dig(arch, "seasons") or []
     if seasons:
         m.add_year("ArcSeasonFirst", seasons[0])
@@ -1189,6 +1225,7 @@ def build_macros() -> Macros:
         m.add_pvalue(f"StrDipP{tag}", dip.get("p_value"))
         hd = dig(scopes, scope, "density", "50") or {}
         m.add(f"StrNoise{tag}", hd.get("noise_fraction"), places=3)
+        m.add_pct(f"StrNoisePct{tag}", hd.get("noise_fraction"))
     m.add("StrSimulations", dig(scopes, "All outfield", "null_calibration", "n_simulations"))
     m.add("StrRatioMin", dig(st, "summary", "separation_ratio_min"), places=3)
     m.add("StrRatioMax", dig(st, "summary", "separation_ratio_max"), places=3)
@@ -1332,6 +1369,7 @@ def build_macros() -> Macros:
     ab = load("ablation")
     m.add("AblSimulations", dig(ab, "n_simulations"))
     m.add("AblFamilies", len(dig(ab, "families") or {}))
+    m.add_word("AblFamiliesWord", len(dig(ab, "families") or {}))
     absum = dig(ab, "summary") or {}
     weakest = absum.get("weakest_leave_one_out_any_scope") or {}
     m.add_raw("AblWeakScope", tex_escape(weakest.get("scope", "")))

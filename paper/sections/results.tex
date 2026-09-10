@@ -43,7 +43,7 @@ standard deviations against the uniform reference, which is to say below it. The
 real by the silhouette calibration, clearing the hardest null by \StrMinZFW{}, and its leading
 axis is not bimodal by the dip. Both halves are reported because together they say what the
 forward split is, a cut through a continuum of involvement that the null cannot produce rather
-than two kinds of forward. Density-based clustering assigns \StrNoiseAll{} of the pool to noise
+than two kinds of forward. Density-based clustering assigns \StrNoisePctAll{} percent of the pool to noise
 and every position group entirely to noise, which is what a density method does when handed a
 continuum with a density gradient instead of separated groups, and the mixture criterion declines
 monotonically to the top of the candidate range in every scope, the signature of a model
@@ -61,8 +61,11 @@ Football role data contains a real division into two modes. It does not contain 
   the uniform reference of the gap statistic. The observed curve separates from all three at two
   clusters and rejoins the bands as the number of clusters grows. \textbf{e}, bootstrap adjusted
   Rand index on the real data against the same quantity on the clusterless simulations, with the
-  range over simulated datasets: the stability check the genre relies on cannot tell them apart.
-  \textbf{f}, the margin at two clusters, as standard scores above each null.}
+  range over simulated datasets and the dashed line at \StrBootScreen{}, the screen a published
+  taxonomy would cite as evidence that its partition is stable. The real data score a little
+  higher than the clusterless data, by as little as \StrBootGapMin{}, and both sides clear the
+  screen comfortably, which is why passing it is not evidence that groups exist. \textbf{f}, the
+  margin at two clusters, as standard scores above each null.}
   \label{fig:structurenull}
 \end{figure}
 
@@ -76,7 +79,7 @@ name. Figure~\ref{fig:geometry} answers both, and the answer to each is no.
 The leading principal component carries \ArcPCOne{} percent of the variance, far more than any
 other single direction, which confirms that one axis dominates. It is nowhere near the whole
 space: the first three components together reach only \ArcPCThree{} percent and \ArcPCNinety{}
-are needed for ninety percent of the variance, so the role space has one dominant axis and a long
+are needed to reach 90 percent of the variance, so the role space has one dominant axis and a long
 tail of smaller ones, which is a different object from a line. The content matches the football.
 The first component separates players by where on the pitch they touch the ball, loading
 positively on progressive receptions and touches in the attacking third and the opposition box
@@ -93,8 +96,8 @@ well above chance and well below recovery, at an adjusted Rand index of \ArcARIv
 normalised mutual information of \ArcNMIvsPosition{}, where a relabelling of position would return
 values near one and an unrelated partition values near zero. Where the line falls is the
 informative part. \ArcSplitDF{} percent of defenders fall on one side and \ArcSplitFW{} percent of
-forwards on the other, while midfielders divide \ArcModeAttMF{} to \ArcModeDefMF{}, as close to
-even as the sample permits, and it is that even split which drags the agreement indices down. The
+forwards on the other, while midfielders divide almost evenly, \ArcSplitMF{} percent of
+them on the attacking side, and it is that even split which drags the agreement indices down. The
 partition is not a relabelling of position but a cut through it: the two extremes are assigned
 almost deterministically and the group between them is assigned by which end it leans toward.
 
@@ -103,10 +106,10 @@ clustering. Gradient boosting predicts the listed position group at \SupGBMAcc{}
 out of fold against a majority-class baseline of \SupBaseline{} percent, with multinomial logistic
 regression barely behind at \SupLogitAcc{} percent; the near equality of a linear model and a
 boosted ensemble is itself informative, since a taxonomy of many discrete types would leave more
-interaction structure for the trees to find. The errors are the argument. Of \SupN{}
-player-seasons the model assigns \SupDFasFW{} defenders to the forward class and \SupFWasDF{}
-forwards to the defender class, while every other confusion runs through midfield, so only
-\SupPoleShare{} percent of misclassifications skip the middle. That is the confusion structure of
+interaction structure for the trees to find. The errors are the argument. Over \SupN{}
+player-seasons, only \SupPoleErrors{} confusions link the two extreme classes directly, against
+\SupMiddleErrors{} that run through midfield, so \SupPoleShare{} percent of misclassifications
+skip the middle. That is the confusion structure of
 an ordered line whose ends are far apart and whose middle overlaps both, not of three distinct
 categories. The attributions agree: the three strongest features overall are \ShapArcTopOne{},
 \ShapArcTopTwo{} and \ShapArcTopThree{}, all territorial rather than technical. Position, as the
@@ -207,7 +210,7 @@ rate of genuine role change rather than the churn an unstable partition would pr
 
 A result on \ArcFeatures{} features could also be carried by one block of them, and a reviewer who
 suspected the modes were the expected goals block wearing a costume would be right to ask.
-Removing any one of the \AblFamilies{} families removes nothing that matters: the rule returns two
+Removing any one of the \AblFamiliesWord{} families removes nothing that matters: the rule returns two
 clusters in \AblSurvivesAll{} leave-one-out in every scope, \AblCellsBeatNull{} of the
 \AblCells{} feature sets tested exceed every one of the \AblSimulations{} clusterless simulations,
 and the adjusted Rand index between each ablated partition and the full one runs from

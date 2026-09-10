@@ -566,27 +566,18 @@ def _panel_bootstrap(ax, results: dict, scopes: list[str]) -> None:
     observed = [
         results["scopes"][scope]["null_bootstrap"]["observed"]["ari_mean"] for scope in scopes
     ]
-    ax.scatter(observed, y, s=46, marker="D", color=P.CATEGORICAL[1], zorder=5, label="observed")
+    ax.scatter(observed, y, s=34, marker="D", color=P.CATEGORICAL[1], zorder=5, label="observed")
     # The screen a published taxonomy would cite as evidence of a stable partition. Every
     # clusterless dataset clears it too, which is the point of the panel.
     ax.axvline(STABLE_ARI, color=P.INK_PRIMARY, linewidth=0.9, linestyle=(0, (4, 3)))
-    ax.text(
-        STABLE_ARI + 0.005,
-        -0.5,
-        "stability screen",
-        fontsize=P.BASE_FONT_PT - 2,
-        color=P.INK_SECONDARY,
-        rotation=90,
-        va="top",
-    )
     ax.set_yticks(y)
     ax.set_yticklabels([SCOPE_SHORT.get(s, s) for s in scopes])
     ax.set_ylim(-0.6, len(scopes) - 0.4)
     ax.invert_yaxis()
-    P.style_axis(ax, "bootstrap adjusted Rand index", "", "stability cannot tell them apart")
+    P.style_axis(ax, "bootstrap adjusted Rand index", "", "real and clusterless data both pass")
     ax.grid(False, axis="y")
     ax.set_xlim(0.77, 1.01)
-    ax.legend(loc="lower left", ncol=1, fontsize=P.BASE_FONT_PT - 2, handletextpad=0.3)
+    ax.legend(loc="upper left", ncol=1, fontsize=P.BASE_FONT_PT - 2, handletextpad=0.3)
 
 
 def _panel_margins(ax, results: dict, scopes: list[str]) -> None:
