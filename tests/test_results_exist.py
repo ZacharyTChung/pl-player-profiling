@@ -357,9 +357,61 @@ def test_structure_claims_match_the_three_nulls() -> None:
         "clusterless data now fail the stability screen; the paper's bootstrap claim is stale"
     )
     assert float(macros["StrBootObsMin"]) >= float(macros["StrBootNullMinSingle"])
+    # The results section says the margin collapses inside a position group and does not in
+    # the pool. Both halves are computed from the calibration, so both can move.
+    for tag in ("DF", "MF", "FW"):
+        value = macros.get(f"StrConverge{tag}")
+        assert value and value != "never", (
+            f"the observed curve no longer rejoins a null band for {tag}; "
+            "the negative result in the results section is stale"
+        )
+        assert 2 < int(value) <= 12
+    assert macros.get("StrConvergeAll") == "never", (
+        "the pooled curve now rejoins a null band; the results section says it does not"
+    )
+    # The text says the copula is the hardest reference in every scope. That is a result of
+    # the simulations, not a design choice, so it can move when the draws change.
+    assert macros.get("StrCopulaHardestEverywhere") == "every", (
+        "the copula is no longer the hardest null in every scope; the results wording is stale"
+    )
     # The forward dip is reported as failing against the uniform box; keep the sign honest.
     assert float(macros["StrDipMinZFW"]) < 0, (
         "the forward dip now clears every null; the text says it does not"
+    )
+
+
+def test_nesting_claim_matches_the_two_bootstraps() -> None:
+    """The paper says the stability does not rest on treating player-seasons as independent.
+
+    That is a claim about two numbers per scope, the row bootstrap and the player block
+    bootstrap, so it is checked rather than trusted. If resampling players ever moves the
+    index materially, the wording in the results and in the supplement is wrong and this
+    fails before the paper is built.
+    """
+    macros = _macro_values()
+    needed = ["NestBlockMin", "NestBlockMax", "NestLargestFall", "NestRowAll", "NestBlockAll"]
+    if any(n not in macros for n in needed):
+        pytest.skip("nesting macros not generated yet")
+
+    # The text calls the fall small and quotes the largest one; keep both honest.
+    assert float(macros["NestLargestFall"]) < 0.05, (
+        f"resampling players now costs {macros['NestLargestFall']} of adjusted Rand index, "
+        "which is no longer the small difference the paper describes"
+    )
+    # The reported range must bracket every per-scope block index the supplement quotes.
+    per_scope = [float(macros[f"NestBlock{t}"]) for t in ("All", "DF", "MF", "FW")]
+    assert abs(min(per_scope) - float(macros["NestBlockMin"])) < 0.0005
+    assert abs(max(per_scope) - float(macros["NestBlockMax"])) < 0.0005
+    # The block bootstrap should sit at or below the row bootstrap: a drawn player brings
+    # correlated rows, so the resample is smaller and more redundant. A block index above
+    # the row index would mean the comparison is not measuring what the text says it is.
+    for tag in ("All", "DF", "MF", "FW"):
+        assert float(macros[f"NestBlock{tag}"]) <= float(macros[f"NestRow{tag}"]) + 0.001, (
+            f"the player block bootstrap exceeds the row bootstrap for {tag}"
+        )
+    # The claim is that stability survives the nesting, not merely that it falls a little.
+    assert float(macros["NestBlockMin"]) > 0.8, (
+        "the block bootstrap no longer clears the stability screen the paper discusses"
     )
 
 

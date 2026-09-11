@@ -28,6 +28,11 @@ time, on the same terms as the article.
 
 \vspace{1em}
 
+% Section numbers here run to S10 and S11, which are wider than the contents list's
+% default number box and overflow it by three points.
+\makeatletter
+\renewcommand{\l@section}{\@dottedtocline{1}{0em}{2.6em}}
+\makeatother
 {\setcounter{tocdepth}{1}\tableofcontents}
 
 \clearpage

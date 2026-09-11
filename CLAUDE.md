@@ -113,6 +113,7 @@ src/supervised.py    position prediction, feature importance, SHAP
 src/keepers.py       goalkeeper-only pipeline
 src/teams.py         team stylistic signatures, 20-panel small multiples
 src/novel.py         similarity search, cross-season validation, EB shrinkage
+src/nesting.py       the same bootstrap resampling players rather than player-seasons
 src/paper_figures.py composite main-text figures assembled from the metrics files
 src/tables.py        writes LaTeX tables and macros from results/
 src/plotting.py      shared matplotlib style, palettes, export helpers
@@ -214,6 +215,12 @@ make clean                     # remove derived artefacts (keeps the HTML cache)
       producing the double-spaced line-numbered de-identified manuscript, the repository URL
       routed through a macro that withholds it under blind review, and the citation style made a
       documented one-line switch between numeric and Harvard author-date.
+- [x] Strengthening pass against the objections a statistics referee would raise: the null
+      calibration at 100 draws rather than 25, which is what bounds the distribution-free claim;
+      a player block bootstrap answering the nesting of player-seasons by measurement rather
+      than by design alone; the scope of the calibration owned in the methods; the ablation's
+      softer single null stated in the article rather than only in the supplement; a clusterless
+      draw overlaid on the axis-density panel; and a JASA-form reproducibility statement.
 
 ## Target venue
 

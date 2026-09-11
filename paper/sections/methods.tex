@@ -116,9 +116,20 @@ standard deviation is itself an estimate, so $z_g$ describes the margin rather t
 test statistic with a known distribution. The claim the paper makes is the distribution-free
 one, that $s_{k^\ast}(X)$ exceeds every one of the $B$ null values under every generator, which
 under exchangeability between the observed and simulated statistics has Monte Carlo probability
-at most $1/(B+1)$ per generator and scope. The headline is a conjunction over three generators
+at most $1/(B+1)$ per generator and scope, or \StrMCBound{} at the $B$ used here. The headline is a conjunction over three generators
 and four scopes rather than a disjunction, so it can only be weakened by adding a generator or a
 scope, never strengthened.
+
+One property of this calibration should be stated rather than left implicit. It is relative to
+the method, not absolute. What it tests is whether the partition this pipeline returns on the
+observed data is better separated than the partition the same pipeline returns on data with no
+groups in it, so a different algorithm or a different internal criterion would define a
+different comparison. That is the right scope for the question being asked, because the claim
+under examination is one the genre makes with this machinery, and a calibration that changed
+the machinery would no longer be testing it. It does mean the result is evidence about what
+$k$-means and the silhouette can recover from this description, not a proof that no method
+could recover more, which is why the density-based and mixture-based instruments run alongside
+and are reported whether they agree or not.
 
 The same generators supply two further calibrations. Hartigan's dip statistic on the leading
 principal component of each draw gives a null sample against which the observed dip is placed
@@ -131,11 +142,15 @@ than assert that a partition imposed on structureless data passes a bootstrap, t
 measures it.
 
 One assumption should be stated because the analysis makes it silently otherwise. The rows of
-$X$ are player-seasons and the same player appears in up to \ArcNSeasonsWord{} of them, so rows are
-not independent. The generators match the marginal and pairwise structure of $X$ but not this
-nesting, and the bootstrap resamples rows as if exchangeable. The replication below, which
-refits every season and every league independently, does not share this assumption, and it is
-why the paper rests no claim on a single pooled fit.
+$X$ are player-seasons and the same player appears in up to \ArcNSeasonsWord{} of them, so rows
+are not independent. The generators match the marginal and pairwise structure of $X$ but not this
+nesting, and the row bootstrap resamples as if exchangeable. Two things answer that. The
+replication below refits every season and every league independently and so does not share the
+assumption at all, which is why the paper rests no claim on a single pooled fit. The assumption
+is also measured rather than only designed around: the identical bootstrap is run a second time
+resampling whole players, taking every season a drawn player contributed, so that correlated
+rows move together. Section~\ref{S-sec:si:nesting} sets out the comparison and what it can and
+cannot show.
 
 \subsection{Validation}
 
@@ -145,9 +160,11 @@ against the reference partition. Replication is tested more stringently, since a
 the same players: each season and each league is standardised inside itself and clustered from
 scratch, borrowing no centre, no scale and no starting point, and one scope's centroids are also
 imported into another scope's players, which separates replication of the solution from change
-in the players. Robustness to the description is tested by grouping the features into six
-families, removing each in turn and trying each alone, and rerunning the selection rule and the
-calibration every time. Agreement with the listed positions is quantified by the adjusted Rand
+in the players. Robustness to the description is tested by grouping the features into
+\AblFamiliesWord{} families, removing each in turn and trying each alone, and rerunning the
+selection rule and the calibration every time, at \AblSimulations{} draws per cell against the
+\StrSimulations{} the headline calibration uses, because that sweep is many times larger and is
+a robustness check rather than the central claim. Agreement with the listed positions is quantified by the adjusted Rand
 index and normalised mutual information, and independently by asking a gradient boosted
 classifier to predict position group from the same features \citep{ke2017lightgbm,
 lundberg2017unified}, where two properties of the confusion matrix are read as evidence about

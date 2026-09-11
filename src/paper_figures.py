@@ -32,6 +32,7 @@ import config
 from src import archive as A
 from src import cluster as C
 from src import plotting as P
+from src import structure as S
 
 #: The number of clusters the paper reports, matching src.archive_validation.
 K = 2
@@ -120,7 +121,29 @@ def _pooled_axis() -> tuple[pd.DataFrame, np.ndarray]:
     return z_global, projection
 
 
-def _panel_axis_density(ax, z_global: pd.DataFrame, projection: np.ndarray) -> None:
+def _null_projection(x: np.ndarray) -> np.ndarray:
+    """Project one clusterless draw onto its own two-cluster axis.
+
+    The draw is the first copula dataset of the calibration, not a fresh one that resembles
+    it, so the curve in the figure belongs to the same simulations the standard scores were
+    computed from. The copula is used rather than the Gaussian because it is the reference
+    the paper treats as decisive: it carries every real marginal, so anything left in the
+    picture is joint structure rather than skew.
+    """
+    null = S.simulate(x, "gaussian_copula", n_datasets=1)[0]
+    fit = C._kmeans(null, K, "archive|All outfield|null-panel")
+    direction = fit.cluster_centers_[1] - fit.cluster_centers_[0]
+    direction = direction / np.linalg.norm(direction)
+    midpoint = 0.5 * (fit.cluster_centers_[0] + fit.cluster_centers_[1])
+    projection = (null - midpoint) @ direction
+    # The sign of a centroid difference is arbitrary; orient the heavier tail to the right
+    # so the curve is comparable with the observed one rather than mirrored at random.
+    return projection if projection.mean() >= 0 else -projection
+
+
+def _panel_axis_density(
+    ax, z_global: pd.DataFrame, projection: np.ndarray, null_projection: np.ndarray
+) -> None:
     edges = np.linspace(projection.min(), projection.max(), 60)
     groups = z_global["position_group"].to_numpy()
     bottom = np.zeros(len(edges) - 1)
@@ -137,15 +160,29 @@ def _panel_axis_density(ax, z_global: pd.DataFrame, projection: np.ndarray) -> N
             label=GROUP_LABELS[group],
         )
         bottom = bottom + counts
-    # The stack shows which recorded position sits where; the outline is the quantity the
+    # The stack shows which listed position sits where; the outline is the quantity the
     # paper's claim is about, since bimodality is a property of the whole distribution and
     # not of any one group within it.
-    ax.step(edges[:-1], bottom, where="post", color=P.INK_PRIMARY, linewidth=1.2)
+    ax.step(
+        edges[:-1], bottom, where="post", color=P.INK_PRIMARY, linewidth=1.2, label="all players"
+    )
+    # One clusterless draw on its own axis, for contrast. Same row count, so the counts are
+    # directly comparable without rescaling.
+    null_counts, _ = np.histogram(null_projection, bins=edges)
+    ax.step(
+        edges[:-1],
+        null_counts,
+        where="post",
+        color=P.INK_SECONDARY,
+        linewidth=1.2,
+        linestyle=(0, (4, 2)),
+        label="clusterless draw",
+    )
     ax.axvline(0.0, color=P.INK_PRIMARY, linewidth=0.9, linestyle=(0, (4, 3)))
-    # Headroom for the legend, so it never sits on the taller of the two peaks.
-    ax.set_ylim(0, bottom.max() * 1.3)
+    # Headroom for the five legend entries, so none of them sits on a peak.
+    ax.set_ylim(0, max(bottom.max(), null_counts.max()) * 1.55)
     P.style_axis(ax, "position along the two-mode axis", "players", "two poles, a full middle")
-    ax.legend(loc="upper right", fontsize=P.BASE_FONT_PT - 2, handlelength=1.0)
+    ax.legend(loc="upper right", fontsize=P.BASE_FONT_PT - 3, handlelength=1.2, ncol=1)
 
 
 def _heat(ax, matrix, xlabels, ylabels, header, *, xlabel="", ylabel="") -> None:
@@ -210,12 +247,14 @@ def figure_geometry() -> None:
     validation = _metrics("archive_cluster_validation")
     supervised = _metrics("archive_supervised")
     z_global, projection = _pooled_axis()
+    features = [c for c in A.OUTFIELD_CORE if c in z_global.columns]
+    null_projection = _null_projection(z_global[features].to_numpy(float))
 
     fig, axes = plt.subplots(2, 3, figsize=(P.WIDTH_FULL, 4.5))
     _panel_scree(axes[0, 0], pca)
     _panel_loadings(axes[0, 1], pca, "PC1", "PC1: territory")
     _panel_loadings(axes[0, 2], pca, "PC2", "PC2: progression")
-    _panel_axis_density(axes[1, 0], z_global, projection)
+    _panel_axis_density(axes[1, 0], z_global, projection, null_projection)
     _panel_contingency(axes[1, 1], validation)
     _panel_confusion(axes[1, 2], supervised)
     P.panel_labels(axes)

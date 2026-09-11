@@ -114,7 +114,11 @@ NULL = "gaussian"
 
 #: Simulated datasets per cell. The same count as the calibration, so the reference row
 #: reproduces ``structure.json`` rather than approximating it.
-N_SIMULATIONS = S.N_SIMULATIONS
+#: The ablation sweep runs its own, smaller, number of draws. It tests 13 feature sets in
+#: each of four scopes, so matching the headline calibration's count would multiply the
+#: cost by the number of cells for a claim that is a robustness check rather than the
+#: paper's central one. The count is reported with the result.
+N_SIMULATIONS = 25
 
 #: A family carries the two modes alone when, on its own, the rule still returns ``K``
 #: and the observed silhouette at ``K`` sits this many null standard deviations above the

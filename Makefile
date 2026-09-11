@@ -27,7 +27,8 @@ RAW_MANIFESTS  := $(wildcard data/raw/*/manifest.json)
 PROCESSED      := $(wildcard data/processed/*.parquet)
 
 .PHONY: all data preprocess descriptive reduce cluster profiles supervised keepers \
-        teams novel sensitivity threed symmetric age drift leagues paper-figures tables \
+        teams novel sensitivity threed symmetric age drift leagues nesting \
+        paper-figures tables \
         paper review test lint format clean distclean help submission
 
 all: paper
@@ -50,6 +51,7 @@ help:
 	@echo "  age         age against archetype"
 	@echo "  drift       role drift within a season, one club, scrapes match reports"
 	@echo "  leagues     repeat the pipeline across the big five, scrapes four leagues"
+	@echo "  nesting     player block bootstrap against the row bootstrap"
 	@echo "  paper-figures composite main-text figures"
 	@echo "  tables      LaTeX tables and results/macros.tex"
 	@echo "  paper       compile paper/main.pdf and paper/supplementary.pdf"
@@ -217,6 +219,14 @@ $(STAMPS)/paper_figures: src/paper_figures.py $(CONFIG) $(PLOTTING) \
 	@touch $@
 paper-figures: $(STAMPS)/paper_figures
 
+# Does the stability result survive the nesting of player-seasons inside players? Runs
+# the same bootstrap twice on the same partition, once resampling rows and once
+# resampling whole players.
+$(STAMPS)/nesting: src/nesting.py $(CONFIG) $(STAMPS)/archive_profiles src/cluster.py
+	$(PY) -m src.nesting
+	@touch $@
+nesting: $(STAMPS)/nesting
+
 # --- Stage 4: tables and macros ---------------------------------------------------
 ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/profiles $(STAMPS)/supervised $(STAMPS)/keepers \
@@ -225,7 +235,7 @@ ANALYSIS_STAMPS := $(STAMPS)/descriptive $(STAMPS)/reduce $(STAMPS)/cluster \
                    $(STAMPS)/archive $(STAMPS)/structure $(STAMPS)/archive_profiles \
                    $(STAMPS)/archive_keepers $(STAMPS)/archive_validation \
                    $(STAMPS)/elasticity $(STAMPS)/ablation $(STAMPS)/outcomes \
-                   $(STAMPS)/paper_figures
+                   $(STAMPS)/nesting $(STAMPS)/paper_figures
 
 results/macros.tex: src/tables.py $(CONFIG) $(ANALYSIS_STAMPS)
 	$(PY) -m src.tables

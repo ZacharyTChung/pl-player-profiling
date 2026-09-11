@@ -12,85 +12,85 @@
         "scope": "All outfield",
         "n": 9263,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.273,
-            "null_mean": 0.2074,
-            "null_sd": 0.0037,
+            "null_mean": 0.207,
+            "null_sd": 0.0035,
             "null_max": 0.2151,
-            "z_against_null": 17.96,
+            "z_against_null": 18.87,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1929,
-            "null_mean": 0.1365,
-            "null_sd": 0.0023,
-            "null_max": 0.1418,
-            "z_against_null": 24.95,
+            "null_mean": 0.1358,
+            "null_sd": 0.0029,
+            "null_max": 0.1454,
+            "z_against_null": 19.81,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1922,
-            "null_mean": 0.1344,
-            "null_sd": 0.0019,
-            "null_max": 0.138,
-            "z_against_null": 30.76,
+            "null_mean": 0.1341,
+            "null_sd": 0.0021,
+            "null_max": 0.1384,
+            "z_against_null": 27.6,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1775,
-            "null_mean": 0.1131,
-            "null_sd": 0.0013,
-            "null_max": 0.1155,
-            "z_against_null": 51.02,
+            "null_mean": 0.1127,
+            "null_sd": 0.0018,
+            "null_max": 0.1168,
+            "z_against_null": 36.61,
             "exceeds_every_simulation": true
           },
           "6": {
             "observed": 0.1525,
             "null_mean": 0.1006,
-            "null_sd": 0.0013,
-            "null_max": 0.1033,
-            "z_against_null": 39.61,
+            "null_sd": 0.0018,
+            "null_max": 0.1058,
+            "z_against_null": 28.67,
             "exceeds_every_simulation": true
           },
           "7": {
             "observed": 0.1481,
-            "null_mean": 0.0904,
+            "null_mean": 0.0903,
             "null_sd": 0.0021,
-            "null_max": 0.0946,
-            "z_against_null": 27.73,
+            "null_max": 0.0958,
+            "z_against_null": 28.11,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.1424,
-            "null_mean": 0.0871,
-            "null_sd": 0.0024,
-            "null_max": 0.0909,
-            "z_against_null": 23.46,
+            "null_mean": 0.0874,
+            "null_sd": 0.002,
+            "null_max": 0.091,
+            "z_against_null": 26.92,
             "exceeds_every_simulation": true
           },
           "9": {
             "observed": 0.1232,
-            "null_mean": 0.0829,
-            "null_sd": 0.0019,
+            "null_mean": 0.083,
+            "null_sd": 0.0017,
             "null_max": 0.0874,
-            "z_against_null": 21.5,
+            "z_against_null": 24.37,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.1176,
-            "null_mean": 0.08,
-            "null_sd": 0.0014,
-            "null_max": 0.0833,
-            "z_against_null": 26.51,
+            "null_mean": 0.0799,
+            "null_sd": 0.0015,
+            "null_max": 0.084,
+            "z_against_null": 25.45,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.273,
-        "null_best_silhouette_mean": 0.2074,
-        "separation_ratio": 1.316,
+        "null_best_silhouette_mean": 0.207,
+        "separation_ratio": 1.319,
         "null": "gaussian",
         "description": "A single multivariate normal with the empirical mean and covariance. Matches the data in size, dimension and covariance and in nothing else: every marginal is symmetric and unbounded where the real per-90 rates are skewed and bounded below, and skew alone lifts silhouette against this reference, which is why the copula null stands beside it."
       },
@@ -159,177 +159,177 @@
         "scope": "All outfield",
         "n": 9263,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.273,
-            "null_mean": 0.2196,
+            "null_mean": 0.2194,
             "null_sd": 0.0038,
-            "null_max": 0.2257,
-            "z_against_null": 13.87,
+            "null_max": 0.2261,
+            "z_against_null": 13.98,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1929,
-            "null_mean": 0.1412,
-            "null_sd": 0.0022,
-            "null_max": 0.145,
-            "z_against_null": 23.85,
+            "null_mean": 0.141,
+            "null_sd": 0.0025,
+            "null_max": 0.147,
+            "z_against_null": 20.7,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1922,
-            "null_mean": 0.1431,
-            "null_sd": 0.0023,
-            "null_max": 0.1465,
-            "z_against_null": 21.6,
+            "null_mean": 0.1426,
+            "null_sd": 0.0025,
+            "null_max": 0.1473,
+            "z_against_null": 20.23,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1775,
-            "null_mean": 0.1194,
-            "null_sd": 0.003,
-            "null_max": 0.1242,
-            "z_against_null": 19.61,
+            "null_mean": 0.1195,
+            "null_sd": 0.0025,
+            "null_max": 0.1245,
+            "z_against_null": 23.5,
             "exceeds_every_simulation": true
           },
           "6": {
             "observed": 0.1525,
-            "null_mean": 0.1117,
-            "null_sd": 0.0021,
-            "null_max": 0.1158,
-            "z_against_null": 19.48,
+            "null_mean": 0.1116,
+            "null_sd": 0.0026,
+            "null_max": 0.1172,
+            "z_against_null": 15.75,
             "exceeds_every_simulation": true
           },
           "7": {
             "observed": 0.1481,
-            "null_mean": 0.0982,
-            "null_sd": 0.0024,
-            "null_max": 0.1023,
-            "z_against_null": 21.22,
+            "null_mean": 0.0978,
+            "null_sd": 0.0028,
+            "null_max": 0.1044,
+            "z_against_null": 17.77,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.1424,
-            "null_mean": 0.091,
-            "null_sd": 0.0032,
+            "null_mean": 0.0908,
+            "null_sd": 0.0026,
             "null_max": 0.0974,
-            "z_against_null": 16.17,
+            "z_against_null": 19.64,
             "exceeds_every_simulation": true
           },
           "9": {
             "observed": 0.1232,
-            "null_mean": 0.0864,
-            "null_sd": 0.0017,
-            "null_max": 0.0919,
-            "z_against_null": 21.65,
+            "null_mean": 0.0861,
+            "null_sd": 0.0019,
+            "null_max": 0.093,
+            "z_against_null": 19.38,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.1176,
-            "null_mean": 0.0846,
-            "null_sd": 0.0018,
-            "null_max": 0.0875,
-            "z_against_null": 18.7,
+            "null_mean": 0.0845,
+            "null_sd": 0.0019,
+            "null_max": 0.0891,
+            "z_against_null": 17.2,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.273,
-        "null_best_silhouette_mean": 0.2196,
-        "separation_ratio": 1.243,
+        "null_best_silhouette_mean": 0.2194,
+        "separation_ratio": 1.244,
         "null": "gaussian_copula",
         "description": "A Gaussian copula fitted to the normal scores of the observed ranks and mapped back through the empirical quantile function of each observed column. Preserves every marginal distribution exactly, including skew, bounds, ties and any bimodality a single feature carries on its own, and preserves the pairwise rank correlation up to sampling noise. Destroys joint structure beyond pairwise rank correlation, which is where two groups that differ in several features at once would live. It tests whether the joint structure carries anything beyond the marginals, not whether the marginals are unimodal.",
         "rank_correlation_check": {
           "observed_mean_abs_spearman": 0.3978,
           "mean_abs_deviation_mean_over_simulations": 0.0303,
-          "max_abs_deviation_mean_over_simulations": 0.0963,
-          "max_abs_deviation_worst_simulation": 0.1087
+          "max_abs_deviation_mean_over_simulations": 0.0964,
+          "max_abs_deviation_worst_simulation": 0.1102
         }
       },
       "null_calibration_uniform": {
         "scope": "All outfield",
         "n": 9263,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.273,
-            "null_mean": 0.1642,
-            "null_sd": 0.0024,
-            "null_max": 0.1688,
-            "z_against_null": 46.18,
+            "null_mean": 0.1637,
+            "null_sd": 0.0025,
+            "null_max": 0.1706,
+            "z_against_null": 44.47,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1929,
-            "null_mean": 0.1225,
+            "null_mean": 0.1222,
             "null_sd": 0.0018,
-            "null_max": 0.126,
-            "z_against_null": 38.89,
+            "null_max": 0.1271,
+            "z_against_null": 39.27,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1922,
             "null_mean": 0.0991,
-            "null_sd": 0.0014,
-            "null_max": 0.1012,
-            "z_against_null": 67.21,
+            "null_sd": 0.0015,
+            "null_max": 0.1036,
+            "z_against_null": 61.2,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1775,
-            "null_mean": 0.0843,
+            "null_mean": 0.0841,
             "null_sd": 0.0014,
-            "null_max": 0.0865,
-            "z_against_null": 67.45,
+            "null_max": 0.0882,
+            "z_against_null": 66.25,
             "exceeds_every_simulation": true
           },
           "6": {
             "observed": 0.1525,
-            "null_mean": 0.069,
-            "null_sd": 0.0009,
-            "null_max": 0.0701,
-            "z_against_null": 94.66,
+            "null_mean": 0.0689,
+            "null_sd": 0.001,
+            "null_max": 0.0711,
+            "z_against_null": 87.4,
             "exceeds_every_simulation": true
           },
           "7": {
             "observed": 0.1481,
-            "null_mean": 0.0668,
-            "null_sd": 0.0027,
-            "null_max": 0.0695,
-            "z_against_null": 29.79,
+            "null_mean": 0.0666,
+            "null_sd": 0.0024,
+            "null_max": 0.0704,
+            "z_against_null": 33.51,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.1424,
-            "null_mean": 0.0617,
-            "null_sd": 0.0019,
-            "null_max": 0.0649,
-            "z_against_null": 42.59,
+            "null_mean": 0.0619,
+            "null_sd": 0.0018,
+            "null_max": 0.0654,
+            "z_against_null": 44.23,
             "exceeds_every_simulation": true
           },
           "9": {
             "observed": 0.1232,
-            "null_mean": 0.0592,
-            "null_sd": 0.0017,
-            "null_max": 0.0612,
-            "z_against_null": 38.67,
+            "null_mean": 0.0597,
+            "null_sd": 0.0014,
+            "null_max": 0.0626,
+            "z_against_null": 45.36,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.1176,
-            "null_mean": 0.0545,
-            "null_sd": 0.001,
-            "null_max": 0.0571,
-            "z_against_null": 64.77,
+            "null_mean": 0.0548,
+            "null_sd": 0.0011,
+            "null_max": 0.0575,
+            "z_against_null": 58.25,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.273,
-        "null_best_silhouette_mean": 0.1642,
-        "separation_ratio": 1.662,
+        "null_best_silhouette_mean": 0.1637,
+        "separation_ratio": 1.668,
         "null": "uniform_principal_box",
         "description": "Uniform within the bounding box of the data after rotation to its principal axes, rotated back. The reference distribution of the gap statistic in Tibshirani, Walther and Hastie (2001). Assumes no distributional form. Every principal axis is filled evenly over its full observed range, and a bounded or heavy-tailed axis ranges over several times its standard deviation, so the minor axes carry more spread than in the data and the reference is more isotropic than the data it is matched to. That lowers its silhouette at k=2, so for silhouette it is a soft reference. Its leading component is flat rather than peaked, which gives it the largest dip of the three, so for the dip it is the hard one."
       },
@@ -338,35 +338,35 @@
         "observed_dip": 0.01761,
         "by_null": {
           "gaussian": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01761,
-            "null_mean": 0.00202,
-            "null_sd": 0.00024,
-            "null_max": 0.00258,
-            "z_against_null": 64.68,
+            "null_mean": 0.00215,
+            "null_sd": 0.00043,
+            "null_max": 0.0041,
+            "z_against_null": 36.24,
             "exceeds_every_simulation": true
           },
           "gaussian_copula": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01761,
-            "null_mean": 0.00227,
-            "null_sd": 0.0003,
-            "null_max": 0.00281,
-            "z_against_null": 51.17,
+            "null_mean": 0.0022,
+            "null_sd": 0.00033,
+            "null_max": 0.00307,
+            "z_against_null": 46.29,
             "exceeds_every_simulation": true
           },
           "uniform_principal_box": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01761,
-            "null_mean": 0.00413,
-            "null_sd": 0.00099,
-            "null_max": 0.00638,
-            "z_against_null": 13.67,
+            "null_mean": 0.0041,
+            "null_sd": 0.00098,
+            "null_max": 0.00721,
+            "z_against_null": 13.84,
             "exceeds_every_simulation": true
           }
         },
         "hardest_null": "uniform_principal_box",
-        "min_z": 13.67,
+        "min_z": 13.84,
         "exceeds_every_simulation_under_every_null": true,
         "note": "The p-value reported in dip_tests rejects trivially at this sample size and is not informative. The dip statistic is the effect size, and the z against each null's own dip distribution is the calibrated quantity."
       },
@@ -532,85 +532,85 @@
         "scope": "DF",
         "n": 3793,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.2606,
-            "null_mean": 0.1906,
-            "null_sd": 0.0029,
-            "null_max": 0.1965,
-            "z_against_null": 24.22,
+            "null_mean": 0.1911,
+            "null_sd": 0.0033,
+            "null_max": 0.1995,
+            "z_against_null": 21.06,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1927,
-            "null_mean": 0.1151,
-            "null_sd": 0.0027,
-            "null_max": 0.1215,
-            "z_against_null": 28.85,
+            "null_mean": 0.1159,
+            "null_sd": 0.0026,
+            "null_max": 0.1216,
+            "z_against_null": 29.7,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1459,
-            "null_mean": 0.1067,
-            "null_sd": 0.002,
-            "null_max": 0.11,
-            "z_against_null": 19.91,
+            "null_mean": 0.1076,
+            "null_sd": 0.0022,
+            "null_max": 0.1134,
+            "z_against_null": 17.13,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1145,
-            "null_mean": 0.0867,
-            "null_sd": 0.0012,
-            "null_max": 0.0887,
-            "z_against_null": 24.11,
+            "null_mean": 0.0869,
+            "null_sd": 0.0017,
+            "null_max": 0.0924,
+            "z_against_null": 16.2,
             "exceeds_every_simulation": true
           },
           "6": {
             "observed": 0.0846,
-            "null_mean": 0.0804,
-            "null_sd": 0.0013,
-            "null_max": 0.0838,
-            "z_against_null": 3.21,
+            "null_mean": 0.0805,
+            "null_sd": 0.0016,
+            "null_max": 0.0841,
+            "z_against_null": 2.63,
             "exceeds_every_simulation": true
           },
           "7": {
             "observed": 0.0824,
-            "null_mean": 0.0779,
-            "null_sd": 0.0016,
-            "null_max": 0.0814,
-            "z_against_null": 2.82,
+            "null_mean": 0.078,
+            "null_sd": 0.0015,
+            "null_max": 0.0816,
+            "z_against_null": 3.0,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.0819,
-            "null_mean": 0.0735,
-            "null_sd": 0.0016,
-            "null_max": 0.0764,
-            "z_against_null": 5.08,
+            "null_mean": 0.0734,
+            "null_sd": 0.0015,
+            "null_max": 0.0765,
+            "z_against_null": 5.85,
             "exceeds_every_simulation": true
           },
           "9": {
             "observed": 0.0759,
-            "null_mean": 0.0686,
-            "null_sd": 0.0012,
-            "null_max": 0.0705,
-            "z_against_null": 6.32,
+            "null_mean": 0.0684,
+            "null_sd": 0.0013,
+            "null_max": 0.0713,
+            "z_against_null": 5.66,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.0699,
             "null_mean": 0.0657,
-            "null_sd": 0.0012,
-            "null_max": 0.0681,
-            "z_against_null": 3.46,
+            "null_sd": 0.0014,
+            "null_max": 0.0682,
+            "z_against_null": 3.08,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.2606,
-        "null_best_silhouette_mean": 0.1906,
-        "separation_ratio": 1.367,
+        "null_best_silhouette_mean": 0.1911,
+        "separation_ratio": 1.364,
         "null": "gaussian",
         "description": "A single multivariate normal with the empirical mean and covariance. Matches the data in size, dimension and covariance and in nothing else: every marginal is symmetric and unbounded where the real per-90 rates are skewed and bounded below, and skew alone lifts silhouette against this reference, which is why the copula null stands beside it."
       },
@@ -679,177 +679,177 @@
         "scope": "DF",
         "n": 3793,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.2606,
-            "null_mean": 0.2177,
-            "null_sd": 0.005,
+            "null_mean": 0.2189,
+            "null_sd": 0.0038,
             "null_max": 0.2318,
-            "z_against_null": 8.6,
+            "z_against_null": 11.02,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1927,
-            "null_mean": 0.1242,
-            "null_sd": 0.0047,
-            "null_max": 0.131,
-            "z_against_null": 14.45,
+            "null_mean": 0.1229,
+            "null_sd": 0.0043,
+            "null_max": 0.1348,
+            "z_against_null": 16.34,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1459,
-            "null_mean": 0.114,
-            "null_sd": 0.0042,
-            "null_max": 0.1224,
-            "z_against_null": 7.59,
+            "null_mean": 0.1143,
+            "null_sd": 0.0041,
+            "null_max": 0.1279,
+            "z_against_null": 7.63,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1145,
-            "null_mean": 0.0867,
-            "null_sd": 0.0026,
-            "null_max": 0.0918,
-            "z_against_null": 10.75,
+            "null_mean": 0.0872,
+            "null_sd": 0.0039,
+            "null_max": 0.1123,
+            "z_against_null": 7.03,
             "exceeds_every_simulation": true
           },
           "6": {
             "observed": 0.0846,
-            "null_mean": 0.0884,
-            "null_sd": 0.0028,
-            "null_max": 0.0948,
-            "z_against_null": -1.37,
+            "null_mean": 0.0885,
+            "null_sd": 0.003,
+            "null_max": 0.0982,
+            "z_against_null": -1.27,
             "exceeds_every_simulation": false
           },
           "7": {
             "observed": 0.0824,
-            "null_mean": 0.0793,
-            "null_sd": 0.0036,
-            "null_max": 0.0878,
-            "z_against_null": 0.85,
+            "null_mean": 0.0797,
+            "null_sd": 0.0032,
+            "null_max": 0.0891,
+            "z_against_null": 0.82,
             "exceeds_every_simulation": false
           },
           "8": {
             "observed": 0.0819,
-            "null_mean": 0.0701,
-            "null_sd": 0.0047,
+            "null_mean": 0.0704,
+            "null_sd": 0.0048,
             "null_max": 0.0833,
-            "z_against_null": 2.5,
+            "z_against_null": 2.36,
             "exceeds_every_simulation": false
           },
           "9": {
             "observed": 0.0759,
-            "null_mean": 0.0672,
-            "null_sd": 0.0041,
-            "null_max": 0.0741,
-            "z_against_null": 2.13,
+            "null_mean": 0.0677,
+            "null_sd": 0.0039,
+            "null_max": 0.0745,
+            "z_against_null": 2.12,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.0699,
-            "null_mean": 0.0623,
-            "null_sd": 0.0022,
-            "null_max": 0.0655,
-            "z_against_null": 3.49,
+            "null_mean": 0.0629,
+            "null_sd": 0.0026,
+            "null_max": 0.0693,
+            "z_against_null": 2.69,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.2606,
-        "null_best_silhouette_mean": 0.2177,
-        "separation_ratio": 1.197,
+        "null_best_silhouette_mean": 0.2189,
+        "separation_ratio": 1.19,
         "null": "gaussian_copula",
         "description": "A Gaussian copula fitted to the normal scores of the observed ranks and mapped back through the empirical quantile function of each observed column. Preserves every marginal distribution exactly, including skew, bounds, ties and any bimodality a single feature carries on its own, and preserves the pairwise rank correlation up to sampling noise. Destroys joint structure beyond pairwise rank correlation, which is where two groups that differ in several features at once would live. It tests whether the joint structure carries anything beyond the marginals, not whether the marginals are unimodal.",
         "rank_correlation_check": {
           "observed_mean_abs_spearman": 0.2991,
           "mean_abs_deviation_mean_over_simulations": 0.0321,
-          "max_abs_deviation_mean_over_simulations": 0.119,
-          "max_abs_deviation_worst_simulation": 0.1375
+          "max_abs_deviation_mean_over_simulations": 0.1167,
+          "max_abs_deviation_worst_simulation": 0.1526
         }
       },
       "null_calibration_uniform": {
         "scope": "DF",
         "n": 3793,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.2606,
-            "null_mean": 0.1409,
+            "null_mean": 0.1413,
             "null_sd": 0.0021,
-            "null_max": 0.1454,
-            "z_against_null": 56.35,
+            "null_max": 0.1462,
+            "z_against_null": 56.06,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1927,
-            "null_mean": 0.1012,
-            "null_sd": 0.0017,
+            "null_mean": 0.1011,
+            "null_sd": 0.0016,
             "null_max": 0.1053,
-            "z_against_null": 53.89,
+            "z_against_null": 58.34,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1459,
-            "null_mean": 0.0842,
-            "null_sd": 0.0018,
+            "null_mean": 0.0839,
+            "null_sd": 0.0014,
             "null_max": 0.0866,
-            "z_against_null": 34.35,
+            "z_against_null": 43.91,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1145,
-            "null_mean": 0.0766,
+            "null_mean": 0.0764,
             "null_sd": 0.0011,
-            "null_max": 0.0783,
-            "z_against_null": 33.02,
+            "null_max": 0.0787,
+            "z_against_null": 35.75,
             "exceeds_every_simulation": true
           },
           "6": {
             "observed": 0.0846,
-            "null_mean": 0.0748,
-            "null_sd": 0.0009,
-            "null_max": 0.0766,
-            "z_against_null": 10.52,
+            "null_mean": 0.0746,
+            "null_sd": 0.0011,
+            "null_max": 0.0773,
+            "z_against_null": 8.9,
             "exceeds_every_simulation": true
           },
           "7": {
             "observed": 0.0824,
-            "null_mean": 0.0685,
-            "null_sd": 0.0011,
-            "null_max": 0.0704,
-            "z_against_null": 13.05,
+            "null_mean": 0.0683,
+            "null_sd": 0.001,
+            "null_max": 0.0707,
+            "z_against_null": 14.2,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.0819,
-            "null_mean": 0.0644,
+            "null_mean": 0.0646,
             "null_sd": 0.0011,
-            "null_max": 0.0666,
-            "z_against_null": 15.62,
+            "null_max": 0.0669,
+            "z_against_null": 15.07,
             "exceeds_every_simulation": true
           },
           "9": {
             "observed": 0.0759,
-            "null_mean": 0.0612,
+            "null_mean": 0.061,
             "null_sd": 0.0009,
             "null_max": 0.0634,
-            "z_against_null": 17.32,
+            "z_against_null": 16.66,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.0699,
             "null_mean": 0.059,
             "null_sd": 0.0009,
-            "null_max": 0.0607,
-            "z_against_null": 11.92,
+            "null_max": 0.0608,
+            "z_against_null": 11.78,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.2606,
-        "null_best_silhouette_mean": 0.1409,
-        "separation_ratio": 1.849,
+        "null_best_silhouette_mean": 0.1413,
+        "separation_ratio": 1.845,
         "null": "uniform_principal_box",
         "description": "Uniform within the bounding box of the data after rotation to its principal axes, rotated back. The reference distribution of the gap statistic in Tibshirani, Walther and Hastie (2001). Assumes no distributional form. Every principal axis is filled evenly over its full observed range, and a bounded or heavy-tailed axis ranges over several times its standard deviation, so the minor axes carry more spread than in the data and the reference is more isotropic than the data it is matched to. That lowers its silhouette at k=2, so for silhouette it is a soft reference. Its leading component is flat rather than peaked, which gives it the largest dip of the three, so for the dip it is the hard one."
       },
@@ -858,35 +858,35 @@
         "observed_dip": 0.01927,
         "by_null": {
           "gaussian": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01927,
-            "null_mean": 0.00419,
-            "null_sd": 0.00066,
+            "null_mean": 0.00371,
+            "null_sd": 0.00063,
             "null_max": 0.00534,
-            "z_against_null": 22.8,
+            "z_against_null": 24.6,
             "exceeds_every_simulation": true
           },
           "gaussian_copula": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01927,
-            "null_mean": 0.00397,
-            "null_sd": 0.00065,
-            "null_max": 0.00556,
-            "z_against_null": 23.66,
+            "null_mean": 0.00383,
+            "null_sd": 0.00062,
+            "null_max": 0.0057,
+            "z_against_null": 24.79,
             "exceeds_every_simulation": true
           },
           "uniform_principal_box": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01927,
-            "null_mean": 0.00603,
-            "null_sd": 0.0015,
-            "null_max": 0.01039,
-            "z_against_null": 8.84,
+            "null_mean": 0.00624,
+            "null_sd": 0.00156,
+            "null_max": 0.01177,
+            "z_against_null": 8.34,
             "exceeds_every_simulation": true
           }
         },
         "hardest_null": "uniform_principal_box",
-        "min_z": 8.84,
+        "min_z": 8.34,
         "exceeds_every_simulation_under_every_null": true,
         "note": "The p-value reported in dip_tests rejects trivially at this sample size and is not informative. The dip statistic is the effect size, and the z against each null's own dip distribution is the calibrated quantity."
       },
@@ -1052,70 +1052,70 @@
         "scope": "MF",
         "n": 3766,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.2489,
-            "null_mean": 0.2011,
-            "null_sd": 0.0032,
-            "null_max": 0.2073,
-            "z_against_null": 14.99,
+            "null_mean": 0.2022,
+            "null_sd": 0.0031,
+            "null_max": 0.2093,
+            "z_against_null": 15.06,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.181,
-            "null_mean": 0.1256,
-            "null_sd": 0.0027,
-            "null_max": 0.1303,
-            "z_against_null": 20.3,
+            "null_mean": 0.1255,
+            "null_sd": 0.0026,
+            "null_max": 0.1314,
+            "z_against_null": 21.31,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.141,
-            "null_mean": 0.1253,
+            "null_mean": 0.1258,
             "null_sd": 0.0023,
-            "null_max": 0.1283,
-            "z_against_null": 6.78,
+            "null_max": 0.1311,
+            "z_against_null": 6.65,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1094,
             "null_mean": 0.1048,
-            "null_sd": 0.0017,
+            "null_sd": 0.002,
             "null_max": 0.1097,
-            "z_against_null": 2.74,
+            "z_against_null": 2.34,
             "exceeds_every_simulation": false
           },
           "6": {
             "observed": 0.0961,
-            "null_mean": 0.0937,
-            "null_sd": 0.0018,
+            "null_mean": 0.0938,
+            "null_sd": 0.0019,
             "null_max": 0.0974,
-            "z_against_null": 1.33,
+            "z_against_null": 1.21,
             "exceeds_every_simulation": false
           },
           "7": {
             "observed": 0.0902,
             "null_mean": 0.0832,
-            "null_sd": 0.0019,
+            "null_sd": 0.0018,
             "null_max": 0.0876,
-            "z_against_null": 3.64,
+            "z_against_null": 3.84,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.0804,
-            "null_mean": 0.0772,
-            "null_sd": 0.0021,
-            "null_max": 0.0806,
-            "z_against_null": 1.56,
+            "null_mean": 0.0775,
+            "null_sd": 0.0019,
+            "null_max": 0.0841,
+            "z_against_null": 1.5,
             "exceeds_every_simulation": false
           },
           "9": {
             "observed": 0.0774,
-            "null_mean": 0.0733,
-            "null_sd": 0.002,
+            "null_mean": 0.0734,
+            "null_sd": 0.0017,
             "null_max": 0.078,
-            "z_against_null": 2.06,
+            "z_against_null": 2.39,
             "exceeds_every_simulation": false
           },
           "10": {
@@ -1123,14 +1123,14 @@
             "null_mean": 0.0706,
             "null_sd": 0.0017,
             "null_max": 0.0748,
-            "z_against_null": 1.92,
+            "z_against_null": 2.03,
             "exceeds_every_simulation": false
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.2489,
-        "null_best_silhouette_mean": 0.2011,
-        "separation_ratio": 1.237,
+        "null_best_silhouette_mean": 0.2022,
+        "separation_ratio": 1.231,
         "null": "gaussian",
         "description": "A single multivariate normal with the empirical mean and covariance. Matches the data in size, dimension and covariance and in nothing else: every marginal is symmetric and unbounded where the real per-90 rates are skewed and bounded below, and skew alone lifts silhouette against this reference, which is why the copula null stands beside it."
       },
@@ -1199,177 +1199,177 @@
         "scope": "MF",
         "n": 3766,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.2489,
-            "null_mean": 0.2108,
-            "null_sd": 0.0038,
+            "null_mean": 0.2114,
+            "null_sd": 0.0034,
             "null_max": 0.2183,
-            "z_against_null": 10.13,
+            "z_against_null": 11.16,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.181,
             "null_mean": 0.1352,
-            "null_sd": 0.0026,
-            "null_max": 0.1402,
-            "z_against_null": 17.4,
+            "null_sd": 0.0027,
+            "null_max": 0.1425,
+            "z_against_null": 16.97,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.141,
-            "null_mean": 0.1297,
-            "null_sd": 0.0018,
-            "null_max": 0.1336,
-            "z_against_null": 6.24,
+            "null_mean": 0.1301,
+            "null_sd": 0.0023,
+            "null_max": 0.1361,
+            "z_against_null": 4.79,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1094,
-            "null_mean": 0.1084,
-            "null_sd": 0.0035,
+            "null_mean": 0.1078,
+            "null_sd": 0.0026,
             "null_max": 0.1168,
-            "z_against_null": 0.29,
+            "z_against_null": 0.64,
             "exceeds_every_simulation": false
           },
           "6": {
             "observed": 0.0961,
-            "null_mean": 0.0984,
-            "null_sd": 0.0028,
-            "null_max": 0.1026,
+            "null_mean": 0.0982,
+            "null_sd": 0.0025,
+            "null_max": 0.1033,
             "z_against_null": -0.84,
             "exceeds_every_simulation": false
           },
           "7": {
             "observed": 0.0902,
-            "null_mean": 0.0855,
-            "null_sd": 0.0023,
-            "null_max": 0.0903,
-            "z_against_null": 2.08,
+            "null_mean": 0.0858,
+            "null_sd": 0.0026,
+            "null_max": 0.0942,
+            "z_against_null": 1.75,
             "exceeds_every_simulation": false
           },
           "8": {
             "observed": 0.0804,
             "null_mean": 0.0809,
-            "null_sd": 0.002,
-            "null_max": 0.0853,
-            "z_against_null": -0.27,
+            "null_sd": 0.0022,
+            "null_max": 0.0866,
+            "z_against_null": -0.24,
             "exceeds_every_simulation": false
           },
           "9": {
             "observed": 0.0774,
-            "null_mean": 0.0747,
-            "null_sd": 0.0026,
+            "null_mean": 0.0742,
+            "null_sd": 0.0023,
             "null_max": 0.0813,
-            "z_against_null": 1.06,
+            "z_against_null": 1.34,
             "exceeds_every_simulation": false
           },
           "10": {
             "observed": 0.0739,
-            "null_mean": 0.0708,
-            "null_sd": 0.0015,
-            "null_max": 0.0737,
-            "z_against_null": 2.14,
-            "exceeds_every_simulation": true
+            "null_mean": 0.0709,
+            "null_sd": 0.0022,
+            "null_max": 0.0761,
+            "z_against_null": 1.42,
+            "exceeds_every_simulation": false
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.2489,
-        "null_best_silhouette_mean": 0.2108,
-        "separation_ratio": 1.181,
+        "null_best_silhouette_mean": 0.2114,
+        "separation_ratio": 1.177,
         "null": "gaussian_copula",
         "description": "A Gaussian copula fitted to the normal scores of the observed ranks and mapped back through the empirical quantile function of each observed column. Preserves every marginal distribution exactly, including skew, bounds, ties and any bimodality a single feature carries on its own, and preserves the pairwise rank correlation up to sampling noise. Destroys joint structure beyond pairwise rank correlation, which is where two groups that differ in several features at once would live. It tests whether the joint structure carries anything beyond the marginals, not whether the marginals are unimodal.",
         "rank_correlation_check": {
           "observed_mean_abs_spearman": 0.384,
-          "mean_abs_deviation_mean_over_simulations": 0.0307,
-          "max_abs_deviation_mean_over_simulations": 0.0902,
-          "max_abs_deviation_worst_simulation": 0.1176
+          "mean_abs_deviation_mean_over_simulations": 0.0292,
+          "max_abs_deviation_mean_over_simulations": 0.0887,
+          "max_abs_deviation_worst_simulation": 0.1185
         }
       },
       "null_calibration_uniform": {
         "scope": "MF",
         "n": 3766,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.2489,
-            "null_mean": 0.1624,
-            "null_sd": 0.0024,
-            "null_max": 0.168,
-            "z_against_null": 35.6,
+            "null_mean": 0.1628,
+            "null_sd": 0.0023,
+            "null_max": 0.1682,
+            "z_against_null": 37.12,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.181,
-            "null_mean": 0.1149,
-            "null_sd": 0.0016,
-            "null_max": 0.118,
-            "z_against_null": 42.39,
+            "null_mean": 0.1151,
+            "null_sd": 0.0017,
+            "null_max": 0.1195,
+            "z_against_null": 39.81,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.141,
-            "null_mean": 0.0866,
-            "null_sd": 0.0012,
-            "null_max": 0.089,
-            "z_against_null": 46.22,
+            "null_mean": 0.0865,
+            "null_sd": 0.0013,
+            "null_max": 0.09,
+            "z_against_null": 41.64,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.1094,
-            "null_mean": 0.076,
-            "null_sd": 0.0011,
-            "null_max": 0.0781,
-            "z_against_null": 31.07,
+            "null_mean": 0.0759,
+            "null_sd": 0.0012,
+            "null_max": 0.0786,
+            "z_against_null": 29.16,
             "exceeds_every_simulation": true
           },
           "6": {
             "observed": 0.0961,
-            "null_mean": 0.0644,
-            "null_sd": 0.001,
-            "null_max": 0.0663,
-            "z_against_null": 31.36,
+            "null_mean": 0.0646,
+            "null_sd": 0.0015,
+            "null_max": 0.0728,
+            "z_against_null": 21.04,
             "exceeds_every_simulation": true
           },
           "7": {
             "observed": 0.0902,
-            "null_mean": 0.0626,
-            "null_sd": 0.0017,
-            "null_max": 0.065,
-            "z_against_null": 16.21,
+            "null_mean": 0.0621,
+            "null_sd": 0.0021,
+            "null_max": 0.0654,
+            "z_against_null": 13.7,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.0804,
-            "null_mean": 0.0575,
-            "null_sd": 0.0015,
+            "null_mean": 0.0579,
+            "null_sd": 0.0014,
             "null_max": 0.061,
-            "z_against_null": 15.48,
+            "z_against_null": 16.07,
             "exceeds_every_simulation": true
           },
           "9": {
             "observed": 0.0774,
-            "null_mean": 0.0556,
+            "null_mean": 0.0554,
             "null_sd": 0.0013,
             "null_max": 0.0584,
-            "z_against_null": 17.12,
+            "z_against_null": 16.43,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.0739,
-            "null_mean": 0.053,
-            "null_sd": 0.0013,
-            "null_max": 0.0555,
-            "z_against_null": 16.24,
+            "null_mean": 0.0528,
+            "null_sd": 0.0012,
+            "null_max": 0.0559,
+            "z_against_null": 17.13,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.2489,
-        "null_best_silhouette_mean": 0.1624,
-        "separation_ratio": 1.533,
+        "null_best_silhouette_mean": 0.1628,
+        "separation_ratio": 1.529,
         "null": "uniform_principal_box",
         "description": "Uniform within the bounding box of the data after rotation to its principal axes, rotated back. The reference distribution of the gap statistic in Tibshirani, Walther and Hastie (2001). Assumes no distributional form. Every principal axis is filled evenly over its full observed range, and a bounded or heavy-tailed axis ranges over several times its standard deviation, so the minor axes carry more spread than in the data and the reference is more isotropic than the data it is matched to. That lowers its silhouette at k=2, so for silhouette it is a soft reference. Its leading component is flat rather than peaked, which gives it the largest dip of the three, so for the dip it is the hard one."
       },
@@ -1378,35 +1378,35 @@
         "observed_dip": 0.01378,
         "by_null": {
           "gaussian": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01378,
-            "null_mean": 0.00368,
-            "null_sd": 0.00058,
-            "null_max": 0.00571,
-            "z_against_null": 17.37,
+            "null_mean": 0.00369,
+            "null_sd": 0.00069,
+            "null_max": 0.00621,
+            "z_against_null": 14.55,
             "exceeds_every_simulation": true
           },
           "gaussian_copula": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01378,
-            "null_mean": 0.00379,
-            "null_sd": 0.00087,
+            "null_mean": 0.00381,
+            "null_sd": 0.00073,
             "null_max": 0.00647,
-            "z_against_null": 11.54,
+            "z_against_null": 13.72,
             "exceeds_every_simulation": true
           },
           "uniform_principal_box": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.01378,
-            "null_mean": 0.00606,
-            "null_sd": 0.00136,
-            "null_max": 0.00973,
-            "z_against_null": 5.66,
+            "null_mean": 0.00634,
+            "null_sd": 0.00144,
+            "null_max": 0.01032,
+            "z_against_null": 5.16,
             "exceeds_every_simulation": true
           }
         },
         "hardest_null": "uniform_principal_box",
-        "min_z": 5.66,
+        "min_z": 5.16,
         "exceeds_every_simulation_under_every_null": true,
         "note": "The p-value reported in dip_tests rejects trivially at this sample size and is not informative. The dip statistic is the effect size, and the z against each null's own dip distribution is the calibrated quantity."
       },
@@ -1572,85 +1572,85 @@
         "scope": "FW",
         "n": 1704,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.247,
-            "null_mean": 0.1658,
-            "null_sd": 0.0062,
+            "null_mean": 0.1653,
+            "null_sd": 0.0048,
             "null_max": 0.1793,
-            "z_against_null": 13.18,
+            "z_against_null": 16.98,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1414,
-            "null_mean": 0.1071,
-            "null_sd": 0.0034,
-            "null_max": 0.1138,
-            "z_against_null": 10.15,
+            "null_mean": 0.1076,
+            "null_sd": 0.004,
+            "null_max": 0.1226,
+            "z_against_null": 8.42,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1048,
-            "null_mean": 0.1009,
-            "null_sd": 0.0027,
+            "null_mean": 0.1011,
+            "null_sd": 0.0026,
             "null_max": 0.1073,
-            "z_against_null": 1.46,
+            "z_against_null": 1.44,
             "exceeds_every_simulation": false
           },
           "5": {
             "observed": 0.084,
-            "null_mean": 0.0848,
-            "null_sd": 0.0029,
+            "null_mean": 0.0844,
+            "null_sd": 0.0022,
             "null_max": 0.0893,
-            "z_against_null": -0.28,
+            "z_against_null": -0.21,
             "exceeds_every_simulation": false
           },
           "6": {
             "observed": 0.0756,
-            "null_mean": 0.0762,
-            "null_sd": 0.0026,
+            "null_mean": 0.0763,
+            "null_sd": 0.0023,
             "null_max": 0.0822,
-            "z_against_null": -0.24,
+            "z_against_null": -0.31,
             "exceeds_every_simulation": false
           },
           "7": {
             "observed": 0.0774,
-            "null_mean": 0.0723,
+            "null_mean": 0.0726,
             "null_sd": 0.0021,
-            "null_max": 0.0761,
-            "z_against_null": 2.37,
-            "exceeds_every_simulation": true
+            "null_max": 0.0802,
+            "z_against_null": 2.36,
+            "exceeds_every_simulation": false
           },
           "8": {
             "observed": 0.0714,
-            "null_mean": 0.0695,
-            "null_sd": 0.0022,
+            "null_mean": 0.0687,
+            "null_sd": 0.0021,
             "null_max": 0.0738,
-            "z_against_null": 0.85,
+            "z_against_null": 1.26,
             "exceeds_every_simulation": false
           },
           "9": {
             "observed": 0.0725,
-            "null_mean": 0.0658,
-            "null_sd": 0.0024,
-            "null_max": 0.0687,
-            "z_against_null": 2.79,
+            "null_mean": 0.0653,
+            "null_sd": 0.002,
+            "null_max": 0.071,
+            "z_against_null": 3.59,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.0721,
             "null_mean": 0.0626,
-            "null_sd": 0.0018,
+            "null_sd": 0.0017,
             "null_max": 0.0662,
-            "z_against_null": 5.2,
+            "z_against_null": 5.6,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.247,
-        "null_best_silhouette_mean": 0.1658,
-        "separation_ratio": 1.49,
+        "null_best_silhouette_mean": 0.1653,
+        "separation_ratio": 1.494,
         "null": "gaussian",
         "description": "A single multivariate normal with the empirical mean and covariance. Matches the data in size, dimension and covariance and in nothing else: every marginal is symmetric and unbounded where the real per-90 rates are skewed and bounded below, and skew alone lifts silhouette against this reference, which is why the copula null stands beside it."
       },
@@ -1719,91 +1719,91 @@
         "scope": "FW",
         "n": 1704,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.247,
-            "null_mean": 0.1901,
-            "null_sd": 0.0071,
-            "null_max": 0.2017,
-            "z_against_null": 8.01,
+            "null_mean": 0.1903,
+            "null_sd": 0.0077,
+            "null_max": 0.209,
+            "z_against_null": 7.34,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1414,
-            "null_mean": 0.0929,
-            "null_sd": 0.0059,
+            "null_mean": 0.0931,
+            "null_sd": 0.0044,
             "null_max": 0.1155,
-            "z_against_null": 8.19,
+            "z_against_null": 11.02,
             "exceeds_every_simulation": true
           },
           "4": {
             "observed": 0.1048,
-            "null_mean": 0.0915,
-            "null_sd": 0.0043,
-            "null_max": 0.0987,
-            "z_against_null": 3.14,
+            "null_mean": 0.0916,
+            "null_sd": 0.0041,
+            "null_max": 0.1018,
+            "z_against_null": 3.18,
             "exceeds_every_simulation": true
           },
           "5": {
             "observed": 0.084,
-            "null_mean": 0.0715,
-            "null_sd": 0.0049,
-            "null_max": 0.0783,
-            "z_against_null": 2.53,
-            "exceeds_every_simulation": true
+            "null_mean": 0.0735,
+            "null_sd": 0.0044,
+            "null_max": 0.0854,
+            "z_against_null": 2.36,
+            "exceeds_every_simulation": false
           },
           "6": {
             "observed": 0.0756,
-            "null_mean": 0.0657,
+            "null_mean": 0.0663,
             "null_sd": 0.0028,
             "null_max": 0.0732,
-            "z_against_null": 3.53,
+            "z_against_null": 3.33,
             "exceeds_every_simulation": true
           },
           "7": {
             "observed": 0.0774,
-            "null_mean": 0.0624,
-            "null_sd": 0.0027,
-            "null_max": 0.0667,
-            "z_against_null": 5.54,
+            "null_mean": 0.0623,
+            "null_sd": 0.0031,
+            "null_max": 0.0692,
+            "z_against_null": 4.9,
             "exceeds_every_simulation": true
           },
           "8": {
             "observed": 0.0714,
-            "null_mean": 0.0581,
-            "null_sd": 0.0032,
-            "null_max": 0.0656,
-            "z_against_null": 4.18,
-            "exceeds_every_simulation": true
+            "null_mean": 0.0583,
+            "null_sd": 0.0041,
+            "null_max": 0.0735,
+            "z_against_null": 3.19,
+            "exceeds_every_simulation": false
           },
           "9": {
             "observed": 0.0725,
-            "null_mean": 0.0549,
-            "null_sd": 0.0035,
+            "null_mean": 0.0556,
+            "null_sd": 0.0032,
             "null_max": 0.0636,
-            "z_against_null": 4.94,
+            "z_against_null": 5.32,
             "exceeds_every_simulation": true
           },
           "10": {
             "observed": 0.0721,
-            "null_mean": 0.054,
+            "null_mean": 0.0529,
             "null_sd": 0.0034,
-            "null_max": 0.06,
-            "z_against_null": 5.36,
+            "null_max": 0.0607,
+            "z_against_null": 5.59,
             "exceeds_every_simulation": true
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.247,
-        "null_best_silhouette_mean": 0.1901,
-        "separation_ratio": 1.299,
+        "null_best_silhouette_mean": 0.1903,
+        "separation_ratio": 1.298,
         "null": "gaussian_copula",
         "description": "A Gaussian copula fitted to the normal scores of the observed ranks and mapped back through the empirical quantile function of each observed column. Preserves every marginal distribution exactly, including skew, bounds, ties and any bimodality a single feature carries on its own, and preserves the pairwise rank correlation up to sampling noise. Destroys joint structure beyond pairwise rank correlation, which is where two groups that differ in several features at once would live. It tests whether the joint structure carries anything beyond the marginals, not whether the marginals are unimodal.",
         "rank_correlation_check": {
           "observed_mean_abs_spearman": 0.243,
-          "mean_abs_deviation_mean_over_simulations": 0.0212,
-          "max_abs_deviation_mean_over_simulations": 0.0823,
+          "mean_abs_deviation_mean_over_simulations": 0.0219,
+          "max_abs_deviation_mean_over_simulations": 0.0841,
           "max_abs_deviation_worst_simulation": 0.1324
         }
       },
@@ -1811,85 +1811,85 @@
         "scope": "FW",
         "n": 1704,
         "d": 33,
-        "n_simulations": 25,
+        "n_simulations": 100,
         "by_k": {
           "2": {
             "observed": 0.247,
-            "null_mean": 0.1607,
+            "null_mean": 0.1616,
             "null_sd": 0.0036,
-            "null_max": 0.1671,
-            "z_against_null": 23.92,
+            "null_max": 0.1691,
+            "z_against_null": 23.51,
             "exceeds_every_simulation": true
           },
           "3": {
             "observed": 0.1414,
-            "null_mean": 0.1401,
-            "null_sd": 0.0029,
-            "null_max": 0.1458,
-            "z_against_null": 0.47,
+            "null_mean": 0.1403,
+            "null_sd": 0.0028,
+            "null_max": 0.148,
+            "z_against_null": 0.41,
             "exceeds_every_simulation": false
           },
           "4": {
             "observed": 0.1048,
-            "null_mean": 0.1258,
-            "null_sd": 0.0025,
-            "null_max": 0.1297,
-            "z_against_null": -8.54,
+            "null_mean": 0.1261,
+            "null_sd": 0.0028,
+            "null_max": 0.1324,
+            "z_against_null": -7.67,
             "exceeds_every_simulation": false
           },
           "5": {
             "observed": 0.084,
-            "null_mean": 0.1087,
-            "null_sd": 0.0036,
-            "null_max": 0.1153,
-            "z_against_null": -6.93,
+            "null_mean": 0.1082,
+            "null_sd": 0.0044,
+            "null_max": 0.1163,
+            "z_against_null": -5.56,
             "exceeds_every_simulation": false
           },
           "6": {
             "observed": 0.0756,
-            "null_mean": 0.0926,
-            "null_sd": 0.0049,
-            "null_max": 0.1015,
-            "z_against_null": -3.5,
+            "null_mean": 0.0933,
+            "null_sd": 0.0043,
+            "null_max": 0.1057,
+            "z_against_null": -4.14,
             "exceeds_every_simulation": false
           },
           "7": {
             "observed": 0.0774,
-            "null_mean": 0.0836,
-            "null_sd": 0.0045,
-            "null_max": 0.0905,
-            "z_against_null": -1.38,
+            "null_mean": 0.0832,
+            "null_sd": 0.0038,
+            "null_max": 0.0924,
+            "z_against_null": -1.52,
             "exceeds_every_simulation": false
           },
           "8": {
             "observed": 0.0714,
-            "null_mean": 0.078,
-            "null_sd": 0.002,
-            "null_max": 0.0815,
-            "z_against_null": -3.31,
+            "null_mean": 0.0778,
+            "null_sd": 0.0023,
+            "null_max": 0.0833,
+            "z_against_null": -2.83,
             "exceeds_every_simulation": false
           },
           "9": {
             "observed": 0.0725,
-            "null_mean": 0.0742,
-            "null_sd": 0.0022,
+            "null_mean": 0.0741,
+            "null_sd": 0.002,
             "null_max": 0.0787,
-            "z_against_null": -0.8,
+            "z_against_null": -0.84,
             "exceeds_every_simulation": false
           },
           "10": {
             "observed": 0.0721,
             "null_mean": 0.0712,
-            "null_sd": 0.0021,
-            "null_max": 0.0745,
-            "z_against_null": 0.42,
+            "null_sd": 0.0019,
+            "null_max": 0.075,
+            "z_against_null": 0.48,
             "exceeds_every_simulation": false
           }
         },
         "observed_best_k": 2,
         "observed_best_silhouette": 0.247,
-        "null_best_silhouette_mean": 0.1607,
-        "separation_ratio": 1.537,
+        "null_best_silhouette_mean": 0.1616,
+        "separation_ratio": 1.529,
         "null": "uniform_principal_box",
         "description": "Uniform within the bounding box of the data after rotation to its principal axes, rotated back. The reference distribution of the gap statistic in Tibshirani, Walther and Hastie (2001). Assumes no distributional form. Every principal axis is filled evenly over its full observed range, and a bounded or heavy-tailed axis ranges over several times its standard deviation, so the minor axes carry more spread than in the data and the reference is more isotropic than the data it is matched to. That lowers its silhouette at k=2, so for silhouette it is a soft reference. Its leading component is flat rather than peaked, which gives it the largest dip of the three, so for the dip it is the hard one."
       },
@@ -1898,35 +1898,35 @@
         "observed_dip": 0.00526,
         "by_null": {
           "gaussian": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.00526,
-            "null_mean": 0.00575,
-            "null_sd": 0.00081,
-            "null_max": 0.0073,
-            "z_against_null": -0.6,
+            "null_mean": 0.00573,
+            "null_sd": 0.00095,
+            "null_max": 0.00909,
+            "z_against_null": -0.49,
             "exceeds_every_simulation": false
           },
           "gaussian_copula": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.00526,
-            "null_mean": 0.00563,
-            "null_sd": 0.0011,
-            "null_max": 0.00906,
-            "z_against_null": -0.33,
+            "null_mean": 0.00572,
+            "null_sd": 0.00111,
+            "null_max": 0.00932,
+            "z_against_null": -0.42,
             "exceeds_every_simulation": false
           },
           "uniform_principal_box": {
-            "n_simulations": 25,
+            "n_simulations": 100,
             "observed": 0.00526,
-            "null_mean": 0.00798,
-            "null_sd": 0.00101,
-            "null_max": 0.00998,
-            "z_against_null": -2.69,
+            "null_mean": 0.00878,
+            "null_sd": 0.00196,
+            "null_max": 0.01538,
+            "z_against_null": -1.79,
             "exceeds_every_simulation": false
           }
         },
         "hardest_null": "uniform_principal_box",
-        "min_z": -2.69,
+        "min_z": -1.79,
         "exceeds_every_simulation_under_every_null": false,
         "note": "The p-value reported in dip_tests rejects trivially at this sample size and is not informative. The dip statistic is the effect size, and the z against each null's own dip distribution is the calibrated quantity."
       },
@@ -2089,53 +2089,53 @@
     }
   },
   "summary": {
-    "separation_ratio_min": 1.237,
-    "separation_ratio_max": 1.49,
+    "separation_ratio_min": 1.231,
+    "separation_ratio_max": 1.494,
     "pc1_multimodal_anywhere": true,
     "verdict": "At least one scope shows separation beyond the clusterless null.",
     "k2_against_three_nulls": {
       "All outfield": {
         "z_by_null": {
-          "gaussian": 17.96,
-          "gaussian_copula": 13.87,
-          "uniform_principal_box": 46.18
+          "gaussian": 18.87,
+          "gaussian_copula": 13.98,
+          "uniform_principal_box": 44.47
         },
-        "min_z": 13.87,
+        "min_z": 13.98,
         "hardest_null": "gaussian_copula",
         "exceeds_every_simulation_under_every_null": true
       },
       "DF": {
         "z_by_null": {
-          "gaussian": 24.22,
-          "gaussian_copula": 8.6,
-          "uniform_principal_box": 56.35
+          "gaussian": 21.06,
+          "gaussian_copula": 11.02,
+          "uniform_principal_box": 56.06
         },
-        "min_z": 8.6,
+        "min_z": 11.02,
         "hardest_null": "gaussian_copula",
         "exceeds_every_simulation_under_every_null": true
       },
       "MF": {
         "z_by_null": {
-          "gaussian": 14.99,
-          "gaussian_copula": 10.13,
-          "uniform_principal_box": 35.6
+          "gaussian": 15.06,
+          "gaussian_copula": 11.16,
+          "uniform_principal_box": 37.12
         },
-        "min_z": 10.13,
+        "min_z": 11.16,
         "hardest_null": "gaussian_copula",
         "exceeds_every_simulation_under_every_null": true
       },
       "FW": {
         "z_by_null": {
-          "gaussian": 13.18,
-          "gaussian_copula": 8.01,
-          "uniform_principal_box": 23.92
+          "gaussian": 16.98,
+          "gaussian_copula": 7.34,
+          "uniform_principal_box": 23.51
         },
-        "min_z": 8.01,
+        "min_z": 7.34,
         "hardest_null": "gaussian_copula",
         "exceeds_every_simulation_under_every_null": true
       }
     },
-    "k2_min_z_over_scopes_and_nulls": 8.01,
+    "k2_min_z_over_scopes_and_nulls": 7.34,
     "k2_hardest_null_by_scope": {
       "All outfield": "gaussian_copula",
       "DF": "gaussian_copula",
@@ -2161,44 +2161,44 @@
       "All outfield": {
         "observed_dip": 0.01761,
         "z_by_null": {
-          "gaussian": 64.68,
-          "gaussian_copula": 51.17,
-          "uniform_principal_box": 13.67
+          "gaussian": 36.24,
+          "gaussian_copula": 46.29,
+          "uniform_principal_box": 13.84
         },
-        "min_z": 13.67,
+        "min_z": 13.84,
         "hardest_null": "uniform_principal_box",
         "exceeds_every_simulation_under_every_null": true
       },
       "DF": {
         "observed_dip": 0.01927,
         "z_by_null": {
-          "gaussian": 22.8,
-          "gaussian_copula": 23.66,
-          "uniform_principal_box": 8.84
+          "gaussian": 24.6,
+          "gaussian_copula": 24.79,
+          "uniform_principal_box": 8.34
         },
-        "min_z": 8.84,
+        "min_z": 8.34,
         "hardest_null": "uniform_principal_box",
         "exceeds_every_simulation_under_every_null": true
       },
       "MF": {
         "observed_dip": 0.01378,
         "z_by_null": {
-          "gaussian": 17.37,
-          "gaussian_copula": 11.54,
-          "uniform_principal_box": 5.66
+          "gaussian": 14.55,
+          "gaussian_copula": 13.72,
+          "uniform_principal_box": 5.16
         },
-        "min_z": 5.66,
+        "min_z": 5.16,
         "hardest_null": "uniform_principal_box",
         "exceeds_every_simulation_under_every_null": true
       },
       "FW": {
         "observed_dip": 0.00526,
         "z_by_null": {
-          "gaussian": -0.6,
-          "gaussian_copula": -0.33,
-          "uniform_principal_box": -2.69
+          "gaussian": -0.49,
+          "gaussian_copula": -0.42,
+          "uniform_principal_box": -1.79
         },
-        "min_z": -2.69,
+        "min_z": -1.79,
         "hardest_null": "uniform_principal_box",
         "exceeds_every_simulation_under_every_null": false
       }

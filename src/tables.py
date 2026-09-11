@@ -1226,9 +1226,31 @@ def build_macros() -> Macros:
         hd = dig(scopes, scope, "density", "50") or {}
         m.add(f"StrNoise{tag}", hd.get("noise_fraction"), places=3)
         m.add_pct(f"StrNoisePct{tag}", hd.get("noise_fraction"))
-    m.add("StrSimulations", dig(scopes, "All outfield", "null_calibration", "n_simulations"))
+    n_sims = dig(scopes, "All outfield", "null_calibration", "n_simulations")
+    m.add("StrSimulations", n_sims)
+    # The Monte Carlo bound the distribution-free claim carries, 1/(B+1), stated as a number
+    # so the paper does not leave the reader to divide.
+    if n_sims:
+        m.add("StrMCBound", 1.0 / (int(n_sims) + 1), places=4)
     m.add("StrRatioMin", dig(st, "summary", "separation_ratio_min"), places=3)
     m.add("StrRatioMax", dig(st, "summary", "separation_ratio_max"), places=3)
+
+    # The nesting check: the same bootstrap resampling players rather than player-seasons.
+    nest = load("nesting")
+    if nest:
+        for scope, tag in (("All outfield", "All"), ("DF", "DF"), ("MF", "MF"), ("FW", "FW")):
+            entry = dig(nest, "scopes", scope) or {}
+            m.add(f"NestRow{tag}", dig(entry, "row_bootstrap", "ari_mean"), places=3)
+            m.add(f"NestBlock{tag}", dig(entry, "player_block_bootstrap", "ari_mean"), places=3)
+            m.add(f"NestFall{tag}", entry.get("difference"), places=3)
+            m.add(f"NestPlayers{tag}", entry.get("n_players"))
+            m.add(f"NestPerPlayer{tag}", entry.get("seasons_per_player_mean"), places=1)
+        m.add("NestBlockMin", dig(nest, "summary", "block_ari_min_over_scopes"), places=3)
+        m.add("NestBlockMax", dig(nest, "summary", "block_ari_max_over_scopes"), places=3)
+        m.add(
+            "NestLargestFall", dig(nest, "summary", "largest_fall_against_row_bootstrap"), places=3
+        )
+        m.add("NestNBoot", nest.get("n_bootstrap"))
 
     # Goalkeepers on the primary sample
     kav = load("archive_keeper_availability")
@@ -1413,6 +1435,10 @@ def build_macros() -> Macros:
         leave_aris.extend(v for v in lo.values() if v is not None)
         for fam in ("shooting", "creation", "progression", "territory", "defending", "passing"):
             m.add(f"AblKeepARI{fam.capitalize()}{tag}", ko.get(fam), places=3)
+            # The leave-one-out agreement matters on its own for defending, because the five
+            # possession-adjusted counts are that family and removing them is what shows the
+            # adjustment is not carrying the result.
+            m.add(f"AblLeaveARI{fam.capitalize()}{tag}", lo.get(fam), places=3)
             m.add(
                 f"AblKeepZ{fam.capitalize()}{tag}",
                 dig(ab, "scopes", scope, "keep_one_only", fam, "null_at_k", "z_against_null"),
@@ -1471,7 +1497,49 @@ def build_macros() -> Macros:
         m.add(f"StrBootObs{tag}", dig(nb, "observed", "ari_mean"), places=3)
         for null, nt in _nulltag.items():
             m.add(f"StrBootNull{nt}{tag}", dig(nb, "by_null", null, "ari_mean"), places=3)
+    _nullkeys = {
+        "gaussian": "null_calibration",
+        "gaussian_copula": "null_calibration_copula",
+        "uniform_principal_box": "null_calibration_uniform",
+    }
     m.add("StrMinZOverall", stsum.get("k2_min_z_over_scopes_and_nulls"), places=2)
+    # Which null is hardest is a result, not a design choice, so the sentence that says the
+    # copula is hardest everywhere is generated from the per-scope answers rather than typed.
+    # Where the observed curve rejoins a null band is a claim the results section makes in
+    # words, so it is computed rather than read off the figure. For each scope: the smallest
+    # number of clusters above two at which the observed silhouette comes within two null
+    # standard deviations of any of the three references, meaning it has entered that band.
+    # A scope that never does is recorded as "never" rather than left out, because the
+    # pooled scope is one and the text has to say so.
+    group_hits = []
+    for scope, tag in (("All outfield", "All"), ("DF", "DF"), ("MF", "MF"), ("FW", "FW")):
+        entry = dig(scopes, scope) or {}
+        if not entry:
+            continue
+        first = None
+        for k in range(3, 13):
+            zs = [dig(entry, key, "by_k", str(k), "z_against_null") for key in _nullkeys.values()]
+            zs = [z for z in zs if z is not None]
+            if zs and min(zs) <= 2.0:
+                first = k
+                break
+        if first is None:
+            m.add_raw(f"StrConverge{tag}", "never")
+        else:
+            m.add(f"StrConverge{tag}", first)
+            m.add_word(f"StrConverge{tag}Word", first)
+            if tag != "All":
+                group_hits.append(first)
+    if group_hits:
+        m.add_word("StrConvergeGroupMinWord", min(group_hits))
+        m.add_word("StrConvergeGroupMaxWord", max(group_hits))
+
+    hardest = (stsum.get("k2_hardest_null_by_scope") or {}).values()
+    hardest = [h.get("hardest_null") if isinstance(h, dict) else h for h in hardest]
+    m.add_raw(
+        "StrCopulaHardestEverywhere",
+        "every" if hardest and all(h == "gaussian_copula" for h in hardest) else "not every",
+    )
     m.add_raw(
         "StrBeatsEverywhere",
         "every"

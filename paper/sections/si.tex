@@ -152,6 +152,41 @@ a surviving count of two clusters from the same two modes surviving.
 
 \input{../results/tables/ablation.tex}
 
+\section{Nesting: resampling players rather than player-seasons}
+\label{sec:si:nesting}
+
+The unit of analysis is the player-season, and \ArcEligible{} of them come from
+\NestPlayersAll{} players, so an average player supplies \NestPerPlayerAll{} rows. A bootstrap
+that resamples rows therefore treats correlated observations as independent, and the stability
+it reports is optimistic by an unknown amount. This section measures the amount.
+
+The identical bootstrap is run twice on the same partition with the same number of resamples,
+\NestNBoot{}. The first draws player-seasons with replacement, which is what the rest of the
+paper reports and what the genre does. The second draws whole players with replacement and takes
+every season a drawn player contributed, so that rows sharing a player are drawn or left out
+together. The adjusted Rand index is computed the same way in both, on the distinct rows the
+draw contains.
+
+The difference is small. On the outfield pool the row bootstrap returns \NestRowAll{} and the
+player block bootstrap \NestBlockAll{}. Within position groups the block index is
+\NestBlockDF{} for defenders, \NestBlockMF{} for midfielders and \NestBlockFW{} for forwards,
+against \NestRowDF{}, \NestRowMF{} and \NestRowFW{} for the row bootstrap. The largest fall
+anywhere is \NestLargestFall{}, for forwards, which is the smallest scope and the one the paper
+already reports as the least well supported.
+
+Two qualifications belong with the comparison. A player block bootstrap draws fewer distinct
+rows than a row bootstrap of the same nominal size, because one drawn player contributes several
+correlated rows at once, so a small fall is expected from the reduced effective sample alone and
+is not by itself evidence that the row bootstrap was misleading. The check also applies to the
+observed data only: the clusterless datasets of Section~\ref{M-sec:methods:null} are independent
+rows by construction, with no player to block on, so the comparison between observed and null
+stability is unaffected.
+
+What the check establishes is narrow and worth having. The stability reported for this partition
+does not depend on treating player-seasons as exchangeable, so the argument that stability fails
+to distinguish real structure from a partitioned continuum is not an artefact of the resampling
+unit either.
+
 \section{Minutes threshold sensitivity}
 \label{sec:si:sensitivity}
 

@@ -7,12 +7,38 @@ and wrote the paper. Both authors approved the final version.
 
 \section*{Data and code availability}
 
-The analysis code, the retrieval step that fetches the archive from its stated upstream and
-records a digest per file, the cluster assignments for both samples and the sources of this
-document are available at \repourl{}. The
-primary sample is the public worldfootballR mirror of FBref described in
-Section~\ref{sec:methods:data}, and the reduced sample was retrieved from FBref and Understat as
-described there.
+\textbf{Data.} The primary sample is season-aggregate player statistics for the
+\ArcNLeaguesWord{} major European leagues over \ArcNSeasonsWord{} seasons, originating with
+FBref and taken from the public worldfootballR mirror described in
+Section~\ref{sec:methods:data}. That mirror is the only remaining public source for these
+columns, because the site withdrew them in January 2026, and it rewrites its files in place
+and publishes no tags. The retrieval step therefore records a SHA-256 digest per file in
+\texttt{data/raw/archive/manifest.json}, and re-running it reproduces the committed tables
+exactly or fails loudly if upstream has changed. The converted tables are committed, so the
+analysis runs without repeating the download. The secondary sample was retrieved from FBref
+and Understat as described in the same section, and its raw pulls are committed on the same
+terms.
+
+\textbf{Code.} Everything is at \repourl{}: the analysis, the retrieval step, the cluster
+assignments for both samples as CSV, and the sources of this document and its supplement.
+Python 3.12 with dependencies pinned through a lockfile. All randomness derives from one
+seed declared in \texttt{config.py}, and every random operation draws from a generator keyed
+on that seed together with a tag naming the scope, so a single stage can be rerun in
+isolation and return what it returned inside a full run.
+
+\textbf{Reproduction.} \texttt{make all} regenerates every figure, every table and both PDFs
+from the committed raw data. It takes several hours on a laptop, dominated by the null
+calibration, the feature-family ablation, the bootstrap stability and the leave-one-club-out
+prediction, each of which refits the clustering many hundreds of times. Figures and the
+metrics files are byte-identical between runs; the PDFs differ only in an embedded
+timestamp. \texttt{make test} runs the test suite, which includes assertions that tie the
+numbers quoted in these documents back to the metrics files they came from, so a claim
+cannot drift from its evidence without a test failing.
+
+\textbf{Scope of what is reproducible.} The analysis is reproducible from the committed
+data. The data collection is reproducible only in the weaker sense that the retrieval step
+is scripted and its output is digest-pinned, because neither sample can now be re-derived
+from FBref.
 
 \ifreview\else
 \section*{Acknowledgements}

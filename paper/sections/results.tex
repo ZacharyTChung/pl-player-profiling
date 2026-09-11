@@ -12,17 +12,27 @@ silhouette is \StrObsAll{} for the outfield pool against a Gaussian null mean of
 and it exceeds every one of the \StrSimulations{} simulations; the same holds in each position
 group. A Gaussian is the softest reference available, so the copula null, which keeps every
 feature's real marginal distribution and rank correlations and so removes the objection that skew
-alone produced the separation, is the one to read. It is the hardest of the three in every scope,
+alone produced the separation, is the one to read. It is the hardest of the three in \StrCopulaHardestEverywhere{} scope,
 and the observed partition clears it everywhere, by \StrZCopulaAll{} standard deviations on the
 pool and by \StrZCopulaDF{}, \StrZCopulaMF{} and \StrZCopulaFW{} within the three position
 groups. The observed silhouette at two clusters exceeds \StrBeatsEverywhere{} simulation under
 \StrBeatsEverywhere{} null in \StrBeatsEverywhere{} scope, and the smallest margin anywhere, over
 all four scopes and all three nulls, is \StrMinZOverall{} standard deviations.
 
-Beyond two clusters the curves converge, which is the central negative result stated precisely.
-By around six clusters the observed silhouette lies inside the simulated band in every position
-group, so the third and subsequent clusters a taxonomy would name are not distinguishable from
-what a partitioning algorithm extracts from structureless data.
+Beyond two clusters the margin collapses, which is the central negative result stated
+precisely, and it collapses where a taxonomy of archetypes would live. Inside a position group
+the observed silhouette falls within a null band by \StrConvergeFWWord{} clusters for forwards,
+\StrConvergeMFWord{} for midfielders and \StrConvergeDFWord{} for defenders, and below the band
+in several of those cases, so the third and subsequent archetypes a taxonomy would name within a
+group are not distinguishable from what a partitioning algorithm extracts from structureless
+data. The pooled scope behaves differently, and the difference is worth stating rather than
+glossing: there the smallest number of clusters at which the observed
+curve enters any band is \StrConvergeAll{}, so it stays above all three references across the
+whole candidate range. That is the scope the two-mode division itself lives in, so a
+margin there at ten clusters does not identify ten groups; it is the separation the paper
+reports, which any finer cut of the same cloud inherits. The claim this paper makes about finer
+structure is a claim about what happens inside a position group, and the instruments that follow
+test it there.
 
 The second standard piece of evidence for a published taxonomy is a bootstrap, and the same
 simulations show what it is worth. Computed on clusterless datasets by exactly the procedure
@@ -32,7 +42,14 @@ falls below \StrBootNullMinSingle{} on any clusterless dataset in any scope, aga
 and a stability screen at \StrBootScreen{}, demanding by the genre's standards, is passed by
 \StrBootNullPassesScreen{} clusterless dataset in \StrBootNullPassesScreen{} scope. A resampling
 check does not distinguish real structure from a partitioned continuum: it measures whether an
-algorithm is deterministic on similar inputs, which $k$-means is.
+algorithm is deterministic on similar inputs, which $k$-means is. That conclusion does not rest
+on treating player-seasons as independent, which they are not. Rerunning the identical bootstrap
+on whole players, so that the \NestPerPlayerAll{} seasons an average player contributes are drawn
+or left out together, returns \NestBlockAll{} on the pool against \NestRowAll{} for the row
+bootstrap, and \NestBlockMin{} to \NestBlockMax{} across the four scopes, a fall of at most
+\NestLargestFall{}. The
+stability the genre reports is not an artefact of the exchangeability its bootstrap assumes; it
+is what a deterministic algorithm does either way.
 
 Three further instruments agree, with one exception reported as such. The observed dip statistic
 on the leading principal component sits \StrDipMinZAll{} null standard deviations above the
@@ -59,7 +76,11 @@ Football role data contains a real division into two modes. It does not contain 
   simulated \StrSimulations{} times and drawn as its mean with a band of two standard deviations:
   a Gaussian matched on covariance, a copula that keeps every real marginal and correlation, and
   the uniform reference of the gap statistic. The observed curve separates from all three at two
-  clusters and rejoins the bands as the number of clusters grows. \textbf{e}, bootstrap adjusted
+  clusters. Within a position group it rejoins a band as the number of clusters grows, at
+  \StrConvergeFWWord{}, \StrConvergeMFWord{} and \StrConvergeDFWord{} clusters for forwards,
+  midfielders and defenders; in the pooled scope it stays above all three at every candidate
+  number, which is what the two-mode division that scope contains produces when the same cloud is
+  cut into more pieces. \textbf{e}, bootstrap adjusted
   Rand index on the real data against the same quantity on the clusterless simulations, with the
   range over simulated datasets and the dashed line at \StrBootScreen{}, the screen a published
   taxonomy would cite as evidence that its partition is stable. The real data score a little
@@ -123,8 +144,12 @@ data record it, is mostly a statement about where a player stands.
   over \ArcEligible{} eligible player-seasons on \ArcFeatures{} features. \textbf{b} and
   \textbf{c}, the ten strongest loadings on the first two components, which order players by pitch
   territory and by ball progression respectively. \textbf{d}, every player projected onto the axis
-  between the two centroids, stacked by listed position group with the total drawn as an outline;
-  the dashed line is the cut the partition makes. \textbf{e}, the share of each listed position
+  between the two centroids, stacked by listed position group with the total drawn as a solid
+  outline and the vertical dashed line marking the cut the partition makes. The grey dashed curve
+  is one of the copula draws the calibration was computed against, projected onto its own
+  two-cluster axis on the same scale: a single broad hump where the observed distribution has two
+  peaks and a trough between them. It is the contrast the standard scores in
+  Figure~\ref{fig:structurenull} measure. \textbf{e}, the share of each listed position
   group falling in each mode. \textbf{f}, out-of-fold confusion for the gradient boosted
   classifier, in percent of each listed class. The corners linking defenders and forwards are
   close to empty in both, and midfield is where the disagreement lives.}
@@ -189,7 +214,7 @@ others.
 \label{sec:results:replication}
 
 A partition that appears once describes one dataset; a partition that appears independently in
-five seasons and five competitions describes the sport. Each season and each league is therefore
+\ArcNSeasonsWord{} seasons and \ArcNLeaguesWord{} competitions describes the sport. Each season and each league is therefore
 standardised inside itself and clustered from scratch, borrowing nothing from the pooled fit.
 
 Every scope recovers the pooled partition. The weakest season agrees with the pool at an adjusted
@@ -212,7 +237,8 @@ A result on \ArcFeatures{} features could also be carried by one block of them, 
 suspected the modes were the expected goals block wearing a costume would be right to ask.
 Removing any one of the \AblFamiliesWord{} families removes nothing that matters: the rule returns two
 clusters in \AblSurvivesAll{} leave-one-out in every scope, \AblCellsBeatNull{} of the
-\AblCells{} feature sets tested exceed every one of the \AblSimulations{} clusterless simulations,
+\AblCells{} feature sets tested exceed every one of the \AblSimulations{} Gaussian clusterless
+simulations,
 and the adjusted Rand index between each ablated partition and the full one runs from
 \AblLeaveARIMin{} to \AblLeaveARIMax{}, so the survivors are the same two modes rather than two
 different ones. The converse is more instructive than the headline. Most families produce a
@@ -223,7 +249,20 @@ shows what those solutions are: shooting alone in defenders separates from the n
 wide. Only territory reproduces the paper's own modes by itself in every scope, at an adjusted
 Rand index from \AblTerritoryARIMin{} to \AblTerritoryARIMax{}. The two modes are where a player
 touches the ball, and every other family either sharpens that division or, alone, cuts a different
-one. Figure~\ref{fig:replication} shows the refits above and the ablation below, and
+one.
+
+The sweep also answers a question the paper's own preprocessing raises. The five
+possession-adjusted counts are the defending family, and they are adjusted by a measured
+elasticity rather than the conventional one, which is a departure a reader is entitled to
+distrust. Removing that family entirely leaves the rule at two clusters and the partition
+agreeing with the reported one at \AblLeaveARIDefendingAll{} on the pool, so whatever exponent
+those five counts carry, it is not what produces the two modes.
+
+One limit of this sweep should be stated. It is calibrated against the Gaussian reference
+only, which is the softest of the three, because it is \AblCells{} feature sets in four scopes
+rather than a single calibration. It therefore establishes that no one family carries the result
+and that the survivors are the same two modes, which is what it is for, and it is weaker evidence
+of existence than the three-null calibration the headline rests on. Figure~\ref{fig:replication} shows the refits above and the ablation below, and
 Table~\ref{S-tab:ablation} gives every cell.
 
 \begin{figure}[!p]
@@ -235,8 +274,8 @@ Table~\ref{S-tab:ablation} gives every cell.
   as the gap widens because players change. \textbf{b}, one league's centroids imported into
   another league's players, which does not decline. \textbf{c} and \textbf{d}, each season and
   each league fitted from scratch and scored against the pooled partition. \textbf{e} to
-  \textbf{h}, standard score of the observed two-cluster silhouette against the clusterless null
-  under every feature-family ablation, one panel per scope: circles remove one family, triangles
+  \textbf{h}, standard score of the observed two-cluster silhouette against the Gaussian
+  clusterless null under every feature-family ablation, one panel per scope: circles remove one family, triangles
   keep one family alone, and the vertical line is the full feature set.}
   \label{fig:replication}
 \end{figure}
@@ -270,13 +309,13 @@ held-out team-season shares a club with the training data. The modes add \OutInc
 which should be said plainly: the modes are not a substitute for dominance, they are information
 about how it is produced that dominance does not contain.
 
-Where the information lives is the sharpest result here. Possession plus the two two-mode measures
-alone reach \OutRSqPossTwoModeSeason{}, an increment of \OutIncTwoModeSeason{} over possession
+Where the information lives is the sharpest result here. Possession plus the two measures the partition
+yields, the attacking share and the axis position, reach \OutRSqPossTwoModeSeason{}, an increment of \OutIncTwoModeSeason{} over possession
 that is the whole of the gain. Adding the six archetype shares on top adds \OutIncArcheSeason{}
 (\OutIncArcheSeasonLow{} to \OutIncArcheSeasonHigh{}), an interval that contains zero. Real
 results say what the null calibration said: two modes carry information and a finer taxonomy
 carries none the two modes did not already carry. Figure~\ref{fig:outcomes} shows the share
-against points and the out of sample comparison.
+against points and the out-of-sample comparison.
 
 \begin{figure}[!t]
   \centering

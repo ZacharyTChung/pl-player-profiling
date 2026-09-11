@@ -7,8 +7,8 @@ submission.
 
 | | reviewed version | now |
 |---|---|---|
-| Article | 93 pages, one file | **21 pages** including references |
-| Supporting information | inside the same file | separate 62-page document |
+| Article | 93 pages, one file | **23 pages** including references |
+| Supporting information | inside the same file | separate 63-page document |
 | Article word count | 18,400 | **8,700** |
 | Main-text figures | 41 | **6**, each with lettered panels |
 
@@ -33,7 +33,7 @@ the roughly 200 that the target journals ask for.
 ## Contents
 
 **"You dont really need a table of contents."** Removed from the article. The supplement keeps
-one, because it is a 62-page reference document.
+one, because it is a 63-page reference document.
 
 ## Introduction
 
@@ -117,13 +117,70 @@ Figure S1, Table S1. The article and the supplement reference each other, so the
 say "Section S3" and the supplement "Figure 2" and both resolve.
 
 **"Figure 41, any reason we only look at Prem players?"**
-Section S10 now opens by answering it. The Premier League figures are the coverage of the live
+Section S11 now opens by answering it. The Premier League figures are the coverage of the live
 post-withdrawal pull that the robustness sample is built on, not a sampling choice. The paper's
 claims rest on the primary sample, which is all five leagues and all five seasons, refitted
-independently in each. Section S10.3 additionally repeats the reduced-sample pipeline across all
+independently in each. Section S11.3 additionally repeats the reduced-sample pipeline across all
 five leagues, so its generality is tested rather than assumed.
 
 ---
+
+## Added since the review, not asked for
+
+Five changes go beyond the comments. They answer the objections a statistics referee is most
+likely to raise, which is the readership the target journals have.
+
+**The null calibration now runs 100 draws per scope and per null, not 25.** The headline claim
+is distribution-free: the observed silhouette exceeds every one of B simulated values, which
+carries a Monte Carlo probability of at most 1/(B+1). B is therefore what bounds how strong that
+sentence can be, and 25 bounded it at 0.038 where 100 bounds it at 0.0099. The feature-family
+sweep still runs 25 per cell, because it is 52 feature sets in four scopes, and the article now
+says so and says what it costs.
+
+**The nesting of player-seasons is measured rather than only designed around.** The same player
+supplies 2.7 rows on average, so a bootstrap that resamples rows treats correlated observations
+as independent. The identical bootstrap now also runs on whole players, drawing every season a
+player contributed together. The index falls by at most 0.024, so the stability the paper
+discusses is not an artefact of the resampling unit. Section S5 of the supplement sets out the
+comparison and what it cannot show.
+
+**The calibration's scope is owned in the methods.** It is relative to the method, not absolute:
+it asks whether this pipeline finds more on the data than the same pipeline finds on data with
+no groups. That is the right scope, because the claim under examination is one the genre makes
+with this machinery, and the paper now says so rather than waiting to be asked.
+
+**The ablation's null is named.** The headline runs three references and reports the hardest; the
+ablation sweep runs only the Gaussian, which is the softest. The article previously said
+"clusterless simulations" without saying which, and now says which and that the sweep is
+therefore weaker evidence of existence than the headline.
+
+**Panel 2d shows a clusterless draw.** The panel is the picture the whole paper is about, two
+concentrated regions with a populated middle, and it previously showed only the observed
+distribution. It now overlays one of the copula draws the calibration was computed against,
+projected onto its own two-cluster axis on the same scale. It is a single broad hump where the
+observed distribution has two peaks and a trough. The argument is now visible rather than only
+tabulated.
+
+## Corrected since the review
+
+One thing in the reviewed version was wrong, and it was in the central negative claim. The
+results section said that by around six clusters the observed silhouette lies inside the
+simulated band in every position group. Checked against the calibration rather than against the
+figure, that is true inside a position group but at three, five and six clusters for forwards,
+midfielders and defenders rather than around six, and it is false in the pooled scope, where the
+observed curve stays above all three references at every candidate number of clusters. Figure 1
+shows both, so the sentence and the figure disagreed.
+
+The sentence now says both halves and every number in it is generated. The margin collapses
+inside a position group, which is where a taxonomy of archetypes would live and where the claim
+about finer structure belongs. The pooled scope keeps its margin at every number of clusters,
+which is the two-mode division itself being inherited by any finer cut of the same cloud rather
+than evidence of ten groups. A test fails if either half changes.
+
+The correction does not weaken the paper. The negative result rests on four independent
+instruments, and the other three are unaffected: density-based clustering labels every position
+group entirely noise, the mixture criterion never settles, and the six archetypes add nothing to
+out-of-sample prediction beyond the two modes.
 
 ## On splitting into multiple papers
 

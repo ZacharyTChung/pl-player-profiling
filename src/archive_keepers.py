@@ -1113,7 +1113,7 @@ def figure_radar(eligible: pd.DataFrame, fit: dict, archetypes: dict) -> None:
 
     fig = plt.figure(figsize=(plotting.WIDTH_COLUMN, 3.0))
     fig.set_layout_engine("none")
-    ax = fig.add_axes((0.22, 0.185, 0.56, 0.615), projection="polar")
+    ax = fig.add_axes((0.06, 0.09, 0.52, 0.82), projection="polar")
     ax.set_theta_offset(np.pi / 2.0)
     ax.set_theta_direction(-1)
     ax.set_xticks(angles)
@@ -1156,7 +1156,10 @@ def figure_radar(eligible: pd.DataFrame, fit: dict, archetypes: dict) -> None:
         )
         ax.fill(closed, values, color=colours[cluster], alpha=0.12)
     fig.legend(
-        loc="lower center", bbox_to_anchor=(0.5, 0.005), ncol=1, fontsize=plotting.BASE_FONT_PT - 2
+        loc="center left",
+        bbox_to_anchor=(0.60, 0.52),
+        ncol=1,
+        fontsize=plotting.BASE_FONT_PT - 1,
     )
     plotting.panel_labels(fig.axes, letters="cd")
     plotting.save_figure(fig, "archive_keeper_radar")

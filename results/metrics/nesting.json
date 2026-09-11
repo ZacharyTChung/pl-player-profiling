@@ -1,0 +1,104 @@
+{
+  "question": "Player-seasons are nested inside players. Does resampling players rather than player-seasons change what the bootstrap says about the two-mode partition?",
+  "k": 2,
+  "n_bootstrap": 50,
+  "unit": "player-season",
+  "block": "player",
+  "note": "A player block bootstrap draws fewer distinct rows than a row bootstrap of the same nominal size, because one drawn player contributes all of his seasons at once, so a small fall in the index is expected from the reduced effective sample alone and is not by itself evidence that the row bootstrap was misleading. The clusterless nulls are independent rows by construction, so the null calibration is unaffected.",
+  "scopes": {
+    "All outfield": {
+      "n_player_seasons": 9263,
+      "n_players": 3475,
+      "seasons_per_player_mean": 2.67,
+      "row_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9883,
+        "ari_sd": 0.009,
+        "ari_min": 0.9585,
+        "ari_max": 0.9993,
+        "low_stability_clusters": []
+      },
+      "player_block_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9797,
+        "ari_sd": 0.0143,
+        "ari_min": 0.9269,
+        "ari_max": 0.998,
+        "distinct_rows_mean": 5848
+      },
+      "difference": 0.0086
+    },
+    "DF": {
+      "n_player_seasons": 3793,
+      "n_players": 1481,
+      "seasons_per_player_mean": 2.56,
+      "row_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9903,
+        "ari_sd": 0.0101,
+        "ari_min": 0.9605,
+        "ari_max": 1.0,
+        "low_stability_clusters": []
+      },
+      "player_block_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.983,
+        "ari_sd": 0.0145,
+        "ari_min": 0.9548,
+        "ari_max": 1.0,
+        "distinct_rows_mean": 2398
+      },
+      "difference": 0.0073
+    },
+    "MF": {
+      "n_player_seasons": 3766,
+      "n_players": 1602,
+      "seasons_per_player_mean": 2.35,
+      "row_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9791,
+        "ari_sd": 0.0136,
+        "ari_min": 0.9537,
+        "ari_max": 0.9983,
+        "low_stability_clusters": []
+      },
+      "player_block_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9737,
+        "ari_sd": 0.0169,
+        "ari_min": 0.9212,
+        "ari_max": 0.9983,
+        "distinct_rows_mean": 2391
+      },
+      "difference": 0.0054
+    },
+    "FW": {
+      "n_player_seasons": 1704,
+      "n_players": 778,
+      "seasons_per_player_mean": 2.19,
+      "row_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9616,
+        "ari_sd": 0.0219,
+        "ari_min": 0.9033,
+        "ari_max": 0.9961,
+        "low_stability_clusters": []
+      },
+      "player_block_bootstrap": {
+        "n_bootstrap": 50,
+        "ari_mean": 0.9381,
+        "ari_sd": 0.0355,
+        "ari_min": 0.8357,
+        "ari_max": 0.9918,
+        "distinct_rows_mean": 1082
+      },
+      "difference": 0.0235
+    }
+  },
+  "summary": {
+    "block_ari_min_over_scopes": 0.9381,
+    "block_ari_max_over_scopes": 0.983,
+    "largest_fall_against_row_bootstrap": 0.0235,
+    "verdict": "The partition is as stable under a bootstrap that respects the nesting as under one that ignores it, so the exchangeability assumption the row bootstrap makes is not what produced the reported stability."
+  }
+}

@@ -115,9 +115,13 @@ description cannot see them, and event and tracking data would be the way to fin
 does not remove is team strength, since attacking statistics still scale with a team's own share
 of the ball. The unit of analysis is the player-season and player-seasons are nested, with the
 same player appearing in up to \ArcNSeasonsWord{} rows and clubs nested within leagues, so pooled
-intervals are narrower than a fully nested analysis would give; the defence against this is design
-rather than adjustment, since every central claim is also made on independent refits by season and
-by league and the test against results holds out whole seasons, leagues and clubs. The archive is
+intervals are narrower than a fully nested analysis would give. Two things limit what that costs.
+Every central claim is also made on independent refits by season and by league, and the test
+against results holds out whole seasons, leagues and clubs, so no headline rests on a single
+pooled fit. The stability result is also checked directly against the nesting, by rerunning the
+bootstrap on whole players rather than player-seasons, which moves the index by at most
+\NestLargestFall{}. What remains unadjusted is the width of a pooled interval, not the direction
+of any conclusion. The archive is
 a mirror rather than the source, and one season was excluded outright because a whole feature
 block was absent from it. Season aggregation also assumes a player's role is constant across a
 season, which holds for most players and fails for a minority.

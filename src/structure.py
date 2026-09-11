@@ -59,9 +59,12 @@ from src import archive as A
 from src import cluster as C
 from src import plotting as P
 
-#: Simulated datasets per scope and per null. Enough to place the observed value in a
-#: distribution rather than against a single draw.
-N_SIMULATIONS = 25
+#: Simulated datasets per scope and per null. The headline claim is that the observed
+#: silhouette exceeds every one of these draws under every null, which carries a Monte
+#: Carlo probability of at most 1/(B+1) per scope and null, so B is what bounds how strong
+#: that statement can be: 25 draws bound it at 0.038 and 100 at 0.0099. The cost is one
+#: full k-selection per draw, and the whole calibration is four scopes by three nulls.
+N_SIMULATIONS = 100
 
 #: Sub-sample used for silhouette, which is quadratic in the number of points.
 SILHOUETTE_SAMPLE = 4000
@@ -166,8 +169,14 @@ def kmeans_profile(x: np.ndarray, seed: int) -> dict[int, float]:
     return out
 
 
-def simulate(x: np.ndarray, null: str) -> list[np.ndarray]:
-    """``N_SIMULATIONS`` clusterless datasets with the shape of ``x``, under one null.
+def simulate(x: np.ndarray, null: str, n_datasets: int | None = None) -> list[np.ndarray]:
+    """``n_datasets`` clusterless datasets with the shape of ``x``, under one null.
+
+    Defaults to ``N_SIMULATIONS``. Every null draws its datasets in sequence from a
+    generator seeded once, so asking for fewer returns a prefix of the same sequence: one
+    dataset here is dataset one of the calibration, not a different draw that resembles it.
+    That is what lets a figure show a null draw and a reader know it is the one the numbers
+    were computed against.
 
     Every null is seeded from ``config.RANDOM_STATE`` and draws its datasets in sequence
     from one generator, so the Gaussian datasets are the ones the original single-null
@@ -193,14 +202,12 @@ def simulate(x: np.ndarray, null: str) -> list[np.ndarray]:
         Tibshirani, Walther and Hastie (2001), and it assumes no distribution at all.
     """
     n, d = x.shape
+    count = N_SIMULATIONS if n_datasets is None else int(n_datasets)
     rng = np.random.default_rng(config.RANDOM_STATE)
     if null == "gaussian":
         mean = x.mean(axis=0)
         cov = np.cov(x, rowvar=False)
-        return [
-            rng.multivariate_normal(mean, cov, size=n, method="cholesky")
-            for _ in range(N_SIMULATIONS)
-        ]
+        return [rng.multivariate_normal(mean, cov, size=n, method="cholesky") for _ in range(count)]
     if null == "gaussian_copula":
         # Normal scores of the ranks, ties at their average rank, and the correlation of
         # those scores. That correlation is the copula parameter.
@@ -208,7 +215,7 @@ def simulate(x: np.ndarray, null: str) -> list[np.ndarray]:
         corr = np.corrcoef(scores, rowvar=False)
         sorted_columns = np.sort(x, axis=0)
         out = []
-        for _ in range(N_SIMULATIONS):
+        for _ in range(count):
             gauss = rng.multivariate_normal(np.zeros(d), corr, size=n, method="cholesky")
             order = np.argsort(np.argsort(gauss, axis=0), axis=0)
             out.append(np.take_along_axis(sorted_columns, order, axis=0))
@@ -221,7 +228,7 @@ def simulate(x: np.ndarray, null: str) -> list[np.ndarray]:
         _, _, axes = np.linalg.svd(x - mean, full_matrices=False)
         rotated = (x - mean) @ axes.T
         low, high = rotated.min(axis=0), rotated.max(axis=0)
-        return [rng.uniform(low, high, size=(n, d)) @ axes + mean for _ in range(N_SIMULATIONS)]
+        return [rng.uniform(low, high, size=(n, d)) @ axes + mean for _ in range(count)]
     raise ValueError(f"unknown null {null!r}")
 
 
